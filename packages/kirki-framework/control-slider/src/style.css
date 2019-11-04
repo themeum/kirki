@@ -5,14 +5,14 @@
   border-radius: 100%;
   cursor: pointer;
   display: block;
-  height: 1rem;
-  margin-left: -0.5rem;
-  margin-top: -0.65rem;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -10.5px;
   outline: none;
   position: absolute;
   top: 50%;
-  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-  width: 1rem;
+  transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+  width: 14px;
 }
 
 .input-range__slider:active {
@@ -31,55 +31,21 @@
 }
 
 .input-range__slider-container {
-  transition: left 0.3s ease-out;
-}
-
-.input-range__label {
-  color: #aaaaaa;
-  font-size: 10px;
-  transform: translateZ(0);
-  white-space: nowrap;
-}
-
-.input-range__label--min,
-.input-range__label--max {
-  bottom: -1.4rem;
-  position: absolute;
-}
-
-.input-range__label--min {
-  left: 1em;
-}
-
-.input-range__label--max {
-  right: 1em;
-}
-
-.input-range__label--value {
-  position: absolute;
-  top: -2.75em;
-  color: #23282d;
-  font-size: .9em;
-  font-weight: 700;
+  transition: left 0.1s ease-out;
 }
 
 .input-range__label-container {
-  left: -50%;
-  position: relative;
-}
-
-.input-range__label--max .input-range__label-container {
-  left: 50%;
+  display: none;
 }
 
 .input-range__track {
   background: #b4b9be;
-  border-radius: 0.3rem;
+  border-radius: 5px;
   cursor: pointer;
   display: block;
-  height: 0.3rem;
+  height: 5px;
   position: relative;
-  transition: left 0.3s ease-out, width 0.3s ease-out;
+  transition: left 0.1s ease-out, width 0.1s ease-out;
 }
 
 .input-range--disabled .input-range__track {
@@ -88,7 +54,7 @@
 
 .input-range__track--background {
   left: 0;
-  margin-top: -0.15rem;
+  margin-top: -3px;
   position: absolute;
   right: 0;
   top: 50%;
@@ -99,8 +65,23 @@
 }
 
 .input-range {
-  height: 1rem;
+  height: 16px;
   position: relative;
   width: 100%;
-  margin: 2em 0 1.5em;
+}
+
+.range-input-wrapper input[type="text"] {
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-align: center;
+  font-size: 13px;
+}
+
+.range-input-wrapper input[type="text"]:hover,
+.range-input-wrapper input[type="text"]:focus,
+.range-input-wrapper input[type="text"]:active {
+  box-shadow: none;
+  border: none;
+  outline: none;
 }

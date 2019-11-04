@@ -43,9 +43,12 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 
 	validateCssValue: function( value ) {
 
-		var validUnits = [ 'fr', 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
+		var control = this,
+			validUnits = [ 'fr', 'rem', 'em', 'ex', '%', 'px', 'cm', 'mm', 'in', 'pt', 'pc', 'ch', 'vh', 'vw', 'vmin', 'vmax' ],
 			numericValue,
-			unit;
+			unit,
+			multiples,
+			multiplesValid = true;
 
 		// Whitelist values.
 		if ( ! value || '' === value || 0 === value || '0' === value || 'auto' === value || 'inherit' === value || 'initial' === value ) {
@@ -66,6 +69,18 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 		// Allow unitless.
 		if ( ! unit ) {
 			return true;
+		}
+
+		// Check for multiple values.
+		multiples = value.split( ' ' );
+		if ( 2 <= multiples.length ) {
+			multiples.forEach( function( item ) {
+				if ( item && ! control.validateCssValue( item ) ) {
+					multiplesValid = false;
+				}
+			});
+
+			return multiplesValid;
 		}
 
 		// Check the validity of the numeric value and units.

@@ -131,6 +131,8 @@ The value will then be saved using a format like this:
 ]
 ```
 
+## Array Sanitization
+
 If you choose to save the value of this control as an `array`, then you will need to change the sanitization function for this setting. You can write your own, or use the one below.
 ```php
 /**
