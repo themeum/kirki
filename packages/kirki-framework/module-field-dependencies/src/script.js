@@ -88,6 +88,7 @@ var kirkiDependencies = {
 		var self          = this,
 			childRelation = ( 'AND' === relation ) ? 'OR' : 'AND',
 			nestedItems,
+			value,
 			i;
 
 		// Tweak for using active callbacks with serialized options instead of theme_mods.
@@ -127,12 +128,12 @@ var kirkiDependencies = {
 			self.listenTo[ requirement.setting ].push( control.id );
 		}
 
-		return self.evaluate(
-			requirement.value,
-			wp.customize.control( requirement.setting ).setting._value,
-			requirement.operator,
-			requirement.choice
-		);
+		value = wp.customize( requirement.setting ).get();
+		if ( wp.customize.control( requirement.setting ).setting ) {
+			value = wp.customize.control( requirement.setting ).setting._value;
+		}
+
+		return self.evaluate( requirement.value, value, requirement.operator, requirement.choice );
 	},
 
 	/**

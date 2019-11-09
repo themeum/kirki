@@ -92,6 +92,7 @@ class Typography extends Field {
 			wp_parse_args(
 				[
 					'sanitize_callback' => isset( $args['sanitize_callback'] ) ? $args['sanitize_callback'] : [ __CLASS__, 'sanitize' ],
+					'input_attrs'       => '',
 					'choices'           => [
 						'type'        => 'hidden',
 						'parent_type' => 'kirki-typography',
@@ -180,6 +181,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[font-family]',
 						'default'     => isset( $args['default']['font-family'] ) ? $args['default']['font-family'] : '',
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'font-family', $args ),
 						'choices'     => $choices,
 						'css_vars'    => [],
 						'output'      => [],
@@ -204,6 +206,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[font-weight]',
 						'default'     => $font_weight,
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'font-weight', $args ),
 						'choices'     => [
 							'100' => esc_html__( '100 - Thin', 'kirki' ),
 							'200' => esc_html__( '200 - Extra Light, Ultra Light', 'kirki' ),
@@ -237,6 +240,7 @@ class Typography extends Field {
 							'description' => '',
 							'settings'    => $args['settings'] . '[font-style]',
 							'default'     => $is_italic ? 'italic' : 'normal',
+							'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'font-style', $args ),
 							'choices'     => [
 								'normal' => esc_html__( 'No', 'kirki' ),
 								'italic' => esc_html__( 'Yes', 'kirki' ),
@@ -260,6 +264,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[text-decoration]',
 						'default'     => $args['default']['text-decoration'],
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'text-decoration', $args ),
 						'choices'     => [
 							'none'      => esc_html__( 'No', 'kirki' ),
 							'underline' => esc_html__( 'Yes', 'kirki' ),
@@ -285,6 +290,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[font-size]',
 						'default'     => $args['default']['font-size'],
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'font-size', $args ),
 						'css_vars'    => [],
 						'output'      => [],
 					],
@@ -306,6 +312,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[line-height]',
 						'default'     => $args['default']['line-height'],
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'line-height', $args ),
 						'css_vars'    => [],
 						'output'      => [],
 					],
@@ -324,6 +331,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[letter-spacing]',
 						'default'     => $args['default']['letter-spacing'],
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'letter-spacing', $args ),
 						'css_vars'    => [],
 						'output'      => [],
 					],
@@ -342,6 +350,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[word-spacing]',
 						'default'     => $args['default']['word-spacing'],
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'word-spacing', $args ),
 						'css_vars'    => [],
 						'output'      => [],
 					],
@@ -360,6 +369,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[text-transform]',
 						'default'     => $args['default']['text-transform'],
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'text-transform', $args ),
 						'choices'     => [
 							'none'       => esc_html__( 'None', 'kirki' ),
 							'capitalize' => esc_html__( 'Capitalize', 'kirki' ),
@@ -384,6 +394,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[text-align]',
 						'default'     => $args['default']['text-align'],
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'text-align', $args ),
 						'choices'     => [
 							'initial' => esc_html__( 'Initial', 'kirki' ),
 							'left'    => esc_html__( 'Left', 'kirki' ),
@@ -409,6 +420,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[margin-top]',
 						'default'     => $args['default']['margin-top'],
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'margin-top', $args ),
 						'css_vars'    => [],
 						'output'      => [],
 					],
@@ -427,6 +439,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[margin-bottom]',
 						'default'     => $args['default']['margin-bottom'],
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'margin-bottom', $args ),
 						'css_vars'    => [],
 						'output'      => [],
 					],
@@ -445,6 +458,7 @@ class Typography extends Field {
 						'description' => '',
 						'settings'    => $args['settings'] . '[color]',
 						'default'     => $args['default']['color'],
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'color', $args ),
 						'css_vars'    => [],
 						'output'      => [],
 						'choices'     => [
@@ -586,6 +600,37 @@ class Typography extends Field {
 	 */
 	public function enqueue_customize_preview_init() {
 		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/script-customize-preview.js' ), [ 'wp-hooks' ], '1.0', true );
+	}
+
+	/**
+	 * Prefer control specific value over field value
+	 *
+	 * @access public
+	 * @since 4.0
+	 * @param $setting
+	 * @param $choice
+	 * @param $args
+	 *
+	 * @return string
+	 */
+	public function filter_preferred_choice_setting( $setting, $choice, $args ) {
+		// Fail early
+		if ( ! isset( $args[ $setting ] ) ) {
+			return '';
+		}
+		// If a specific field for the choice is set
+		if ( isset( $args[ $setting ][ $choice ] ) ) {
+			return $args[ $setting ][ $choice ];
+		}
+		// Unset input_attrs of all other choices
+		foreach ( $args['choices'] as $id => $set ) {
+			if ( $id !== $choice && isset( $args[ $setting ][ $id ] ) ) {
+				unset( $args[ $setting ][ $id ] );
+			} else if ( ! isset( $args[ $setting ][ $id ] ) ) {
+				$args[ $setting ] = '';
+			}
+		}
+		return $args[ $setting ];
 	}
 
 	/**

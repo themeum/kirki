@@ -750,16 +750,16 @@
         },
         {
             "name": "kirki-framework/control-react-color",
-            "version": "v1.0.9",
+            "version": "v1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-color.git",
-                "reference": "17629033b74df9e554e14d547ad0bfe5fbf186a4"
+                "reference": "72c33b0282f57fc239814ece1d56be128ac8d290"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/17629033b74df9e554e14d547ad0bfe5fbf186a4",
-                "reference": "17629033b74df9e554e14d547ad0bfe5fbf186a4",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/72c33b0282f57fc239814ece1d56be128ac8d290",
+                "reference": "72c33b0282f57fc239814ece1d56be128ac8d290",
                 "shasum": ""
             },
             "require": {
@@ -794,20 +794,20 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-10-27T12:13:05+00:00"
+            "time": "2019-11-09T11:29:07+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",
-            "version": "v0.3",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-select.git",
-                "reference": "02f97d93df8a44c523a6afb23b3e5b7fcf408510"
+                "reference": "bc4d6cd15e482c28b4924203fc129bc1cc731c92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/02f97d93df8a44c523a6afb23b3e5b7fcf408510",
-                "reference": "02f97d93df8a44c523a6afb23b3e5b7fcf408510",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/bc4d6cd15e482c28b4924203fc129bc1cc731c92",
+                "reference": "bc4d6cd15e482c28b4924203fc129bc1cc731c92",
                 "shasum": ""
             },
             "require": {
@@ -841,7 +841,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-10-20T11:38:35+00:00"
+            "time": "2019-11-09T11:39:56+00:00"
         },
         {
             "name": "kirki-framework/control-repeater",
@@ -1361,12 +1361,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-multicolor.git",
-                "reference": "712b6b98549e046d30f68e7eb5026ed34f7d10a4"
+                "reference": "1889c60434a1757c7313b29d082cd9ba1d2b853e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/712b6b98549e046d30f68e7eb5026ed34f7d10a4",
-                "reference": "712b6b98549e046d30f68e7eb5026ed34f7d10a4",
+                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/1889c60434a1757c7313b29d082cd9ba1d2b853e",
+                "reference": "1889c60434a1757c7313b29d082cd9ba1d2b853e",
                 "shasum": ""
             },
             "require": {
@@ -1401,20 +1401,20 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-10-15T16:17:33+00:00"
+            "time": "2019-11-09T11:06:31+00:00"
         },
         {
             "name": "kirki-framework/field-typography",
-            "version": "v0.3",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "7a2985e9f37aa5c304531e46c59085e2ff3b6f52"
+                "reference": "2c060f5b6298a06ef863601f9075d094e7bcd098"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/7a2985e9f37aa5c304531e46c59085e2ff3b6f52",
-                "reference": "7a2985e9f37aa5c304531e46c59085e2ff3b6f52",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/2c060f5b6298a06ef863601f9075d094e7bcd098",
+                "reference": "2c060f5b6298a06ef863601f9075d094e7bcd098",
                 "shasum": ""
             },
             "require": {
@@ -1454,7 +1454,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-10-15T16:42:06+00:00"
+            "time": "2019-11-09T11:03:59+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
@@ -1640,16 +1640,16 @@
         },
         {
             "name": "kirki-framework/module-field-dependencies",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-field-dependencies.git",
-                "reference": "2a6754d98a030bc9840802ea7b99ab6d064d223a"
+                "reference": "d325b44744ad1ea800997850baee79ccf91597b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/2a6754d98a030bc9840802ea7b99ab6d064d223a",
-                "reference": "2a6754d98a030bc9840802ea7b99ab6d064d223a",
+                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/d325b44744ad1ea800997850baee79ccf91597b6",
+                "reference": "d325b44744ad1ea800997850baee79ccf91597b6",
                 "shasum": ""
             },
             "require": {
@@ -1681,7 +1681,7 @@
                 "framework",
                 "wordpress"
             ],
-            "time": "2019-09-22T16:22:50+00:00"
+            "time": "2019-11-09T11:18:40+00:00"
         },
         {
             "name": "kirki-framework/module-panels",
@@ -3521,16 +3521,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.4.2",
+            "version": "8.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a142a7e66c0ea7b5b6c04ee27f08d10d1137cd9b"
+                "reference": "67f9e35bffc0dd52d55d565ddbe4230454fd6a4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a142a7e66c0ea7b5b6c04ee27f08d10d1137cd9b",
-                "reference": "a142a7e66c0ea7b5b6c04ee27f08d10d1137cd9b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/67f9e35bffc0dd52d55d565ddbe4230454fd6a4e",
+                "reference": "67f9e35bffc0dd52d55d565ddbe4230454fd6a4e",
                 "shasum": ""
             },
             "require": {
@@ -3600,7 +3600,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-10-28T10:39:51+00:00"
+            "time": "2019-11-06T09:42:23+00:00"
         },
         {
             "name": "psr/container",
@@ -4869,16 +4869,16 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v1.1.7",
+            "version": "v1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "ffcde9615dc5bb4825b9f6aed07716f1f57faae0"
+                "reference": "ffc7f5692092df31515df2a5ecf3b7302b3ddacf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/ffcde9615dc5bb4825b9f6aed07716f1f57faae0",
-                "reference": "ffcde9615dc5bb4825b9f6aed07716f1f57faae0",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/ffc7f5692092df31515df2a5ecf3b7302b3ddacf",
+                "reference": "ffc7f5692092df31515df2a5ecf3b7302b3ddacf",
                 "shasum": ""
             },
             "require": {
@@ -4923,7 +4923,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-09-17T11:12:18+00:00"
+            "time": "2019-10-14T12:27:06+00:00"
         },
         {
             "name": "symfony/stopwatch",
