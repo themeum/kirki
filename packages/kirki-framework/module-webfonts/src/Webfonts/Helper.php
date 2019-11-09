@@ -46,27 +46,35 @@ final class Helper {
 	}
 
 	/**
-	 * Gets the root fonts folder path.
+	 * Gets the root fonts folder path and url.
 	 * Other paths are built based on this.
 	 *
 	 * @static
+	 *
+	 * @param array $upload_dir wp_upload_dir()
+	 *
+	 * @return array Returns customized wp_upload_dir() array
+	 * @see https://developer.wordpress.org/reference/functions/wp_upload_dir/
 	 * @since 1.0.0
 	 * @access public
-	 * @return string
 	 */
-	public static function get_root_path() {
+	public static function kirki_fonts_dir( $upload_dir = [] ) {
+		// Get the upload directory for this site iof not passed as param.
+		$upload_dir = empty( $upload_dir ) ? wp_upload_dir() : $upload_dir;
 
-		// Get the upload directory for this site.
-		$upload_dir = wp_upload_dir();
-		$path       = untrailingslashit( wp_normalize_path( $upload_dir['basedir'] ) ) . '/webfonts';
+		// The default fonts folder
+		$append = '/fonts';
+
+		// Overwrite path and url and allow customizations
+		$upload_dir['path'] = apply_filters( 'kirki_googlefonts_root_path', $upload_dir['basedir'] . $append );
+		$upload_dir['url']  = apply_filters( 'kirki_googlefonts_root_url', $upload_dir['baseurl'] . $append );
 
 		// If the folder doesn't exist, create it.
-		if ( ! file_exists( $path ) ) {
-			wp_mkdir_p( $path );
+		if ( ! file_exists( $upload_dir['path'] ) ) {
+			wp_mkdir_p( $upload_dir['path'] );
 		}
 
-		// Return the path.
-		return apply_filters( 'kirki_googlefonts_root_path', $path );
+		return $upload_dir;
 	}
 
 	/**
@@ -81,7 +89,11 @@ final class Helper {
 
 		$saved_fonts = get_option( 'kirki_font_local_filenames', [] );
 		if ( isset( $saved_fonts[ $url ] ) && file_exists( $saved_fonts[ $url ]['file'] ) ) {
-			return $saved_fonts[ $url ]['url'];
+			return str_replace(
+				wp_normalize_path( untrailingslashit( WP_CONTENT_DIR ) ),
+				untrailingslashit( content_url() ),
+				$saved_fonts[ $url ]['file']
+			);
 		}
 
 		// Gives us access to the download_url() and wp_handle_sideload() functions.
@@ -111,8 +123,10 @@ final class Helper {
 			'test_size' => true,
 		];
 
-		// Move the temporary file into the uploads directory.
-		$results = wp_handle_sideload( $file, $overrides );
+		// Move the temporary file into the fonts uploads directory.
+		add_filter( 'upload_dir', [ __CLASS__, 'kirki_fonts_dir' ] );
+			$results = wp_handle_sideload( $file, $overrides );
+		remove_filter( 'upload_dir', [ __CLASS__, 'kirki_fonts_dir' ] );
 
 		if ( empty( $results['error'] ) ) {
 			$saved_fonts[ $url ] = $results;
@@ -123,8 +137,23 @@ final class Helper {
 	}
 
 	/**
+	 * Gets the root folder path.
+	 * This is left for backward compatibility.
+	 *
+	 *
+	 * @static
+	 * @since 1.0.0
+	 * @access public
+	 * @return string
+	 */
+	public static function get_root_path() {
+		return self::kirki_fonts_dir()['path'];
+	}
+
+	/**
 	 * Gets the root folder url.
-	 * Other urls are built based on this.
+	 * This is left for backward compatibility.
+	 *
 	 *
 	 * @static
 	 * @since 1.0.0
@@ -132,24 +161,6 @@ final class Helper {
 	 * @return string
 	 */
 	public static function get_root_url() {
-
-		// Get the upload directory for this site.
-		$upload_dir = wp_upload_dir();
-
-		// The URL.
-		$url = trailingslashit( $upload_dir['baseurl'] );
-
-		// Take care of domain mapping.
-		// When using domain mapping we have to make sure that the URL to the file
-		// does not include the original domain but instead the mapped domain.
-		if ( defined( 'DOMAIN_MAPPING' ) && DOMAIN_MAPPING ) {
-			if ( function_exists( 'domain_mapping_siteurl' ) && function_exists( 'get_original_url' ) ) {
-				$mapped_domain   = domain_mapping_siteurl( false );
-				$original_domain = get_original_url( 'siteurl' );
-				$url             = str_replace( $original_domain, $mapped_domain, $url );
-			}
-		}
-		$url = str_replace( [ 'https://', 'http://' ], '//', $url );
-		return apply_filters( 'kirki_googlefonts_root_url', untrailingslashit( esc_url_raw( $url ) ) . '/webfonts' );
+		return self::kirki_fonts_dir()['url'];
 	}
 }
