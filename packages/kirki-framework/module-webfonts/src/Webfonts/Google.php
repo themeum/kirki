@@ -115,7 +115,8 @@ final class Google {
 	public function generate_google_font( $args ) {
 
 		// Process typography fields.
-		if ( ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) || ( isset( $args['choices'] ) && isset( $args['choices']['parent_type'] ) && 'kirki-typography' === $args['choices']['parent_type'] ) ) {
+		$process = ( ( isset( $args['type'] ) && 'kirki-typography' === $args['type'] ) || ( isset( $args['choices'] ) && isset( $args['choices']['parent_type'] ) && 'kirki-typography' === $args['choices']['parent_type'] ) );
+		if ( apply_filters( 'kirki_generate_google_font', $process, $args ) ) {
 
 			// Get the value.
 			$option_type = ( isset( $args['option_type'] ) ) ? $args['option_type'] : 'theme_mod';

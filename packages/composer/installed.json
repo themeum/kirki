@@ -2032,24 +2032,24 @@
     },
     {
         "name": "kirki-framework/module-webfonts",
-        "version": "v1.0.1",
-        "version_normalized": "1.0.1.0",
+        "version": "v1.0.2",
+        "version_normalized": "1.0.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kirki-framework/module-webfonts.git",
-            "reference": "b606b232135f7e6efd5fc3a665c73e29275ad237"
+            "reference": "5fc5a286105c37f9f78c6462b71369d0d2e8f590"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/b606b232135f7e6efd5fc3a665c73e29275ad237",
-            "reference": "b606b232135f7e6efd5fc3a665c73e29275ad237",
+            "url": "https://api.github.com/repos/kirki-framework/module-webfonts/zipball/5fc5a286105c37f9f78c6462b71369d0d2e8f590",
+            "reference": "5fc5a286105c37f9f78c6462b71369d0d2e8f590",
             "shasum": ""
         },
         "require": {
             "kirki-framework/googlefonts": "*",
             "php": ">=5.6"
         },
-        "time": "2019-11-09T14:00:46+00:00",
+        "time": "2019-11-11T17:41:38+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
