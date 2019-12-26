@@ -383,7 +383,7 @@ class Helper {
 			if ( is_array( $value2 ) && ! is_array( $value1 ) ) {
 				return in_array( $value1, $value2 ); // phpcs:ignore WordPress.PHP.StrictInArray
 			}
-			return ( false !== strrpos( $value1, $value2 ) || false !== strpos( $value2, $value1 ) );
+			return ( false !== strrpos( $value1, chr( $value2 ) ) || false !== strpos( $value2, chr( $value1 ) ) );
 		}
 		if ( 'does not contain' === $operator || 'not in' === $operator ) {
 			return ! self::compare_values( $value1, $value2, $operator );
