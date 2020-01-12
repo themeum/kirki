@@ -98,7 +98,11 @@ final class Kirki_Fonts_Helper {
 
 		$saved_fonts = get_option( 'kirki_font_local_filenames', array() );
 		if ( isset( $saved_fonts[ $url ] ) && file_exists( $saved_fonts[ $url ]['file'] ) ) {
-			return $saved_fonts[ $url ]['url'];
+			return str_replace(
+				wp_normalize_path( untrailingslashit( WP_CONTENT_DIR ) ),
+				untrailingslashit( content_url() ),
+				$saved_fonts[ $url ]['file']
+			);
 		}
 
 		// Gives us access to the download_url() and wp_handle_sideload() functions.
