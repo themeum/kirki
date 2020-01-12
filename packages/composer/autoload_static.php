@@ -7,10 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInitd754f968d3ca4747f9dbc89d7af2e73d
 {
     public static $prefixLengthsPsr4 = array (
-        'W' => 
-        array (
-            'WPTRT\\Customize\\Control\\' => 24,
-        ),
         'K' => 
         array (
             'Kirki\\Util\\' => 11,
@@ -25,10 +21,6 @@ class ComposerStaticInitd754f968d3ca4747f9dbc89d7af2e73d
     );
 
     public static $prefixDirsPsr4 = array (
-        'WPTRT\\Customize\\Control\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/wptrt/control-color-alpha/src',
-        ),
         'Kirki\\Util\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Util',

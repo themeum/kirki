@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'WPTRT\\Customize\\Control\\' => array($vendorDir . '/wptrt/control-color-alpha/src'),
     'Kirki\\Util\\' => array($vendorDir . '/kirki-framework/control-dashicons/src/Util', $vendorDir . '/kirki-framework/field-color-palette/src/Util', $vendorDir . '/kirki-framework/util/src'),
     'Kirki\\Settings\\' => array($vendorDir . '/kirki-framework/control-repeater/src/Settings'),
     'Kirki\\Module\\' => array($vendorDir . '/kirki-framework/module-css/src', $vendorDir . '/kirki-framework/module-editor-styles/src', $vendorDir . '/kirki-framework/module-field-dependencies/src', $vendorDir . '/kirki-framework/module-postmessage/src', $vendorDir . '/kirki-framework/module-preset/src', $vendorDir . '/kirki-framework/module-selective-refresh/src', $vendorDir . '/kirki-framework/module-tooltips/src', $vendorDir . '/kirki-framework/module-webfonts/src'),

@@ -177,7 +177,7 @@ class CSS {
 		// Enqueue the dynamic stylesheet.
 		wp_enqueue_style(
 			'kirki-styles',
-			add_query_arg( $args, site_url() ),
+			add_query_arg( $args, home_url() ),
 			[],
 			'4.0'
 		);

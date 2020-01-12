@@ -61,8 +61,7 @@
     "kirki-framework/module-sections": "*",
     "kirki-framework/module-selective-refresh": "*",
     "kirki-framework/module-tooltips": "*",
-    "kirki-framework/module-webfonts": "*",
-    "wptrt/control-color-alpha": "dev-master"
+    "kirki-framework/module-webfonts": "*"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",
