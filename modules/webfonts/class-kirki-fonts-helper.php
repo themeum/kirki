@@ -96,22 +96,17 @@ final class Kirki_Fonts_Helper {
 	 */
 	public static function download_font_file( $url ) {
 
-		$saved_fonts = get_option( 'kirki_font_local_filenames', array() );
-		if ( isset( $saved_fonts[ $url ] ) && file_exists( $saved_fonts[ $url ]['file'] ) ) {
-			return str_replace(
-				wp_normalize_path( untrailingslashit( WP_CONTENT_DIR ) ),
-				untrailingslashit( content_url() ),
-				$saved_fonts[ $url ]['file']
-			);
+		$saved_fonts = get_option( 'kirki_fonts_paths', array() );
+		$key         = self::get_filename_from_url( $url );
+		if ( isset( $saved_fonts[ $key ] ) && file_exists( WP_CONTENT_DIR . '/' . $saved_fonts[ $key ] ) ) {
+			return trailingslashit( content_url() ) . $saved_fonts[ $key ];
 		}
 
 		// Gives us access to the download_url() and wp_handle_sideload() functions.
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 
-		$timeout_seconds = 5;
-
 		// Download file to temp dir.
-		$temp_file = download_url( $url, $timeout_seconds );
+		$temp_file = download_url( $url, 5 ); // 5-second timeout.
 
 		if ( is_wp_error( $temp_file ) ) {
 			return false;
@@ -136,8 +131,8 @@ final class Kirki_Fonts_Helper {
 		$results = wp_handle_sideload( $file, $overrides );
 
 		if ( empty( $results['error'] ) ) {
-			$saved_fonts[ $url ] = $results;
-			update_option( 'kirki_font_local_filenames', $saved_fonts );
+			$saved_fonts[ $key ] = str_replace( trailingslashit( content_url() ), '', $results['url'] );
+			update_option( 'kirki_fonts_paths', $saved_fonts );
 			return $results['url'];
 		}
 		return false;
