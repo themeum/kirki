@@ -3136,7 +3136,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			picker;
 
 		control.renderFontSelector();
-		control.renderBackupFontSelector();
 		control.renderVariantSelector();
 
 		// Font-size.
@@ -3303,64 +3302,8 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 			// Set the value.
 			control.saveValue( 'font-family', jQuery( this ).val() );
 
-			// Re-init the font-backup selector.
-			control.renderBackupFontSelector();
-
 			// Re-init variants selector.
 			control.renderVariantSelector();
-		} );
-	},
-
-	/**
-	 * Adds the font-families to the font-family dropdown
-	 * and instantiates selectWoo.
-	 */
-	renderBackupFontSelector: function() {
-
-		var control       = this,
-			selector      = control.selector + ' .font-backup select',
-			standardFonts = [],
-			value         = control.setting._value,
-			fontFamily    = value['font-family'],
-			fonts         = control.getFonts(),
-			fontSelect;
-
-		if ( _.isUndefined( value['font-backup'] ) || null === value['font-backup'] ) {
-			value['font-backup'] = '';
-		}
-
-		// Hide if we're not on a google-font.
-		if ( 'inherit' === fontFamily || 'initial' === fontFamily || 'google' !== kirki.util.webfonts.getFontType( fontFamily ) ) {
-			jQuery( control.selector + ' .font-backup' ).hide();
-			return;
-		}
-		jQuery( control.selector + ' .font-backup' ).show();
-
-		// Format standard fonts as an array.
-		if ( ! _.isUndefined( fonts.standard ) ) {
-			_.each( fonts.standard, function( font ) {
-				standardFonts.push( {
-					id: font.family.replace( /&quot;/g, '&#39' ),
-					text: font.label
-				} );
-			} );
-		}
-
-		// Instantiate selectWoo with the data.
-		fontSelect = jQuery( selector ).selectWoo( {
-			data: standardFonts
-		} );
-
-		// Set the initial value.
-		if ( 'undefined' !== typeof value['font-backup'] ) {
-			fontSelect.val( value['font-backup'].replace( /'/g, '"' ) ).trigger( 'change' );
-		}
-
-		// When the value changes
-		fontSelect.on( 'change', function() {
-
-			// Set the value.
-			control.saveValue( 'font-backup', jQuery( this ).val() );
 		} );
 	},
 
@@ -3426,8 +3369,6 @@ wp.customize.controlConstructor['kirki-typography'] = wp.customize.kirkiDynamicC
 
 			return;
 		}
-
-		jQuery( control.selector + ' .font-backup' ).show();
 
 		jQuery( control.selector + ' .variant' ).show();
 		_.each( variants, function( variant ) {

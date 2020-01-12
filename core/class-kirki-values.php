@@ -44,15 +44,6 @@ class Kirki_Values {
 				// Sanitize the value.
 				// This also adds font-weight if it doesn't already exist.
 				$value = Kirki_Field_Typography::sanitize( $value );
-
-				// Combine font-family and font-backup.
-				if ( isset( $value['font-family'] ) && isset( $value['font-backup'] ) ) {
-					$backup = trim( $value['font-backup'] );
-					if ( ! empty( $backup ) ) {
-						$value['font-family'] .= ', ' . $backup;
-					}
-					unset( $value['font-backup'] );
-				}
 			}
 		}
 		return $value;
