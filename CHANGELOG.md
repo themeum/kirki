@@ -1,3 +1,9 @@
+## 3.0.46 - 2020-01-12
+
+## Deprecated
+
+* Removed the telemetry module.
+
 ## 3.0.45 - 2019-09-01
 
 ### Fixed
