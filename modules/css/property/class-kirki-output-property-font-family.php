@@ -20,12 +20,8 @@ class Kirki_Output_Property_Font_Family extends Kirki_Output_Property {
 	 * @access protected
 	 */
 	protected function process_value() {
-		$google_fonts_array = Kirki_Fonts::get_google_fonts();
 
 		$family = $this->value;
-		if ( is_array( $this->value ) && isset( $this->value[0] ) && isset( $this->value[1] ) ) {
-			$family = $this->value[0];
-		}
 
 		// Make sure the value is a string.
 		// If not, then early exit.
