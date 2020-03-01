@@ -1,3 +1,11 @@
+## 3.1.0 - 2020-03-01
+
+### Changed
+* Completely refactored the google-fonts downloader.
+
+### Removed
+* Removed the `branding` module.
+
 ## 3.0.45 - 2019-09-01
 
 ### Fixed
