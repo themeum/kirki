@@ -6,6 +6,7 @@
 ### Removed
 * Removed the `branding` module.
 * Removed the `styling` module.
+* Removed the `telemetry` module.
 
 ## 3.0.45 - 2019-09-01
 

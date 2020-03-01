@@ -79,9 +79,10 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ### Changed
 * Completely refactored the google-fonts downloader. Fonts now get stored in `wp-content/fonts/{font-family}/{file}`.
-* Removed the `styling` module.
 
 ### Removed
 * Removed the `branding` module.
+* Removed the `styling` module.
+* Removed the `telemetry` module.
 
 [See the previous changelogs here](https://github.com/aristath/kirki/blob/master/CHANGELOG.md).

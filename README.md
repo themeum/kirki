@@ -75,22 +75,14 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
-### 3.0.34 ###
-
-### 3.0.45 - 2019-09-01 ###
-
-### Fixed
-* Compatibility with the latest Gutenberg plugin versions.
-* Styles for normal font-weights in typography controls (`regular` to `400` conversion).
+### 3.1.0 - 2020-03-01 ###
 
 ### Changed
-* Updated Google-Fonts lists.
+* Completely refactored the google-fonts downloader. Fonts now get stored in `wp-content/fonts/{font-family}/{file}`.
 
 ### Removed
-* Backup fonts are no longer needed since google-fonts are no longer loaded from the google CDN.
-
-### Deprecated
-* `kirki_fonts_backup_fonts` filter.
-* `Kirki_Fonts::get_backup_fonts()` method.
+* Removed the `branding` module.
+* Removed the `styling` module.
+* Removed the `telemetry` module.
 
 [See the previous changelogs here](https://github.com/aristath/kirki/blob/master/CHANGELOG.md).
