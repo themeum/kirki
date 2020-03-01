@@ -148,65 +148,12 @@ final class Kirki_Modules_Webfonts_Embed {
 			$transient_id = 'kirki_gfonts_' . md5( $url );
 			$contents     = get_transient( $transient_id );
 
-			/**
-			 * Reset the cache if we're using action=kirki-reset-cache in the URL.
-			 *
-			 * Note to code reviewers:
-			 * There's no need to check nonces or anything else, this is a simple true/false evaluation.
-			 */
-			if ( ! empty( $_GET['action'] ) && 'kirki-reset-cache' === $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification
-				$contents = false;
+			if ( ! class_exists( 'Kirki_Fonts_Downloader' ) ) {
+				include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-downloader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 			}
-			if ( ! $contents ) {
+			$downloader = new Kirki_Fonts_Downloader();
+			$contents   = $downloader->get_styles( $url );
 
-				// Get the contents of the remote URL.
-				$contents = Kirki_Fonts_Helper::get_remote_url_contents(
-					$url,
-					array(
-						'headers' => array(
-							/**
-							 * Set user-agent to firefox so that we get woff files.
-							 * If we want woff2, use this instead: 'Mozilla/5.0 (X11; Linux i686; rv:64.0) Gecko/20100101 Firefox/64.0'
-							 */
-							'user-agent' => 'Mozilla/5.0 (X11; Linux i686; rv:21.0) Gecko/20100101 Firefox/21.0',
-						),
-					)
-				);
-
-				/**
-				 * Allow filtering the font-display property.
-				 */
-				$font_display = apply_filters( 'kirki_googlefonts_font_display', 'swap' );
-
-				if ( $contents ) {
-
-					// Add font-display:swap to improve rendering speed.
-					$contents = str_replace( '@font-face {', '@font-face{', $contents );
-					$contents = str_replace( '@font-face{', '@font-face{font-display:' . $font_display . ';', $contents );
-
-					// Remove blank lines and extra spaces.
-					$contents = str_replace(
-						array( ': ', ';  ', '; ', '  ' ),
-						array( ':', ';', ';', ' ' ),
-						preg_replace( "/\r|\n/", '', $contents )
-					);
-
-					// Use local fonts.
-					if ( apply_filters( 'kirki_use_local_fonts', true ) ) {
-						$contents = $this->use_local_files( $contents );
-					}
-
-					// Remove protocol to fix http/https issues.
-					$contents = str_replace(
-						array( 'http://', 'https://' ),
-						array( '//', '//' ),
-						$contents
-					);
-
-					// Set the transient for a day.
-					set_transient( $transient_id, $contents, DAY_IN_SECONDS );
-				}
-			}
 			if ( $contents ) {
 				/**
 				 * Note to code reviewers:
@@ -220,30 +167,5 @@ final class Kirki_Modules_Webfonts_Embed {
 				echo wp_strip_all_tags( $contents ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 		}
-	}
-
-	/**
-	 * Downloads font-files locally and uses the local files instead of the ones from Google's servers.
-	 * This addresses any and all GDPR concerns, as well as firewalls that exist in some parts of the world.
-	 *
-	 * @access private
-	 * @since 3.0.36
-	 * @param string $css The CSS with original URLs.
-	 * @return string     The CSS with local URLs.
-	 */
-	private function use_local_files( $css ) {
-		preg_match_all( '/https\:.*?\.woff/', $css, $matches );
-
-		$matches = array_shift( $matches );
-
-		foreach ( $matches as $match ) {
-			if ( 0 === strpos( $match, 'https://fonts.gstatic.com' ) ) {
-				$new_url = Kirki_Fonts_Helper::download_font_file( $match );
-				if ( $new_url ) {
-					$css = str_replace( $match, $new_url, $css );
-				}
-			}
-		}
-		return $css;
 	}
 }

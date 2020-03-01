@@ -107,79 +107,13 @@ final class Kirki_Modules_Webfonts_Embed {
 
 		// If $this->link is not empty then enqueue it.
 		if ( '' !== $this->link ) {
-			return $this->get_url_contents( $this->link ) . "\n" . $css;
+
+			if ( ! class_exists( 'Kirki_Fonts_Downloader' ) ) {
+				include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-downloader.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+			}
+			$downloader = new Kirki_Fonts_Downloader();
+			return $downloader->get_styles( $url ) . "\n" . $css;
 		}
 		return $css;
-	}
-
-	/**
-	 * Get the contents of a remote google-fonts link.
-	 * Responses get cached for 1 day.
-	 *
-	 * @access protected
-	 * @since 3.0.0
-	 * @param string $url The link we want to get.
-	 * @return string|false Returns false if there's an error.
-	 */
-	protected function get_url_contents( $url = '' ) {
-
-		// If $url is not set, use $this->link.
-		$url = ( '' === $url ) ? $this->link : $url;
-
-		// Sanitize the URL.
-		$url = esc_url_raw( $url );
-
-		$site_id = is_multisite() ? get_current_blog_id() . '_' : '';
-
-		// The transient name.
-		$transient_name = 'kirki_googlefonts_contents_' . $site_id . md5( $url );
-
-		// Get the transient value.
-		$data = get_transient( $transient_name );
-
-		/**
-		 * Reset the cache if we're using action=kirki-reset-cache in the URL.
-		 *
-		 * Note to code reviewers:
-		 * There's no need to check nonces or anything else, this is a simple true/false evaluation.
-		 */
-		if ( ! empty( $_GET['action'] ) && 'kirki-reset-cache' === $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification
-			$data = false;
-		}
-
-		// Check for transient, if none, grab remote HTML file.
-		if ( false === $data ) {
-
-			// Get remote HTML file.
-			$response = wp_remote_get( $url );
-
-			// Check for error.
-			if ( is_wp_error( $response ) ) {
-				return false;
-			}
-
-			if ( ! isset( $response['response'] ) || ! is_array( $response['response'] ) || ! isset( $response['response']['code'] ) || 200 !== $response['response']['code'] ) {
-				return false;
-			}
-
-			// Parse remote HTML file.
-			$data = wp_remote_retrieve_body( $response );
-
-			// Check for error.
-			if ( is_wp_error( $data ) ) {
-				return false;
-			}
-
-			// Return false if the data is empty.
-			if ( ! $data ) {
-				return false;
-			}
-
-			// Store remote HTML file in transient, expire after 24 hours.
-			set_transient( $transient_name, $data, DAY_IN_SECONDS );
-		}
-
-		return $data;
-
 	}
 }

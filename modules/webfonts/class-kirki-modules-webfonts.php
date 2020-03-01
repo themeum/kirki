@@ -47,7 +47,6 @@ class Kirki_Modules_Webfonts {
 	 */
 	protected function __construct() {
 
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-helper.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 

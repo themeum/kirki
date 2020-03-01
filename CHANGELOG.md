@@ -8,6 +8,7 @@
 * Removed the `branding` module.
 * Removed the `styling` module.
 * Removed the `telemetry` module.
+* Removed the `Kirki_Fonts_Helper` class.
 
 ## 3.0.45 - 2019-09-01
 
