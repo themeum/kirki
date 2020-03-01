@@ -1,7 +1,7 @@
 ## 3.1.0 - 2020-03-01
 
 ### Changed
-* Completely refactored the google-fonts downloader.
+* Completely refactored the google-fonts downloader. Fonts now get stored in `wp-content/fonts/{font-family}/{file}`.
 
 ### Removed
 * Removed the `branding` module.
