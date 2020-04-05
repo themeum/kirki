@@ -68,7 +68,7 @@ class Kirki_Fonts_Downloader {
 
 		// If the fonts folder don't exist, create it.
 		if ( ! file_exists( WP_CONTENT_DIR . '/fonts' ) ) {
-			$this->get_filesystem()->mkdir( WP_CONTENT_DIR . '/fonts', FS_CHMOD_DIR );
+			wp_mkdir_p( WP_CONTENT_DIR . '/fonts' );
 		}
 
 		foreach ( $font_files as $font_family => $files ) {
@@ -78,7 +78,7 @@ class Kirki_Fonts_Downloader {
 
 			// If the folder doesn't exist, create it.
 			if ( ! file_exists( $folder_path ) ) {
-				$this->get_filesystem()->mkdir( $folder_path, FS_CHMOD_DIR );
+				wp_mkdir_p( $folder_path );
 			}
 
 			foreach ( $files as $url ) {

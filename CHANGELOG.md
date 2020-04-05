@@ -1,3 +1,11 @@
+## 3.1.1 - 2020-04-05
+
+### Changed
+* Updated Google-Fonts lists.
+
+### Fixed
+* False-positive error in Envato theme-check.
+
 ## 3.1.0 - 2020-03-01
 
 ### Changed
