@@ -1,5 +1,5 @@
 === Kirki Customizer Framework ===
-Contributors: aristath, dannycooper, wplemon, igmoweb
+Contributors: aristath, dannycooper, wplemon, igmoweb, davidvongries
 Tags: customizer, options framework, theme, mods, toolkit, gutenberg
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
