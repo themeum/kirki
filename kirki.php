@@ -5,12 +5,12 @@
  * Description:   The Ultimate WordPress Customizer Framework
  * Author:        Ari Stathopoulos (@aristath)
  * Author URI:    https://aristath.github.io
- * Version:       3.1.1
+ * Version:       3.1.2
  * Text Domain:   kirki
  * Requires WP:   4.9
  * Requires PHP:  5.3
- * GitHub Plugin URI: aristath/kirki
- * GitHub Plugin URI: https://github.com/aristath/kirki
+ * GitHub Plugin URI: kirki-framework/kirki
+ * GitHub Plugin URI: https://github.com/kirki-framework/kirki
  *
  * @package   Kirki
  * @category  Core
@@ -40,7 +40,7 @@ if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 
 // Define the KIRKI_VERSION constant.
 if ( ! defined( 'KIRKI_VERSION' ) ) {
-	define( 'KIRKI_VERSION', '3.1.1' );
+	define( 'KIRKI_VERSION', '3.1.2' );
 }
 
 // Make sure the path is properly set.

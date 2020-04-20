@@ -4,7 +4,7 @@ Tags: customizer, options framework, theme, mods, toolkit, gutenberg
 Donate link: https://aristath.github.io/donate
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 3.1.1
+Stable tag: 3.1.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -75,12 +75,12 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
-= 3.1.1 - 2020-04-05 =
+= 3.1.2 - 2020-04-20 =
+
+### Fixed
+* Added back `font-display:swap` to Google Fonts.
 
 ### Changed
 * Updated Google-Fonts lists.
 
-### Fixed
-* False-positive error in Envato theme-check.
-
-[See the previous changelogs here](https://github.com/aristath/kirki/blob/master/CHANGELOG.md).
+[See the previous changelogs here](https://github.com/kirki-framework/kirki/blob/master/CHANGELOG.md).
