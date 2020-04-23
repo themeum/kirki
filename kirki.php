@@ -3,8 +3,8 @@
  * Plugin Name:   Kirki Customizer Framework
  * Plugin URI:    https://kirki.org
  * Description:   The Ultimate WordPress Customizer Framework
- * Author:        Ari Stathopoulos (@aristath)
- * Author URI:    https://aristath.github.io
+ * Author:        David Vongries
+ * Author URI:    https://wp-pagebuilderframework.com/
  * Version:       3.1.2
  * Text Domain:   kirki
  * Requires WP:   4.9
@@ -15,7 +15,7 @@
  * @package   Kirki
  * @category  Core
  * @author    Ari Stathopoulos (@aristath)
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, David Vongries
  * @license   https://opensource.org/licenses/MIT
  * @since     1.0
  */

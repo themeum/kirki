@@ -4,7 +4,7 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2019, David Vongries
  * @license     https://opensource.org/licenses/MIT
  * @since       2.3.2
  */
