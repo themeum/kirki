@@ -51,15 +51,6 @@ Included are more than 30 custom control types ranging from simple sliders to co
 * [Typography Customizer Control](https://kirki.org/docs/controls/typography)
 * [Upload Customizer Control](https://kirki.org/docs/controls/upload)
 
-Premium controls are also available for premium themes:
-
-* [Kirki WCAG Text Colorpicker](https://wplemon.com/downloads/kirki-wcag-text-colorpicker/)
-* [Kirki WCAG Links Colorpicker](https://wplemon.com/downloads/kirki-wcag-link-colorpicker/)
-* [Kirki Box Model](https://wplemon.com/downloads/kirki-box-model/)
-* [Kirki Box Shadow](https://wplemon.com/downloads/kirki-box-shadow/)
-
-All premium controls are also [available as a pack](https://wplemon.com/downloads/kirki-premium-controls-pack/)
-
 Theme developers should be familiar with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
 
 You can find detailed documentation on how to use Kirki on [kirki.org](https://kirki.org)
