@@ -4,7 +4,7 @@
  *
  * @package     Kirki
  * @subpackage  Modules
- * @copyright   Copyright (c) 2019, David Vongries
+ * @copyright   Copyright (c) 2020, David Vongries
  * @license     https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
