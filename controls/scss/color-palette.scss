@@ -36,17 +36,16 @@
 
     &.box-shadow {
       .color-palette-color {
-        box-shadow: inset 3px 3px 13px 2px rgba(0,0,0,.22);
+        box-shadow: inset 3px 3px 13px 2px rgba(0,0,0,.2);
       }
     }
 
     input:checked + label .color-palette-color {
       border: 0;
-      width: 150%;
-      height: 150%;
+      border: 4px solid #007cba;
       position: relative;
-      left: -25%;
-      top: -25%;
+      left: -3px;
+      top: -3px;
       z-index: 1;
     }
 
@@ -61,8 +60,7 @@
 
       &:checked {
         + label .color-palette-color {
-          box-shadow: 1px 1px 10px 1px #333333;
-          border: 1px solid rgba(0,0,0,.3);
+          // we may add something here in the future.
         }
       }
     }

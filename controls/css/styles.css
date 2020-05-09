@@ -54,22 +54,18 @@
     .customize-control-kirki-color-palette .colors-wrapper.round .color-palette-color {
       border-radius: 50%; }
     .customize-control-kirki-color-palette .colors-wrapper.box-shadow .color-palette-color {
-      box-shadow: inset 3px 3px 13px 2px rgba(0, 0, 0, 0.22); }
+      box-shadow: inset 3px 3px 13px 2px rgba(0, 0, 0, 0.2); }
     .customize-control-kirki-color-palette .colors-wrapper input:checked + label .color-palette-color {
       border: 0;
-      width: 150%;
-      height: 150%;
+      border: 4px solid #007cba;
       position: relative;
-      left: -25%;
-      top: -25%;
+      left: -3px;
+      top: -3px;
       z-index: 1; }
     .customize-control-kirki-color-palette .colors-wrapper.with-margin label {
       margin: 3px; }
     .customize-control-kirki-color-palette .colors-wrapper input {
       display: none; }
-      .customize-control-kirki-color-palette .colors-wrapper input:checked + label .color-palette-color {
-        box-shadow: 1px 1px 10px 1px #333333;
-        border: 1px solid rgba(0, 0, 0, 0.3); }
 
 .customize-control-kirki-color input[data-type="hue"] + .iris-strip-horiz .iris-slider {
   background-image: -webkit-linear-gradient(left, red, #ff7f00, yellow, #80ff00, lime, #00ff80, cyan, #007fff, blue, #7f00ff, magenta, #ff0080, red) !important;
@@ -243,7 +239,7 @@
       flex-grow: 1;
       font-size: 0;
       line-height: 10px;
-      color: rgba(0, 0, 0, 0);
+      color: transparent;
       -webkit-transition: all 200ms ease-in-out;
       -moz-transition: all 200ms ease-in-out;
       -ms-transition: all 200ms ease-in-out;
@@ -490,7 +486,7 @@
       border: 1px solid #006799;
       cursor: pointer;
       transition: 0.3s ease-in-out; }
-    ​ .customize-control-kirki-slider .wrapper input[type="range"]::-webkit-slider-thumb:hover {
+    ÔÇï .customize-control-kirki-slider .wrapper input[type="range"]::-webkit-slider-thumb:hover {
       background-color: #006799;
       border: 2px solid #0085ba; }
     .customize-control-kirki-slider .wrapper input[type="range"]::-webkit-slider-thumb:active {
