@@ -3,26 +3,25 @@
   width: 255px;
   background: #fff;
   border: 1px solid #dedede;
+  padding: 4px;
 
   .ui-datepicker-header {
     padding: 10px;
-    background: #e5e5e5;
-    border-bottom: 1px solid #fff;
+    font-weight: 700;
 
     .ui-datepicker-next,
     .ui-datepicker-prev {
+      padding: 10px;
       display: block;
       position: absolute;
       width: 1em;
       overflow: hidden;
+      cursor: pointer;
 
       &:after,
       &:before {
         font-family: dashicons;
 
-        &:hover {
-          cursor: pointer;
-        }
       }
 
       .ui-icon {
@@ -31,7 +30,7 @@
     }
 
     .ui-datepicker-prev {
-      left: 10px;
+      left: 0;
 
       &:before {
         content: "\f341";
@@ -39,7 +38,7 @@
     }
 
     .ui-datepicker-next {
-      right: 10px;
+      right: 0;
 
       &:after {
         content: "\f345";
@@ -56,24 +55,23 @@
     width: 100%;
 
     thead {
-      background: #e5e5e5;
+      background: #f3f5f7;
       padding: 5px;
     }
 
     tr {
       td {
-        text-align: center;
-
         a {
           display: block;
           padding: 5px;
           color: #333;
           text-decoration: none;
+          text-align: center;
 
           &.ui-state-active,
           &:hover {
             color: #fff;
-            background-color: #0073aa;
+            background-color: #3498DB;
           }
         }
 
