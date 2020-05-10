@@ -2,23 +2,33 @@
 Contributors: davidvongries, aristath, dannycooper, wplemon, igmoweb
 Tags: customizer, options framework, theme, mods, toolkit, gutenberg
 Requires at least: 4.9
-Tested up to: 5.3
+Tested up to: 5.4
 Stable tag: 3.1.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-The ultimate framework for theme developers using the WordPress Customizer
-
+The ultimate customizer framework for WordPress theme developers.
 
 == Description ==
 
 [![Build Status](https://travis-ci.org/aristath/kirki.svg?branch=develop)](https://travis-ci.org/aristath/kirki) [![Code Climate](https://codeclimate.com/github/aristath/kirki/badges/gpa.svg)](https://codeclimate.com/github/aristath/kirki) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/66d6d8b6a4654cd18686ed1cd9f1bfb3)](https://www.codacy.com/app/aristath/kirki?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=aristath/kirki&amp;utm_campaign=Badge_Grade) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/aristath/kirki/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/aristath/kirki/?branch=develop)
 
-Using Kirki theme developers can create rich experiences for the WordPress Customizer using best coding practices.
+[Kirki](https://kirki.org/?utm_source=repo&utm_medium=description&utm_campaign=kirki) allows theme developers to build themes quicker & more easily.
 
-Included are more than 30 custom control types ranging from simple sliders to complex typography controls with Google-Fonts integration, automatic CSS generation, `postMessage` scripts automatically generated, tooltips and a lot of extras that make developing themes a lot faster for developers and meaningful for users.
+With over **30 custom controls** ranging from simple sliders to complex typography controls with Google-Fonts integration and features like automatic CSS & `postMessage` script generation, Kirki makes theme development a breeze.
 
-### Control Types ###
+### Features ###
+* Increased Performance
+* Simplified API
+* Automatic CSS Generation
+* Automatic postMessage Generation
+* Partial Refresh
+* Conditional Logic
+* GDPR Compliance
+* Improved Page Speed
+* & more!
+
+### Controls ###
 
 * [Background Customizer Control](https://kirki.org/docs/controls/background)
 * [Checkbox Customizer Control](https://kirki.org/docs/controls/checkbox)
@@ -51,11 +61,23 @@ Included are more than 30 custom control types ranging from simple sliders to co
 * [Typography Customizer Control](https://kirki.org/docs/controls/typography)
 * [Upload Customizer Control](https://kirki.org/docs/controls/upload)
 
-Theme developers should be familiar with the Customizer API before you start writing your theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
+### Theme Example ###
 
-You can find detailed documentation on how to use Kirki on [kirki.org](https://kirki.org)
+[Page Builder Framework](https://wp-pagebuilderframework.com?utm_source=kirki&utm_medium=repo&utm_campaign=wpbf)'s customizer settings are a prime example of what can be achieved with Kirki.
 
-[Development and issues on Github](https://github.com/aristath/kirki).
+Conditional Logic, Partial Refresh, postMessage and a variety of controls - It has all of it.
+
+### Documentation ###
+
+You can find detailed documentation on how to use Kirki on [kirki.org](https://kirki.org/?utm_source=repo&utm_medium=description&utm_campaign=kirki)
+
+### Kirki PRO ###
+
+Kirki PRO is currently in development. You can [sign up for the waiting list](https://kirki.org/pricing/?utm_source=repo&utm_medium=description&utm_campaign=kirki) here to be notified about updates.
+
+### Disclaimer ###
+
+Theme developers should be familiar with the Customizer API before starting to build a theme using Kirki. An excellent handbook for the WordPress Customizer can be found on the [developer.wordpress.org](https://developer.wordpress.org/themes/customize-api/) website.
 
 == Installation ==
 
