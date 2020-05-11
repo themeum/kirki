@@ -280,6 +280,7 @@ class Kirki_Fonts_Downloader {
 			if ( ! function_exists( 'WP_Filesystem' ) ) {
 				require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' );
 			}
+			Kirki_Helper::init_filesystem();
 			WP_Filesystem();
 		}
 		return $wp_filesystem;
