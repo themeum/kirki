@@ -31,7 +31,8 @@ packages/kirki-framework/**/Gruntfile.js export-ignore
 *.map export-ignore
 .sass-cache export-ignore
 *.scss export-ignore
-pupunit.xml export-ignore
+phpunit.xml export-ignore
 phpunit.xml.dist export-ignore
 .gitattributes export-ignore
 example.php export-ignore
+.jhintrc export-ignore
