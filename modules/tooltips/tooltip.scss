@@ -4,7 +4,7 @@
 
   .tooltip-trigger {
     text-decoration: none;
-    cursor: help;
+    cursor: pointer;
   }
 
   .tooltip-content {
@@ -13,24 +13,24 @@
     height: auto;
     top: -10px;
     left: -225px;
-    background: #FFC107;
-    color: #000;
+    background: rgba(#000,.8);
+    color: #fff;
     padding: 10px;
     z-index: 99999;
     border-radius: 3px;
     line-height: 1.4em;
 
     a {
-      color: #000;
+      color: #fff;
     }
 
     &:after {
       content: "\f139";
       font-family: dashicons;
       position: absolute;
-      right: -12px;
+      right: -11px;
       top: 11px;
-      color: #FFC107;
+      color: rgba(#000,.8);
       font-size: 20px;
     }
   }
