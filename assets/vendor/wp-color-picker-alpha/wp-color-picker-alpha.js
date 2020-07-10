@@ -17,7 +17,8 @@
 		_wrap = '<div class="wp-picker-container" />',
 		_button = '<input type="button" class="button button-small" />',
 		_wrappingLabel = '<label></label>',
-		_wrappingLabelText = '<span class="screen-reader-text"></span>';
+		_wrappingLabelText = '<span class="screen-reader-text"></span>',
+		__ = wp.i18n.__;
 
 	/**
 	 * Overwrite Color
@@ -88,7 +89,7 @@
 				// Insert the default label text.
 				self.wrappingLabelText = $( _wrappingLabelText )
 					.insertBefore( el )
- 					.text( __( 'Color value' ) );
+					.text( __( 'Color value' ) );
 			}
 
 			/*
@@ -109,7 +110,7 @@
 			if ( el.data( 'label' ) ) {
 				self.toggler.find( '.wp-color-result-text' ).text( el.data( 'label' ) );
 			} else {
- 				self.toggler.find( '.wp-color-result-text' ).text( __( 'Select Color' ) );
+				self.toggler.find( '.wp-color-result-text' ).text( __( 'Select Color' ) );
 			}
 			// Set up the Iris container and insert it after the wrapping label.
 			self.pickerContainer = $( _after ).insertAfter( self.wrappingLabel );
