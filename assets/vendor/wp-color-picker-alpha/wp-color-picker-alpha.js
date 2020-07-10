@@ -88,7 +88,7 @@
 				// Insert the default label text.
 				self.wrappingLabelText = $( _wrappingLabelText )
 					.insertBefore( el )
-					.text( wpColorPickerL10n.defaultLabel );
+ 					.text( __( 'Color value' ) );
 			}
 
 			/*
@@ -109,7 +109,7 @@
 			if ( el.data( 'label' ) ) {
 				self.toggler.find( '.wp-color-result-text' ).text( el.data( 'label' ) );
 			} else {
-				self.toggler.find( '.wp-color-result-text' ).text( wpColorPickerL10n.pick );
+ 				self.toggler.find( '.wp-color-result-text' ).text( __( 'Select Color' ) );
 			}
 			// Set up the Iris container and insert it after the wrapping label.
 			self.pickerContainer = $( _after ).insertAfter( self.wrappingLabel );
@@ -120,13 +120,13 @@
 			if ( self.options.defaultColor ) {
 				self.button
 					.addClass( 'wp-picker-default' )
-					.val( wpColorPickerL10n.defaultString )
-					.attr( 'aria-label', wpColorPickerL10n.defaultAriaLabel );
+					.val( __( 'Default' ) )
+					.attr( 'aria-label', __( 'Select default color' ) );
 			} else {
 				self.button
 					.addClass( 'wp-picker-clear' )
-					.val( wpColorPickerL10n.clear )
-					.attr( 'aria-label', wpColorPickerL10n.clearAriaLabel );
+					.val( __( 'Clear' ) )
+					.attr( 'aria-label', __( 'Clear color' ) );
 			}
 
 			// Wrap the wrapping label in its wrapper and append the Clear/Default button.
