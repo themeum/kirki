@@ -3,7 +3,7 @@ Contributors: davidvongries, aristath, dannycooper, wplemon, igmoweb
 Tags: customizer, options framework, theme, mods, toolkit, gutenberg
 Requires at least: 4.9
 Tested up to: 5.4
-Stable tag: 3.1.3
+Stable tag: 3.1.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -87,9 +87,10 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
-= 3.1.3 - May 19, 2020 =
+= 3.1.4 - July 11, 2020 =
 
 * Tweak: Updated Google-Fonts lists.
-* Tweak: Slightly tweaked some of the default control styles
+* Tweak: Tooltip styling.
+* Fixed: Error in the WordPress customizer with WordPress 5.5.
 
 [See the previous changelogs here](https://github.com/kirki-framework/kirki/blob/master/CHANGELOG.md).
