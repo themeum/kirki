@@ -1,6 +1,16 @@
 .customize-control-kirki-background {
   position: relative;
 
+  .iris-picker-inner {
+    display: grid;
+    grid-template-columns: 1fr 20px 20px;
+    grid-gap: 7px;
+    >* {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+  }
+
   .background-attachment,
   .background-color,
   .background-position,

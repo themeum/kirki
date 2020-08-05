@@ -2,6 +2,15 @@
 .customize-control-kirki-background {
   position: relative;
 }
+.customize-control-kirki-background .iris-picker-inner {
+  display: grid;
+  grid-template-columns: 1fr 20px 20px;
+  grid-gap: 7px;
+}
+.customize-control-kirki-background .iris-picker-inner > * {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
 .customize-control-kirki-background .background-attachment h4,
 .customize-control-kirki-background .background-color h4,
 .customize-control-kirki-background .background-position h4,
