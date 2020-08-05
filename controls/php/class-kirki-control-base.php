@@ -100,7 +100,7 @@ class Kirki_Control_Base extends WP_Customize_Control {
 		$kirki_url = trailingslashit( Kirki::$url );
 
 		// Enqueue ColorPicker.
-		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker' ), KIRKI_VERSION, true );
+		wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Kirki::$url ) . 'assets/vendor/wp-color-picker-alpha/wp-color-picker-alpha.js', array( 'wp-color-picker', 'wp-i18n' ), KIRKI_VERSION, true );
 		wp_enqueue_style( 'wp-color-picker' );
 
 		// Enqueue selectWoo.
