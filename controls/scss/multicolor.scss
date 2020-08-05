@@ -1,4 +1,19 @@
 .customize-control-kirki-multicolor {
+
+  .wp-picker-holder {
+    margin-bottom: 7px;
+  }
+
+  .iris-picker-inner {
+    display: grid;
+    grid-template-columns: 1fr 20px 20px;
+    grid-gap: 7px;
+    >* {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+  }
+
   .multicolor-single-color-wrapper {
     display: flex;
     justify-content: space-between;

@@ -247,6 +247,18 @@
   box-shadow: none;
 }
 
+.customize-control-kirki-multicolor .wp-picker-holder {
+  margin-bottom: 7px;
+}
+.customize-control-kirki-multicolor .iris-picker-inner {
+  display: grid;
+  grid-template-columns: 1fr 20px 20px;
+  grid-gap: 7px;
+}
+.customize-control-kirki-multicolor .iris-picker-inner > * {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
 .customize-control-kirki-multicolor .multicolor-single-color-wrapper {
   display: flex;
   justify-content: space-between;
