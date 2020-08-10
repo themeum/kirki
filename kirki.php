@@ -5,7 +5,7 @@
  * Description:   The Ultimate WordPress Customizer Framework
  * Author:        David Vongries
  * Author URI:    https://wp-pagebuilderframework.com/
- * Version:       3.1.4
+ * Version:       3.1.5
  * Text Domain:   kirki
  * Requires WP:   4.9
  * Requires PHP:  5.3

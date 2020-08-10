@@ -1,3 +1,12 @@
+## 3.1.5 - August 10, 2020
+
+* Tested up to WordPress 5.5.
+* Tweak: Updated Google fonts.
+* Fixed: Added wp-i18n dependency to alpha color picker script.
+* Fixed: Color picker styles.
+* Fixed: Color picker styles in background control.
+* Fixed: Color picker styles in multicolor control.
+
 ## 3.1.4 - July 11, 2020
 
 * Tweak: Updated Google-Fonts lists.
