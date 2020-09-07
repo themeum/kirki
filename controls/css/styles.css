@@ -95,12 +95,6 @@
   background-image: -webkit-linear-gradient(left, red, #ff7f00, yellow, #80ff00, lime, #00ff80, aqua, #007fff, blue, #7f00ff, fuchsia, #ff0080, red) !important;
   widows: 100% !important;
 }
-.customize-control-kirki-color .kirki-input-container[data-has-alpha=false] .iris-picker.iris-border {
-  width: 100% !important;
-}
-.customize-control-kirki-color .kirki-input-container[data-has-alpha=false] .iris-picker .iris-square {
-  margin-right: 7px !important;
-}
 .customize-control-kirki-color .kirki-input-container[data-has-alpha=true] .iris-picker-inner {
   display: grid;
   grid-template-columns: 1fr 20px 20px;
