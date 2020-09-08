@@ -733,10 +733,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 
 		element = jQuery( element );
 
-		if ( _.isUndefined( currentSettings[ row.rowIndex ][ fieldId ] ) ) {
-			return;
-		}
-
 		if ( 'checkbox' === type ) {
 			currentSettings[ row.rowIndex ][ fieldId ] = element.is( ':checked' );
 		} else {
