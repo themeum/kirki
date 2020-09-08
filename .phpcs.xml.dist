@@ -15,15 +15,52 @@
 
 	<file>.</file>
 
-	<exclude-pattern>*/node_modules/*</exclude-pattern>
-	<exclude-pattern>*/vendor/*</exclude-pattern>
-	<exclude-pattern>*/tests/*</exclude-pattern>
+	<exclude-pattern>node_modules/</exclude-pattern>
+	<exclude-pattern>docs/</exclude-pattern>
+	<exclude-pattern>packages/composer</exclude-pattern>
+	<exclude-pattern>packages/bin</exclude-pattern>
+	<exclude-pattern>packages/codacy</exclude-pattern>
+	<exclude-pattern>packages/composer/installers</exclude-pattern>
+	<exclude-pattern>packages/dealerdirect</exclude-pattern>
+	<exclude-pattern>packages/doctrine</exclude-pattern>
+	<exclude-pattern>packages/gitonomy</exclude-pattern>
+	<exclude-pattern>packages/guzzlehttp</exclude-pattern>
+	<exclude-pattern>packages/myclabs</exclude-pattern>
+	<exclude-pattern>packages/phar-io</exclude-pattern>
+	<exclude-pattern>packages/phpcompatibility</exclude-pattern>
+	<exclude-pattern>packages/php-coveralls</exclude-pattern>
+	<exclude-pattern>packages/phpdocumentor</exclude-pattern>
+	<exclude-pattern>packages/phpspec</exclude-pattern>
+	<exclude-pattern>packages/phpunit</exclude-pattern>
+	<exclude-pattern>packages/psr</exclude-pattern>
+	<exclude-pattern>packages/ralouphie</exclude-pattern>
+	<exclude-pattern>packages/sebastian</exclude-pattern>
+	<exclude-pattern>packages/squizlabs</exclude-pattern>
+	<exclude-pattern>packages/symfony</exclude-pattern>
+	<exclude-pattern>packages/theseer</exclude-pattern>
+	<exclude-pattern>packages/webmozart</exclude-pattern>
+	<exclude-pattern>packages/wp-coding-standards</exclude-pattern>
+	<exclude-pattern>packages/autoload.php</exclude-pattern>
 
 	<!-- Include the WordPress ruleset. -->
-	<rule ref="WordPress"/>
+	<rule ref="WordPress">
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+	</rule>
+
+	<!-- Include the WordPress Theme Review Team ruleset. -->
+	<rule ref="WPThemeReview" />
+
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax.Found" />
 
 	<!-- Include sniffs for PHP cross-version compatibility. -->
 	<!-- See: https://github.com/PHPCompatibility/PHPCompatibilityWP -->
-	<config name="testVersion" value="5.2-"/>
-	<rule ref="PHPCompatibilityWP"/>
+	<config name="testVersion" value="5.6-"/>
+	<rule ref="PHPCompatibilityWP">
+		<exclude name="PHPCompatibility.LanguageConstructs.NewLanguageConstructs" />
+		<exclude name="PHPCompatibility.Syntax.NewShortArray" />
+		<exclude name="PHPCompatibility.Keywords.NewKeywords" />
+		<exclude name="PHPCompatibility.FunctionDeclarations.NewClosure.Found" />
+		<exclude name="PHPCompatibility.FunctionUse.NewFunctions.class_aliasFound" />
+	</rule>
 </ruleset>

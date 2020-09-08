@@ -1,0 +1,33 @@
+{
+    "name": "kirki-framework/control-repeater",
+    "type": "library",
+    "description": "Repeater control for the Kirki Customizer framework.",
+    "keywords": ["wordpress","customizer","framework"],
+    "homepage": "https://aristath.github.io/kirki",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ari Stathopoulos",
+            "email": "aristath@gmail.com",
+            "homepage": "http://aristath.github.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "kirki-framework/url-getter": "*",
+        "kirki-framework/control-generic": "*",
+        "kirki-framework/control-select": "*",
+        "kirki-framework/control-checkbox": "*",
+        "kirki-framework/control-radio": "*",
+        "kirki-framework/control-color": "*",
+        "kirki-framework/control-image": "*"
+    },
+    "autoload": {
+		"psr-4": {
+            "Kirki\\Control\\": "src/Control",
+            "Kirki\\Field\\": "src/Field",
+			"Kirki\\Settings\\": "src/Settings"
+        }
+    }
+}

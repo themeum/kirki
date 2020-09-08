@@ -1,0 +1,5 @@
+---
+engines:
+exclude_paths:
+  - 'packages/autoload.php'
+  - 'packages/composer/**'

@@ -1,0 +1,20 @@
+{
+  "name": "kirki-control-date",
+  "author": "Ari Stathopoulos (@aristath)",
+  "homepage": "https://kirki.org",
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-watch": "*"
+  }
+}

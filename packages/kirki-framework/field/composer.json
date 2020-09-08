@@ -1,0 +1,22 @@
+{
+  "name": "kirki-framework/field",
+  "type": "library",
+  "keywords": ["WordPress", "Customizer"],
+  "description": "Customizer API abstraction used by Kirki Controls.",
+  "homepage": "https://aristath.github.io/kirki",
+  "license": "MIT",
+  "authors": [{
+    "name": "aristath",
+    "email": "aristath@gmail.com",
+    "homepage": "https://aristath.github.io",
+    "role": "Developer"
+  }],
+  "require": {
+    "php": ">=5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kirki\\": "src"
+    }
+  }
+}

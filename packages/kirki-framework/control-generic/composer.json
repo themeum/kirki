@@ -1,0 +1,27 @@
+{
+    "name": "kirki-framework/control-generic",
+    "type": "library",
+    "description": "Generic control for the Kirki Customizer framework.",
+    "keywords": ["wordpress","customizer","framework"],
+    "homepage": "https://aristath.github.io/kirki",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ari Stathopoulos",
+            "email": "aristath@gmail.com",
+            "homepage": "http://aristath.github.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "kirki-framework/url-getter": "*",
+        "kirki-framework/control-base": "*"
+    },
+    "autoload": {
+		"psr-4": {
+			"Kirki\\Control\\": "src/Control",
+			"Kirki\\Field\\": "src/Field"
+        }
+    }
+}

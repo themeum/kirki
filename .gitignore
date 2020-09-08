@@ -1,6 +1,5 @@
 # npm #
 #######
-node_modules
 npm-debug.log
 package-lock.json
 
@@ -10,8 +9,28 @@ package-lock.json
 
 # composer #
 ############
-vendor
-composer.lock
+packages/bin
+packages/codacy
+packages/composer/installers
+packages/dealerdirect
+packages/doctrine
+packages/gitonomy
+packages/guzzlehttp
+packages/myclabs
+packages/phar-io
+packages/phpcompatibility
+packages/php-coveralls
+packages/phpdocumentor
+packages/phpspec
+packages/phpunit
+packages/psr
+packages/ralouphie
+packages/sebastian
+packages/squizlabs
+packages/symfony
+packages/theseer
+packages/webmozart
+packages/wp-coding-standards
 
 # OS generated files #
 ######################
@@ -40,3 +59,4 @@ build/logs
 ###################
 .phpcs.xml
 phpcs.xml
+.css.map

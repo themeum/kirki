@@ -23,7 +23,6 @@ rm -rf .git
 rm -rf .github
 rm -rf .sass-cache
 rm -rf controls/css/*.map
-rm -rf controls/js/src
 rm -rf controls/scss
 rm -rf docs
 rm modules/custom-sections/*.scss
@@ -31,7 +30,6 @@ rm modules/custom-sections/*.map
 rm modules/tooltips/*.scss
 rm modules/tooltips/*.map
 rm -rf node_modules
-rm -rf tests
 rm .codeclimate.yml
 rm .coveralls.yml
 rm .csslintrc
@@ -46,7 +44,6 @@ rm .simplecov
 rm .travis.yml
 rm CODE_OF_CONDUCT.md
 rm composer.*
-rm -rf vendor/
 rm example.php
 rm Gruntfile.js
 rm package.json

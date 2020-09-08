@@ -1,0 +1,27 @@
+{
+    "name": "kirki-framework/module-editor-styles",
+    "type": "library",
+    "description": "Loading Animation Module for the Kirki WordPress plugin.",
+    "keywords": ["wordpress","customizer","framework"],
+    "homepage": "https://aristath.github.io/kirki",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ari Stathopoulos",
+            "email": "aristath@gmail.com",
+            "homepage": "http://aristath.github.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "kirki-framework/util": "*",
+        "kirki-framework/module-css": "*",
+        "kirki-framework/module-webfonts": "*"
+    },
+    "autoload"    : {
+		"psr-4" : {
+			"Kirki\\Module\\" : "src/"
+        }
+    }
+}

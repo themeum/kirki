@@ -3,7 +3,7 @@
   "type": "library",
   "keywords": ["WordPress", "Customizer"],
   "description": "Extending the WordPress customizer",
-  "homepage": "https://aristath.github.io/kirki",
+  "homepage": "https://kirki.org",
   "license": "MIT",
   "authors": [
     {
@@ -11,27 +11,66 @@
       "email": "aristath@gmail.com",
       "homepage": "https://aristath.github.io",
       "role":"Developer"
-    },
-    {
-      "name": "fovoc",
-      "email": "kalliris.d@gmail.com",
-      "homepage": "https://github.com/fovoc",
-      "role":"Developer"
     }
   ],
-  "autoload": {
-      "files": ["kirki.php"]
+  "config": {
+    "vendor-dir": "packages"
   },
+  "include-path": [".", "core"],
   "require": {
-    "php": ">=5.2"
+    "php": ">=5.6",
+    "kirki-framework/compatibility": "dev-master",
+    "kirki-framework/util": "dev-master",
+    "kirki-framework/l10n": "dev-master",
+    "kirki-framework/field": "dev-master",
+    "kirki-framework/url-getter": "*",
+    "kirki-framework/control-base": "dev-master",
+    "kirki-framework/control-checkbox": "dev-master",
+    "kirki-framework/control-code": "dev-master",
+    "kirki-framework/control-react-color": "*",
+    "kirki-framework/control-cropped-image": "dev-master",
+    "kirki-framework/control-custom": "dev-master",
+    "kirki-framework/control-dashicons": "dev-master",
+    "kirki-framework/control-date": "dev-master",
+    "kirki-framework/control-dimension": "dev-master",
+    "kirki-framework/control-editor": "dev-master",
+    "kirki-framework/control-generic": "dev-master",
+    "kirki-framework/control-image": "dev-master",
+    "kirki-framework/control-multicheck": "dev-master",
+    "kirki-framework/control-palette": "dev-master",
+    "kirki-framework/control-radio": "dev-master",
+    "kirki-framework/control-repeater": "dev-master",
+    "kirki-framework/control-select": "dev-master",
+    "kirki-framework/control-react-select": "*",
+    "kirki-framework/control-slider": "*",
+    "kirki-framework/control-sortable": "dev-master",
+    "kirki-framework/control-upload": "dev-master",
+    "kirki-framework/data-option": "dev-master",
+    "kirki-framework/field-background": "dev-master",
+    "kirki-framework/field-color-palette": "*",
+    "kirki-framework/field-dimensions": "dev-master",
+    "kirki-framework/field-fontawesome": "dev-master",
+    "kirki-framework/field-multicolor": "dev-master",
+    "kirki-framework/field-typography": "*",
+    "kirki-framework/module-css": "dev-master",
+    "kirki-framework/module-editor-styles": "dev-master",
+    "kirki-framework/module-field-dependencies": "*",
+    "kirki-framework/module-panels": "dev-master",
+    "kirki-framework/module-postmessage": "*",
+    "kirki-framework/module-preset": "*",
+    "kirki-framework/module-sections": "*",
+    "kirki-framework/module-selective-refresh": "*",
+    "kirki-framework/module-tooltips": "*",
+    "kirki-framework/module-webfonts": "*"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",
     "phpunit/phpunit": "*",
     "composer/installers": "*",
-    "dealerdirect/phpcodesniffer-composer-installer": "*",
     "phpcompatibility/phpcompatibility-wp": "*",
     "wp-coding-standards/wpcs": "*",
-    "codacy/coverage": "dev-master"
+    "codacy/coverage": "dev-master",
+    "wptrt/wpthemereview": "dev-develop",
+    "dealerdirect/phpcodesniffer-composer-installer": "*"
   }
 }

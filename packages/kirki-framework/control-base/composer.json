@@ -1,0 +1,25 @@
+{
+    "name": "kirki-framework/control-base",
+    "type": "library",
+    "description": "The Base Class for other Kirki Customizer Controls.",
+    "keywords": ["wordpress","customizer","framework"],
+    "homepage": "https://aristath.github.io/kirki",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ari Stathopoulos",
+            "email": "aristath@gmail.com",
+            "homepage": "http://aristath.github.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "kirki-framework/url-getter": "*"
+    },
+    "autoload": {
+		"psr-4": {
+			"Kirki\\Control\\": "src/Control"
+        }
+    }
+}

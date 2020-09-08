@@ -7,13 +7,9 @@ notifications:
   on_failure: change
 
 php:
-  - 7.0
-
-before_install:
-  - pip install --user codecov
+  - 7.2
 
 before_script:
-  - bash tests/bin/install-wp-tests.sh wordpress_test root '' localhost latest
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev --no-interaction
   - composer install --dev
@@ -25,13 +21,8 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - phpunit --coverage-clover=coverage.clover
-  # Search for PHP syntax errors.
-  # - find . \( -name '*kirki*.php' \) -exec php -lf {} \;
-  - ./vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
   # Run the plugin through ESLint.
-  - eslint ./controls/js/src/*.js
-  - eslint ./modules/**/*.js
+  - eslint .
   # PHPCS Coding Standards check.
   # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
   # @link https://github.com/PHPCompatibility/PHPCompatibilityWP
@@ -39,16 +30,4 @@ script:
   # -p flag: Show progress of the run.
   # -s flag: Show sniff codes in all reports.
   # -v flag: Print verbose output.
-  - vendor/bin/phpcs -v --runtime-set ignore_warnings_on_exit 1
-
-after_script:
-  - php vendor/bin/coveralls
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover coverage.clove
-  - php vendor/bin/codacycoverage clover ./build/logs/clover.xml
-
-after_success:
-  - travis_retry php vendor/bin/php-coveralls
-  - coveralls
-  - codecov
-  - bash <(curl -s https://codecov.io/bash)
+  - packages/bin/phpcs -v --runtime-set ignore_warnings_on_exit 1

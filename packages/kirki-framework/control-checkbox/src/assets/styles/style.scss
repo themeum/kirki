@@ -1,0 +1,74 @@
+@import "vars";
+
+.customize-control-kirki-switch {
+  .switch-label {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-align: left;
+    padding: 16px 0 16px 44px;
+  
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      margin: 0;
+      outline: 0;
+      top: 50%;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      transition: all 0.3s ease;
+    }
+  
+    &:before {
+      left: 1px;
+      width: 34px;
+      height: 14px;
+      background-color: $color-silver-gray;
+      border-radius: 8px;
+    }
+  
+    &:after {
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background-color: $color-dark-medium-gray;
+      border-radius: 50%;
+      box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
+    }
+  
+    .toggle-on {
+      display: none;
+      color: $color-wp-blue;
+    }
+  
+    .toggle-off {
+      display: inline-block;
+      color: $color-dark-silver-gray;
+    }
+  }
+  
+  .kirki-switch-input {
+    &:checked {
+      +.switch-label {
+        &:before {
+          background-color: desaturate(lighten($color-wp-blue, 40%), 40%);
+        }
+  
+        &:after {
+          background-color: $color-wp-blue;
+          -webkit-transform: translate(80%, -50%);
+          transform: translate(80%, -50%);
+        }
+  
+        .toggle-on {
+          display: inline-block;
+        }
+  
+        .toggle-off {
+          display: none;
+        }
+      }
+    }
+  }
+}
