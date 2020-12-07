@@ -1,3 +1,9 @@
+## 3.1.6 - December 07, 2020
+
+* Tested up to WordPress 5.6.
+* Tweak: Updated Google fonts.
+* Fixed: Color picker styling issue in Chrome.
+
 ## 3.1.5 - August 10, 2020
 
 * Tested up to WordPress 5.5.

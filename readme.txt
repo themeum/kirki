@@ -2,8 +2,8 @@
 Contributors: davidvongries, aristath, dannycooper, wplemon, igmoweb
 Tags: customizer, options framework, theme, mods, toolkit, gutenberg
 Requires at least: 4.9
-Tested up to: 5.5
-Stable tag: 3.1.5
+Tested up to: 5.6
+Stable tag: 3.1.6
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -87,13 +87,10 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
-= 3.1.5 - August 10, 2020 =
+= 3.1.6 - December 07, 2020 =
 
-* Tested up to WordPress 5.5.
+* Tested up to WordPress 5.6.
 * Tweak: Updated Google fonts.
-* Fixed: Added wp-i18n dependency to alpha color picker script.
-* Fixed: Color picker styles.
-* Fixed: Color picker styles in background control.
-* Fixed: Color picker styles in multicolor control.
+* Fixed: Color picker styling issue in Chrome.
 
 [See the previous changelogs here](https://github.com/kirki-framework/kirki/blob/master/CHANGELOG.md).
