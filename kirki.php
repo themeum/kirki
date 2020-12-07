@@ -40,7 +40,7 @@ if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 
 // Define the KIRKI_VERSION constant.
 if ( ! defined( 'KIRKI_VERSION' ) ) {
-	define( 'KIRKI_VERSION', '3.1.3' );
+	define( 'KIRKI_VERSION', '3.1.6' );
 }
 
 // Make sure the path is properly set.
