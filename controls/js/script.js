@@ -2727,10 +2727,10 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 		if ( refresh ) {
 
 			/* 
-			 * Oxibug 
+			 * Check acive_callback in every change
 			 * DO NOT Forget to add this in the [.min] file version
 			 */
-			OxibugKirkiRepeaterDependencies.init();
+			KirkiRepeaterDependencies.init();
 			
 			
 			// Trigger the change event on the hidden field so
