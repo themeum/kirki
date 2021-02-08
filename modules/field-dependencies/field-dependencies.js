@@ -382,7 +382,7 @@ var KirkiRepeaterDependencies = {
 
 			// Loop sub-requirements.
 			for ( i = 0; i < requirement.length; i++ ) {
-				nestedItems.push( self.checkCondition( requirement[ i ], control, isOption, childRelation ) );
+				nestedItems.push( self.checkCondition( repeaterID, requirement[ i ], control, rowEntries, isOption, childRelation ) );
 			}
 
 			// OR relation. Check that true is part of the array.
