@@ -207,11 +207,11 @@ var kirkiDependencies = {
 
 
 /**
- * Enable [active_callback] for repeater's controls
+ * Using [active_callback] in repeater controls
  * 
  * @since 3.1.7
  */
-var OxibugKirkiRepeaterDependencies = {
+var KirkiRepeaterDependencies = {
 
 	repeatersControls: {},
 
