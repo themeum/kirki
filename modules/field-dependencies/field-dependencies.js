@@ -512,6 +512,6 @@ jQuery( document ).ready( function() {
 	
 	kirkiDependencies.init();
 		
-	OxibugKirkiRepeaterDependencies.init();
+	KirkiRepeaterDependencies.init();
 	
 } );
