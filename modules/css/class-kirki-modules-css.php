@@ -140,7 +140,7 @@ class Kirki_Modules_CSS {
 		// Enqueue the dynamic stylesheet.
 		wp_enqueue_style(
 			'kirki-styles',
-			add_query_arg( $args, site_url() ),
+			add_query_arg( $args, home_url() ),
 			array(),
 			KIRKI_VERSION
 		);
