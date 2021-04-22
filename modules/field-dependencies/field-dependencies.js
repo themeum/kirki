@@ -215,7 +215,7 @@ var kirkiDependencies = {
  * 
  * @since 3.1.7
  */
-var OxibugKirkiRepeaterDependencies = {
+var KirkiRepeaterDependencies = {
 
 	repeatersControls: {},
 
@@ -522,6 +522,6 @@ jQuery( document ).ready( function() {
 	
 	kirkiDependencies.init();
 		
-	OxibugKirkiRepeaterDependencies.init();
+	KirkiRepeaterDependencies.init();
 	
 } );
