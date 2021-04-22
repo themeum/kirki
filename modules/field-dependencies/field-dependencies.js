@@ -1,7 +1,7 @@
 var kirkiDependencies = {
 
 	listenTo: {},
-
+	
 	init: function() {
 		var self = this;
 
@@ -61,6 +61,9 @@ var kirkiDependencies = {
 		if ( 'undefined' === typeof control || ( control.params && _.isEmpty( control.params.required ) ) ) {
 			return true;
 		}
+
+		// control.params.required
+		// console.log(control);
 
 		// Loop control requirements.
 		for ( i = 0; i < control.params.required.length; i++ ) {
@@ -206,12 +209,13 @@ var kirkiDependencies = {
 };
 
 
+
 /**
- * Using [active_callback] in repeater controls
+ * Enable [active_callback] for repeater's controls
  * 
  * @since 3.1.7
  */
-var KirkiRepeaterDependencies = {
+var OxibugKirkiRepeaterDependencies = {
 
 	repeatersControls: {},
 
@@ -281,7 +285,6 @@ var KirkiRepeaterDependencies = {
 				var repUserEntries 	= JSON.parse( decodeURI( objRepeaterControl.setting.get() ) ), /* @see function [getValue] in [wp.customize.controlConstructor.repeater] located in [controls/js/script.js] */
 					repFields 	= objRepeaterControl.params.fields;
 				
-
 				_.each(repUserEntries, function(rowValue, rowIndex) {
 
 					_.each( required_fields, function( slaves, master ) {
@@ -337,6 +340,8 @@ var KirkiRepeaterDependencies = {
 			show     = true,
 
 			isOption = (
+				! _.isUndefined( control ) &&	/* Fix: Multiple Repeaters with no active_callback */
+				! _.isUndefined( control.id ) &&	/* Fix: Multiple Repeaters with no active_callback */
 				control.id && // Check if id exists.
 				control.type &&  // Check if tpe exists.
 				! _.isEmpty( control.type ) // Check if control's type is not empty.
@@ -376,14 +381,18 @@ var KirkiRepeaterDependencies = {
 			requirementSettingValue,
 			i;
 
+
+
 		// If an array of other requirements nested, we need to process them separately.
 		if ( 'undefined' !== typeof requirement[0] && 'undefined' === typeof requirement.setting ) {
+
 			nestedItems = [];
 
 			// Loop sub-requirements.
 			for ( i = 0; i < requirement.length; i++ ) {
 				nestedItems.push( self.checkCondition( repeaterID, requirement[ i ], control, rowEntries, isOption, childRelation ) );
 			}
+
 
 			// OR relation. Check that true is part of the array.
 			if ( 'OR' === childRelation ) {
@@ -393,6 +402,7 @@ var KirkiRepeaterDependencies = {
 			// AND relation. Check that false is not part of the array.
 			return ( -1 === nestedItems.indexOf( false ) );
 		}
+
 
 		// Early exit if setting is not defined.
 		if ( ! requirement.setting in rowEntries ) {
@@ -512,6 +522,6 @@ jQuery( document ).ready( function() {
 	
 	kirkiDependencies.init();
 		
-	KirkiRepeaterDependencies.init();
+	OxibugKirkiRepeaterDependencies.init();
 	
 } );
