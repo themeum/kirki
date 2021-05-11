@@ -43,7 +43,7 @@ class Kirki_Util {
 		$plugins = get_plugins();
 		$_plugin = '';
 		foreach ( $plugins as $plugin => $args ) {
-			if ( ! $is_plugin && isset( $args['Name'] ) && ( 'Kirki' === $args['Name'] || 'Kirki Toolkit' === $args['Name'] ) ) {
+			if ( ! $is_plugin && isset( $args['Name'] ) && ( 'Kirki' === $args['Name'] || 'Kirki Toolkit' === $args['Name'] || 'Kirki Customizer Framework' === $args['Name'] ) ) {
 				$is_plugin = true;
 				$_plugin   = $plugin;
 			}
@@ -139,7 +139,7 @@ class Kirki_Util {
 		}
 		$exists = false;
 		foreach ( $plugins['plugins'] as $plugin ) {
-			if ( isset( $plugin['Name'] ) && 'Kirki Toolkit' === $plugin['Name'] ) {
+			if ( isset( $plugin['Name'] ) && ( 'Kirki' === $args['Name'] || 'Kirki Toolkit' === $args['Name'] || 'Kirki Customizer Framework' === $args['Name'] ) ) {
 				$exists = true;
 			}
 		}
