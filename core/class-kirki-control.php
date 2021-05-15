@@ -62,7 +62,7 @@ class Kirki_Control {
 	 *
 	 * @return         string   the name of the class that will be used to create this control.
 	 */
-	final private function get_control_class_name( $args ) {
+	private function get_control_class_name( $args ) {
 
 		// Set a default class name.
 		$class_name = 'WP_Customize_Control';
@@ -98,7 +98,7 @@ class Kirki_Control {
 	 *
 	 * @access private
 	 */
-	final private function set_control_types() {
+	private function set_control_types() {
 
 		// Early exit if this has already run.
 		if ( ! empty( self::$control_types ) ) {
