@@ -91,8 +91,10 @@ class Kirki_Modules_CSS {
 			return;
 		}
 
-		// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), 100 );
+		if ( ! is_customize_preview() ) {
+			// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
+			add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), 100 );
+		}
 
 		add_action( 'wp', array( $this, 'print_styles_action' ) );
 
