@@ -1,6 +1,11 @@
 .customize-control-kirki-toggle {
   position: relative;
 
+  .screen-reader-text:focus {
+    clip-path: inset(50%);
+    -webkit-clip-path: inset(50%);
+  }
+
   label {
     display: flex;
     flex-wrap: wrap;
