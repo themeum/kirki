@@ -87,10 +87,12 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
-### 3.1.6 - December 07, 2020 ###
+### 3.1.7 - June 21, 2021 ###
 
-* Tested up to WordPress 5.6.
-* Tweak: Updated Google fonts.
-* Fixed: Color picker styling issue in Chrome.
+* Updated Google-Fonts lists.
+* Tested up to WordPress 5.8 Beta 1.
+* Fixed: PHP 8 warnings.
+* Fixed: Missing Kirki styles in WordPress 5.8.
+* Fixed: https://wordpress.org/support/topic/plugin-title-conflict/ in https://github.com/kirki-framework/kirki/commit/0fb25dca4d1c4460ec45dc194d5210f854b1b737
 
 [See the previous changelogs here](https://github.com/kirki-framework/kirki/blob/master/CHANGELOG.md).

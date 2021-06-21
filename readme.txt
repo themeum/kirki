@@ -89,6 +89,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 3.1.7 - June 21, 2021 =
 
+* Updated Google-Fonts lists.
 * Tested up to WordPress 5.8 Beta 1.
 * Fixed: PHP 8 warnings.
 * Fixed: Missing Kirki styles in WordPress 5.8.
