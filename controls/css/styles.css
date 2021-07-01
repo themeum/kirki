@@ -351,6 +351,10 @@
   background-color: #00a0d2;
   color: rgba(255, 255, 255, 0.8);
 }
+.customize-control-kirki-radio-buttonset .screen-reader-text:focus {
+  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
+}
 
 .customize-control-kirki-radio-image > .image {
   display: flex;
