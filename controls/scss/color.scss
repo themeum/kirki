@@ -33,3 +33,18 @@
     width: 100% !important;
   }
 }
+
+// RTL support.
+.rtl {
+  .customize-control-kirki-color {
+    .iris-border .iris-palette-container {
+      left: auto;
+      right: 10px;
+    }
+
+    .wp-color-result .color-alpha {
+      left: auto !important;
+      right: 0;
+    }
+  }
+}

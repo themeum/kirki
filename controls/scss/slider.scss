@@ -68,3 +68,21 @@
     }
   }
 }
+
+// RTL support.
+.rtl {
+  .customize-control-kirki-slider {
+    .wrapper {
+      .slider-reset {
+        right: auto;
+        left: 0;
+      }
+
+      input {
+        &[type="text"] {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
