@@ -108,6 +108,15 @@
   width: 100% !important;
 }
 
+.rtl .customize-control-kirki-color .iris-border .iris-palette-container {
+  left: auto;
+  right: 10px;
+}
+.rtl .customize-control-kirki-color .wp-color-result .color-alpha {
+  left: auto !important;
+  right: 0;
+}
+
 .customize-control-kirki-dashicons {
   position: relative;
 }
@@ -641,6 +650,14 @@
 .customize-control-kirki-slider .wrapper .value {
   display: flex;
   align-items: baseline;
+}
+
+.rtl .customize-control-kirki-slider .wrapper .slider-reset {
+  right: auto;
+  left: 0;
+}
+.rtl .customize-control-kirki-slider .wrapper input[type=text] {
+  text-align: left;
 }
 
 .customize-control-kirki-sortable ul.ui-sortable li {
