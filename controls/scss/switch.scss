@@ -81,4 +81,9 @@
       }
     }
   }
+
+  .screen-reader-text:focus {
+    clip-path: inset(50%);
+    -webkit-clip-path: inset(50%);
+  }
 }
