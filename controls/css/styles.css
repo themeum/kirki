@@ -732,6 +732,7 @@
 .customize-control-kirki-switch input + label {
   margin-left: 0;
   margin-right: 0;
+  min-width: 62px;
 }
 .customize-control-kirki-switch input:checked + label {
   background: #0073aa;
@@ -746,6 +747,10 @@
 }
 .customize-control-kirki-switch input:checked + label .switch-off {
   opacity: 0;
+}
+.customize-control-kirki-switch .screen-reader-text:focus {
+  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
 }
 
 .customize-control-kirki-toggle {

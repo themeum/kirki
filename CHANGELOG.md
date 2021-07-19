@@ -1,3 +1,7 @@
+## 3.1.9 - July 19, 2021
+
+* Fixed: Fixed: Styling issue in Switch control.
+
 ## 3.1.8 - July 1, 2021
 
 * Updated Google-Fonts lists.
