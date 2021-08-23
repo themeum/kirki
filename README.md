@@ -1,12 +1,12 @@
 # Kirki Customizer Framework #
-**Contributors:** [aristath](https://profiles.wordpress.org/aristath), [dannycooper](https://profiles.wordpress.org/dannycooper), [wplemon](https://profiles.wordpress.org/wplemon), [igmoweb](https://profiles.wordpress.org/igmoweb), [davidvongries](https://profiles.wordpress.org/davidvongries)  
-**Tags:** customizer, options framework, theme, mods, toolkit, gutenberg  
-**Donate link:** https://aristath.github.io/donate  
-**Requires at least:** 4.9  
-**Tested up to:** 5.2  
-**Stable tag:** 3.0.45  
-**License:** MIT  
-**License URI:** https://opensource.org/licenses/MIT  
+**Contributors:** [aristath](https://profiles.wordpress.org/aristath), [dannycooper](https://profiles.wordpress.org/dannycooper), [wplemon](https://profiles.wordpress.org/wplemon), [igmoweb](https://profiles.wordpress.org/igmoweb), [davidvongries](https://profiles.wordpress.org/davidvongries)
+**Tags:** customizer, options framework, theme, mods, toolkit, gutenberg
+**Donate link:** https://aristath.github.io/donate
+**Requires at least:** 4.9
+**Tested up to:** 5.2
+**Stable tag:** 3.0.45
+**License:** MIT
+**License URI:** https://opensource.org/licenses/MIT
 
 The ultimate framework for theme developers using the WordPress Customizer
 
@@ -72,6 +72,11 @@ You can find detailed documentation on how to use Kirki on [kirki.org](https://k
 Simply install as a normal WordPress plugin and activate.
 
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://kirki.org/docs/integration).
+
+## Backwards Compatibility ##
+
+If you were using Kirki 3 and you have custom controls extending `Kirki_Control_Base`, you should wrap them inside `customize_register` hook.
+Otherwise, you'd get Fatal Error after updating to Kirki 4.
 
 ## Changelog ##
 
