@@ -1,10 +1,15 @@
 /* global module */
 module.exports = function( grunt ) {
 
+	const sass = require( 'sass' );
+
 	grunt.initConfig( {
 
 		// Compile CSS
 		sass: {
+			options: {
+				implementation: sass
+			},
 			dist: {
 				files: {
 					'modules/tooltips/tooltip.css': 'modules/tooltips/tooltip.scss',
@@ -33,13 +38,15 @@ module.exports = function( grunt ) {
 				'!assets/vendor/*'
 			],
 			options: {
-				config: '.jscsrc',
-				verbose: true
+				config: '.jscsrc'
 			}
-		}
+		},
+
+		// Watch task
+		watch: {}
 	} );
 
-	grunt.loadNpmTasks( 'grunt-contrib-sass' );
+	grunt.loadNpmTasks( 'grunt-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
 	grunt.loadNpmTasks( 'grunt-jscs' );

@@ -18,11 +18,14 @@
     }
   ],
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 14.0.0"
   },
   "devDependencies": {
-    "grunt": "^1.0.3",
-    "grunt-contrib-sass": "*",
-    "grunt-wp-readme-to-markdown": "*"
+    "grunt": "1.*",
+    "grunt-contrib-watch": "1.*",
+    "grunt-jscs": "3.*",
+    "grunt-sass": "3.*",
+    "grunt-wp-readme-to-markdown": "*",
+    "sass": "1.*"
   }
 }
