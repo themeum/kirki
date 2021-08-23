@@ -5,7 +5,7 @@
  * @package     Kirki
  * @category    Core
  * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2020, David Vongries
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
@@ -49,7 +49,6 @@ class Init {
 		add_action( 'admin_init', [ $this, 'dismiss_nag' ] );
 
 		new Values();
-		new \Kirki\Util\Telemetry();
 	}
 
 	/**

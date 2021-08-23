@@ -5,7 +5,7 @@
  * @package     Kirki
  * @category    Core
  * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2020, David Vongries
  * @license    https://opensource.org/licenses/MIT
  */
 
@@ -64,7 +64,7 @@ class Control {
 	 *
 	 * @return         string   the name of the class that will be used to create this control.
 	 */
-	final function get_control_class_name( $args ) {
+	final private function get_control_class_name( $args ) {
 
 		// Set a default class name.
 		$class_name = 'WP_Customize_Control';
@@ -100,7 +100,7 @@ class Control {
 	 *
 	 * @access private
 	 */
-	final function set_control_types() {
+	final private function set_control_types() {
 
 		// Early exit if this has already run.
 		if ( ! empty( self::$control_types ) ) {
