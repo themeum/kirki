@@ -64,7 +64,7 @@ class Control {
 	 *
 	 * @return         string   the name of the class that will be used to create this control.
 	 */
-	final private function get_control_class_name( $args ) {
+	final function get_control_class_name( $args ) {
 
 		// Set a default class name.
 		$class_name = 'WP_Customize_Control';
@@ -100,7 +100,7 @@ class Control {
 	 *
 	 * @access private
 	 */
-	final private function set_control_types() {
+	final function set_control_types() {
 
 		// Early exit if this has already run.
 		if ( ! empty( self::$control_types ) ) {

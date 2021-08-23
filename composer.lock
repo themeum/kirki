@@ -4,26 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf28827f5391e3454a46e6219d1b27ff",
+    "content-hash": "274b2010174b3c2ea38bed169e24ba9c",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
-            "version": "dev-master",
+            "version": "dev-bagus",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "a3d232cad81119a6f79dbc5e5fdeb082d7222273"
+                "reference": "1899bb0bece39cd83bf87c780cd9f6453f424f4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/a3d232cad81119a6f79dbc5e5fdeb082d7222273",
-                "reference": "a3d232cad81119a6f79dbc5e5fdeb082d7222273",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/1899bb0bece39cd83bf87c780cd9f6453f424f4e",
+                "reference": "1899bb0bece39cd83bf87c780cd9f6453f424f4e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -51,9 +50,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
-                "source": "https://github.com/kirki-framework/compatibility/tree/master"
+                "source": "https://github.com/kirki-framework/compatibility/tree/bagus"
             },
-            "time": "2020-04-30T12:24:02+00:00"
+            "time": "2021-08-23T11:59:31+00:00"
         },
         {
             "name": "kirki-framework/control-base",
@@ -6865,7 +6864,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "kirki-framework/compatibility": 20,
         "kirki-framework/util": 20,
         "kirki-framework/l10n": 20,
         "kirki-framework/field": 20,
@@ -6895,6 +6893,7 @@
         "kirki-framework/module-css": 20,
         "kirki-framework/module-editor-styles": 20,
         "kirki-framework/module-panels": 20,
+        "kirki-framework/compatibility": 20,
         "codacy/coverage": 20,
         "wptrt/wpthemereview": 20
     },

@@ -667,26 +667,25 @@
         },
         {
             "name": "kirki-framework/compatibility",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-bagus",
+            "version_normalized": "dev-bagus",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "a3d232cad81119a6f79dbc5e5fdeb082d7222273"
+                "reference": "1899bb0bece39cd83bf87c780cd9f6453f424f4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/a3d232cad81119a6f79dbc5e5fdeb082d7222273",
-                "reference": "a3d232cad81119a6f79dbc5e5fdeb082d7222273",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/1899bb0bece39cd83bf87c780cd9f6453f424f4e",
+                "reference": "1899bb0bece39cd83bf87c780cd9f6453f424f4e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
-            "time": "2020-04-30T12:24:02+00:00",
-            "default-branch": true,
+            "time": "2021-08-23T11:59:31+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Kirki\\Compatibility\\": "src/"
@@ -713,7 +712,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
-                "source": "https://github.com/kirki-framework/compatibility/tree/master"
+                "source": "https://github.com/kirki-framework/compatibility/tree/bagus"
             },
             "install-path": "../kirki-framework/compatibility"
         },

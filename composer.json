@@ -19,7 +19,6 @@
   "include-path": [".", "core"],
   "require": {
     "php": ">=5.6",
-    "kirki-framework/compatibility": "dev-master",
     "kirki-framework/util": "dev-master",
     "kirki-framework/l10n": "dev-master",
     "kirki-framework/field": "dev-master",
@@ -61,7 +60,8 @@
     "kirki-framework/module-sections": "*",
     "kirki-framework/module-selective-refresh": "*",
     "kirki-framework/module-tooltips": "*",
-    "kirki-framework/module-webfonts": "*"
+    "kirki-framework/module-webfonts": "*",
+    "kirki-framework/compatibility": "dev-bagus"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.0",
