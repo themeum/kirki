@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '14d22e9aafd9828c1fcf8d4c7dceeda20a542afe',
+        'reference' => 'd02c19451278b0b89423d8c4da166bf7f3f3c4bc',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '14d22e9aafd9828c1fcf8d4c7dceeda20a542afe',
+            'reference' => 'd02c19451278b0b89423d8c4da166bf7f3f3c4bc',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -97,7 +97,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/compatibility',
             'aliases' => array(),
-            'reference' => '1899bb0bece39cd83bf87c780cd9f6453f424f4e',
+            'reference' => 'ef906bce262475c15cd6288abc543e7ffdb5acc1',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-base' => array(
@@ -335,14 +335,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/data-option' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-bagus',
+            'version' => 'dev-bagus',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/data-option',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
-            'reference' => '32215657b58feab2db5ed570a728d6a50501f781',
+            'aliases' => array(),
+            'reference' => 'ee8efd9a572c8df70e86d068058ad391800a754f',
             'dev_requirement' => false,
         ),
         'kirki-framework/field' => array(
@@ -470,13 +468,11 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-panels' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-bagus',
+            'version' => 'dev-bagus',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-panels',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
+            'aliases' => array(),
             'reference' => '3e754b04b09ddb38c9e72d7d1d536372152eb0f5',
             'dev_requirement' => false,
         ),
@@ -499,12 +495,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-sections' => array(
-            'pretty_version' => 'v1.0',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-bagus',
+            'version' => 'dev-bagus',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-sections',
             'aliases' => array(),
-            'reference' => '1726ccf28ce24e1084e5f78b5342b84f1110abc7',
+            'reference' => '7c042cae27476d539b33c8ce55f7469d3668a6bd',
             'dev_requirement' => false,
         ),
         'kirki-framework/module-selective-refresh' => array(

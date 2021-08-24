@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "274b2010174b3c2ea38bed169e24ba9c",
+    "content-hash": "bd74070595b86491f711b177deaa9e98",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "1899bb0bece39cd83bf87c780cd9f6453f424f4e"
+                "reference": "ef906bce262475c15cd6288abc543e7ffdb5acc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/1899bb0bece39cd83bf87c780cd9f6453f424f4e",
-                "reference": "1899bb0bece39cd83bf87c780cd9f6453f424f4e",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/ef906bce262475c15cd6288abc543e7ffdb5acc1",
+                "reference": "ef906bce262475c15cd6288abc543e7ffdb5acc1",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
                 "source": "https://github.com/kirki-framework/compatibility/tree/bagus"
             },
-            "time": "2021-08-23T11:59:31+00:00"
+            "time": "2021-08-24T13:52:07+00:00"
         },
         {
             "name": "kirki-framework/control-base",
@@ -1200,22 +1200,21 @@
         },
         {
             "name": "kirki-framework/data-option",
-            "version": "dev-master",
+            "version": "dev-bagus",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/data-option.git",
-                "reference": "32215657b58feab2db5ed570a728d6a50501f781"
+                "reference": "ee8efd9a572c8df70e86d068058ad391800a754f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/data-option/zipball/32215657b58feab2db5ed570a728d6a50501f781",
-                "reference": "32215657b58feab2db5ed570a728d6a50501f781",
+                "url": "https://api.github.com/repos/kirki-framework/data-option/zipball/ee8efd9a572c8df70e86d068058ad391800a754f",
+                "reference": "ee8efd9a572c8df70e86d068058ad391800a754f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1242,9 +1241,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/data-option/issues",
-                "source": "https://github.com/kirki-framework/data-option/tree/master"
+                "source": "https://github.com/kirki-framework/data-option/tree/bagus"
             },
-            "time": "2019-08-18T09:19:41+00:00"
+            "time": "2021-08-24T13:54:13+00:00"
         },
         {
             "name": "kirki-framework/field",
@@ -1861,7 +1860,7 @@
         },
         {
             "name": "kirki-framework/module-panels",
-            "version": "dev-master",
+            "version": "dev-bagus",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-panels.git",
@@ -1877,7 +1876,6 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1905,7 +1903,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-panels/issues",
-                "source": "https://github.com/kirki-framework/module-panels/tree/master"
+                "source": "https://github.com/kirki-framework/module-panels/tree/bagus"
             },
             "time": "2019-07-14T09:28:59+00:00"
         },
@@ -2010,16 +2008,16 @@
         },
         {
             "name": "kirki-framework/module-sections",
-            "version": "v1.0",
+            "version": "dev-bagus",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-sections.git",
-                "reference": "1726ccf28ce24e1084e5f78b5342b84f1110abc7"
+                "reference": "7c042cae27476d539b33c8ce55f7469d3668a6bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-sections/zipball/1726ccf28ce24e1084e5f78b5342b84f1110abc7",
-                "reference": "1726ccf28ce24e1084e5f78b5342b84f1110abc7",
+                "url": "https://api.github.com/repos/kirki-framework/module-sections/zipball/7c042cae27476d539b33c8ce55f7469d3668a6bd",
+                "reference": "7c042cae27476d539b33c8ce55f7469d3668a6bd",
                 "shasum": ""
             },
             "require": {
@@ -2053,9 +2051,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-sections/issues",
-                "source": "https://github.com/kirki-framework/module-sections/tree/v1.0"
+                "source": "https://github.com/kirki-framework/module-sections/tree/bagus"
             },
-            "time": "2019-09-22T16:09:41+00:00"
+            "time": "2021-08-24T13:58:02+00:00"
         },
         {
             "name": "kirki-framework/module-selective-refresh",
@@ -6885,15 +6883,16 @@
         "kirki-framework/control-select": 20,
         "kirki-framework/control-sortable": 20,
         "kirki-framework/control-upload": 20,
-        "kirki-framework/data-option": 20,
         "kirki-framework/field-background": 20,
         "kirki-framework/field-dimensions": 20,
         "kirki-framework/field-fontawesome": 20,
         "kirki-framework/field-multicolor": 20,
         "kirki-framework/module-css": 20,
         "kirki-framework/module-editor-styles": 20,
-        "kirki-framework/module-panels": 20,
         "kirki-framework/compatibility": 20,
+        "kirki-framework/data-option": 20,
+        "kirki-framework/module-panels": 20,
+        "kirki-framework/module-sections": 20,
         "codacy/coverage": 20,
         "wptrt/wpthemereview": 20
     },

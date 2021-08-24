@@ -14,6 +14,7 @@
 
 namespace Kirki\Compatibility;
 
+// ? Bagus: do we really need these? They are already under the same namespace as Kirki class (this file).
 use Kirki\Compatibility\Config;
 use Kirki\Compatibility\Field;
 

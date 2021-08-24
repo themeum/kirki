@@ -48,6 +48,7 @@ class Init {
 		add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 		add_action( 'admin_init', [ $this, 'dismiss_nag' ] );
 
+		// ? Bagus: is this necessary? The Values class doesn't have constructor, so this does nothing.
 		new Values();
 	}
 
@@ -203,6 +204,8 @@ class Init {
 
 		// Log error for developers.
 		_doing_it_wrong( __METHOD__, esc_html__( 'We detected you\'re using Kirki\Compatibility\Init::get_variables(). Please use \Kirki\Util\Util::get_variables() instead.', 'kirki' ), '3.0.10' );
+
+		// ! This will be failed, because Util class is under Kirki\Util namespace.
 		return Util::get_variables();
 	}
 

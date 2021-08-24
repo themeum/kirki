@@ -38,7 +38,7 @@ class Field {
 	protected $kirki_config = 'global';
 
 	/**
-	 * Thje capability required so that users can edit this field.
+	 * The capability required so that users can edit this field.
 	 *
 	 * @access protected
 	 * @var string

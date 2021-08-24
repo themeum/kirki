@@ -18,7 +18,7 @@ namespace Kirki\Compatibility;
 class Settings {
 
 	/**
-	 * TYhe global $wp_customize object.
+	 * The global $wp_customize object.
 	 *
 	 * @access protected
 	 * @var WP_Customize_Manager
@@ -87,6 +87,7 @@ class Settings {
 				$args['default'] = [];
 			}
 			foreach ( $args['settings'] as $key => $value ) {
+				// ? Bagus: this $defaults var is not defined anywhere inside this function, so is this a mistake?
 				$default = ( isset( $defaults[ $key ] ) ) ? $defaults[ $key ] : '';
 				$this->add_setting( $classname, $value, $default, $args['option_type'], $args['capability'], $args['transport'], $args['sanitize_callback'] );
 			}
