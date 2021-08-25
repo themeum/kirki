@@ -1460,17 +1460,17 @@
         },
         {
             "name": "kirki-framework/control-react-color",
-            "version": "v1.0.12",
-            "version_normalized": "1.0.12.0",
+            "version": "dev-bagus",
+            "version_normalized": "dev-bagus",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-color.git",
-                "reference": "3f3680b354d836ef17c402b1859f223c5745c029"
+                "reference": "13e8fbe3e1178271f8f73e8498f482d2a223da7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/3f3680b354d836ef17c402b1859f223c5745c029",
-                "reference": "3f3680b354d836ef17c402b1859f223c5745c029",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/13e8fbe3e1178271f8f73e8498f482d2a223da7b",
+                "reference": "13e8fbe3e1178271f8f73e8498f482d2a223da7b",
                 "shasum": ""
             },
             "require": {
@@ -1479,7 +1479,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2020-07-24T12:25:49+00:00",
+            "time": "2021-08-17T07:27:38+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1509,7 +1509,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-react-color/issues",
-                "source": "https://github.com/kirki-framework/control-react-color/tree/master"
+                "source": "https://github.com/kirki-framework/control-react-color/tree/bagus"
             },
             "funding": [
                 {

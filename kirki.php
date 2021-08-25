@@ -76,7 +76,7 @@ new L10n( 'kirki', __DIR__ . '/languages' );
 require_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 // Add an empty config for global fields.
-Kirki::add_config( '' );
+Kirki::add_config( '' ); // ? Bagus: what is this for? Adding empty config.
 
 // ? Bagus: Do we really need this line? custom-config.php here is supposed to inside this plugin. Or is this just in case we need it in the future?
 $custom_config_path = dirname( __FILE__ ) . '/custom-config.php';

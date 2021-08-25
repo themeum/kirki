@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd74070595b86491f711b177deaa9e98",
+    "content-hash": "f56b1928e746829a67e29f11ab034be8",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -827,16 +827,16 @@
         },
         {
             "name": "kirki-framework/control-react-color",
-            "version": "v1.0.12",
+            "version": "dev-bagus",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-color.git",
-                "reference": "3f3680b354d836ef17c402b1859f223c5745c029"
+                "reference": "13e8fbe3e1178271f8f73e8498f482d2a223da7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/3f3680b354d836ef17c402b1859f223c5745c029",
-                "reference": "3f3680b354d836ef17c402b1859f223c5745c029",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/13e8fbe3e1178271f8f73e8498f482d2a223da7b",
+                "reference": "13e8fbe3e1178271f8f73e8498f482d2a223da7b",
                 "shasum": ""
             },
             "require": {
@@ -873,7 +873,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-react-color/issues",
-                "source": "https://github.com/kirki-framework/control-react-color/tree/master"
+                "source": "https://github.com/kirki-framework/control-react-color/tree/bagus"
             },
             "funding": [
                 {
@@ -881,7 +881,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-24T12:25:49+00:00"
+            "time": "2021-08-17T07:27:38+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",
@@ -6893,6 +6893,7 @@
         "kirki-framework/data-option": 20,
         "kirki-framework/module-panels": 20,
         "kirki-framework/module-sections": 20,
+        "kirki-framework/control-react-color": 20,
         "codacy/coverage": 20,
         "wptrt/wpthemereview": 20
     },

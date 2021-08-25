@@ -48,7 +48,7 @@ class Webfonts {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-        add_action( 'kirki_field_init', [ $this, 'field_init' ], 10, 2 );
+    add_action( 'kirki_field_init', [ $this, 'field_init' ], 10, 2 );
 		add_action( 'wp_loaded', [ $this, 'run' ] );
 	}
 
@@ -71,6 +71,7 @@ class Webfonts {
 	 */
 	protected function init() {
 		foreach ( array_keys( Kirki::$config ) as $config_id ) {
+			// ? Bagus: why are we still using deprecated method here? Is it intentional or something we can replace?
 			if ( 'async' === $this->get_method() ) {
 				new Async( $config_id, $this, $this->fonts_google );
 			}
