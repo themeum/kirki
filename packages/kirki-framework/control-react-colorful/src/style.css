@@ -1,0 +1,162 @@
+.control-section-kirki-default {
+  min-height: 100%;
+}
+
+.kirki-control-content {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.kirki-control-content * {
+  box-sizing: border-box;
+}
+
+.customize-control-kirki-react-colorful .colorPickerContainer.is-open {
+  opacity: 1;
+  transform: scale3d(1, 1, 1);
+  transition: all .2s;
+  visibility: visible;
+}
+
+.customize-control-kirki-react-colorful .colorPickerContainer {
+  position: absolute;
+  width: 100%;
+  padding: 18px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0 12px 15px 0;
+  z-index: 9999;
+
+  opacity: 0;
+  transform: scale3d(0, 0, 0);
+  transform-origin: center top;
+  transition: opacity .1s, visibility 0.1s, transform 0.75s;
+}
+
+.customize-control-kirki-react-colorful .colorPickerContainer::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 9px 10px 9px;
+  border-style: solid;
+  border-color: transparent transparent #fff transparent;
+}
+
+.customize-control-kirki-react-colorful .react-colorful {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.customize-control-kirki-react-colorful .react-colorful__saturation {
+  border-radius: 4px 4px 0 0;
+}
+
+.customize-control-kirki-react-colorful .react-colorful__last-control {
+  border-radius: 0 0 4px 4px;
+}
+
+.customize-control-kirki-react-colorful .react-colorful__pointer {
+  width: 18px;
+  height: 18px;
+}
+
+.kirki-react-colorful-input-field {
+  margin-bottom: 15px;
+}
+
+.kirki-react-colorful-input-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.kirki-react-colorful-input-control input {
+  display: block;
+  position: relative;
+  padding-left: 27px;
+  padding-right: 32px;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.kirki-react-colorful-input-control input:focus,
+.kirki-react-colorful-input-control input:active {
+  box-shadow: 0 0 0 1px #2271b1;
+  outline: none;
+  border-color: #2271b1;
+}
+
+.kirki-react-colorful-input-color-preview,
+.kirki-react-colorful-input-format-switcher {
+  position: absolute;
+  cursor: pointer;
+}
+
+.kirki-react-colorful-input-color-preview {
+  display: block;
+  left: 7px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.kirki-react-colorful-input-format-switcher {
+  display: flex;
+  align-items: center;
+  right: 7px;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.kirki-react-colorful-input-format-switcher:hover {
+  background-color: #f3f3f3;
+}
+
+/* @see https://css.gg/code */
+.kirki-icon-code {
+  transform: scale(1);
+}
+
+.kirki-icon-code,
+.kirki-icon-code::after,
+.kirki-icon-code::before {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 6px;
+  height: 23px;
+}
+
+.kirki-react-colorful-input-format-switcher:hover .kirki-icon-code::before,
+.kirki-react-colorful-input-format-switcher:hover .kirki-icon-code::after {
+  border-color: #000;
+}
+
+.kirki-icon-code::after,
+.kirki-icon-code::before {
+  content: "";
+  position: absolute;
+  height: 6px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  border-color: #999;
+  transform: rotate(45deg) scaleY(1);
+  left: 6px;
+}
+
+.kirki-icon-code::after {
+  transform: rotate(-45deg) scaleX(-1);
+  left: 11px;
+}

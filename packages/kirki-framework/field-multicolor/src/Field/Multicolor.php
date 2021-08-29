@@ -59,7 +59,7 @@ class Multicolor extends Field {
 		);
 
 		foreach ( $args['choices'] as $choice => $choice_label ) {
-			new \Kirki\Field\ReactColor(
+			new \Kirki\Field\ReactColorful(
 				wp_parse_args(
 					[
 						'settings'       => $args['settings'] . '[' . $choice . ']',

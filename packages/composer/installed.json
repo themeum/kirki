@@ -667,8 +667,8 @@
         },
         {
             "name": "kirki-framework/compatibility",
-            "version": "dev-bagus",
-            "version_normalized": "dev-bagus",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
@@ -1460,17 +1460,17 @@
         },
         {
             "name": "kirki-framework/control-react-color",
-            "version": "dev-bagus",
-            "version_normalized": "dev-bagus",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-color.git",
-                "reference": "13e8fbe3e1178271f8f73e8498f482d2a223da7b"
+                "reference": "58c685251c90c94622a5550166ff18119f8c577c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/13e8fbe3e1178271f8f73e8498f482d2a223da7b",
-                "reference": "13e8fbe3e1178271f8f73e8498f482d2a223da7b",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/58c685251c90c94622a5550166ff18119f8c577c",
+                "reference": "58c685251c90c94622a5550166ff18119f8c577c",
                 "shasum": ""
             },
             "require": {
@@ -1479,7 +1479,8 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-08-17T07:27:38+00:00",
+            "time": "2021-08-25T13:34:20+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1509,7 +1510,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-react-color/issues",
-                "source": "https://github.com/kirki-framework/control-react-color/tree/bagus"
+                "source": "https://github.com/kirki-framework/control-react-color/tree/master"
             },
             "funding": [
                 {
@@ -1518,6 +1519,66 @@
                 }
             ],
             "install-path": "../kirki-framework/control-react-color"
+        },
+        {
+            "name": "kirki-framework/control-react-colorful",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/control-react-colorful.git",
+                "reference": "6cd0db1bdea39d27ab7f771d86274cd97e851f8b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/6cd0db1bdea39d27ab7f771d86274cd97e851f8b",
+                "reference": "6cd0db1bdea39d27ab7f771d86274cd97e851f8b",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/control-base": "*",
+                "kirki-framework/field": "*",
+                "kirki-framework/url-getter": "*",
+                "php": ">=5.6"
+            },
+            "time": "2021-08-29T19:02:14+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Control\\": "src/Control",
+                    "Kirki\\Field\\": "src/Field"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kirki",
+                    "homepage": "https://kirki.org/",
+                    "role": "Organization"
+                }
+            ],
+            "description": "Color control for the Kirki Customizer framework using react-colorful.",
+            "homepage": "https://kirki.org/",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/kirki-framework/control-react-colorful/issues",
+                "source": "https://github.com/kirki-framework/control-react-colorful/tree/nightly"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/aristath",
+                    "type": "github"
+                }
+            ],
+            "install-path": "../kirki-framework/control-react-colorful"
         },
         {
             "name": "kirki-framework/control-react-select",
@@ -1830,8 +1891,8 @@
         },
         {
             "name": "kirki-framework/data-option",
-            "version": "dev-bagus",
-            "version_normalized": "dev-bagus",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/data-option.git",
@@ -1926,29 +1987,29 @@
         },
         {
             "name": "kirki-framework/field-background",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-background.git",
-                "reference": "f6bea1e673b5018acbd9f19fee89b5449cb557f9"
+                "reference": "140d69092822ab6d5f07ef362b4166ff60f843a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/f6bea1e673b5018acbd9f19fee89b5449cb557f9",
-                "reference": "f6bea1e673b5018acbd9f19fee89b5449cb557f9",
+                "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/140d69092822ab6d5f07ef362b4166ff60f843a4",
+                "reference": "140d69092822ab6d5f07ef362b4166ff60f843a4",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-radio": "*",
-                "kirki-framework/control-react-color": "*",
+                "kirki-framework/control-react-colorful": "dev-nightly",
                 "kirki-framework/control-select": "*",
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2019-10-15T16:47:05+00:00",
+            "time": "2021-08-29T19:09:09+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Kirki\\Field\\": "src"
@@ -1973,12 +2034,16 @@
                 "framework",
                 "wordpress"
             ],
+            "support": {
+                "issues": "https://github.com/kirki-framework/field-background/issues",
+                "source": "https://github.com/kirki-framework/field-background/tree/nightly"
+            },
             "install-path": "../kirki-framework/field-background"
         },
         {
             "name": "kirki-framework/field-color-palette",
-            "version": "v0.1",
-            "version_normalized": "0.1.0.0",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-color-palette.git",
@@ -2022,6 +2087,10 @@
                 "framework",
                 "wordpress"
             ],
+            "support": {
+                "issues": "https://github.com/kirki-framework/field-color-palette/issues",
+                "source": "https://github.com/kirki-framework/field-color-palette/tree/v0.1"
+            },
             "install-path": "../kirki-framework/field-color-palette"
         },
         {
@@ -2124,28 +2193,28 @@
         },
         {
             "name": "kirki-framework/field-multicolor",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-multicolor.git",
-                "reference": "1889c60434a1757c7313b29d082cd9ba1d2b853e"
+                "reference": "c33fbce81df6662c5fd81fbf680008afbee347f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/1889c60434a1757c7313b29d082cd9ba1d2b853e",
-                "reference": "1889c60434a1757c7313b29d082cd9ba1d2b853e",
+                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/c33fbce81df6662c5fd81fbf680008afbee347f7",
+                "reference": "c33fbce81df6662c5fd81fbf680008afbee347f7",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "*",
-                "kirki-framework/control-react-color": "*",
+                "kirki-framework/control-react-colorful": "dev-nightly",
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2019-11-09T11:06:31+00:00",
+            "time": "2021-08-29T19:11:50+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Kirki\\Control\\": "src/Control",
@@ -2171,6 +2240,10 @@
                 "framework",
                 "wordpress"
             ],
+            "support": {
+                "issues": "https://github.com/kirki-framework/field-multicolor/issues",
+                "source": "https://github.com/kirki-framework/field-multicolor/tree/nightly"
+            },
             "install-path": "../kirki-framework/field-multicolor"
         },
         {
@@ -2473,8 +2546,8 @@
         },
         {
             "name": "kirki-framework/module-panels",
-            "version": "dev-bagus",
-            "version_normalized": "dev-bagus",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-panels.git",
@@ -2519,7 +2592,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-panels/issues",
-                "source": "https://github.com/kirki-framework/module-panels/tree/bagus"
+                "source": "https://github.com/kirki-framework/module-panels/tree/master"
             },
             "install-path": "../kirki-framework/module-panels"
         },
@@ -2622,8 +2695,8 @@
         },
         {
             "name": "kirki-framework/module-sections",
-            "version": "dev-bagus",
-            "version_normalized": "dev-bagus",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-sections.git",

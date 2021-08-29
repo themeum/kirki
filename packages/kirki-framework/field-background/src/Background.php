@@ -72,7 +72,7 @@ class Background extends Field {
 		/**
 		 * Background Color.
 		 */
-		new \Kirki\Field\ReactColor(
+		new \Kirki\Field\ReactColorful(
 			wp_parse_args(
 				[
 					'settings'    => $args['settings'] . '[background-color]',
