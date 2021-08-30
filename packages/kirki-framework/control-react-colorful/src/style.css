@@ -57,6 +57,10 @@
   border-radius: 4px 4px 0 0;
 }
 
+.kirki-control-content-hue-mode .react-colorful__saturation {
+  display: none;
+}
+
 .customize-control-kirki-react-colorful .react-colorful__last-control {
   border-radius: 0 0 4px 4px;
 }
@@ -110,12 +114,15 @@
 .kirki-react-colorful-input-color-preview,
 .kirki-react-colorful-input-format-switcher {
   position: absolute;
+  border-width: 0;
+  background-color: transparent;
   cursor: pointer;
 }
 
 .kirki-react-colorful-input-color-preview {
   display: block;
   left: 7px;
+  padding: 0;
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -166,10 +173,10 @@
   border-bottom: 2px solid;
   border-color: #999;
   transform: rotate(45deg) scaleY(1);
-  left: 6px;
+  left: 0;
 }
 
 .kirki-icon-code::after {
   transform: rotate(-45deg) scaleX(-1);
-  left: 11px;
+  left: 5px;
 }
