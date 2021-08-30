@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "50db49aac28fe06c9f4135b43563b341",
+    "content-hash": "f25b2c3992dbe4a37a1cd4af309799dc",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -209,20 +209,20 @@
         },
         {
             "name": "kirki-framework/control-color",
-            "version": "v0.3",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-color.git",
-                "reference": "80c84dda295401a11231224a5df431eefb2941c1"
+                "reference": "50717cc7873658dc4fc97b06e7cbe134bc18d400"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/80c84dda295401a11231224a5df431eefb2941c1",
-                "reference": "80c84dda295401a11231224a5df431eefb2941c1",
+                "url": "https://api.github.com/repos/kirki-framework/control-color/zipball/50717cc7873658dc4fc97b06e7cbe134bc18d400",
+                "reference": "50717cc7873658dc4fc97b06e7cbe134bc18d400",
                 "shasum": ""
             },
             "require": {
-                "kirki-framework/control-react-color": "*",
+                "kirki-framework/control-react-colorful": "*",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -253,9 +253,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-color/issues",
-                "source": "https://github.com/kirki-framework/control-color/tree/master"
+                "source": "https://github.com/kirki-framework/control-color/tree/nightly"
             },
-            "time": "2019-12-21T10:55:38+00:00"
+            "time": "2021-08-26T18:27:29+00:00"
         },
         {
             "name": "kirki-framework/control-cropped-image",
@@ -890,12 +890,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "6cd0db1bdea39d27ab7f771d86274cd97e851f8b"
+                "reference": "8b6aad334d3971d51e210dfd53e46d8c9e5e774c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/6cd0db1bdea39d27ab7f771d86274cd97e851f8b",
-                "reference": "6cd0db1bdea39d27ab7f771d86274cd97e851f8b",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/8b6aad334d3971d51e210dfd53e46d8c9e5e774c",
+                "reference": "8b6aad334d3971d51e210dfd53e46d8c9e5e774c",
                 "shasum": ""
             },
             "require": {
@@ -939,7 +939,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-29T19:02:14+00:00"
+            "time": "2021-08-30T02:42:00+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",
@@ -6939,7 +6939,6 @@
         "kirki-framework/control-select": 20,
         "kirki-framework/control-sortable": 20,
         "kirki-framework/control-upload": 20,
-        "kirki-framework/field-color-palette": 20,
         "kirki-framework/field-dimensions": 20,
         "kirki-framework/field-fontawesome": 20,
         "kirki-framework/module-css": 20,
@@ -6950,7 +6949,9 @@
         "kirki-framework/module-sections": 20,
         "kirki-framework/control-react-color": 20,
         "kirki-framework/control-react-colorful": 20,
+        "kirki-framework/control-color": 20,
         "kirki-framework/field-background": 20,
+        "kirki-framework/field-color-palette": 20,
         "kirki-framework/field-multicolor": 20,
         "codacy/coverage": 20,
         "wptrt/wpthemereview": 20

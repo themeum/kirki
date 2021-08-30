@@ -20,4 +20,4 @@ use Kirki\Field;
  *
  * @since 1.0
  */
-class Color extends ReactColor {}
+class Color extends ReactColorful {}

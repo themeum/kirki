@@ -43,7 +43,6 @@
     "kirki-framework/control-slider": "*",
     "kirki-framework/control-sortable": "dev-master",
     "kirki-framework/control-upload": "dev-master",
-    "kirki-framework/field-color-palette": "dev-nightly",
     "kirki-framework/field-dimensions": "dev-master",
     "kirki-framework/field-fontawesome": "dev-master",
     "kirki-framework/field-typography": "*",
@@ -61,7 +60,9 @@
     "kirki-framework/module-sections": "dev-nightly",
     "kirki-framework/control-react-color": "dev-master",
     "kirki-framework/control-react-colorful": "dev-nightly",
+    "kirki-framework/control-color": "dev-nightly",
     "kirki-framework/field-background": "dev-nightly",
+    "kirki-framework/field-color-palette": "dev-nightly",
     "kirki-framework/field-multicolor": "dev-nightly"
   },
   "require-dev": {

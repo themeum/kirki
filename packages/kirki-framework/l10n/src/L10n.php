@@ -128,9 +128,7 @@ class L10n {
 	 */
 	public function override_load_textdomain( $override, $domain, $mofile ) {
 		global $l10n;
-
 		if ( isset( $l10n[ $this->get_theme_textdomain() ] ) ) {
-			// ? Bagus: is this already correct? Replacing $l10n['kirki'] with theme textdomaian regardless the condition.
 			$l10n[ $this->textdomain ] = $l10n[ $this->get_theme_textdomain() ]; // phpcs:ignore WordPress.WP.GlobalVariablesOverride
 		}
 
