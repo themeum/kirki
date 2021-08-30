@@ -180,3 +180,32 @@
   transform: rotate(-45deg) scaleX(-1);
   left: 5px;
 }
+
+.kirki-react-colorful-swatches {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.kirki-react-colorful-swatch {
+  position: relative;
+  display: block;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border-width: 0;
+  cursor: pointer;
+  transform: scale(1, 1);
+  transition: transform .2s;
+}
+
+.kirki-react-colorful-swatch:active,
+.kirki-react-colorful-swatch:focus {
+  outline: none;
+}
+
+.kirki-react-colorful-swatch:hover {
+  transform: scale(1.1, 1.1);
+}

@@ -89,6 +89,49 @@ class ReactColorful extends Base {
 		// Mode.
 		$this->json['mode'] = $this->mode;
 
+		// Color swatches.
+		$this->json['choices']['swatches'] = $this->color_swatches();
+
+	}
+
+	/**
+	 * Get color swatches values.
+	 *
+	 * @return array The color swatches values.
+	 */
+	public function color_swatches() {
+
+		$default_swatches = [
+			'#000000',
+			'#ff0000',
+			'#ffa500',
+			'#00ff00',
+			'#0000ff',
+			'#00BCD4',
+			'#999999',
+			'#eeeeee'
+		];
+
+		$default_swatches = apply_filters( 'kirki_default_color_swatches', $default_swatches );
+
+		if (isset($this->choices['swatches']) && !empty($this->choices['swatches'])) {
+			$swatches = $this->choices['swatches'];
+
+			$total_swatches = count($swatches);
+
+			if ($total_swatches < 8) {
+				for ($i = $total_swatches; $i <= 8; $i++) {
+					$swatches[] = $total_swatches[$i];
+				}
+			}
+		} else {
+			$swatches = $default_swatches;
+		}
+
+		$swatches = apply_filters( 'kirki_color_swatches', $swatches );
+
+		return $swatches;
+
 	}
 
 	/**
