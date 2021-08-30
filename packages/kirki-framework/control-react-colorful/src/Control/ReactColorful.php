@@ -45,6 +45,16 @@ class ReactColorful extends Base {
 	public static $control_ver = '1.0';
 
 	/**
+	 * The color mode.
+	 *
+	 * Used by 'mode' => 'alpha' argument.
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $mode = '';
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
@@ -76,22 +86,8 @@ class ReactColorful extends Base {
 		// Get the basics from the parent class.
 		parent::to_json();
 
-		// Set the default formComponent value to `HexColorPicker`.
-		if ( ! isset( $this->json['choices']['formComponent'] ) ) {
-			$this->json['choices']['formComponent'] = 'HexColorPicker';
-		}
-
-		// For backwards-compatibility - In v4, we can just `RgbaColorPicker` directly as the value of formComponent.
-		if ( isset( $this->json['choices']['alpha'] ) && true === $this->json['choices']['alpha'] ) {
-			$this->json['choices']['formComponent'] = 'RgbaColorPicker';
-		}
-
-		$value = isset( $this->json['value'] ) ? $this->json['value'] : '';
-
-		// ! The react-colorful doesn't support hue-only picker yet.
-		if ( isset( $this->json['mode'] ) && 'hue' === $this->json['mode'] ) {
-			$this->json['choices']['formComponent'] = 'HslColorPicker';
-		}
+		// Mode.
+		$this->json['mode'] = $this->mode;
 
 	}
 

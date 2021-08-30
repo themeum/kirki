@@ -7,6 +7,14 @@
   box-sizing: border-box;
 }
 
+.kirki-control-content-hue-mode .react-colorful {
+  height: auto;
+}
+
+.kirki-control-content-hue-mode .react-colorful__saturation {
+  display: none;
+}
+
 .kirki-control-content * {
   box-sizing: border-box;
 }
@@ -57,6 +65,10 @@
   border-radius: 0 0 4px 4px;
 }
 
+.kirki-control-content-hue-mode .react-colorful__last-control {
+  border-radius: 4px;
+}
+
 .customize-control-kirki-react-colorful .react-colorful__pointer {
   width: 18px;
   height: 18px;
@@ -87,6 +99,11 @@
   z-index: 1;
 }
 
+.kirki-control-content-hue-mode .kirki-react-colorful-input-control input {
+  padding-left: 15px;
+  padding-left: 15px;
+}
+
 .kirki-react-colorful-input-control input:focus,
 .kirki-react-colorful-input-control input:active {
   box-shadow: 0 0 0 1px #2271b1;
@@ -98,6 +115,11 @@
 .kirki-react-colorful-input-format-switcher {
   position: absolute;
   cursor: pointer;
+}
+
+.kirki-control-content-hue-mode .kirki-react-colorful-input-color-preview,
+.kirki-control-content-hue-mode .kirki-react-colorful-input-format-switcher {
+  display: none;
 }
 
 .kirki-react-colorful-input-color-preview {
