@@ -85,7 +85,7 @@
   width: 100%;
 }
 
-.kirki-react-colorful-input {
+input.kirki-react-colorful-input {
   display: block;
   position: relative;
   padding-left: 27px;
@@ -99,9 +99,9 @@
   z-index: 1;
 }
 
-.kirki-control-content-hue-mode .kirki-react-colorful-input {
-  padding-left: 15px;
-  padding-left: 15px;
+.kirki-control-content-hue-mode input.kirki-react-colorful-input {
+  padding-left: 8px;
+  padding-left: 8px;
 }
 
 .kirki-react-colorful-input:focus,
@@ -111,18 +111,47 @@
   border-color: #2271b1;
 }
 
-.kirki-react-colorful-input-color-preview {
+.kirki-react-colorful-color-preview,
+.kirki-react-colorful-reset-button {
   position: absolute;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.kirki-react-colorful-color-preview {
   display: block;
   left: 7px;
-  padding: 0;
   width: 18px;
   height: 18px;
-  background-color: transparent;
   border: 1px solid #eee;
   border-radius: 50%;
-  cursor: pointer;
   z-index: 2;
+}
+
+.kirki-react-colorful-reset-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 7px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border-width: 0;
+  z-index: 3;
+}
+
+.kirki-react-colorful-reset-button:hover i {
+  color: #f00;
+  transform: rotate(45deg);
+}
+
+.kirki-react-colorful-reset-button i {
+  font-size: 12px;
+  width: auto;
+  height: auto;
+  transform: rotate(-45deg);
+  transition: transform .2s;
 }
 
 .kirki-react-colorful-swatches {
