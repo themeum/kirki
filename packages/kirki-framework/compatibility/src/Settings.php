@@ -66,7 +66,7 @@ class Settings {
 	 * @access private
 	 * @param array $args The field definition as sanitized in Kirki\Compatibility\Field.
 	 */
-	final private function add_settings( $args = [] ) {
+	final function add_settings( $args = [] ) {
 
 		// Get the classname we'll be using to create our setting(s).
 		$classname = false;
@@ -108,7 +108,7 @@ class Settings {
 	 * @param string       $transport           Use refresh|postMessage.
 	 * @param string|array $sanitize_callback   A callable sanitization function or method.
 	 */
-	final private function add_setting( $classname, $setting, $default, $type, $capability, $transport, $sanitize_callback ) {
+	final function add_setting( $classname, $setting, $default, $type, $capability, $transport, $sanitize_callback ) {
 
 		$this->wp_customize->add_setting(
 			new $classname(
@@ -132,7 +132,7 @@ class Settings {
 	 * and that the defined classes actually exist.
 	 * If a defined class does not exist, it is removed.
 	 */
-	final private function set_setting_types() {
+	final function set_setting_types() {
 
 		// Apply the kirki_setting_types filter.
 		$this->setting_types = apply_filters(
