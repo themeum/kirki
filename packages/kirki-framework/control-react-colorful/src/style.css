@@ -94,7 +94,7 @@
   height: 30px;
   line-height: 30px;
   color: #333;
-  border: 1px solid #ddd;
+  border: 1px solid #8c8f94;
   border-radius: 4px;
   z-index: 1;
 }
@@ -119,7 +119,7 @@
   width: 18px;
   height: 18px;
   background-color: transparent;
-  border-width: 0;
+  border: 1px solid #eee;
   border-radius: 50%;
   cursor: pointer;
   z-index: 2;
@@ -139,7 +139,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border-width: 0;
+  border: 1px solid #eee;
   cursor: pointer;
   transform: scale(1, 1);
   transition: transform .2s;

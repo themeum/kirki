@@ -103,13 +103,13 @@ class ReactColorful extends Base {
 
 		$default_swatches = [
 			'#000000',
-			'#ff0000',
-			'#ffa500',
-			'#00ff00',
-			'#0000ff',
-			'#00BCD4',
-			'#999999',
-			'#eeeeee'
+			'#ffffff',
+			'#dd3333',
+			'#dd9933',
+			'#eeee22',
+			'#81d742',
+			'#1e73be',
+			'#8224e3',
 		];
 
 		$default_swatches = apply_filters( 'kirki_default_color_swatches', $default_swatches );
