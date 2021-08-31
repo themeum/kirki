@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'aa36260769f68bcf91af22221f20ff4fc6252b20',
+        'reference' => 'c0e39289d369c1b286a91f052ba30e951ca40eed',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'aa36260769f68bcf91af22221f20ff4fc6252b20',
+            'reference' => 'c0e39289d369c1b286a91f052ba30e951ca40eed',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -280,7 +280,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-colorful',
             'aliases' => array(),
-            'reference' => '935ee9ed07d04035d2e02c3af5a2d69df5f6aefc',
+            'reference' => 'd50bc06c701b640641c208ac44412f849fd7011f',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
@@ -714,12 +714,12 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-            'pretty_version' => '9.5.8',
-            'version' => '9.5.8.0',
+            'pretty_version' => '9.5.9',
+            'version' => '9.5.9.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
-            'reference' => '191768ccd5c85513b4068bdbe99bb6390c7d54fb',
+            'reference' => 'ea8c2dfb1065eb35a79b3681eee6e6fb0a6f273b',
             'dev_requirement' => true,
         ),
         'psr/container' => array(
