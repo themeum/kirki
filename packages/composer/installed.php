@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'bfb48aa77544d07143662a66ef87f2dfcd8863eb',
+        'reference' => 'd6af0859508780e35ec162c2de39b2972f6b17bd',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'bfb48aa77544d07143662a66ef87f2dfcd8863eb',
+            'reference' => 'd6af0859508780e35ec162c2de39b2972f6b17bd',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -371,7 +371,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-background',
             'aliases' => array(),
-            'reference' => '140d69092822ab6d5f07ef362b4166ff60f843a4',
+            'reference' => '269d7ad6b009990302f6d454179e7111422878f7',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-color-palette' => array(

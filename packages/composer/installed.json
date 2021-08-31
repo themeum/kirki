@@ -2095,12 +2095,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-background.git",
-                "reference": "140d69092822ab6d5f07ef362b4166ff60f843a4"
+                "reference": "269d7ad6b009990302f6d454179e7111422878f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/140d69092822ab6d5f07ef362b4166ff60f843a4",
-                "reference": "140d69092822ab6d5f07ef362b4166ff60f843a4",
+                "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/269d7ad6b009990302f6d454179e7111422878f7",
+                "reference": "269d7ad6b009990302f6d454179e7111422878f7",
                 "shasum": ""
             },
             "require": {
@@ -2110,7 +2110,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-08-29T19:09:09+00:00",
+            "time": "2021-08-31T16:31:26+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
