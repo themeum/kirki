@@ -85,11 +85,11 @@
   width: 100%;
 }
 
-.kirki-react-colorful-input-control input {
+.kirki-react-colorful-input {
   display: block;
   position: relative;
   padding-left: 27px;
-  padding-right: 32px;
+  padding-right: 8px;
   width: 100%;
   height: 30px;
   line-height: 30px;
@@ -99,86 +99,30 @@
   z-index: 1;
 }
 
-.kirki-control-content-hue-mode .kirki-react-colorful-input-control input {
+.kirki-control-content-hue-mode .kirki-react-colorful-input {
   padding-left: 15px;
   padding-left: 15px;
 }
 
-.kirki-react-colorful-input-control input:focus,
-.kirki-react-colorful-input-control input:active {
+.kirki-react-colorful-input:focus,
+.kirki-react-colorful-input:active {
   box-shadow: 0 0 0 1px #2271b1;
   outline: none;
   border-color: #2271b1;
 }
 
-.kirki-react-colorful-input-color-preview,
-.kirki-react-colorful-input-format-switcher {
-  position: absolute;
-  border-width: 0;
-  background-color: transparent;
-  cursor: pointer;
-}
-
 .kirki-react-colorful-input-color-preview {
+  position: absolute;
   display: block;
   left: 7px;
   padding: 0;
   width: 18px;
   height: 18px;
+  background-color: transparent;
+  border-width: 0;
   border-radius: 50%;
+  cursor: pointer;
   z-index: 2;
-}
-
-.kirki-react-colorful-input-format-switcher {
-  display: flex;
-  align-items: center;
-  right: 7px;
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
-  z-index: 3;
-}
-
-.kirki-react-colorful-input-format-switcher:hover {
-  background-color: #f3f3f3;
-}
-
-/* @see https://css.gg/code */
-.kirki-icon-code {
-  transform: scale(1);
-}
-
-.kirki-icon-code,
-.kirki-icon-code::after,
-.kirki-icon-code::before {
-  box-sizing: border-box;
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 6px;
-  height: 23px;
-}
-
-.kirki-react-colorful-input-format-switcher:hover .kirki-icon-code::before,
-.kirki-react-colorful-input-format-switcher:hover .kirki-icon-code::after {
-  border-color: #000;
-}
-
-.kirki-icon-code::after,
-.kirki-icon-code::before {
-  content: "";
-  position: absolute;
-  height: 6px;
-  border-left: 2px solid;
-  border-bottom: 2px solid;
-  border-color: #999;
-  transform: rotate(45deg) scaleY(1);
-  left: 0;
-}
-
-.kirki-icon-code::after {
-  transform: rotate(-45deg) scaleX(-1);
-  left: 5px;
 }
 
 .kirki-react-colorful-swatches {
