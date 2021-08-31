@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a32fd975146c3bf5915c3cfef10f8619473bef0f',
+        'reference' => 'bfb48aa77544d07143662a66ef87f2dfcd8863eb',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a32fd975146c3bf5915c3cfef10f8619473bef0f',
+            'reference' => 'bfb48aa77544d07143662a66ef87f2dfcd8863eb',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -280,7 +280,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-colorful',
             'aliases' => array(),
-            'reference' => 'e691e474bff5c2b3b84a7bcdaa57ee6f04732bd8',
+            'reference' => '84d87ce06626eac7e3aa28baff922833b3b8b1e8',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
