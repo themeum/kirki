@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'c782d59e91d6b72e95c8f912140f2cf8b35c016c',
+        'reference' => '5a1d4595b0e76ae1035970686c789d0cade2a5d4',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'c782d59e91d6b72e95c8f912140f2cf8b35c016c',
+            'reference' => '5a1d4595b0e76ae1035970686c789d0cade2a5d4',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -280,7 +280,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-colorful',
             'aliases' => array(),
-            'reference' => '018f07a059c63e9de1af01323a66883c59fba793',
+            'reference' => '809e822d0466b13b7dd57b281b8351591d5bf9f2',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
@@ -289,7 +289,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-select',
             'aliases' => array(),
-            'reference' => '151e9be5536445180dbed8e94cd9498c5ce31f32',
+            'reference' => '4694130c0a671e1bb36a8f33ee72fbad7b35075e',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-repeater' => array(
@@ -304,13 +304,11 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-select' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-nightly',
+            'version' => 'dev-nightly',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-select',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
+            'aliases' => array(),
             'reference' => '1f4abff6dc6549720624bc8a1d0930a61cf52a50',
             'dev_requirement' => false,
         ),
