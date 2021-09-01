@@ -672,18 +672,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "ef906bce262475c15cd6288abc543e7ffdb5acc1"
+                "reference": "107bb06fb4b1dc023318ec3b758cdee895e2f683"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/ef906bce262475c15cd6288abc543e7ffdb5acc1",
-                "reference": "ef906bce262475c15cd6288abc543e7ffdb5acc1",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/107bb06fb4b1dc023318ec3b758cdee895e2f683",
+                "reference": "107bb06fb4b1dc023318ec3b758cdee895e2f683",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
-            "time": "2021-08-24T13:52:07+00:00",
+            "time": "2021-09-01T05:21:00+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -712,7 +712,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
-                "source": "https://github.com/kirki-framework/compatibility/tree/bagus"
+                "source": "https://github.com/kirki-framework/compatibility/tree/nightly"
             },
             "install-path": "../kirki-framework/compatibility"
         },
@@ -1601,12 +1601,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "c80a8a51c19996d926b86a4aabd11f539fe41a3e"
+                "reference": "22e01b4c035018bd88f87d1358789ae6ef3a55b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/c80a8a51c19996d926b86a4aabd11f539fe41a3e",
-                "reference": "c80a8a51c19996d926b86a4aabd11f539fe41a3e",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/22e01b4c035018bd88f87d1358789ae6ef3a55b4",
+                "reference": "22e01b4c035018bd88f87d1358789ae6ef3a55b4",
                 "shasum": ""
             },
             "require": {
@@ -1615,7 +1615,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-08-31T16:58:26+00:00",
+            "time": "2021-09-01T06:18:48+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
