@@ -1601,12 +1601,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "6b300872421c868eef02524ecd90ff7e71a41afd"
+                "reference": "018f07a059c63e9de1af01323a66883c59fba793"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/6b300872421c868eef02524ecd90ff7e71a41afd",
-                "reference": "6b300872421c868eef02524ecd90ff7e71a41afd",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/018f07a059c63e9de1af01323a66883c59fba793",
+                "reference": "018f07a059c63e9de1af01323a66883c59fba793",
                 "shasum": ""
             },
             "require": {
@@ -1615,7 +1615,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-01T07:50:22+00:00",
+            "time": "2021-09-01T07:59:33+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1656,17 +1656,17 @@
         },
         {
             "name": "kirki-framework/control-react-select",
-            "version": "v0.3.1",
-            "version_normalized": "0.3.1.0",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-select.git",
-                "reference": "bc4d6cd15e482c28b4924203fc129bc1cc731c92"
+                "reference": "151e9be5536445180dbed8e94cd9498c5ce31f32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/bc4d6cd15e482c28b4924203fc129bc1cc731c92",
-                "reference": "bc4d6cd15e482c28b4924203fc129bc1cc731c92",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/151e9be5536445180dbed8e94cd9498c5ce31f32",
+                "reference": "151e9be5536445180dbed8e94cd9498c5ce31f32",
                 "shasum": ""
             },
             "require": {
@@ -1674,7 +1674,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2019-11-09T11:39:56+00:00",
+            "time": "2021-08-11T13:13:14+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1704,7 +1704,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-react-select/issues",
-                "source": "https://github.com/kirki-framework/control-react-select/tree/v0.3.1"
+                "source": "https://github.com/kirki-framework/control-react-select/tree/master"
             },
             "install-path": "../kirki-framework/control-react-select"
         },

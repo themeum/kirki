@@ -39,7 +39,7 @@
     "kirki-framework/control-radio": "dev-master",
     "kirki-framework/control-repeater": "dev-master",
     "kirki-framework/control-select": "dev-master",
-    "kirki-framework/control-react-select": "*",
+    "kirki-framework/control-react-select": "dev-nightly",
     "kirki-framework/control-slider": "*",
     "kirki-framework/control-sortable": "dev-master",
     "kirki-framework/control-upload": "dev-master",
