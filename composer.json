@@ -32,7 +32,7 @@
     "kirki-framework/control-date": "dev-master",
     "kirki-framework/control-dimension": "dev-master",
     "kirki-framework/control-editor": "dev-master",
-    "kirki-framework/control-generic": "dev-master",
+    "kirki-framework/control-generic": "dev-nightly",
     "kirki-framework/control-image": "dev-master",
     "kirki-framework/control-multicheck": "dev-master",
     "kirki-framework/control-palette": "dev-master",
