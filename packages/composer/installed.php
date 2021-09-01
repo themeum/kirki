@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f132a14a1306a03d2ff5f10672f5111a1794bed8',
+        'reference' => 'eb94871448dc5aa5f0d8538e8a7cdf6856105c4d',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f132a14a1306a03d2ff5f10672f5111a1794bed8',
+            'reference' => 'eb94871448dc5aa5f0d8538e8a7cdf6856105c4d',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
