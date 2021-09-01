@@ -1355,12 +1355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-background.git",
-                "reference": "269d7ad6b009990302f6d454179e7111422878f7"
+                "reference": "5067b48202055eba181a7b71a1f30ab809f6aa45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/269d7ad6b009990302f6d454179e7111422878f7",
-                "reference": "269d7ad6b009990302f6d454179e7111422878f7",
+                "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/5067b48202055eba181a7b71a1f30ab809f6aa45",
+                "reference": "5067b48202055eba181a7b71a1f30ab809f6aa45",
                 "shasum": ""
             },
             "require": {
@@ -1399,7 +1399,7 @@
                 "issues": "https://github.com/kirki-framework/field-background/issues",
                 "source": "https://github.com/kirki-framework/field-background/tree/nightly"
             },
-            "time": "2021-08-31T16:31:26+00:00"
+            "time": "2021-09-01T15:40:40+00:00"
         },
         {
             "name": "kirki-framework/field-color-palette",

@@ -42,6 +42,7 @@ class Background extends Field {
 
 		$args['required']     = isset( $args['required'] ) ? (array) $args['required'] : [];
 		$args['kirki_config'] = isset( $args['kirki_config'] ) ? $args['kirki_config'] : 'global';
+
 		/**
 		 * Add a hidden field, the label & description.
 		 */
@@ -54,6 +55,7 @@ class Background extends Field {
 						'type'        => 'hidden',
 						'parent_type' => 'kirki-background',
 					],
+					'sanitize_callback' => [ '\Kirki\Field\Background', 'sanitize' ],
 				],
 				$args
 			)
