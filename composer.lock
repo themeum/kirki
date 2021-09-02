@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "107bb06fb4b1dc023318ec3b758cdee895e2f683"
+                "reference": "08aeffcec4d3b3827a4f5176a277aa6f9866d23d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/107bb06fb4b1dc023318ec3b758cdee895e2f683",
-                "reference": "107bb06fb4b1dc023318ec3b758cdee895e2f683",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/08aeffcec4d3b3827a4f5176a277aa6f9866d23d",
+                "reference": "08aeffcec4d3b3827a4f5176a277aa6f9866d23d",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
                 "source": "https://github.com/kirki-framework/compatibility/tree/nightly"
             },
-            "time": "2021-09-01T05:21:00+00:00"
+            "time": "2021-09-02T14:49:38+00:00"
         },
         {
             "name": "kirki-framework/control-base",

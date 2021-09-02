@@ -37,8 +37,6 @@ class Scripts {
 			add_action( 'admin_register_scripts', [ $this, 'register_scripts' ] );
 			add_action( 'customize_controls_enqueue_scripts', [ $this, 'register_scripts' ] );
 		}
-
-		add_action( 'customize_controls_enqueue_scripts', [ $this, 'register_kirki_global' ] );
 	}
 
 	/**
@@ -55,11 +53,4 @@ class Scripts {
 		wp_register_script( 'wp-i18n', $folder_url . 'scripts/i18n.js', [ 'wp-polyfill' ], '3.3.0', false );
 	}
 
-	/**
-	 * Register Kirki global object.
-	 */
-	public function register_kirki_global() {
-		$kirki_global = 'var Kirki = {componentCallback: {}};';
-		wp_add_inline_script( 'react-dom', $kirki_global );
-	}
 }
