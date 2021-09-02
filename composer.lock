@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "14108cc1aade867903ace917640de403",
+    "content-hash": "4ba0478871c5afeca42a1e6b11beebb8",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -946,12 +946,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-select.git",
-                "reference": "4694130c0a671e1bb36a8f33ee72fbad7b35075e"
+                "reference": "0a97b66e27e17bfb9b96b26484a258081fe847e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/4694130c0a671e1bb36a8f33ee72fbad7b35075e",
-                "reference": "4694130c0a671e1bb36a8f33ee72fbad7b35075e",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/0a97b66e27e17bfb9b96b26484a258081fe847e1",
+                "reference": "0a97b66e27e17bfb9b96b26484a258081fe847e1",
                 "shasum": ""
             },
             "require": {
@@ -989,7 +989,7 @@
                 "issues": "https://github.com/kirki-framework/control-react-select/issues",
                 "source": "https://github.com/kirki-framework/control-react-select/tree/nightly"
             },
-            "time": "2021-09-01T11:24:14+00:00"
+            "time": "2021-09-02T03:06:58+00:00"
         },
         {
             "name": "kirki-framework/control-repeater",
@@ -1865,16 +1865,16 @@
         },
         {
             "name": "kirki-framework/module-field-dependencies",
-            "version": "v1.0.1",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-field-dependencies.git",
-                "reference": "d325b44744ad1ea800997850baee79ccf91597b6"
+                "reference": "e98ead5fef1bd93601f937f1b9391ca7a50c311c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/d325b44744ad1ea800997850baee79ccf91597b6",
-                "reference": "d325b44744ad1ea800997850baee79ccf91597b6",
+                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/e98ead5fef1bd93601f937f1b9391ca7a50c311c",
+                "reference": "e98ead5fef1bd93601f937f1b9391ca7a50c311c",
                 "shasum": ""
             },
             "require": {
@@ -1908,9 +1908,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-field-dependencies/issues",
-                "source": "https://github.com/kirki-framework/module-field-dependencies/tree/master"
+                "source": "https://github.com/kirki-framework/module-field-dependencies/tree/nightly"
             },
-            "time": "2019-11-09T11:18:40+00:00"
+            "time": "2021-09-02T03:04:51+00:00"
         },
         {
             "name": "kirki-framework/module-panels",
@@ -6942,6 +6942,7 @@
         "kirki-framework/field-fontawesome": 20,
         "kirki-framework/module-css": 20,
         "kirki-framework/module-editor-styles": 20,
+        "kirki-framework/module-field-dependencies": 20,
         "kirki-framework/compatibility": 20,
         "kirki-framework/data-option": 20,
         "kirki-framework/module-panels": 20,

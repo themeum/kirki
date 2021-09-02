@@ -48,7 +48,7 @@
     "kirki-framework/field-typography": "*",
     "kirki-framework/module-css": "dev-master",
     "kirki-framework/module-editor-styles": "dev-master",
-    "kirki-framework/module-field-dependencies": "*",
+    "kirki-framework/module-field-dependencies": "dev-nightly",
     "kirki-framework/module-postmessage": "*",
     "kirki-framework/module-preset": "*",
     "kirki-framework/module-selective-refresh": "*",
