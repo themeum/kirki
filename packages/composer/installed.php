@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f10a2cc0d9c44ecfa5bfa7c8942811a0a377ca33',
+        'reference' => 'a51af0462398f5f9b5541fe670474dc478f4e057',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f10a2cc0d9c44ecfa5bfa7c8942811a0a377ca33',
+            'reference' => 'a51af0462398f5f9b5541fe670474dc478f4e057',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -465,7 +465,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-field-dependencies',
             'aliases' => array(),
-            'reference' => 'e98ead5fef1bd93601f937f1b9391ca7a50c311c',
+            'reference' => '9882cbfdde73192ff4b3fcf3ad1d994cdf339f27',
             'dev_requirement' => false,
         ),
         'kirki-framework/module-panels' => array(

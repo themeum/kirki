@@ -1868,12 +1868,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-field-dependencies.git",
-                "reference": "e98ead5fef1bd93601f937f1b9391ca7a50c311c"
+                "reference": "9882cbfdde73192ff4b3fcf3ad1d994cdf339f27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/e98ead5fef1bd93601f937f1b9391ca7a50c311c",
-                "reference": "e98ead5fef1bd93601f937f1b9391ca7a50c311c",
+                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/9882cbfdde73192ff4b3fcf3ad1d994cdf339f27",
+                "reference": "9882cbfdde73192ff4b3fcf3ad1d994cdf339f27",
                 "shasum": ""
             },
             "require": {
@@ -1909,7 +1909,7 @@
                 "issues": "https://github.com/kirki-framework/module-field-dependencies/issues",
                 "source": "https://github.com/kirki-framework/module-field-dependencies/tree/nightly"
             },
-            "time": "2021-09-02T03:04:51+00:00"
+            "time": "2021-09-02T15:46:53+00:00"
         },
         {
             "name": "kirki-framework/module-panels",

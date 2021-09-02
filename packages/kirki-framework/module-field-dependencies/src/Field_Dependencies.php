@@ -91,7 +91,6 @@ class Field_Dependencies {
 	 * @return void
 	 */
 	public function field_dependencies() {
-		error_log(print_r($this->dependencies, true));
 		wp_enqueue_script( 'kirki_field_dependencies', URL::get_from_path( __DIR__ . '/script.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], '4.0', true );
 		wp_localize_script( 'kirki_field_dependencies', 'kirkiControlDependencies', $this->dependencies );
 	}
