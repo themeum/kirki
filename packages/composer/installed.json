@@ -1484,19 +1484,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-radio.git",
-                "reference": "d0a4ee643d57d9970f4924a95b19fae3dad60e1c"
+                "reference": "74acf02e1fbc39167eeecaa1ab065b2c6fe4aa82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/d0a4ee643d57d9970f4924a95b19fae3dad60e1c",
-                "reference": "d0a4ee643d57d9970f4924a95b19fae3dad60e1c",
+                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/74acf02e1fbc39167eeecaa1ab065b2c6fe4aa82",
+                "reference": "74acf02e1fbc39167eeecaa1ab065b2c6fe4aa82",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "*",
                 "php": ">=5.6"
             },
-            "time": "2019-10-26T07:20:06+00:00",
+            "time": "2021-09-02T14:34:43+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1526,7 +1526,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-radio/issues",
-                "source": "https://github.com/kirki-framework/control-radio/tree/master"
+                "source": "https://github.com/kirki-framework/control-radio/tree/nightly"
             },
             "install-path": "../kirki-framework/control-radio"
         },
