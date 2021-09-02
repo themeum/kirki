@@ -1479,8 +1479,8 @@
         },
         {
             "name": "kirki-framework/control-radio",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-radio.git",
@@ -1497,7 +1497,6 @@
                 "php": ">=5.6"
             },
             "time": "2019-10-26T07:20:06+00:00",
-            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {

@@ -36,7 +36,7 @@
     "kirki-framework/control-image": "dev-master",
     "kirki-framework/control-multicheck": "dev-master",
     "kirki-framework/control-palette": "dev-master",
-    "kirki-framework/control-radio": "dev-master",
+    "kirki-framework/control-radio": "dev-nightly",
     "kirki-framework/control-repeater": "dev-master",
     "kirki-framework/control-select": "dev-nightly",
     "kirki-framework/control-react-select": "dev-nightly",

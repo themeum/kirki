@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ba0478871c5afeca42a1e6b11beebb8",
+    "content-hash": "4c6ce2e6bf65a6d87116bab95c1a7897",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -775,7 +775,7 @@
         },
         {
             "name": "kirki-framework/control-radio",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-radio.git",
@@ -791,7 +791,6 @@
                 "kirki-framework/control-base": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
