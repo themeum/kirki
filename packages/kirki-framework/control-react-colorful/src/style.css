@@ -111,6 +111,18 @@ input.kirki-react-colorful-input {
   border-color: #2271b1;
 }
 
+.kirki-react-colorful-color-preview-wrapper {
+  position: absolute;
+  left: 7px;
+  width: 18px;
+  height: 18px;
+  background-repeat: repeat;
+  background-size: 8px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  z-index: 2;
+}
+
 .kirki-react-colorful-color-preview,
 .kirki-react-colorful-reset-button {
   position: absolute;
@@ -121,12 +133,14 @@ input.kirki-react-colorful-input {
 
 .kirki-react-colorful-color-preview {
   display: block;
-  left: 7px;
-  width: 18px;
-  height: 18px;
-  border: 1px solid #eee;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  z-index: 2;
+  border-width: 0;
+}
+
+.kirki-control-content-hue-mode .kirki-react-colorful-color-preview {
+  border-width: 0;
 }
 
 .kirki-react-colorful-reset-button {
