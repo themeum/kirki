@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3bae6252b5952070eb772013a660ff5",
+    "content-hash": "b20fc729f5eb69347ec515e08dad115b",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -460,7 +460,7 @@
         },
         {
             "name": "kirki-framework/control-dimension",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dimension.git",
@@ -477,7 +477,6 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -568,12 +567,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-generic.git",
-                "reference": "3ea5a81c88e23f4601ad62669232254d23851136"
+                "reference": "b4cc4f187bc3650146258a414625a9e002423622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/3ea5a81c88e23f4601ad62669232254d23851136",
-                "reference": "3ea5a81c88e23f4601ad62669232254d23851136",
+                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/b4cc4f187bc3650146258a414625a9e002423622",
+                "reference": "b4cc4f187bc3650146258a414625a9e002423622",
                 "shasum": ""
             },
             "require": {
@@ -611,7 +610,7 @@
                 "issues": "https://github.com/kirki-framework/control-generic/issues",
                 "source": "https://github.com/kirki-framework/control-generic/tree/nightly"
             },
-            "time": "2021-09-03T18:09:25+00:00"
+            "time": "2021-09-03T18:13:33+00:00"
         },
         {
             "name": "kirki-framework/control-image",
@@ -1448,7 +1447,7 @@
         },
         {
             "name": "kirki-framework/field-dimensions",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-dimensions.git",
@@ -1465,7 +1464,6 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {

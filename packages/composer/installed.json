@@ -1146,8 +1146,8 @@
         },
         {
             "name": "kirki-framework/control-dimension",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dimension.git",
@@ -1165,7 +1165,6 @@
                 "php": ">=5.6"
             },
             "time": "2019-10-27T16:52:14+00:00",
-            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1261,12 +1260,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-generic.git",
-                "reference": "3ea5a81c88e23f4601ad62669232254d23851136"
+                "reference": "b4cc4f187bc3650146258a414625a9e002423622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/3ea5a81c88e23f4601ad62669232254d23851136",
-                "reference": "3ea5a81c88e23f4601ad62669232254d23851136",
+                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/b4cc4f187bc3650146258a414625a9e002423622",
+                "reference": "b4cc4f187bc3650146258a414625a9e002423622",
                 "shasum": ""
             },
             "require": {
@@ -1274,7 +1273,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-03T18:09:25+00:00",
+            "time": "2021-09-03T18:13:33+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2191,8 +2190,8 @@
         },
         {
             "name": "kirki-framework/field-dimensions",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-dimensions.git",
@@ -2210,7 +2209,6 @@
                 "php": ">=5.6"
             },
             "time": "2019-08-17T07:04:26+00:00",
-            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {

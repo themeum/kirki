@@ -41,7 +41,7 @@ class Text extends Generic {
 
 			// Set the sanitize-callback if none is defined.
 			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-				$args['sanitize_callback'] = 'sanitize_textarea_field';
+				$args['sanitize_callback'] = 'sanitize_textarea_field'; // ? Bagus: should we use `sanitize_text_field` instead ?
 			}
 		}
 		return $args;
