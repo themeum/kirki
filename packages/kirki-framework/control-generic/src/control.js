@@ -1,3 +1,5 @@
+import "./control.scss";
+
 wp.customize.controlConstructor['kirki-generic'] = wp.customize.kirkiDynamicControl.extend( {
 	initKirkiControl: function( control ) {
         control = control || this;
