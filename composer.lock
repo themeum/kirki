@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04d3e8814923c55d290f9065f2357ac9",
+    "content-hash": "430a31d24a4820d1fce3b00e0dd38d00",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -56,23 +56,22 @@
         },
         {
             "name": "kirki-framework/control-base",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "13bf42e5b4619c9122e3c78d1381c104443c6304"
+                "reference": "6bcf8ed614608186ee51ba4612e11328173c6174"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/13bf42e5b4619c9122e3c78d1381c104443c6304",
-                "reference": "13bf42e5b4619c9122e3c78d1381c104443c6304",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/6bcf8ed614608186ee51ba4612e11328173c6174",
+                "reference": "6bcf8ed614608186ee51ba4612e11328173c6174",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -100,9 +99,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-base/issues",
-                "source": "https://github.com/kirki-framework/control-base/tree/master"
+                "source": "https://github.com/kirki-framework/control-base/tree/nightly"
             },
-            "time": "2019-10-04T21:15:35+00:00"
+            "time": "2021-09-03T13:58:40+00:00"
         },
         {
             "name": "kirki-framework/control-checkbox",
