@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '1c74e651c264d22b167fd8d4106bd14e63b180f2',
+        'reference' => '4e66d1d4c71b674da6f23afe07fe09f7961ea170',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '1c74e651c264d22b167fd8d4106bd14e63b180f2',
+            'reference' => '4e66d1d4c71b674da6f23afe07fe09f7961ea170',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -250,7 +250,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-radio',
             'aliases' => array(),
-            'reference' => '74acf02e1fbc39167eeecaa1ab065b2c6fe4aa82',
+            'reference' => 'af43f45d080aa8752633ad6a12b39569068b312d',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-color' => array(

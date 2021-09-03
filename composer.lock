@@ -776,12 +776,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-radio.git",
-                "reference": "74acf02e1fbc39167eeecaa1ab065b2c6fe4aa82"
+                "reference": "af43f45d080aa8752633ad6a12b39569068b312d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/74acf02e1fbc39167eeecaa1ab065b2c6fe4aa82",
-                "reference": "74acf02e1fbc39167eeecaa1ab065b2c6fe4aa82",
+                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/af43f45d080aa8752633ad6a12b39569068b312d",
+                "reference": "af43f45d080aa8752633ad6a12b39569068b312d",
                 "shasum": ""
             },
             "require": {
@@ -818,7 +818,7 @@
                 "issues": "https://github.com/kirki-framework/control-radio/issues",
                 "source": "https://github.com/kirki-framework/control-radio/tree/nightly"
             },
-            "time": "2021-09-02T14:34:43+00:00"
+            "time": "2021-09-03T14:45:49+00:00"
         },
         {
             "name": "kirki-framework/control-react-color",
