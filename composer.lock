@@ -362,12 +362,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dashicons.git",
-                "reference": "0e34cefd5dfb717c9f44ea9a783b12dd1dc0b329"
+                "reference": "a8998abdc971510d3210a9548acfa72ce1ac999d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/0e34cefd5dfb717c9f44ea9a783b12dd1dc0b329",
-                "reference": "0e34cefd5dfb717c9f44ea9a783b12dd1dc0b329",
+                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/a8998abdc971510d3210a9548acfa72ce1ac999d",
+                "reference": "a8998abdc971510d3210a9548acfa72ce1ac999d",
                 "shasum": ""
             },
             "require": {
@@ -406,7 +406,7 @@
                 "issues": "https://github.com/kirki-framework/control-dashicons/issues",
                 "source": "https://github.com/kirki-framework/control-dashicons/tree/nightly"
             },
-            "time": "2021-09-03T13:52:37+00:00"
+            "time": "2021-09-03T14:24:40+00:00"
         },
         {
             "name": "kirki-framework/control-date",
