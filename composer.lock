@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bdcaa51d64bbf4ec68ee1ee1b11827f",
+    "content-hash": "f3bae6252b5952070eb772013a660ff5",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -156,7 +156,7 @@
         },
         {
             "name": "kirki-framework/control-code",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-code.git",
@@ -172,7 +172,6 @@
                 "kirki-framework/field": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {

@@ -213,7 +213,7 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
         ),
         'Kirki\\Field\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kirki-framework/control-code/src/Field',
+            0 => __DIR__ . '/..' . '/kirki-framework/control-checkbox/src/Field',
             1 => __DIR__ . '/..' . '/kirki-framework/control-color/src/Field',
             2 => __DIR__ . '/..' . '/kirki-framework/control-custom/src/Field',
             3 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Field',
@@ -239,7 +239,7 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             23 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
             24 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
             25 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
-            26 => __DIR__ . '/..' . '/kirki-framework/control-checkbox/src/Field',
+            26 => __DIR__ . '/..' . '/kirki-framework/control-code/src/Field',
         ),
         'Kirki\\Data\\' => 
         array (
@@ -248,7 +248,7 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
         'Kirki\\Control\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/control-base/src/Control',
-            1 => __DIR__ . '/..' . '/kirki-framework/control-code/src/Control',
+            1 => __DIR__ . '/..' . '/kirki-framework/control-checkbox/src/Control',
             2 => __DIR__ . '/..' . '/kirki-framework/control-color/src/Control',
             3 => __DIR__ . '/..' . '/kirki-framework/control-cropped-image/src',
             4 => __DIR__ . '/..' . '/kirki-framework/control-custom/src/Control',
@@ -270,7 +270,7 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             20 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
             21 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
             22 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
-            23 => __DIR__ . '/..' . '/kirki-framework/control-checkbox/src/Control',
+            23 => __DIR__ . '/..' . '/kirki-framework/control-code/src/Control',
         ),
         'Kirki\\Compatibility\\' => 
         array (
