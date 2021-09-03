@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c6ce2e6bf65a6d87116bab95c1a7897",
+    "content-hash": "04d3e8814923c55d290f9065f2357ac9",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -359,7 +359,7 @@
         },
         {
             "name": "kirki-framework/control-dashicons",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dashicons.git",
@@ -376,7 +376,6 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
