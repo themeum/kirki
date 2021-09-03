@@ -14,7 +14,6 @@
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
-use Kirki\Compatibility\Kirki;
 use Kirki\URL;
 
 /**

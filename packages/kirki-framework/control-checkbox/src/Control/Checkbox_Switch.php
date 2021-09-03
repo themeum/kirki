@@ -11,7 +11,6 @@
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
-use Kirki\Compatibility\Kirki;
 use Kirki\URL;
 
 // Exit if accessed directly.
@@ -84,17 +83,19 @@ class Checkbox_Switch extends Base {
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<input class="screen-reader-text kirki-switch-input" {{{ data.inputAttrs }}} name="switch_{{ data.id }}" id="switch_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> />
-			<label class="switch-label" for="switch_{{ data.id }}">
-				<span class="toggle-on">
-					<# data.choices.on = data.choices.on || '<?php esc_html_e( 'On', 'kirki' ); ?>' #>
-					{{ data.choices.on }}
-				</span>
-				<span class="toggle-off">
-					<# data.choices.off = data.choices.off || '<?php esc_html_e( 'Off', 'kirki' ); ?>' #>
-					{{ data.choices.off }}
-				</span>
-			</label>
+			<div class="kirki-switch-input-wrapper">
+				<input class="screen-reader-text kirki-switch-input" {{{ data.inputAttrs }}} name="switch_{{ data.id }}" id="switch_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> />
+				<label class="switch-label" for="switch_{{ data.id }}">
+					<span class="toggle-on">
+						<# data.choices.on = data.choices.on || '<?php esc_html_e( 'On', 'kirki' ); ?>' #>
+						{{ data.choices.on }}
+					</span>
+					<span class="toggle-off">
+						<# data.choices.off = data.choices.off || '<?php esc_html_e( 'Off', 'kirki' ); ?>' #>
+						{{ data.choices.off }}
+					</span>
+				</label>
+			</div>
 		</div>
 		<?php
 	}
