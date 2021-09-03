@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '34265f58eb690282b3e4b06320d569f8ba015f91',
+        'reference' => '0473bd1405d59ef7cc560d797df3d9fa9ea328d3',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '34265f58eb690282b3e4b06320d569f8ba015f91',
+            'reference' => '0473bd1405d59ef7cc560d797df3d9fa9ea328d3',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -170,7 +170,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-dashicons',
             'aliases' => array(),
-            'reference' => '19bd50aa2a4bc9b61553bd34fd1e5e27fa87d13b',
+            'reference' => '0e34cefd5dfb717c9f44ea9a783b12dd1dc0b329',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-date' => array(
