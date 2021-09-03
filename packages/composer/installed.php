@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '40cc8e95c7ea2af2b18e9740635113b482585501',
+        'reference' => '25af3b3c25c08ccc412f6091f69380b188db22a0',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '40cc8e95c7ea2af2b18e9740635113b482585501',
+            'reference' => '25af3b3c25c08ccc412f6091f69380b188db22a0',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -110,13 +110,11 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-checkbox' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-nightly',
+            'version' => 'dev-nightly',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-checkbox',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
+            'aliases' => array(),
             'reference' => '554893f0b35e2b4285ea418d088cca963e948889',
             'dev_requirement' => false,
         ),
@@ -168,7 +166,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-dashicons',
             'aliases' => array(),
-            'reference' => 'a8998abdc971510d3210a9548acfa72ce1ac999d',
+            'reference' => '7b697fed3136a42d2efad21a80075cbea12d1e0f',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-date' => array(

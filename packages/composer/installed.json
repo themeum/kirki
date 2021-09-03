@@ -770,8 +770,8 @@
         },
         {
             "name": "kirki-framework/control-checkbox",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-checkbox.git",
@@ -789,7 +789,6 @@
                 "php": ">=5.6"
             },
             "time": "2019-10-20T11:52:49+00:00",
-            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1043,12 +1042,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dashicons.git",
-                "reference": "a8998abdc971510d3210a9548acfa72ce1ac999d"
+                "reference": "7b697fed3136a42d2efad21a80075cbea12d1e0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/a8998abdc971510d3210a9548acfa72ce1ac999d",
-                "reference": "a8998abdc971510d3210a9548acfa72ce1ac999d",
+                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/7b697fed3136a42d2efad21a80075cbea12d1e0f",
+                "reference": "7b697fed3136a42d2efad21a80075cbea12d1e0f",
                 "shasum": ""
             },
             "require": {
@@ -1056,7 +1055,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-03T14:24:40+00:00",
+            "time": "2021-09-03T14:27:22+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {

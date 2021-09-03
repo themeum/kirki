@@ -24,7 +24,7 @@
     "kirki-framework/field": "dev-master",
     "kirki-framework/url-getter": "*",
     "kirki-framework/control-base": "dev-nightly",
-    "kirki-framework/control-checkbox": "dev-master",
+    "kirki-framework/control-checkbox": "dev-nightly",
     "kirki-framework/control-code": "dev-master",
     "kirki-framework/control-cropped-image": "dev-master",
     "kirki-framework/control-custom": "dev-master",

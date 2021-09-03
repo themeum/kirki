@@ -124,10 +124,10 @@ class Dashicons extends Base {
 							type="radio"
 							value="{{ data.icons[ sectionKey ][ key ] }}"
 							name="_customize-dashicons-radio-{{ data.id }}"
-							id="{{ data.id }}{{ data.icons[ sectionKey ][ key ] }}-{{key}}"
+							id="{{ data.id }}{{ data.icons[ sectionKey ][ key ] }}"
 							{{{ data.link }}}
 							<# if ( data.value === data.icons[ sectionKey ][ key ] ) { #> checked="checked"<# } #>>
-							<label for="{{ data.id }}{{ data.icons[ sectionKey ][ key ] }}-{{key}}">
+							<label for="{{ data.id }}{{ data.icons[ sectionKey ][ key ] }}">
 								<span class="dashicons dashicons-{{ data.icons[ sectionKey ][ key ] }}"></span>
 							</label>
 						</input>

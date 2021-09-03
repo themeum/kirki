@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "430a31d24a4820d1fce3b00e0dd38d00",
+    "content-hash": "8bdcaa51d64bbf4ec68ee1ee1b11827f",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -105,7 +105,7 @@
         },
         {
             "name": "kirki-framework/control-checkbox",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-checkbox.git",
@@ -122,7 +122,6 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -362,12 +361,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dashicons.git",
-                "reference": "a8998abdc971510d3210a9548acfa72ce1ac999d"
+                "reference": "7b697fed3136a42d2efad21a80075cbea12d1e0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/a8998abdc971510d3210a9548acfa72ce1ac999d",
-                "reference": "a8998abdc971510d3210a9548acfa72ce1ac999d",
+                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/7b697fed3136a42d2efad21a80075cbea12d1e0f",
+                "reference": "7b697fed3136a42d2efad21a80075cbea12d1e0f",
                 "shasum": ""
             },
             "require": {
@@ -406,7 +405,7 @@
                 "issues": "https://github.com/kirki-framework/control-dashicons/issues",
                 "source": "https://github.com/kirki-framework/control-dashicons/tree/nightly"
             },
-            "time": "2021-09-03T14:24:40+00:00"
+            "time": "2021-09-03T14:27:22+00:00"
         },
         {
             "name": "kirki-framework/control-date",
