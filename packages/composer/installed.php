@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '13e625e3c1e37934e7d85dff45285f51cb4a9a19',
+        'reference' => 'a8c4cdcb0dfed770b5e1a21b6e9ebf49bafa0e99',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '13e625e3c1e37934e7d85dff45285f51cb4a9a19',
+            'reference' => 'a8c4cdcb0dfed770b5e1a21b6e9ebf49bafa0e99',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -173,7 +173,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-date',
             'aliases' => array(),
-            'reference' => '4a35de4f8088079e2b642d4fbb179169239c91eb',
+            'reference' => 'fd79eb75facff0aeb5f406500f67979eb7b0e92a',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-dimension' => array(

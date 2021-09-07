@@ -1096,12 +1096,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-date.git",
-                "reference": "4a35de4f8088079e2b642d4fbb179169239c91eb"
+                "reference": "fd79eb75facff0aeb5f406500f67979eb7b0e92a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/4a35de4f8088079e2b642d4fbb179169239c91eb",
-                "reference": "4a35de4f8088079e2b642d4fbb179169239c91eb",
+                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/fd79eb75facff0aeb5f406500f67979eb7b0e92a",
+                "reference": "fd79eb75facff0aeb5f406500f67979eb7b0e92a",
                 "shasum": ""
             },
             "require": {
@@ -1109,7 +1109,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-07T15:33:05+00:00",
+            "time": "2021-09-07T15:37:39+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
