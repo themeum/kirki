@@ -412,12 +412,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-date.git",
-                "reference": "fd79eb75facff0aeb5f406500f67979eb7b0e92a"
+                "reference": "8bcc14bcf46fb507f0c0f5c4964710fd89aab5a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/fd79eb75facff0aeb5f406500f67979eb7b0e92a",
-                "reference": "fd79eb75facff0aeb5f406500f67979eb7b0e92a",
+                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/8bcc14bcf46fb507f0c0f5c4964710fd89aab5a8",
+                "reference": "8bcc14bcf46fb507f0c0f5c4964710fd89aab5a8",
                 "shasum": ""
             },
             "require": {
@@ -455,7 +455,7 @@
                 "issues": "https://github.com/kirki-framework/control-date/issues",
                 "source": "https://github.com/kirki-framework/control-date/tree/nightly"
             },
-            "time": "2021-09-07T15:37:39+00:00"
+            "time": "2021-09-07T17:30:10+00:00"
         },
         {
             "name": "kirki-framework/control-dimension",
