@@ -34,7 +34,7 @@
     "kirki-framework/control-editor": "dev-master",
     "kirki-framework/control-generic": "dev-nightly",
     "kirki-framework/control-image": "dev-master",
-    "kirki-framework/control-multicheck": "dev-master",
+    "kirki-framework/control-multicheck": "dev-nightly",
     "kirki-framework/control-palette": "dev-master",
     "kirki-framework/control-radio": "dev-nightly",
     "kirki-framework/control-repeater": "dev-master",

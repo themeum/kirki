@@ -1,3 +1,5 @@
+import "./control.scss";
+
 wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function( control ) {

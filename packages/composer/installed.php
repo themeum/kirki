@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'd012825a8d9a94cdf79774faa8f3c1187c829a70',
+        'reference' => 'c8dcb819dafb692c15603547dbc9eb8331e92d2b',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'd012825a8d9a94cdf79774faa8f3c1187c829a70',
+            'reference' => 'c8dcb819dafb692c15603547dbc9eb8331e92d2b',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -56,12 +56,12 @@
             'dev_requirement' => true,
         ),
         'gitonomy/gitlib' => array(
-            'pretty_version' => 'v1.2.3',
-            'version' => '1.2.3.0',
+            'pretty_version' => 'v1.3.2',
+            'version' => '1.3.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../gitonomy/gitlib',
             'aliases' => array(),
-            'reference' => 'd22f212b97fdb631ac73dfae65c194dc4cb0d227',
+            'reference' => 'e73e439590b194b0b250b516b22a68c7116e2f21',
             'dev_requirement' => true,
         ),
         'guzzlehttp/guzzle' => array(
@@ -219,14 +219,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-multicheck' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-nightly',
+            'version' => 'dev-nightly',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-multicheck',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
-            'reference' => 'd60de676b2ee0f58d537b954f24050f0ae3425ee',
+            'aliases' => array(),
+            'reference' => '9bd748c9225457e542ee6784a363be6c42e43296',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-palette' => array(

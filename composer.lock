@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b20fc729f5eb69347ec515e08dad115b",
+    "content-hash": "8b98c320c499bf5623f4339a58aa642d",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -666,16 +666,16 @@
         },
         {
             "name": "kirki-framework/control-multicheck",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-multicheck.git",
-                "reference": "d60de676b2ee0f58d537b954f24050f0ae3425ee"
+                "reference": "9bd748c9225457e542ee6784a363be6c42e43296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-multicheck/zipball/d60de676b2ee0f58d537b954f24050f0ae3425ee",
-                "reference": "d60de676b2ee0f58d537b954f24050f0ae3425ee",
+                "url": "https://api.github.com/repos/kirki-framework/control-multicheck/zipball/9bd748c9225457e542ee6784a363be6c42e43296",
+                "reference": "9bd748c9225457e542ee6784a363be6c42e43296",
                 "shasum": ""
             },
             "require": {
@@ -683,7 +683,6 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -712,9 +711,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-multicheck/issues",
-                "source": "https://github.com/kirki-framework/control-multicheck/tree/master"
+                "source": "https://github.com/kirki-framework/control-multicheck/tree/nightly"
             },
-            "time": "2019-07-06T20:27:38+00:00"
+            "time": "2021-09-07T08:58:11+00:00"
         },
         {
             "name": "kirki-framework/control-palette",
@@ -2680,27 +2679,27 @@
         },
         {
             "name": "gitonomy/gitlib",
-            "version": "v1.2.3",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gitonomy/gitlib.git",
-                "reference": "d22f212b97fdb631ac73dfae65c194dc4cb0d227"
+                "reference": "e73e439590b194b0b250b516b22a68c7116e2f21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gitonomy/gitlib/zipball/d22f212b97fdb631ac73dfae65c194dc4cb0d227",
-                "reference": "d22f212b97fdb631ac73dfae65c194dc4cb0d227",
+                "url": "https://api.github.com/repos/gitonomy/gitlib/zipball/e73e439590b194b0b250b516b22a68c7116e2f21",
+                "reference": "e73e439590b194b0b250b516b22a68c7116e2f21",
                 "shasum": ""
             },
             "require": {
                 "ext-pcre": "*",
                 "php": "^5.6 || ^7.0 || ^8.0",
                 "symfony/polyfill-mbstring": "^1.7",
-                "symfony/process": "^3.4 || ^4.0 || ^5.0"
+                "symfony/process": "^3.4 || ^4.4 || ^5.0 || ^6.0"
             },
             "require-dev": {
                 "ext-fileinfo": "*",
-                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.0 || ^8.0 || ^9.0",
+                "phpunit/phpunit": "^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.20 || ^9.5.9",
                 "psr/log": "^1.0"
             },
             "suggest": {
@@ -2720,7 +2719,7 @@
             "authors": [
                 {
                     "name": "Graham Campbell",
-                    "email": "graham@alt-three.com"
+                    "email": "hello@gjcampbell.co.uk"
                 },
                 {
                     "name": "Julien Didier",
@@ -2738,7 +2737,7 @@
             "description": "Library for accessing git",
             "support": {
                 "issues": "https://github.com/gitonomy/gitlib/issues",
-                "source": "https://github.com/gitonomy/gitlib/tree/v1.2.3"
+                "source": "https://github.com/gitonomy/gitlib/tree/v1.3.2"
             },
             "funding": [
                 {
@@ -2746,7 +2745,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-29T16:48:45+00:00"
+            "time": "2021-09-06T20:30:10+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
