@@ -1307,17 +1307,17 @@
         },
         {
             "name": "kirki-framework/control-image",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-image.git",
-                "reference": "be2c2324f88a04b7aaf9c6cd958b59eeb26dbb0e"
+                "reference": "177fe0a8e76c1421b38e62aa7eb5735603545c6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/be2c2324f88a04b7aaf9c6cd958b59eeb26dbb0e",
-                "reference": "be2c2324f88a04b7aaf9c6cd958b59eeb26dbb0e",
+                "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/177fe0a8e76c1421b38e62aa7eb5735603545c6e",
+                "reference": "177fe0a8e76c1421b38e62aa7eb5735603545c6e",
                 "shasum": ""
             },
             "require": {
@@ -1325,8 +1325,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2019-07-06T20:27:15+00:00",
-            "default-branch": true,
+            "time": "2021-09-07T19:46:48+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1356,7 +1355,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-image/issues",
-                "source": "https://github.com/kirki-framework/control-image/tree/master"
+                "source": "https://github.com/kirki-framework/control-image/tree/nightly"
             },
             "install-path": "../kirki-framework/control-image"
         },

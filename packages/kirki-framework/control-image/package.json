@@ -1,20 +1,42 @@
 {
-  "name": "kirki-control-fontawesome",
-  "author": "Ari Stathopoulos (@aristath)",
-  "homepage": "https://kirki.org",
-  "license": "MIT",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
-    }
-  ],
-  "engines": {
-    "node": ">= 0.10.0"
+  "name": "kirki-control-image",
+  "version": "0.1.0",
+  "description": "Dev toolkit for Kirki's control-image",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirki-framework/control-image.git"
   },
+  "keywords": [
+    "kirki-control-image"
+  ],
+  "author": "Ari Stathopoulos (@aristath)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kirki-framework/control-image/issues"
+  },
+  "homepage": "https://github.com/kirki-framework/control-image#readme",
   "devDependencies": {
-    "grunt": "*",
-    "grunt-contrib-sass": "*",
-    "grunt-contrib-watch": "*"
-  }
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
+  },
+  "scripts": {
+    "build": "parcel build  src/control.js --dist-dir dist",
+    "dev": "parcel build  src/control.js --no-optimize --dist-dir dist"
+  },
+  "alias": {
+    "jquery": {
+      "global": "$"
+    },
+    "react": {
+      "global": "React"
+    },
+    "react-dom": {
+      "global": "ReactDOM"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "IE 11"
+  ]
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30b966bededd47b34d04588e1357b0ab",
+    "content-hash": "f1b8830e651d954147330660fff40499",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -612,16 +612,16 @@
         },
         {
             "name": "kirki-framework/control-image",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-image.git",
-                "reference": "be2c2324f88a04b7aaf9c6cd958b59eeb26dbb0e"
+                "reference": "177fe0a8e76c1421b38e62aa7eb5735603545c6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/be2c2324f88a04b7aaf9c6cd958b59eeb26dbb0e",
-                "reference": "be2c2324f88a04b7aaf9c6cd958b59eeb26dbb0e",
+                "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/177fe0a8e76c1421b38e62aa7eb5735603545c6e",
+                "reference": "177fe0a8e76c1421b38e62aa7eb5735603545c6e",
                 "shasum": ""
             },
             "require": {
@@ -629,7 +629,6 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -658,9 +657,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-image/issues",
-                "source": "https://github.com/kirki-framework/control-image/tree/master"
+                "source": "https://github.com/kirki-framework/control-image/tree/nightly"
             },
-            "time": "2019-07-06T20:27:15+00:00"
+            "time": "2021-09-07T19:46:48+00:00"
         },
         {
             "name": "kirki-framework/control-multicheck",
