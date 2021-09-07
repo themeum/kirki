@@ -70,7 +70,7 @@ class Upload extends Field {
 	public function filter_control_args( $args, $wp_customize ) {
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args         = parent::filter_control_args( $args, $wp_customize );
-			$args['type'] = 'kirki-upload';
+			$args['type'] = 'upload';
 		}
 		return $args;
 	}

@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'c8dcb819dafb692c15603547dbc9eb8331e92d2b',
+        'reference' => '30944e9baaa2c6337a9dd4e000236eb5e837dcc4',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'c8dcb819dafb692c15603547dbc9eb8331e92d2b',
+            'reference' => '30944e9baaa2c6337a9dd4e000236eb5e837dcc4',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -317,14 +317,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-upload' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-nightly',
+            'version' => 'dev-nightly',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-upload',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
-            'reference' => 'e1d5a0a12a31b0cd372d02db49d7cadd332720d3',
+            'aliases' => array(),
+            'reference' => 'e1a5ed56a887ddb8024f24036a940c23c5fa1dbf',
             'dev_requirement' => false,
         ),
         'kirki-framework/data-option' => array(

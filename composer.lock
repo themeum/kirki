@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b98c320c499bf5623f4339a58aa642d",
+    "content-hash": "871a4991f14a9f53dac9af8f41097e91",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -1198,16 +1198,16 @@
         },
         {
             "name": "kirki-framework/control-upload",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-upload.git",
-                "reference": "e1d5a0a12a31b0cd372d02db49d7cadd332720d3"
+                "reference": "e1a5ed56a887ddb8024f24036a940c23c5fa1dbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/e1d5a0a12a31b0cd372d02db49d7cadd332720d3",
-                "reference": "e1d5a0a12a31b0cd372d02db49d7cadd332720d3",
+                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/e1a5ed56a887ddb8024f24036a940c23c5fa1dbf",
+                "reference": "e1a5ed56a887ddb8024f24036a940c23c5fa1dbf",
                 "shasum": ""
             },
             "require": {
@@ -1215,7 +1215,6 @@
                 "kirki-framework/field": "dev-master",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1243,9 +1242,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-upload/issues",
-                "source": "https://github.com/kirki-framework/control-upload/tree/master"
+                "source": "https://github.com/kirki-framework/control-upload/tree/nightly"
             },
-            "time": "2019-07-06T20:34:26+00:00"
+            "time": "2021-09-07T13:50:54+00:00"
         },
         {
             "name": "kirki-framework/data-option",

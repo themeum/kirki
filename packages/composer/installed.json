@@ -1926,17 +1926,17 @@
         },
         {
             "name": "kirki-framework/control-upload",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-upload.git",
-                "reference": "e1d5a0a12a31b0cd372d02db49d7cadd332720d3"
+                "reference": "e1a5ed56a887ddb8024f24036a940c23c5fa1dbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/e1d5a0a12a31b0cd372d02db49d7cadd332720d3",
-                "reference": "e1d5a0a12a31b0cd372d02db49d7cadd332720d3",
+                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/e1a5ed56a887ddb8024f24036a940c23c5fa1dbf",
+                "reference": "e1a5ed56a887ddb8024f24036a940c23c5fa1dbf",
                 "shasum": ""
             },
             "require": {
@@ -1944,8 +1944,7 @@
                 "kirki-framework/field": "dev-master",
                 "php": ">=5.6"
             },
-            "time": "2019-07-06T20:34:26+00:00",
-            "default-branch": true,
+            "time": "2021-09-07T13:50:54+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1974,7 +1973,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-upload/issues",
-                "source": "https://github.com/kirki-framework/control-upload/tree/master"
+                "source": "https://github.com/kirki-framework/control-upload/tree/nightly"
             },
             "install-path": "../kirki-framework/control-upload"
         },
