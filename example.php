@@ -86,6 +86,7 @@ $sections = array(
 	'switch'          => array( esc_html__( 'Switch', 'kirki' ), '' ),
 	'toggle'          => array( esc_html__( 'Toggle', 'kirki' ), '' ),
 	'typography'      => array( esc_html__( 'Typography', 'kirki' ), '', 'outer' ),
+	'upload'          => array( esc_html__( 'Upload', 'kirki' ), '', 'outer' ),
 );
 foreach ( $sections as $section_id => $section ) {
 	$section_args = array(
@@ -557,6 +558,17 @@ my_config_kirki_add_field(
 );
 
 /**
+ * Upload control
+ */
+Kirki::add_field( 'theme_config_id', array(
+	'type'        => 'upload',
+	'settings'    => 'upload_setting_url',
+	'label'       => esc_attr__( 'Upload Control', 'textdomain' ),
+	'section'     => 'upload_section',
+	'default'     => '',
+) );
+
+/**
  * Multicheck Control.
  */
 my_config_kirki_add_field(
@@ -1002,6 +1014,6 @@ function kirki_sidebars_select_example() {
 			'choices'     => $sidebars_choices,
 			'priority'    => 30,
 		)
-	);
+		);
 }
 add_action( 'init', 'kirki_sidebars_select_example', 999 );
