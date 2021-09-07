@@ -1091,17 +1091,17 @@
         },
         {
             "name": "kirki-framework/control-date",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-date.git",
-                "reference": "8165687d106fa30b6fded9325dc716c657752948"
+                "reference": "4a35de4f8088079e2b642d4fbb179169239c91eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/8165687d106fa30b6fded9325dc716c657752948",
-                "reference": "8165687d106fa30b6fded9325dc716c657752948",
+                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/4a35de4f8088079e2b642d4fbb179169239c91eb",
+                "reference": "4a35de4f8088079e2b642d4fbb179169239c91eb",
                 "shasum": ""
             },
             "require": {
@@ -1109,8 +1109,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2019-07-06T20:24:32+00:00",
-            "default-branch": true,
+            "time": "2021-09-07T15:33:05+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1140,7 +1139,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-date/issues",
-                "source": "https://github.com/kirki-framework/control-date/tree/master"
+                "source": "https://github.com/kirki-framework/control-date/tree/nightly"
             },
             "install-path": "../kirki-framework/control-date"
         },

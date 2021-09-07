@@ -29,7 +29,7 @@
     "kirki-framework/control-cropped-image": "dev-master",
     "kirki-framework/control-custom": "dev-master",
     "kirki-framework/control-dashicons": "dev-nightly",
-    "kirki-framework/control-date": "dev-master",
+    "kirki-framework/control-date": "dev-nightly",
     "kirki-framework/control-dimension": "dev-nightly",
     "kirki-framework/control-editor": "dev-master",
     "kirki-framework/control-generic": "dev-nightly",

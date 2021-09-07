@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "871a4991f14a9f53dac9af8f41097e91",
+    "content-hash": "e4b64e8a0cb42426d59c7b1a78e8c48f",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -408,16 +408,16 @@
         },
         {
             "name": "kirki-framework/control-date",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-date.git",
-                "reference": "8165687d106fa30b6fded9325dc716c657752948"
+                "reference": "4a35de4f8088079e2b642d4fbb179169239c91eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/8165687d106fa30b6fded9325dc716c657752948",
-                "reference": "8165687d106fa30b6fded9325dc716c657752948",
+                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/4a35de4f8088079e2b642d4fbb179169239c91eb",
+                "reference": "4a35de4f8088079e2b642d4fbb179169239c91eb",
                 "shasum": ""
             },
             "require": {
@@ -425,7 +425,6 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -454,9 +453,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-date/issues",
-                "source": "https://github.com/kirki-framework/control-date/tree/master"
+                "source": "https://github.com/kirki-framework/control-date/tree/nightly"
             },
-            "time": "2019-07-06T20:24:32+00:00"
+            "time": "2021-09-07T15:33:05+00:00"
         },
         {
             "name": "kirki-framework/control-dimension",
