@@ -1475,19 +1475,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-radio.git",
-                "reference": "af43f45d080aa8752633ad6a12b39569068b312d"
+                "reference": "9fc6b3ea3c461449d3d9fab223185709c5e9c75f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/af43f45d080aa8752633ad6a12b39569068b312d",
-                "reference": "af43f45d080aa8752633ad6a12b39569068b312d",
+                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/9fc6b3ea3c461449d3d9fab223185709c5e9c75f",
+                "reference": "9fc6b3ea3c461449d3d9fab223185709c5e9c75f",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-03T14:45:49+00:00",
+            "time": "2021-09-07T20:03:23+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
