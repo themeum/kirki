@@ -48,10 +48,10 @@ class Sortable extends Base {
 		parent::enqueue();
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-sortable', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-sortable', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-sortable-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
+		wp_enqueue_style( 'kirki-control-sortable-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 	}
 
 	/**

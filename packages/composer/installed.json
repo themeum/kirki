@@ -1475,19 +1475,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-radio.git",
-                "reference": "9fc6b3ea3c461449d3d9fab223185709c5e9c75f"
+                "reference": "91e37af398fc91483c8130318d0dec0ab533aea8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/9fc6b3ea3c461449d3d9fab223185709c5e9c75f",
-                "reference": "9fc6b3ea3c461449d3d9fab223185709c5e9c75f",
+                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/91e37af398fc91483c8130318d0dec0ab533aea8",
+                "reference": "91e37af398fc91483c8130318d0dec0ab533aea8",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-07T20:03:23+00:00",
+            "time": "2021-09-07T20:26:48+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1868,17 +1868,17 @@
         },
         {
             "name": "kirki-framework/control-sortable",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-sortable.git",
-                "reference": "05d0fbdf4e5486888b6df0b0a21677c2b7546f06"
+                "reference": "ca756bc4189c7533a0fe23fc45f4ba65458b9e71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-sortable/zipball/05d0fbdf4e5486888b6df0b0a21677c2b7546f06",
-                "reference": "05d0fbdf4e5486888b6df0b0a21677c2b7546f06",
+                "url": "https://api.github.com/repos/kirki-framework/control-sortable/zipball/ca756bc4189c7533a0fe23fc45f4ba65458b9e71",
+                "reference": "ca756bc4189c7533a0fe23fc45f4ba65458b9e71",
                 "shasum": ""
             },
             "require": {
@@ -1886,8 +1886,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2019-10-20T11:42:14+00:00",
-            "default-branch": true,
+            "time": "2021-09-07T20:36:05+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1917,7 +1916,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-sortable/issues",
-                "source": "https://github.com/kirki-framework/control-sortable/tree/master"
+                "source": "https://github.com/kirki-framework/control-sortable/tree/nightly"
             },
             "install-path": "../kirki-framework/control-sortable"
         },

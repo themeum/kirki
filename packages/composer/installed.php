@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'd6f0cbb82dc1d9c0aeabfde488808c05c2319f71',
+        'reference' => '68d24cd1e1dd0fe6b7960b0a806b8fd6ee028901',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'd6f0cbb82dc1d9c0aeabfde488808c05c2319f71',
+            'reference' => '68d24cd1e1dd0fe6b7960b0a806b8fd6ee028901',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -238,7 +238,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-radio',
             'aliases' => array(),
-            'reference' => '9fc6b3ea3c461449d3d9fab223185709c5e9c75f',
+            'reference' => '91e37af398fc91483c8130318d0dec0ab533aea8',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-color' => array(
@@ -300,14 +300,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-sortable' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-nightly',
+            'version' => 'dev-nightly',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-sortable',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
-            'reference' => '05d0fbdf4e5486888b6df0b0a21677c2b7546f06',
+            'aliases' => array(),
+            'reference' => 'ca756bc4189c7533a0fe23fc45f4ba65458b9e71',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-upload' => array(
