@@ -1,3 +1,5 @@
+import "./control.scss";
+
 /* global tinyMCE */
 wp.customize.controlConstructor[ 'kirki-editor' ] = wp.customize.kirkiDynamicControl.extend( {
 	initKirkiControl: function( control ) {

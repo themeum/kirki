@@ -31,7 +31,7 @@
     "kirki-framework/control-dashicons": "dev-nightly",
     "kirki-framework/control-date": "dev-nightly",
     "kirki-framework/control-dimension": "dev-nightly",
-    "kirki-framework/control-editor": "dev-master",
+    "kirki-framework/control-editor": "dev-nightly",
     "kirki-framework/control-generic": "dev-nightly",
     "kirki-framework/control-image": "dev-master",
     "kirki-framework/control-multicheck": "dev-nightly",

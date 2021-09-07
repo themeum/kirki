@@ -1096,12 +1096,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-date.git",
-                "reference": "8bcc14bcf46fb507f0c0f5c4964710fd89aab5a8"
+                "reference": "0c3d729bb633f5d5342c901d70014c167271768b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/8bcc14bcf46fb507f0c0f5c4964710fd89aab5a8",
-                "reference": "8bcc14bcf46fb507f0c0f5c4964710fd89aab5a8",
+                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/0c3d729bb633f5d5342c901d70014c167271768b",
+                "reference": "0c3d729bb633f5d5342c901d70014c167271768b",
                 "shasum": ""
             },
             "require": {
@@ -1109,7 +1109,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-07T17:30:10+00:00",
+            "time": "2021-09-07T19:00:33+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1199,17 +1199,17 @@
         },
         {
             "name": "kirki-framework/control-editor",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-editor.git",
-                "reference": "bd6175c75bb4c046f3d80711f6bccf3cbaab598f"
+                "reference": "5d856194d67e1e4e133b86cd2b525932d018b1af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/bd6175c75bb4c046f3d80711f6bccf3cbaab598f",
-                "reference": "bd6175c75bb4c046f3d80711f6bccf3cbaab598f",
+                "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/5d856194d67e1e4e133b86cd2b525932d018b1af",
+                "reference": "5d856194d67e1e4e133b86cd2b525932d018b1af",
                 "shasum": ""
             },
             "require": {
@@ -1217,8 +1217,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2019-09-01T07:19:49+00:00",
-            "default-branch": true,
+            "time": "2021-09-07T19:24:35+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1248,7 +1247,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-editor/issues",
-                "source": "https://github.com/kirki-framework/control-editor/tree/master"
+                "source": "https://github.com/kirki-framework/control-editor/tree/nightly"
             },
             "install-path": "../kirki-framework/control-editor"
         },

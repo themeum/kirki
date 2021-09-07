@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4b64e8a0cb42426d59c7b1a78e8c48f",
+    "content-hash": "30b966bededd47b34d04588e1357b0ab",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -412,12 +412,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-date.git",
-                "reference": "8bcc14bcf46fb507f0c0f5c4964710fd89aab5a8"
+                "reference": "0c3d729bb633f5d5342c901d70014c167271768b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/8bcc14bcf46fb507f0c0f5c4964710fd89aab5a8",
-                "reference": "8bcc14bcf46fb507f0c0f5c4964710fd89aab5a8",
+                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/0c3d729bb633f5d5342c901d70014c167271768b",
+                "reference": "0c3d729bb633f5d5342c901d70014c167271768b",
                 "shasum": ""
             },
             "require": {
@@ -455,7 +455,7 @@
                 "issues": "https://github.com/kirki-framework/control-date/issues",
                 "source": "https://github.com/kirki-framework/control-date/tree/nightly"
             },
-            "time": "2021-09-07T17:30:10+00:00"
+            "time": "2021-09-07T19:00:33+00:00"
         },
         {
             "name": "kirki-framework/control-dimension",
@@ -510,16 +510,16 @@
         },
         {
             "name": "kirki-framework/control-editor",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-editor.git",
-                "reference": "bd6175c75bb4c046f3d80711f6bccf3cbaab598f"
+                "reference": "5d856194d67e1e4e133b86cd2b525932d018b1af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/bd6175c75bb4c046f3d80711f6bccf3cbaab598f",
-                "reference": "bd6175c75bb4c046f3d80711f6bccf3cbaab598f",
+                "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/5d856194d67e1e4e133b86cd2b525932d018b1af",
+                "reference": "5d856194d67e1e4e133b86cd2b525932d018b1af",
                 "shasum": ""
             },
             "require": {
@@ -527,7 +527,6 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -556,9 +555,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-editor/issues",
-                "source": "https://github.com/kirki-framework/control-editor/tree/master"
+                "source": "https://github.com/kirki-framework/control-editor/tree/nightly"
             },
-            "time": "2019-09-01T07:19:49+00:00"
+            "time": "2021-09-07T19:24:35+00:00"
         },
         {
             "name": "kirki-framework/control-generic",

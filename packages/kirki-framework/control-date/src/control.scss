@@ -1,27 +1,40 @@
-.wp-customizer div.ui-datepicker {
-  z-index: 500001 !important;
-  background: #fff;
+$date-hover-color: rgba(109, 51, 51, 0.04);
+$date-active-color: #2271b1;
+
+.kirki-datepicker-popup {
+  padding-bottom: 10px;
+  background-color: #fff;
   border: 1px solid #dedede;
+  box-shadow: rgba(0, 0, 0, 0.09) 0 12px 15px 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  z-index: 500001 !important;
 
   .ui-datepicker-header {
     padding: 10px;
-    background: #e5e5e5;
-    border-bottom: 1px solid #fff;
+    background-color: #e5e5e5;
 
     .ui-datepicker-next,
     .ui-datepicker-prev {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: absolute;
-      width: 1em;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
       overflow: hidden;
+      transition: all .2s;
+
+      &:hover, &:active, &:focus {
+        color: #fff;
+        background-color: $date-active-color;
+      }
 
       &:after,
       &:before {
         font-family: dashicons;
-
-        &:hover {
-          cursor: pointer;
-        }
       }
 
       .ui-icon {
@@ -46,41 +59,91 @@
     }
 
     .ui-datepicker-title {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      font-size: 16px;
       text-align: center;
     }
   }
 
   .ui-datepicker-calendar {
     border-collapse: collapse;
+    padding-bottom: 20px;
     width: 100%;
 
     thead {
-      background: #e5e5e5;
-      padding: 5px;
+      background-color: $date-hover-color;
+      padding-left: 5px;
+      padding-right: 5px;
+
+      th {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 13px;
+      }
     }
 
-    tr {
+    tbody {
+      padding: 5px;
+
       td {
+        padding: 2px;
         text-align: center;
+      }
 
-        a {
-          display: block;
-          padding: 5px;
-          color: #333;
-          text-decoration: none;
+      a {
+        text-decoration: none;
+        color: #333;
+      }
 
-          &.ui-state-active,
-          &:hover {
-            color: #fff;
-            background-color: #0073aa;
-          }
+      .ui-datepicker-today {
+        .ui-state-default {
+          background-color: $date-hover-color;
         }
 
-        &.ui-state-disabled,
-        &.ui-state-disabled .ui-state-default {
-          a {
-            color: #999;
+        .ui-state-active {
+          background-color: $date-active-color;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-color: $date-active-color;
           }
+        }
+      }
+
+      .ui-state-default {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+
+        &:hover,
+        &:active {
+          background-color: $date-hover-color;
+        }
+
+        &:focus {
+          color: #fff;
+          background-color: $date-active-color;
+        }
+      }
+
+      .ui-state-active {
+        background-color: $date-active-color;
+        color: #fff;
+
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: $date-active-color;
         }
       }
     }
