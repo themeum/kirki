@@ -64,7 +64,7 @@ class Init {
 		$this->control_types = [
 			'kirki-composite'       => '\Kirki\Control\Composite',
 			'checkbox'              => '\Kirki\Control\Checkbox',
-			'kirki-color'           => '\Kirki\Control\ReactColor',
+			'kirki-color'           => '\Kirki\Control\ReactColorful',
 			'kirki-color-palette'   => '\Kirki\Control\ColorPalette',
 			'kirki-custom'          => '\Kirki\Control\Custom',
 			'kirki-date'            => '\Kirki\Control\Date',
@@ -82,7 +82,8 @@ class Init {
 			'kirki-radio-image'     => '\Kirki\Control\Radio_Image',
 			'repeater'              => '\Kirki\Control\Repeater',
 			'kirki-select'          => '\Kirki\Control\Select',
-			'kirki-slider'          => '\Kirki\Control\Slider',
+			'kirki-range-slider'    => '\Kirki\Control\RangeSlider',
+			'kirki-slider'          => '\Kirki\Control\RangeSlider', // Backwards compatibility.
 			'kirki-sortable'        => '\Kirki\Control\Sortable',
 			'kirki-spacing'         => '\Kirki\Control\Dimensions',
 			'kirki-switch'          => '\Kirki\Control\Checkbox_Switch',

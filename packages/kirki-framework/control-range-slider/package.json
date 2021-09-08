@@ -1,0 +1,47 @@
+{
+  "name": "control-range-slider",
+  "version": "1.0.0",
+  "description": "Development toolkit for Kirki's control-range-slider",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build src/control.js --dist-dir dist",
+    "dev": "parcel build src/control.js --no-optimize --dist-dir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirki-framework/control-range-slider.git"
+  },
+  "keywords": [
+    "kirki-range-slider"
+  ],
+  "author": "Kirki Framework",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kirki-framework/control-range-slider/issues"
+  },
+  "homepage": "https://github.com/kirki-framework/control-range-slider#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
+  },
+  "alias": {
+    "jquery": {
+      "global": "jQuery"
+    },
+    "react": {
+      "global": "React"
+    },
+    "react-dom": {
+      "global": "ReactDOM"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "IE 11"
+  ]
+}

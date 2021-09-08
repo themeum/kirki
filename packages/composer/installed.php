@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '68d24cd1e1dd0fe6b7960b0a806b8fd6ee028901',
+        'reference' => 'a679cd326f072775242998db3700b058ac02432c',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '68d24cd1e1dd0fe6b7960b0a806b8fd6ee028901',
+            'reference' => 'a679cd326f072775242998db3700b058ac02432c',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -97,7 +97,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/compatibility',
             'aliases' => array(),
-            'reference' => '08aeffcec4d3b3827a4f5176a277aa6f9866d23d',
+            'reference' => 'ae5d0afc6a9f202f5d952c125a1cb05f4d44cbf4',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-base' => array(
@@ -241,6 +241,15 @@
             'reference' => '91e37af398fc91483c8130318d0dec0ab533aea8',
             'dev_requirement' => false,
         ),
+        'kirki-framework/control-range-slider' => array(
+            'pretty_version' => 'dev-nightly',
+            'version' => 'dev-nightly',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kirki-framework/control-range-slider',
+            'aliases' => array(),
+            'reference' => 'd846acb5c9a1bb3de2dd6f7157601cad15285808',
+            'dev_requirement' => false,
+        ),
         'kirki-framework/control-react-color' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
@@ -288,15 +297,6 @@
             'install_path' => __DIR__ . '/../kirki-framework/control-select',
             'aliases' => array(),
             'reference' => '1f4abff6dc6549720624bc8a1d0930a61cf52a50',
-            'dev_requirement' => false,
-        ),
-        'kirki-framework/control-slider' => array(
-            'pretty_version' => 'v0.2.4',
-            'version' => '0.2.4.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../kirki-framework/control-slider',
-            'aliases' => array(),
-            'reference' => '793bb27ff0255e39e8daacb18ee7282ef13efe7e',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-sortable' => array(
