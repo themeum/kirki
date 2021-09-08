@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a679cd326f072775242998db3700b058ac02432c',
+        'reference' => '12ba88fe0a036ce66f2d618c7334eccbcf90ab2c',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a679cd326f072775242998db3700b058ac02432c',
+            'reference' => '12ba88fe0a036ce66f2d618c7334eccbcf90ab2c',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -247,7 +247,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-range-slider',
             'aliases' => array(),
-            'reference' => 'd846acb5c9a1bb3de2dd6f7157601cad15285808',
+            'reference' => '25112a5e9bd8d6e526e09ba108fd337afab4cc4a',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-color' => array(

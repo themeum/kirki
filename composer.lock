@@ -820,12 +820,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-range-slider.git",
-                "reference": "d846acb5c9a1bb3de2dd6f7157601cad15285808"
+                "reference": "25112a5e9bd8d6e526e09ba108fd337afab4cc4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-range-slider/zipball/d846acb5c9a1bb3de2dd6f7157601cad15285808",
-                "reference": "d846acb5c9a1bb3de2dd6f7157601cad15285808",
+                "url": "https://api.github.com/repos/kirki-framework/control-range-slider/zipball/25112a5e9bd8d6e526e09ba108fd337afab4cc4a",
+                "reference": "25112a5e9bd8d6e526e09ba108fd337afab4cc4a",
                 "shasum": ""
             },
             "require": {
@@ -852,9 +852,9 @@
             "description": "Range slider control for the Kirki Customizer Framework",
             "support": {
                 "issues": "https://github.com/kirki-framework/control-range-slider/issues",
-                "source": "https://github.com/kirki-framework/control-range-slider/tree/main"
+                "source": "https://github.com/kirki-framework/control-range-slider/tree/nightly"
             },
-            "time": "2021-09-08T06:55:24+00:00"
+            "time": "2021-09-08T15:54:58+00:00"
         },
         {
             "name": "kirki-framework/control-react-color",

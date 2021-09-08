@@ -65,20 +65,14 @@ const KirkiRangeSliderControl = wp.customize.Control.extend({
 	renderContent: function renderContent() {
 		const control = this;
 
-		// We need to define the pickerComponent no matter formComponent is set or not.
-		let pickerComponent = control.params.choices.formComponent ? control.params.choices.formComponent : (control.params.choices.alpha ? 'RgbaColorPicker' : 'HexColorPicker');
-		pickerComponent = useHueMode ? 'HueColorPicker' : pickerComponent;
-
-		const form = <KirkiRangeSliderForm
-			{...control.params}
-			control={control}
-			customizerSetting={control.setting}
-			value={control.setting.get()}
-			setNotificationContainer={control.setNotificationCotainer}
-		/>;
-
 		ReactDOM.render(
-			form,
+			<KirkiRangeSliderForm
+				{...control.params}
+				control={control}
+				customizerSetting={control.setting}
+				setNotificationContainer={control.setNotificationCotainer}
+				value={control.params.value}
+			/>,
 			control.container[0]
 		);
 

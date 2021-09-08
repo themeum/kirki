@@ -53,7 +53,7 @@ class RangeSlider extends Base {
 		wp_enqueue_style( 'kirki-range-slider-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-range-slider-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-controls', 'customize-base', 'wp-element', 'wp-compose', 'wp-components', 'wp-i18n' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-range-slider-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-controls', 'customize-base', 'react-dom' ], self::$control_ver, false );
 
 	}
 
@@ -72,10 +72,9 @@ class RangeSlider extends Base {
 		$this->json['choices'] = wp_parse_args(
 			$this->json['choices'],
 			[
-				'min'    => 0,
-				'max'    => 100,
-				'step'   => 1,
-				'suffix' => '',
+				'min'  => 0,
+				'max'  => 100,
+				'step' => 1,
 			]
 		);
 
