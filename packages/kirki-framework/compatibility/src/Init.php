@@ -65,7 +65,7 @@ class Init {
 			'kirki-composite'       => '\Kirki\Control\Composite',
 			'checkbox'              => '\Kirki\Control\Checkbox',
 			'kirki-color'           => '\Kirki\Control\ReactColorful',
-			'kirki-color-palette'   => '\Kirki\Control\ColorPalette',
+			'kirki-color-palette'   => '\Kirki\Control\Color_Palette',
 			'kirki-custom'          => '\Kirki\Control\Custom',
 			'kirki-date'            => '\Kirki\Control\Date',
 			'kirki-dashicons'       => '\Kirki\Control\Dashicons',
