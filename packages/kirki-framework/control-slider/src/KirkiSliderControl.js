@@ -1,7 +1,7 @@
-import KirkiRangeSliderForm from './KirkiRangeSliderForm';
+import KirkiSliderForm from './KirkiSliderForm';
 
 /**
- * KirkiRangeSliderControl.
+ * KirkiSliderControl.
  *
  * Global objects brought:
  * - wp
@@ -13,7 +13,7 @@ import KirkiRangeSliderForm from './KirkiRangeSliderForm';
  * @augments wp.customize.Control
  * @augments wp.customize.Class
  */
-const KirkiRangeSliderControl = wp.customize.Control.extend({
+const KirkiSliderControl = wp.customize.Control.extend({
 
 	/**
 	 * Initialize.
@@ -66,7 +66,7 @@ const KirkiRangeSliderControl = wp.customize.Control.extend({
 		const control = this;
 
 		ReactDOM.render(
-			<KirkiRangeSliderForm
+			<KirkiSliderForm
 				{...control.params}
 				control={control}
 				customizerSetting={control.setting}
@@ -125,4 +125,4 @@ const KirkiRangeSliderControl = wp.customize.Control.extend({
 	}
 });
 
-export default KirkiRangeSliderControl;
+export default KirkiSliderControl;

@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
-const KirkiRangeSliderForm = (props) => {
+const KirkiSliderForm = (props) => {
 
 	const { control, customizerSetting, choices } = props;
 
@@ -36,17 +36,17 @@ const KirkiRangeSliderForm = (props) => {
 	const sliderRef = useRef(null);
 
 	return (
-		<div className="kirki-control-form">
+		<div className="kirki-control-form" tabIndex="1">
 			<label className="kirki-control-label" htmlFor={fieldId}>
 				<span className="customize-control-title">{props.label}</span>
 				<span className="customize-control-description description">{props.description}</span>
-
-				<button type="button" className="kirki-control-reset" onClick={handleReset}>
-					<i className="dashicons dashicons-image-rotate"></i>
-				</button>
 			</label>
 
 			<div className="customize-control-notifications-container" ref={props.setNotificationContainer}></div>
+
+			<button type="button" className="kirki-control-reset" onClick={handleReset}>
+				<i className="dashicons dashicons-image-rotate"></i>
+			</button>
 
 			<div className="kirki-control-cols">
 				<div className="kirki-control-left-col">
@@ -58,7 +58,7 @@ const KirkiRangeSliderForm = (props) => {
 						min={choices.min}
 						max={choices.max}
 						step={choices.step}
-						className="kirki-control-range"
+						className="kirki-control-slider"
 						onChange={handleChange}
 					/>
 				</div>
@@ -80,4 +80,4 @@ const KirkiRangeSliderForm = (props) => {
 
 };
 
-export default KirkiRangeSliderForm;
+export default KirkiSliderForm;

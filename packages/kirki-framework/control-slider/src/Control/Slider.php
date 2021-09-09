@@ -1,10 +1,10 @@
 <?php
 /**
- * The range-slider control.
+ * The slider control.
  *
- * Creates a range slider control.
+ * Creates a slider control.
  *
- * @package kirki-framework/control-range-slider
+ * @package kirki-framework/control-slider
  * @license MIT (https://oss.ninja/mit?organization=Kirki%20Framework)
  * @since   1.0
  */
@@ -15,11 +15,11 @@ use Kirki\Control\Base;
 use Kirki\URL;
 
 /**
- * Range slider control.
+ * Slider control.
  *
  * @since 1.0
  */
-class RangeSlider extends Base {
+class Slider extends Base {
 
 	/**
 	 * The control type.
@@ -28,7 +28,7 @@ class RangeSlider extends Base {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'kirki-range-slider';
+	public $type = 'kirki-slider';
 
 	/**
 	 * The control version.
@@ -50,10 +50,10 @@ class RangeSlider extends Base {
 		parent::enqueue();
 
 		// Enqueue the style.
-		wp_enqueue_style( 'kirki-range-slider-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
+		wp_enqueue_style( 'kirki-slider-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-range-slider-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-controls', 'customize-base', 'react-dom' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-slider-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-controls', 'customize-base', 'react-dom' ], self::$control_ver, false );
 
 	}
 

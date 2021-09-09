@@ -40,7 +40,7 @@
     "kirki-framework/control-repeater": "dev-master",
     "kirki-framework/control-select": "dev-nightly",
     "kirki-framework/control-react-select": "dev-nightly",
-    "kirki-framework/control-range-slider": "dev-nightly",
+    "kirki-framework/control-slider": "dev-nightly",
     "kirki-framework/control-sortable": "dev-nightly",
     "kirki-framework/control-upload": "dev-nightly",
     "kirki-framework/field-dimensions": "dev-nightly",

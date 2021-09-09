@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b51cad342aefa9e743018d1d48fb2d5",
+    "content-hash": "5dfa547a60db1840cd824aa1692111a0",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "ae5d0afc6a9f202f5d952c125a1cb05f4d44cbf4"
+                "reference": "a146e1f13568cda6c27e0454b8d67f15baba21b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/ae5d0afc6a9f202f5d952c125a1cb05f4d44cbf4",
-                "reference": "ae5d0afc6a9f202f5d952c125a1cb05f4d44cbf4",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/a146e1f13568cda6c27e0454b8d67f15baba21b5",
+                "reference": "a146e1f13568cda6c27e0454b8d67f15baba21b5",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
                 "source": "https://github.com/kirki-framework/compatibility/tree/nightly"
             },
-            "time": "2021-09-08T03:54:58+00:00"
+            "time": "2021-09-09T09:14:02+00:00"
         },
         {
             "name": "kirki-framework/control-base",
@@ -815,48 +815,6 @@
             "time": "2021-09-07T20:26:48+00:00"
         },
         {
-            "name": "kirki-framework/control-range-slider",
-            "version": "dev-nightly",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kirki-framework/control-range-slider.git",
-                "reference": "25112a5e9bd8d6e526e09ba108fd337afab4cc4a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-range-slider/zipball/25112a5e9bd8d6e526e09ba108fd337afab4cc4a",
-                "reference": "25112a5e9bd8d6e526e09ba108fd337afab4cc4a",
-                "shasum": ""
-            },
-            "require": {
-                "kirki-framework/control-base": "*",
-                "php": ">=7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kirki Framework",
-                    "email": "connect@mapsteps.com"
-                }
-            ],
-            "description": "Range slider control for the Kirki Customizer Framework",
-            "support": {
-                "issues": "https://github.com/kirki-framework/control-range-slider/issues",
-                "source": "https://github.com/kirki-framework/control-range-slider/tree/nightly"
-            },
-            "time": "2021-09-08T15:54:58+00:00"
-        },
-        {
             "name": "kirki-framework/control-react-color",
             "version": "dev-master",
             "source": {
@@ -1131,6 +1089,48 @@
                 "source": "https://github.com/kirki-framework/control-select/tree/master"
             },
             "time": "2019-10-05T14:12:03+00:00"
+        },
+        {
+            "name": "kirki-framework/control-slider",
+            "version": "dev-nightly",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/control-slider.git",
+                "reference": "81cf759227ff4ba393dd42f3a5d3fe15a9d8caf3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/81cf759227ff4ba393dd42f3a5d3fe15a9d8caf3",
+                "reference": "81cf759227ff4ba393dd42f3a5d3fe15a9d8caf3",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/control-base": "*",
+                "php": ">=7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Control\\": "src/Control",
+                    "Kirki\\Field\\": "src/Field"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kirki Framework",
+                    "email": "connect@mapsteps.com"
+                }
+            ],
+            "description": "Range slider control for the Kirki Customizer Framework",
+            "support": {
+                "issues": "https://github.com/kirki-framework/control-slider/issues",
+                "source": "https://github.com/kirki-framework/control-slider/tree/nightly"
+            },
+            "time": "2021-09-09T09:13:24+00:00"
         },
         {
             "name": "kirki-framework/control-sortable",
@@ -6915,7 +6915,7 @@
         "kirki-framework/control-repeater": 20,
         "kirki-framework/control-select": 20,
         "kirki-framework/control-react-select": 20,
-        "kirki-framework/control-range-slider": 20,
+        "kirki-framework/control-slider": 20,
         "kirki-framework/control-sortable": 20,
         "kirki-framework/control-upload": 20,
         "kirki-framework/field-dimensions": 20,

@@ -6,12 +6,12 @@
   }
 
   .kirki-control-form {
+    position: relative;
     margin-bottom: 12px;
 
     &:hover {
       .kirki-control-reset {
         opacity: 1;
-        visibility: visible;
       }
     }
   }
@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
     right: 0;
-    bottom: -5px;
+    bottom: 32px;
     position: absolute;
     padding: 0;
     width: 20px;
@@ -31,10 +31,14 @@
     border-radius: 50%;
     border-width: 0;
     opacity: 0;
-    visibility: hidden;
     cursor: pointer;
     transition: all 0.3s;
     z-index: 3;
+
+    // a11y: support tab focus.
+    &:focus {
+      opacity: 1;
+    }
   }
 
   .kirki-control-reset:hover i {
@@ -42,12 +46,16 @@
     transform: rotate(45deg);
   }
 
+  .kirki-control-reset:active i {
+    transform: rotate(-180deg);
+  }
+
   .kirki-control-reset i {
     font-size: 12px;
     width: auto;
     height: auto;
     transform: rotate(-45deg);
-    transition: transform 0.2s;
+    transition: transform 0.3s;
   }
 
   .kirki-control-cols {
@@ -85,19 +93,20 @@
     margin: 0;
   }
 
-  .kirki-control-range {
-    -webkit-appearance: none;
+  .kirki-control-slider {
+    position: relative;
+    top: -1px;
+    padding: 0;
+    margin: 0;
     width: 100%;
     height: 6px;
     border-radius: 3px;
     background-color: #bdc3c7;
     outline: none;
-    padding: 0;
-    margin: 0;
-    position: relative;
+    -webkit-appearance: none;
   }
 
-  .kirki-control-range::-webkit-slider-thumb {
+  .kirki-control-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 16px;
@@ -106,22 +115,25 @@
     background-color: #f0f0f0;
     cursor: pointer;
     border: 1px solid #999;
-    transform: scale(1);
-    -webkit-transition: background-color, transform 0.15s ease-in-out;
-    transition: background-color, transform 0.15s ease-in-out;
+    box-shadow: none;
+    -webkit-transition: background-color 0.15s ease-in-out,
+      box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: background-color 0.15s ease-in-out,
+      box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 
-  .kirki-control-range::-webkit-slider-thumb:hover {
+  .kirki-control-slider::-webkit-slider-thumb:hover,
+  .kirki-control-slider::-webkit-slider-thumb:focus {
     background-color: #e7e7e7;
+    box-shadow: 0px 0px 0px 8px rgb(25 118 210 / 16%);
   }
 
-  .kirki-control-range:active::-webkit-slider-thumb,
-  .kirki-control-range:focus::-webkit-slider-thumb {
+  .kirki-control-slider:active::-webkit-slider-thumb {
     background-color: #e7e7e7;
-    transform: scale(1.3);
+    box-shadow: 0px 0px 0px 14px rgb(25 118 210 / 16%);
   }
 
-  .kirki-control-range::-moz-range-thumb {
+  .kirki-control-slider::-moz-range-thumb {
     width: 16px;
     height: 16px;
     border: 0;
@@ -129,23 +141,21 @@
     background-color: #f0f0f0;
     cursor: pointer;
     border: 1px solid #999;
-    transform: scale(1);
-    -moz-transition: background-color, transform 0.15s ease-in-out;
-    transition: background-color, transform 0.15s ease-in-out;
+    box-shadow: none;
+    -moz-transition: background-color 0.15s ease-in-out,
+      box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: background-color 0.15s ease-in-out,
+      box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 
-  .kirki-control-range::-moz-range-thumb:hover {
+  .kirki-control-slider::-moz-range-thumb:hover,
+  .kirki-control-slider::-moz-range-thumb:focus {
     background-color: #e7e7e7;
+    box-shadow: 0px 0px 0px 8px rgb(25 118 210 / 16%);
   }
 
-  .kirki-control-range:active::-moz-range-thumb,
-  .kirki-control-range:focus::-moz-range-thumb {
-    background-color: #e7e7e7;
-    transform: scale(1.3);
-  }
-
-  .kirki-control-range:focus::-webkit-slider-thumb {
-    /* in case we need this in the future */
+  .kirki-control-slider:active::-moz-range-thumb {
+    box-shadow: 0px 0px 0px 14px rgb(25 118 210 / 16%);
   }
 
   ::-moz-range-track {

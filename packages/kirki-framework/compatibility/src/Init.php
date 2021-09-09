@@ -82,8 +82,7 @@ class Init {
 			'kirki-radio-image'     => '\Kirki\Control\Radio_Image',
 			'repeater'              => '\Kirki\Control\Repeater',
 			'kirki-select'          => '\Kirki\Control\Select',
-			'kirki-range-slider'    => '\Kirki\Control\RangeSlider',
-			'kirki-slider'          => '\Kirki\Control\RangeSlider', // Backwards compatibility.
+			'kirki-slider'          => '\Kirki\Control\Slider',
 			'kirki-sortable'        => '\Kirki\Control\Sortable',
 			'kirki-spacing'         => '\Kirki\Control\Dimensions',
 			'kirki-switch'          => '\Kirki\Control\Checkbox_Switch',

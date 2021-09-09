@@ -2,7 +2,7 @@
 /**
  * Override field methods.
  *
- * @package kirki-framework/control-range-slider
+ * @package kirki-framework/control-slider
  * @license MIT (https://oss.ninja/mit?organization=Kirki%20Framework)
  * @since   1.0
  */
@@ -16,7 +16,7 @@ use Kirki\Field;
  *
  * @since 1.0
  */
-class RangeSlider extends Field {
+class Slider extends Field {
 
 	/**
 	 * The field type.
@@ -25,7 +25,7 @@ class RangeSlider extends Field {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'kirki-range-slider';
+	public $type = 'kirki-slider';
 
 	/**
 	 * The control class-name.
@@ -34,7 +34,7 @@ class RangeSlider extends Field {
 	 * @access protected
 	 * @var string
 	 */
-	protected $control_class = '\Kirki\Control\RangeSlider';
+	protected $control_class = '\Kirki\Control\Slider';
 
 	/**
 	 * Whether we should register the control class for JS-templating or not.
@@ -82,7 +82,7 @@ class RangeSlider extends Field {
 
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args         = parent::filter_control_args( $args, $wp_customize );
-			$args['type'] = 'kirki-range-slider';
+			$args['type'] = 'kirki-slider';
 		}
 
 		return $args;
