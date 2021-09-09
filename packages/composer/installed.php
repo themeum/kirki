@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '0786144e16658480b1939488c426db12581ad18b',
+        'reference' => 'aec69625cfeb19e5bcff603d397770dc91455a36',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '0786144e16658480b1939488c426db12581ad18b',
+            'reference' => 'aec69625cfeb19e5bcff603d397770dc91455a36',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -292,7 +292,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-slider',
             'aliases' => array(),
-            'reference' => '29a65f4bf03f5ae0b0184963a69d99be3567556d',
+            'reference' => 'd4213c280563b8cf220d77df3aac1add4c43734f',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-sortable' => array(

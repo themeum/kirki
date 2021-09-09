@@ -43,18 +43,14 @@
 
   .kirki-control-reset:hover i {
     color: #f00;
-    transform: rotate(45deg);
-  }
-
-  .kirki-control-reset:active i {
-    transform: rotate(-180deg);
+    transform: rotate(-45deg);
   }
 
   .kirki-control-reset i {
     font-size: 12px;
     width: auto;
     height: auto;
-    transform: rotate(-45deg);
+    transform: rotate(45deg);
     transition: transform 0.3s;
   }
 

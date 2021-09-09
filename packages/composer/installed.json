@@ -1808,19 +1808,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-slider.git",
-                "reference": "29a65f4bf03f5ae0b0184963a69d99be3567556d"
+                "reference": "d4213c280563b8cf220d77df3aac1add4c43734f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/29a65f4bf03f5ae0b0184963a69d99be3567556d",
-                "reference": "29a65f4bf03f5ae0b0184963a69d99be3567556d",
+                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/d4213c280563b8cf220d77df3aac1add4c43734f",
+                "reference": "d4213c280563b8cf220d77df3aac1add4c43734f",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "*",
                 "php": ">=7"
             },
-            "time": "2021-09-09T09:44:38+00:00",
+            "time": "2021-09-09T21:32:00+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1842,7 +1842,7 @@
             "description": "Range slider control for the Kirki Customizer Framework",
             "support": {
                 "issues": "https://github.com/kirki-framework/control-slider/issues",
-                "source": "https://github.com/kirki-framework/control-slider/tree/main"
+                "source": "https://github.com/kirki-framework/control-slider/tree/nightly"
             },
             "install-path": "../kirki-framework/control-slider"
         },

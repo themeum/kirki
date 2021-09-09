@@ -16,7 +16,20 @@ const KirkiSliderForm = (props) => {
 
 	const handleChange = (e) => {
 		trigger = 'range' === e.target.type ? 'slider' : 'input';
-		customizerSetting.set(e.target.value);
+
+		let value = e.target.value;
+
+		if (value < choices.min) {
+			value = choices.min;
+			if ('input' === trigger) e.target.value = value;
+		}
+
+		if (value > choices.max) {
+			value = choices.max;
+			if ('input' === trigger) e.target.value = value;
+		}
+
+		customizerSetting.set(value);
 	};
 
 	const handleReset = (e) => {
