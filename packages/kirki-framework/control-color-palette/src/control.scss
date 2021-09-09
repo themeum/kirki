@@ -1,4 +1,9 @@
 // Color palette control.
+.customize-control-kirki-color-palette,
+.customize-control-kirki-color-palette * {
+  box-sizing: border-box;
+}
+
 .customize-control-kirki-color-palette {
   .kirki-control-label {
     position: relative;
@@ -7,7 +12,7 @@
 
   .kirki-control-form {
     position: relative;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
 
     &:hover {
       .kirki-control-reset {
@@ -21,7 +26,7 @@
     align-items: center;
     justify-content: center;
     right: 0;
-    bottom: 32px;
+    top: 0;
     position: absolute;
     padding: 0;
     width: 20px;
@@ -57,8 +62,8 @@
   .kirki-colors {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
+    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -73,22 +78,37 @@
   }
 
   .kirki-color {
-    margin: 0;
+    position: relative;
+    display: block;
+    margin: 0 11px 11px 0;
     padding: 0;
-    padding-right: 10px;
-    width: 75%;
-    padding-right: 13px;
 
     &:last-child {
       padding-right: 0;
     }
 
-    div {
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      height: 100%;
       border-radius: 4px;
+      border: 1px solid #dedede;
+      transform: scale(1);
+      cursor: pointer;
+      transition: transform 0.2s;
 
-      &[title="#eee"],
-      &[title="#eeeeee"] {
-        border: 1px solid #ddd;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    &.is-selected {
+      > div {
+        border-color: #2271b1;
+        border-width: 4px;
       }
     }
   }

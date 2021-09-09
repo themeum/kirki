@@ -15,12 +15,14 @@ const KirkiColorPaletteForm = (props) => {
 	};
 
 	const handleReset = () => {
-		setSelectedItem(props.value);
+		customizerSetting.set(props.value);
 	};
+
+	const size = choices.size + 2; // 2 here is 1px border on each side.
 
 	return (
 		<div className="kirki-control-form" tabIndex="1">
-			<label className="kirki-control-label" htmlFor={fieldId}>
+			<label className="kirki-control-label">
 				<span className="customize-control-title">{props.label}</span>
 				<span className="customize-control-description description">{props.description}</span>
 			</label>
@@ -32,17 +34,24 @@ const KirkiColorPaletteForm = (props) => {
 			</button>
 
 			<ul className={"kirki-colors kirki-" + choices.shape + "-colors"}>
-				{choices.colors.map((color) => {
+				{choices.colors.map((color, index) => {
 					const itemClassName = color === selectedItem ? "kirki-color is-selected" : "kirki-color";
 
 					return (
-						<li className={itemClassName}>
+						<li
+							key={index.toString()}
+							className={itemClassName}
+							style={
+								{
+									width: size + 'px',
+									height: size + 'px'
+								}
+							}
+						>
 							<div
 								title={color}
 								style={
 									{
-										width: choices.size + 'px',
-										height: choices.size + 'px',
 										backgroundColor: color
 									}
 								}

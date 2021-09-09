@@ -260,12 +260,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-color-palette.git",
-                "reference": "49daada7e3bd5cd72965d840b3cb5613ecd494db"
+                "reference": "9dd389dbcaba34b8b10f6ba56820c0d2adf0667f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/49daada7e3bd5cd72965d840b3cb5613ecd494db",
-                "reference": "49daada7e3bd5cd72965d840b3cb5613ecd494db",
+                "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/9dd389dbcaba34b8b10f6ba56820c0d2adf0667f",
+                "reference": "9dd389dbcaba34b8b10f6ba56820c0d2adf0667f",
                 "shasum": ""
             },
             "require": {
@@ -294,7 +294,7 @@
                 "issues": "https://github.com/kirki-framework/control-color-palette/issues",
                 "source": "https://github.com/kirki-framework/control-color-palette/tree/main"
             },
-            "time": "2021-09-09T17:10:58+00:00"
+            "time": "2021-09-09T20:54:11+00:00"
         },
         {
             "name": "kirki-framework/control-cropped-image",

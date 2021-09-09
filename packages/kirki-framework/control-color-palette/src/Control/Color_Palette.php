@@ -69,6 +69,8 @@ class Color_Palette extends Base {
 
 		parent::to_json();
 
+		$this->json['value'] = strtolower( $this->json['value'] );
+
 		$choices = $this->json['choices'];
 
 		$this->json['choices'] = wp_parse_args(
@@ -79,6 +81,8 @@ class Color_Palette extends Base {
 				'colors' => [],
 			]
 		);
+
+		$this->json['choices']['colors'] = array_map( 'strtolower', $this->json['choices']['colors'] );
 
 		if ( isset( $choices['style'] ) && ! empty( $choices['style'] ) ) {
 			if ( ! isset( $choices['shape'] ) || empty( $choices['shape'] ) ) {

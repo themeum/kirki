@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '13dd250841412e4336b0e29fc90c1a9242d92fcb',
+        'reference' => 'ceac4e97ffe74c9a17663cd8b7baa6082f14f409',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '13dd250841412e4336b0e29fc90c1a9242d92fcb',
+            'reference' => 'ceac4e97ffe74c9a17663cd8b7baa6082f14f409',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -142,7 +142,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-color-palette',
             'aliases' => array(),
-            'reference' => '49daada7e3bd5cd72965d840b3cb5613ecd494db',
+            'reference' => '9dd389dbcaba34b8b10f6ba56820c0d2adf0667f',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-cropped-image' => array(
