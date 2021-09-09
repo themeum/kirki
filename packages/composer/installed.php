@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '675c864b7620e97b7d0c4b1bc5f12201ce83bcb7',
+        'reference' => '0786144e16658480b1939488c426db12581ad18b',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '675c864b7620e97b7d0c4b1bc5f12201ce83bcb7',
+            'reference' => '0786144e16658480b1939488c426db12581ad18b',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -509,7 +509,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/util',
             'aliases' => array(),
-            'reference' => 'c2aabe15de77a2ba4a7cc2e5d86372dd48741eaa',
+            'reference' => '7ead5a4bf6875aa1afb96cbb4e747c59c163b2a3',
             'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(

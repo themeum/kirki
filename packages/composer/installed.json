@@ -3016,18 +3016,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/util.git",
-                "reference": "c2aabe15de77a2ba4a7cc2e5d86372dd48741eaa"
+                "reference": "7ead5a4bf6875aa1afb96cbb4e747c59c163b2a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/util/zipball/c2aabe15de77a2ba4a7cc2e5d86372dd48741eaa",
-                "reference": "c2aabe15de77a2ba4a7cc2e5d86372dd48741eaa",
+                "url": "https://api.github.com/repos/kirki-framework/util/zipball/7ead5a4bf6875aa1afb96cbb4e747c59c163b2a3",
+                "reference": "7ead5a4bf6875aa1afb96cbb4e747c59c163b2a3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
-            "time": "2021-09-09T19:38:02+00:00",
+            "time": "2021-09-09T21:02:44+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
