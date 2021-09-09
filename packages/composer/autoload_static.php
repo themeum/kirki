@@ -193,8 +193,7 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
         'Kirki\\Util\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/control-dashicons/src/Util',
-            1 => __DIR__ . '/..' . '/kirki-framework/field-color-palette/src/Util',
-            2 => __DIR__ . '/..' . '/kirki-framework/util/src',
+            1 => __DIR__ . '/..' . '/kirki-framework/util/src',
         ),
         'Kirki\\Settings\\' => 
         array (
@@ -234,12 +233,10 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             18 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
             19 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
             20 => __DIR__ . '/..' . '/kirki-framework/field-background/src',
-            21 => __DIR__ . '/..' . '/kirki-framework/field-color-palette/src/Field',
-            22 => __DIR__ . '/..' . '/kirki-framework/field-dimensions/src',
-            23 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
-            24 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
-            25 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
-            26 => __DIR__ . '/..' . '/kirki-framework/control-palette/src/Field',
+            21 => __DIR__ . '/..' . '/kirki-framework/field-dimensions/src',
+            22 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
+            23 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
+            24 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
         ),
         'Kirki\\Data\\' => 
         array (
@@ -270,7 +267,6 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             20 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
             21 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
             22 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
-            23 => __DIR__ . '/..' . '/kirki-framework/control-palette/src/Control',
         ),
         'Kirki\\Compatibility\\' => 
         array (

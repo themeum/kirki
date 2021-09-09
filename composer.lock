@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5098b156eff802524e076f13859c3d4c",
+    "content-hash": "122b9f26a3cb6fa9c5cf9104adf861a5",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -713,57 +713,6 @@
             "time": "2021-09-07T08:58:11+00:00"
         },
         {
-            "name": "kirki-framework/control-palette",
-            "version": "dev-nightly",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kirki-framework/control-palette.git",
-                "reference": "178413d19ab8311312e64cb248c02043955cc783"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-palette/zipball/178413d19ab8311312e64cb248c02043955cc783",
-                "reference": "178413d19ab8311312e64cb248c02043955cc783",
-                "shasum": ""
-            },
-            "require": {
-                "kirki-framework/control-radio": "*",
-                "kirki-framework/url-getter": "*",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ari Stathopoulos",
-                    "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Palette control for the Kirki Customizer framework.",
-            "homepage": "https://aristath.github.io/kirki",
-            "keywords": [
-                "customizer",
-                "framework",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/kirki-framework/control-palette/issues",
-                "source": "https://github.com/kirki-framework/control-palette/tree/master"
-            },
-            "time": "2019-07-06T20:28:35+00:00"
-        },
-        {
             "name": "kirki-framework/control-radio",
             "version": "dev-nightly",
             "source": {
@@ -1378,56 +1327,6 @@
                 "source": "https://github.com/kirki-framework/field-background/tree/nightly"
             },
             "time": "2021-09-01T15:40:40+00:00"
-        },
-        {
-            "name": "kirki-framework/field-color-palette",
-            "version": "dev-nightly",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kirki-framework/field-color-palette.git",
-                "reference": "3809ca2fa7d6c3f98add779891ad963c0785f0d0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-color-palette/zipball/3809ca2fa7d6c3f98add779891ad963c0785f0d0",
-                "reference": "3809ca2fa7d6c3f98add779891ad963c0785f0d0",
-                "shasum": ""
-            },
-            "require": {
-                "kirki-framework/control-react-color": "*",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kirki\\Util\\": "src/Util",
-                    "Kirki\\Field\\": "src/Field"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ari Stathopoulos",
-                    "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Color Palette field for the Kirki Customizer framework.",
-            "homepage": "https://aristath.github.io/kirki",
-            "keywords": [
-                "customizer",
-                "framework",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/kirki-framework/field-color-palette/issues",
-                "source": "https://github.com/kirki-framework/field-color-palette/tree/v0.1"
-            },
-            "time": "2019-10-06T08:52:56+00:00"
         },
         {
             "name": "kirki-framework/field-dimensions",
@@ -6909,7 +6808,6 @@
         "kirki-framework/control-generic": 20,
         "kirki-framework/control-image": 20,
         "kirki-framework/control-multicheck": 20,
-        "kirki-framework/control-palette": 20,
         "kirki-framework/control-radio": 20,
         "kirki-framework/control-repeater": 20,
         "kirki-framework/control-select": 20,
@@ -6930,7 +6828,6 @@
         "kirki-framework/control-react-colorful": 20,
         "kirki-framework/control-color": 20,
         "kirki-framework/field-background": 20,
-        "kirki-framework/field-color-palette": 20,
         "kirki-framework/field-multicolor": 20,
         "codacy/coverage": 20,
         "wptrt/wpthemereview": 20

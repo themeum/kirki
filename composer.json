@@ -35,7 +35,6 @@
     "kirki-framework/control-generic": "dev-nightly",
     "kirki-framework/control-image": "dev-nightly",
     "kirki-framework/control-multicheck": "dev-nightly",
-    "kirki-framework/control-palette": "dev-nightly",
     "kirki-framework/control-radio": "dev-nightly",
     "kirki-framework/control-repeater": "dev-master",
     "kirki-framework/control-select": "dev-nightly",
@@ -62,7 +61,6 @@
     "kirki-framework/control-react-colorful": "dev-nightly",
     "kirki-framework/control-color": "dev-nightly",
     "kirki-framework/field-background": "dev-nightly",
-    "kirki-framework/field-color-palette": "dev-nightly",
     "kirki-framework/field-multicolor": "dev-nightly"
   },
   "require-dev": {
