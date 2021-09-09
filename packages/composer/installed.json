@@ -1819,19 +1819,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-slider.git",
-                "reference": "81cf759227ff4ba393dd42f3a5d3fe15a9d8caf3"
+                "reference": "5571c6d470329c0b6d2dbf0fd303a0f097277c3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/81cf759227ff4ba393dd42f3a5d3fe15a9d8caf3",
-                "reference": "81cf759227ff4ba393dd42f3a5d3fe15a9d8caf3",
+                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/5571c6d470329c0b6d2dbf0fd303a0f097277c3f",
+                "reference": "5571c6d470329c0b6d2dbf0fd303a0f097277c3f",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "*",
                 "php": ">=7"
             },
-            "time": "2021-09-09T09:13:24+00:00",
+            "time": "2021-09-09T09:28:27+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
