@@ -19,7 +19,7 @@
   "include-path": [".", "core"],
   "require": {
     "php": ">=5.6",
-    "kirki-framework/util": "dev-master",
+    "kirki-framework/util": "dev-nightly",
     "kirki-framework/l10n": "dev-master",
     "kirki-framework/field": "dev-master",
     "kirki-framework/url-getter": "*",
