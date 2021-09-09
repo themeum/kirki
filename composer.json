@@ -59,6 +59,7 @@
     "kirki-framework/module-sections": "dev-nightly",
     "kirki-framework/control-react-colorful": "dev-nightly",
     "kirki-framework/control-color": "dev-nightly",
+    "kirki-framework/control-color-palette": "dev-nightly",
     "kirki-framework/field-background": "dev-nightly",
     "kirki-framework/field-multicolor": "dev-nightly"
   },

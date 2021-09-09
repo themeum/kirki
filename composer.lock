@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "697a4f1f6d7501a1339050845b51d768",
+    "content-hash": "c8506fcb21ab4be903f00594b3749cd1",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -253,6 +253,48 @@
                 "source": "https://github.com/kirki-framework/control-color/tree/nightly"
             },
             "time": "2021-08-26T18:27:29+00:00"
+        },
+        {
+            "name": "kirki-framework/control-color-palette",
+            "version": "dev-nightly",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/control-color-palette.git",
+                "reference": "49daada7e3bd5cd72965d840b3cb5613ecd494db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/49daada7e3bd5cd72965d840b3cb5613ecd494db",
+                "reference": "49daada7e3bd5cd72965d840b3cb5613ecd494db",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/control-base": "*",
+                "php": ">=7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Control\\": "src/Control",
+                    "Kirki\\Field\\": "src/Field"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kirki Framework",
+                    "email": "connect@mapsteps.com"
+                }
+            ],
+            "description": "Color palette control for the Kirki Customizer Framework",
+            "support": {
+                "issues": "https://github.com/kirki-framework/control-color-palette/issues",
+                "source": "https://github.com/kirki-framework/control-color-palette/tree/main"
+            },
+            "time": "2021-09-09T17:10:58+00:00"
         },
         {
             "name": "kirki-framework/control-cropped-image",
@@ -6825,6 +6867,7 @@
         "kirki-framework/module-sections": 20,
         "kirki-framework/control-react-colorful": 20,
         "kirki-framework/control-color": 20,
+        "kirki-framework/control-color-palette": 20,
         "kirki-framework/field-background": 20,
         "kirki-framework/field-multicolor": 20,
         "codacy/coverage": 20,

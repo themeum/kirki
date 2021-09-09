@@ -1,0 +1,39 @@
+{
+  "name": "control-color-palette",
+  "version": "1.0.0",
+  "description": "Development toolkit for Kirki's control-color-palette",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirki-framework/control-color-palette.git"
+  },
+  "keywords": [
+    "kirki-color-palette"
+  ],
+  "author": "Kirki Framework",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kirki-framework/control-color-palette/issues"
+  },
+  "homepage": "https://github.com/kirki-framework/control-color-palette#readme",
+  "dependencies": {
+    "react": "17.*",
+    "react-dom": "17.*"
+  },
+  "devDependencies": {
+    "@babel/core": "7.*",
+    "@babel/preset-env": "7.*",
+    "@babel/preset-react": "7.*",
+    "babel-loader": "8.*",
+    "css-loader": "6.*",
+    "mini-css-extract-plugin": "2.*",
+    "sass": "1.*",
+    "sass-loader": "12.*",
+    "webpack": "5.*",
+    "webpack-cli": "4.*"
+  }
+}
