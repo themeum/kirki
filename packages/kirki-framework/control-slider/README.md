@@ -1,8 +1,8 @@
-# Kirki Range Slider Control
-A `control-range-slider` package for Kirki Customizer Framework.
+# Kirki Slider Control
+A `control-slider` package for Kirki Customizer Framework.
 
 ## Table of Contents
-- [Kirki Range Slider Control](#kirki-range-slider-control)
+- [Kirki Slider Control](#kirki-slider-control)
 	- [Table of Contents](#table-of-contents)
 	- [Installation](#installation)
 	- [Usage](#usage)
@@ -14,7 +14,7 @@ A `control-range-slider` package for Kirki Customizer Framework.
 First, install the package using composer:
 
 ```bash
-composer require kirki-framework/control-range-slider
+composer require kirki-framework/control-slider
 ```
 
 Then make sure you have included the autoloader:
@@ -30,7 +30,7 @@ This control can be consumed using Kirki API or using WordPress Customizer API.
 ### Using Kirki API
 
 ```php
-new \Kirki\Field\RangeSlider(
+new \Kirki\Field\Slider(
 	[
 		'settings'    => 'your_control_setting_id',
 		'label'       => esc_html__( 'Your Control Label', 'your-text-domain' ),
@@ -70,7 +70,7 @@ function your_customize_register_function( $wp_customize ) {
 
 	// Add control.
 	$wp_customize->add_control(
-		new \Kirki\Control\RangeSlider(
+		new \Kirki\Control\Slider(
 			$wp_customize,
 			'your_control_setting_id',
 			[

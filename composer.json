@@ -57,7 +57,6 @@
     "kirki-framework/data-option": "dev-nightly",
     "kirki-framework/module-panels": "dev-nightly",
     "kirki-framework/module-sections": "dev-nightly",
-    "kirki-framework/control-react-color": "dev-master",
     "kirki-framework/control-react-colorful": "dev-nightly",
     "kirki-framework/control-color": "dev-nightly",
     "kirki-framework/field-background": "dev-nightly",
