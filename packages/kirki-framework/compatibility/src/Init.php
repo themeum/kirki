@@ -76,7 +76,6 @@ class Init {
 			'kirki-multicolor'      => '\Kirki\Control\Multicolor',
 			'kirki-multicheck'      => '\Kirki\Control\MultiCheck',
 			'kirki-number'          => '\Kirki\Control\Number',
-			'kirki-palette'         => '\Kirki\Control\Palette',
 			'kirki-radio'           => '\Kirki\Control\Radio',
 			'kirki-radio-buttonset' => '\Kirki\Control\Radio_ButtonSet',
 			'kirki-radio-image'     => '\Kirki\Control\Radio_Image',

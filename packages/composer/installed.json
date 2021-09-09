@@ -672,18 +672,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "2f72b1a4c5bdcf0c057f2af78289b4a0b918c636"
+                "reference": "47e32345ffb752bc694d24ca96e1cd7bef87dcb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/2f72b1a4c5bdcf0c057f2af78289b4a0b918c636",
-                "reference": "2f72b1a4c5bdcf0c057f2af78289b4a0b918c636",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/47e32345ffb752bc694d24ca96e1cd7bef87dcb9",
+                "reference": "47e32345ffb752bc694d24ca96e1cd7bef87dcb9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
-            "time": "2021-09-09T14:38:45+00:00",
+            "time": "2021-09-09T15:01:32+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
