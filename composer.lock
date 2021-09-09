@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5dfa547a60db1840cd824aa1692111a0",
+    "content-hash": "5098b156eff802524e076f13859c3d4c",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -714,7 +714,7 @@
         },
         {
             "name": "kirki-framework/control-palette",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-palette.git",
@@ -731,7 +731,6 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {

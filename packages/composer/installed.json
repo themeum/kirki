@@ -1415,8 +1415,8 @@
         },
         {
             "name": "kirki-framework/control-palette",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "dev-nightly",
+            "version_normalized": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-palette.git",
@@ -1434,7 +1434,6 @@
                 "php": ">=5.6"
             },
             "time": "2019-07-06T20:28:35+00:00",
-            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
