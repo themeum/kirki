@@ -66,10 +66,10 @@ class ReactColorful extends Base {
 		parent::enqueue();
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-react-colorful', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/main.js' ), [ 'customize-controls', 'wp-element', 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-react-colorful', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-controls', 'wp-element', 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-react-colorful-style', URL::get_from_path( dirname( __DIR__ ) . '/style.css' ), [], self::$control_ver );
+		wp_enqueue_style( 'kirki-control-react-colorful-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 
 	}
 
@@ -91,6 +91,12 @@ class ReactColorful extends Base {
 
 		// Color swatches.
 		$this->json['choices']['swatches'] = $this->color_swatches();
+
+		// Trigger style.
+		$this->json['choices']['triggerStyle'] = isset( $this->json['choices']['triggerStyle'] ) ? $this->json['choices']['triggerStyle'] : 'input';
+
+		// Trigger style.
+		$this->json['choices']['buttonText'] = isset( $this->json['choices']['buttonText'] ) ? $this->json['choices']['buttonText'] : '';
 
 	}
 
@@ -114,14 +120,14 @@ class ReactColorful extends Base {
 
 		$default_swatches = apply_filters( 'kirki_default_color_swatches', $default_swatches );
 
-		if (isset($this->choices['swatches']) && !empty($this->choices['swatches'])) {
+		if ( isset( $this->choices['swatches'] ) && ! empty( $this->choices['swatches'] ) ) {
 			$swatches = $this->choices['swatches'];
 
-			$total_swatches = count($swatches);
+			$total_swatches = count( $swatches );
 
-			if ($total_swatches < 8) {
-				for ($i = $total_swatches; $i <= 8; $i++) {
-					$swatches[] = $total_swatches[$i];
+			if ( $total_swatches < 8 ) {
+				for ( $i = $total_swatches; $i <= 8; $i++ ) {
+					$swatches[] = $total_swatches[ $i ];
 				}
 			}
 		} else {

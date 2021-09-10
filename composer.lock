@@ -868,12 +868,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "1fef288ce10207ced4a27d618bd155d729c07884"
+                "reference": "5eff56b3f4da0b6a3ba6dba1185167d34726abf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/1fef288ce10207ced4a27d618bd155d729c07884",
-                "reference": "1fef288ce10207ced4a27d618bd155d729c07884",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/5eff56b3f4da0b6a3ba6dba1185167d34726abf4",
+                "reference": "5eff56b3f4da0b6a3ba6dba1185167d34726abf4",
                 "shasum": ""
             },
             "require": {
@@ -917,7 +917,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-10T14:27:19+00:00"
+            "time": "2021-09-10T18:02:45+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",
