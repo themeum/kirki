@@ -1,0 +1,21 @@
+.customize-control-has-small-gap {
+  margin-bottom: 5px;
+}
+
+.customize-control-is-gapless {
+  margin-bottom: 0;
+}
+
+.customize-control-kirki {
+  label.customize-control-title {
+    display: block;
+    width: 100%;
+  }
+
+  .kirki-control-form {
+    textarea {
+      display: block;
+      width: 100%;
+    }
+  }
+}

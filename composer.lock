@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "6bcf8ed614608186ee51ba4612e11328173c6174"
+                "reference": "a27f5b54e87e0cd13d855a48a21d54c13d41cef4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/6bcf8ed614608186ee51ba4612e11328173c6174",
-                "reference": "6bcf8ed614608186ee51ba4612e11328173c6174",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/a27f5b54e87e0cd13d855a48a21d54c13d41cef4",
+                "reference": "a27f5b54e87e0cd13d855a48a21d54c13d41cef4",
                 "shasum": ""
             },
             "require": {
@@ -101,7 +101,7 @@
                 "issues": "https://github.com/kirki-framework/control-base/issues",
                 "source": "https://github.com/kirki-framework/control-base/tree/nightly"
             },
-            "time": "2021-09-03T13:58:40+00:00"
+            "time": "2021-09-10T20:46:32+00:00"
         },
         {
             "name": "kirki-framework/control-checkbox",
@@ -607,12 +607,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-generic.git",
-                "reference": "b4cc4f187bc3650146258a414625a9e002423622"
+                "reference": "ce0aad2b3c7a167abf92f4c843fe8a60133690a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/b4cc4f187bc3650146258a414625a9e002423622",
-                "reference": "b4cc4f187bc3650146258a414625a9e002423622",
+                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/ce0aad2b3c7a167abf92f4c843fe8a60133690a4",
+                "reference": "ce0aad2b3c7a167abf92f4c843fe8a60133690a4",
                 "shasum": ""
             },
             "require": {
@@ -650,7 +650,7 @@
                 "issues": "https://github.com/kirki-framework/control-generic/issues",
                 "source": "https://github.com/kirki-framework/control-generic/tree/nightly"
             },
-            "time": "2021-09-03T18:13:33+00:00"
+            "time": "2021-09-10T20:47:02+00:00"
         },
         {
             "name": "kirki-framework/control-image",
@@ -868,12 +868,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "87f6856be7e5157a9bb8ef477476a5fd202db10e"
+                "reference": "e985df8b6562c6113fa84ccff18a23a8cf5d5acf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/87f6856be7e5157a9bb8ef477476a5fd202db10e",
-                "reference": "87f6856be7e5157a9bb8ef477476a5fd202db10e",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/e985df8b6562c6113fa84ccff18a23a8cf5d5acf",
+                "reference": "e985df8b6562c6113fa84ccff18a23a8cf5d5acf",
                 "shasum": ""
             },
             "require": {
@@ -917,7 +917,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-10T18:26:51+00:00"
+            "time": "2021-09-10T20:45:55+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",
@@ -1476,12 +1476,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-multicolor.git",
-                "reference": "9bf3476d3457badf5ad4a3ab114cfb60f9aed019"
+                "reference": "9792d78bc02d2221cd6fa0eaac7d942cc9eb1cd1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/9bf3476d3457badf5ad4a3ab114cfb60f9aed019",
-                "reference": "9bf3476d3457badf5ad4a3ab114cfb60f9aed019",
+                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/9792d78bc02d2221cd6fa0eaac7d942cc9eb1cd1",
+                "reference": "9792d78bc02d2221cd6fa0eaac7d942cc9eb1cd1",
                 "shasum": ""
             },
             "require": {
@@ -1520,7 +1520,7 @@
                 "issues": "https://github.com/kirki-framework/field-multicolor/issues",
                 "source": "https://github.com/kirki-framework/field-multicolor/tree/nightly"
             },
-            "time": "2021-09-10T18:27:38+00:00"
+            "time": "2021-09-10T20:47:53+00:00"
         },
         {
             "name": "kirki-framework/field-typography",

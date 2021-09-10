@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'cd6941ab8cb3c5cd50403c11a9c021997035b2df',
+        'reference' => '98eeb9da79872555964cc04eab23010c7563bc53',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'cd6941ab8cb3c5cd50403c11a9c021997035b2df',
+            'reference' => '98eeb9da79872555964cc04eab23010c7563bc53',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -106,7 +106,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-base',
             'aliases' => array(),
-            'reference' => '6bcf8ed614608186ee51ba4612e11328173c6174',
+            'reference' => 'a27f5b54e87e0cd13d855a48a21d54c13d41cef4',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-checkbox' => array(
@@ -209,7 +209,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-generic',
             'aliases' => array(),
-            'reference' => 'b4cc4f187bc3650146258a414625a9e002423622',
+            'reference' => 'ce0aad2b3c7a167abf92f4c843fe8a60133690a4',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-image' => array(
@@ -254,7 +254,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-colorful',
             'aliases' => array(),
-            'reference' => '87f6856be7e5157a9bb8ef477476a5fd202db10e',
+            'reference' => 'e985df8b6562c6113fa84ccff18a23a8cf5d5acf',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
@@ -368,7 +368,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-multicolor',
             'aliases' => array(),
-            'reference' => '9bf3476d3457badf5ad4a3ab114cfb60f9aed019',
+            'reference' => '9792d78bc02d2221cd6fa0eaac7d942cc9eb1cd1',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-typography' => array(

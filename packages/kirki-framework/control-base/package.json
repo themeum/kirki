@@ -1,0 +1,46 @@
+{
+  "name": "kirki-control-base",
+  "version": "0.1.0",
+  "description": "Dev toolkit for Kirki's control-base",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirki-framework/control-base.git"
+  },
+  "keywords": [
+    "kirki-control-base"
+  ],
+  "author": "Kirki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kirki-framework/control-base/issues"
+  },
+  "homepage": "https://github.com/kirki-framework/control-base#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
+  },
+  "scripts": {
+    "build": "parcel build  src/control.js --dist-dir dist",
+    "dev": "parcel build  src/control.js --no-optimize --dist-dir dist"
+  },
+  "alias": {
+    "jquery": {
+      "global": "$"
+    },
+    "react": {
+      "global": "React"
+    },
+    "react-dom": {
+      "global": "ReactDOM"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "IE 11"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

@@ -1,9 +1,6 @@
+
 // React colorful control.
 .customize-control-kirki-react-colorful {
-  &.has-small-gap {
-    margin-bottom: 5px;
-  }
-
   .kirki-control-form {
     position: relative;
     box-sizing: border-box;
@@ -154,14 +151,14 @@
 
   .kirki-control-reset:hover i {
     color: #f00;
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
   }
 
   .kirki-control-reset i {
     font-size: 12px;
     width: auto;
     height: auto;
-    transform: rotate(-45deg);
+    transform: rotate(45deg);
     transition: transform 0.2s;
   }
 

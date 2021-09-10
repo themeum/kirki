@@ -47,13 +47,12 @@ class Generic extends Base {
 	 * @return void
 	 */
 	public function enqueue() {
+
 		parent::enqueue();
 
 		// Enqueue the script.
 		wp_enqueue_script( 'kirki-control-generic', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
 
-		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-generic-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 	}
 
 	/**
@@ -76,7 +75,7 @@ class Generic extends Base {
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 		</label>
-		<div class="customize-control-content">
+		<div class="kirki-control-form">
 			<# element = ( data.choices.element ) ? data.choices.element : 'input'; #>
 
 			<# if ( 'textarea' === element ) { #>

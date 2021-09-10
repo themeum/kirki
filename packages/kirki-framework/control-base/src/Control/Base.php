@@ -112,6 +112,17 @@ class Base extends \WP_Customize_Control {
 	public $wrapper_atts = [];
 
 	/**
+	 * The gap type for the control.
+	 *
+	 * Accepts: 'small', 'none', or just leave it empty.
+	 * This is used to set the margin-bottom of the control's root `li` element.
+	 *
+	 * @access public
+	 * @var bool
+	 */
+	public $gap_type = 'default';
+
+	/**
 	 * Extra script dependencies.
 	 *
 	 * @access public
@@ -131,8 +142,39 @@ class Base extends \WP_Customize_Control {
 	 */
 	public function enqueue() {
 
+		// Enqueue the styles.
+		wp_enqueue_style( 'kirki-base-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
+
 		// Enqueue the scripts.
-		wp_enqueue_script( 'kirki-dynamic-control', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/dynamic-control.js' ), [ 'customize-controls' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-dynamic-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-controls' ], self::$control_ver, false );
+
+	}
+
+	/**
+	 * Renders the control wrapper and calls $this->render_content() for the internals.
+	 *
+	 * @since 1.0
+	 */
+	protected function render() {
+		$id    = 'customize-control-' . str_replace( [ '[', ']' ], [ '-', '' ], $this->id );
+		$class = 'customize-control customize-control-kirki customize-control-' . $this->type;
+
+		switch ( $this->gap_type ) {
+			case 'small':
+				$class .= ' customize-control-has-small-gap';
+				break;
+
+			case 'none':
+				$class .= ' customize-control-is-gapless';
+				break;
+
+			default:
+				break;
+		}
+
+		printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+		$this->render_content();
+		echo '</li>';
 	}
 
 	/**
