@@ -1579,12 +1579,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "f0c18ba16fd397edd4f994f8fa85b5230a208dda"
+                "reference": "1fef288ce10207ced4a27d618bd155d729c07884"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/f0c18ba16fd397edd4f994f8fa85b5230a208dda",
-                "reference": "f0c18ba16fd397edd4f994f8fa85b5230a208dda",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/1fef288ce10207ced4a27d618bd155d729c07884",
+                "reference": "1fef288ce10207ced4a27d618bd155d729c07884",
                 "shasum": ""
             },
             "require": {
@@ -1593,7 +1593,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-03T13:37:35+00:00",
+            "time": "2021-09-10T14:27:19+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2223,21 +2223,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-multicolor.git",
-                "reference": "c33fbce81df6662c5fd81fbf680008afbee347f7"
+                "reference": "6ab1233cf6ea551d4767f8f9a3cffbabb311d95f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/c33fbce81df6662c5fd81fbf680008afbee347f7",
-                "reference": "c33fbce81df6662c5fd81fbf680008afbee347f7",
+                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/6ab1233cf6ea551d4767f8f9a3cffbabb311d95f",
+                "reference": "6ab1233cf6ea551d4767f8f9a3cffbabb311d95f",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "*",
-                "kirki-framework/control-react-colorful": "dev-nightly",
+                "kirki-framework/control-react-colorful": "*",
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-08-29T19:11:50+00:00",
+            "time": "2021-09-10T14:25:10+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -3733,35 +3733,35 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.13.0",
-            "version_normalized": "1.13.0.0",
+            "version": "1.14.0",
+            "version_normalized": "1.14.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "be1996ed8adc35c3fd795488a653f4b518be70ea"
+                "reference": "d86dfc2e2a3cd366cee475e52c6bb3bbc371aa0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/be1996ed8adc35c3fd795488a653f4b518be70ea",
-                "reference": "be1996ed8adc35c3fd795488a653f4b518be70ea",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/d86dfc2e2a3cd366cee475e52c6bb3bbc371aa0e",
+                "reference": "d86dfc2e2a3cd366cee475e52c6bb3bbc371aa0e",
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.2",
-                "php": "^7.2 || ~8.0, <8.1",
+                "php": "^7.2 || ~8.0, <8.2",
                 "phpdocumentor/reflection-docblock": "^5.2",
                 "sebastian/comparator": "^3.0 || ^4.0",
                 "sebastian/recursion-context": "^3.0 || ^4.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^6.0",
+                "phpspec/phpspec": "^6.0 || ^7.0",
                 "phpunit/phpunit": "^8.0 || ^9.0"
             },
-            "time": "2021-03-17T13:42:18+00:00",
+            "time": "2021-09-10T09:02:12+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "installation-source": "dist",
@@ -3797,7 +3797,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpspec/prophecy/issues",
-                "source": "https://github.com/phpspec/prophecy/tree/1.13.0"
+                "source": "https://github.com/phpspec/prophecy/tree/1.14.0"
             },
             "install-path": "../phpspec/prophecy"
         },

@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'aec69625cfeb19e5bcff603d397770dc91455a36',
+        'reference' => '8563059839554678eee1af98cd3b9a88e7ba0baa',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'aec69625cfeb19e5bcff603d397770dc91455a36',
+            'reference' => '8563059839554678eee1af98cd3b9a88e7ba0baa',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -254,7 +254,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-colorful',
             'aliases' => array(),
-            'reference' => 'f0c18ba16fd397edd4f994f8fa85b5230a208dda',
+            'reference' => '1fef288ce10207ced4a27d618bd155d729c07884',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
@@ -368,7 +368,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-multicolor',
             'aliases' => array(),
-            'reference' => 'c33fbce81df6662c5fd81fbf680008afbee347f7',
+            'reference' => '6ab1233cf6ea551d4767f8f9a3cffbabb311d95f',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-typography' => array(
@@ -615,12 +615,12 @@
             'dev_requirement' => true,
         ),
         'phpspec/prophecy' => array(
-            'pretty_version' => '1.13.0',
-            'version' => '1.13.0.0',
+            'pretty_version' => '1.14.0',
+            'version' => '1.14.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpspec/prophecy',
             'aliases' => array(),
-            'reference' => 'be1996ed8adc35c3fd795488a653f4b518be70ea',
+            'reference' => 'd86dfc2e2a3cd366cee475e52c6bb3bbc371aa0e',
             'dev_requirement' => true,
         ),
         'phpunit/php-code-coverage' => array(

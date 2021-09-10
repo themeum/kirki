@@ -17,7 +17,7 @@
         "php": ">=5.6",
         "kirki-framework/url-getter": "*",
         "kirki-framework/control-base": "*",
-        "kirki-framework/control-react-colorful": "dev-nightly"
+        "kirki-framework/control-react-colorful": "*"
     },
     "autoload": {
 		"psr-4": {
