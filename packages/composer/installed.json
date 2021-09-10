@@ -1579,12 +1579,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "5eff56b3f4da0b6a3ba6dba1185167d34726abf4"
+                "reference": "87f6856be7e5157a9bb8ef477476a5fd202db10e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/5eff56b3f4da0b6a3ba6dba1185167d34726abf4",
-                "reference": "5eff56b3f4da0b6a3ba6dba1185167d34726abf4",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/87f6856be7e5157a9bb8ef477476a5fd202db10e",
+                "reference": "87f6856be7e5157a9bb8ef477476a5fd202db10e",
                 "shasum": ""
             },
             "require": {
@@ -1593,7 +1593,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-10T18:02:45+00:00",
+            "time": "2021-09-10T18:26:51+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2223,12 +2223,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-multicolor.git",
-                "reference": "6ab1233cf6ea551d4767f8f9a3cffbabb311d95f"
+                "reference": "9bf3476d3457badf5ad4a3ab114cfb60f9aed019"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/6ab1233cf6ea551d4767f8f9a3cffbabb311d95f",
-                "reference": "6ab1233cf6ea551d4767f8f9a3cffbabb311d95f",
+                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/9bf3476d3457badf5ad4a3ab114cfb60f9aed019",
+                "reference": "9bf3476d3457badf5ad4a3ab114cfb60f9aed019",
                 "shasum": ""
             },
             "require": {
@@ -2237,7 +2237,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-10T14:25:10+00:00",
+            "time": "2021-09-10T18:27:38+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {

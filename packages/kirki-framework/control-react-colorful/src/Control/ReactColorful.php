@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * react-colorful control.
+ * The react-colorful control.
  *
  * @since 1.0
  */
@@ -55,6 +55,16 @@ class ReactColorful extends Base {
 	public $mode = '';
 
 	/**
+	 * Whether control has small gap or not.
+	 *
+	 * Used by field-multicolor.
+	 *
+	 * @access public
+	 * @var bool
+	 */
+	public $has_small_gap = false;
+
+	/**
 	 * Enqueue control related scripts/styles.
 	 *
 	 * @access public
@@ -71,6 +81,21 @@ class ReactColorful extends Base {
 		// Enqueue the style.
 		wp_enqueue_style( 'kirki-control-react-colorful-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 
+	}
+
+	/**
+	 * Renders the control wrapper and calls $this->render_content() for the internals.
+	 *
+	 * @since 3.4.0
+	 */
+	public function render() {
+		$id     = 'customize-control-' . str_replace( [ '[', ']' ], [ '-', '' ], $this->id );
+		$class  = 'customize-control customize-control-' . $this->type;
+		$class .= property_exists( $this, 'has_small_gap' ) && $this->has_small_gap ? ' has-small-gap' : '';
+
+		printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+		$this->render_content();
+		echo '</li>';
 	}
 
 	/**

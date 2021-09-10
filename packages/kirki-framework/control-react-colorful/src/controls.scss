@@ -1,5 +1,9 @@
 // React colorful control.
 .customize-control-kirki-react-colorful {
+  &.has-small-gap {
+    margin-bottom: 5px;
+  }
+
   .kirki-control-form {
     position: relative;
     box-sizing: border-box;
