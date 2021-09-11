@@ -61,8 +61,8 @@ class Aliases {
 			[ 'Kirki\Field\CSS\Background', 'Kirki_Output_Field_Background' ],
 			[ 'Kirki\Field\Checkbox', 'Kirki_Field_Checkbox' ],
 			[ 'Kirki\Field\Checkbox_Switch', 'Kirki_Field_Switch' ],
-			[ 'Kirki\Field\Checkbox_Switch', 'Kirki\Field\Switch' ],
-			[ 'Kirki\Field\Checkbox_Toggle', 'Kirki_Field_Toggle' ],
+			[ 'Kirki\Field\Checkbox_Switch', 'Kirki\Field\Switch' ], // Preventing typo.
+			[ 'Kirki\Field\Checkbox_Toggle', 'Kirki_Field_Toggle' ], // Preventing typo.
 			[ 'Kirki\Field\Checkbox_Toggle', 'Kirki\Field\Toggle' ],
 			[ 'Kirki\Field\Code', 'Kirki_Field_Code' ],
 			[ 'Kirki\Field\Color', 'Kirki_Field_Color' ],
@@ -107,7 +107,7 @@ class Aliases {
 			[ 'Kirki\Control\Base', 'Kirki_Customize_Control' ],
 			[ 'Kirki\Control\Checkbox', 'Kirki_Control_Checkbox' ],
 			[ 'Kirki\Control\Checkbox_Switch', 'Kirki_Control_Switch' ],
-			[ 'Kirki\Control\Checkbox_Toggle', 'Kirki_Control_Toggle' ],
+			[ 'Kirki\Control\Checkbox_Toggle', 'Kirki_Control_Toggle' ], // ! Toggle control class doesn't exist.
 			[ 'WP_Customize_Code_Editor_Control', 'Kirki_Control_Code' ],
 			[ 'Kirki\Control\Color', 'Kirki_Control_Color' ],
 			[ 'Kirki\Control\Color_Palette', 'Kirki_Control_Color_Palette' ],

@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "47e32345ffb752bc694d24ca96e1cd7bef87dcb9"
+                "reference": "9b40479efd8bc7791c684629e401798652bf5f3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/47e32345ffb752bc694d24ca96e1cd7bef87dcb9",
-                "reference": "47e32345ffb752bc694d24ca96e1cd7bef87dcb9",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/9b40479efd8bc7791c684629e401798652bf5f3f",
+                "reference": "9b40479efd8bc7791c684629e401798652bf5f3f",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
                 "source": "https://github.com/kirki-framework/compatibility/tree/nightly"
             },
-            "time": "2021-09-09T15:01:32+00:00"
+            "time": "2021-09-10T23:14:37+00:00"
         },
         {
             "name": "kirki-framework/control-base",
@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "a27f5b54e87e0cd13d855a48a21d54c13d41cef4"
+                "reference": "b465853c8730e74958f3a24719dbff3470e43ca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/a27f5b54e87e0cd13d855a48a21d54c13d41cef4",
-                "reference": "a27f5b54e87e0cd13d855a48a21d54c13d41cef4",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/b465853c8730e74958f3a24719dbff3470e43ca9",
+                "reference": "b465853c8730e74958f3a24719dbff3470e43ca9",
                 "shasum": ""
             },
             "require": {
@@ -101,7 +101,7 @@
                 "issues": "https://github.com/kirki-framework/control-base/issues",
                 "source": "https://github.com/kirki-framework/control-base/tree/nightly"
             },
-            "time": "2021-09-10T20:46:32+00:00"
+            "time": "2021-09-10T21:41:42+00:00"
         },
         {
             "name": "kirki-framework/control-checkbox",
@@ -109,12 +109,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-checkbox.git",
-                "reference": "cc4ffcc44f9e049f83547030bbdeaa3eb4de5361"
+                "reference": "0ffdefd73398451f5289cafdd62e08f9e26e635e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/cc4ffcc44f9e049f83547030bbdeaa3eb4de5361",
-                "reference": "cc4ffcc44f9e049f83547030bbdeaa3eb4de5361",
+                "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/0ffdefd73398451f5289cafdd62e08f9e26e635e",
+                "reference": "0ffdefd73398451f5289cafdd62e08f9e26e635e",
                 "shasum": ""
             },
             "require": {
@@ -152,7 +152,7 @@
                 "issues": "https://github.com/kirki-framework/control-checkbox/issues",
                 "source": "https://github.com/kirki-framework/control-checkbox/tree/nightly"
             },
-            "time": "2021-09-03T15:22:38+00:00"
+            "time": "2021-09-11T01:41:23+00:00"
         },
         {
             "name": "kirki-framework/control-code",
@@ -868,12 +868,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "21ef91e555b72157822531b167b2e9e10c20268e"
+                "reference": "7d70ed02d84b609278d94f74447ba6c0389c5b6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/21ef91e555b72157822531b167b2e9e10c20268e",
-                "reference": "21ef91e555b72157822531b167b2e9e10c20268e",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/7d70ed02d84b609278d94f74447ba6c0389c5b6d",
+                "reference": "7d70ed02d84b609278d94f74447ba6c0389c5b6d",
                 "shasum": ""
             },
             "require": {
@@ -917,7 +917,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-10T21:06:05+00:00"
+            "time": "2021-09-10T21:57:44+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",

@@ -7,12 +7,14 @@
 }
 
 .customize-control-kirki {
+  .kirki-control-label,
   label.customize-control-title {
     display: block;
-    width: 100%;
   }
 
   .kirki-control-form {
+    position: relative;
+
     textarea {
       display: block;
       width: 100%;

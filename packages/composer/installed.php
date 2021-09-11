@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '2b26f847e8260b61d027bb1ee2e7b7e1b6f15ce4',
+        'reference' => '93ecd1e499b4bc4a70b995f6178aa02c7098771b',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '2b26f847e8260b61d027bb1ee2e7b7e1b6f15ce4',
+            'reference' => '93ecd1e499b4bc4a70b995f6178aa02c7098771b',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -97,7 +97,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/compatibility',
             'aliases' => array(),
-            'reference' => '47e32345ffb752bc694d24ca96e1cd7bef87dcb9',
+            'reference' => '9b40479efd8bc7791c684629e401798652bf5f3f',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-base' => array(
@@ -106,7 +106,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-base',
             'aliases' => array(),
-            'reference' => 'a27f5b54e87e0cd13d855a48a21d54c13d41cef4',
+            'reference' => 'b465853c8730e74958f3a24719dbff3470e43ca9',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-checkbox' => array(
@@ -115,7 +115,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-checkbox',
             'aliases' => array(),
-            'reference' => 'cc4ffcc44f9e049f83547030bbdeaa3eb4de5361',
+            'reference' => '0ffdefd73398451f5289cafdd62e08f9e26e635e',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-code' => array(
@@ -254,7 +254,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-colorful',
             'aliases' => array(),
-            'reference' => '21ef91e555b72157822531b167b2e9e10c20268e',
+            'reference' => '7d70ed02d84b609278d94f74447ba6c0389c5b6d',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
