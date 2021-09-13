@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'bf654d609eb1ed6e36282aa77daf65cb0c6042aa',
+        'reference' => '72913852801057113404eb03905d96d4796db0a6',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'bf654d609eb1ed6e36282aa77daf65cb0c6042aa',
+            'reference' => '72913852801057113404eb03905d96d4796db0a6',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -29,12 +29,12 @@
             'dev_requirement' => true,
         ),
         'composer/installers' => array(
-            'pretty_version' => 'v2.0.0',
-            'version' => '2.0.0.0',
+            'pretty_version' => 'v2.0.1',
+            'version' => '2.0.1.0',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/./installers',
             'aliases' => array(),
-            'reference' => '5a546a8cc4607f38cfbd8e20b3de234e45b2110f',
+            'reference' => 'a241e78aaeb09781f5f5b92ac01ffd13ab43e5e8',
             'dev_requirement' => true,
         ),
         'dealerdirect/phpcodesniffer-composer-installer' => array(
@@ -254,7 +254,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-colorful',
             'aliases' => array(),
-            'reference' => 'e0c9c6cc16a881a9a356755fe9ea8d4727fd22c9',
+            'reference' => 'fc7e61264d4e5c0fa4a16c357370142c933538aa',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
@@ -339,7 +339,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-background',
             'aliases' => array(),
-            'reference' => '19e5f90d36d777a9697143bb12281e0b0ceea200',
+            'reference' => 'e79cdb39cc6d979307ec20161c4823e17baf8673',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-dimensions' => array(

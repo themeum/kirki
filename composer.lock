@@ -868,12 +868,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "e0c9c6cc16a881a9a356755fe9ea8d4727fd22c9"
+                "reference": "fc7e61264d4e5c0fa4a16c357370142c933538aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/e0c9c6cc16a881a9a356755fe9ea8d4727fd22c9",
-                "reference": "e0c9c6cc16a881a9a356755fe9ea8d4727fd22c9",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/fc7e61264d4e5c0fa4a16c357370142c933538aa",
+                "reference": "fc7e61264d4e5c0fa4a16c357370142c933538aa",
                 "shasum": ""
             },
             "require": {
@@ -917,7 +917,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-13T04:05:08+00:00"
+            "time": "2021-09-13T19:51:30+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",
@@ -1323,12 +1323,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-background.git",
-                "reference": "19e5f90d36d777a9697143bb12281e0b0ceea200"
+                "reference": "e79cdb39cc6d979307ec20161c4823e17baf8673"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/19e5f90d36d777a9697143bb12281e0b0ceea200",
-                "reference": "19e5f90d36d777a9697143bb12281e0b0ceea200",
+                "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/e79cdb39cc6d979307ec20161c4823e17baf8673",
+                "reference": "e79cdb39cc6d979307ec20161c4823e17baf8673",
                 "shasum": ""
             },
             "require": {
@@ -1367,7 +1367,7 @@
                 "issues": "https://github.com/kirki-framework/field-background/issues",
                 "source": "https://github.com/kirki-framework/field-background/tree/nightly"
             },
-            "time": "2021-09-13T03:11:49+00:00"
+            "time": "2021-09-13T04:37:24+00:00"
         },
         {
             "name": "kirki-framework/field-dimensions",
@@ -2321,16 +2321,16 @@
         },
         {
             "name": "composer/installers",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "5a546a8cc4607f38cfbd8e20b3de234e45b2110f"
+                "reference": "a241e78aaeb09781f5f5b92ac01ffd13ab43e5e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/5a546a8cc4607f38cfbd8e20b3de234e45b2110f",
-                "reference": "5a546a8cc4607f38cfbd8e20b3de234e45b2110f",
+                "url": "https://api.github.com/repos/composer/installers/zipball/a241e78aaeb09781f5f5b92ac01ffd13ab43e5e8",
+                "reference": "a241e78aaeb09781f5f5b92ac01ffd13ab43e5e8",
                 "shasum": ""
             },
             "require": {
@@ -2444,7 +2444,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/v2.0.0"
+                "source": "https://github.com/composer/installers/tree/v2.0.1"
             },
             "funding": [
                 {
@@ -2460,7 +2460,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-04T13:56:36+00:00"
+            "time": "2021-09-13T08:21:20+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",

@@ -86,8 +86,14 @@ class ReactColorful extends Base {
 		// Get the basics from the parent class.
 		parent::to_json();
 
+		// Value.
+		$this->json['value'] = empty( $this->value() ) ? '' : ( 'hue' === $this->mode ? absint( $this->value() ) : $this->value() );
+
 		// Mode.
 		$this->json['mode'] = $this->mode;
+
+		// The save_as.
+		$this->json['choices']['save_as'] = isset( $this->json['choices']['save_as'] ) ? $this->json['choices']['save_as'] : 'string';
 
 		// Color swatches.
 		$this->json['choices']['swatches'] = $this->color_swatches();

@@ -100,16 +100,99 @@ class ReactColorful extends Field {
 	 *
 	 * @static
 	 * @access public
-	 * @since 1.0.2
+	 * @since 1.0
+	 *
+	 * @param string|array $value The color.
+	 * @return string|array
+	 */
+	public static function sanitize( $value ) {
+
+		$sanitized_value = '';
+
+		if ( is_string( $value ) ) {
+			$sanitized_value = self::sanitize_color_string( $value );
+		} elseif ( is_array( $value ) ) {
+			if ( isset( $value['r'] ) || isset( $value['g'] ) || isset( $value['b'] ) ) {
+				$sanitized_value = self::sanitize_color_array( $value, 'rgb' );
+			} elseif ( isset( $value['h'] ) || isset( $value['s'] ) ) {
+				if ( isset( $value['l'] ) ) {
+					$sanitized_value = self::sanitize_color_array( $value, 'hsl' );
+				} elseif ( isset( $value['v'] ) ) {
+					$sanitized_value = self::sanitize_color_array( $value, 'hsv' );
+				}
+			}
+		}
+
+		return $sanitized_value;
+
+	}
+
+	/**
+	 * Sanitize single color array.
+	 *
+	 * @param array  $color The provided color in array format.
+	 * @param string $color_type The color type. Accepts: rgb, hsl, and hsv.
+	 *
+	 * @return array The sanitized color.
+	 */
+	public static function sanitize_color_array( $color, $color_type = 'rgb' ) {
+
+		$keys = [ 'r', 'g', 'b' ];
+		$mins = [ 0, 0, 0 ];
+		$maxs = [ 255, 255, 255 ];
+
+		if ( 'hsl' === $color_type || 'hsv' === $color_type ) {
+			$keys    = [ 'h', 's', '' ];
+			$keys[2] = isset( $color['v'] ) ? 'v' : 'l';
+
+			$mins = [ 0, 0, 0 ];
+			$maxs = [ 360, 100, 100 ];
+		}
+
+		$sanitized_color = [];
+
+		$sanitized_color = [
+			$keys[0] => isset( $color[ $keys[0] ] ) ? absint( $color[ $keys[0] ] ) : $mins[0],
+			$keys[1] => isset( $color[ $keys[1] ] ) ? absint( $color[ $keys[1] ] ) : $mins[1],
+			$keys[2] => isset( $color[ $keys[2] ] ) ? absint( $color[ $keys[2] ] ) : $mins[2],
+		];
+
+		$sanitized_color[ $keys[0] ] = $sanitized_color[ $keys[0] ] < $mins[0] ? $mins[0] : $sanitized_color[ $keys[0] ];
+		$sanitized_color[ $keys[0] ] = $sanitized_color[ $keys[0] ] > $maxs[0] ? $maxs[0] : $sanitized_color[ $keys[0] ];
+
+		$sanitized_color[ $keys[1] ] = $sanitized_color[ $keys[1] ] < $mins[1] ? $mins[1] : $sanitized_color[ $keys[1] ];
+		$sanitized_color[ $keys[1] ] = $sanitized_color[ $keys[1] ] > $maxs[1] ? $maxs[1] : $sanitized_color[ $keys[1] ];
+
+		$sanitized_color[ $keys[2] ] = $sanitized_color[ $keys[2] ] < $mins[2] ? $mins[2] : $sanitized_color[ $keys[2] ];
+		$sanitized_color[ $keys[2] ] = $sanitized_color[ $keys[2] ] > $maxs[2] ? $maxs[2] : $sanitized_color[ $keys[2] ];
+
+		if ( isset( $color['a'] ) ) {
+			$sanitized_color['a'] = isset( $color['a'] ) ? filter_var( $color['a'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) : 1;
+			$sanitized_color['a'] = $sanitized_color['a'] < 0 ? 0 : $sanitized_color['a'];
+			$sanitized_color['a'] = $sanitized_color['a'] > 1 ? 1 : $sanitized_color['a'];
+		}
+
+		return $sanitized_color;
+
+	}
+
+	/**
+	 * Sanitize color string.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0
+	 *
 	 * @param string $value The color.
 	 * @return string
 	 */
-	public static function sanitize( $value ) {
+	public static function sanitize_color_string( $value ) {
 
 		/**
 		 * This pattern will check and match 3/6/8-character hex, rgb, rgba, hsl, hsla, hsv, and hsva colors.
 		 *
 		 * RGB regex:
+		 *
 		 * @link https://stackoverflow.com/questions/9585973/javascript-regular-expression-for-rgb-values#answer-9586045
 		 *
 		 * For testing it, you can use these links:
@@ -151,4 +234,5 @@ class ReactColorful extends Field {
 		// If no match was found, return an empty string.
 		return '';
 	}
+
 }

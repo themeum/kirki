@@ -49,9 +49,9 @@ class Background extends Field {
 		new \Kirki\Field\Generic(
 			wp_parse_args(
 				[
-					'type'    => 'kirki-generic',
-					'default' => '',
-					'choices' => [
+					'type'              => 'kirki-generic',
+					'default'           => '',
+					'choices'           => [
 						'type'        => 'hidden',
 						'parent_type' => 'kirki-background',
 					],
@@ -71,17 +71,17 @@ class Background extends Field {
 			$args['transport'] = 'postMessage';
 		}
 
-		$default_bg_color = isset( $args['default']['background-color'] ) ? $args['default']['background-color'] : '';
+		$default_bg_color       = isset( $args['default']['background-color'] ) ? $args['default']['background-color'] : '';
 		$color_picker_component = 'HexColorPicker';
 
-		if (false !== stripos( $default_bg_color, 'rgb' )) {
-			if (false !== stripos( $default_bg_color, 'rgba' )) {
+		if ( false !== stripos( $default_bg_color, 'rgb' ) ) {
+			if ( false !== stripos( $default_bg_color, 'rgba' ) ) {
 				$color_picker_component = 'RgbaColorPicker';
 			} else {
 				$color_picker_component = 'RgbColorPicker';
 			}
-		} elseif (false !== stripos( $default_bg_color, 'hsl' )) {
-			if (false !== stripos( $default_bg_color, 'hsla' )) {
+		} elseif ( false !== stripos( $default_bg_color, 'hsl' ) ) {
+			if ( false !== stripos( $default_bg_color, 'hsla' ) ) {
 				$color_picker_component = 'HslaColorPicker';
 			} else {
 				$color_picker_component = 'HslColorPicker';
@@ -101,7 +101,7 @@ class Background extends Field {
 					'section'     => $args['section'],
 					'choices'     => [
 						'formComponent' => $color_picker_component,
-					]
+					],
 				],
 				$args
 			)
@@ -260,6 +260,7 @@ class Background extends Field {
 
 		add_action( 'customize_preview_init', [ $this, 'enqueue_scripts' ] );
 		add_filter( 'kirki_output_control_classnames', [ $this, 'output_control_classnames' ] );
+
 	}
 
 	/**
@@ -276,7 +277,9 @@ class Background extends Field {
 		if ( ! empty( $this->sanitize_callback ) ) {
 			return;
 		}
+
 		$this->sanitize_callback = [ '\Kirki\Field\Background', 'sanitize' ];
+
 	}
 
 	/**
@@ -289,9 +292,11 @@ class Background extends Field {
 	 * @return array
 	 */
 	public static function sanitize( $value ) {
+
 		if ( ! is_array( $value ) ) {
 			return [];
 		}
+
 		$sanitized_value = [
 			'background-color'      => '',
 			'background-image'      => '',
@@ -300,12 +305,15 @@ class Background extends Field {
 			'background-size'       => '',
 			'background-attachment' => '',
 		];
+
 		if ( isset( $value['background-color'] ) ) {
 			$sanitized_value['background-color'] = \Kirki\Field\Color::sanitize( $value['background-color'] );
 		}
+
 		if ( isset( $value['background-image'] ) ) {
 			$sanitized_value['background-image'] = esc_url_raw( $value['background-image'] );
 		}
+
 		if ( isset( $value['background-repeat'] ) ) {
 			$sanitized_value['background-repeat'] = in_array(
 				$value['background-repeat'],
@@ -318,6 +326,7 @@ class Background extends Field {
 				true
 			) ? $value['background-repeat'] : '';
 		}
+
 		if ( isset( $value['background-position'] ) ) {
 			$sanitized_value['background-position'] = in_array(
 				$value['background-position'],
@@ -335,6 +344,7 @@ class Background extends Field {
 				true
 			) ? $value['background-position'] : '';
 		}
+
 		if ( isset( $value['background-size'] ) ) {
 			$sanitized_value['background-size'] = in_array(
 				$value['background-size'],
@@ -346,6 +356,7 @@ class Background extends Field {
 				true
 			) ? $value['background-size'] : '';
 		}
+
 		if ( isset( $value['background-attachment'] ) ) {
 			$sanitized_value['background-attachment'] = in_array(
 				$value['background-attachment'],
@@ -356,7 +367,9 @@ class Background extends Field {
 				true
 			) ? $value['background-attachment'] : '';
 		}
+
 		return $sanitized_value;
+
 	}
 
 	/**
@@ -415,6 +428,7 @@ class Background extends Field {
 			$this->js_vars   = $js_vars;
 			$this->transport = 'postMessage';
 		}
+
 	}
 
 	/**
@@ -445,7 +459,9 @@ class Background extends Field {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
+
 		wp_enqueue_script( 'kirki-typography', URL::get_from_path( __DIR__ ) . '/script.js', [ 'wp-hooks' ], '1.0', true );
+
 	}
 
 	/**
@@ -457,7 +473,10 @@ class Background extends Field {
 	 * @return array
 	 */
 	public function output_control_classnames( $classnames ) {
+
 		$classnames['kirki-background'] = '\Kirki\Field\CSS\Background';
 		return $classnames;
+
 	}
+
 }
