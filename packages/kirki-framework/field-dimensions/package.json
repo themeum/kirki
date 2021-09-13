@@ -9,9 +9,6 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   ],
-  "engines": {
-    "node": ">= 0.10.0"
-  },
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-sass": "*",

@@ -19,8 +19,8 @@
         "kirki-framework/control-dimension": "*"
     },
     "autoload": {
-		"psr-4": {
-			"Kirki\\Field\\": "src"
+        "psr-4": {
+            "Kirki\\Field\\": "src"
         }
     }
 }

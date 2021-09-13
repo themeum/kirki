@@ -25,7 +25,7 @@
   },
   "alias": {
     "jquery": {
-      "global": "$"
+      "global": "jQuery"
     },
     "react": {
       "global": "React"
@@ -34,13 +34,5 @@
       "global": "ReactDOM"
     }
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "IE 11"
-  ],
-  "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=6.0.0"
-  }
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }
