@@ -83,7 +83,7 @@ class Dimensions extends Field {
 					'type'         => 'kirki-generic',
 					'default'      => '',
 					'wrapper_opts' => [
-						'gap' => 'none',
+						'gap' => 'small',
 					],
 					'choices'      => [
 						'type'        => 'hidden',

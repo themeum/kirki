@@ -1,10 +1,19 @@
 [data-kirki-parent-control-type="kirki-dimensions"] {
+
   .kirki-control-label {
-    margin-top: 5px;
+    margin-top: 3px;
     text-align: center;
-    font-size: 9px;
+    font-size: 10px;
     color: #777;
     font-weight: 500;
     text-transform: uppercase;
+  }
+
+  .kirki-control-input {
+    background-color: #f7f7f7;
+
+    &:focus {
+      background-color: #fff;
+    }
   }
 }
