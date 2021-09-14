@@ -90,8 +90,8 @@ class Checkbox_Switch extends Base {
 		$this->json['checkboxType'] = $this->checkbox_type;
 
 		$this->json['defaultChoices'] = [
-			'on'  => 'toggle' !== $this->checkbox_type ? __( 'On', 'kirki' ) : '',
-			'off' => 'toggle' !== $this->checkbox_type ? __( 'Off', 'kirki' ) : '',
+			'on'  => __( 'On', 'kirki' ),
+			'off' => __( 'Off', 'kirki' ),
 		];
 
 	}
@@ -129,14 +129,16 @@ class Checkbox_Switch extends Base {
 			<div class="kirki-control-form">
 				<input class="screen-reader-text kirki-switch-input" {{{ data.inputAttrs }}} name="kirki_switch_{{ data.id }}" id="kirki_switch_{{ data.id }}" type="checkbox" value="{{ data.value }}" {{{ data.link }}}<# if ( '1' == data.value ) { #> checked<# } #> />
 				<label class="kirki-switch-label" for="kirki_switch_{{ data.id }}">
-					<span class="toggle-on">
-						<# data.choices.on = data.choices.on || data.defaultChoices.on #>
-						{{ data.choices.on }}
-					</span>
-					<span class="toggle-off">
-						<# data.choices.off = data.choices.off || data.defaultChoices.off #>
-						{{ data.choices.off }}
-					</span>
+					<# if ('toggle' !== data.checkboxType) { #>
+						<span class="toggle-on">
+							<# data.choices.on = data.choices.on || data.defaultChoices.on #>
+							{{ data.choices.on }}
+						</span>
+						<span class="toggle-off">
+							<# data.choices.off = data.choices.off || data.defaultChoices.off #>
+							{{ data.choices.off }}
+						</span>
+					<# } #>
 				</label>
 			</div>
 		</div>
