@@ -925,12 +925,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-select.git",
-                "reference": "0a97b66e27e17bfb9b96b26484a258081fe847e1"
+                "reference": "53afc50887196a0ff9a305b70d371c0154bdfd95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/0a97b66e27e17bfb9b96b26484a258081fe847e1",
-                "reference": "0a97b66e27e17bfb9b96b26484a258081fe847e1",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/53afc50887196a0ff9a305b70d371c0154bdfd95",
+                "reference": "53afc50887196a0ff9a305b70d371c0154bdfd95",
                 "shasum": ""
             },
             "require": {
@@ -968,7 +968,7 @@
                 "issues": "https://github.com/kirki-framework/control-react-select/issues",
                 "source": "https://github.com/kirki-framework/control-react-select/tree/nightly"
             },
-            "time": "2021-09-02T03:06:58+00:00"
+            "time": "2021-09-14T10:26:07+00:00"
         },
         {
             "name": "kirki-framework/control-repeater",

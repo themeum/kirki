@@ -1,0 +1,1 @@
+{"mappings":"AACE;EACE","sources":["src/control.scss"],"sourcesContent":[".customize-control-kirki-react-select {\n  input[autocomplete=\"off\"] {\n    box-shadow: none;\n  }\n}\n"],"names":[],"version":3,"file":"control.css.map","sourceRoot":"../"}

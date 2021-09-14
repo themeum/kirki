@@ -91,7 +91,7 @@ class ReactSelect extends Base {
 		// Enqueue the script.
 		wp_enqueue_script(
 			'kirki-control-select',
-			URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/main.js' ),
+			URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ),
 			[
 				'customize-controls',
 				'customize-base',
@@ -106,7 +106,7 @@ class ReactSelect extends Base {
 		);
 
 		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-select-style', URL::get_from_path( dirname( __DIR__ ) . '/style.css' ), [], self::$control_ver );
+		wp_enqueue_style( 'kirki-control-select-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 	}
 
 	/**
