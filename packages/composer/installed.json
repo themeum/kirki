@@ -723,19 +723,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "ff603ba5200c0cd4b3bdef44d610244ebc780159"
+                "reference": "b5164ea91e2c0ec0fc5775bceabce053f8188a8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/ff603ba5200c0cd4b3bdef44d610244ebc780159",
-                "reference": "ff603ba5200c0cd4b3bdef44d610244ebc780159",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/b5164ea91e2c0ec0fc5775bceabce053f8188a8d",
+                "reference": "b5164ea91e2c0ec0fc5775bceabce053f8188a8d",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-13T03:26:06+00:00",
+            "time": "2021-09-14T10:48:45+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {

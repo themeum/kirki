@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7d9951d05f6e49b8c6ccabcc855858abac94e7c4',
+        'reference' => 'c69df46b3f112386a31fe1a33bd9533f14acfb61',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7d9951d05f6e49b8c6ccabcc855858abac94e7c4',
+            'reference' => 'c69df46b3f112386a31fe1a33bd9533f14acfb61',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -106,7 +106,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-base',
             'aliases' => array(),
-            'reference' => 'ff603ba5200c0cd4b3bdef44d610244ebc780159',
+            'reference' => 'b5164ea91e2c0ec0fc5775bceabce053f8188a8d',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-checkbox' => array(

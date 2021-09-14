@@ -21,7 +21,8 @@
   },
   "scripts": {
     "build": "parcel build  src/control.js --dist-dir dist",
-    "dev": "parcel build  src/control.js --no-optimize --dist-dir dist"
+    "dev": "parcel build  src/control.js --no-optimize --dist-dir dist",
+    "watch": "parcel watch src/control.js --dist-dir dist"
   },
   "alias": {
     "jquery": {
