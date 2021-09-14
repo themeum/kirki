@@ -1,4 +1,4 @@
 node_modules
 .sass-cache
-*.map
+.parcel-cache
 package-lock.json

@@ -248,13 +248,16 @@
     }
 
     .kirki-color-preview {
-      width: 20%;
-      border-radius: 0;
+      width: 17%;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
     }
 
     .kirki-button-text {
       padding-right: 30px;
-      width: 80%;
+      width: 83%;
       line-height: 30px;
       text-align: center;
       font-size: 12px;

@@ -48,8 +48,10 @@ class Multicolor extends Field {
 				[
 					'type'              => 'kirki-generic',
 					'default'           => '',
+					'wrapper_opts'      => [
+						'gap' => 'none',
+					],
 					'input_attrs'       => '',
-					'gap_type'          => 'none',
 					'choices'           => [
 						'type' => 'hidden',
 					],
@@ -67,8 +69,10 @@ class Multicolor extends Field {
 						'parent_setting' => $args['settings'],
 						'label'          => '',
 						'description'    => '',
-						'gap_type'       => 'small',
 						'default'        => $this->filter_preferred_choice_setting( 'default', $choice, $args ),
+						'wrapper_opts'   => [
+							'gap' => 'small',
+						],
 						'input_attrs'    => $this->filter_preferred_choice_setting( 'input_attrs', $choice, $args ),
 						'choices'        => [
 							'alpha'        => $this->filter_preferred_choice_setting( 'alpha', $choice, $args ),

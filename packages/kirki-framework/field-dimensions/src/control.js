@@ -1,5 +1,7 @@
 /* global kirkiPostMessage */
 
+import "./control.scss";
+
 /**
  * Hook in the kirkiPostMessageStylesOutput filter.
  *

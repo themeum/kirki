@@ -105,6 +105,14 @@ class Base extends \WP_Customize_Control {
 	/**
 	 * Wrapper attributes.
 	 *
+	 * The value of this property will be rendered to the wrapper element if the control extends kirki `kirkiDynamicControl` js object.
+	 * Can be 'class', 'id', 'data-*', and other attributes.
+	 *
+	 * @see wp-content/plugins/kirki/packages/kirki-framework/control-base/src/dynamic-control.js
+	 *
+	 * Please be aware, some controls (such as control-react-*) are not extending the kirkiDynamicControl js object.
+	 * That means, those controls won't render the value of this property to the wrapper element.
+	 *
 	 * @access public
 	 * @since 1.1
 	 * @var array
@@ -112,15 +120,16 @@ class Base extends \WP_Customize_Control {
 	public $wrapper_atts = [];
 
 	/**
-	 * The gap type for the control.
+	 * Wrapper options.
 	 *
-	 * Accepts: 'small', 'none', or just leave it empty.
-	 * This is used to set the margin-bottom of the control's root `li` element.
+	 * This won't be rendered automatically to the wrapper element.
+	 * The purpose is to allow us to have custom options so we can manage it when needed.
 	 *
 	 * @access public
-	 * @var bool
+	 * @since 1.1
+	 * @var array
 	 */
-	public $gap_type = 'default';
+	public $wrapper_opts = [];
 
 	/**
 	 * Extra script dependencies.
@@ -158,8 +167,10 @@ class Base extends \WP_Customize_Control {
 	protected function render() {
 		$id    = 'customize-control-' . str_replace( [ '[', ']' ], [ '-', '' ], $this->id );
 		$class = 'customize-control customize-control-kirki customize-control-' . $this->type;
+		$gap   = isset( $this->wrapper_opts['gap'] ) ? $this->wrapper_opts['gap'] : 'default';
+		$tag   = isset( $this->wrapper_opts['tag'] ) ? $this->wrapper_opts['tag'] : 'li';
 
-		switch ( $this->gap_type ) {
+		switch ( $gap ) {
 			case 'small':
 				$class .= ' customize-control-has-small-gap';
 				break;
@@ -172,9 +183,9 @@ class Base extends \WP_Customize_Control {
 				break;
 		}
 
-		printf( '<li id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+		printf( '<' . esc_attr( $tag ) . ' id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
 		$this->render_content();
-		echo '</li>';
+		echo '</' . esc_attr( $tag ) . '>';
 	}
 
 	/**
