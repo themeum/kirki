@@ -1375,12 +1375,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-dimensions.git",
-                "reference": "575d15b62b72ac7bbf24b2d36f53fa1d6e96d2a0"
+                "reference": "67301a931bf041b508d606d8a2b17299c95bbb45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-dimensions/zipball/575d15b62b72ac7bbf24b2d36f53fa1d6e96d2a0",
-                "reference": "575d15b62b72ac7bbf24b2d36f53fa1d6e96d2a0",
+                "url": "https://api.github.com/repos/kirki-framework/field-dimensions/zipball/67301a931bf041b508d606d8a2b17299c95bbb45",
+                "reference": "67301a931bf041b508d606d8a2b17299c95bbb45",
                 "shasum": ""
             },
             "require": {
@@ -1417,7 +1417,7 @@
                 "issues": "https://github.com/kirki-framework/field-dimensions/issues",
                 "source": "https://github.com/kirki-framework/field-dimensions/tree/nightly"
             },
-            "time": "2021-09-14T23:19:43+00:00"
+            "time": "2021-09-15T09:14:59+00:00"
         },
         {
             "name": "kirki-framework/field-fontawesome",
