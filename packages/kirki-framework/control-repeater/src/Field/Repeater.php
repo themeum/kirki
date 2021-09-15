@@ -46,7 +46,9 @@ class Repeater extends Field {
 	 * @return void
 	 */
 	protected function set_type() {
+
 		$this->type = 'repeater';
+
 	}
 
 	/**
@@ -61,6 +63,7 @@ class Repeater extends Field {
 		// Force using refresh mode.
 		// Currently the repeater control does not support postMessage.
 		$this->transport = 'refresh';
+
 	}
 
 
@@ -72,9 +75,11 @@ class Repeater extends Field {
 	 * @return void
 	 */
 	protected function set_sanitize_callback() {
+
 		if ( empty( $this->sanitize_callback ) ) {
 			$this->sanitize_callback = [ $this, 'sanitize' ];
 		}
+
 	}
 
 	/**
@@ -118,6 +123,7 @@ class Repeater extends Field {
 				if ( ! isset( $this->fields[ $subfield_id ]['type'] ) ) {
 					continue;
 				}
+
 				$subfield_type = $this->fields[ $subfield_id ]['type'];
 
 				// Allow using a sanitize-callback on a per-field basis.
@@ -183,9 +189,13 @@ class Repeater extends Field {
 
 					}
 				}
+
 				$value[ $row_id ][ $subfield_id ] = $subfield_value;
 			}
 		}
+
 		return $value;
+
 	}
+
 }

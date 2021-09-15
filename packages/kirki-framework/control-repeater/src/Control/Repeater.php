@@ -11,8 +11,6 @@
 namespace Kirki\Control;
 
 use Kirki\Control\Base;
-use Kirki\Control\Select;
-use Kirki\Compatibility\Kirki;
 use Kirki\URL;
 /**
  * Repeater control
@@ -88,6 +86,7 @@ class Repeater extends Base {
 	 * @param array                $args    {@see WP_Customize_Control::__construct}.
 	 */
 	public function __construct( $manager, $id, $args = [] ) {
+
 		parent::__construct( $manager, $id, $args );
 
 		// Set up defaults for row labels.
@@ -199,6 +198,7 @@ class Repeater extends Base {
 				}
 			}
 		}
+
 	}
 
 	/**
@@ -209,13 +209,15 @@ class Repeater extends Base {
 	 * @return void
 	 */
 	public function enqueue() {
+
 		parent::enqueue();
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-repeater', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-repeater', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base' ], self::$control_ver, false );
 
 		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-repeater-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
+		wp_enqueue_style( 'kirki-control-repeater-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
+
 	}
 
 	/**
@@ -226,6 +228,7 @@ class Repeater extends Base {
 	 * @return void
 	 */
 	public function to_json() {
+
 		parent::to_json();
 
 		$fields = $this->fields;
@@ -237,7 +240,9 @@ class Repeater extends Base {
 		if ( is_array( $this->filtered_value ) && ! empty( $this->filtered_value ) ) {
 			$this->json['value'] = $this->filtered_value;
 		}
+
 		$this->json['value'] = apply_filters( "kirki_controls_repeater_value_{$this->id}", $this->json['value'] );
+
 	}
 
 	/**
@@ -249,6 +254,7 @@ class Repeater extends Base {
 	 * @return void
 	 */
 	protected function render_content() {
+
 		?>
 		<label>
 			<?php if ( ! empty( $this->label ) ) : ?>
@@ -270,6 +276,7 @@ class Repeater extends Base {
 
 		<?php
 		$this->repeater_js_template();
+
 	}
 
 	/**
@@ -282,6 +289,7 @@ class Repeater extends Base {
 	 */
 	public function repeater_js_template() {
 		?>
+
 		<script type="text/html" class="customize-control-repeater-content">
 			<# var field; var index = data.index; #>
 
@@ -484,6 +492,7 @@ class Repeater extends Base {
 				</div>
 			</li>
 		</script>
+
 		<?php
 	}
 
@@ -518,5 +527,7 @@ class Repeater extends Base {
 				$this->row_label['type'] = 'text';
 			}
 		}
+
 	}
+
 }

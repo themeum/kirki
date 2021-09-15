@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "03af193e97c9fa9fc8e6b8f5ef4b58c5",
+    "content-hash": "93c96dc8edc3e913421e145888a135fc",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -972,16 +972,16 @@
         },
         {
             "name": "kirki-framework/control-repeater",
-            "version": "dev-master",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-repeater.git",
-                "reference": "85baf5842b2729b0eaee481150f5a1c19ef90c3a"
+                "reference": "01cbaad2c93b9e1b8ce5a07664636006352360bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/85baf5842b2729b0eaee481150f5a1c19ef90c3a",
-                "reference": "85baf5842b2729b0eaee481150f5a1c19ef90c3a",
+                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/01cbaad2c93b9e1b8ce5a07664636006352360bb",
+                "reference": "01cbaad2c93b9e1b8ce5a07664636006352360bb",
                 "shasum": ""
             },
             "require": {
@@ -994,7 +994,6 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1024,9 +1023,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-repeater/issues",
-                "source": "https://github.com/kirki-framework/control-repeater/tree/master"
+                "source": "https://github.com/kirki-framework/control-repeater/tree/nightly"
             },
-            "time": "2019-10-05T14:17:58+00:00"
+            "time": "2021-09-15T09:06:27+00:00"
         },
         {
             "name": "kirki-framework/control-select",

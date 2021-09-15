@@ -56,6 +56,7 @@ class Repeater extends \WP_Customize_Setting {
 		if ( ! is_array( $value ) ) {
 			$value = json_decode( urldecode( $value ) );
 		}
+
 		if ( empty( $value ) || ! is_array( $value ) ) {
 			$value = [];
 		}
