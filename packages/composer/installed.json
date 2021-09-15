@@ -1195,12 +1195,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dimension.git",
-                "reference": "0347ef26a1c72ade11ca724cc96496a1e6911e56"
+                "reference": "758194c81ad7f870e259cfdee1454bc1581dd664"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dimension/zipball/0347ef26a1c72ade11ca724cc96496a1e6911e56",
-                "reference": "0347ef26a1c72ade11ca724cc96496a1e6911e56",
+                "url": "https://api.github.com/repos/kirki-framework/control-dimension/zipball/758194c81ad7f870e259cfdee1454bc1581dd664",
+                "reference": "758194c81ad7f870e259cfdee1454bc1581dd664",
                 "shasum": ""
             },
             "require": {
@@ -1208,7 +1208,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-14T16:03:39+00:00",
+            "time": "2021-09-15T16:28:58+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {

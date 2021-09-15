@@ -85,6 +85,41 @@ class Dimension extends Base {
 	}
 
 	/**
+	 * Refresh the parameters passed to the JavaScript via JSON.
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @see WP_Customize_Control::to_json()
+	 * @return void
+	 */
+	public function to_json() {
+
+		$input_class = 'kirki-control-input';
+
+		if ( isset( $this->input_attrs['class'] ) ) {
+			$input_class .= ' ' . $this->input_attrs['class'];
+			unset( $this->input_attrs['class'] );
+		}
+
+		// Get the basics from the parent class.
+		parent::to_json();
+
+		// Input class name.
+		$this->json['inputClass'] = $input_class;
+
+		// Label position.
+		$this->json['labelPosition'] = 'top';
+
+		if ( isset( $this->wrapper_atts['data-kirki-parent-control-type'] ) && 'kirki-dimensions' === $this->wrapper_atts['data-kirki-parent-control-type'] ) {
+			$this->json['labelPosition'] = 'bottom';
+		}
+
+		// Input id.
+		$this->json['inputId'] = '_customize-input-' . $this->id;
+
+	}
+
+	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
 	 * Class variables for this control class are available in the `data` JS object;
@@ -98,14 +133,27 @@ class Dimension extends Base {
 	 */
 	protected function content_template() {
 		?>
-		<label class="customizer-text">
-			<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
-			<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
-			<div class="input-wrapper">
+
+		<div class="kirki-control-form">
+			<# if ( 'top' === data.labelPosition ) { #>
+				<label class="kirki-control-label" for="{{ data.inputId }}">
+					<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
+					<# if ( data.description ) { #><span class="description customize-control-description">{{{ data.description }}}</span><# } #>
+				</label>
+			<# } #>
+
+			<div class="kirki-input-control">
 				<# var val = ( data.value && _.isString( data.value ) ) ? data.value.replace( '%%', '%' ) : ''; #>
-				<input {{{ data.inputAttrs }}} type="text" value="{{ val }}"/>
+				<input id="{{ data.inputId }}" {{{ data.inputAttrs }}} type="text" value="{{ val }}" class="{{ data.inputClass }}" />
 			</div>
-		</label>
+
+			<# if ( 'bottom' === data.labelPosition ) { #>
+				<label class="kirki-control-label" for="{{ data.inputId }}">
+					<# if ( data.description ) { #>{{{ data.description }}} <# } #>
+				</label>
+			<# } #>
+		</div>
+
 		<?php
 	}
 }
