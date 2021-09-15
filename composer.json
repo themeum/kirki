@@ -44,7 +44,7 @@
     "kirki-framework/control-upload": "dev-nightly",
     "kirki-framework/field-dimensions": "dev-nightly",
     "kirki-framework/field-fontawesome": "dev-master",
-    "kirki-framework/field-typography": "*",
+    "kirki-framework/field-typography": "dev-nightly",
     "kirki-framework/module-css": "dev-master",
     "kirki-framework/module-editor-styles": "dev-master",
     "kirki-framework/module-field-dependencies": "dev-nightly",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93c96dc8edc3e913421e145888a135fc",
+    "content-hash": "0d41aafedbd5379f5ddfa521a6b9e152",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -505,12 +505,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dimension.git",
-                "reference": "758194c81ad7f870e259cfdee1454bc1581dd664"
+                "reference": "20e96fb5946dcae0fe0213e66c7fc7cf38dfa377"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dimension/zipball/758194c81ad7f870e259cfdee1454bc1581dd664",
-                "reference": "758194c81ad7f870e259cfdee1454bc1581dd664",
+                "url": "https://api.github.com/repos/kirki-framework/control-dimension/zipball/20e96fb5946dcae0fe0213e66c7fc7cf38dfa377",
+                "reference": "20e96fb5946dcae0fe0213e66c7fc7cf38dfa377",
                 "shasum": ""
             },
             "require": {
@@ -548,7 +548,7 @@
                 "issues": "https://github.com/kirki-framework/control-dimension/issues",
                 "source": "https://github.com/kirki-framework/control-dimension/tree/nightly"
             },
-            "time": "2021-09-15T16:28:58+00:00"
+            "time": "2021-09-15T17:56:57+00:00"
         },
         {
             "name": "kirki-framework/control-editor",
@@ -803,64 +803,6 @@
                 "source": "https://github.com/kirki-framework/control-radio/tree/nightly"
             },
             "time": "2021-09-13T03:38:01+00:00"
-        },
-        {
-            "name": "kirki-framework/control-react-color",
-            "version": "v1.0.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kirki-framework/control-react-color.git",
-                "reference": "3f3680b354d836ef17c402b1859f223c5745c029"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-color/zipball/3f3680b354d836ef17c402b1859f223c5745c029",
-                "reference": "3f3680b354d836ef17c402b1859f223c5745c029",
-                "shasum": ""
-            },
-            "require": {
-                "kirki-framework/control-base": "*",
-                "kirki-framework/field": "*",
-                "kirki-framework/url-getter": "*",
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ari Stathopoulos",
-                    "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Color control for the Kirki Customizer framework using react-color.",
-            "homepage": "https://aristath.github.io/kirki",
-            "keywords": [
-                "customizer",
-                "framework",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/kirki-framework/control-react-color/issues",
-                "source": "https://github.com/kirki-framework/control-react-color/tree/master"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/aristath",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-07-24T12:25:49+00:00"
         },
         {
             "name": "kirki-framework/control-react-colorful",
@@ -1374,12 +1316,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-dimensions.git",
-                "reference": "67301a931bf041b508d606d8a2b17299c95bbb45"
+                "reference": "cd3c2b51112b51781375e4b718fdada25276db37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-dimensions/zipball/67301a931bf041b508d606d8a2b17299c95bbb45",
-                "reference": "67301a931bf041b508d606d8a2b17299c95bbb45",
+                "url": "https://api.github.com/repos/kirki-framework/field-dimensions/zipball/cd3c2b51112b51781375e4b718fdada25276db37",
+                "reference": "cd3c2b51112b51781375e4b718fdada25276db37",
                 "shasum": ""
             },
             "require": {
@@ -1416,7 +1358,7 @@
                 "issues": "https://github.com/kirki-framework/field-dimensions/issues",
                 "source": "https://github.com/kirki-framework/field-dimensions/tree/nightly"
             },
-            "time": "2021-09-15T09:14:59+00:00"
+            "time": "2021-09-15T17:55:49+00:00"
         },
         {
             "name": "kirki-framework/field-fontawesome",
@@ -1523,23 +1465,23 @@
         },
         {
             "name": "kirki-framework/field-typography",
-            "version": "v0.3.1",
+            "version": "dev-nightly",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "2c060f5b6298a06ef863601f9075d094e7bcd098"
+                "reference": "a695a7badc79e8caa486a0e5a6bd599d9b379c8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/2c060f5b6298a06ef863601f9075d094e7bcd098",
-                "reference": "2c060f5b6298a06ef863601f9075d094e7bcd098",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/a695a7badc79e8caa486a0e5a6bd599d9b379c8d",
+                "reference": "a695a7badc79e8caa486a0e5a6bd599d9b379c8d",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "*",
                 "kirki-framework/control-custom": "*",
                 "kirki-framework/control-generic": "*",
-                "kirki-framework/control-react-color": "*",
+                "kirki-framework/control-react-colorful": "*",
                 "kirki-framework/control-react-select": "*",
                 "kirki-framework/googlefonts": "*",
                 "kirki-framework/module-webfonts": "*",
@@ -1574,9 +1516,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/field-typography/issues",
-                "source": "https://github.com/kirki-framework/field-typography/tree/master"
+                "source": "https://github.com/kirki-framework/field-typography/tree/nightly"
             },
-            "time": "2019-11-09T11:03:59+00:00"
+            "time": "2021-09-15T19:09:34+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
@@ -6856,6 +6798,7 @@
         "kirki-framework/control-upload": 20,
         "kirki-framework/field-dimensions": 20,
         "kirki-framework/field-fontawesome": 20,
+        "kirki-framework/field-typography": 20,
         "kirki-framework/module-css": 20,
         "kirki-framework/module-editor-styles": 20,
         "kirki-framework/module-field-dependencies": 20,

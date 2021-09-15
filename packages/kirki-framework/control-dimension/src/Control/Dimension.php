@@ -110,7 +110,7 @@ class Dimension extends Base {
 		// Label position.
 		$this->json['labelPosition'] = 'top';
 
-		if ( isset( $this->wrapper_atts['data-kirki-parent-control-type'] ) && 'kirki-dimensions' === $this->wrapper_atts['data-kirki-parent-control-type'] ) {
+		if ( isset( $this->choices['label_position'] ) && 'bottom' === $this->choices['label_position'] ) {
 			$this->json['labelPosition'] = 'bottom';
 		}
 
@@ -134,7 +134,7 @@ class Dimension extends Base {
 	protected function content_template() {
 		?>
 
-		<div class="kirki-control-form">
+		<div class="kirki-control-form <# if ('bottom' === data.labelPosition) { #>has-label-bottom<# } #>">
 			<# if ( 'top' === data.labelPosition ) { #>
 				<label class="kirki-control-label" for="{{ data.inputId }}">
 					<# if ( data.label ) { #><span class="customize-control-title">{{{ data.label }}}</span><# } #>
@@ -149,7 +149,7 @@ class Dimension extends Base {
 
 			<# if ( 'bottom' === data.labelPosition ) { #>
 				<label class="kirki-control-label" for="{{ data.inputId }}">
-					<# if ( data.description ) { #>{{{ data.description }}} <# } #>
+					<# if ( data.label ) { #>{{{ data.label }}} <# } #>
 				</label>
 			<# } #>
 		</div>

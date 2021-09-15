@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b76ee0c775d992d9c8e613b075694eb93022833f',
+        'reference' => '11f6583a0724b23e5ea22d41905208391c5b5d07',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b76ee0c775d992d9c8e613b075694eb93022833f',
+            'reference' => '11f6583a0724b23e5ea22d41905208391c5b5d07',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -191,7 +191,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-dimension',
             'aliases' => array(),
-            'reference' => '758194c81ad7f870e259cfdee1454bc1581dd664',
+            'reference' => '20e96fb5946dcae0fe0213e66c7fc7cf38dfa377',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-editor' => array(
@@ -237,15 +237,6 @@
             'install_path' => __DIR__ . '/../kirki-framework/control-radio',
             'aliases' => array(),
             'reference' => 'd4089005a990855d4d801833e69ae7c203ef163c',
-            'dev_requirement' => false,
-        ),
-        'kirki-framework/control-react-color' => array(
-            'pretty_version' => 'v1.0.12',
-            'version' => '1.0.12.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../kirki-framework/control-react-color',
-            'aliases' => array(),
-            'reference' => '3f3680b354d836ef17c402b1859f223c5745c029',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-colorful' => array(
@@ -346,7 +337,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-dimensions',
             'aliases' => array(),
-            'reference' => '67301a931bf041b508d606d8a2b17299c95bbb45',
+            'reference' => 'cd3c2b51112b51781375e4b718fdada25276db37',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-fontawesome' => array(
@@ -370,12 +361,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/field-typography' => array(
-            'pretty_version' => 'v0.3.1',
-            'version' => '0.3.1.0',
+            'pretty_version' => 'dev-nightly',
+            'version' => 'dev-nightly',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-typography',
             'aliases' => array(),
-            'reference' => '2c060f5b6298a06ef863601f9075d094e7bcd098',
+            'reference' => 'a695a7badc79e8caa486a0e5a6bd599d9b379c8d',
             'dev_requirement' => false,
         ),
         'kirki-framework/googlefonts' => array(

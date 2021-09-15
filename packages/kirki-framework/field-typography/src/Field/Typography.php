@@ -11,7 +11,6 @@
 namespace Kirki\Field;
 
 use Kirki\Field;
-use Kirki;
 use Kirki\GoogleFonts;
 use Kirki\Module\Webfonts\Fonts;
 
@@ -85,6 +84,8 @@ class Typography extends Field {
 
 		$args['kirki_config'] = isset( $args['kirki_config'] ) ? $args['kirki_config'] : 'global';
 
+		$defaults = isset( $args['default'] ) ? $args['default'] : [];
+
 		/**
 		 * Add a hidden field, the label & description.
 		 */
@@ -147,12 +148,12 @@ class Typography extends Field {
 				}
 			} elseif ( is_array( $args['choices']['fonts']['standard'] ) ) {
 				foreach ( $args['choices']['fonts']['standard'] as $key => $val ) {
-					$key = ( \is_int( $key ) ) ? $val : $key;
+					$key               = ( \is_int( $key ) ) ? $val : $key;
 					$std_fonts[ $key ] = $val;
 				}
 			}
 
-			$choices     = [
+			$choices = [
 				'standard' => [
 					esc_html__( 'Standard Fonts', 'kirki' ),
 					$std_fonts,
@@ -277,86 +278,64 @@ class Typography extends Field {
 			);
 		}
 
-		/**
-		 * Add font-size.
-		 */
-		if ( isset( $args['default']['font-size'] ) ) {
-			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'font-size';
+		$has_font_size      = isset( $defaults['font-size'] );
+		$has_line_height    = isset( $defaults['line-height'] );
+		$has_letter_spacing = isset( $defaults['letter-spacing'] );
+		$has_word_spacing   = isset( $defaults['word-spacing'] );
 
-			new \Kirki\Field\Dimension(
-				wp_parse_args(
-					[
-						'label'       => esc_html__( 'Font Size', 'kirki' ),
-						'description' => '',
-						'settings'    => $args['settings'] . '[font-size]',
-						'default'     => $args['default']['font-size'],
-						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'font-size', $args ),
-						'css_vars'    => [],
-						'output'      => [],
-					],
-					$args
-				)
-			);
-		}
+		if ( $has_font_size || $has_line_height || $has_letter_spacing || $has_word_spacing ) {
 
-		/**
-		 * Line-Height.
-		 */
-		if ( isset( $args['default']['line-height'] ) ) {
-			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'line-height';
+			$spacing_group = [
+				'font-size'      => $has_font_size,
+				'line-height'    => $has_line_height,
+				'letter-spacing' => $has_letter_spacing,
+				'word-spacing'   => $has_word_spacing,
+			];
 
-			new \Kirki\Field\Dimension(
-				wp_parse_args(
-					[
-						'label'       => esc_html__( 'Line Height', 'kirki' ),
-						'description' => '',
-						'settings'    => $args['settings'] . '[line-height]',
-						'default'     => $args['default']['line-height'],
-						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'line-height', $args ),
-						'css_vars'    => [],
-						'output'      => [],
-					],
-					$args
-				)
-			);
-		}
+			$labels = [
+				'font-size'      => esc_html__( 'Font Size', 'kirki' ),
+				'line-height'    => esc_html__( 'Line Height', 'kirki' ),
+				'letter-spacing' => esc_html__( 'Letter Spacing', 'kirki' ),
+				'word-spacing'   => esc_html__( 'Word Spacing', 'kirki' ),
+			];
 
-		if ( isset( $args['default']['letter-spacing'] ) ) {
-			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'letter-spacing';
+			$total_specified = 0;
+			$field_width     = 100;
 
-			new \Kirki\Field\Dimension(
-				wp_parse_args(
-					[
-						'label'       => esc_html__( 'Letter Spacing', 'kirki' ),
-						'description' => '',
-						'settings'    => $args['settings'] . '[letter-spacing]',
-						'default'     => $args['default']['letter-spacing'],
-						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'letter-spacing', $args ),
-						'css_vars'    => [],
-						'output'      => [],
-					],
-					$args
-				)
-			);
-		}
+			foreach ( $spacing_group as $css_prop => $is_specified ) {
+				if ( $is_specified ) {
+					$total_specified++;
+				}
+			}
 
-		if ( isset( $args['default']['word-spacing'] ) ) {
-			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'word-spacing';
+			if ( $total_specified > 1 ) {
+				$field_width = floor( 100 / $total_specified );
+			}
 
-			new \Kirki\Field\Dimension(
-				wp_parse_args(
-					[
-						'label'       => esc_html__( 'Word Spacing', 'kirki' ),
-						'description' => '',
-						'settings'    => $args['settings'] . '[word-spacing]',
-						'default'     => $args['default']['word-spacing'],
-						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'word-spacing', $args ),
-						'css_vars'    => [],
-						'output'      => [],
-					],
-					$args
-				)
-			);
+			foreach ( $spacing_group as $css_prop => $is_specified ) {
+				if ( $is_specified ) {
+					new \Kirki\Field\Dimension(
+						wp_parse_args(
+							[
+								'label'        => $labels[ $css_prop ],
+								'settings'     => $args['settings'] . '[' . $css_prop . ']',
+								'default'      => $args['default'][ $css_prop ],
+								'input_attrs'  => $this->filter_preferred_choice_setting( 'input_attrs', $css_prop, $args ),
+								'wrapper_atts' => [
+									'kirki-typography-subcontrol-type' => $css_prop,
+									'class' => '{default_class} kirki-group-item kirki-w' . $field_width,
+								],
+								'choices'      => [
+									'label_position' => 'bottom',
+								],
+								'css_vars'     => [],
+								'output'       => [],
+							],
+							$args
+						)
+					);
+				}
+			}
 		}
 
 		if ( isset( $args['default']['text-transform'] ) ) {
@@ -410,48 +389,70 @@ class Typography extends Field {
 			);
 		}
 
-		if ( isset( $args['default']['margin-top'] ) ) {
-			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'margin-top';
+		$has_margin_top    = isset( $defaults['margin-top'] );
+		$has_margin_right  = isset( $defaults['margin-right'] );
+		$has_margin_bottom = isset( $defaults['margin-bottom'] );
+		$has_margin_left   = isset( $defaults['margin-left'] );
 
-			new \Kirki\Field\Dimension(
-				wp_parse_args(
-					[
-						'label'       => esc_html__( 'Top Margin', 'kirki' ),
-						'description' => '',
-						'settings'    => $args['settings'] . '[margin-top]',
-						'default'     => $args['default']['margin-top'],
-						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'margin-top', $args ),
-						'css_vars'    => [],
-						'output'      => [],
-					],
-					$args
-				)
-			);
-		}
+		if ( $has_margin_top || $has_margin_right || $has_margin_bottom || $has_margin_bottom ) {
 
-		if ( isset( $args['default']['margin-bottom'] ) ) {
-			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'margin-bottom';
+			$margin_group = [
+				'margin-top'    => $has_margin_top,
+				'margin-right'  => $has_margin_right,
+				'margin-bottom' => $has_margin_bottom,
+				'margin-left'   => $has_margin_left,
+			];
 
-			new \Kirki\Field\Dimension(
-				wp_parse_args(
-					[
-						'label'       => esc_html__( 'Bottom Margin', 'kirki' ),
-						'description' => '',
-						'settings'    => $args['settings'] . '[margin-bottom]',
-						'default'     => $args['default']['margin-bottom'],
-						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'margin-bottom', $args ),
-						'css_vars'    => [],
-						'output'      => [],
-					],
-					$args
-				)
-			);
+			$labels = [
+				'margin-top'    => esc_html__( 'Margin Top', 'kirki' ),
+				'margin-right'  => esc_html__( 'Margin Right', 'kirki' ),
+				'margin-bottom' => esc_html__( 'Margin Bottom', 'kirki' ),
+				'margin-left'   => esc_html__( 'Margin Left', 'kirki' ),
+			];
+
+			$total_specified = 0;
+			$field_width     = 100;
+
+			foreach ( $margin_group as $css_prop => $is_specified ) {
+				if ( $is_specified ) {
+					$total_specified++;
+				}
+			}
+
+			if ( $total_specified > 1 ) {
+				$field_width = floor( 100 / $total_specified );
+			}
+
+			foreach ( $margin_group as $css_prop => $is_specified ) {
+				if ( $is_specified ) {
+					new \Kirki\Field\Dimension(
+						wp_parse_args(
+							[
+								'label'        => $labels[ $css_prop ],
+								'settings'     => $args['settings'] . '[' . $css_prop . ']',
+								'default'      => $args['default'][ $css_prop ],
+								'input_attrs'  => $this->filter_preferred_choice_setting( 'input_attrs', $css_prop, $args ),
+								'wrapper_atts' => [
+									'kirki-typography-subcontrol-type' => $css_prop,
+									'class' => '{default_class} kirki-group-item kirki-w' . $field_width,
+								],
+								'choices'      => [
+									'label_position' => 'bottom',
+								],
+								'css_vars'     => [],
+								'output'       => [],
+							],
+							$args
+						)
+					);
+				}
+			}
 		}
 
 		if ( isset( $args['default']['color'] ) ) {
 			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'color';
 
-			new \Kirki\Field\ReactColor(
+			new \Kirki\Field\ReactColorful(
 				wp_parse_args(
 					[
 						'label'       => '',
@@ -481,6 +482,7 @@ class Typography extends Field {
 				'output'          => [],
 			]
 		);
+
 	}
 
 	/**
@@ -492,6 +494,7 @@ class Typography extends Field {
 	 * @return array
 	 */
 	public static function sanitize( $value ) {
+
 		if ( ! is_array( $value ) ) {
 			return [];
 		}
@@ -506,10 +509,13 @@ class Typography extends Field {
 					if ( isset( $value['variant'] ) ) {
 						break;
 					}
+
 					$value['variant'] = (string) $val;
+
 					if ( isset( $value['font-style'] ) && 'italic' === $value['font-style'] ) {
 						$value['variant'] = ( '400' !== $val || 400 !== $val ) ? $value['variant'] . 'italic' : 'italic';
 					}
+
 					break;
 
 				case 'variant':
@@ -554,6 +560,7 @@ class Typography extends Field {
 		}
 
 		return $value;
+
 	}
 
 	/**
@@ -564,9 +571,10 @@ class Typography extends Field {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'kirki-control-typography-style', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/style.css' ), [], '1.0' );
 
-		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/script.js' ), [], '1.0', true );
+		wp_enqueue_style( 'kirki-control-typography-style', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], '1.0' );
+
+		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [], '1.0', true );
 		wp_localize_script( 'kirki-typography', 'kirkiTypographyControls', self::$typography_controls );
 		wp_localize_script(
 			'kirki-typography',
@@ -589,6 +597,7 @@ class Typography extends Field {
 			wp_localize_script( 'kirki-typography', 'kirkiGoogleFonts', $google->get_array() );
 			self::$gfonts_var_added = true;
 		}
+
 	}
 
 	/**
@@ -599,7 +608,9 @@ class Typography extends Field {
 	 * @return void
 	 */
 	public function enqueue_customize_preview_init() {
-		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( __DIR__ ) . '/script-customize-preview.js' ), [ 'wp-hooks' ], '1.0', true );
+
+		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/customize-preview.js' ), [ 'wp-hooks' ], '1.0', true );
+
 	}
 
 	/**
@@ -614,23 +625,28 @@ class Typography extends Field {
 	 * @return string
 	 */
 	public function filter_preferred_choice_setting( $setting, $choice, $args ) {
+
 		// Fail early
 		if ( ! isset( $args[ $setting ] ) ) {
 			return '';
 		}
+
 		// If a specific field for the choice is set
 		if ( isset( $args[ $setting ][ $choice ] ) ) {
 			return $args[ $setting ][ $choice ];
 		}
+
 		// Unset input_attrs of all other choices
 		foreach ( $args['choices'] as $id => $set ) {
 			if ( $id !== $choice && isset( $args[ $setting ][ $id ] ) ) {
 				unset( $args[ $setting ][ $id ] );
-			} else if ( ! isset( $args[ $setting ][ $id ] ) ) {
+			} elseif ( ! isset( $args[ $setting ][ $id ] ) ) {
 				$args[ $setting ] = '';
 			}
 		}
+
 		return $args[ $setting ];
+
 	}
 
 	/**
@@ -642,7 +658,10 @@ class Typography extends Field {
 	 * @return array
 	 */
 	public function output_control_classnames( $classnames ) {
+
 		$classnames['kirki-typography'] = '\Kirki\Field\CSS\Typography';
 		return $classnames;
+
 	}
+
 }

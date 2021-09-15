@@ -1,3 +1,5 @@
+import "./control.css";
+
 /* global kirkiTypographyControls, kirkiGoogleFonts, kirkiFontWeights */
 function kirkiTypographyCompositeControlFontProperties( id, value ) {
 	var control, isGoogle, fontWeights, hasItalics, fontWeightControl, fontStyleControl, closest;
