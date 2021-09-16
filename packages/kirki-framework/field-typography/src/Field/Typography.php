@@ -312,8 +312,15 @@ class Typography extends Field {
 				$field_width = floor( 100 / $total_specified );
 			}
 
+			$group_count = 0;
+
 			foreach ( $spacing_group as $css_prop => $is_specified ) {
 				if ( $is_specified ) {
+					$group_count++;
+
+					$group_class  = 'kirki-group-item';
+					$group_class .= 1 === $group_count ? ' kirki-group-start' : ( $group_count === $total_specified ? ' kirki-group-end' : '' );
+
 					new \Kirki\Field\Dimension(
 						wp_parse_args(
 							[
@@ -323,7 +330,7 @@ class Typography extends Field {
 								'input_attrs'  => $this->filter_preferred_choice_setting( 'input_attrs', $css_prop, $args ),
 								'wrapper_atts' => [
 									'kirki-typography-subcontrol-type' => $css_prop,
-									'class' => '{default_class} kirki-group-item kirki-w' . $field_width,
+									'class' => '{default_class} ' . $group_class . ' kirki-w' . $field_width,
 								],
 								'choices'      => [
 									'label_position' => 'bottom',
@@ -423,8 +430,15 @@ class Typography extends Field {
 				$field_width = floor( 100 / $total_specified );
 			}
 
+			$group_count = 0;
+
 			foreach ( $margin_group as $css_prop => $is_specified ) {
 				if ( $is_specified ) {
+					$group_count++;
+
+					$group_class  = 'kirki-group-item';
+					$group_class .= 1 === $group_count ? ' kirki-group-start' : ( $group_count === $total_specified ? ' kirki-group-end' : '' );
+
 					new \Kirki\Field\Dimension(
 						wp_parse_args(
 							[
@@ -434,7 +448,7 @@ class Typography extends Field {
 								'input_attrs'  => $this->filter_preferred_choice_setting( 'input_attrs', $css_prop, $args ),
 								'wrapper_atts' => [
 									'kirki-typography-subcontrol-type' => $css_prop,
-									'class' => '{default_class} kirki-group-item kirki-w' . $field_width,
+									'class' => '{default_class} ' . $group_class . ' kirki-w' . $field_width,
 								],
 								'choices'      => [
 									'label_position' => 'bottom',

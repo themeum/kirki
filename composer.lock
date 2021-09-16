@@ -867,12 +867,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-select.git",
-                "reference": "53afc50887196a0ff9a305b70d371c0154bdfd95"
+                "reference": "964f2d32fba4267fc0ca1fd849dbfed2fb8c4442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/53afc50887196a0ff9a305b70d371c0154bdfd95",
-                "reference": "53afc50887196a0ff9a305b70d371c0154bdfd95",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/964f2d32fba4267fc0ca1fd849dbfed2fb8c4442",
+                "reference": "964f2d32fba4267fc0ca1fd849dbfed2fb8c4442",
                 "shasum": ""
             },
             "require": {
@@ -910,7 +910,7 @@
                 "issues": "https://github.com/kirki-framework/control-react-select/issues",
                 "source": "https://github.com/kirki-framework/control-react-select/tree/nightly"
             },
-            "time": "2021-09-14T10:26:07+00:00"
+            "time": "2021-09-16T13:31:59+00:00"
         },
         {
             "name": "kirki-framework/control-repeater",
@@ -1469,12 +1469,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "a695a7badc79e8caa486a0e5a6bd599d9b379c8d"
+                "reference": "841b9a44c5c7b3035c42947f0d2a3797b9994517"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/a695a7badc79e8caa486a0e5a6bd599d9b379c8d",
-                "reference": "a695a7badc79e8caa486a0e5a6bd599d9b379c8d",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/841b9a44c5c7b3035c42947f0d2a3797b9994517",
+                "reference": "841b9a44c5c7b3035c42947f0d2a3797b9994517",
                 "shasum": ""
             },
             "require": {
@@ -1518,7 +1518,7 @@
                 "issues": "https://github.com/kirki-framework/field-typography/issues",
                 "source": "https://github.com/kirki-framework/field-typography/tree/nightly"
             },
-            "time": "2021-09-15T19:09:34+00:00"
+            "time": "2021-09-15T19:30:45+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
@@ -5131,7 +5131,6 @@
                     "type": "github"
                 }
             ],
-            "abandoned": true,
             "time": "2020-09-28T06:45:17+00:00"
         },
         {

@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '11f6583a0724b23e5ea22d41905208391c5b5d07',
+        'reference' => '9d689239831a0a78f0fc1ed2e5ca079e71f25fc8',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '11f6583a0724b23e5ea22d41905208391c5b5d07',
+            'reference' => '9d689239831a0a78f0fc1ed2e5ca079e71f25fc8',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -254,7 +254,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-select',
             'aliases' => array(),
-            'reference' => '53afc50887196a0ff9a305b70d371c0154bdfd95',
+            'reference' => '964f2d32fba4267fc0ca1fd849dbfed2fb8c4442',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-repeater' => array(
@@ -366,7 +366,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-typography',
             'aliases' => array(),
-            'reference' => 'a695a7badc79e8caa486a0e5a6bd599d9b379c8d',
+            'reference' => '841b9a44c5c7b3035c42947f0d2a3797b9994517',
             'dev_requirement' => false,
         ),
         'kirki-framework/googlefonts' => array(
