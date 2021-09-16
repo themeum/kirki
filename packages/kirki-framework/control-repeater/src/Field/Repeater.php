@@ -144,8 +144,7 @@ class Repeater extends Field {
 							break;
 						case 'color':
 							if ( $subfield_value ) {
-								$color_obj      = \ariColor::newColor( $subfield_value );
-								$subfield_value = $color_obj->toCSS( $color_obj->mode );
+								$subfield_value = \Kirki\Field\ReactColorful::sanitize( $subfield_value );
 							}
 							break;
 						case 'text':

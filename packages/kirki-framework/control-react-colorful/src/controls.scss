@@ -1,4 +1,3 @@
-
 // React colorful control.
 .customize-control-kirki-react-colorful {
   .kirki-control-form {
@@ -32,7 +31,7 @@
   .colorPickerContainer.is-open {
     opacity: 1;
     transform: scale3d(1, 1, 1);
-    transition: all 0.2s;
+    transition: opacity, visibility, transform 0.2s;
     visibility: visible;
   }
 
@@ -61,6 +60,18 @@
     border-width: 0 9px 10px 9px;
     border-style: solid;
     border-color: transparent transparent #fff transparent;
+  }
+
+  .picker-width-manipulated {
+    .colorPickerContainer::before {
+      left: 25%;
+    }
+
+    &.picker-is-right-sided {
+      .colorPickerContainer::before {
+        left: 75%;
+      }
+    }
   }
 
   .react-colorful {

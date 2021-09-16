@@ -311,9 +311,10 @@ class Typography extends Field {
 					'label'        => esc_html__( 'Text Color', 'kirki' ),
 					'is_specified' => $color_field_specified,
 					'choices'      => [
-						'alpha'        => true,
-						'triggerStyle' => 'button',
-						'buttonText'   => __( 'Select Color', 'kirki' ),
+						'alpha'          => true,
+						'is_right_sided' => true,
+						'triggerStyle'   => 'button',
+						'buttonText'     => __( 'Select Color', 'kirki' ),
 					],
 				],
 			];
@@ -545,7 +546,7 @@ class Typography extends Field {
 					break;
 
 				case 'color':
-					$value['color'] = '' === $value['react-colorful'] ? '' : \Kirki\Field\ReactColorful::sanitize( $value['color'] );
+					$value['color'] = '' === $value['color'] ? '' : \Kirki\Field\ReactColorful::sanitize( $value['color'] );
 					break;
 
 				default:

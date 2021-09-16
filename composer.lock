@@ -810,12 +810,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "af489e4ccc1302c0791bd0674e31b61abcfabe83"
+                "reference": "03e70a2b0e779cb7199f362cd89cc15f78e243a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/af489e4ccc1302c0791bd0674e31b61abcfabe83",
-                "reference": "af489e4ccc1302c0791bd0674e31b61abcfabe83",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/03e70a2b0e779cb7199f362cd89cc15f78e243a5",
+                "reference": "03e70a2b0e779cb7199f362cd89cc15f78e243a5",
                 "shasum": ""
             },
             "require": {
@@ -859,7 +859,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-16T15:13:26+00:00"
+            "time": "2021-09-16T18:42:56+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",
@@ -918,12 +918,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-repeater.git",
-                "reference": "01cbaad2c93b9e1b8ce5a07664636006352360bb"
+                "reference": "a07a53461ae5632d3a66f6758beea3b579f97b15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/01cbaad2c93b9e1b8ce5a07664636006352360bb",
-                "reference": "01cbaad2c93b9e1b8ce5a07664636006352360bb",
+                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/a07a53461ae5632d3a66f6758beea3b579f97b15",
+                "reference": "a07a53461ae5632d3a66f6758beea3b579f97b15",
                 "shasum": ""
             },
             "require": {
@@ -967,7 +967,7 @@
                 "issues": "https://github.com/kirki-framework/control-repeater/issues",
                 "source": "https://github.com/kirki-framework/control-repeater/tree/nightly"
             },
-            "time": "2021-09-15T09:06:27+00:00"
+            "time": "2021-09-16T19:08:10+00:00"
         },
         {
             "name": "kirki-framework/control-select",
@@ -1469,12 +1469,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "9db8ecfd7765be8f4dd322143a0d2aaa4afeb240"
+                "reference": "b1a975c1b2ba818755f051915ba9b729cce6df9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/9db8ecfd7765be8f4dd322143a0d2aaa4afeb240",
-                "reference": "9db8ecfd7765be8f4dd322143a0d2aaa4afeb240",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/b1a975c1b2ba818755f051915ba9b729cce6df9c",
+                "reference": "b1a975c1b2ba818755f051915ba9b729cce6df9c",
                 "shasum": ""
             },
             "require": {
@@ -1518,7 +1518,7 @@
                 "issues": "https://github.com/kirki-framework/field-typography/issues",
                 "source": "https://github.com/kirki-framework/field-typography/tree/nightly"
             },
-            "time": "2021-09-16T16:50:23+00:00"
+            "time": "2021-09-16T18:46:04+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
