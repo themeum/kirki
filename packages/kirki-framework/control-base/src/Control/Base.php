@@ -105,13 +105,8 @@ class Base extends \WP_Customize_Control {
 	/**
 	 * Wrapper attributes.
 	 *
-	 * The value of this property will be rendered to the wrapper element if the control extends kirki `kirkiDynamicControl` js object.
+	 * The value of this property will be rendered to the wrapper element.
 	 * Can be 'class', 'id', 'data-*', and other attributes.
-	 *
-	 * @see wp-content/plugins/kirki/packages/kirki-framework/control-base/src/dynamic-control.js
-	 *
-	 * Please be aware, some controls (such as control-react-*) are not extending the kirkiDynamicControl js object.
-	 * That means, those controls won't render the value of this property to the wrapper element.
 	 *
 	 * @access public
 	 * @since 1.1
@@ -183,7 +178,25 @@ class Base extends \WP_Customize_Control {
 				break;
 		}
 
-		printf( '<' . esc_attr( $tag ) . ' id="%s" class="%s">', esc_attr( $id ), esc_attr( $class ) );
+		if ( isset( $this->wrapper_atts['id'] ) ) {
+			$id = $this->wrapper_atts['id'];
+		}
+
+		$data_attrs = '';
+
+		foreach ( $this->wrapper_atts as $attr_key => $attr_value ) {
+			if ( 0 === strpos( $attr_key, 'data-' ) ) {
+				$data_attrs .= ' ' . esc_attr( $attr_key ) . '="' . esc_attr( $attr_value ) . '"';
+			}
+		}
+
+		if ( isset( $this->wrapper_atts['class'] ) ) {
+			$class = str_ireplace( '{default_class}', $class, $this->wrapper_atts['class'] );
+		}
+
+		// ! Consider to esc $data_attrs.
+		// ? What function we can use to escape string like data-xx="yy"?
+		printf( '<' . esc_attr( $tag ) . ' id="%s" class="%s"%s>', esc_attr( $id ), esc_attr( $class ), $data_attrs );
 		$this->render_content();
 		echo '</' . esc_attr( $tag ) . '>';
 	}

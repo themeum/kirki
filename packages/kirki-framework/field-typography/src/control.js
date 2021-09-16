@@ -1,4 +1,4 @@
-import "./control.css";
+import "./control.scss";
 
 /* global kirkiTypographyControls, kirkiGoogleFonts, kirkiFontWeights */
 function kirkiTypographyCompositeControlFontProperties( id, value ) {

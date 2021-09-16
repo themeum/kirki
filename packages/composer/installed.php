@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9d689239831a0a78f0fc1ed2e5ca079e71f25fc8',
+        'reference' => 'c4d021e24d5cb6ea0facc3844bb21e8361d9e824',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9d689239831a0a78f0fc1ed2e5ca079e71f25fc8',
+            'reference' => 'c4d021e24d5cb6ea0facc3844bb21e8361d9e824',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -106,7 +106,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-base',
             'aliases' => array(),
-            'reference' => 'cf2fa11c222ac48369861715dc6ab307e43d3bb9',
+            'reference' => 'ce4fc560552105f64122076854fe48de72c7b761',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-checkbox' => array(
@@ -245,7 +245,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-colorful',
             'aliases' => array(),
-            'reference' => '91aa3f8364104eb62c5e099d5739f09172cd9993',
+            'reference' => 'af489e4ccc1302c0791bd0674e31b61abcfabe83',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
@@ -254,7 +254,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-select',
             'aliases' => array(),
-            'reference' => '964f2d32fba4267fc0ca1fd849dbfed2fb8c4442',
+            'reference' => '1e8fdd95f41b3a95bc0e4e91918559d9b34127ce',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-repeater' => array(
@@ -366,7 +366,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-typography',
             'aliases' => array(),
-            'reference' => '841b9a44c5c7b3035c42947f0d2a3797b9994517',
+            'reference' => '9db8ecfd7765be8f4dd322143a0d2aaa4afeb240',
             'dev_requirement' => false,
         ),
         'kirki-framework/googlefonts' => array(

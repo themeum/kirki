@@ -1,0 +1,24 @@
+.customize-control-kirki[data-kirki-parent-control-type="kirki-typography"] {
+  margin-bottom: 10px;
+
+  .customize-control-title {
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: 12px;
+  }
+}
+
+.customize-control-kirki[data-kirki-typography-css-prop="text-align"],
+.customize-control-kirki[data-kirki-typography-css-prop="color"] {
+  margin-bottom: 15px;
+}
+
+.kirki-typography-end {
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  hr {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
