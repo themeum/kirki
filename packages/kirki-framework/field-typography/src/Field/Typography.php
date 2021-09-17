@@ -327,7 +327,6 @@ class Typography extends Field {
 
 		$line_height_field_specified    = isset( $defaults['line-height'] );
 		$letter_spacing_field_specified = isset( $defaults['letter-spacing'] );
-		$word_spacing_field_specified   = isset( $defaults['word-spacing'] );
 
 		if ( $line_height_field_specified || $letter_spacing_field_specified || $word_spacing_field_specified ) {
 			$group = [
@@ -343,14 +342,6 @@ class Typography extends Field {
 					'type'         => 'dimension',
 					'label'        => esc_html__( 'Letter Spacing', 'kirki' ),
 					'is_specified' => $letter_spacing_field_specified,
-					'choices'      => [
-						'label_position' => 'bottom',
-					],
-				],
-				'word-spacing'   => [
-					'type'         => 'dimension',
-					'label'        => esc_html__( 'Word Spacing', 'kirki' ),
-					'is_specified' => $word_spacing_field_specified,
 					'choices'      => [
 						'label_position' => 'bottom',
 					],
