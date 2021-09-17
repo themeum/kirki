@@ -279,9 +279,12 @@ class Typography extends Field {
 					'label'        => esc_html__( 'Text Decoration', 'kirki' ),
 					'is_specified' => $text_decoration_field_specified,
 					'choices'      => [
-						'normal'    => esc_html__( 'None', 'kirki' ),
-						'underline' => esc_html__( 'Underline', 'kirki' ),
-						'overline'  => esc_html__( 'Overline', 'kirki' ),
+						'none'         => esc_html__( 'None', 'kirki' ),
+						'underline'    => esc_html__( 'Underline', 'kirki' ),
+						'line-through' => esc_html__( 'Line Through', 'kirki' ),
+						'overline'     => esc_html__( 'Overline', 'kirki' ),
+						'solid'        => esc_html__( 'Solid', 'kirki' ),
+						'wavy'         => esc_html__( 'Wavy', 'kirki' ),
 					],
 				],
 			];
@@ -358,11 +361,9 @@ class Typography extends Field {
 		}
 
 		$margin_top_field_specified    = isset( $defaults['margin-top'] );
-		$margin_right_field_specified  = isset( $defaults['margin-right'] );
 		$margin_bottom_field_specified = isset( $defaults['margin-bottom'] );
-		$margin_left_field_specified   = isset( $defaults['margin-left'] );
 
-		if ( $margin_top_field_specified || $margin_right_field_specified || $margin_bottom_field_specified || $margin_left_field_specified ) {
+		if ( $margin_top_field_specified || $margin_bottom_field_specified ) {
 			$group = [
 				'margin-top'    => [
 					'type'         => 'dimension',
@@ -372,26 +373,10 @@ class Typography extends Field {
 						'label_position' => 'bottom',
 					],
 				],
-				'margin-right'  => [
-					'type'         => 'dimension',
-					'label'        => esc_html__( 'Margin Right', 'kirki' ),
-					'is_specified' => $margin_right_field_specified,
-					'choices'      => [
-						'label_position' => 'bottom',
-					],
-				],
 				'margin-bottom' => [
 					'type'         => 'dimension',
 					'label'        => esc_html__( 'Margin Bottom', 'kirki' ),
 					'is_specified' => $margin_bottom_field_specified,
-					'choices'      => [
-						'label_position' => 'bottom',
-					],
-				],
-				'margin-left'   => [
-					'type'         => 'dimension',
-					'label'        => esc_html__( 'Margin Left', 'kirki' ),
-					'is_specified' => $margin_left_field_specified,
 					'choices'      => [
 						'label_position' => 'bottom',
 					],
@@ -540,7 +525,7 @@ class Typography extends Field {
 					break;
 
 				case 'text-decoration':
-					if ( ! in_array( $val, [ '', 'none', 'underline', 'overline', 'line-through', 'initial', 'inherit' ], true ) ) {
+					if ( ! in_array( $val, [ '', 'none', 'underline', 'overline', 'line-through', 'solid', 'wavy', 'initial', 'inherit' ], true ) ) {
 						$value['text-transform'] = '';
 					}
 					break;
@@ -658,5 +643,25 @@ class Typography extends Field {
 		return $classnames;
 
 	}
+
+	/**
+	 * Override parent method. No need to register any setting.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return void
+	 */
+	public function add_setting( $wp_customize ) {}
+
+	/**
+	 * Override the parent method. No need for a control.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return void
+	 */
+	public function add_control( $wp_customize ) {}
 
 }

@@ -723,19 +723,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "ce4fc560552105f64122076854fe48de72c7b761"
+                "reference": "76e5ae9b978e4887a3ebc2551f616fabcbc86972"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/ce4fc560552105f64122076854fe48de72c7b761",
-                "reference": "ce4fc560552105f64122076854fe48de72c7b761",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/76e5ae9b978e4887a3ebc2551f616fabcbc86972",
+                "reference": "76e5ae9b978e4887a3ebc2551f616fabcbc86972",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-16T15:37:32+00:00",
+            "time": "2021-09-17T18:00:18+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2161,12 +2161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-multicolor.git",
-                "reference": "2b55419fd4a41f1039abfc9a7a9d2b6b983a6d75"
+                "reference": "880cb2d862ef04bc0e0962ab61fdb9dcf0307589"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/2b55419fd4a41f1039abfc9a7a9d2b6b983a6d75",
-                "reference": "2b55419fd4a41f1039abfc9a7a9d2b6b983a6d75",
+                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/880cb2d862ef04bc0e0962ab61fdb9dcf0307589",
+                "reference": "880cb2d862ef04bc0e0962ab61fdb9dcf0307589",
                 "shasum": ""
             },
             "require": {
@@ -2175,7 +2175,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-14T18:03:22+00:00",
+            "time": "2021-09-17T17:49:20+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2216,12 +2216,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "b1a975c1b2ba818755f051915ba9b729cce6df9c"
+                "reference": "5788065e0b4cd6194715934131d85876e6e654a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/b1a975c1b2ba818755f051915ba9b729cce6df9c",
-                "reference": "b1a975c1b2ba818755f051915ba9b729cce6df9c",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/5788065e0b4cd6194715934131d85876e6e654a7",
+                "reference": "5788065e0b4cd6194715934131d85876e6e654a7",
                 "shasum": ""
             },
             "require": {
@@ -2235,7 +2235,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-16T18:46:04+00:00",
+            "time": "2021-09-17T17:44:29+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -3619,17 +3619,17 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.4.0",
-            "version_normalized": "1.4.0.0",
+            "version": "1.5.0",
+            "version_normalized": "1.5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0"
+                "reference": "30f38bffc6f24293dadd1823936372dfa9e86e2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0",
-                "reference": "6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/30f38bffc6f24293dadd1823936372dfa9e86e2f",
+                "reference": "30f38bffc6f24293dadd1823936372dfa9e86e2f",
                 "shasum": ""
             },
             "require": {
@@ -3637,9 +3637,10 @@
                 "phpdocumentor/reflection-common": "^2.0"
             },
             "require-dev": {
-                "ext-tokenizer": "*"
+                "ext-tokenizer": "*",
+                "psalm/phar": "^4.8"
             },
-            "time": "2020-09-17T18:55:26+00:00",
+            "time": "2021-09-17T15:28:14+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -3665,7 +3666,7 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.4.0"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.5.0"
             },
             "install-path": "../phpdocumentor/type-resolver"
         },
@@ -3741,24 +3742,24 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.6",
-            "version_normalized": "9.2.6.0",
+            "version": "9.2.7",
+            "version_normalized": "9.2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "f6293e1b30a2354e8428e004689671b83871edde"
+                "reference": "d4c798ed8d51506800b441f7a13ecb0f76f12218"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/f6293e1b30a2354e8428e004689671b83871edde",
-                "reference": "f6293e1b30a2354e8428e004689671b83871edde",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/d4c798ed8d51506800b441f7a13ecb0f76f12218",
+                "reference": "d4c798ed8d51506800b441f7a13ecb0f76f12218",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-libxml": "*",
                 "ext-xmlwriter": "*",
-                "nikic/php-parser": "^4.10.2",
+                "nikic/php-parser": "^4.12.0",
                 "php": ">=7.3",
                 "phpunit/php-file-iterator": "^3.0.3",
                 "phpunit/php-text-template": "^2.0.2",
@@ -3776,7 +3777,7 @@
                 "ext-pcov": "*",
                 "ext-xdebug": "*"
             },
-            "time": "2021-03-28T07:26:59+00:00",
+            "time": "2021-09-17T05:39:03+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -3809,7 +3810,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.6"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.7"
             },
             "funding": [
                 {

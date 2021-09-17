@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b6abea496c289848958222bf94c9de143f69ae88',
+        'reference' => '905717999fe303d961e28b735b5b3579d9464a73',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b6abea496c289848958222bf94c9de143f69ae88',
+            'reference' => '905717999fe303d961e28b735b5b3579d9464a73',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -106,7 +106,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-base',
             'aliases' => array(),
-            'reference' => 'ce4fc560552105f64122076854fe48de72c7b761',
+            'reference' => '76e5ae9b978e4887a3ebc2551f616fabcbc86972',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-checkbox' => array(
@@ -357,7 +357,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-multicolor',
             'aliases' => array(),
-            'reference' => '2b55419fd4a41f1039abfc9a7a9d2b6b983a6d75',
+            'reference' => '880cb2d862ef04bc0e0962ab61fdb9dcf0307589',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-typography' => array(
@@ -366,7 +366,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-typography',
             'aliases' => array(),
-            'reference' => 'b1a975c1b2ba818755f051915ba9b729cce6df9c',
+            'reference' => '5788065e0b4cd6194715934131d85876e6e654a7',
             'dev_requirement' => false,
         ),
         'kirki-framework/googlefonts' => array(
@@ -595,12 +595,12 @@
             'dev_requirement' => true,
         ),
         'phpdocumentor/type-resolver' => array(
-            'pretty_version' => '1.4.0',
-            'version' => '1.4.0.0',
+            'pretty_version' => '1.5.0',
+            'version' => '1.5.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpdocumentor/type-resolver',
             'aliases' => array(),
-            'reference' => '6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0',
+            'reference' => '30f38bffc6f24293dadd1823936372dfa9e86e2f',
             'dev_requirement' => true,
         ),
         'phpspec/prophecy' => array(
@@ -613,12 +613,12 @@
             'dev_requirement' => true,
         ),
         'phpunit/php-code-coverage' => array(
-            'pretty_version' => '9.2.6',
-            'version' => '9.2.6.0',
+            'pretty_version' => '9.2.7',
+            'version' => '9.2.7.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/php-code-coverage',
             'aliases' => array(),
-            'reference' => 'f6293e1b30a2354e8428e004689671b83871edde',
+            'reference' => 'd4c798ed8d51506800b441f7a13ecb0f76f12218',
             'dev_requirement' => true,
         ),
         'phpunit/php-file-iterator' => array(
