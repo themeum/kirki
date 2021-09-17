@@ -5,6 +5,7 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 	var control, isGoogle, fontWeights, hasItalics, fontWeightControl, fontStyleControl, closest;
 
 	control = wp.customize.control( id );
+
 	if ( 'undefined' === typeof control ) {
 		return;
 	}
@@ -73,7 +74,6 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 				if ( -1 !== fontWeights.indexOf( weight ) ) {
 					fontWeightControl.params.choices[ weight.toString() ] = kirkiFontWeights[ weight.toString() ];
 					fontWeightControl.formattedOptions = [];
-					fontWeightControl.destroy();
 					fontWeightControl.renderContent();
 				}
 			} );
@@ -89,7 +89,6 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 					if ( -1 !== fontWeights.indexOf( weight ) ) {
 						fontWeightControl.params.choices[ weight.toString() ] = kirkiFontWeights[ weight.toString() ];
 						fontWeightControl.formattedOptions = [];
-						fontWeightControl.destroy();
 						fontWeightControl.renderContent();
 					}
 				} );
@@ -101,6 +100,7 @@ function kirkiTypographyCompositeControlFontProperties( id, value ) {
 jQuery( document ).ready( function() {
 	_.each( kirkiTypographyControls, function( id ) {
 		kirkiTypographyCompositeControlFontProperties( id );
+
 		wp.customize( id, function( value ) {
 			value.bind( function( newval ) {
 				kirkiTypographyCompositeControlFontProperties( id, newval );

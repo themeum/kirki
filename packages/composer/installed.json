@@ -2216,12 +2216,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "201b2919390f709121d38b174771841f817658e1"
+                "reference": "f0e36c4db365cb5f4b61eae7359b2dd893537327"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/201b2919390f709121d38b174771841f817658e1",
-                "reference": "201b2919390f709121d38b174771841f817658e1",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/f0e36c4db365cb5f4b61eae7359b2dd893537327",
+                "reference": "f0e36c4db365cb5f4b61eae7359b2dd893537327",
                 "shasum": ""
             },
             "require": {
@@ -2235,7 +2235,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-17T18:19:57+00:00",
+            "time": "2021-09-17T18:41:03+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
