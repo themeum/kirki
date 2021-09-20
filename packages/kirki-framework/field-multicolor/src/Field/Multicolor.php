@@ -75,9 +75,9 @@ class Multicolor extends Field {
 						],
 						'input_attrs'    => $this->filter_preferred_choice_setting( 'input_attrs', $choice, $args ),
 						'choices'        => [
-							'alpha'        => $this->filter_preferred_choice_setting( 'alpha', $choice, $args ),
-							'triggerStyle' => 'button',
-							'buttonText'   => $choice_label,
+							'alpha'         => $this->filter_preferred_choice_setting( 'alpha', $choice, $args ),
+							'trigger_style' => 'button',
+							'button_text'   => $choice_label,
 						],
 						'css_vars'       => [],
 						'output'         => [],

@@ -316,8 +316,8 @@ class Typography extends Field {
 					'choices'      => [
 						'alpha'          => true,
 						'is_right_sided' => true,
-						'triggerStyle'   => 'button',
-						'buttonText'     => __( 'Select Color', 'kirki' ),
+						'trigger_style'  => 'button',
+						'button_text'    => __( 'Select Color', 'kirki' ),
 					],
 				],
 			];

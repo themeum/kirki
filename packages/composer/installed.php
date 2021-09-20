@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '64d9044c79c929c230ae84b258b2517f0673f014',
+        'reference' => 'f949d3d92c0eddd9301afd39000e4b75227e112b',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '64d9044c79c929c230ae84b258b2517f0673f014',
+            'reference' => 'f949d3d92c0eddd9301afd39000e4b75227e112b',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -245,7 +245,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-colorful',
             'aliases' => array(),
-            'reference' => 'b04aa1252a74c19e6c3f4e0f9578ec0f9b0df089',
+            'reference' => 'aaf400706974961a6c78e3919bfa61c94f24bd37',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
@@ -357,7 +357,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-multicolor',
             'aliases' => array(),
-            'reference' => '880cb2d862ef04bc0e0962ab61fdb9dcf0307589',
+            'reference' => 'd4c3537b7d965db2c346db7734db6f424ac491c1',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-typography' => array(
@@ -366,7 +366,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-typography',
             'aliases' => array(),
-            'reference' => '6f351c7463fb04fcca31dc8f0936528fd22c339d',
+            'reference' => '909fcc44a8f466541f45d2e700569a5b4f0c2006',
             'dev_requirement' => false,
         ),
         'kirki-framework/googlefonts' => array(

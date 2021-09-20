@@ -93,16 +93,43 @@ class ReactColorful extends Base {
 		$this->json['mode'] = $this->mode;
 
 		// The save_as.
-		$this->json['choices']['save_as'] = isset( $this->json['choices']['save_as'] ) ? $this->json['choices']['save_as'] : 'string';
+		$this->json['choices']['saveAs'] = isset( $this->choices['save_as'] ) ? $this->choices['save_as'] : 'string';
 
 		// Color swatches.
 		$this->json['choices']['swatches'] = $this->color_swatches();
 
 		// Trigger style.
-		$this->json['choices']['triggerStyle'] = isset( $this->json['choices']['triggerStyle'] ) ? $this->json['choices']['triggerStyle'] : 'input';
+		$this->json['choices']['triggerStyle'] = isset( $this->choices['trigger_style'] ) ? $this->choices['trigger_style'] : 'input';
 
 		// Trigger style.
-		$this->json['choices']['buttonText'] = isset( $this->json['choices']['buttonText'] ) ? $this->json['choices']['buttonText'] : '';
+		$this->json['choices']['buttonText'] = isset( $this->choices['button_text'] ) ? $this->choices['button_text'] : '';
+
+		$this->remove_unused_json_props();
+
+	}
+
+	/**
+	 * Remove un-used json properties.
+	 *
+	 * For consistency in JS, we converted some choices to use camelCase.
+	 * To reduce the returned json size, we remove the original properties (which is using snake_case) from the JSON.
+	 * But we keep them to stay in the choices array, so that they're still accessible.
+	 *
+	 * @return void
+	 */
+	public function remove_unused_json_props() {
+
+		if ( isset( $this->json['choices']['save_as'] ) ) {
+			unset( $this->json['choices']['save_as'] );
+		}
+
+		if ( isset( $this->json['choices']['trigger_style'] ) ) {
+			unset( $this->json['choices']['trigger_style'] );
+		}
+
+		if ( isset( $this->json['choices']['button_text'] ) ) {
+			unset( $this->json['choices']['button_text'] );
+		}
 
 	}
 
