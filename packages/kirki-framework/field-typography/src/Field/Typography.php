@@ -328,7 +328,7 @@ class Typography extends Field {
 		$line_height_field_specified    = isset( $defaults['line-height'] );
 		$letter_spacing_field_specified = isset( $defaults['letter-spacing'] );
 
-		if ( $line_height_field_specified || $letter_spacing_field_specified || $word_spacing_field_specified ) {
+		if ( $line_height_field_specified || $letter_spacing_field_specified ) {
 			$group = [
 				'line-height'    => [
 					'type'         => 'dimension',

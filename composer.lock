@@ -1469,12 +1469,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "f0e36c4db365cb5f4b61eae7359b2dd893537327"
+                "reference": "6f351c7463fb04fcca31dc8f0936528fd22c339d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/f0e36c4db365cb5f4b61eae7359b2dd893537327",
-                "reference": "f0e36c4db365cb5f4b61eae7359b2dd893537327",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/6f351c7463fb04fcca31dc8f0936528fd22c339d",
+                "reference": "6f351c7463fb04fcca31dc8f0936528fd22c339d",
                 "shasum": ""
             },
             "require": {
@@ -1518,7 +1518,7 @@
                 "issues": "https://github.com/kirki-framework/field-typography/issues",
                 "source": "https://github.com/kirki-framework/field-typography/tree/nightly"
             },
-            "time": "2021-09-17T18:41:03+00:00"
+            "time": "2021-09-20T11:11:48+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
