@@ -140,8 +140,9 @@ abstract class Field {
 	 * @return array
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
-		$args['type'] = isset( $args['option_type'] ) ? $args['option_type'] : 'theme_mod';
+
 		return $args;
+
 	}
 
 	/**
@@ -154,7 +155,9 @@ abstract class Field {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
+
 		return $args;
+
 	}
 
 	/**
@@ -167,6 +170,12 @@ abstract class Field {
 	 */
 	public function add_setting( $customizer ) {
 
+		$args = $this->args;
+
+		// This is for postMessage purpose.
+		// @see wp-content/plugins/kirki/packages/kirki-framework/module-postmessage/src/Postmessage.php inside 'field_add_setting_args' method.
+		$args['type'] = isset( $this->type ) ? $this->type : '';
+
 		/**
 		 * Allow filtering the arguments.
 		 *
@@ -175,27 +184,33 @@ abstract class Field {
 		 * @param WP_Customize_Manager $customizer The customizer instance.
 		 * @return array                           Return the arguments.
 		 */
-		$args = apply_filters( 'kirki_field_add_setting_args', $this->args, $customizer );
-		if ( isset( $args['settings'] ) ) {
+		$args = apply_filters( 'kirki_field_add_setting_args', $args, $customizer );
+
+		if ( ! isset( $args['settings'] ) || empty( $args['settings'] ) ) {
+			return;
+		}
+
+		$setting_id = $args['settings'];
+
+		$args = [
+			'type'                 => isset( $args['option_type'] ) ? $args['option_type'] : 'theme_mod', // 'type' here doesn't use the $args['type'] but instead checking the $args['option_type'].
+			'capability'           => isset( $args['capability'] ) ? $args['capability'] : 'edit_theme_options',
+			'theme_supports'       => isset( $args['theme_supports'] ) ? $args['theme_supports'] : '',
+			'default'              => isset( $args['default'] ) ? $args['default'] : '',
+			'transport'            => isset( $args['transport'] ) ? $args['transport'] : 'refresh',
+			'sanitize_callback'    => isset( $args['sanitize_callback'] ) ? $args['sanitize_callback'] : '',
+			'sanitize_js_callback' => isset( $args['sanitize_js_callback'] ) ? $args['sanitize_js_callback'] : '',
+		];
+
+		if ( $this->settings_class ) {
 			$classname = $this->settings_class;
 
-			$setting_id = $args['settings'];
-
-			$args = [
-				'type'                 => isset( $args['type'] ) ? $args['type'] : 'theme_mod',
-				'capability'           => isset( $args['capability'] ) ? $args['capability'] : 'edit_theme_options',
-				'theme_supports'       => isset( $args['theme_supports'] ) ? $args['theme_supports'] : '',
-				'default'              => isset( $args['default'] ) ? $args['default'] : '',
-				'transport'            => isset( $args['transport'] ) ? $args['transport'] : 'refresh',
-				'sanitize_callback'    => isset( $args['sanitize_callback'] ) ? $args['sanitize_callback'] : '',
-				'sanitize_js_callback' => isset( $args['sanitize_js_callback'] ) ? $args['sanitize_js_callback'] : '',
-			];
-			if ( $this->settings_class ) {
-				$customizer->add_setting( new $classname( $customizer, $settings_id, $args ) );
-				return;
-			}
-			$customizer->add_setting( $setting_id, $args );
+			$customizer->add_setting( new $classname( $customizer, $setting_id, $args ) );
+			return;
 		}
+
+		$customizer->add_setting( $setting_id, $args );
+
 	}
 
 	/**
@@ -225,5 +240,7 @@ abstract class Field {
 		 */
 		$args = apply_filters( 'kirki_field_add_control_args', $this->args, $wp_customize );
 		$wp_customize->add_control( new $control_class( $wp_customize, $this->args['settings'], $args ) );
+
 	}
+
 }

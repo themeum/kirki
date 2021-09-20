@@ -10,6 +10,7 @@
 
 namespace Kirki\Field;
 
+use Kirki\URL;
 use Kirki\Field;
 
 /**
@@ -45,6 +46,21 @@ class ReactColorful extends Field {
 	 * @var bool
 	 */
 	protected $control_has_js_template = true;
+
+	/**
+	 * Additional logic for the field.
+	 *
+	 * @since 4.0.0
+	 * @access protected
+	 *
+	 * @param array $args The field arguments.
+	 */
+	protected function init( $args ) {
+
+		add_action( 'customize_preview_init', [ $this, 'enqueue_customize_preview_scripts' ] );
+		add_filter( 'kirki_output_control_classnames', [ $this, 'output_control_classnames' ] );
+
+	}
 
 	/**
 	 * Filter arguments before creating the setting.
@@ -233,6 +249,35 @@ class ReactColorful extends Field {
 
 		// If no match was found, return an empty string.
 		return '';
+	}
+
+	/**
+	 * Enqueue styles & scripts on 'customize_preview_init' action.
+	 *
+	 * @since 4.0.0
+	 * @access public
+	 */
+	public function enqueue_customize_preview_scripts() {
+
+		wp_enqueue_script( 'kirki-react-colorful', URL::get_from_path( dirname( dirname( __DIR__ ) ) ) . '/dist/preview.js', [ 'wp-hooks', 'customize-preview' ], $this->control_class::$control_ver, true );
+
+	}
+
+	/**
+	 * Add output control class for react colorful control.
+	 *
+	 * @since 4.0.0
+	 * @access public
+	 *
+	 * @param array $control_classes The existing control classes.
+	 * @return array
+	 */
+	public function output_control_classnames( $control_classes ) {
+
+		$control_classes['kirki-react-colorful'] = '\Kirki\Field\CSS\ReactColorful';
+
+		return $control_classes;
+
 	}
 
 }

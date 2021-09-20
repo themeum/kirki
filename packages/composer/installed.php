@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '1ac6e66eb9f5d5c6db4c9cd212ecc615765b8f03',
+        'reference' => '64d9044c79c929c230ae84b258b2517f0673f014',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '1ac6e66eb9f5d5c6db4c9cd212ecc615765b8f03',
+            'reference' => '64d9044c79c929c230ae84b258b2517f0673f014',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -245,7 +245,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-colorful',
             'aliases' => array(),
-            'reference' => '03e70a2b0e779cb7199f362cd89cc15f78e243a5',
+            'reference' => 'b04aa1252a74c19e6c3f4e0f9578ec0f9b0df089',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
@@ -319,7 +319,7 @@
             'aliases' => array(
                 0 => '9999999-dev',
             ),
-            'reference' => '5865773dd95b4d75c9534be2d58dde4251a06626',
+            'reference' => 'aa2acfe588c775328a268a4f092495df6b116773',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-background' => array(
@@ -514,12 +514,12 @@
             ),
         ),
         'nikic/php-parser' => array(
-            'pretty_version' => 'v4.12.0',
-            'version' => '4.12.0.0',
+            'pretty_version' => 'v4.13.0',
+            'version' => '4.13.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
-            'reference' => '6608f01670c3cc5079e18c1dab1104e002579143',
+            'reference' => '50953a2691a922aa1769461637869a0a2faa3f53',
             'dev_requirement' => true,
         ),
         'phar-io/manifest' => array(
