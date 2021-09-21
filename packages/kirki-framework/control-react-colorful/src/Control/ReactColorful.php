@@ -99,7 +99,7 @@ class ReactColorful extends Base {
 		$this->json['choices']['swatches'] = $this->color_swatches();
 
 		// Form component (the value is bsaed on react-colorful's components).
-		if (isset($this->choices['form_component'])) {
+		if ( isset( $this->choices['form_component'] ) ) {
 			$this->json['choices']['formComponent'] = $this->choices['form_component'];
 		}
 
@@ -128,7 +128,7 @@ class ReactColorful extends Base {
 			unset( $this->json['choices']['save_as'] );
 		}
 
-		if (isset($this->choices['form_component'])) {
+		if ( isset( $this->choices['form_component'] ) ) {
 			unset( $this->json['choices']['form_component'] );
 		}
 
