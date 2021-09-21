@@ -71,27 +71,12 @@ class Background extends Field {
 			$args['transport'] = 'postMessage';
 		}
 
-		$default_bg_color       = isset( $args['default']['background-color'] ) ? $args['default']['background-color'] : '';
-		$color_picker_component = 'HexColorPicker';
-
-		if ( false !== stripos( $default_bg_color, 'rgb' ) ) {
-			if ( false !== stripos( $default_bg_color, 'rgba' ) ) {
-				$color_picker_component = 'RgbaColorPicker';
-			} else {
-				$color_picker_component = 'RgbColorPicker';
-			}
-		} elseif ( false !== stripos( $default_bg_color, 'hsl' ) ) {
-			if ( false !== stripos( $default_bg_color, 'hsla' ) ) {
-				$color_picker_component = 'HslaColorPicker';
-			} else {
-				$color_picker_component = 'HslColorPicker';
-			}
-		}
+		$default_bg_color = isset( $args['default']['background-color'] ) ? $args['default']['background-color'] : '';
 
 		/**
 		 * Background Color.
 		 */
-		new \Kirki\Field\ReactColorful(
+		new \Kirki\Field\Color(
 			wp_parse_args(
 				[
 					'settings'    => $args['settings'] . '[background-color]',
@@ -100,7 +85,7 @@ class Background extends Field {
 					'default'     => $default_bg_color,
 					'section'     => $args['section'],
 					'choices'     => [
-						'formComponent' => $color_picker_component,
+						'alpha' => true,
 					],
 				],
 				$args

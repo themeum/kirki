@@ -98,6 +98,11 @@ class ReactColorful extends Base {
 		// Color swatches.
 		$this->json['choices']['swatches'] = $this->color_swatches();
 
+		// Form component (the value is bsaed on react-colorful's components).
+		if (isset($this->choices['form_component'])) {
+			$this->json['choices']['formComponent'] = $this->choices['form_component'];
+		}
+
 		// Trigger style.
 		$this->json['choices']['triggerStyle'] = isset( $this->choices['trigger_style'] ) ? $this->choices['trigger_style'] : 'input';
 
@@ -121,6 +126,10 @@ class ReactColorful extends Base {
 
 		if ( isset( $this->json['choices']['save_as'] ) ) {
 			unset( $this->json['choices']['save_as'] );
+		}
+
+		if (isset($this->choices['form_component'])) {
+			unset( $this->json['choices']['form_component'] );
 		}
 
 		if ( isset( $this->json['choices']['trigger_style'] ) ) {

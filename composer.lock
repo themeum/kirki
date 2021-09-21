@@ -810,12 +810,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "aaf400706974961a6c78e3919bfa61c94f24bd37"
+                "reference": "9014136e8a7adab8cdcec4c0582aa9fd49de0984"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/aaf400706974961a6c78e3919bfa61c94f24bd37",
-                "reference": "aaf400706974961a6c78e3919bfa61c94f24bd37",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/9014136e8a7adab8cdcec4c0582aa9fd49de0984",
+                "reference": "9014136e8a7adab8cdcec4c0582aa9fd49de0984",
                 "shasum": ""
             },
             "require": {
@@ -859,7 +859,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-20T20:57:15+00:00"
+            "time": "2021-09-21T01:44:18+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",
@@ -1264,12 +1264,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-background.git",
-                "reference": "e79cdb39cc6d979307ec20161c4823e17baf8673"
+                "reference": "a04ac4c697b3311f7d0cad4ba4bcc4f58f71119b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/e79cdb39cc6d979307ec20161c4823e17baf8673",
-                "reference": "e79cdb39cc6d979307ec20161c4823e17baf8673",
+                "url": "https://api.github.com/repos/kirki-framework/field-background/zipball/a04ac4c697b3311f7d0cad4ba4bcc4f58f71119b",
+                "reference": "a04ac4c697b3311f7d0cad4ba4bcc4f58f71119b",
                 "shasum": ""
             },
             "require": {
@@ -1308,7 +1308,7 @@
                 "issues": "https://github.com/kirki-framework/field-background/issues",
                 "source": "https://github.com/kirki-framework/field-background/tree/nightly"
             },
-            "time": "2021-09-13T04:37:24+00:00"
+            "time": "2021-09-21T01:37:47+00:00"
         },
         {
             "name": "kirki-framework/field-dimensions",

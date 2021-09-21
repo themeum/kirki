@@ -231,12 +231,12 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             16 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
             17 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
             18 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
-            19 => __DIR__ . '/..' . '/kirki-framework/field-background/src',
-            20 => __DIR__ . '/..' . '/kirki-framework/field-dimensions/src',
-            21 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
+            19 => __DIR__ . '/..' . '/kirki-framework/field-dimensions/src',
+            20 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
+            21 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
             22 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
-            23 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Field',
-            24 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
+            23 => __DIR__ . '/..' . '/kirki-framework/field-background/src',
+            24 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Field',
         ),
         'Kirki\\Data\\' => 
         array (
@@ -264,9 +264,9 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             17 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Control',
             18 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
             19 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
-            20 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
-            21 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Control',
-            22 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
+            20 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
+            21 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
+            22 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Control',
         ),
         'Kirki\\Compatibility\\' => 
         array (
