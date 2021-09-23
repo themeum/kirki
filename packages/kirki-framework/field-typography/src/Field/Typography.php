@@ -550,7 +550,7 @@ class Typography extends Field {
 		wp_localize_script( 'kirki-control-typography', 'kirkiTypographyControls', self::$typography_controls );
 
 		wp_localize_script(
-			'kirki-typography',
+			'kirki-control-typography',
 			'kirkiFontWeights',
 			[
 				'100' => esc_html__( '100 - Thin', 'kirki' ),
@@ -567,7 +567,7 @@ class Typography extends Field {
 
 		if ( ! self::$gfonts_var_added ) {
 			$google = new GoogleFonts();
-			wp_localize_script( 'kirki-typography', 'kirkiGoogleFonts', $google->get_array() );
+			wp_localize_script( 'kirki-control-typography', 'kirkiGoogleFonts', $google->get_array() );
 			self::$gfonts_var_added = true;
 		}
 

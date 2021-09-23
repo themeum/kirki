@@ -2210,12 +2210,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "f57bb27e3861598de8f28f7b6e0b2d45fd963866"
+                "reference": "b807d127743525392786bbb52a89b294b01a7de6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/f57bb27e3861598de8f28f7b6e0b2d45fd963866",
-                "reference": "f57bb27e3861598de8f28f7b6e0b2d45fd963866",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/b807d127743525392786bbb52a89b294b01a7de6",
+                "reference": "b807d127743525392786bbb52a89b294b01a7de6",
                 "shasum": ""
             },
             "require": {
@@ -2229,7 +2229,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-23T06:57:47+00:00",
+            "time": "2021-09-23T10:59:15+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2790,24 +2790,25 @@
         },
         {
             "name": "kirki-framework/module-tooltips",
-            "version": "v1.0.2",
-            "version_normalized": "1.0.2.0",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-tooltips.git",
-                "reference": "9fc1430896b0bc0f2cddc402e36ac2d8725ad1e5"
+                "reference": "becd264e50ec81314b6a3e373332629bd9e662ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-tooltips/zipball/9fc1430896b0bc0f2cddc402e36ac2d8725ad1e5",
-                "reference": "9fc1430896b0bc0f2cddc402e36ac2d8725ad1e5",
+                "url": "https://api.github.com/repos/kirki-framework/module-tooltips/zipball/becd264e50ec81314b6a3e373332629bd9e662ef",
+                "reference": "becd264e50ec81314b6a3e373332629bd9e662ef",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2019-09-22T14:20:44+00:00",
+            "time": "2021-09-23T11:04:36+00:00",
+            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {

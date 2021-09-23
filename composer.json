@@ -51,7 +51,7 @@
     "kirki-framework/module-postmessage": "*",
     "kirki-framework/module-preset": "*",
     "kirki-framework/module-selective-refresh": "*",
-    "kirki-framework/module-tooltips": "*",
+    "kirki-framework/module-tooltips": "dev-master",
     "kirki-framework/module-webfonts": "*",
     "kirki-framework/compatibility": "dev-nightly",
     "kirki-framework/data-option": "dev-nightly",

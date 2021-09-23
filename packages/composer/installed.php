@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ee96a3167df1d53d145794a4c2829bfcdd2ebdc4',
+        'reference' => 'ea369b2adfb752bd944163e2ec8c37545edb776b',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ee96a3167df1d53d145794a4c2829bfcdd2ebdc4',
+            'reference' => 'ea369b2adfb752bd944163e2ec8c37545edb776b',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -366,7 +366,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-typography',
             'aliases' => array(),
-            'reference' => 'f57bb27e3861598de8f28f7b6e0b2d45fd963866',
+            'reference' => 'b807d127743525392786bbb52a89b294b01a7de6',
             'dev_requirement' => false,
         ),
         'kirki-framework/googlefonts' => array(
@@ -466,12 +466,14 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-tooltips' => array(
-            'pretty_version' => 'v1.0.2',
-            'version' => '1.0.2.0',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-tooltips',
-            'aliases' => array(),
-            'reference' => '9fc1430896b0bc0f2cddc402e36ac2d8725ad1e5',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => 'becd264e50ec81314b6a3e373332629bd9e662ef',
             'dev_requirement' => false,
         ),
         'kirki-framework/module-webfonts' => array(

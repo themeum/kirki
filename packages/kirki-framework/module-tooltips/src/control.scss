@@ -1,0 +1,41 @@
+.kirki-tooltip-wrapper {
+	position: relative;
+	float: right;
+	// 2 is enought, but just to be safe.
+	z-index: 5;
+
+	.tooltip-trigger {
+		text-decoration: none;
+		cursor: help;
+	}
+
+	.tooltip-content {
+		position: absolute;
+		width: 200px;
+		height: auto;
+		top: -10px;
+		left: -225px;
+		background: #000;
+		color: #fff;
+		padding: 10px;
+		z-index: 99999;
+		border-radius: 3px;
+		line-height: 1.4em;
+
+		a {
+			color: #00a0d2;
+		}
+
+		::after {
+			content: '\f139';
+			font-family: dashicons;
+			position: absolute;
+			right: -12px;
+			top: 11px;
+			color: #000;
+			font-size: 20px;
+		}
+	}
+}
+
+/*# sourceMappingURL=tooltip.css.map */

@@ -37,8 +37,10 @@ class Tooltips {
 	 * @since 1.0
 	 */
 	public function __construct() {
+
 		add_action( 'customize_controls_print_footer_scripts', [ $this, 'customize_controls_print_footer_scripts' ] );
 		add_filter( 'kirki_field_add_control_args', [ $this, 'filter_control_args' ], 10, 2 );
+
 	}
 
 	/**
@@ -48,9 +50,11 @@ class Tooltips {
 	 * @since 1.0
 	 */
 	public function customize_controls_print_footer_scripts() {
-		wp_enqueue_script( 'kirki-tooltip', URL::get_from_path( __DIR__ . '/script.js' ), [ 'jquery' ], '4.0', false );
+
+		wp_enqueue_script( 'kirki-tooltip', URL::get_from_path( dirname( __DIR__ ) . '/dist/control.js' ), [ 'jquery' ], '4.0', false );
 		wp_localize_script( 'kirki-tooltip', 'kirkiTooltips', $this->tooltips_content );
-		wp_enqueue_style( 'kirki-tooltip', URL::get_from_path( __DIR__ . '/styles.css' ), [], '4.0' );
+		wp_enqueue_style( 'kirki-tooltip', URL::get_from_path( dirname( __DIR__ ) . '/dist/control.css' ), [], '4.0' );
+
 	}
 
 	/**
