@@ -239,17 +239,18 @@ class Output {
 
 			$value = $this->process_value( $value, $output );
 
-			if ( ( is_admin() && ! is_customize_preview() ) || ( isset( $_GET['editor'] ) && '1' === $_GET['editor'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
-
-				// Check if this is an admin style.
-				if ( ! isset( $output['context'] ) || ! in_array( 'editor', $output['context'], true ) ) {
+			if ( is_admin() ) {
+				// In admin area, only output kirki-styles/kirki-inline-styles inside editing screen.
+				if ( ! isset( $_GET['editor'] ) || 1 !== (int) $_GET['editor'] ) { // phpcs:ignore WordPress.Security.NonceVerification
 					continue;
 				}
-			} elseif ( isset( $output['context'] ) && ! in_array( 'front', $output['context'], true ) ) {
-
+			} else {
 				// Check if this is a frontend style.
-				continue;
+				if ( isset( $output['context'] ) && ! in_array( 'front', $output['context'], true ) ) {
+					continue;
+				}
 			}
+
 			$this->process_output( $output, $value );
 		}
 	}

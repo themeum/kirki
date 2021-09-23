@@ -67,8 +67,8 @@ class Typography extends Field {
 
 		$this->add_sub_fields( $args );
 
-		add_action( 'customize_controls_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-		add_action( 'customize_preview_init', [ $this, 'enqueue_customize_preview_init' ] );
+		add_action( 'customize_controls_enqueue_scripts', [ $this, 'enqueue_control_scripts' ] );
+		add_action( 'customize_preview_init', [ $this, 'enqueue_preview_scripts' ] );
 		add_filter( 'kirki_output_control_classnames', [ $this, 'output_control_classnames' ] );
 	}
 
@@ -541,12 +541,14 @@ class Typography extends Field {
 	 * @since 1.0
 	 * @return void
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_control_scripts() {
 
-		wp_enqueue_style( 'kirki-control-typography-style', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], '1.0' );
+		wp_enqueue_style( 'kirki-control-typography', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], '1.0' );
 
-		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [], '1.0', true );
-		wp_localize_script( 'kirki-typography', 'kirkiTypographyControls', self::$typography_controls );
+		wp_enqueue_script( 'kirki-control-typography', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [], '1.0', true );
+
+		wp_localize_script( 'kirki-control-typography', 'kirkiTypographyControls', self::$typography_controls );
+
 		wp_localize_script(
 			'kirki-typography',
 			'kirkiFontWeights',
@@ -578,9 +580,9 @@ class Typography extends Field {
 	 * @since 1.0
 	 * @return void
 	 */
-	public function enqueue_customize_preview_init() {
+	public function enqueue_preview_scripts() {
 
-		wp_enqueue_script( 'kirki-typography', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/customize-preview.js' ), [ 'wp-hooks' ], '1.0', true );
+		wp_enqueue_script( 'kirki-preview-typography', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/preview.js' ), [ 'wp-hooks' ], '1.0', true );
 
 	}
 

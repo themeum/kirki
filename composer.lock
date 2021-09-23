@@ -1463,12 +1463,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "909fcc44a8f466541f45d2e700569a5b4f0c2006"
+                "reference": "f57bb27e3861598de8f28f7b6e0b2d45fd963866"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/909fcc44a8f466541f45d2e700569a5b4f0c2006",
-                "reference": "909fcc44a8f466541f45d2e700569a5b4f0c2006",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/f57bb27e3861598de8f28f7b6e0b2d45fd963866",
+                "reference": "f57bb27e3861598de8f28f7b6e0b2d45fd963866",
                 "shasum": ""
             },
             "require": {
@@ -1512,7 +1512,7 @@
                 "issues": "https://github.com/kirki-framework/field-typography/issues",
                 "source": "https://github.com/kirki-framework/field-typography/tree/nightly"
             },
-            "time": "2021-09-20T20:27:35+00:00"
+            "time": "2021-09-23T06:57:47+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
@@ -1619,12 +1619,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-css.git",
-                "reference": "cf068a37d950f54f3275bf7b13e1be2437501f78"
+                "reference": "b2f10adcbfe98c384eedb5594f52fc7a7daa59e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/cf068a37d950f54f3275bf7b13e1be2437501f78",
-                "reference": "cf068a37d950f54f3275bf7b13e1be2437501f78",
+                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/b2f10adcbfe98c384eedb5594f52fc7a7daa59e2",
+                "reference": "b2f10adcbfe98c384eedb5594f52fc7a7daa59e2",
                 "shasum": ""
             },
             "require": {
@@ -1661,7 +1661,7 @@
                 "issues": "https://github.com/kirki-framework/module-css/issues",
                 "source": "https://github.com/kirki-framework/module-css/tree/master"
             },
-            "time": "2019-12-03T22:38:06+00:00"
+            "time": "2021-09-23T06:56:47+00:00"
         },
         {
             "name": "kirki-framework/module-editor-styles",
@@ -1669,12 +1669,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-editor-styles.git",
-                "reference": "9c2b629b832a0ba8eead9cb6a177205f894b943b"
+                "reference": "fde4dcc61727bd19c5a7e9dfcc9c079cf7ee3437"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-editor-styles/zipball/9c2b629b832a0ba8eead9cb6a177205f894b943b",
-                "reference": "9c2b629b832a0ba8eead9cb6a177205f894b943b",
+                "url": "https://api.github.com/repos/kirki-framework/module-editor-styles/zipball/fde4dcc61727bd19c5a7e9dfcc9c079cf7ee3437",
+                "reference": "fde4dcc61727bd19c5a7e9dfcc9c079cf7ee3437",
                 "shasum": ""
             },
             "require": {
@@ -1713,7 +1713,7 @@
                 "issues": "https://github.com/kirki-framework/module-editor-styles/issues",
                 "source": "https://github.com/kirki-framework/module-editor-styles/tree/master"
             },
-            "time": "2019-07-14T12:45:00+00:00"
+            "time": "2021-09-23T06:55:43+00:00"
         },
         {
             "name": "kirki-framework/module-field-dependencies",

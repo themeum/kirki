@@ -186,9 +186,11 @@ final class Generator {
 
 		// Process the array of CSS properties and produce the final CSS.
 		$final_css = '';
+
 		if ( ! is_array( $css ) || empty( $css ) ) {
 			return '';
 		}
+
 		foreach ( $css as $media_query => $styles ) {
 			$final_css .= ( 'global' !== $media_query ) ? $media_query . '{' : '';
 			foreach ( $styles as $style => $style_array ) {
@@ -206,12 +208,15 @@ final class Generator {
 					}
 					$value = ( is_string( $value ) ) ? $value : '';
 				}
+
 				if ( '' !== $css_for_style ) {
 					$final_css .= $style . '{' . $css_for_style . '}';
 				}
 			}
+
 			$final_css .= ( 'global' !== $media_query ) ? '}' : '';
 		}
+
 		return $final_css;
 	}
 
