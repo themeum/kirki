@@ -37,11 +37,16 @@
 				className = 'customize-control customize-control-' + args.params.type;
 			}
 
-			// Hijack the container to add wrapper_atts.
-			args.params.content = jQuery('<li></li>');
+			if (!args.params.wrapper_attrs && args.params.wrapper_atts) {
+				args.params.wrapper_attrs = args.params.wrapper_atts;
+			}
+
+			// Hijack the container to add wrapper_attrs.
+      args.params.content = jQuery("<li></li>");
 			args.params.content.attr('id', 'customize-control-' + id.replace(/]/g, '').replace(/\[/g, '-'));
 			args.params.content.attr('class', className);
-			_.each(args.params.wrapper_atts, function (val, key) {
+
+			_.each(args.params.wrapper_attrs, function (val, key) {
 				if ('class' === key) {
 					val = val.replace('{default_class}', className);
 				}

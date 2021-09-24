@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '36fe0dc11883d33b0d0aa495434cc144617ec089',
+        'reference' => '437739e7f60d53a80c39f108de9b2ad3b3c77956',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '36fe0dc11883d33b0d0aa495434cc144617ec089',
+            'reference' => '437739e7f60d53a80c39f108de9b2ad3b3c77956',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -106,7 +106,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-base',
             'aliases' => array(),
-            'reference' => '51500a710b260bd11713018365fa2e0cc999f8bf',
+            'reference' => '781484a1a03168817ed73ecab438bbae83ef4d92',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-checkbox' => array(
@@ -328,7 +328,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-background',
             'aliases' => array(),
-            'reference' => 'a04ac4c697b3311f7d0cad4ba4bcc4f58f71119b',
+            'reference' => '15f92f944a1bb8bbca3fb53b3b532cb7f726936d',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-dimensions' => array(
@@ -337,7 +337,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-dimensions',
             'aliases' => array(),
-            'reference' => 'e33cb63c892ad94344073b8ef77cec41163d9c4f',
+            'reference' => 'c7dbe8ca4a17dad9e38d4e2fffbf15c22d6af27a',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-fontawesome' => array(

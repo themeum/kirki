@@ -139,21 +139,21 @@ class Dimensions extends Field {
 			$label = isset( $labels[ $choice ] ) ? $labels[ $choice ] : $label;
 			$label = isset( $args['choices']['labels'][ $choice ] ) ? $args['choices']['labels'][ $choice ] : $label;
 
-			$wrapper_atts = [
+			$wrapper_attrs = [
 				'data-kirki-parent-control-type' => 'kirki-dimensions',
 				'class'                          => '{default_class} kirki-group-item kirki-w' . $width,
 			];
 
 			if ( $item_count === 1 ) {
-				$wrapper_atts['class'] .= ' kirki-group-start';
+				$wrapper_attrs['class'] .= ' kirki-group-start';
 			}
 
 			if ( in_array( $item_count, $break_indexes, true ) ) {
-				$wrapper_atts['class'] .= ' kirki-group-break';
+				$wrapper_attrs['class'] .= ' kirki-group-break';
 			}
 
 			if ( $item_count === $total_items ) {
-				$wrapper_atts['class'] .= ' kirki-group-end';
+				$wrapper_attrs['class'] .= ' kirki-group-end';
 			}
 
 			new \Kirki\Field\Dimension(
@@ -164,7 +164,7 @@ class Dimensions extends Field {
 						'parent_setting' => $args['settings'],
 						'label'          => $label,
 						'default'        => $default,
-						'wrapper_atts'   => $wrapper_atts,
+						'wrapper_attrs'  => $wrapper_attrs,
 						'choices'        => [
 							'label_position' => 'bottom',
 						],

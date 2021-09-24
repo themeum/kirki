@@ -112,6 +112,21 @@ class Base extends \WP_Customize_Control {
 	 * @since 1.1
 	 * @var array
 	 */
+	public $wrapper_attrs = [];
+
+	/**
+	 * The backward compatibility for `$wrapper_attrs`.
+	 *
+	 * The v3 already has this $wrapper_atts property.
+	 * This property is not published in the doc, and seems more for internal use.
+	 *
+	 * WP_Customize_Control has `input_attrs` not `input_atts` (attrs vs atts).
+	 * So let's use `$wrapper_attrs` for consistency and keep this `$wrapper_atts` for a safer backward compatibility.
+	 *
+	 * @access public
+	 * @since 1.1
+	 * @var array
+	 */
 	public $wrapper_atts = [];
 
 	/**
@@ -160,6 +175,7 @@ class Base extends \WP_Customize_Control {
 	 * @since 1.0
 	 */
 	protected function render() {
+
 		$id    = 'customize-control-' . str_replace( [ '[', ']' ], [ '-', '' ], $this->id );
 		$class = 'customize-control customize-control-kirki customize-control-' . $this->type;
 		$gap   = isset( $this->wrapper_opts['gap'] ) ? $this->wrapper_opts['gap'] : 'default';
@@ -178,20 +194,24 @@ class Base extends \WP_Customize_Control {
 				break;
 		}
 
-		if ( isset( $this->wrapper_atts['id'] ) ) {
-			$id = $this->wrapper_atts['id'];
+		if ( empty( $this->wrapper_attrs ) && ! empty( $this->wrapper_atts ) ) {
+			$this->wrapper_attrs = $this->wrapper_atts;
+		}
+
+		if ( isset( $this->wrapper_attrs['id'] ) ) {
+			$id = $this->wrapper_attrs['id'];
 		}
 
 		$data_attrs = '';
 
-		foreach ( $this->wrapper_atts as $attr_key => $attr_value ) {
+		foreach ( $this->wrapper_attrs as $attr_key => $attr_value ) {
 			if ( 0 === strpos( $attr_key, 'data-' ) ) {
 				$data_attrs .= ' ' . esc_attr( $attr_key ) . '="' . esc_attr( $attr_value ) . '"';
 			}
 		}
 
-		if ( isset( $this->wrapper_atts['class'] ) ) {
-			$class = str_ireplace( '{default_class}', $class, $this->wrapper_atts['class'] );
+		if ( isset( $this->wrapper_attrs['class'] ) ) {
+			$class = str_ireplace( '{default_class}', $class, $this->wrapper_attrs['class'] );
 		}
 
 		// ! Consider to esc $data_attrs.
@@ -199,6 +219,7 @@ class Base extends \WP_Customize_Control {
 		printf( '<' . esc_attr( $tag ) . ' id="%s" class="%s"%s>', esc_attr( $id ), esc_attr( $class ), $data_attrs );
 		$this->render_content();
 		echo '</' . esc_attr( $tag ) . '>';
+
 	}
 
 	/**
@@ -243,6 +264,7 @@ class Base extends \WP_Customize_Control {
 
 		// Input attributes.
 		$this->json['inputAttrs'] = '';
+
 		if ( is_array( $this->input_attrs ) ) {
 			foreach ( $this->input_attrs as $attr => $value ) {
 				$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
@@ -268,7 +290,9 @@ class Base extends \WP_Customize_Control {
 		$this->json['parent_setting'] = $this->parent_setting;
 
 		// Wrapper Attributes.
-		$this->json['wrapper_atts'] = $this->wrapper_atts;
+		$this->json['wrapper_attrs'] = $this->wrapper_attrs;
+		$this->json['wrapper_atts']  = $this->wrapper_attrs; // For backward compatibility.
+
 	}
 
 	/**

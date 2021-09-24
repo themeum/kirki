@@ -63,7 +63,7 @@ class Background extends Field {
 
 		$args['parent_setting'] = $args['settings'];
 		$args['output']         = [];
-		$args['wrapper_atts']   = [
+		$args['wrapper_attrs']  = [
 			'data-kirki-parent-control-type' => 'kirki-background',
 		];
 
