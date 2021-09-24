@@ -237,7 +237,7 @@ class Dimensions extends Field {
 	 * @return void
 	 */
 	public function enqueue_customize_preview_scripts() {
-		wp_enqueue_script( 'kirki-field-dimensions', URL::get_from_path( dirname( __DIR__ ) ) . '/dist/control.js', [ 'wp-hooks' ], '1.0', true );
+		wp_enqueue_script( 'kirki-field-dimensions', URL::get_from_path( dirname( __DIR__ ) ) . '/dist/preview.js', [ 'wp-hooks' ], '1.0', true );
 	}
 
 	/**

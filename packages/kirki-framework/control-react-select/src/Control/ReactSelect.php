@@ -100,6 +100,7 @@ class ReactSelect extends Base {
 				'wp-components',
 				'jquery',
 				'wp-i18n',
+				'kirki-control-base',
 			],
 			time(),
 			false

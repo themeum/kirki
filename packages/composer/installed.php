@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'efc624092e4b835f95f3057a0f72a333ba3d20c8',
+        'reference' => '942b8c15f377f42cde7b4644161dfb4a67f962fd',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'efc624092e4b835f95f3057a0f72a333ba3d20c8',
+            'reference' => '942b8c15f377f42cde7b4644161dfb4a67f962fd',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -236,7 +236,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-radio',
             'aliases' => array(),
-            'reference' => 'bb1d8ba22e85befcf64f52dc3266038027012ecf',
+            'reference' => '79da5604e2eeb92cacf8d141a07e9a4475a23fcb',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-colorful' => array(
@@ -254,7 +254,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-select',
             'aliases' => array(),
-            'reference' => '1e8fdd95f41b3a95bc0e4e91918559d9b34127ce',
+            'reference' => '9a9aa11504a891dd87f4d0bdccfc8885044c2fcd',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-repeater' => array(
@@ -337,7 +337,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-dimensions',
             'aliases' => array(),
-            'reference' => 'cd3c2b51112b51781375e4b718fdada25276db37',
+            'reference' => 'e33cb63c892ad94344073b8ef77cec41163d9c4f',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-fontawesome' => array(

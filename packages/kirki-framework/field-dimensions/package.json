@@ -24,8 +24,8 @@
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
-    "build": "parcel build  src/control.js --dist-dir dist",
-    "dev": "parcel build  src/control.js --no-optimize --dist-dir dist",
-    "watch": "parcel watch src/control.js --dist-dir dist"
+    "build": "parcel build src/preview.js src/control.scss --dist-dir dist",
+    "dev": "parcel build src/preview.js src/control.scss --no-optimize --dist-dir dist",
+    "watch": "parcel watchsrc/preview.js src/control.scss --dist-dir dist"
   }
 }
