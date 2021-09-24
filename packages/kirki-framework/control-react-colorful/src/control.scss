@@ -267,9 +267,11 @@
     }
 
     .kirki-button-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding-right: 30px;
       width: 83%;
-      line-height: 30px;
       text-align: center;
       font-size: 12px;
       background-color: #f6f7f7;
