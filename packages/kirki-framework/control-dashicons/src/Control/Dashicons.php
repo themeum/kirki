@@ -55,7 +55,7 @@ class Dashicons extends Base {
 		parent::enqueue();
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-dashicons', URL::get_from_path( dirname(dirname( __DIR__ )) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-dashicons', URL::get_from_path( dirname(dirname( __DIR__ )) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'kirki-control-base' ], self::$control_ver, false );
 
 		// Enqueue the style.
 		wp_enqueue_style( 'kirki-control-dashicons-style', URL::get_from_path( dirname(dirname( __DIR__ )) . '/dist/control.css' ), [ 'dashicons' ], self::$control_ver );

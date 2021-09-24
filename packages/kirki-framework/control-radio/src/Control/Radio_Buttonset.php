@@ -41,7 +41,7 @@ class Radio_Buttonset extends Base {
 		parent::enqueue();
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-radio', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], Radio::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-radio', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'kirki-control-base' ], Radio::$control_ver, false );
 
 		// Enqueue the style.
 		wp_enqueue_style( 'kirki-control-radio-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], 'lapar' );

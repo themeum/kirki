@@ -775,12 +775,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-checkbox.git",
-                "reference": "e9f0cd306abf7c2fa269e2c80e7ae0c1375fbf19"
+                "reference": "0bf14a2136f0f55caba0fdc6b7e67a3150508c15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/e9f0cd306abf7c2fa269e2c80e7ae0c1375fbf19",
-                "reference": "e9f0cd306abf7c2fa269e2c80e7ae0c1375fbf19",
+                "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/0bf14a2136f0f55caba0fdc6b7e67a3150508c15",
+                "reference": "0bf14a2136f0f55caba0fdc6b7e67a3150508c15",
                 "shasum": ""
             },
             "require": {
@@ -788,7 +788,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-14T13:37:46+00:00",
+            "time": "2021-09-24T07:14:01+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1086,12 +1086,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dashicons.git",
-                "reference": "2bc821ccaa6b3efd389bd38936408f2a5919e2cf"
+                "reference": "5dd8e3fa00c4bea817d8cfaf27af760180c53772"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/2bc821ccaa6b3efd389bd38936408f2a5919e2cf",
-                "reference": "2bc821ccaa6b3efd389bd38936408f2a5919e2cf",
+                "url": "https://api.github.com/repos/kirki-framework/control-dashicons/zipball/5dd8e3fa00c4bea817d8cfaf27af760180c53772",
+                "reference": "5dd8e3fa00c4bea817d8cfaf27af760180c53772",
                 "shasum": ""
             },
             "require": {
@@ -1099,7 +1099,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-13T03:27:18+00:00",
+            "time": "2021-09-24T07:15:08+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1141,12 +1141,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-date.git",
-                "reference": "1ed7a40298c691741f019b1d8030bd0b8afa2ebf"
+                "reference": "b1969b69abcff99131c77dcbc525cbb3ac3aecea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/1ed7a40298c691741f019b1d8030bd0b8afa2ebf",
-                "reference": "1ed7a40298c691741f019b1d8030bd0b8afa2ebf",
+                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/b1969b69abcff99131c77dcbc525cbb3ac3aecea",
+                "reference": "b1969b69abcff99131c77dcbc525cbb3ac3aecea",
                 "shasum": ""
             },
             "require": {
@@ -1154,7 +1154,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-13T03:29:58+00:00",
+            "time": "2021-09-24T07:15:43+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1195,12 +1195,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dimension.git",
-                "reference": "20e96fb5946dcae0fe0213e66c7fc7cf38dfa377"
+                "reference": "3e53137ccce54fb86d40eabdd07923eea2fd693f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dimension/zipball/20e96fb5946dcae0fe0213e66c7fc7cf38dfa377",
-                "reference": "20e96fb5946dcae0fe0213e66c7fc7cf38dfa377",
+                "url": "https://api.github.com/repos/kirki-framework/control-dimension/zipball/3e53137ccce54fb86d40eabdd07923eea2fd693f",
+                "reference": "3e53137ccce54fb86d40eabdd07923eea2fd693f",
                 "shasum": ""
             },
             "require": {
@@ -1208,7 +1208,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-15T17:56:57+00:00",
+            "time": "2021-09-24T07:16:46+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1249,12 +1249,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-editor.git",
-                "reference": "e3e8652376752e290061ee2b19c2400d88dfd420"
+                "reference": "933fb34ec7bd6a162f437c164480337ddb7c1693"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/e3e8652376752e290061ee2b19c2400d88dfd420",
-                "reference": "e3e8652376752e290061ee2b19c2400d88dfd420",
+                "url": "https://api.github.com/repos/kirki-framework/control-editor/zipball/933fb34ec7bd6a162f437c164480337ddb7c1693",
+                "reference": "933fb34ec7bd6a162f437c164480337ddb7c1693",
                 "shasum": ""
             },
             "require": {
@@ -1262,7 +1262,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-13T03:31:27+00:00",
+            "time": "2021-09-24T07:18:39+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1303,12 +1303,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-generic.git",
-                "reference": "97601e6a20a3d2825d8204234c01e673b6f8de86"
+                "reference": "c84bf46575df2b635efe3bb3345bf923dfaaa58f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/97601e6a20a3d2825d8204234c01e673b6f8de86",
-                "reference": "97601e6a20a3d2825d8204234c01e673b6f8de86",
+                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/c84bf46575df2b635efe3bb3345bf923dfaaa58f",
+                "reference": "c84bf46575df2b635efe3bb3345bf923dfaaa58f",
                 "shasum": ""
             },
             "require": {
@@ -1316,7 +1316,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-13T03:32:42+00:00",
+            "time": "2021-09-24T07:19:15+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1357,12 +1357,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-image.git",
-                "reference": "9427cd815fa9850a3fc0b53a995b79b6ef25cd18"
+                "reference": "355fb103d429160d7cf629722b0ee131d82c4ebc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/9427cd815fa9850a3fc0b53a995b79b6ef25cd18",
-                "reference": "9427cd815fa9850a3fc0b53a995b79b6ef25cd18",
+                "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/355fb103d429160d7cf629722b0ee131d82c4ebc",
+                "reference": "355fb103d429160d7cf629722b0ee131d82c4ebc",
                 "shasum": ""
             },
             "require": {
@@ -1370,7 +1370,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-13T03:33:50+00:00",
+            "time": "2021-09-24T07:20:07+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1465,19 +1465,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-radio.git",
-                "reference": "d4089005a990855d4d801833e69ae7c203ef163c"
+                "reference": "bb1d8ba22e85befcf64f52dc3266038027012ecf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/d4089005a990855d4d801833e69ae7c203ef163c",
-                "reference": "d4089005a990855d4d801833e69ae7c203ef163c",
+                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/bb1d8ba22e85befcf64f52dc3266038027012ecf",
+                "reference": "bb1d8ba22e85befcf64f52dc3266038027012ecf",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/control-base": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-13T03:38:01+00:00",
+            "time": "2021-09-24T07:21:59+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1518,12 +1518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "b4a542f1b3a0641502f2626ad9bd749dd8b89064"
+                "reference": "9590fba73ca4c2563bb79172f6b9c90357b474cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/b4a542f1b3a0641502f2626ad9bd749dd8b89064",
-                "reference": "b4a542f1b3a0641502f2626ad9bd749dd8b89064",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/9590fba73ca4c2563bb79172f6b9c90357b474cd",
+                "reference": "9590fba73ca4c2563bb79172f6b9c90357b474cd",
                 "shasum": ""
             },
             "require": {
@@ -1532,7 +1532,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-21T03:17:08+00:00",
+            "time": "2021-09-24T07:22:32+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
