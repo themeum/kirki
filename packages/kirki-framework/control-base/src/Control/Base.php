@@ -147,10 +147,10 @@ class Base extends \WP_Customize_Control {
 	public function enqueue() {
 
 		// Enqueue the styles.
-		wp_enqueue_style( 'kirki-base-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
+		wp_enqueue_style( 'kirki-control-base', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 
 		// Enqueue the scripts.
-		wp_enqueue_script( 'kirki-dynamic-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-controls' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-base', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-controls' ], self::$control_ver, false );
 
 	}
 

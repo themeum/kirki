@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "76e5ae9b978e4887a3ebc2551f616fabcbc86972"
+                "reference": "51500a710b260bd11713018365fa2e0cc999f8bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/76e5ae9b978e4887a3ebc2551f616fabcbc86972",
-                "reference": "76e5ae9b978e4887a3ebc2551f616fabcbc86972",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/51500a710b260bd11713018365fa2e0cc999f8bf",
+                "reference": "51500a710b260bd11713018365fa2e0cc999f8bf",
                 "shasum": ""
             },
             "require": {
@@ -101,7 +101,7 @@
                 "issues": "https://github.com/kirki-framework/control-base/issues",
                 "source": "https://github.com/kirki-framework/control-base/tree/nightly"
             },
-            "time": "2021-09-17T18:00:18+00:00"
+            "time": "2021-09-24T07:57:52+00:00"
         },
         {
             "name": "kirki-framework/control-checkbox",
