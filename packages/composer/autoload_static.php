@@ -225,7 +225,7 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             10 => __DIR__ . '/..' . '/kirki-framework/control-image/src/Field',
             11 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Field',
             12 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field',
-            13 => __DIR__ . '/..' . '/kirki-framework/control-react-select/src/Field',
+            13 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Field',
             14 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Field',
             15 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Field',
             16 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
@@ -236,7 +236,7 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             21 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
             22 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
             23 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
-            24 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Field',
+            24 => __DIR__ . '/..' . '/kirki-framework/control-react-select/src/Field',
         ),
         'Kirki\\Data\\' => 
         array (
@@ -259,14 +259,14 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             12 => __DIR__ . '/..' . '/kirki-framework/control-image/src/Control',
             13 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Control',
             14 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control',
-            15 => __DIR__ . '/..' . '/kirki-framework/control-react-select/src/Control',
+            15 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Control',
             16 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Control',
             17 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Control',
             18 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
             19 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
             20 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
             21 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
-            22 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Control',
+            22 => __DIR__ . '/..' . '/kirki-framework/control-react-select/src/Control',
         ),
         'Kirki\\Compatibility\\' => 
         array (

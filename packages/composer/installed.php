@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '4f89fb7d03433c9de4b52cdf22880e5c3b5ccdda',
+        'reference' => '36fe0dc11883d33b0d0aa495434cc144617ec089',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '4f89fb7d03433c9de4b52cdf22880e5c3b5ccdda',
+            'reference' => '36fe0dc11883d33b0d0aa495434cc144617ec089',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -254,7 +254,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-select',
             'aliases' => array(),
-            'reference' => '9a9aa11504a891dd87f4d0bdccfc8885044c2fcd',
+            'reference' => '7e88dce0e63730e29da8d9c63e5351f6a5111a83',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-repeater' => array(
