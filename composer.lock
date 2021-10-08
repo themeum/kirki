@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "781484a1a03168817ed73ecab438bbae83ef4d92"
+                "reference": "cf0d6e4f3aa5576e2a1c56d9f63caad2fa3df580"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/781484a1a03168817ed73ecab438bbae83ef4d92",
-                "reference": "781484a1a03168817ed73ecab438bbae83ef4d92",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/cf0d6e4f3aa5576e2a1c56d9f63caad2fa3df580",
+                "reference": "cf0d6e4f3aa5576e2a1c56d9f63caad2fa3df580",
                 "shasum": ""
             },
             "require": {
@@ -101,7 +101,7 @@
                 "issues": "https://github.com/kirki-framework/control-base/issues",
                 "source": "https://github.com/kirki-framework/control-base/tree/nightly"
             },
-            "time": "2021-09-24T08:40:19+00:00"
+            "time": "2021-10-07T04:13:38+00:00"
         },
         {
             "name": "kirki-framework/control-checkbox",
@@ -454,12 +454,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-date.git",
-                "reference": "b1969b69abcff99131c77dcbc525cbb3ac3aecea"
+                "reference": "ef61d9b261a1a73ada7fa33c06a047a336e6aae1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/b1969b69abcff99131c77dcbc525cbb3ac3aecea",
-                "reference": "b1969b69abcff99131c77dcbc525cbb3ac3aecea",
+                "url": "https://api.github.com/repos/kirki-framework/control-date/zipball/ef61d9b261a1a73ada7fa33c06a047a336e6aae1",
+                "reference": "ef61d9b261a1a73ada7fa33c06a047a336e6aae1",
                 "shasum": ""
             },
             "require": {
@@ -497,7 +497,7 @@
                 "issues": "https://github.com/kirki-framework/control-date/issues",
                 "source": "https://github.com/kirki-framework/control-date/tree/nightly"
             },
-            "time": "2021-09-24T07:15:43+00:00"
+            "time": "2021-10-01T14:29:43+00:00"
         },
         {
             "name": "kirki-framework/control-dimension",
@@ -810,12 +810,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "f5cb0164d00f34e075284b15c8e6a4fb9a400497"
+                "reference": "0c7f11e61e795d8d0304b57b54d70da327822163"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/f5cb0164d00f34e075284b15c8e6a4fb9a400497",
-                "reference": "f5cb0164d00f34e075284b15c8e6a4fb9a400497",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/0c7f11e61e795d8d0304b57b54d70da327822163",
+                "reference": "0c7f11e61e795d8d0304b57b54d70da327822163",
                 "shasum": ""
             },
             "require": {
@@ -853,7 +853,7 @@
                 "issues": "https://github.com/kirki-framework/control-react-colorful/issues",
                 "source": "https://github.com/kirki-framework/control-react-colorful/tree/nightly"
             },
-            "time": "2021-09-24T08:08:36+00:00"
+            "time": "2021-10-07T16:17:52+00:00"
         },
         {
             "name": "kirki-framework/control-react-select",
@@ -861,12 +861,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-select.git",
-                "reference": "e78083e8502ce590b9e2c844287e29c57a7a7e2a"
+                "reference": "e2d79bebd239041db027c6dbe4b6c9e1fb1084bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/e78083e8502ce590b9e2c844287e29c57a7a7e2a",
-                "reference": "e78083e8502ce590b9e2c844287e29c57a7a7e2a",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/e2d79bebd239041db027c6dbe4b6c9e1fb1084bb",
+                "reference": "e2d79bebd239041db027c6dbe4b6c9e1fb1084bb",
                 "shasum": ""
             },
             "require": {
@@ -904,7 +904,7 @@
                 "issues": "https://github.com/kirki-framework/control-react-select/issues",
                 "source": "https://github.com/kirki-framework/control-react-select/tree/nightly"
             },
-            "time": "2021-09-24T09:15:44+00:00"
+            "time": "2021-10-01T07:52:22+00:00"
         },
         {
             "name": "kirki-framework/control-repeater",
@@ -1411,12 +1411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-multicolor.git",
-                "reference": "d4c3537b7d965db2c346db7734db6f424ac491c1"
+                "reference": "2f43e463838e77a8ab2d4a5f7e7a69928c78cc6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/d4c3537b7d965db2c346db7734db6f424ac491c1",
-                "reference": "d4c3537b7d965db2c346db7734db6f424ac491c1",
+                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/2f43e463838e77a8ab2d4a5f7e7a69928c78cc6c",
+                "reference": "2f43e463838e77a8ab2d4a5f7e7a69928c78cc6c",
                 "shasum": ""
             },
             "require": {
@@ -1455,7 +1455,7 @@
                 "issues": "https://github.com/kirki-framework/field-multicolor/issues",
                 "source": "https://github.com/kirki-framework/field-multicolor/tree/nightly"
             },
-            "time": "2021-09-20T20:28:35+00:00"
+            "time": "2021-10-05T09:18:40+00:00"
         },
         {
             "name": "kirki-framework/field-typography",
@@ -1463,12 +1463,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "b807d127743525392786bbb52a89b294b01a7de6"
+                "reference": "d6d16ef3ffa9f6e2c6c29f3bd3a32be2007c5ebf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/b807d127743525392786bbb52a89b294b01a7de6",
-                "reference": "b807d127743525392786bbb52a89b294b01a7de6",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/d6d16ef3ffa9f6e2c6c29f3bd3a32be2007c5ebf",
+                "reference": "d6d16ef3ffa9f6e2c6c29f3bd3a32be2007c5ebf",
                 "shasum": ""
             },
             "require": {
@@ -1512,7 +1512,7 @@
                 "issues": "https://github.com/kirki-framework/field-typography/issues",
                 "source": "https://github.com/kirki-framework/field-typography/tree/nightly"
             },
-            "time": "2021-09-23T10:59:15+00:00"
+            "time": "2021-10-05T09:15:29+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
@@ -2712,16 +2712,16 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "1.4.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "8e7d04f1f6450fef59366c399cfad4b9383aa30d"
+                "reference": "136a635e2b4a49b9d79e9c8fee267ffb257fdba0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/8e7d04f1f6450fef59366c399cfad4b9383aa30d",
-                "reference": "8e7d04f1f6450fef59366c399cfad4b9383aa30d",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/136a635e2b4a49b9d79e9c8fee267ffb257fdba0",
+                "reference": "136a635e2b4a49b9d79e9c8fee267ffb257fdba0",
                 "shasum": ""
             },
             "require": {
@@ -2733,7 +2733,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -2750,9 +2750,24 @@
             ],
             "authors": [
                 {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
+                    "homepage": "https://github.com/Tobion"
                 }
             ],
             "description": "Guzzle promises library",
@@ -2761,22 +2776,36 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/1.4.1"
+                "source": "https://github.com/guzzle/promises/tree/1.5.0"
             },
-            "time": "2021-03-07T09:25:29+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/promises",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-10-07T13:05:22+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "1dc8d9cba3897165e16d12bb13d813afb1eb3fe7"
+                "reference": "089edd38f5b8abba6cb01567c2a8aaa47cec4c72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/1dc8d9cba3897165e16d12bb13d813afb1eb3fe7",
-                "reference": "1dc8d9cba3897165e16d12bb13d813afb1eb3fe7",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/089edd38f5b8abba6cb01567c2a8aaa47cec4c72",
+                "reference": "089edd38f5b8abba6cb01567c2a8aaa47cec4c72",
                 "shasum": ""
             },
             "require": {
@@ -2800,7 +2829,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
@@ -2814,12 +2843,33 @@
             ],
             "authors": [
                 {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
                 },
                 {
+                    "name": "George Mponos",
+                    "email": "gmponos@gmail.com",
+                    "homepage": "https://github.com/gmponos"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://github.com/sagikazarmark"
+                },
+                {
                     "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
                     "homepage": "https://github.com/Tobion"
                 },
                 {
@@ -2841,9 +2891,23 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.0.0"
+                "source": "https://github.com/guzzle/psr7/tree/2.1.0"
             },
-            "time": "2021-06-30T20:03:07+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/psr7",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-10-06T17:43:30+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3436,16 +3500,16 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "30f38bffc6f24293dadd1823936372dfa9e86e2f"
+                "reference": "a12f7e301eb7258bb68acd89d4aefa05c2906cae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/30f38bffc6f24293dadd1823936372dfa9e86e2f",
-                "reference": "30f38bffc6f24293dadd1823936372dfa9e86e2f",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/a12f7e301eb7258bb68acd89d4aefa05c2906cae",
+                "reference": "a12f7e301eb7258bb68acd89d4aefa05c2906cae",
                 "shasum": ""
             },
             "require": {
@@ -3480,9 +3544,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.5.0"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.5.1"
             },
-            "time": "2021-09-17T15:28:14+00:00"
+            "time": "2021-10-02T14:08:47+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -3871,16 +3935,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.9",
+            "version": "9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ea8c2dfb1065eb35a79b3681eee6e6fb0a6f273b"
+                "reference": "c814a05837f2edb0d1471d6e3f4ab3501ca3899a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ea8c2dfb1065eb35a79b3681eee6e6fb0a6f273b",
-                "reference": "ea8c2dfb1065eb35a79b3681eee6e6fb0a6f273b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c814a05837f2edb0d1471d6e3f4ab3501ca3899a",
+                "reference": "c814a05837f2edb0d1471d6e3f4ab3501ca3899a",
                 "shasum": ""
             },
             "require": {
@@ -3896,7 +3960,7 @@
                 "phar-io/version": "^3.0.2",
                 "php": ">=7.3",
                 "phpspec/prophecy": "^1.12.1",
-                "phpunit/php-code-coverage": "^9.2.3",
+                "phpunit/php-code-coverage": "^9.2.7",
                 "phpunit/php-file-iterator": "^3.0.5",
                 "phpunit/php-invoker": "^3.1.1",
                 "phpunit/php-text-template": "^2.0.3",
@@ -3958,7 +4022,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.9"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.10"
             },
             "funding": [
                 {
@@ -3970,7 +4034,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-31T06:47:40+00:00"
+            "time": "2021-09-25T07:38:51+00:00"
         },
         {
             "name": "psr/container",

@@ -9,6 +9,23 @@
     box-sizing: border-box;
   }
 
+  .kirki-control-cols {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .kirki-control-left-col {
+    padding-right: 30px;
+    width: 90%;
+    width: calc(100% - 35px);
+  }
+
+  .kirki-control-right-col {
+    display: flex;
+    justify-content: flex-end;
+    width: 35px;
+  }
+
   .use-hue-mode {
     .react-colorful {
       height: auto;
@@ -28,49 +45,60 @@
     }
   }
 
-  .colorPickerContainer.is-open {
-    opacity: 1;
-    transform: scale3d(1, 1, 1);
-    transition: opacity, visibility, transform 0.2s;
-    visibility: visible;
+  .kirki-trigger-circle-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+  }
+
+  .kirki-trigger-circle {
+    position: relative;
+    padding: 0;
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-size: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    .kirki-color-preview {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .colorPickerContainer {
     position: absolute;
-    margin-top: 15px;
+    top: 35px;
+    right: 0;
+    margin-top: 5px;
     width: 100%;
-    padding: 18px;
+    padding: 15px;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.09) 0 12px 15px 0;
     z-index: 9999;
 
     opacity: 0;
-    transform: scale3d(0, 0, 0);
-    transform-origin: center top;
-    transition: opacity 0.1s, visibility 0.1s, transform 0.75s;
-  }
+    visibility: hidden;
+    transition: all 0.2s;
+    transition-property: opacity, visibility; // Yes, only opacity and visibility please.
 
-  .colorPickerContainer::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 0 9px 10px 9px;
-    border-style: solid;
-    border-color: transparent transparent #fff transparent;
-  }
-
-  .picker-width-manipulated {
-    .colorPickerContainer::before {
-      left: 25%;
-    }
-
-    &.picker-is-right-sided {
-      .colorPickerContainer::before {
-        left: 75%;
-      }
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.2s ease 10ms; // When we open the picker popup, the top offset is changed, so we need to wait a bit.
+      transition-property: opacity, visibility; // Yes, only opacity and visibility please.
     }
   }
 
@@ -88,8 +116,12 @@
   }
 
   .react-colorful__pointer {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .kirki-color-input-wrapper {
+    margin-top: 15px;
   }
 
   .kirki-color-input-control {
@@ -102,13 +134,13 @@
   input.kirki-color-input {
     display: block;
     position: relative;
-    padding-left: 27px;
+    padding-left: 32px;
     padding-right: 8px;
     width: 100%;
     height: 30px;
     line-height: 30px;
     color: #333;
-    border: 1px solid #8c8f94;
+    border: 1px solid #ccc;
     border-radius: 4px;
     z-index: 1;
   }
@@ -122,13 +154,16 @@
 
   .kirki-color-preview-wrapper {
     position: absolute;
-    left: 7px;
-    width: 18px;
-    height: 18px;
+    left: 6px;
+    width: 22px;
+    height: 22px;
     background-repeat: repeat;
     background-size: 8px;
     border-radius: 50%;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
+    border: 2px solid #fff;
+    -webkit-box-shadow: 0px 0px 0px 1px #ddd;
+    box-shadow: 0px 0px 0px 1px #ddd;
     z-index: 2;
   }
 
@@ -152,9 +187,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    right: 7px;
-    width: 20px;
-    height: 20px;
+    top: 8px;
+    right: 35px;
+    width: 17px;
+    height: 17px;
     border-radius: 50%;
     border-width: 0;
     z-index: 3;
@@ -177,20 +213,22 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
 
   .kirki-color-swatch {
     position: relative;
     display: block;
     padding: 0;
-    width: 24px;
-    height: 24px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    border: 1px solid #eee;
+    border: 2px solid #fff;
     cursor: pointer;
     transform: scale(1, 1);
     transition: transform 0.2s;
+    -webkit-box-shadow: 0px 0px 0px 1px #ddd;
+    box-shadow: 0px 0px 0px 1px #ddd;
   }
 
   .kirki-color-swatch:active,
@@ -202,81 +240,64 @@
     transform: scale(1.1, 1.1);
   }
 
-  .use-button-trigger {
-    .kirki-color-input-wrapper {
-      margin-top: 15px;
+  .kirki-label-tooltip {
+    position: absolute;
+    bottom: 45px;
+    left: -8px;
+    padding: 7px 10px 3px; // The 4px of bottom side is handled by label / description's margin-bottom.
+    width: auto; // just for fallback for max-content.
+    width: max-content;
+    max-width: 100px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 19px;
+      border-width: 8px 7px 0 7px;
+      border-style: solid;
+      border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
     }
 
-    .kirki-color-input {
-      border-color: #ccc;
+    .customize-control-title {
+      line-height: 1.2;
     }
   }
 
-  .kirki-trigger-button-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    border-radius: 4px;
-
-    .kirki-color-reset {
-      right: 10px;
-      background-color: transparent;
-    }
-
-    &:hover {
-      .kirki-control-reset {
-        display: flex;
-      }
+  .kirki-trigger-circle-wrapper {
+    &:hover ~ .kirki-label-tooltip {
+      opacity: 1;
+      visibility: visible;
     }
   }
 
-  .kirki-trigger-button {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    width: 100%;
-    height: 30px;
-    color: #2271b1;
-    border-radius: 4px;
-    border: 1px solid #2271b1;
-    cursor: pointer;
+  &[data-kirki-parent-control-type="kirki-multicolor"] {
+    margin-right: 8px;
+    margin-bottom: 20px;
+    padding-right: 0;
+    width: 35px;
 
-    &:hover {
-      background-color: #f0f0f1;
+    .kirki-control-reset {
+      top: -16px;
+      right: 8px;
+    }
+  }
+
+  &[data-kirki-parent-control-type="kirki-typography"] {
+    .colorPickerContainer {
+      top: 55px;
     }
 
-    &:active,
-    &:focus {
-      border-width: 2px;
-    }
-
-    .kirki-color-preview,
-    .kirki-button-text {
-      position: relative;
-      height: 100%;
-    }
-
-    .kirki-color-preview {
-      width: 17%;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
-    }
-
-    .kirki-button-text {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-right: 30px;
-      width: 83%;
-      text-align: center;
-      font-size: 12px;
-      background-color: #f6f7f7;
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
+    .kirki-control-reset {
+      top: 30px;
+      right: auto;
+      left: 35px;
     }
   }
 }

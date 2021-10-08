@@ -108,7 +108,7 @@ class Typography extends Field {
 
 		$args['parent_setting'] = $args['settings'];
 		$args['output']         = [];
-		$args['wrapper_atts']   = [
+		$args['wrapper_attrs']  = [
 			'data-kirki-parent-control-type' => 'kirki-typography',
 		];
 
@@ -176,7 +176,7 @@ class Typography extends Field {
 				$choices = $std_fonts;
 			}
 
-			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'font-family';
+			$args['wrapper_attrs']['kirki-typography-subcontrol-type'] = 'font-family';
 
 			/**
 			 * Add font-family control.
@@ -204,7 +204,7 @@ class Typography extends Field {
 			$font_weight = isset( $args['default']['variant'] ) ? $args['default']['variant'] : 400;
 			$font_weight = isset( $args['default']['font-weight'] ) ? $args['default']['font-weight'] : $font_weight;
 			$font_weight = 'regular' === $font_weight || 'italic' === $font_weight ? 400 : (int) $font_weight;
-			$args['wrapper_atts']['kirki-typography-subcontrol-type'] = 'font-weight';
+			$args['wrapper_attrs']['kirki-typography-subcontrol-type'] = 'font-weight';
 
 			new \Kirki\Field\ReactSelect(
 				wp_parse_args(
@@ -314,10 +314,8 @@ class Typography extends Field {
 					'label'        => esc_html__( 'Text Color', 'kirki' ),
 					'is_specified' => $color_field_specified,
 					'choices'      => [
-						'alpha'          => true,
-						'is_right_sided' => true,
-						'trigger_style'  => 'button',
-						'button_text'    => __( 'Select Color', 'kirki' ),
+						'alpha'       => true,
+						'label_style' => 'top',
 					],
 				],
 			];
@@ -430,22 +428,22 @@ class Typography extends Field {
 				new $control_class(
 					wp_parse_args(
 						[
-							'label'        => isset( $control['label'] ) ? $control['label'] : '',
-							'description'  => isset( $control['description'] ) ? $control['description'] : '',
-							'settings'     => $args['settings'] . '[' . $css_prop . ']',
-							'default'      => $args['default'][ $css_prop ],
-							'wrapper_atts' => wp_parse_args(
+							'label'         => isset( $control['label'] ) ? $control['label'] : '',
+							'description'   => isset( $control['description'] ) ? $control['description'] : '',
+							'settings'      => $args['settings'] . '[' . $css_prop . ']',
+							'default'       => $args['default'][ $css_prop ],
+							'wrapper_attrs' => wp_parse_args(
 								[
 									'data-kirki-typography-css-prop' => $css_prop,
 									'kirki-typography-subcontrol-type' => $css_prop,
 									'class' => '{default_class} ' . $group_classname . ' kirki-w' . $field_width,
 								],
-								$args['wrapper_atts']
+								$args['wrapper_attrs']
 							),
-							'input_attrs'  => $this->filter_preferred_choice_setting( 'input_attrs', $css_prop, $args ),
-							'choices'      => ( isset( $control['choices'] ) ? $control['choices'] : [] ),
-							'css_vars'     => [],
-							'output'       => [],
+							'input_attrs'   => $this->filter_preferred_choice_setting( 'input_attrs', $css_prop, $args ),
+							'choices'       => ( isset( $control['choices'] ) ? $control['choices'] : [] ),
+							'css_vars'      => [],
+							'output'        => [],
 						],
 						$args
 					)

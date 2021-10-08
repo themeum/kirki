@@ -92,8 +92,8 @@ class ReactColorful extends Base {
 		// Mode.
 		$this->json['mode'] = $this->mode;
 
-		// The save_as.
-		$this->json['choices']['saveAs'] = isset( $this->choices['save_as'] ) ? $this->choices['save_as'] : 'string';
+		// The label_style.
+		$this->json['choices']['labelStyle'] = isset( $this->choices['label_style'] ) ? $this->choices['label_style'] : 'default';
 
 		// Color swatches.
 		$this->json['choices']['swatches'] = $this->color_swatches();
@@ -102,12 +102,6 @@ class ReactColorful extends Base {
 		if ( isset( $this->choices['form_component'] ) ) {
 			$this->json['choices']['formComponent'] = $this->choices['form_component'];
 		}
-
-		// Trigger style.
-		$this->json['choices']['triggerStyle'] = isset( $this->choices['trigger_style'] ) ? $this->choices['trigger_style'] : 'input';
-
-		// Trigger style.
-		$this->json['choices']['buttonText'] = isset( $this->choices['button_text'] ) ? $this->choices['button_text'] : '';
 
 		$this->remove_unused_json_props();
 
@@ -124,8 +118,8 @@ class ReactColorful extends Base {
 	 */
 	public function remove_unused_json_props() {
 
-		if ( isset( $this->json['choices']['save_as'] ) ) {
-			unset( $this->json['choices']['save_as'] );
+		if ( isset( $this->json['choices']['label_style'] ) ) {
+			unset( $this->json['choices']['label_style'] );
 		}
 
 		if ( isset( $this->choices['form_component'] ) ) {

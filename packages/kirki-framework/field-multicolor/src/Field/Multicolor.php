@@ -61,23 +61,31 @@ class Multicolor extends Field {
 			)
 		);
 
+		$total_colors = count( $args['choices'] );
+		$loop_index   = 0;
+
 		foreach ( $args['choices'] as $choice => $choice_label ) {
+			$loop_index++;
+
+			$classnames  = '{default_class} kirki-group-item';
+			$classnames .= 1 === $loop_index ? ' kirki-group-start' : ( $loop_index === $total_colors ? ' kirki-group-end' : $classnames );
+
 			new \Kirki\Field\ReactColorful(
 				wp_parse_args(
 					[
 						'settings'       => $args['settings'] . '[' . $choice . ']',
 						'parent_setting' => $args['settings'],
-						'label'          => '',
+						'label'          => $choice_label,
 						'description'    => '',
 						'default'        => $this->filter_preferred_choice_setting( 'default', $choice, $args ),
-						'wrapper_opts'   => [
-							'gap' => 'small',
+						'wrapper_attrs'  => [
+							'data-kirki-parent-control-type' => 'kirki-multicolor',
+							'class' => $classnames,
 						],
 						'input_attrs'    => $this->filter_preferred_choice_setting( 'input_attrs', $choice, $args ),
 						'choices'        => [
-							'alpha'         => $this->filter_preferred_choice_setting( 'alpha', $choice, $args ),
-							'trigger_style' => 'button',
-							'button_text'   => $choice_label,
+							'alpha'       => $this->filter_preferred_choice_setting( 'alpha', $choice, $args ),
+							'label_style' => 'tooltip',
 						],
 						'css_vars'       => [],
 						'output'         => [],

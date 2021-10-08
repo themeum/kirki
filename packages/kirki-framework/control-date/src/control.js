@@ -24,6 +24,7 @@ wp.customize.controlConstructor['kirki-date'] = wp.customize.kirkiDynamicControl
 		// Init the datepicker.
 		jQuery(selector).datepicker({
 			dateFormat: 'yy-mm-dd',
+			duration: 200,
 			beforeShow: function (input, inst) {
 				inst.dpDiv[0].classList.add('kirki-datepicker-popup');
 				control.handleWidth(input);
