@@ -190,6 +190,7 @@ class Kirki extends Init {
 			new $classname( $args );
 			return;
 		}
+
 		new Field( $args );
 	}
 
@@ -250,7 +251,7 @@ class Kirki extends Init {
 			foreach ( $args['css_vars'] as $css_var ) {
 				$output = [
 					'element'  => ':root',
-					'property' => $css_var[0]
+					'property' => $css_var[0],
 				];
 				if ( isset( $css_var[1] ) ) {
 					$output['value_pattern'] = $css_var[1];

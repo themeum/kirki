@@ -1,13 +1,14 @@
-# Kirki Slider Control
-A `control-slider` package for Kirki Customizer Framework.
+# kirki-framework/control-slider
+A slider control package for Kirki Customizer Framework.
 
 ## Table of Contents
-- [Kirki Slider Control](#kirki-slider-control)
+- [kirki-framework/control-slider](#kirki-frameworkcontrol-slider)
 	- [Table of Contents](#table-of-contents)
 	- [Installation](#installation)
 	- [Usage](#usage)
-		- [Using Kirki API](#using-kirki-api)
-		- [Using WordPress Customizer API](#using-wordpress-customizer-api)
+		- [Using the simplified API](#using-the-simplified-api)
+		- [Using the Customizer API](#using-the-customizer-api)
+	- [Development](#development)
 	- [License](#license)
 
 ## Installation
@@ -27,7 +28,7 @@ require_once "your/path/to/vendor/autoload.php";
 
 This control can be consumed using Kirki API or using WordPress Customizer API.
 
-### Using Kirki API
+### Using the simplified API
 
 ```php
 new \Kirki\Field\Slider(
@@ -46,7 +47,7 @@ new \Kirki\Field\Slider(
 );
 ```
 
-### Using WordPress Customizer API
+### Using the Customizer API
 
 ```php
 /**
@@ -93,6 +94,12 @@ function your_customize_register_function( $wp_customize ) {
 }
 add_action( 'customize_register', 'your_customize_register_function' );
 ```
+
+## Development
+
+If you want to make changes to this control, you can edit the JS files in the `src` folder.
+- If you haven't installed the packages, then run `npm install`
+- After done editing, run `npm run build`
 
 ## License
 [MIT License](https://oss.ninja/mit?organization=Kirki%20Framework)

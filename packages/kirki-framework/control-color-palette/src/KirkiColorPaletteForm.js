@@ -15,7 +15,11 @@ const KirkiColorPaletteForm = (props) => {
 	};
 
 	const handleReset = () => {
-		customizerSetting.set(props.value);
+		if ('' !== props.default && 'undefined' !== typeof props.default) {
+			customizerSetting.set(props.default);
+		} else {
+			customizerSetting.set(props.value);
+		}
 	};
 
 	const size = choices.size + 2; // 2 here is 1px border on each side.

@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f672c7fe8e3ffb5fa77267e245dece303f6d12eb',
+        'reference' => '092ae94c3e21df6ef4868fee8eea9f24c7b41bea',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f672c7fe8e3ffb5fa77267e245dece303f6d12eb',
+            'reference' => '092ae94c3e21df6ef4868fee8eea9f24c7b41bea',
             'dev_requirement' => false,
         ),
         'codacy/coverage' => array(
@@ -97,7 +97,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/compatibility',
             'aliases' => array(),
-            'reference' => '8b6a10f1fc75415d08a35f9b078cc628d78113f7',
+            'reference' => 'c1dfc2577bff91dc98ad4d359345936b3f2a044b',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-base' => array(
@@ -142,7 +142,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-color-palette',
             'aliases' => array(),
-            'reference' => '9dd389dbcaba34b8b10f6ba56820c0d2adf0667f',
+            'reference' => 'b3373ce7a97c4d4d516daea3c2443ec587a25330',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-cropped-image' => array(
@@ -227,7 +227,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-multicheck',
             'aliases' => array(),
-            'reference' => '9487a479c113ee17c49130fbeeacdfb4377541d4',
+            'reference' => '59f7a990af47d928f3c34c37c7ce2609bee16573',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-radio' => array(
@@ -281,7 +281,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-slider',
             'aliases' => array(),
-            'reference' => 'd4213c280563b8cf220d77df3aac1add4c43734f',
+            'reference' => '6d5e305edf717dc3e91cd157d16fb57754e92e34',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-sortable' => array(
@@ -891,12 +891,12 @@
             'dev_requirement' => true,
         ),
         'squizlabs/php_codesniffer' => array(
-            'pretty_version' => '3.6.0',
-            'version' => '3.6.0.0',
+            'pretty_version' => '3.6.1',
+            'version' => '3.6.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
             'aliases' => array(),
-            'reference' => 'ffced0d2c8fa8e6cdc4d695a743271fab6c38625',
+            'reference' => 'f268ca40d54617c6e06757f83f699775c9b3ff2e',
             'dev_requirement' => true,
         ),
         'symfony/config' => array(

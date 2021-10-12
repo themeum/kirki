@@ -2,11 +2,6 @@
   "name": "control-color-palette",
   "version": "1.0.0",
   "description": "Development toolkit for Kirki's control-color-palette",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kirki-framework/control-color-palette.git"
@@ -25,15 +20,24 @@
     "react-dom": "17.*"
   },
   "devDependencies": {
-    "@babel/core": "7.*",
-    "@babel/preset-env": "7.*",
     "@babel/preset-react": "7.*",
-    "babel-loader": "8.*",
-    "css-loader": "6.*",
-    "mini-css-extract-plugin": "2.*",
-    "sass": "1.*",
-    "sass-loader": "12.*",
-    "webpack": "5.*",
-    "webpack-cli": "4.*"
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
+  },
+  "alias": {
+    "jquery": {
+      "global": "jQuery"
+    },
+    "react": {
+      "global": "React"
+    },
+    "react-dom": {
+      "global": "ReactDOM"
+    }
+  },
+  "scripts": {
+    "build": "parcel build  src/control.js --dist-dir dist",
+    "dev": "parcel build  src/control.js --no-optimize --dist-dir dist",
+    "watch": "parcel watch src/control.js --dist-dir dist"
   }
 }

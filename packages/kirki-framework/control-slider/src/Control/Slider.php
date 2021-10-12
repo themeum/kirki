@@ -50,10 +50,10 @@ class Slider extends Base {
 		parent::enqueue();
 
 		// Enqueue the style.
-		wp_enqueue_style( 'kirki-slider-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
+		wp_enqueue_style( 'kirki-control-slider', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-slider-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-controls', 'customize-base', 'react-dom' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-slider', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-controls', 'customize-base', 'react-dom' ], self::$control_ver, false );
 
 	}
 

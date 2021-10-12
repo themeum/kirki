@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "8b6a10f1fc75415d08a35f9b078cc628d78113f7"
+                "reference": "c1dfc2577bff91dc98ad4d359345936b3f2a044b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/8b6a10f1fc75415d08a35f9b078cc628d78113f7",
-                "reference": "8b6a10f1fc75415d08a35f9b078cc628d78113f7",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/c1dfc2577bff91dc98ad4d359345936b3f2a044b",
+                "reference": "c1dfc2577bff91dc98ad4d359345936b3f2a044b",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
                 "source": "https://github.com/kirki-framework/compatibility/tree/nightly"
             },
-            "time": "2021-09-13T03:08:46+00:00"
+            "time": "2021-10-12T15:48:23+00:00"
         },
         {
             "name": "kirki-framework/control-base",
@@ -260,12 +260,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-color-palette.git",
-                "reference": "9dd389dbcaba34b8b10f6ba56820c0d2adf0667f"
+                "reference": "b3373ce7a97c4d4d516daea3c2443ec587a25330"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/9dd389dbcaba34b8b10f6ba56820c0d2adf0667f",
-                "reference": "9dd389dbcaba34b8b10f6ba56820c0d2adf0667f",
+                "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/b3373ce7a97c4d4d516daea3c2443ec587a25330",
+                "reference": "b3373ce7a97c4d4d516daea3c2443ec587a25330",
                 "shasum": ""
             },
             "require": {
@@ -292,9 +292,9 @@
             "description": "Color palette control for the Kirki Customizer Framework",
             "support": {
                 "issues": "https://github.com/kirki-framework/control-color-palette/issues",
-                "source": "https://github.com/kirki-framework/control-color-palette/tree/main"
+                "source": "https://github.com/kirki-framework/control-color-palette/tree/nightly"
             },
-            "time": "2021-09-09T20:54:11+00:00"
+            "time": "2021-10-01T13:25:32+00:00"
         },
         {
             "name": "kirki-framework/control-cropped-image",
@@ -709,12 +709,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-multicheck.git",
-                "reference": "9487a479c113ee17c49130fbeeacdfb4377541d4"
+                "reference": "59f7a990af47d928f3c34c37c7ce2609bee16573"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-multicheck/zipball/9487a479c113ee17c49130fbeeacdfb4377541d4",
-                "reference": "9487a479c113ee17c49130fbeeacdfb4377541d4",
+                "url": "https://api.github.com/repos/kirki-framework/control-multicheck/zipball/59f7a990af47d928f3c34c37c7ce2609bee16573",
+                "reference": "59f7a990af47d928f3c34c37c7ce2609bee16573",
                 "shasum": ""
             },
             "require": {
@@ -750,9 +750,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-multicheck/issues",
-                "source": "https://github.com/kirki-framework/control-multicheck/tree/nightly"
+                "source": "https://github.com/kirki-framework/control-multicheck/tree/master"
             },
-            "time": "2021-09-13T03:35:05+00:00"
+            "time": "2021-09-24T07:20:52+00:00"
         },
         {
             "name": "kirki-framework/control-radio",
@@ -1020,12 +1020,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-slider.git",
-                "reference": "d4213c280563b8cf220d77df3aac1add4c43734f"
+                "reference": "6d5e305edf717dc3e91cd157d16fb57754e92e34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/d4213c280563b8cf220d77df3aac1add4c43734f",
-                "reference": "d4213c280563b8cf220d77df3aac1add4c43734f",
+                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/6d5e305edf717dc3e91cd157d16fb57754e92e34",
+                "reference": "6d5e305edf717dc3e91cd157d16fb57754e92e34",
                 "shasum": ""
             },
             "require": {
@@ -1054,7 +1054,7 @@
                 "issues": "https://github.com/kirki-framework/control-slider/issues",
                 "source": "https://github.com/kirki-framework/control-slider/tree/nightly"
             },
-            "time": "2021-09-09T21:32:00+00:00"
+            "time": "2021-10-01T13:24:23+00:00"
         },
         {
             "name": "kirki-framework/control-sortable",
@@ -5304,16 +5304,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.6.0",
+            "version": "3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "ffced0d2c8fa8e6cdc4d695a743271fab6c38625"
+                "reference": "f268ca40d54617c6e06757f83f699775c9b3ff2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/ffced0d2c8fa8e6cdc4d695a743271fab6c38625",
-                "reference": "ffced0d2c8fa8e6cdc4d695a743271fab6c38625",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/f268ca40d54617c6e06757f83f699775c9b3ff2e",
+                "reference": "f268ca40d54617c6e06757f83f699775c9b3ff2e",
                 "shasum": ""
             },
             "require": {
@@ -5356,7 +5356,7 @@
                 "source": "https://github.com/squizlabs/PHP_CodeSniffer",
                 "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
             },
-            "time": "2021-04-09T00:54:41+00:00"
+            "time": "2021-10-11T04:00:11+00:00"
         },
         {
             "name": "symfony/config",

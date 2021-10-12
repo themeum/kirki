@@ -87,6 +87,16 @@ class Control {
 		// Get the name of the class we're going to use.
 		$class_name = $this->get_control_class_name( $args );
 
+		/**
+		 * Allow filtering the arguments.
+		 *
+		 * @since 0.1
+		 * @param array                $args   The arguments.
+		 * @param WP_Customize_Manager $wp_customize The customizer instance.
+		 * @return array                             Return the arguments.
+		 */
+		$args = apply_filters( 'kirki_field_add_control_args', $args, $this->wp_customize );
+
 		// Add the control.
 		$this->wp_customize->add_control( new $class_name( $this->wp_customize, $args['settings'], $args ) );
 

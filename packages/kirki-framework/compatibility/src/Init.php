@@ -141,6 +141,7 @@ class Init {
 	 */
 	public function add_fields() {
 		global $wp_customize;
+
 		foreach ( Kirki::$fields as $args ) {
 
 			// Create the settings.
