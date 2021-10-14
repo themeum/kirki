@@ -65,6 +65,9 @@ class Selective_Refresh {
 						]
 					);
 					$wp_customize->selective_refresh->add_partial( $partial_refresh, $partial_refresh_args );
+
+					// If partial refresh is set, change the transport to auto.
+					$field['transport'] = 'postMessage';
 				}
 			}
 		}

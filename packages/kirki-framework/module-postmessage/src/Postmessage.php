@@ -73,8 +73,11 @@ class Postmessage {
 
 			$args['js_vars'] = $js_vars;
 		}
+
 		$this->fields[] = $args;
+
 		return $args;
+
 	}
 
 	/**
@@ -83,23 +86,32 @@ class Postmessage {
 	 * The rest is handled via JS.
 	 */
 	public function postmessage() {
+
 		wp_enqueue_script( 'kirki_auto_postmessage', URL::get_from_path( __DIR__ . '/postMessage.js' ), [ 'jquery', 'customize-preview', 'wp-hooks' ], '4.0', true );
+
 		$fields = $this->fields;
 
 		// Compatibility with v3 API.
 		if ( class_exists( '\Kirki\Compatibility\Kirki' ) ) {
 			$fields = array_merge( \Kirki\Compatibility\Kirki::$fields, $fields );
 		}
+
 		$data = [];
+
 		foreach ( $fields as $field ) {
 			if ( isset( $field['transport'] ) && 'postMessage' === $field['transport'] && isset( $field['js_vars'] ) && ! empty( $field['js_vars'] ) && is_array( $field['js_vars'] ) && isset( $field['settings'] ) ) {
 				$data[] = $field;
 			}
 		}
+
 		wp_localize_script( 'kirki_auto_postmessage', 'kirkiPostMessageFields', $data );
+
 		$extras = apply_filters( 'kirki_postmessage_script', false );
+
 		if ( $extras ) {
 			wp_add_inline_script( 'kirki_auto_postmessage', $extras, 'after' );
 		}
+
 	}
+
 }
