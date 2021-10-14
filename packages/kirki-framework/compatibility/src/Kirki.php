@@ -7,13 +7,14 @@
  * @package     Kirki
  * @category    Core
  * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2020, David Vongries
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
 
 namespace Kirki\Compatibility;
 
+// ? Bagus: do we really need these? They are already under the same namespace as Kirki class (this file).
 use Kirki\Compatibility\Config;
 use Kirki\Compatibility\Field;
 
@@ -189,6 +190,7 @@ class Kirki extends Init {
 			new $classname( $args );
 			return;
 		}
+
 		new Field( $args );
 	}
 
@@ -249,7 +251,7 @@ class Kirki extends Init {
 			foreach ( $args['css_vars'] as $css_var ) {
 				$output = [
 					'element'  => ':root',
-					'property' => $css_var[0]
+					'property' => $css_var[0],
 				];
 				if ( isset( $css_var[1] ) ) {
 					$output['value_pattern'] = $css_var[1];

@@ -19,10 +19,10 @@
         "kirki-framework/control-base": "*"
     },
     "autoload": {
-		"psr-4": {
-			"Kirki\\Control\\": "src/Control",
-			"Kirki\\Field\\": "src/Field",
-			"Kirki\\Util\\": "src/Util"
+        "psr-4": {
+            "Kirki\\Control\\": "src/Control",
+            "Kirki\\Field\\": "src/Field",
+            "Kirki\\Util\\": "src/Util"
         }
     }
 }

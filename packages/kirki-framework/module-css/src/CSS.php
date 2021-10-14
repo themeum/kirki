@@ -41,6 +41,17 @@ class CSS {
 	protected static $fields = [];
 
 	/**
+	 * The default handle for kirki's styles enqueue.
+	 *
+	 * @since 4.0
+	 * @access private
+	 * @static
+	 *
+	 * @var string
+	 */
+	private static $css_handle = 'kirki-styles';
+
+	/**
 	 * Constructor
 	 *
 	 * @access public
@@ -59,17 +70,16 @@ class CSS {
 
 		new \Kirki\Module\Webfonts();
 
-		// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_styles' ], 100 );
-
 		add_action( 'wp', [ $this, 'print_styles_action' ] );
 
 		if ( ! apply_filters( 'kirki_output_inline_styles', true ) ) {
 			$config   = apply_filters( 'kirki_config', [] );
 			$priority = 999;
+
 			if ( isset( $config['styles_priority'] ) ) {
 				$priority = absint( $config['styles_priority'] );
 			}
+
 			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ], $priority );
 		} else {
 			add_action( 'wp_head', [ $this, 'print_styles_inline' ], 999 );
@@ -167,16 +177,36 @@ class CSS {
 	 */
 	public function enqueue_styles() {
 
-		$args = [
-			'action' => apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ),
-		];
-		if ( is_admin() && ! is_customize_preview() ) {
-			$args['editor'] = '1';
+		if ( is_admin() ) {
+			global $current_screen;
+
+			/**
+			 * This `enqueue_styles` method is also hooked into `enqueue_block_editor_assets`.
+			 * It needs to be excluded from customize control page.
+			 *
+			 * Why not simply excluding all admin area except gutenberg editing interface?
+			 * Because it would be nice to let the possibility open
+			 * if a 3rd party plugin will output gutenberg syles somewhere in admin area.
+			 *
+			 * Example of possibility:
+			 * In the future, Ultimate Dashboard Pro's admin page feature might supports Gutenberg.
+			 */
+			if ( is_object( $current_screen ) && property_exists( $current_screen, 'id' ) && 'customize' === $current_screen->id ) {
+				return;
+			}
+
+			if ( property_exists( $current_screen, 'is_block_editor' ) && 1 === (int) $current_screen->is_block_editor ) {
+				$args['editor'] = '1';
+			}
 		}
+
+		$args = [
+			'action' => apply_filters( 'kirki_styles_action_handle', self::$css_handle ),
+		];
 
 		// Enqueue the dynamic stylesheet.
 		wp_enqueue_style(
-			'kirki-styles',
+			self::$css_handle,
 			add_query_arg( $args, home_url() ),
 			[],
 			'4.0'
@@ -191,11 +221,14 @@ class CSS {
 	 * @return void
 	 */
 	public function print_styles_action() {
+
 		/**
 		 * Note to code reviewers:
 		 * There is no need for a nonce check here, we're only checking if this is a valid request or not.
 		 */
-		if ( empty( $_GET['action'] ) || apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ) !== $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification
+
+		// phpcs:ignore WordPress.Security.NonceVerification
+		if ( empty( $_GET['action'] ) || apply_filters( 'kirki_styles_action_handle', self::$css_handle ) !== $_GET['action'] ) {
 			return;
 		}
 
@@ -214,12 +247,15 @@ class CSS {
 
 		// Go through all configs.
 		$configs = Kirki::$config;
+
 		foreach ( $configs as $config_id => $args ) {
 			if ( isset( $args['disable_output'] ) && true === $args['disable_output'] ) {
 				continue;
 			}
+
 			$styles = self::loop_controls( $config_id );
 			$styles = apply_filters( "kirki_{$config_id}_dynamic_css", $styles );
+
 			if ( ! empty( $styles ) ) {
 				/**
 				 * Note to code reviewers:
@@ -237,6 +273,7 @@ class CSS {
 				echo wp_strip_all_tags( $styles ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 		}
+
 		do_action( 'kirki_dynamic_css' );
 	}
 
@@ -259,6 +296,7 @@ class CSS {
 		if ( class_exists( '\Kirki\Compatibility\Kirki' ) ) {
 			$fields = array_merge( \Kirki\Compatibility\Kirki::$fields, $fields );
 		}
+
 		$css = [];
 
 		// Early exit if no fields are found.

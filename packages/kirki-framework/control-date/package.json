@@ -1,20 +1,38 @@
 {
   "name": "kirki-control-date",
-  "author": "Ari Stathopoulos (@aristath)",
-  "homepage": "https://kirki.org",
-  "license": "MIT",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
-    }
-  ],
-  "engines": {
-    "node": ">= 0.10.0"
+  "version": "0.1.0",
+  "description": "Dev toolkit for Kirki's control-date",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirki-framework/control-date.git"
   },
+  "keywords": [
+    "kirki-control-date"
+  ],
+  "author": "Ari Stathopoulos (@aristath)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kirki-framework/control-date/issues"
+  },
+  "homepage": "https://github.com/kirki-framework/control-date#readme",
   "devDependencies": {
-    "grunt": "*",
-    "grunt-contrib-sass": "*",
-    "grunt-contrib-watch": "*"
-  }
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
+  },
+  "scripts": {
+    "build": "parcel build  src/control.js --dist-dir dist",
+    "dev": "parcel build  src/control.js --no-optimize --dist-dir dist"
+  },
+  "alias": {
+    "jquery": {
+      "global": "jQuery"
+    },
+    "react": {
+      "global": "React"
+    },
+    "react-dom": {
+      "global": "ReactDOM"
+    }
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }

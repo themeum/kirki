@@ -5,7 +5,7 @@
  * @package   Kirki
  * @category  Compatibility
  * @author    Ari Stathopoulos (@aristath)
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2020, David Vongries
  * @license   https://opensource.org/licenses/MIT
  */
 

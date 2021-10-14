@@ -113,7 +113,7 @@ class Section {
 
 		if ( isset( $this->args['type'] ) && 'kirki-outer' === $this->args['type'] ) {
 			$this->args['type'] = 'outer';
-			$section_classname  = 'WP_Customize_Section';
+			$section_classname  = 'WP_Customize_Section'; // ? Bagus: we should be using `\` (backslash) right? Lookk at above.
 		}
 
 		// Add the section.

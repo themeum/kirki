@@ -13,6 +13,8 @@ package-lock.json
 packages/bin
 packages/codacy
 packages/composer/installers
+packages/composer/autoload_files.php
+packages/nikic/php-parser
 packages/dealerdirect
 packages/doctrine
 packages/gitonomy
@@ -32,6 +34,7 @@ packages/symfony
 packages/theseer
 packages/webmozart
 packages/wp-coding-standards
+packages/wptrt/wpthemereview
 
 # OS generated files #
 ######################

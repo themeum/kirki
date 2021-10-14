@@ -40,7 +40,7 @@ class Dashicons {
 			'products'       => [ 'wordpress', 'wordpress-alt', 'pressthis', 'update', 'update-alt', 'screenoptions', 'info', 'cart', 'feedback', 'cloud', 'translation' ],
 			'taxonomies'     => [ 'tag', 'category' ],
 			'widgets'        => [ 'archive', 'tagcloud', 'text' ],
-			'notifications'  => [ 'yes', 'yes-alt', 'no', 'no-alt', 'plus', 'plus-alt', 'minus', 'dismiss', 'marker', 'star-filled', 'star-half', 'star-empty', 'star-empty', 'flag', 'warning' ],
+			'notifications'  => [ 'yes', 'yes-alt', 'no', 'no-alt', 'plus', 'plus-alt', 'minus', 'dismiss', 'marker', 'star-filled', 'star-half', 'star-empty', 'flag', 'warning' ],
 			'misc'           => [ 'location', 'location-alt', 'vault', 'shield', 'shield-alt', 'sos', 'search', 'slides', 'text-page', 'analytics', 'chart-pie', 'chart-bar', 'chart-line', 'chart-area', 'groups', 'businessman', 'businesswoman', 'businessperson', 'id', 'id-alt', 'products', 'awards', 'forms', 'testimonial', 'portfolio', 'book', 'book-alt', 'download', 'upload', 'backup', 'clock', 'lightbulb', 'microphone', 'desktop', 'tablet', 'smartphone', 'phone', 'index-card', 'carrot', 'building', 'store', 'album', 'palmtree', 'tickets-alt', 'money', 'smiley', 'thumbs-up', 'thumbs-down', 'layout', 'paperclip' ],
 		];
 	}

@@ -1,0 +1,1 @@
+{"mappings":"AAEAA,GAAGC,UAAUC,mBAAkB,mBAAsBF,GAAGC,UAAUE,oBAAoBC,OAAM","sources":["src/control.js"],"sourcesContent":["import \"./control.scss\";\n\nwp.customize.controlConstructor['kirki-dashicons'] = wp.customize.kirkiDynamicControl.extend( {} );\n"],"names":["wp","customize","controlConstructor","kirkiDynamicControl","extend"],"version":3,"file":"control.js.map"}

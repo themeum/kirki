@@ -50,7 +50,7 @@ class Editor_Styles {
 	 * @since 3.0.35
 	 * @var object $modules_css
 	 */
-	private $modules_css;
+	public $modules_css;
 
 	/**
 	 * Webfonts Module reference.
@@ -104,8 +104,8 @@ class Editor_Styles {
 	 */
 	protected function add_hooks() {
 		if ( ! $this->is_disabled() ) {
+			add_action( 'enqueue_block_editor_assets', [ $this->modules_css, 'enqueue_styles' ], 999 );
 			add_action( 'after_setup_theme', [ $this, 'add_theme_support' ], 999 );
-			add_filter( 'block_editor_settings', [ $this, 'enqueue' ] );
 		}
 	}
 
@@ -122,53 +122,6 @@ class Editor_Styles {
 		if ( true !== get_theme_support( 'editor-styles' ) ) {
 			add_theme_support( 'editor-styles' );
 		}
-	}
-
-	/**
-	 * Enqueue styles to Gutenberg Editor.
-	 *
-	 * @access public
-	 * @param array $settings The settings for styles.
-	 * @since 3.0.35
-	 */
-	public function enqueue( $settings ) {
-		$styles = $this->get_styles();
-
-		if ( ! empty( $styles ) ) {
-			$settings['styles'][] = [ 'css' => $styles ];
-		}
-
-		return $settings;
-	}
-
-	/**
-	 * Gets the styles to add to Gutenberg Editor.
-	 *
-	 * @access public
-	 * @since 3.0.35
-	 *
-	 * @return string $styles String containing inline styles to add to Gutenberg.
-	 */
-	public function get_styles() {
-
-		$styles = null;
-
-		foreach ( $this->configs as $config_id => $args ) {
-
-			if ( true === $this->is_disabled( $args ) ) {
-				continue;
-			}
-
-			$modules_css = $this->modules_css;
-			$styles      = $modules_css::loop_controls( $config_id ); // phpcs:ignore PHPCompatibility.Syntax.NewDynamicAccessToStatic
-			$styles      = apply_filters( "kirki_gutenberg_{$config_id}_dynamic_css", $styles );
-
-			if ( empty( $styles ) ) {
-				continue;
-			}
-		}
-
-		return $styles;
 	}
 
 	/**

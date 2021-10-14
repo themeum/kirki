@@ -68,6 +68,7 @@ class Field_Dependencies {
 				$args['active_callback']                 = '__return_true';
 				return $args;
 			}
+
 			// No need to proceed any further if we're using the default value.
 			if ( '__return_true' === $args['active_callback'] ) {
 				return $args;
@@ -77,7 +78,13 @@ class Field_Dependencies {
 			if ( ! is_callable( $args['active_callback'] ) ) {
 				$args['active_callback'] = '__return_true';
 			}
+		} else {
+			// The ReactSelect field triggered from Background field doesn't have $args['active_callback'] argument.
+			if ( ! empty( $args['required'] ) ) {
+				$this->dependencies[ $args['settings'] ] = $args['required'];
+			}
 		}
+
 		return $args;
 	}
 

@@ -135,7 +135,7 @@ class Option {
 				return $args;
 			}
 			if ( false === strpos( $args['settings'], '[' ) ) {
-				$parts       = explode( '[', $args['settings'] );
+				$parts       = explode( '[', $args['settings'] ); // ? Bagus: in line above, it's obvious that '[' is not found in $args['settings']. But why do we explode it using '[' here?
 				$final_parts = [ $args['option_name'] ];
 				foreach ( $parts as $part ) {
 					$final_parts[] = $part;

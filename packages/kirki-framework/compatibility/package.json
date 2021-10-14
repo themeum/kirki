@@ -17,9 +17,6 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   ],
-  "engines": {
-    "node": ">= 0.10.0"
-  },
   "dependencies": {
     "@wordpress/hooks": "^2.4.0"
   }

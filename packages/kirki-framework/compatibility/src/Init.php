@@ -5,7 +5,7 @@
  * @package     Kirki
  * @category    Core
  * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2020, David Vongries
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
@@ -48,8 +48,8 @@ class Init {
 		add_action( 'admin_notices', [ $this, 'admin_notices' ] );
 		add_action( 'admin_init', [ $this, 'dismiss_nag' ] );
 
+		// ? Bagus: is this necessary? The Values class doesn't have constructor, so this does nothing.
 		new Values();
-		new \Kirki\Util\Telemetry();
 	}
 
 	/**
@@ -64,8 +64,8 @@ class Init {
 		$this->control_types = [
 			'kirki-composite'       => '\Kirki\Control\Composite',
 			'checkbox'              => '\Kirki\Control\Checkbox',
-			'kirki-color'           => '\Kirki\Control\ReactColor',
-			'kirki-color-palette'   => '\Kirki\Control\ColorPalette',
+			'kirki-color'           => '\Kirki\Control\ReactColorful',
+			'kirki-color-palette'   => '\Kirki\Control\Color_Palette',
 			'kirki-custom'          => '\Kirki\Control\Custom',
 			'kirki-date'            => '\Kirki\Control\Date',
 			'kirki-dashicons'       => '\Kirki\Control\Dashicons',
@@ -76,7 +76,6 @@ class Init {
 			'kirki-multicolor'      => '\Kirki\Control\Multicolor',
 			'kirki-multicheck'      => '\Kirki\Control\MultiCheck',
 			'kirki-number'          => '\Kirki\Control\Number',
-			'kirki-palette'         => '\Kirki\Control\Palette',
 			'kirki-radio'           => '\Kirki\Control\Radio',
 			'kirki-radio-buttonset' => '\Kirki\Control\Radio_ButtonSet',
 			'kirki-radio-image'     => '\Kirki\Control\Radio_Image',
@@ -87,7 +86,7 @@ class Init {
 			'kirki-spacing'         => '\Kirki\Control\Dimensions',
 			'kirki-switch'          => '\Kirki\Control\Checkbox_Switch',
 			'kirki-generic'         => '\Kirki\Control\Generic',
-			'kirki-toggle'          => '\Kirki\Control\Checkbox_Toggle',
+			'kirki-toggle'          => '\Kirki\Control\Checkbox_Toggle', // ! Toggle control class doesn't exist.
 			'image'                 => '\Kirki\Control\Image',
 			'cropped_image'         => '\Kirki\Control\Cropped_Image',
 			'upload'                => '\Kirki\Control\Upload',
@@ -142,6 +141,7 @@ class Init {
 	 */
 	public function add_fields() {
 		global $wp_customize;
+
 		foreach ( Kirki::$fields as $args ) {
 
 			// Create the settings.
@@ -204,6 +204,8 @@ class Init {
 
 		// Log error for developers.
 		_doing_it_wrong( __METHOD__, esc_html__( 'We detected you\'re using Kirki\Compatibility\Init::get_variables(). Please use \Kirki\Util\Util::get_variables() instead.', 'kirki' ), '3.0.10' );
+
+		// ! This will be failed, because Util class is under Kirki\Util namespace.
 		return Util::get_variables();
 	}
 

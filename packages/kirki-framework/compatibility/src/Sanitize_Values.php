@@ -6,7 +6,7 @@
  * @package     Kirki
  * @category    Core
  * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2020, David Vongries
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */
@@ -41,6 +41,8 @@ class Sanitize_Values {
 	 */
 	public static function checkbox( $value ) {
 		$obj = new Checkbox();
+
+		// ! This sanitize function doesn't exist. A method exists check should be used before actually calling it.
 		return (bool) $obj->sanitize( $value );
 	}
 

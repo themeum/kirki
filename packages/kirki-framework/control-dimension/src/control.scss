@@ -1,0 +1,19 @@
+.customize-control-kirki-dimension {
+  .has-label-bottom {
+    .kirki-control-label {
+      margin-top: 3px;
+      text-align: center;
+      font-size: 11px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .kirki-control-input {
+      background-color: #f7f7f7;
+
+      &:focus {
+        background-color: #fff;
+      }
+    }
+  }
+}

@@ -12,7 +12,6 @@
 
 namespace Kirki\Control;
 
-use Kirki\Compatibility\Kirki;
 use Kirki\URL;
 
 /**
@@ -106,11 +105,41 @@ class Base extends \WP_Customize_Control {
 	/**
 	 * Wrapper attributes.
 	 *
+	 * The value of this property will be rendered to the wrapper element.
+	 * Can be 'class', 'id', 'data-*', and other attributes.
+	 *
+	 * @access public
+	 * @since 1.1
+	 * @var array
+	 */
+	public $wrapper_attrs = [];
+
+	/**
+	 * The backward compatibility for `$wrapper_attrs`.
+	 *
+	 * The v3 already has this $wrapper_atts property.
+	 * This property is not published in the doc, and seems more for internal use.
+	 *
+	 * WP_Customize_Control has `input_attrs` not `input_atts` (attrs vs atts).
+	 * So let's use `$wrapper_attrs` for consistency and keep this `$wrapper_atts` for a safer backward compatibility.
+	 *
 	 * @access public
 	 * @since 1.1
 	 * @var array
 	 */
 	public $wrapper_atts = [];
+
+	/**
+	 * Wrapper options.
+	 *
+	 * This won't be rendered automatically to the wrapper element.
+	 * The purpose is to allow us to have custom options so we can manage it when needed.
+	 *
+	 * @access public
+	 * @since 1.1
+	 * @var array
+	 */
+	public $wrapper_opts = [];
 
 	/**
 	 * Extra script dependencies.
@@ -132,8 +161,65 @@ class Base extends \WP_Customize_Control {
 	 */
 	public function enqueue() {
 
+		// Enqueue the styles.
+		wp_enqueue_style( 'kirki-control-base', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
+
 		// Enqueue the scripts.
-		wp_enqueue_script( 'kirki-dynamic-control', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/dynamic-control.js' ), [ 'customize-controls' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-base', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-controls' ], self::$control_ver, false );
+
+	}
+
+	/**
+	 * Renders the control wrapper and calls $this->render_content() for the internals.
+	 *
+	 * @since 1.0
+	 */
+	protected function render() {
+
+		$id    = 'customize-control-' . str_replace( [ '[', ']' ], [ '-', '' ], $this->id );
+		$class = 'customize-control customize-control-kirki customize-control-' . $this->type;
+		$gap   = isset( $this->wrapper_opts['gap'] ) ? $this->wrapper_opts['gap'] : 'default';
+		$tag   = isset( $this->wrapper_opts['tag'] ) ? $this->wrapper_opts['tag'] : 'li';
+
+		switch ( $gap ) {
+			case 'small':
+				$class .= ' customize-control-has-small-gap';
+				break;
+
+			case 'none':
+				$class .= ' customize-control-is-gapless';
+				break;
+
+			default:
+				break;
+		}
+
+		if ( empty( $this->wrapper_attrs ) && ! empty( $this->wrapper_atts ) ) {
+			$this->wrapper_attrs = $this->wrapper_atts;
+		}
+
+		if ( isset( $this->wrapper_attrs['id'] ) ) {
+			$id = $this->wrapper_attrs['id'];
+		}
+
+		$data_attrs = '';
+
+		foreach ( $this->wrapper_attrs as $attr_key => $attr_value ) {
+			if ( 0 === strpos( $attr_key, 'data-' ) ) {
+				$data_attrs .= ' ' . esc_attr( $attr_key ) . '="' . esc_attr( $attr_value ) . '"';
+			}
+		}
+
+		if ( isset( $this->wrapper_attrs['class'] ) ) {
+			$class = str_ireplace( '{default_class}', $class, $this->wrapper_attrs['class'] );
+		}
+
+		// ! Consider to esc $data_attrs.
+		// ? What function we can use to escape string like data-xx="yy"?
+		printf( '<' . esc_attr( $tag ) . ' id="%s" class="%s"%s>', esc_attr( $id ), esc_attr( $class ), $data_attrs );
+		$this->render_content();
+		echo '</' . esc_attr( $tag ) . '>';
+
 	}
 
 	/**
@@ -178,6 +264,7 @@ class Base extends \WP_Customize_Control {
 
 		// Input attributes.
 		$this->json['inputAttrs'] = '';
+
 		if ( is_array( $this->input_attrs ) ) {
 			foreach ( $this->input_attrs as $attr => $value ) {
 				$this->json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
@@ -203,7 +290,9 @@ class Base extends \WP_Customize_Control {
 		$this->json['parent_setting'] = $this->parent_setting;
 
 		// Wrapper Attributes.
-		$this->json['wrapper_atts'] = $this->wrapper_atts;
+		$this->json['wrapper_attrs'] = $this->wrapper_attrs;
+		$this->json['wrapper_atts']  = $this->wrapper_attrs; // For backward compatibility.
+
 	}
 
 	/**

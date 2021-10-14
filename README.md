@@ -1,5 +1,5 @@
 # Kirki Customizer Framework #
-**Contributors:** [aristath](https://profiles.wordpress.org/aristath), [dannycooper](https://profiles.wordpress.org/dannycooper), [wplemon](https://profiles.wordpress.org/wplemon), [igmoweb](https://profiles.wordpress.org/igmoweb)  
+**Contributors:** [aristath](https://profiles.wordpress.org/aristath), [dannycooper](https://profiles.wordpress.org/dannycooper), [wplemon](https://profiles.wordpress.org/wplemon), [igmoweb](https://profiles.wordpress.org/igmoweb), [davidvongries](https://profiles.wordpress.org/davidvongries)  
 **Tags:** customizer, options framework, theme, mods, toolkit, gutenberg  
 **Donate link:** https://aristath.github.io/donate  
 **Requires at least:** 4.9  
@@ -74,8 +74,6 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://kirki.org/docs/integration).
 
 ## Changelog ##
-
-### 3.0.34 ###
 
 ### 3.0.45 - 2019-09-01 ###
 

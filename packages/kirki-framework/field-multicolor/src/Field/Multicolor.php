@@ -10,7 +10,6 @@
 
 namespace Kirki\Field;
 
-use Kirki;
 use Kirki\Field;
 
 /**
@@ -47,29 +46,46 @@ class Multicolor extends Field {
 		new \Kirki\Field\Generic(
 			wp_parse_args(
 				[
-					'type'        => 'kirki-generic',
-					'default'     => '',
-					'input_attrs' => '',
-					'choices'     => [
+					'type'              => 'kirki-generic',
+					'default'           => '',
+					'wrapper_opts'      => [
+						'gap' => 'small',
+					],
+					'input_attrs'       => '',
+					'choices'           => [
 						'type' => 'hidden',
 					],
+					'sanitize_callback' => [ __CLASS__, 'sanitize' ],
 				],
 				$args
 			)
 		);
 
+		$total_colors = count( $args['choices'] );
+		$loop_index   = 0;
+
 		foreach ( $args['choices'] as $choice => $choice_label ) {
-			new \Kirki\Field\ReactColor(
+			$loop_index++;
+
+			$classnames  = '{default_class} kirki-group-item';
+			$classnames .= 1 === $loop_index ? ' kirki-group-start' : ( $loop_index === $total_colors ? ' kirki-group-end' : $classnames );
+
+			new \Kirki\Field\ReactColorful(
 				wp_parse_args(
 					[
 						'settings'       => $args['settings'] . '[' . $choice . ']',
 						'parent_setting' => $args['settings'],
-						'label'          => '',
-						'description'    => $choice_label,
+						'label'          => $choice_label,
+						'description'    => '',
 						'default'        => $this->filter_preferred_choice_setting( 'default', $choice, $args ),
+						'wrapper_attrs'  => [
+							'data-kirki-parent-control-type' => 'kirki-multicolor',
+							'class' => $classnames,
+						],
 						'input_attrs'    => $this->filter_preferred_choice_setting( 'input_attrs', $choice, $args ),
 						'choices'        => [
-							'alpha' => $this->filter_preferred_choice_setting( 'alpha', $choice, $args ),
+							'alpha'       => $this->filter_preferred_choice_setting( 'alpha', $choice, $args ),
+							'label_style' => 'tooltip',
 						],
 						'css_vars'       => [],
 						'output'         => [],
@@ -85,28 +101,29 @@ class Multicolor extends Field {
 	 *
 	 * @access public
 	 * @since 4.0
-	 * @param $setting
-	 * @param $choice
-	 * @param $args
+	 *
+	 * @param string $setting The argument key inside $args.
+	 * @param string $choice The choice key inside $args['choices'].
+	 * @param array  $args The arguments.
 	 *
 	 * @return string
 	 */
 	public function filter_preferred_choice_setting( $setting, $choice, $args ) {
-		// Fail early
+		// Fail early.
 		if ( ! isset( $args[ $setting ] ) ) {
 			return '';
 		}
 
-		// If a specific field for the choice is set
+		// If a specific field for the choice is set.
 		if ( isset( $args[ $setting ][ $choice ] ) ) {
 			return $args[ $setting ][ $choice ];
 		}
 
-		// Unset input_attrs of all other choices
+		// Unset input_attrs of all other choices.
 		foreach ( $args['choices'] as $id => $set ) {
 			if ( $id !== $choice && isset( $args[ $setting ][ $id ] ) ) {
 				unset( $args[ $setting ][ $id ] );
-			} else if ( ! isset( $args[ $setting ][ $id ] ) ) {
+			} elseif ( ! isset( $args[ $setting ][ $id ] ) ) {
 				$args[ $setting ] = '';
 			}
 		}
@@ -133,6 +150,7 @@ class Multicolor extends Field {
 		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
 			$args['sanitize_callback'] = [ __CLASS__, 'sanitize' ];
 		}
+
 		return $args;
 	}
 
@@ -150,7 +168,9 @@ class Multicolor extends Field {
 		foreach ( $value as $key => $subvalue ) {
 			$value[ $key ] = \Kirki\Field\Color::sanitize( $subvalue );
 		}
+
 		return $value;
+
 	}
 
 	/**

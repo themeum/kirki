@@ -1,13 +1,12 @@
 <?php
 /**
- * Customizer Control: slider.
+ * The slider control.
  *
  * Creates a slider control.
  *
- * @package   kirki-framework/control-slider
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license   https://opensource.org/licenses/MIT
- * @since     1.0
+ * @package kirki-framework/control-slider
+ * @license MIT (https://oss.ninja/mit?organization=Kirki%20Framework)
+ * @since   1.0
  */
 
 namespace Kirki\Control;
@@ -16,7 +15,7 @@ use Kirki\Control\Base;
 use Kirki\URL;
 
 /**
- * Slider control (range).
+ * Slider control.
  *
  * @since 1.0
  */
@@ -25,8 +24,8 @@ class Slider extends Base {
 	/**
 	 * The control type.
 	 *
-	 * @access public
 	 * @since 1.0
+	 * @access public
 	 * @var string
 	 */
 	public $type = 'kirki-slider';
@@ -34,42 +33,28 @@ class Slider extends Base {
 	/**
 	 * The control version.
 	 *
-	 * @static
-	 * @access public
 	 * @since 1.0
+	 * @access public
 	 * @var string
 	 */
 	public static $control_ver = '1.0';
 
 	/**
-	 * Enqueue control related scripts/styles.
+	 * Enqueue control related styles/scripts.
 	 *
-	 * @access public
 	 * @since 1.0
-	 * @return void
+	 * @access public
 	 */
 	public function enqueue() {
+
 		parent::enqueue();
 
-		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-react-range',
-			URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/main.js' ),
-			[
-				'customize-controls',
-				'customize-base',
-				'wp-element',
-				'wp-compose',
-				'wp-components',
-				'jquery',
-				'wp-i18n',
-			],
-			time(),
-			false
-		);
-
 		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-react-range-style', URL::get_from_path( dirname( __DIR__ ) . '/style.css' ), [], self::$control_ver );
+		wp_enqueue_style( 'kirki-control-slider', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
+
+		// Enqueue the script.
+		wp_enqueue_script( 'kirki-control-slider', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-controls', 'customize-base', 'react-dom' ], self::$control_ver, false );
+
 	}
 
 	/**
@@ -77,34 +62,37 @@ class Slider extends Base {
 	 *
 	 * @see WP_Customize_Control::to_json()
 	 *
-	 * @access public
 	 * @since 1.0
-	 * @return void
+	 * @access public
 	 */
 	public function to_json() {
+
 		parent::to_json();
+
 		$this->json['choices'] = wp_parse_args(
 			$this->json['choices'],
 			[
-				'min'    => '0',
-				'max'    => '100',
-				'step'   => '1',
-				'suffix' => '',
+				'min'  => 0,
+				'max'  => 100,
+				'step' => 1,
 			]
 		);
+
+		$this->json['value'] = $this->json['value'] < $this->json['choices']['min'] ? $this->json['choices']['min'] : $this->json['value'];
+		$this->json['value'] = $this->json['value'] > $this->json['choices']['max'] ? $this->json['choices']['max'] : $this->json['value'];
+
 	}
 
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
 	 * Class variables for this control class are available in the `data` JS object;
-	 * export custom variables by overriding {@see WP_Customize_Control::to_json()}.
+	 * export custom variables by overriding WP_Customize_Control::to_json().
 	 *
 	 * @see WP_Customize_Control::print_template()
 	 *
-	 * @access protected
 	 * @since 1.0
-	 * @return void
 	 */
 	protected function content_template() {}
+
 }

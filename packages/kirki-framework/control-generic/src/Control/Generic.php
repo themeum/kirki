@@ -47,10 +47,12 @@ class Generic extends Base {
 	 * @return void
 	 */
 	public function enqueue() {
+
 		parent::enqueue();
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-generic', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-generic', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'kirki-control-base' ], self::$control_ver, false );
+
 	}
 
 	/**
@@ -67,34 +69,42 @@ class Generic extends Base {
 	 */
 	protected function content_template() {
 		?>
-		<label>
+		<label class="customize-control-label" for="{{ ! data.choices.id ? 'customize-input-' + data.id : data.choices.id }}">
 			<span class="customize-control-title">{{{ data.label }}}</span>
 			<# if ( data.description ) { #>
 				<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
-			<div class="customize-control-content">
-				<# element = ( data.choices.element ) ? data.choices.element : 'input'; #>
-
-				<# if ( 'textarea' === element ) { #>
-					<textarea
-						{{{ data.inputAttrs }}}
-						{{ data.link }}
-						<# _.each( data.choices, function( val, key ) { #>
-							{{ key }}="{{ val }}"
-						<# }); #>
-					>{{{ data.value }}}</textarea>
-				<# } else { #>
-					<{{ element }}
-						{{{ data.inputAttrs }}}
-						value="{{ data.value }}"
-						{{ data.link }}
-						<# _.each( data.choices, function( val, key ) { #>
-							{{ key }}="{{ val }}"
-						<# } ); #>
-					<# if ( data.choices.content ) { #>>{{{ data.choices.content }}}</{{ element }}><# } else { #>/><# } #>
-				<# } #>
-			</div>
 		</label>
+		<div class="kirki-control-form">
+			<# element = ( data.choices.element ) ? data.choices.element : 'input'; #>
+
+			<# if ( 'textarea' === element ) { #>
+				<textarea
+					{{{ data.inputAttrs }}}
+					{{ data.link.replace(/"/g, '') }}
+					<# if ( ! data.choices.id ) { #>
+						id="{{'customize-input-' + data.id}}"
+					<# } #>
+					<# _.each( data.choices, function( val, key ) { #>
+						{{ key }}="{{ val }}"
+					<# }); #>
+				>{{{ data.value }}}</textarea>
+			<# } else { #>
+				<{{ element }}
+					{{{ data.inputAttrs }}}
+					value="{{ data.value }}"
+					{{ data.link.replace(/"/g, '') }}
+
+					<# if ( ! data.choices.id ) { #>
+						id="{{'customize-input-' + data.id}}"
+					<# } #>
+
+					<# _.each( data.choices, function( val, key ) { #>
+						{{ key }}="{{ val }}"
+					<# } ); #>
+				<# if ( data.choices.content ) { #>>{{{ data.choices.content }}}</{{ element }}><# } else { #>/><# } #>
+			<# } #>
+		</div>
 		<?php
 	}
 }

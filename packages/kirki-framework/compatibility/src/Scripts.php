@@ -5,7 +5,7 @@
  * @package   Kirki
  * @category  Core
  * @author    Ari Stathopoulos (@aristath)
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2020, David Vongries
  * @license   https://opensource.org/licenses/MIT
  * @since     0.1
  */
@@ -52,4 +52,5 @@ class Scripts {
 		wp_register_script( 'wp-hooks', $folder_url . 'scripts/hooks.js', [ 'wp-polyfill' ], '2.2.0', false );
 		wp_register_script( 'wp-i18n', $folder_url . 'scripts/i18n.js', [ 'wp-polyfill' ], '3.3.0', false );
 	}
+
 }

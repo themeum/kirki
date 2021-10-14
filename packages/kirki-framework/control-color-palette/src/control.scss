@@ -1,0 +1,115 @@
+// Color palette control.
+.customize-control-kirki-color-palette,
+.customize-control-kirki-color-palette * {
+  box-sizing: border-box;
+}
+
+.customize-control-kirki-color-palette {
+  .kirki-control-label {
+    position: relative;
+    display: block;
+  }
+
+  .kirki-control-form {
+    position: relative;
+    margin-bottom: 6px;
+
+    &:hover {
+      .kirki-control-reset {
+        opacity: 1;
+      }
+    }
+  }
+
+  .kirki-control-reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    top: 0;
+    position: absolute;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    color: #50575e;
+    background-color: transparent;
+    border-radius: 50%;
+    border-width: 0;
+    opacity: 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 3;
+
+    // a11y: support tab focus.
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  .kirki-control-reset:hover i {
+    color: #f00;
+    transform: rotate(-45deg);
+  }
+
+  .kirki-control-reset i {
+    font-size: 12px;
+    width: auto;
+    height: auto;
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+  }
+
+  .kirki-colors {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &.kirki-round-colors {
+      .kirki-color {
+        div {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .kirki-color {
+    position: relative;
+    display: block;
+    margin: 0 11px 11px 0;
+    padding: 0;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      border: 1px solid #dedede;
+      transform: scale(1);
+      cursor: pointer;
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    &.is-selected {
+      > div {
+        border-color: #2271b1;
+        border-width: 4px;
+      }
+    }
+  }
+}

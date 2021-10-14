@@ -1,11 +1,10 @@
 <?php
 /**
- * Override field methods
+ * Override field methods.
  *
- * @package   kirki-framework/control-slider
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license   https://opensource.org/licenses/MIT
- * @since     1.0
+ * @package kirki-framework/control-slider
+ * @license MIT (https://oss.ninja/mit?organization=Kirki%20Framework)
+ * @since   1.0
  */
 
 namespace Kirki\Field;
@@ -22,8 +21,8 @@ class Slider extends Field {
 	/**
 	 * The field type.
 	 *
-	 * @access public
 	 * @since 1.0
+	 * @access public
 	 * @var string
 	 */
 	public $type = 'kirki-slider';
@@ -31,8 +30,8 @@ class Slider extends Field {
 	/**
 	 * The control class-name.
 	 *
+	 * @since 1.0
 	 * @access protected
-	 * @since 0.1
 	 * @var string
 	 */
 	protected $control_class = '\Kirki\Control\Slider';
@@ -40,8 +39,8 @@ class Slider extends Field {
 	/**
 	 * Whether we should register the control class for JS-templating or not.
 	 *
+	 * @since 1.0
 	 * @access protected
-	 * @since 0.1
 	 * @var bool
 	 */
 	protected $control_has_js_template = true;
@@ -49,40 +48,45 @@ class Slider extends Field {
 	/**
 	 * Filter arguments before creating the setting.
 	 *
-	 * @access public
-	 * @since 0.1
-	 * @param array                $args         The field arguments.
-	 * @param WP_Customize_Manager $wp_customize The customizer instance.
-	 * @return array
+	 * @param array                 $args The field arguments.
+	 * @param \WP_Customize_Manager $wp_customize The customizer instance.
+	 *
+	 * @return array $args The maybe-filtered arguments.
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
+
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args = parent::filter_setting_args( $args, $wp_customize );
 
-			// Set the sanitize-callback if none is defined.
+			// Set the sanitize_callback if none is defined.
 			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-				$args['sanitize_callback'] = function( $value ) {
+				$args['sanitize_callback'] = function ( $value ) {
 					return filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 				};
 			}
 		}
+
 		return $args;
+
 	}
 
 	/**
 	 * Filter arguments before creating the control.
 	 *
-	 * @access public
-	 * @since 0.1
-	 * @param array                $args         The field arguments.
-	 * @param WP_Customize_Manager $wp_customize The customizer instance.
-	 * @return array
+	 * @param array                 $args The field arguments.
+	 * @param \WP_Customize_Manager $wp_customize The customizer instance.
+	 *
+	 * @return array $args The maybe-filtered arguments.
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
+
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args         = parent::filter_control_args( $args, $wp_customize );
 			$args['type'] = 'kirki-slider';
 		}
+
 		return $args;
+
 	}
+
 }

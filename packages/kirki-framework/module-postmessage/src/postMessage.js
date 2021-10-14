@@ -321,6 +321,7 @@ var kirkiPostMessage = {
 
 jQuery( document ).ready( function() {
 	var styles;
+
 	_.each( kirkiPostMessageFields, function( field ) {
 
 		// Take care of styles on initial load and page-refreshes.

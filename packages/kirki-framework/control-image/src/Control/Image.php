@@ -48,7 +48,7 @@ class Image extends Base {
 		parent::enqueue();
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-image', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control', 'wp-mediaelement', 'media-upload', 'wp-i18n' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-image', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'kirki-control-base', 'wp-mediaelement', 'media-upload', 'wp-i18n' ], self::$control_ver, false );
 		wp_set_script_translations( 'kirki-control-image', 'kirki' );
 	}
 
