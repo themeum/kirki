@@ -20,7 +20,6 @@
  * @since     1.0
  */
 
-use Kirki\Compatibility\Init;
 use Kirki\L10n;
 use Kirki\Compatibility\Modules;
 use Kirki\Compatibility\Framework;
