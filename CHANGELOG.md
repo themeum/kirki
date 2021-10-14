@@ -1,3 +1,16 @@
+### 4.0-beta.1 - 2021-10-15 ###
+* Now controls are developed (and available) as composer packages
+* Some controls are using React for their JS part
+* Much improvement over color control (using `react-colorful`) also includes new features
+* Improved typography field
+* Improved color palette control
+* Improved multicolor field
+* Improved dimensions field
+* Improved select controls (including dropdown pages control)
+* Some other improvements
+* Bugfixes!
+* Use Parcel as the build tool (it's nice!)
+
 ## 3.0.45 - 2019-09-01
 
 ### Fixed

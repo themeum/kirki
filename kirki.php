@@ -5,17 +5,17 @@
  * Description:   The Ultimate WordPress Customizer Framework
  * Author:        David Vongries
  * Author URI:    https://wp-pagebuilderframework.com/
- * Version:       4.0-nightly
+ * Version:       4.0-beta.1
  * Text Domain:   kirki
  * Requires WP:   4.9
- * Requires PHP:  5.3
+ * Requires PHP:  7.0
  * GitHub Plugin URI: kirki-framework/kirki
  * GitHub Plugin URI: https://github.com/kirki-framework/kirki
  *
  * @package   Kirki
  * @category  Core
  * @author    Ari Stathopoulos (@aristath)
- * @copyright Copyright (c) 2020, David Vongries
+ * @copyright Copyright (c) 2021, David Vongries
  * @license   https://opensource.org/licenses/MIT
  * @since     1.0
  */
