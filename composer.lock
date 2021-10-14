@@ -1407,12 +1407,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-multicolor.git",
-                "reference": "2f43e463838e77a8ab2d4a5f7e7a69928c78cc6c"
+                "reference": "fb40978fc9617e6c9634eadcb0751d0c71f8cea6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/2f43e463838e77a8ab2d4a5f7e7a69928c78cc6c",
-                "reference": "2f43e463838e77a8ab2d4a5f7e7a69928c78cc6c",
+                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/fb40978fc9617e6c9634eadcb0751d0c71f8cea6",
+                "reference": "fb40978fc9617e6c9634eadcb0751d0c71f8cea6",
                 "shasum": ""
             },
             "require": {
@@ -1451,7 +1451,7 @@
                 "issues": "https://github.com/kirki-framework/field-multicolor/issues",
                 "source": "https://github.com/kirki-framework/field-multicolor/tree/v1.0.0"
             },
-            "time": "2021-10-05T09:18:40+00:00"
+            "time": "2021-10-14T20:44:09+00:00"
         },
         {
             "name": "kirki-framework/field-typography",

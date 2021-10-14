@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b32d24856e8282c5cfd22151c68d3d5e5fedbf60',
+        'reference' => 'c453cb3b376f5773160d85b26cb2912c4f08d9a4',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b32d24856e8282c5cfd22151c68d3d5e5fedbf60',
+            'reference' => 'c453cb3b376f5773160d85b26cb2912c4f08d9a4',
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
@@ -331,7 +331,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-multicolor',
             'aliases' => array(),
-            'reference' => '2f43e463838e77a8ab2d4a5f7e7a69928c78cc6c',
+            'reference' => 'fb40978fc9617e6c9634eadcb0751d0c71f8cea6',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-typography' => array(
