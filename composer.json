@@ -64,13 +64,12 @@
     "kirki-framework/field-multicolor": "*"
   },
   "require-dev": {
-    "php-coveralls/php-coveralls": "^2.0",
-    "phpunit/phpunit": "*",
     "composer/installers": "*",
-    "phpcompatibility/phpcompatibility-wp": "*",
+    "php-coveralls/php-coveralls": "^2.4",
+    "phpunit/phpunit": "*",
+    "dealerdirect/phpcodesniffer-composer-installer": "*",
     "wp-coding-standards/wpcs": "*",
-    "codacy/coverage": "dev-master",
-    "wptrt/wpthemereview": "dev-develop",
-    "dealerdirect/phpcodesniffer-composer-installer": "*"
+    "phpcompatibility/phpcompatibility-wp": "*",
+    "wptrt/wpthemereview": "dev-develop"
   }
 }

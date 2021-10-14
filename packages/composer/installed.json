@@ -1,60 +1,6 @@
 {
     "packages": [
         {
-            "name": "codacy/coverage",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/codacy/php-codacy-coverage.git",
-                "reference": "656913b35e22ae0d1ec352bc00e3ad90616efb7a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/codacy/php-codacy-coverage/zipball/656913b35e22ae0d1ec352bc00e3ad90616efb7a",
-                "reference": "656913b35e22ae0d1ec352bc00e3ad90616efb7a",
-                "shasum": ""
-            },
-            "require": {
-                "gitonomy/gitlib": ">=1.0",
-                "php": ">=5.3.3",
-                "symfony/console": "~2.5|~3.0|~4.0|~5.0"
-            },
-            "require-dev": {
-                "clue/phar-composer": "^1.1",
-                "phpunit/phpunit": "~6.5"
-            },
-            "time": "2020-02-11T15:55:24+00:00",
-            "bin": [
-                "bin/codacycoverage"
-            ],
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jakob Pupke",
-                    "email": "jakob.pupke@gmail.com"
-                }
-            ],
-            "description": "Sends PHP test coverage information to Codacy.",
-            "homepage": "https://github.com/codacy/php-codacy-coverage",
-            "support": {
-                "issues": "https://github.com/codacy/php-codacy-coverage/issues",
-                "source": "https://github.com/codacy/php-codacy-coverage/tree/master"
-            },
-            "abandoned": true,
-            "install-path": "../codacy/coverage"
-        },
-        {
             "name": "composer/installers",
             "version": "v2.0.1",
             "version_normalized": "2.0.1.0",
@@ -344,79 +290,6 @@
                 }
             ],
             "install-path": "../doctrine/instantiator"
-        },
-        {
-            "name": "gitonomy/gitlib",
-            "version": "v1.3.2",
-            "version_normalized": "1.3.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/gitonomy/gitlib.git",
-                "reference": "e73e439590b194b0b250b516b22a68c7116e2f21"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/gitonomy/gitlib/zipball/e73e439590b194b0b250b516b22a68c7116e2f21",
-                "reference": "e73e439590b194b0b250b516b22a68c7116e2f21",
-                "shasum": ""
-            },
-            "require": {
-                "ext-pcre": "*",
-                "php": "^5.6 || ^7.0 || ^8.0",
-                "symfony/polyfill-mbstring": "^1.7",
-                "symfony/process": "^3.4 || ^4.4 || ^5.0 || ^6.0"
-            },
-            "require-dev": {
-                "ext-fileinfo": "*",
-                "phpunit/phpunit": "^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.20 || ^9.5.9",
-                "psr/log": "^1.0"
-            },
-            "suggest": {
-                "ext-fileinfo": "Required to determine the mimetype of a blob",
-                "psr/log": "Required to use loggers for reporting of execution"
-            },
-            "time": "2021-09-06T20:30:10+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "Gitonomy\\Git\\": "src/Gitonomy/Git/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "hello@gjcampbell.co.uk"
-                },
-                {
-                    "name": "Julien Didier",
-                    "email": "genzo.wm@gmail.com"
-                },
-                {
-                    "name": "Grégoire Pineau",
-                    "email": "lyrixx@lyrixx.info"
-                },
-                {
-                    "name": "Alexandre Salomé",
-                    "email": "alexandre.salome@gmail.com"
-                }
-            ],
-            "description": "Library for accessing git",
-            "support": {
-                "issues": "https://github.com/gitonomy/gitlib/issues",
-                "source": "https://github.com/gitonomy/gitlib/tree/v1.3.2"
-            },
-            "funding": [
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/gitonomy/gitlib",
-                    "type": "tidelift"
-                }
-            ],
-            "install-path": "../gitonomy/gitlib"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -6528,71 +6401,6 @@
             "install-path": "../symfony/polyfill-php81"
         },
         {
-            "name": "symfony/process",
-            "version": "v5.3.7",
-            "version_normalized": "5.3.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "38f26c7d6ed535217ea393e05634cb0b244a1967"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/38f26c7d6ed535217ea393e05634cb0b244a1967",
-                "reference": "38f26c7d6ed535217ea393e05634cb0b244a1967",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "symfony/polyfill-php80": "^1.16"
-            },
-            "time": "2021-08-04T21:20:46+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Process\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Executes commands in sub-processes",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/process/tree/v5.3.7"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "install-path": "../symfony/process"
-        },
-        {
             "name": "symfony/service-contracts",
             "version": "v2.4.0",
             "version_normalized": "2.4.0.0",
@@ -7155,11 +6963,9 @@
     ],
     "dev": true,
     "dev-package-names": [
-        "codacy/coverage",
         "composer/installers",
         "dealerdirect/phpcodesniffer-composer-installer",
         "doctrine/instantiator",
-        "gitonomy/gitlib",
         "guzzlehttp/guzzle",
         "guzzlehttp/promises",
         "guzzlehttp/psr7",
@@ -7215,7 +7021,6 @@
         "symfony/polyfill-php73",
         "symfony/polyfill-php80",
         "symfony/polyfill-php81",
-        "symfony/process",
         "symfony/service-contracts",
         "symfony/stopwatch",
         "symfony/string",
