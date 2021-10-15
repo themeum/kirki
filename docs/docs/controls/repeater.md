@@ -155,8 +155,8 @@ $settings = get_theme_mod( 'my_repeater_setting', $defaults ); ?>
 
 <div class="kirki-links">
     <?php foreach( $settings as $setting ) : ?>
-        <a href="<?php $setting['link_url']; ?>">
-            <?php $setting['link_text']; ?>
+        <a href="<?php echo $setting['link_url']; ?>">
+            <?php echo $setting['link_text']; ?>
         </a>
     <?php endforeach; ?>
 </div>
