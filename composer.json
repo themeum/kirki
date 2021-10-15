@@ -65,8 +65,6 @@
   },
   "require-dev": {
     "composer/installers": "*",
-    "php-coveralls/php-coveralls": "^2.4",
-    "phpunit/phpunit": "*",
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "wp-coding-standards/wpcs": "*",
     "phpcompatibility/phpcompatibility-wp": "*",
