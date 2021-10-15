@@ -1,64 +1,71 @@
 #!/usr/bin/env bash
+
 echo ""
 echo "******************************************"
-echo "**                                      **"
-echo "** Cloning repository...                **"
-if [ -d "../kirki-package" ]; then
-	rm -rf ../kirki-package &> /dev/null
-	mkdir ../kirki-package
+echo "** Building the WP plugin version...    **"
+echo ""
+
+shopt -s extglob
+shopt -s dotglob
+
+if [ -d "kirki" ]; then
+	rm -rf kirki
 fi
 
-git clone https://github.com/aristath/kirki.git ../kirki-package/kirki &> /dev/null
+mkdir kirki
 
-cd ../kirki-package/kirki
+echo "Copying files ...";
 
-echo "** Running npm install...               **"
-npm install &> /dev/null
-
-echo "** Running grunt...                     **"
-grunt  &> /dev/null
-
-echo "** Cleaning up files...                 **"
-rm -rf .git
-rm -rf .github
-rm -rf .sass-cache
-rm -rf controls/css/*.map
-rm -rf controls/scss
-rm -rf docs
-rm modules/custom-sections/*.scss
-rm modules/custom-sections/*.map
-rm modules/tooltips/*.scss
-rm modules/tooltips/*.map
-rm -rf node_modules
-rm .codeclimate.yml
-rm .coveralls.yml
-rm .csslintrc
-rm .editorconfig
-rm .gitignore
-rm .jscsrc
-rm .jshintignore
-rm .jshintrc
-rm .jhintrc
-rm .phpcs.xml.dist
-rm .simplecov
-rm .travis.yml
-rm CODE_OF_CONDUCT.md
-rm composer.*
-rm example.php
-rm Gruntfile.js
-rm package.json
-rm phpunit.xml
-rm phpunit.xml.dist
-rm README.md
-rm *.sh
-rm package-lock.json
+cp -r !(.|..|.git|.github|kirki|node_modules|.editorconfig|.gitignore|.gitattributes|.phpcs.xml.dist|build.sh|CHANGELOG.md|CODE_OF_CONDUCT.md|example.php|package.json|package-lock.json|README.md) kirki/
 
 cd ..
-zip -rq kirki.zip kirki
 
+if [ -d "kirki" ]; then
+	rm -rf kirki
+fi
+
+mkdir kirki
+
+mv kirki-repo/kirki/* kirki/
+
+rm -rf kirki-repo/kirki/
+
+cd kirki
+
+echo "Updating composer to remove dev dependencies (be patient :) ...";
+
+sed -i '/composer\/installers/d' composer.json
+sed -i '/dealerdirect\/phpcodesniffer-composer-installer/d' composer.json
+sed -i '/wp-coding-standards\/wpcs/d' composer.json
+sed -i '/phpcompatibility\/phpcompatibility-wp/d' composer.json
+sed -i '/wptrt\/wpthemereview/d' composer.json
+
+composer update
+
+echo "Removing un-necessary files inside individual packages ..."
+
+rm -rf packages/kirki-framework/**/.github
+rm -rf packages/kirki-framework/**/.gitignore
+rm -rf packages/kirki-framework/**/src/*.scss
+rm -rf packages/kirki-framework/**/src/scss/*.scss
+rm -rf packages/kirki-framework/**/dist/*.map
+rm -rf packages/kirki-framework/**/.prettierrc.js
+rm -rf packages/kirki-framework/**/.prettierignore
+rm -rf packages/kirki-framework/**/.babelrc
+rm -rf packages/kirki-framework/**/webpack.config.js
+rm -rf packages/kirki-framework/**/package.json
+rm -rf packages/kirki-framework/**/Gruntfile.js
+rm -rf packages/kirki-framework/**/README.md
+
+cd ../kirki-repo
+
+shopt -u extglob
+shopt -u dotglob
+
+echo ""
 echo "** All done.                            **"
-echo "** Final plugin ready for release       **"
-echo "** You can get in from ../kirki-package **"
+echo "** WP plugin version is ready           **"
+echo "** You can check the result in ../kirki **"
 echo "**                                      **"
 echo "****************** DONE ******************"
 echo ""
