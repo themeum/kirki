@@ -754,16 +754,16 @@
         },
         {
             "name": "kirki-framework/control-radio",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-radio.git",
-                "reference": "79da5604e2eeb92cacf8d141a07e9a4475a23fcb"
+                "reference": "300c4e4ed77a7403ec5b2e10ca7b0215d6b95998"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/79da5604e2eeb92cacf8d141a07e9a4475a23fcb",
-                "reference": "79da5604e2eeb92cacf8d141a07e9a4475a23fcb",
+                "url": "https://api.github.com/repos/kirki-framework/control-radio/zipball/300c4e4ed77a7403ec5b2e10ca7b0215d6b95998",
+                "reference": "300c4e4ed77a7403ec5b2e10ca7b0215d6b95998",
                 "shasum": ""
             },
             "require": {
@@ -798,9 +798,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-radio/issues",
-                "source": "https://github.com/kirki-framework/control-radio/tree/v1.0.0"
+                "source": "https://github.com/kirki-framework/control-radio/tree/v1.0.1"
             },
-            "time": "2021-09-24T07:30:44+00:00"
+            "time": "2021-10-21T13:06:10+00:00"
         },
         {
             "name": "kirki-framework/control-react-colorful",

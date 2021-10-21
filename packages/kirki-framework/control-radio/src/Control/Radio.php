@@ -79,10 +79,10 @@ class Radio extends Base {
 				<input
 					{{{ data.inputAttrs }}}
 					type="radio"
-					data-id="{{ data['data-id'] }}"
+					data-id="{{ data.id }}"
 					value="{{ key }}"
 					{{ data.link }}
-					name="_customize-radio-{{ data['data-id'] }}"
+					name="_customize-radio-{{ data.id }}"
 					<# if ( data.value === key ) { #> checked<# } #>
 				/>
 				<# if ( _.isArray( val ) ) { #>

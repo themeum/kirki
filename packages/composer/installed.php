@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '245738ea7463846008ec5a5f37789c9de659e2d2',
+        'reference' => 'fdf7d46bf05cfb1454aac64abae076c5aa6a437d',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '245738ea7463846008ec5a5f37789c9de659e2d2',
+            'reference' => 'fdf7d46bf05cfb1454aac64abae076c5aa6a437d',
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
@@ -173,12 +173,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-radio' => array(
-            'pretty_version' => 'v1.0.0',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'v1.0.1',
+            'version' => '1.0.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-radio',
             'aliases' => array(),
-            'reference' => '79da5604e2eeb92cacf8d141a07e9a4475a23fcb',
+            'reference' => '300c4e4ed77a7403ec5b2e10ca7b0215d6b95998',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-colorful' => array(
