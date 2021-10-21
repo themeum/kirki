@@ -1594,17 +1594,17 @@
         },
         {
             "name": "kirki-framework/field-dimensions",
-            "version": "v1.0.0",
-            "version_normalized": "1.0.0.0",
+            "version": "v1.0.1",
+            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-dimensions.git",
-                "reference": "c7dbe8ca4a17dad9e38d4e2fffbf15c22d6af27a"
+                "reference": "0f2411214894dcb993c2df0a22e2b8f175f99a5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-dimensions/zipball/c7dbe8ca4a17dad9e38d4e2fffbf15c22d6af27a",
-                "reference": "c7dbe8ca4a17dad9e38d4e2fffbf15c22d6af27a",
+                "url": "https://api.github.com/repos/kirki-framework/field-dimensions/zipball/0f2411214894dcb993c2df0a22e2b8f175f99a5c",
+                "reference": "0f2411214894dcb993c2df0a22e2b8f175f99a5c",
                 "shasum": ""
             },
             "require": {
@@ -1612,7 +1612,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-24T08:43:34+00:00",
+            "time": "2021-10-21T15:39:59+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1641,7 +1641,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/field-dimensions/issues",
-                "source": "https://github.com/kirki-framework/field-dimensions/tree/v1.0.0"
+                "source": "https://github.com/kirki-framework/field-dimensions/tree/v1.0.1"
             },
             "install-path": "../kirki-framework/field-dimensions"
         },

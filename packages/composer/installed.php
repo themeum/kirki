@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'fdf7d46bf05cfb1454aac64abae076c5aa6a437d',
+        'reference' => '29bdb188f1b8af8dbc4ce68bf3350432ebb8f2d4',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'fdf7d46bf05cfb1454aac64abae076c5aa6a437d',
+            'reference' => '29bdb188f1b8af8dbc4ce68bf3350432ebb8f2d4',
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
@@ -272,12 +272,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/field-dimensions' => array(
-            'pretty_version' => 'v1.0.0',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'v1.0.1',
+            'version' => '1.0.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-dimensions',
             'aliases' => array(),
-            'reference' => 'c7dbe8ca4a17dad9e38d4e2fffbf15c22d6af27a',
+            'reference' => '0f2411214894dcb993c2df0a22e2b8f175f99a5c',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-fontawesome' => array(
