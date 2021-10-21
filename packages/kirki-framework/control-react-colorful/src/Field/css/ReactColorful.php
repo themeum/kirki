@@ -28,8 +28,18 @@ class ReactColorful extends Output {
 	 */
 	protected function process_output( $output, $value ) {
 
+		$output = wp_parse_args(
+			$output,
+			array(
+				'media_query' => 'global',
+				'element'     => '',
+				'property'    => 'color',
+			)
+		);
+
 		// Only need to process further if the $value format is array.
 		if ( ! is_array( $value ) ) {
+			$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $value;
 			return;
 		}
 
@@ -59,15 +69,6 @@ class ReactColorful extends Output {
 			$pos_3 = is_numeric( $value ) ? $value['s'] . '%' : $value['s'];
 			$pos_4 = $alpha_enabled ? $value['a'] : 1;
 		}
-
-		$output = wp_parse_args(
-			$output,
-			[
-				'media_query' => 'global',
-				'element'     => '',
-				'property'    => 'color',
-			]
-		);
 
 		if ( $alpha_enabled ) {
 			$formatted_value = $color_mode . '(' . $pos_1 . ', ' . $pos_2 . ', ' . $pos_3 . ', ' . $pos_4 . ')';
