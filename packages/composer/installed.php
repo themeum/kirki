@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-develop',
-        'version' => 'dev-develop',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ab87f9c0d502ad795051c4295be36e858f1a4b36',
+        'reference' => '3a5d5093b1a99d1c7b813608479fe8fc9348b6a3',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
     'versions' => array(
         'aristath/kirki' => array(
-            'pretty_version' => 'dev-develop',
-            'version' => 'dev-develop',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ab87f9c0d502ad795051c4295be36e858f1a4b36',
+            'reference' => '3a5d5093b1a99d1c7b813608479fe8fc9348b6a3',
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
@@ -299,12 +299,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/field-typography' => array(
-            'pretty_version' => 'v1.0.0',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'v1.0.1',
+            'version' => '1.0.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-typography',
             'aliases' => array(),
-            'reference' => 'd6d16ef3ffa9f6e2c6c29f3bd3a32be2007c5ebf',
+            'reference' => 'ea5913b85574f291e8c244c85f6d42011779747b',
             'dev_requirement' => false,
         ),
         'kirki-framework/googlefonts' => array(
@@ -326,12 +326,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-css' => array(
-            'pretty_version' => 'v1.0.1',
-            'version' => '1.0.1.0',
+            'pretty_version' => 'v1.0.2',
+            'version' => '1.0.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-css',
             'aliases' => array(),
-            'reference' => '07179bc4fe00779d317f701d6556203009d2d289',
+            'reference' => '3afb562272ef44eeb30fe7b5aff9ba41aac657b9',
             'dev_requirement' => false,
         ),
         'kirki-framework/module-editor-styles' => array(

@@ -1,6 +1,6 @@
 {
   "name": "field-typography",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Development toolkit for Kirki's field-typography",
   "repository": {
     "type": "git",
@@ -17,8 +17,8 @@
   "homepage": "https://github.com/kirki-framework/field-typography#readme",
   "dependencies": {},
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0",
-    "parcel": "^2.0.0-rc.0"
+    "@parcel/transformer-sass": "^2.0.0",
+    "parcel": "^2.0.0"
   },
   "alias": {
     "jquery": {

@@ -1,110 +1,121 @@
 import "./control.scss";
 
-/* global kirkiTypographyControls, kirkiGoogleFonts, kirkiFontWeights */
-function kirkiTypographyCompositeControlFontProperties( id, value ) {
-	var control, isGoogle, fontWeights, hasItalics, fontWeightControl, fontStyleControl, closest;
+/* global kirkiTypographyControls, kirkiGoogleFonts, kirkiFontVariants */
+function kirkiTypographyCompositeControlFontProperties(id, value) {
+  const control = wp.customize.control(id);
 
-	control = wp.customize.control( id );
+  if ("undefined" === typeof control) {
+    return;
+  }
 
-	if ( 'undefined' === typeof control ) {
-		return;
-	}
+  value = value || control.setting.get();
 
-	value             = value || control.setting.get();
-	isGoogle          = value['font-family'] && kirkiGoogleFonts.items[ value['font-family'] ];
-	fontWeights       = [ 400, 700 ];
-	hasItalics        = ! isGoogle;
-	fontWeightControl = wp.customize.control( id + '[font-weight]' );
-	fontStyleControl  = wp.customize.control( id + '[font-style]' );
+  const isGoogle =
+    value["font-family"] && kirkiGoogleFonts.items[value["font-family"]];
+  const variantValue = value["variant"]
+    ? value["variant"].toString()
+    : "regular";
+  const variantControl = wp.customize.control(id + "[variant]");
 
-	if ( isGoogle ) {
+  const sortVariants = function (a, b) {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  };
 
-		/**
-		 * Get font-weights from google-font variants.
-		 */
-		fontWeights = [];
-		_.each( kirkiGoogleFonts.items[ value['font-family'] ].variants, function( variant ) {
-			if ( -1 !== variant.indexOf( 'i' ) ) {
-				hasItalics = true;
-			}
-			variant = 'regular' === variant || 'italic' === variant ? 400 : parseInt( variant, 10 );
-			if ( -1 === fontWeights.indexOf( variant ) ) {
-				fontWeights.push( parseInt( variant, 10 ) );
-			}
+  let variants = [];
 
-			if ( ! hasItalics && fontStyleControl ) {
-				fontStyleControl.setting.set( 'normal' );
-			}
+  if (isGoogle) {
+    let gFontVariants = kirkiGoogleFonts.items[value["font-family"]].variants;
+    gFontVariants.sort(sortVariants);
 
-			// if ( hasItalics && control.active() ) {
-			// 	fontStyleControl.activate();
-			// } else {
-			// 	fontStyleControl.deactivate();
-			// }
-		} );
+    kirkiFontVariants.complete.forEach(function (variant) {
+      if (-1 !== gFontVariants.indexOf(variant.value)) {
+        variants.push({
+          value: variant.value,
+          label: variant.label,
+        });
+      }
+    });
+  } else {
+		let stdFontVariants;
 
-		/**
-		 * If the selected font-family doesn't support the selected font-weight, switch to a supported one.
-		 */
-		if ( -1 === fontWeights.indexOf( parseInt( value['font-weight'], 10 ) ) ) {
+		if (kirkiFontVariants[value["font-family"]]) {
+      stdFontVariants = kirkiFontVariants[value["font-family"]];
 
-			// Find the font-weight closest to our previous value.
-			closest = fontWeights.reduce( function( prev, curr ) {
-				return ( Math.abs( curr - parseInt( value['font-weight'], 10 ) ) < Math.abs( prev - parseInt( value['font-weight'], 10 ) ) ? curr : prev );
-			} );
-			fontWeightControl.doSelectAction( 'selectOption', closest.toString() );
-			fontWeightControl.setting.set( closest.toString() );
-		}
+			kirkiFontVariants.complete.forEach(function (variant) {
+				if (-1 !== stdFontVariants.indexOf(variant.value)) {
+          variants.push({
+            value: variant.value,
+            label: variant.label,
+          });
+        }
+      });
+    } else {
+      stdFontVariants = kirkiFontVariants.standard;
 
-		/**
-		 * If there's only 1 font-weight to choose from, we can hide the control.
-		 */
-		if ( 1 < fontWeights.length && control.active() ) {
-			fontWeightControl.activate();
-		} else {
-			fontWeightControl.deactivate();
-		}
+			stdFontVariants.forEach(function (variant) {
+				variants.push({
+					value: variant.value,
+					label: variant.label,
+				});
+			});
+    }
 
-		/**
-		 * Hide/show font-weight options depending on which are available for this font-family.
-		 */
-		if ( fontWeightControl ) {
-			fontWeightControl.params.choices = {};
-			_.each( [ 100, 200, 300, 400, 500, 600, 700, 800, 900 ], function( weight ) {
-				if ( -1 !== fontWeights.indexOf( weight ) ) {
-					fontWeightControl.params.choices[ weight.toString() ] = kirkiFontWeights[ weight.toString() ];
-					fontWeightControl.formattedOptions = [];
-					fontWeightControl.renderContent();
-				}
-			} );
-		}
-	}
+  }
 
-	wp.hooks.addAction(
-		'kirki.dynamicControl.initKirkiControl',
-		'kirki',
-		function( controlInit ) {
-			if ( fontWeightControl && id + '[font-weight]' === controlInit.id ) {
-				_.each( [ 100, 200, 300, 400, 500, 600, 700, 800, 900 ], function( weight ) {
-					if ( -1 !== fontWeights.indexOf( weight ) ) {
-						fontWeightControl.params.choices[ weight.toString() ] = kirkiFontWeights[ weight.toString() ];
-						fontWeightControl.formattedOptions = [];
-						fontWeightControl.renderContent();
-					}
-				} );
-			}
-		}
-	);
+  // Set the font-style value.
+  if (-1 !== variantValue.indexOf("i")) {
+    value["font-style"] = "italic";
+  } else {
+    value["font-style"] = "normal";
+  }
+
+  // Set the font-weight value.
+  value["font-weight"] =
+    "regular" === variantValue || "italic" === variantValue
+      ? 400
+      : parseInt(variantValue, 10);
+
+  if (variantControl) {
+    // Hide/show variant options depending on which are available for this font-family.
+    if (1 < variants.length && control.active()) {
+      variantControl.activate();
+    } else {
+      // If there's only 1 variant to choose from, we can hide the control.
+      variantControl.deactivate();
+    }
+
+    variantControl.params.choices = variants;
+    variantControl.formattedOptions = [];
+    variantControl.destroy();
+
+    if (!variants.includes(variantValue)) {
+      // If the selected font-family doesn't support the currently selected variant, switch to "regular".
+      variantControl.doSelectAction("selectOption", "regular");
+    } else {
+      variantControl.doSelectAction("selectOption", variantValue);
+    }
+  }
+
+  wp.hooks.addAction(
+    "kirki.dynamicControl.initKirkiControl",
+    "kirki",
+    function (controlInit) {
+      if (variantControl && id + "[variant]" === controlInit.id) {
+      }
+    }
+  );
 }
 
-jQuery( document ).ready( function() {
-	_.each( kirkiTypographyControls, function( id ) {
-		kirkiTypographyCompositeControlFontProperties( id );
+jQuery(document).ready(function () {
+  _.each(kirkiTypographyControls, function (id) {
+    kirkiTypographyCompositeControlFontProperties(id);
 
-		wp.customize( id, function( value ) {
-			value.bind( function( newval ) {
-				kirkiTypographyCompositeControlFontProperties( id, newval );
-			} );
-		} );
-	} );
-} );
+    wp.customize(id, function (value) {
+      value.bind(function (newval) {
+        kirkiTypographyCompositeControlFontProperties(id, newval);
+      });
+    });
+  });
+});

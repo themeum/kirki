@@ -26,6 +26,7 @@ class Typography extends Output {
 	 * @param array $value  The field's value.
 	 */
 	protected function process_output( $output, $value ) {
+
 		$output['media_query'] = ( isset( $output['media_query'] ) ) ? $output['media_query'] : 'global';
 		$output['element']     = ( isset( $output['element'] ) ) ? $output['element'] : 'body';
 		$output['prefix']      = ( isset( $output['prefix'] ) ) ? $output['prefix'] : '';
@@ -44,6 +45,8 @@ class Typography extends Output {
 			'text-transform',
 			'text-decoration',
 			'color',
+			'margin-top',
+			'margin-bottom',
 		];
 
 		foreach ( $properties as $property ) {
@@ -72,10 +75,13 @@ class Typography extends Output {
 
 				// Is this italic?
 				$is_italic = ( false !== strpos( $value['variant'], 'italic' ) );
+
 				$this->styles[ $output['media_query'] ][ $output['element'] ]['font-weight'] = $font_weight;
+
 				if ( $is_italic ) {
 					$this->styles[ $output['media_query'] ][ $output['element'] ]['font-style'] = 'italic';
 				}
+
 				continue;
 			}
 
@@ -84,5 +90,6 @@ class Typography extends Output {
 			$property_value = ( is_array( $property_value ) && isset( $property_value[0] ) ) ? $property_value[0] : $property_value;
 			$this->styles[ $output['media_query'] ][ $output['element'] ][ $property ] = $output['prefix'] . $property_value . $output['suffix'];
 		}
+
 	}
 }

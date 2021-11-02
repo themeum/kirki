@@ -1755,17 +1755,17 @@
         },
         {
             "name": "kirki-framework/field-typography",
-            "version": "v1.0.0",
-            "version_normalized": "1.0.0.0",
+            "version": "v1.0.1",
+            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "d6d16ef3ffa9f6e2c6c29f3bd3a32be2007c5ebf"
+                "reference": "ea5913b85574f291e8c244c85f6d42011779747b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/d6d16ef3ffa9f6e2c6c29f3bd3a32be2007c5ebf",
-                "reference": "d6d16ef3ffa9f6e2c6c29f3bd3a32be2007c5ebf",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/ea5913b85574f291e8c244c85f6d42011779747b",
+                "reference": "ea5913b85574f291e8c244c85f6d42011779747b",
                 "shasum": ""
             },
             "require": {
@@ -1779,7 +1779,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-10-05T09:15:29+00:00",
+            "time": "2021-11-02T16:21:20+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1809,7 +1809,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/field-typography/issues",
-                "source": "https://github.com/kirki-framework/field-typography/tree/v1.0.0"
+                "source": "https://github.com/kirki-framework/field-typography/tree/v1.0.1"
             },
             "install-path": "../kirki-framework/field-typography"
         },
@@ -1919,24 +1919,24 @@
         },
         {
             "name": "kirki-framework/module-css",
-            "version": "v1.0.1",
-            "version_normalized": "1.0.1.0",
+            "version": "v1.0.2",
+            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-css.git",
-                "reference": "07179bc4fe00779d317f701d6556203009d2d289"
+                "reference": "3afb562272ef44eeb30fe7b5aff9ba41aac657b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/07179bc4fe00779d317f701d6556203009d2d289",
-                "reference": "07179bc4fe00779d317f701d6556203009d2d289",
+                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/3afb562272ef44eeb30fe7b5aff9ba41aac657b9",
+                "reference": "3afb562272ef44eeb30fe7b5aff9ba41aac657b9",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/util": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-10-31T09:52:15+00:00",
+            "time": "2021-11-02T17:09:23+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1965,7 +1965,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-css/issues",
-                "source": "https://github.com/kirki-framework/module-css/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/module-css/tree/v1.0.2"
             },
             "install-path": "../kirki-framework/module-css"
         },

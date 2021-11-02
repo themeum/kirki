@@ -256,7 +256,22 @@ class Output {
 			 * so that it doesn't polute elements other than inside the editing content.
 			 */
 			if ( isset( $_GET['editor'] ) && 1 === (int) $_GET['editor'] ) {
-				$output['element'] = '.editor-styles-wrapper ' . $output['element'];
+				if ( isset( $output['element'] ) && ! empty( $output['element'] ) ) {
+
+					if ( -1 < strpos( $output['element'], ',' ) ) {
+						$elms = explode( ',', $output['element'] );
+
+						foreach ( $elms as $index => $elm ) {
+							if ( ! empty( $elm ) ) {
+								$elms[ $index ] = '.editor-styles-wrapper ' . $elm;
+							}
+						}
+
+						$output['element'] = implode( ',', $elms );
+					} else {
+						$output['element'] = '.editor-styles-wrapper ' . $output['element'];
+					}
+				}
 			}
 
 			$this->process_output( $output, $value );

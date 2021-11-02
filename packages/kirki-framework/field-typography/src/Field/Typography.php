@@ -54,6 +54,26 @@ class Typography extends Field {
 	private static $typography_controls = [];
 
 	/**
+	 * An array of standard font variants.
+	 *
+	 * @access private
+	 * @since 1.0.1
+	 *
+	 * @var array
+	 */
+	private static $std_variants;
+
+	/**
+	 * An array of complete font variants.
+	 *
+	 * @access private
+	 * @since 1.0.1
+	 *
+	 * @var array
+	 */
+	private static $complete_variants;
+
+	/**
 	 * Extra logic for the field.
 	 *
 	 * Adds all sub-fields.
@@ -64,6 +84,100 @@ class Typography extends Field {
 	public function init( $args = [] ) {
 
 		self::$typography_controls[] = $args['settings'];
+
+		self::$std_variants = [
+			[
+				'value' => 'regular',
+				'label' => __( 'Regular', 'kirki' ),
+			],
+			[
+				'value' => 'italic',
+				'label' => __( 'Italic', 'kirki' ),
+			],
+			[
+				'value' => '700',
+				'label' => __( '700', 'kirki' ),
+			],
+			[
+				'value' => '700italic',
+				'label' => __( '700 Italic', 'kirki' ),
+			],
+		];
+
+		self::$complete_variants = [
+			[
+				'value' => 'regular',
+				'label' => __( 'Regular', 'kirki' ),
+			],
+			[
+				'value' => 'italic',
+				'label' => __( 'Italic', 'kirki' ),
+			],
+			[
+				'value' => '100',
+				'label' => __( '100', 'kirki' ),
+			],
+			[
+				'value' => '100italic',
+				'label' => __( '100 Italic', 'kirki' ),
+			],
+			[
+				'value' => '200',
+				'label' => __( '200', 'kirki' ),
+			],
+			[
+				'value' => '200italic',
+				'label' => __( '200 Italic', 'kirki' ),
+			],
+			[
+				'value' => '300',
+				'label' => __( '300', 'kirki' ),
+			],
+			[
+				'value' => '300italic',
+				'label' => __( '300 Italic', 'kirki' ),
+			],
+			[
+				'value' => '500',
+				'label' => __( '500', 'kirki' ),
+			],
+			[
+				'value' => '500italic',
+				'label' => __( '500 Italic', 'kirki' ),
+			],
+			[
+				'value' => '600',
+				'label' => __( '600', 'kirki' ),
+			],
+			[
+				'value' => '600italic',
+				'label' => __( '600 Italic', 'kirki' ),
+			],
+			[
+				'value' => '700',
+				'label' => __( '700', 'kirki' ),
+			],
+			[
+				'value' => '700italic',
+				'label' => __( '700 Italic', 'kirki' ),
+			],
+			[
+				'value' => '800',
+				'label' => __( '800', 'kirki' ),
+			],
+			[
+				'value' => '800italic',
+				'label' => __( '800 Italic', 'kirki' ),
+			],
+			[
+				'value' => '900',
+				'label' => __( '900', 'kirki' ),
+			],
+			[
+				'value' => '900italic',
+				'label' => __( '900 Italic', 'kirki' ),
+			],
+		];
 
 		$this->add_sub_fields( $args );
 
@@ -118,63 +232,11 @@ class Typography extends Field {
 
 		/**
 		 * Add font-family selection controls.
-		 * These include font-family, font-weight and font-style.
-		 * They are grouped here because all 3 of them are required
+		 * These include font-family and variant.
+		 * They are grouped here because all they are required.
 		 * in order to get the right googlefont variant.
 		 */
 		if ( isset( $args['default']['font-family'] ) ) {
-
-			// Figure out how to sort the fonts.
-			$sorting   = 'alpha';
-			$max_fonts = 9999;
-
-			if ( isset( $args['choices'] ) && isset( $args['choices']['fonts'] ) && isset( $args['choices']['fonts']['google'] ) ) {
-				if ( isset( $args['choices']['fonts']['google'][0] ) && in_array( $args['choices']['fonts']['google'][0], [ 'alpha', 'popularity', 'trending' ], true ) ) {
-					$sorting = $args['choices']['fonts']['google'][0];
-				}
-				if ( isset( $args['choices']['fonts']['google'][1] ) && is_int( $args['choices']['fonts']['google'][1] ) ) {
-					$max_fonts = (int) $args['choices']['fonts']['google'][1];
-				}
-			}
-
-			$google  = new GoogleFonts();
-			$g_fonts = $google->get_google_fonts_by_args(
-				[
-					'sort'  => $sorting,
-					'count' => $max_fonts,
-				]
-			);
-
-			$std_fonts = [];
-
-			if ( ! isset( $args['choices']['fonts'] ) || ! isset( $args['choices']['fonts']['standard'] ) ) {
-				$standard_fonts = Fonts::get_standard_fonts();
-				foreach ( $standard_fonts as $font ) {
-					$std_fonts[ $font['stack'] ] = $font['label'];
-				}
-			} elseif ( is_array( $args['choices']['fonts']['standard'] ) ) {
-				foreach ( $args['choices']['fonts']['standard'] as $key => $val ) {
-					$key               = ( \is_int( $key ) ) ? $val : $key;
-					$std_fonts[ $key ] = $val;
-				}
-			}
-
-			$choices = [
-				'standard' => [
-					esc_html__( 'Standard Fonts', 'kirki' ),
-					$std_fonts,
-				],
-				'google'   => [
-					esc_html__( 'Google Fonts', 'kirki' ),
-					array_combine( array_values( $g_fonts ), array_values( $g_fonts ) ),
-				],
-			];
-
-			if ( empty( $choices['standard'][1] ) ) {
-				$choices = array_combine( array_values( $g_fonts ), array_values( $g_fonts ) );
-			} elseif ( empty( $choices['google'][1] ) ) {
-				$choices = $std_fonts;
-			}
 
 			$args['wrapper_attrs']['kirki-typography-subcontrol-type'] = 'font-family';
 
@@ -189,7 +251,7 @@ class Typography extends Field {
 						'settings'    => $args['settings'] . '[font-family]',
 						'default'     => isset( $args['default']['font-family'] ) ? $args['default']['font-family'] : '',
 						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'font-family', $args ),
-						'choices'     => $choices,
+						'choices'     => [], // The choices will be populated later inside `get_font_family_choices` function in this file.
 						'css_vars'    => [],
 						'output'      => [],
 					],
@@ -198,33 +260,25 @@ class Typography extends Field {
 			);
 
 			/**
-			 * Add font-weight.
+			 * Add font variant.
 			 */
-			$font_weight = 400;
-			$font_weight = isset( $args['default']['variant'] ) ? $args['default']['variant'] : 400;
-			$font_weight = isset( $args['default']['font-weight'] ) ? $args['default']['font-weight'] : $font_weight;
-			$font_weight = 'regular' === $font_weight || 'italic' === $font_weight ? 400 : (int) $font_weight;
-			$args['wrapper_attrs']['kirki-typography-subcontrol-type'] = 'font-weight';
+			$font_variant = isset( $args['default']['variant'] ) ? $args['default']['variant'] : 'regular';
+
+			if ( isset( $args['default']['font-weight'] ) ) {
+				$font_variant = 400 === $args['default']['font-weight'] || '400' === $args['default']['font-weight'] ? 'regular' : $args['default']['font-weight'];
+			}
+
+			$args['wrapper_attrs']['kirki-typography-subcontrol-type'] = 'font-variant';
 
 			new \Kirki\Field\ReactSelect(
 				wp_parse_args(
 					[
-						'label'       => esc_html__( 'Font Weight', 'kirki' ),
+						'label'       => esc_html__( 'Font Variant', 'kirki' ),
 						'description' => '',
-						'settings'    => $args['settings'] . '[font-weight]',
-						'default'     => $font_weight,
-						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'font-weight', $args ),
-						'choices'     => [
-							'100' => esc_html__( '100 - Thin', 'kirki' ),
-							'200' => esc_html__( '200 - Extra Light, Ultra Light', 'kirki' ),
-							'300' => esc_html__( '300 - Light', 'kirki' ),
-							'400' => esc_html__( '400 - Normal, Book, Regular', 'kirki' ),
-							'500' => esc_html__( '500 - Medium', 'kirki' ),
-							'600' => esc_html__( '600 - Semi Bold, Demi Bold', 'kirki' ),
-							'700' => esc_html__( '700 - Bold', 'kirki' ),
-							'800' => esc_html__( '800 - Extra Bold, Ultra Bold', 'kirki' ),
-							'900' => esc_html__( '900 - Black, Heavy', 'kirki' ),
-						],
+						'settings'    => $args['settings'] . '[variant]',
+						'default'     => $font_variant,
+						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'variant', $args ),
+						'choices'     => self::$std_variants,
 						'css_vars'    => [],
 						'output'      => [],
 					],
@@ -234,23 +288,23 @@ class Typography extends Field {
 
 		}
 
-		$font_size_field_specified  = isset( $defaults['font-size'] );
-		$font_style_field_specified = isset( $defaults['font-style'] );
+		$font_size_field_specified = isset( $defaults['font-size'] );
+		$color_field_specified     = isset( $defaults['color'] );
 
-		if ( $font_size_field_specified || $font_style_field_specified ) {
+		if ( $font_size_field_specified || $color_field_specified ) {
 			$group = [
 				'font-size' => [
 					'type'         => 'dimension',
 					'label'        => esc_html__( 'Font Size', 'kirki' ),
 					'is_specified' => $font_size_field_specified,
 				],
-				'font-style' => [
-					'type'         => 'react-select',
-					'label'        => esc_html__( 'Font Style', 'kirki' ),
-					'is_specified' => $font_style_field_specified,
+				'color'     => [
+					'type'         => 'react-colorful',
+					'label'        => esc_html__( 'Font Color', 'kirki' ),
+					'is_specified' => $color_field_specified,
 					'choices'      => [
-						'normal' => esc_html__( 'Normal', 'kirki' ),
-						'italic' => esc_html__( 'Italic', 'kirki' ),
+						'alpha'       => true,
+						'label_style' => 'top',
 					],
 				],
 			];
@@ -258,46 +312,12 @@ class Typography extends Field {
 			$this->generate_controls_group( $group, $args );
 		}
 
-		$text_transform_field_specified  = isset( $defaults['text-transform'] );
-		$text_decoration_field_specified = isset( $defaults['text-decoration'] );
+		$text_align_field_specified     = isset( $defaults['text-align'] );
+		$text_transform_field_specified = isset( $defaults['text-transform'] );
 
-		if ( $text_transform_field_specified || $text_decoration_field_specified ) {
+		if ( $text_align_field_specified || $text_transform_field_specified ) {
 			$group = [
-				'text-transform' => [
-					'type'         => 'react-select',
-					'label'        => esc_html__( 'Text Transform', 'kirki' ),
-					'is_specified' => $text_transform_field_specified,
-					'choices'      => [
-						'none'       => esc_html__( 'None', 'kirki' ),
-						'capitalize' => esc_html__( 'Capitalize', 'kirki' ),
-						'uppercase'  => esc_html__( 'Uppercase', 'kirki' ),
-						'lowercase'  => esc_html__( 'Lowercase', 'kirki' ),
-					],
-				],
-				'text-decoration' => [
-					'type'         => 'react-select',
-					'label'        => esc_html__( 'Text Decoration', 'kirki' ),
-					'is_specified' => $text_decoration_field_specified,
-					'choices'      => [
-						'none'         => esc_html__( 'None', 'kirki' ),
-						'underline'    => esc_html__( 'Underline', 'kirki' ),
-						'line-through' => esc_html__( 'Line Through', 'kirki' ),
-						'overline'     => esc_html__( 'Overline', 'kirki' ),
-						'solid'        => esc_html__( 'Solid', 'kirki' ),
-						'wavy'         => esc_html__( 'Wavy', 'kirki' ),
-					],
-				],
-			];
-
-			$this->generate_controls_group( $group, $args );
-		}
-
-		$text_align_field_specified = isset( $defaults['text-align'] );
-		$color_field_specified      = isset( $defaults['color'] );
-
-		if ( $text_align_field_specified || $color_field_specified ) {
-			$group = [
-				'text-align' => [
+				'text-align'     => [
 					'type'         => 'react-select',
 					'label'        => esc_html__( 'Text Align', 'kirki' ),
 					'is_specified' => $text_align_field_specified,
@@ -309,13 +329,37 @@ class Typography extends Field {
 						'justify' => esc_html__( 'Justify', 'kirki' ),
 					],
 				],
-				'color'      => [
-					'type'         => 'react-colorful',
-					'label'        => esc_html__( 'Text Color', 'kirki' ),
-					'is_specified' => $color_field_specified,
+				'text-transform' => [
+					'type'         => 'react-select',
+					'label'        => esc_html__( 'Text Transform', 'kirki' ),
+					'is_specified' => $text_transform_field_specified,
 					'choices'      => [
-						'alpha'       => true,
-						'label_style' => 'top',
+						'none'       => esc_html__( 'None', 'kirki' ),
+						'capitalize' => esc_html__( 'Capitalize', 'kirki' ),
+						'uppercase'  => esc_html__( 'Uppercase', 'kirki' ),
+						'lowercase'  => esc_html__( 'Lowercase', 'kirki' ),
+					],
+				],
+			];
+
+			$this->generate_controls_group( $group, $args );
+		}
+
+		$text_decoration_field_specified = isset( $defaults['text-decoration'] );
+
+		if ( $text_decoration_field_specified ) {
+			$group = [
+				'text-decoration' => [
+					'type'         => 'react-select',
+					'label'        => esc_html__( 'Text Decoration', 'kirki' ),
+					'is_specified' => $text_decoration_field_specified,
+					'choices'      => [
+						'none'         => esc_html__( 'None', 'kirki' ),
+						'underline'    => esc_html__( 'Underline', 'kirki' ),
+						'line-through' => esc_html__( 'Line Through', 'kirki' ),
+						'overline'     => esc_html__( 'Overline', 'kirki' ),
+						'solid'        => esc_html__( 'Solid', 'kirki' ),
+						'wavy'         => esc_html__( 'Wavy', 'kirki' ),
 					],
 				],
 			];
@@ -474,19 +518,6 @@ class Typography extends Field {
 					$value['font-family'] = sanitize_text_field( $val );
 					break;
 
-				case 'font-weight':
-					if ( isset( $value['variant'] ) ) {
-						break;
-					}
-
-					$value['variant'] = (string) $val;
-
-					if ( isset( $value['font-style'] ) && 'italic' === $value['font-style'] ) {
-						$value['variant'] = ( '400' !== $val || 400 !== $val ) ? $value['variant'] . 'italic' : 'italic';
-					}
-
-					break;
-
 				case 'variant':
 					// Use 'regular' instead of 400 for font-variant.
 					$value['variant'] = ( 400 === $val || '400' === $val ) ? 'regular' : $val;
@@ -499,24 +530,28 @@ class Typography extends Field {
 					if ( ! isset( $value['font-style'] ) ) {
 						$value['font-style'] = ( false === strpos( $value['variant'], 'italic' ) ) ? 'normal' : 'italic';
 					}
+
 					break;
 
 				case 'text-align':
 					if ( ! in_array( $val, [ '', 'inherit', 'left', 'center', 'right', 'justify' ], true ) ) {
 						$value['text-align'] = '';
 					}
+
 					break;
 
 				case 'text-transform':
 					if ( ! in_array( $val, [ '', 'none', 'capitalize', 'uppercase', 'lowercase', 'initial', 'inherit' ], true ) ) {
 						$value['text-transform'] = '';
 					}
+
 					break;
 
 				case 'text-decoration':
 					if ( ! in_array( $val, [ '', 'none', 'underline', 'overline', 'line-through', 'solid', 'wavy', 'initial', 'inherit' ], true ) ) {
 						$value['text-transform'] = '';
 					}
+
 					break;
 
 				case 'color':
@@ -547,20 +582,35 @@ class Typography extends Field {
 
 		wp_localize_script( 'kirki-control-typography', 'kirkiTypographyControls', self::$typography_controls );
 
+		$args      = $this->args;
+		$std_fonts = [];
+		$variants  = [
+			'standard' => self::$std_variants,
+			'complete' => self::$complete_variants,
+		];
+
+		if ( ! isset( $args['choices']['fonts'] ) || ! isset( $args['choices']['fonts']['standard'] ) ) {
+			$standard_fonts = Fonts::get_standard_fonts();
+
+			foreach ( $standard_fonts as $font ) {
+				if ( isset( $font['variants'] ) ) {
+					$variants[ $font['stack'] ] = $font['variants'];
+				}
+			}
+		} elseif ( is_array( $args['choices']['fonts']['standard'] ) ) {
+			foreach ( $args['choices']['fonts']['standard'] as $key => $val ) {
+				$key = ( \is_int( $key ) ) ? $val : $key;
+
+				if ( isset( $val['variants'] ) ) {
+					$variants[ $key ] = $val['variants'];
+				}
+			}
+		}
+
 		wp_localize_script(
 			'kirki-control-typography',
-			'kirkiFontWeights',
-			[
-				'100' => esc_html__( '100 - Thin', 'kirki' ),
-				'200' => esc_html__( '200 - Extra Light, Ultra Light', 'kirki' ),
-				'300' => esc_html__( '300 - Light', 'kirki' ),
-				'400' => esc_html__( '400 - Normal, Book, Regular', 'kirki' ),
-				'500' => esc_html__( '500 - Medium', 'kirki' ),
-				'600' => esc_html__( '600 - Semi Bold, Demi Bold', 'kirki' ),
-				'700' => esc_html__( '700 - Bold', 'kirki' ),
-				'800' => esc_html__( '800 - Extra Bold, Ultra Bold', 'kirki' ),
-				'900' => esc_html__( '900 - Black, Heavy', 'kirki' ),
-			]
+			'kirkiFontVariants',
+			$variants
 		);
 
 		if ( ! self::$gfonts_var_added ) {
@@ -597,7 +647,7 @@ class Typography extends Field {
 	 */
 	public function filter_preferred_choice_setting( $setting, $choice, $args ) {
 
-		// Fail early
+		// Fail early.
 		if ( ! isset( $args[ $setting ] ) ) {
 			return '';
 		}
@@ -607,7 +657,7 @@ class Typography extends Field {
 			return $args[ $setting ][ $choice ];
 		}
 
-		// Unset input_attrs of all other choices
+		// Unset input_attrs of all other choices.
 		foreach ( $args['choices'] as $id => $set ) {
 			if ( $id !== $choice && isset( $args[ $setting ][ $id ] ) ) {
 				unset( $args[ $setting ][ $id ] );
@@ -617,6 +667,128 @@ class Typography extends Field {
 		}
 
 		return $args[ $setting ];
+
+	}
+
+	/**
+	 * Populate the font family choices.
+	 *
+	 * It's separated from the `add_sub_field` function to prevent a bug
+	 * when hooking a function into `kirki_fonts_standard_fonts` hook after registering the field.
+	 *
+	 * When a function is hooked to `kirki_fonts_standard_fonts` before registering the field, it will work.
+	 * But if it's hooked after field registration, then the function won't be available.
+	 *
+	 * @access private
+	 * @since 1.0.1
+	 *
+	 * @return array
+	 */
+	private function get_font_family_choices() {
+
+		$args = $this->args;
+
+		// Figure out how to sort the fonts.
+		$sorting   = 'alpha';
+		$max_fonts = 9999;
+
+		if ( isset( $args['choices'] ) && isset( $args['choices']['fonts'] ) && isset( $args['choices']['fonts']['google'] ) ) {
+			if ( isset( $args['choices']['fonts']['google'][0] ) && in_array( $args['choices']['fonts']['google'][0], [ 'alpha', 'popularity', 'trending' ], true ) ) {
+				$sorting = $args['choices']['fonts']['google'][0];
+			}
+			if ( isset( $args['choices']['fonts']['google'][1] ) && is_int( $args['choices']['fonts']['google'][1] ) ) {
+				$max_fonts = (int) $args['choices']['fonts']['google'][1];
+			}
+		}
+
+		$google  = new GoogleFonts();
+		$g_fonts = $google->get_google_fonts_by_args(
+			[
+				'sort'  => $sorting,
+				'count' => $max_fonts,
+			]
+		);
+
+		$std_fonts = [];
+
+		if ( ! isset( $args['choices']['fonts'] ) || ! isset( $args['choices']['fonts']['standard'] ) ) {
+			$standard_fonts = Fonts::get_standard_fonts();
+
+			foreach ( $standard_fonts as $font ) {
+				$std_fonts[ $font['stack'] ] = $font['label'];
+			}
+		} elseif ( is_array( $args['choices']['fonts']['standard'] ) ) {
+			foreach ( $args['choices']['fonts']['standard'] as $key => $val ) {
+				$key               = ( \is_int( $key ) ) ? $val : $key;
+				$std_fonts[ $key ] = $val;
+			}
+		}
+
+		$choices = [];
+
+		$choices['default'] = [
+			esc_html__( 'CSS Defaults', 'kirki' ),
+			[
+				'' => esc_html__( 'Default Browser Font-Family', 'kirki' ),
+			],
+		];
+
+		if ( isset( $args['choices'] ) && isset( $args['choices']['fonts'] ) && isset( $args['choices']['fonts']['families'] ) ) {
+			foreach ( $args['choices']['fonts']['families'] as $font_family_key => $font_family_value ) {
+				if ( ! isset( $choices[ $font_family_key ] ) ) {
+					$choices[ $font_family_key ] = [];
+				}
+
+				$family_opts = [];
+
+				foreach ( $font_family_value['children'] as $font_family ) {
+					$family_opts[ $font_family['id'] ] = $font_family['text'];
+				}
+
+				$choices[ $font_family_key ] = [
+					$font_family_value['text'],
+					$family_opts,
+				];
+			}
+		}
+
+		$choices['standard'] = [
+			esc_html__( 'Standard Fonts', 'kirki' ),
+			$std_fonts,
+		];
+
+		$choices['google'] = [
+			esc_html__( 'Google Fonts', 'kirki' ),
+			array_combine( array_values( $g_fonts ), array_values( $g_fonts ) ),
+		];
+
+		if ( empty( $choices['standard'][1] ) ) {
+			$choices = array_combine( array_values( $g_fonts ), array_values( $g_fonts ) );
+		} elseif ( empty( $choices['google'][1] ) ) {
+			$choices = $std_fonts;
+		}
+
+		return $choices;
+
+	}
+
+	/**
+	 * Filter arguments before creating the control.
+	 *
+	 * @access public
+	 * @since 0.1
+	 * @param array                $args         The field arguments.
+	 * @param WP_Customize_Manager $wp_customize The customizer instance.
+	 * @return array
+	 */
+	public function filter_control_args( $args, $wp_customize ) {
+
+		if ( $args['settings'] === $this->args['settings'] . '[font-family]' ) {
+			$args            = parent::filter_control_args( $args, $wp_customize );
+			$args['choices'] = $this->get_font_family_choices();
+		}
+
+		return $args;
 
 	}
 
