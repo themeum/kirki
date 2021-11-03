@@ -88,6 +88,24 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 ## Changelog ##
 
+### 4.0-beta.2 - November 04, 2021 ###
+Bugfixes:
+* The CSS output of `control-react-colorful` was empty when the value is a string
+* On `control-radio`, the control id wasn't outputted causing broken behavior
+* The sanitize callback of field-dimensions wasn't implemented
+* Output on Gutenberg editing screen was affecting the whole page instead of only the editing content
+* The margin-top & margin-bottom of `field-typography` wasn't rendered in frontend styles
+* The `kirki/fonts/standard_fonts` wasn't implemented when it's hooked AFTER adding the fields (in user's usage)
+* The default browser font-family (from v3) was missing
+* The custom font families grouping was missing
+* Custom variants set on standard fonts wasn't implemented
+
+Improvement:
+* The `control-react-select` choices now accept an array of objects (used by a variant in field-typography)
+
+Refactor:
+* Bring back the v3 style/model of font's variant in `field-typography`
+
 ### 4.0-beta.1 - October 15, 2021 ###
 * Now controls are developed (and available) as composer packages
 * Some controls are using React for their JS part
