@@ -1119,17 +1119,17 @@
         },
         {
             "name": "kirki-framework/control-react-select",
-            "version": "v1.1.0",
-            "version_normalized": "1.1.0.0",
+            "version": "v1.1.1",
+            "version_normalized": "1.1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-select.git",
-                "reference": "394295809fbdc8482e3f2b5c1ec452c0ce0dfc87"
+                "reference": "9b508565398cbecd463251568cc758bcd118df0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/394295809fbdc8482e3f2b5c1ec452c0ce0dfc87",
-                "reference": "394295809fbdc8482e3f2b5c1ec452c0ce0dfc87",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/9b508565398cbecd463251568cc758bcd118df0f",
+                "reference": "9b508565398cbecd463251568cc758bcd118df0f",
                 "shasum": ""
             },
             "require": {
@@ -1137,7 +1137,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-10-27T12:02:21+00:00",
+            "time": "2021-11-03T17:13:22+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1167,7 +1167,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-react-select/issues",
-                "source": "https://github.com/kirki-framework/control-react-select/tree/v1.1.0"
+                "source": "https://github.com/kirki-framework/control-react-select/tree/v1.1.1"
             },
             "install-path": "../kirki-framework/control-react-select"
         },

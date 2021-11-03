@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '3a5d5093b1a99d1c7b813608479fe8fc9348b6a3',
+        'reference' => '3533b7189d390a1b2696a44605387a92bff05822',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
     'versions' => array(
         'aristath/kirki' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '3a5d5093b1a99d1c7b813608479fe8fc9348b6a3',
+            'reference' => '3533b7189d390a1b2696a44605387a92bff05822',
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
@@ -191,12 +191,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
-            'pretty_version' => 'v1.1.0',
-            'version' => '1.1.0.0',
+            'pretty_version' => 'v1.1.1',
+            'version' => '1.1.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-select',
             'aliases' => array(),
-            'reference' => '394295809fbdc8482e3f2b5c1ec452c0ce0dfc87',
+            'reference' => '9b508565398cbecd463251568cc758bcd118df0f',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-repeater' => array(

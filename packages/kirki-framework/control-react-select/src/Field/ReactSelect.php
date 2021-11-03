@@ -85,9 +85,11 @@ class ReactSelect extends Field {
 			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
 				$args['sanitize_callback'] = 2 > $args['multiple'] ? 'sanitize_text_field' : function( $value ) {
 					$value = (array) $value;
+
 					foreach ( $value as $key => $subvalue ) {
 						$value[ $key ] = sanitize_text_field( $subvalue );
 					}
+
 					return $value;
 				};
 			}
