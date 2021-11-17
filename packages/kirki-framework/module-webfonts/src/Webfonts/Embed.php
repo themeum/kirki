@@ -144,72 +144,14 @@ final class Embed {
 	 */
 	public function the_css() {
 		foreach ( $this->fonts_to_load as $font ) {
+
 			$family  = str_replace( ' ', '+', trim( $font['family'] ) );
 			$weights = join( ',', $font['weights'] );
-			$url     = "https://fonts.googleapis.com/css?family={$family}:{$weights}&subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai";
+			$url     = "https://fonts.googleapis.com/css?family={$family}:{$weights}&subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai&display=swap";
 
-			$transient_id = 'kirki_gfonts_' . md5( $url );
-			$contents     = get_transient( $transient_id );
+			$downloader = new Downloader();
+			$contents   = $downloader->get_styles( $url );
 
-			/**
-			 * Reset the cache if we're using action=kirki-reset-cache in the URL.
-			 *
-			 * Note to code reviewers:
-			 * There's no need to check nonces or anything else, this is a simple true/false evaluation.
-			 */
-			if ( ! empty( $_GET['action'] ) && 'kirki-reset-cache' === $_GET['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification
-				$contents = false;
-			}
-			if ( ! $contents ) {
-
-				// Get the contents of the remote URL.
-				$contents = Helper::get_remote_url_contents(
-					$url,
-					[
-						'headers' => [
-							/**
-							 * Set user-agent to firefox so that we get woff files.
-							 * If we want woff2, use this instead: 'Mozilla/5.0 (X11; Linux i686; rv:64.0) Gecko/20100101 Firefox/64.0'
-							 */
-							'user-agent' => 'Mozilla/5.0 (X11; Linux i686; rv:21.0) Gecko/20100101 Firefox/21.0',
-						],
-					]
-				);
-
-				/**
-				 * Allow filtering the font-display property.
-				 */
-				$font_display = apply_filters( 'kirki_googlefonts_font_display', 'swap' );
-
-				if ( $contents ) {
-
-					// Add font-display:swap to improve rendering speed.
-					$contents = str_replace( '@font-face {', '@font-face{', $contents );
-					$contents = str_replace( '@font-face{', '@font-face{font-display:' . $font_display . ';', $contents );
-
-					// Remove blank lines and extra spaces.
-					$contents = str_replace(
-						[ ': ', ';  ', '; ', '  ' ],
-						[ ':', ';', ';', ' ' ],
-						preg_replace( "/\r|\n/", '', $contents )
-					);
-
-					// Use local fonts.
-					if ( apply_filters( 'kirki_use_local_fonts', true ) ) {
-						$contents = $this->use_local_files( $contents );
-					}
-
-					// Remove protocol to fix http/https issues.
-					$contents = str_replace(
-						[ 'http://', 'https://' ],
-						[ '//', '//' ],
-						$contents
-					);
-
-					// Set the transient for a day.
-					set_transient( $transient_id, $contents, DAY_IN_SECONDS );
-				}
-			}
 			if ( $contents ) {
 				/**
 				 * Note to code reviewers:

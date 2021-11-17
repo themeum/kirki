@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-develop',
-        'version' => 'dev-develop',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '3533b7189d390a1b2696a44605387a92bff05822',
+        'reference' => 'f9cbeb3d2c1d741968f9c63ad8b6028785305087',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
     'versions' => array(
         'aristath/kirki' => array(
-            'pretty_version' => 'dev-develop',
-            'version' => 'dev-develop',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '3533b7189d390a1b2696a44605387a92bff05822',
+            'reference' => 'f9cbeb3d2c1d741968f9c63ad8b6028785305087',
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
@@ -407,12 +407,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-webfonts' => array(
-            'pretty_version' => 'v1.0.2',
-            'version' => '1.0.2.0',
+            'pretty_version' => 'v1.0.3',
+            'version' => '1.0.3.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-webfonts',
             'aliases' => array(),
-            'reference' => '5fc5a286105c37f9f78c6462b71369d0d2e8f590',
+            'reference' => '9f2529affaf9f20a7a2f913ecff00fd1f0282651',
             'dev_requirement' => false,
         ),
         'kirki-framework/url-getter' => array(

@@ -96,6 +96,7 @@ final class Fonts {
 				'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
 			],
 		];
+
 		return apply_filters( 'kirki_fonts_standard_fonts', $standard_fonts );
 	}
 
@@ -208,8 +209,11 @@ final class Fonts {
 	 * @return array
 	 */
 	public static function get_font_choices() {
+
 		$fonts = self::get_all_fonts();
-		$key   = array_keys( $fonts );
+		$keys  = array_keys( $fonts );
+
+
 		return array_combine( $keys, $keys );
 	}
 }
