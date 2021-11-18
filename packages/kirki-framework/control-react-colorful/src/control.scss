@@ -236,7 +236,8 @@
     outline: none;
   }
 
-  .kirki-color-swatch:hover {
+  .kirki-color-swatch:hover,
+  .kirki-color-swatch:focus {
     transform: scale(1.1, 1.1);
   }
 
