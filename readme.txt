@@ -88,6 +88,12 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 4.0-beta.3 - November 18, 2021 =
+Small bugfixes/changes:
+* Update `googlefonts` package
+* Update `control-react-colorful` package
+* Fix notices & warnings in `module-webfonts` package when `get_font_choices` method is called.
+
 = 4.0-beta.2 - November 04, 2021 =
 Bugfixes:
 * The CSS output of `control-react-colorful` was empty when the value is a string
