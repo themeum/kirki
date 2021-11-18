@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '175b996ad44e078f1d432d3ba552da81157caeb3',
+        'reference' => 'f9fb588784d95b1b212f50b514474616243affc7',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '175b996ad44e078f1d432d3ba552da81157caeb3',
+            'reference' => 'f9fb588784d95b1b212f50b514474616243affc7',
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
@@ -308,12 +308,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/googlefonts' => array(
-            'pretty_version' => 'v19.09.22',
-            'version' => '19.09.22.0',
+            'pretty_version' => 'v1.0.1',
+            'version' => '1.0.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/googlefonts',
             'aliases' => array(),
-            'reference' => 'd943e605c1dfb985dbe2cd1bd94e005a6e5fe65b',
+            'reference' => 'ffbc6de3a3cff69277b5960136c8d9b576203846',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(

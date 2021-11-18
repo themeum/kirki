@@ -1512,16 +1512,16 @@
         },
         {
             "name": "kirki-framework/googlefonts",
-            "version": "v19.09.22",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/googlefonts.git",
-                "reference": "d943e605c1dfb985dbe2cd1bd94e005a6e5fe65b"
+                "reference": "ffbc6de3a3cff69277b5960136c8d9b576203846"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/d943e605c1dfb985dbe2cd1bd94e005a6e5fe65b",
-                "reference": "d943e605c1dfb985dbe2cd1bd94e005a6e5fe65b",
+                "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/ffbc6de3a3cff69277b5960136c8d9b576203846",
+                "reference": "ffbc6de3a3cff69277b5960136c8d9b576203846",
                 "shasum": ""
             },
             "require": {
@@ -1556,9 +1556,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/googlefonts/issues",
-                "source": "https://github.com/kirki-framework/googlefonts/tree/master"
+                "source": "https://github.com/kirki-framework/googlefonts/tree/v1.0.1"
             },
-            "time": "2019-09-22T13:04:19+00:00"
+            "time": "2021-11-18T12:53:20+00:00"
         },
         {
             "name": "kirki-framework/l10n",
