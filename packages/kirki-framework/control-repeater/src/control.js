@@ -780,7 +780,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend( {
 		};
 
 		// Init the color picker
-		if ( 0 !== colorPicker.length ) {
+		if ( colorPicker.length && 0 !== colorPicker.length ) {
 			colorPicker.wpColorPicker( options );
 		}
 	},

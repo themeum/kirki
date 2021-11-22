@@ -1173,17 +1173,17 @@
         },
         {
             "name": "kirki-framework/control-repeater",
-            "version": "v1.0.0",
-            "version_normalized": "1.0.0.0",
+            "version": "v1.0.1",
+            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-repeater.git",
-                "reference": "a07a53461ae5632d3a66f6758beea3b579f97b15"
+                "reference": "d2a76a952e4383d5cdf63e5a57de39d090f35d14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/a07a53461ae5632d3a66f6758beea3b579f97b15",
-                "reference": "a07a53461ae5632d3a66f6758beea3b579f97b15",
+                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/d2a76a952e4383d5cdf63e5a57de39d090f35d14",
+                "reference": "d2a76a952e4383d5cdf63e5a57de39d090f35d14",
                 "shasum": ""
             },
             "require": {
@@ -1196,7 +1196,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-16T19:08:10+00:00",
+            "time": "2021-11-22T16:38:47+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1227,7 +1227,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-repeater/issues",
-                "source": "https://github.com/kirki-framework/control-repeater/tree/v1.0.0"
+                "source": "https://github.com/kirki-framework/control-repeater/tree/v1.0.1"
             },
             "install-path": "../kirki-framework/control-repeater"
         },

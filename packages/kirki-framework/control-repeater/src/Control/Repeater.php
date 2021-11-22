@@ -213,9 +213,10 @@ class Repeater extends Base {
 		parent::enqueue();
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-repeater', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-repeater', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'wp-color-picker' ], self::$control_ver, false );
 
 		// Enqueue the style.
+		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_style( 'kirki-control-repeater-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 
 	}
