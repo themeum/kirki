@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'df7a1544a67054589710098328ff2391075e723b',
+        'reference' => 'c0ea3e9e20769dad683d95f108a2288a651df336',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'df7a1544a67054589710098328ff2391075e723b',
+            'reference' => 'c0ea3e9e20769dad683d95f108a2288a651df336',
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
@@ -299,12 +299,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/field-typography' => array(
-            'pretty_version' => 'v1.0.1',
-            'version' => '1.0.1.0',
+            'pretty_version' => 'v1.0.2',
+            'version' => '1.0.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-typography',
             'aliases' => array(),
-            'reference' => 'ea5913b85574f291e8c244c85f6d42011779747b',
+            'reference' => '811d6402111d97f48537107b1673bd7e55e783ab',
             'dev_requirement' => false,
         ),
         'kirki-framework/googlefonts' => array(

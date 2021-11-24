@@ -1755,17 +1755,17 @@
         },
         {
             "name": "kirki-framework/field-typography",
-            "version": "v1.0.1",
-            "version_normalized": "1.0.1.0",
+            "version": "v1.0.2",
+            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "ea5913b85574f291e8c244c85f6d42011779747b"
+                "reference": "811d6402111d97f48537107b1673bd7e55e783ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/ea5913b85574f291e8c244c85f6d42011779747b",
-                "reference": "ea5913b85574f291e8c244c85f6d42011779747b",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/811d6402111d97f48537107b1673bd7e55e783ab",
+                "reference": "811d6402111d97f48537107b1673bd7e55e783ab",
                 "shasum": ""
             },
             "require": {
@@ -1779,7 +1779,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-11-02T16:21:20+00:00",
+            "time": "2021-11-08T11:07:45+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1809,7 +1809,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/field-typography/issues",
-                "source": "https://github.com/kirki-framework/field-typography/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/field-typography/tree/v1.0.2"
             },
             "install-path": "../kirki-framework/field-typography"
         },

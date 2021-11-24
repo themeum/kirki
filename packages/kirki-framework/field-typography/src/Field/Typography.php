@@ -376,17 +376,11 @@ class Typography extends Field {
 					'type'         => 'dimension',
 					'label'        => esc_html__( 'Line Height', 'kirki' ),
 					'is_specified' => $line_height_field_specified,
-					'choices'      => [
-						'label_position' => 'bottom',
-					],
 				],
 				'letter-spacing' => [
 					'type'         => 'dimension',
 					'label'        => esc_html__( 'Letter Spacing', 'kirki' ),
 					'is_specified' => $letter_spacing_field_specified,
-					'choices'      => [
-						'label_position' => 'bottom',
-					],
 				],
 			];
 
@@ -402,17 +396,11 @@ class Typography extends Field {
 					'type'         => 'dimension',
 					'label'        => esc_html__( 'Margin Top', 'kirki' ),
 					'is_specified' => $margin_top_field_specified,
-					'choices'      => [
-						'label_position' => 'bottom',
-					],
 				],
 				'margin-bottom' => [
 					'type'         => 'dimension',
 					'label'        => esc_html__( 'Margin Bottom', 'kirki' ),
 					'is_specified' => $margin_bottom_field_specified,
-					'choices'      => [
-						'label_position' => 'bottom',
-					],
 				],
 			];
 
@@ -727,9 +715,9 @@ class Typography extends Field {
 		$choices = [];
 
 		$choices['default'] = [
-			esc_html__( 'CSS Defaults', 'kirki' ),
+			esc_html__( 'Defaults', 'kirki' ),
 			[
-				'' => esc_html__( 'Default Browser Font-Family', 'kirki' ),
+				'' => esc_html__( 'Default', 'kirki' ),
 			],
 		];
 
