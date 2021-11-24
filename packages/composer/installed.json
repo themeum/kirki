@@ -742,17 +742,17 @@
         },
         {
             "name": "kirki-framework/control-dimension",
-            "version": "v1.0.0",
-            "version_normalized": "1.0.0.0",
+            "version": "v1.0.1",
+            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-dimension.git",
-                "reference": "3e53137ccce54fb86d40eabdd07923eea2fd693f"
+                "reference": "49a84573fa07b41a293f129317bbdb6421235990"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-dimension/zipball/3e53137ccce54fb86d40eabdd07923eea2fd693f",
-                "reference": "3e53137ccce54fb86d40eabdd07923eea2fd693f",
+                "url": "https://api.github.com/repos/kirki-framework/control-dimension/zipball/49a84573fa07b41a293f129317bbdb6421235990",
+                "reference": "49a84573fa07b41a293f129317bbdb6421235990",
                 "shasum": ""
             },
             "require": {
@@ -760,7 +760,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-09-24T07:16:46+00:00",
+            "time": "2021-11-24T14:18:14+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -790,7 +790,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-dimension/issues",
-                "source": "https://github.com/kirki-framework/control-dimension/tree/v1.0.0"
+                "source": "https://github.com/kirki-framework/control-dimension/tree/v1.0.1"
             },
             "install-path": "../kirki-framework/control-dimension"
         },
