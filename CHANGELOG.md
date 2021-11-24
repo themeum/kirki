@@ -1,5 +1,6 @@
 ### 4.0 - November 24, 2021 ###
-* Fix color picker on repeater and 🎉
+* Turn dimension fields on field-typography to look similar with other controls
+* Fix color picker on repeater control
 
 ### 4.0-beta.3 - November 18, 2021 ###
 Small bugfixes/changes:
