@@ -1,3 +1,6 @@
+### 4.0 - November 24, 2021 ###
+* Fix color picker on repeater and 🎉
+
 ### 4.0-beta.3 - November 18, 2021 ###
 Small bugfixes/changes:
 * Update `googlefonts` package

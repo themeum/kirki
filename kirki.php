@@ -5,7 +5,7 @@
  * Description:   The Ultimate WordPress Customizer Framework
  * Author:        David Vongries
  * Author URI:    https://wp-pagebuilderframework.com/
- * Version:       4.0-beta.3
+ * Version:       4.0
  * Text Domain:   kirki
  * Requires WP:   4.9
  * Requires PHP:  7.0
@@ -46,7 +46,7 @@ require_once __DIR__ . '/inc/bootstrap.php'; // phpcs:ignore WPThemeReview.CoreF
 
 // Define the KIRKI_VERSION constant.
 if ( ! defined( 'KIRKI_VERSION' ) ) {
-	define( 'KIRKI_VERSION', '4.0-beta.3' );
+	define( 'KIRKI_VERSION', '4.0' );
 }
 
 if ( ! function_exists( 'Kirki' ) ) {

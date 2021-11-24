@@ -88,6 +88,9 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 == Changelog ==
 
+= 4.0 - November 24, 2021 =
+Fix color picker on repeater and 🎉
+
 = 4.0-beta.3 - November 18, 2021 =
 Small bugfixes/changes:
 * Update `googlefonts` package
