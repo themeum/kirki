@@ -48,7 +48,6 @@ rm -rf packages/kirki-framework/**/.github
 rm -rf packages/kirki-framework/**/.gitignore
 rm -rf packages/kirki-framework/**/src/*.scss
 rm -rf packages/kirki-framework/**/src/scss/*.scss
-rm -rf packages/kirki-framework/**/dist/*.map
 rm -rf packages/kirki-framework/**/.prettierrc.js
 rm -rf packages/kirki-framework/**/.prettierignore
 rm -rf packages/kirki-framework/**/.babelrc
