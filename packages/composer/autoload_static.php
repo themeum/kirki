@@ -114,11 +114,11 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
         'Kirki\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/field/src',
-            1 => __DIR__ . '/..' . '/kirki-framework/googlefonts/src',
-            2 => __DIR__ . '/..' . '/kirki-framework/l10n/src',
-            3 => __DIR__ . '/..' . '/kirki-framework/module-panels/src',
-            4 => __DIR__ . '/..' . '/kirki-framework/module-sections/src',
-            5 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
+            1 => __DIR__ . '/..' . '/kirki-framework/l10n/src',
+            2 => __DIR__ . '/..' . '/kirki-framework/module-panels/src',
+            3 => __DIR__ . '/..' . '/kirki-framework/module-sections/src',
+            4 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
+            5 => __DIR__ . '/..' . '/kirki-framework/googlefonts/src',
         ),
         'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
         array (

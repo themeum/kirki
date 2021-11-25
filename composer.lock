@@ -1455,16 +1455,16 @@
         },
         {
             "name": "kirki-framework/field-typography",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "811d6402111d97f48537107b1673bd7e55e783ab"
+                "reference": "49d6e04b3040042fce0751335f7d4ababc15af53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/811d6402111d97f48537107b1673bd7e55e783ab",
-                "reference": "811d6402111d97f48537107b1673bd7e55e783ab",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/49d6e04b3040042fce0751335f7d4ababc15af53",
+                "reference": "49d6e04b3040042fce0751335f7d4ababc15af53",
                 "shasum": ""
             },
             "require": {
@@ -1506,22 +1506,22 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/field-typography/issues",
-                "source": "https://github.com/kirki-framework/field-typography/tree/v1.0.2"
+                "source": "https://github.com/kirki-framework/field-typography/tree/v1.0.3"
             },
-            "time": "2021-11-08T11:07:45+00:00"
+            "time": "2021-11-25T17:42:07+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/googlefonts.git",
-                "reference": "ffbc6de3a3cff69277b5960136c8d9b576203846"
+                "reference": "f4c742072125e8cd6efee221b4627771a6c7bdba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/ffbc6de3a3cff69277b5960136c8d9b576203846",
-                "reference": "ffbc6de3a3cff69277b5960136c8d9b576203846",
+                "url": "https://api.github.com/repos/kirki-framework/googlefonts/zipball/f4c742072125e8cd6efee221b4627771a6c7bdba",
+                "reference": "f4c742072125e8cd6efee221b4627771a6c7bdba",
                 "shasum": ""
             },
             "require": {
@@ -1556,9 +1556,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/googlefonts/issues",
-                "source": "https://github.com/kirki-framework/googlefonts/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/googlefonts/tree/v1.0.2"
             },
-            "time": "2021-11-18T12:53:20+00:00"
+            "time": "2021-11-25T15:46:47+00:00"
         },
         {
             "name": "kirki-framework/l10n",

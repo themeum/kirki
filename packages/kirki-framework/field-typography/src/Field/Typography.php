@@ -10,6 +10,7 @@
 
 namespace Kirki\Field;
 
+use Kirki\Util\Helper;
 use Kirki\Field;
 use Kirki\GoogleFonts;
 use Kirki\Module\Webfonts\Fonts;
@@ -31,14 +32,24 @@ class Typography extends Field {
 	public $type = 'kirki-typography';
 
 	/**
-	 * Has the glogal gfonts var been added already?
+	 * Has the glogal fonts var been added already?
 	 *
 	 * @static
 	 * @access private
 	 * @since 1.0
 	 * @var bool
 	 */
-	private static $gfonts_var_added = false;
+	private static $fonts_var_added = false;
+
+	/**
+	 * Has the preview related var been added already?
+	 *
+	 * @static
+	 * @access private
+	 * @since 1.0
+	 * @var bool
+	 */
+	private static $preview_var_added = false;
 
 	/**
 	 * An array of typography controls.
@@ -72,6 +83,16 @@ class Typography extends Field {
 	 * @var array
 	 */
 	private static $complete_variants;
+
+	/**
+	 * An array of complete font variant labels.
+	 *
+	 * @access private
+	 * @since 1.0.2
+	 *
+	 * @var array
+	 */
+	private static $complete_variant_labels = [];
 
 	/**
 	 * Extra logic for the field.
@@ -179,6 +200,10 @@ class Typography extends Field {
 			],
 		];
 
+		foreach ( self::$complete_variants as $variants ) {
+			self::$complete_variant_labels[ $variants['value'] ] = $variants['label'];
+		}
+
 		$this->add_sub_fields( $args );
 
 		add_action( 'customize_controls_enqueue_scripts', [ $this, 'enqueue_control_scripts' ] );
@@ -278,7 +303,7 @@ class Typography extends Field {
 						'settings'    => $args['settings'] . '[variant]',
 						'default'     => $font_variant,
 						'input_attrs' => $this->filter_preferred_choice_setting( 'input_attrs', 'variant', $args ),
-						'choices'     => self::$std_variants,
+						'choices'     => [], // The choices will be populated later inside `get_variant_choices` function in this file.
 						'css_vars'    => [],
 						'output'      => [],
 					],
@@ -570,42 +595,140 @@ class Typography extends Field {
 
 		wp_localize_script( 'kirki-control-typography', 'kirkiTypographyControls', self::$typography_controls );
 
-		$args      = $this->args;
-		$std_fonts = [];
-		$variants  = [
-			'standard' => self::$std_variants,
-			'complete' => self::$complete_variants,
-		];
+		$args = $this->args;
+
+		$variants = [];
+
+		// Add custom variants (for custom fonts) to the $variants.
+		if ( isset( $args['choices'] ) && isset( $args['choices']['fonts'] ) && isset( $args['choices']['fonts']['families'] ) ) {
+
+			// If $args['choices']['fonts']['families'] exists, then loop it.
+			foreach ( $args['choices']['fonts']['families'] as $font_family_key => $font_family_value ) {
+
+				// Then loop the $font_family_value['children].
+				foreach ( $font_family_value['children'] as $font_family ) {
+
+					// Then check if $font_family['id'] exists in variants argument.
+					if ( isset( $args['choices']['fonts']['variants'] ) && isset( $args['choices']['fonts']['variants'][ $font_family['id'] ] ) ) {
+
+						// Create new array if $variants[ $font_family['id'] ] doesn't exist.
+						if ( ! isset( $variants[ $font_family['id'] ] ) ) {
+							$variants[ $font_family['id'] ] = [];
+						}
+
+						// The $custom_variant here can be something like "400italic" or "italic".
+						foreach ( $args['choices']['fonts']['variants'][ $font_family['id'] ] as $custom_variant ) {
+
+							// Check if $custom_variant exists in self::$complete_variant_labels.
+							if ( isset( self::$complete_variant_labels[ $custom_variant ] ) ) {
+
+								// If it exists, assign it to $variants[ $font_family['id'] ], so that they will be available in JS object.
+								array_push(
+									$variants[ $font_family['id'] ],
+									[
+										'value' => $custom_variant,
+										'label' => self::$complete_variant_labels[ $custom_variant ],
+									]
+								);
+
+							} // End of isset(self::$complete_variant_labels[$font_family['id']]) if.
+						} // End of $args['choices']['fonts']['variants'][ $font_family['id'] foreach.
+					}
+				} // End of $font_family_value['children'] foreach.
+			} // End of $args['choices']['fonts']['families'] foreach.
+		} // End of $args['choices']['fonts']['families'] if.
 
 		if ( ! isset( $args['choices']['fonts'] ) || ! isset( $args['choices']['fonts']['standard'] ) ) {
 			$standard_fonts = Fonts::get_standard_fonts();
 
 			foreach ( $standard_fonts as $font ) {
 				if ( isset( $font['variants'] ) ) {
-					$variants[ $font['stack'] ] = $font['variants'];
+
+					// Create new array if $variants[ $font['stack'] ] doesn't exist.
+					if ( ! isset( $variants[ $font['stack'] ] ) ) {
+						$variants[ $font['stack'] ] = [];
+					}
+
+					// The $std_variant here can be something like "400italic" or "italic".
+					foreach ( $font['variants'] as $std_variant ) {
+
+						// Check if $std_variant exists in self::$complete_variant_labels.
+						if ( isset( self::$complete_variant_labels[ $std_variant ] ) ) {
+
+							// If it exists, assign it to $variants[ $font['stack'] ], so that they will be available in JS object.
+							array_push(
+								$variants[ $font['stack'] ],
+								[
+									'value' => $std_variant,
+									'label' => self::$complete_variant_labels[ $std_variant ],
+								]
+							);
+
+						} // End of isset(self::$complete_variant_labels[$font_family['id']]) if.
+					} // End of $args['choices']['fonts']['variants'][ $font_family['id'] foreach.
 				}
 			}
 		} elseif ( is_array( $args['choices']['fonts']['standard'] ) ) {
 			foreach ( $args['choices']['fonts']['standard'] as $key => $val ) {
-				$key = ( \is_int( $key ) ) ? $val : $key;
+				$key = ( is_int( $key ) ) ? $val : $key;
 
 				if ( isset( $val['variants'] ) ) {
-					$variants[ $key ] = $val['variants'];
+
+					// Create new array if $variants[ $font['stack'] ] doesn't exist.
+					if ( ! isset( $variants[ $key ] ) ) {
+						$variants[ $key ] = [];
+					}
+
+					// The $std_variant here can be something like "400italic" or "italic".
+					foreach ( $val['variants'] as $std_variant ) {
+
+						// Check if $std_variant exists in self::$complete_variant_labels.
+						if ( isset( self::$complete_variant_labels[ $std_variant ] ) ) {
+
+							// If it exists, assign it to $variants[ $font['stack'] ], so that they will be available in JS object.
+							array_push(
+								$variants[ $key ],
+								[
+									'value' => $std_variant,
+									'label' => self::$complete_variant_labels[ $std_variant ],
+								]
+							);
+
+						} // End of isset(self::$complete_variant_labels[$font_family['id']]) if.
+					} // End of $args['choices']['fonts']['variants'][ $font_family['id'] foreach.
 				}
 			}
 		}
 
-		wp_localize_script(
+		// Scripts inside this block will only be executed once.
+		if ( ! self::$fonts_var_added ) {
+			wp_localize_script(
+				'kirki-control-typography',
+				'kirkiFontVariants',
+				[
+					'standard' => self::$std_variants,
+					'complete' => self::$complete_variants,
+				]
+			);
+
+			$google = new GoogleFonts();
+
+			wp_localize_script( 'kirki-control-typography', 'kirkiGoogleFonts', $google->get_array() );
+			wp_add_inline_script( 'kirki-control-typography', 'var kirkiCustomVariants = {};', 'before' );
+
+			self::$fonts_var_added = true;
+		}
+
+		// This custom variants will be available for each typography control.
+		$custom_variant_key   = str_ireplace( ']', '', $args['settings'] );
+		$custom_variant_key   = str_ireplace( '[', '_', $custom_variant_key );
+		$custom_variant_value = wp_json_encode( Helper::prepare_php_array_for_js( $variants ) );
+
+		wp_add_inline_script(
 			'kirki-control-typography',
-			'kirkiFontVariants',
+			'kirkiCustomVariants["' . $custom_variant_key . '"] = ' . $custom_variant_value . ';',
 			$variants
 		);
-
-		if ( ! self::$gfonts_var_added ) {
-			$google = new GoogleFonts();
-			wp_localize_script( 'kirki-control-typography', 'kirkiGoogleFonts', $google->get_array() );
-			self::$gfonts_var_added = true;
-		}
 
 	}
 
@@ -619,6 +742,18 @@ class Typography extends Field {
 	public function enqueue_preview_scripts() {
 
 		wp_enqueue_script( 'kirki-preview-typography', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/preview.js' ), [ 'wp-hooks' ], '1.0', true );
+
+		if ( ! self::$preview_var_added ) {
+			$google = new GoogleFonts();
+
+			wp_localize_script(
+				'kirki-preview-typography',
+				'kirkiGoogleFontNames',
+				$google->get_google_font_names()
+			);
+
+			self::$preview_var_added = true;
+		}
 
 	}
 
@@ -722,6 +857,7 @@ class Typography extends Field {
 		];
 
 		if ( isset( $args['choices'] ) && isset( $args['choices']['fonts'] ) && isset( $args['choices']['fonts']['families'] ) ) {
+			// Implementing the custom font families.
 			foreach ( $args['choices']['fonts']['families'] as $font_family_key => $font_family_value ) {
 				if ( ! isset( $choices[ $font_family_key ] ) ) {
 					$choices[ $font_family_key ] = [];
@@ -761,6 +897,66 @@ class Typography extends Field {
 	}
 
 	/**
+	 * Get custom variant choices (for custom fonts).
+	 *
+	 * It's separated from the `add_sub_field` function to prevent a bug
+	 * when hooking a function into `kirki_fonts_standard_fonts` hook after registering the field.
+	 *
+	 * When a function is hooked to `kirki_fonts_standard_fonts` before registering the field, it will work.
+	 * But if it's hooked after field registration, then the function won't be available.
+	 *
+	 * @access private
+	 * @since 1.0.2
+	 *
+	 * @return array
+	 */
+	private function get_variant_choices() {
+
+		$args = $this->args;
+
+		$choices = self::$std_variants;
+
+		// Implementing the custom variants for custom fonts.
+		if ( isset( $args['choices'] ) && isset( $args['choices']['fonts'] ) && isset( $args['choices']['fonts']['families'] ) ) {
+
+			$choices = [];
+
+			// If $args['choices']['fonts']['families'] exists, then loop it.
+			foreach ( $args['choices']['fonts']['families'] as $font_family_key => $font_family_value ) {
+
+				// Then loop the $font_family_value['children].
+				foreach ( $font_family_value['children'] as $font_family ) {
+
+					// Then check if $font_family['id'] exists in $args['choices']['fonts']['variants'].
+					if ( isset( $args['choices']['fonts']['variants'] ) && isset( $args['choices']['fonts']['variants'][ $font_family['id'] ] ) ) {
+
+						// The $custom_variant here can be something like "400italic" or "italic".
+						foreach ( $args['choices']['fonts']['variants'][ $font_family['id'] ] as $custom_variant ) {
+
+							// Check if $custom_variant exists in self::$complete_variant_labels.
+							if ( isset( self::$complete_variant_labels[ $custom_variant ] ) ) {
+
+								// If it exists, assign it to $choices.
+								array_push(
+									$choices,
+									[
+										'value' => $custom_variant,
+										'label' => self::$complete_variant_labels[ $custom_variant ],
+									]
+								);
+
+							} // End of isset(self::$complete_variant_labels[$font_family['id']]) if.
+						} // End of $args['choices']['fonts']['variants'][ $font_family['id'] foreach.
+					}
+				} // End of $font_family_value['children'] foreach.
+			} // End of $args['choices']['fonts']['families'] foreach.
+		} // End of $args['choices']['fonts']['families'] if.
+
+		return $choices;
+
+	}
+
+	/**
 	 * Filter arguments before creating the control.
 	 *
 	 * @access public
@@ -774,6 +970,11 @@ class Typography extends Field {
 		if ( $args['settings'] === $this->args['settings'] . '[font-family]' ) {
 			$args            = parent::filter_control_args( $args, $wp_customize );
 			$args['choices'] = $this->get_font_family_choices();
+		}
+
+		if ( $args['settings'] === $this->args['settings'] . '[variant]' ) {
+			$args            = parent::filter_control_args( $args, $wp_customize );
+			$args['choices'] = $this->get_variant_choices();
 		}
 
 		return $args;

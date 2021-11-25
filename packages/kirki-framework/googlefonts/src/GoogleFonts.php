@@ -28,6 +28,16 @@ final class GoogleFonts {
 	public static $google_fonts;
 
 	/**
+	 * An array of our google font names.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.0.2
+	 * @var array
+	 */
+	public static $google_font_names;
+
+	/**
 	 * The class constructor.
 	 *
 	 * @access public
@@ -61,6 +71,18 @@ final class GoogleFonts {
 	public function get_array() {
 		ob_start();
 		include 'webfonts.json'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+		return json_decode( ob_get_clean(), true );
+	}
+
+	/**
+	 * Returns the array of googlefont names from the JSON file.
+	 *
+	 * @since 1.0.2
+	 * @return array
+	 */
+	public function get_names_array() {
+		ob_start();
+		include 'webfont-names.json'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 		return json_decode( ob_get_clean(), true );
 	}
 
@@ -103,6 +125,36 @@ final class GoogleFonts {
 		set_site_transient( 'kirki_googlefonts_cache', self::$google_fonts, $cache_time );
 
 		return self::$google_fonts;
+	}
+
+	/**
+	 * Return an array of all available Google Font names.
+	 *
+	 * @access public
+	 * @since 1.0.2
+	 * @return array All Google Font names.
+	 */
+	public function get_google_font_names() {
+
+		// Get fonts from cache.
+		self::$google_font_names = get_site_transient( 'kirki_googlefont_names_cache' );
+
+		// If cache is populated, return cached fonts array.
+		if ( self::$google_font_names ) {
+			return self::$google_font_names;
+		}
+
+		// If we got this far, cache was empty so we need to get from JSON.
+		self::$google_font_names = $this->get_names_array();
+
+		// Apply the 'kirki_fonts_google_font_names' filter.
+		self::$google_font_names = apply_filters( 'kirki_fonts_google_font_names', self::$google_font_names );
+
+		// Save the array in cache.
+		$cache_time = apply_filters( 'kirki_googlefont_names_transient_time', HOUR_IN_SECONDS );
+		set_site_transient( 'kirki_googlefont_names_cache', self::$google_font_names, $cache_time );
+
+		return self::$google_font_names;
 	}
 
 	/**

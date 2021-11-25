@@ -27,7 +27,9 @@ jQuery(document).ready(function () {
             ? 400
             : parseInt(value.variant, 10);
 
-        value["font-style"] = value.variant.includes("italic") ? "italic" : "normal";
+        value["font-style"] = value.variant.includes("italic")
+          ? "italic"
+          : "normal";
       }
 
       if ("kirki-typography" === controlType) {
@@ -55,7 +57,11 @@ jQuery(document).ready(function () {
         styles += "}";
 
         // Check if this is a googlefont so that we may load it.
-        if (!_.isUndefined(window.WebFont) && value["font-family"]) {
+        if (
+          !_.isUndefined(window.WebFont) &&
+          value["font-family"] &&
+          kirkiGoogleFontNames.includes(value["font-family"])
+        ) {
           // Calculate the googlefont params.
           googleFont = value["font-family"].replace(/\"/g, "&quot;"); // eslint-disable-line no-useless-escape
 

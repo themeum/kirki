@@ -38,30 +38,14 @@ function kirkiTypographyCompositeControlFontProperties(id, value) {
       }
     });
   } else {
-		let stdFontVariants;
+		let customVariantKey = id.replace(/]/g, '');
+		customVariantKey = customVariantKey.replace(/\[/g, '_');
 
-		if (kirkiFontVariants[value["font-family"]]) {
-      stdFontVariants = kirkiFontVariants[value["font-family"]];
-
-			kirkiFontVariants.complete.forEach(function (variant) {
-				if (-1 !== stdFontVariants.indexOf(variant.value)) {
-          variants.push({
-            value: variant.value,
-            label: variant.label,
-          });
-        }
-      });
+		if (kirkiCustomVariants[customVariantKey][value["font-family"]]) {
+      variants = kirkiCustomVariants[customVariantKey][value["font-family"]];
     } else {
-      stdFontVariants = kirkiFontVariants.standard;
-
-			stdFontVariants.forEach(function (variant) {
-				variants.push({
-					value: variant.value,
-					label: variant.label,
-				});
-			});
+      variants = kirkiFontVariants.standard;
     }
-
   }
 
   // Set the font-style value.
