@@ -2148,16 +2148,16 @@
         },
         {
             "name": "kirki-framework/util",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/util.git",
-                "reference": "7ead5a4bf6875aa1afb96cbb4e747c59c163b2a3"
+                "reference": "b0ac108b58a401b8c176c04a86799d929df7cd5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/util/zipball/7ead5a4bf6875aa1afb96cbb4e747c59c163b2a3",
-                "reference": "7ead5a4bf6875aa1afb96cbb4e747c59c163b2a3",
+                "url": "https://api.github.com/repos/kirki-framework/util/zipball/b0ac108b58a401b8c176c04a86799d929df7cd5f",
+                "reference": "b0ac108b58a401b8c176c04a86799d929df7cd5f",
                 "shasum": ""
             },
             "require": {
@@ -2190,9 +2190,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/util/issues",
-                "source": "https://github.com/kirki-framework/util/tree/v1.0.0"
+                "source": "https://github.com/kirki-framework/util/tree/v1.0.1"
             },
-            "time": "2021-09-09T21:02:44+00:00"
+            "time": "2021-11-25T17:57:47+00:00"
         }
     ],
     "packages-dev": [
