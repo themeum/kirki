@@ -1014,16 +1014,16 @@
         },
         {
             "name": "kirki-framework/control-slider",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-slider.git",
-                "reference": "39ec5f5fc043d7d98401d1d7e7f70a33c0c2a30c"
+                "reference": "963ba880ba467cfb8bc89fa716c7c442846554f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/39ec5f5fc043d7d98401d1d7e7f70a33c0c2a30c",
-                "reference": "39ec5f5fc043d7d98401d1d7e7f70a33c0c2a30c",
+                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/963ba880ba467cfb8bc89fa716c7c442846554f1",
+                "reference": "963ba880ba467cfb8bc89fa716c7c442846554f1",
                 "shasum": ""
             },
             "require": {
@@ -1050,9 +1050,9 @@
             "description": "Range slider control for the Kirki Customizer Framework",
             "support": {
                 "issues": "https://github.com/kirki-framework/control-slider/issues",
-                "source": "https://github.com/kirki-framework/control-slider/tree/v1.0.0"
+                "source": "https://github.com/kirki-framework/control-slider/tree/v1.0.1"
             },
-            "time": "2021-10-12T16:33:13+00:00"
+            "time": "2021-11-29T09:32:51+00:00"
         },
         {
             "name": "kirki-framework/control-sortable",

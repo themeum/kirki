@@ -10,6 +10,9 @@ const KirkiSliderForm = (props) => {
       valueRef.current.textContent = val;
     } else if ("input" === trigger) {
       sliderRef.current.value = val;
+    } else if ("reset" === trigger) {
+      valueRef.current.textContent = val;
+      sliderRef.current.value = val;
     }
   };
 
@@ -18,16 +21,11 @@ const KirkiSliderForm = (props) => {
 
     let value = e.target.value;
 
-    if (value < choices.min) {
-      value = choices.min;
-      if ("input" === trigger) e.target.value = value;
-    }
+    if (value < choices.min) value = choices.min;
 
-    if (value > choices.max) {
-      value = choices.max;
-      if ("input" === trigger) e.target.value = value;
-    }
+    if (value > choices.max) value = choices.max;
 
+    if ("input" === trigger) e.target.value = value;
     customizerSetting.set(value);
   };
 
@@ -44,6 +42,9 @@ const KirkiSliderForm = (props) => {
         valueRef.current.textContent = "";
       }
     }
+
+		trigger = "reset";
+		customizerSetting.set(sliderRef.current.value);
   };
 
   // Preparing for the template.
