@@ -14,14 +14,15 @@
         }
     ],
     "require": {
-        "php": ">=5.6",
+        "php": ">=7.0",
         "kirki-framework/url-getter": "*",
         "kirki-framework/control-generic": "*",
         "kirki-framework/control-select": "*",
         "kirki-framework/control-checkbox": "*",
         "kirki-framework/control-radio": "*",
         "kirki-framework/control-color": "*",
-        "kirki-framework/control-image": "*"
+        "kirki-framework/control-image": "*",
+        "kirki-framework/control-upload": "*"
     },
     "autoload": {
 		"psr-4": {

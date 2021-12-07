@@ -11,6 +11,7 @@
 namespace Kirki\Field;
 
 use Kirki\Compatibility\Field;
+use Kirki\Field\Upload;
 
 /**
  * Field overrides.
@@ -124,7 +125,8 @@ class Repeater extends Field {
 					continue;
 				}
 
-				$subfield_type = $this->fields[ $subfield_id ]['type'];
+				$subfield      = $this->fields[ $subfield_id ];
+				$subfield_type = $subfield['type'];
 
 				// Allow using a sanitize-callback on a per-field basis.
 				if ( isset( $this->fields[ $subfield_id ]['sanitize_callback'] ) ) {
@@ -135,9 +137,9 @@ class Repeater extends Field {
 						case 'image':
 						case 'cropped_image':
 						case 'upload':
-							if ( ! is_numeric( $subfield_value ) && is_string( $subfield_value ) ) {
-								$subfield_value = esc_url_raw( $subfield_value );
-							}
+							$save_as        = isset( $subfield['choices'] ) && isset( $subfield['choices']['save_as'] ) ? $subfield['choices']['save_as'] : 'url';
+							$subfield_value = Upload::sanitize( $subfield_value, $save_as );
+
 							break;
 						case 'dropdown-pages':
 							$subfield_value = (int) $subfield_value;

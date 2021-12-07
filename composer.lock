@@ -906,16 +906,16 @@
         },
         {
             "name": "kirki-framework/control-repeater",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-repeater.git",
-                "reference": "d2a76a952e4383d5cdf63e5a57de39d090f35d14"
+                "reference": "5b79c254bbbdb9d7343a11e03135eb1abf74983f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/d2a76a952e4383d5cdf63e5a57de39d090f35d14",
-                "reference": "d2a76a952e4383d5cdf63e5a57de39d090f35d14",
+                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/5b79c254bbbdb9d7343a11e03135eb1abf74983f",
+                "reference": "5b79c254bbbdb9d7343a11e03135eb1abf74983f",
                 "shasum": ""
             },
             "require": {
@@ -925,8 +925,9 @@
                 "kirki-framework/control-image": "*",
                 "kirki-framework/control-radio": "*",
                 "kirki-framework/control-select": "*",
+                "kirki-framework/control-upload": "*",
                 "kirki-framework/url-getter": "*",
-                "php": ">=5.6"
+                "php": ">=7.0"
             },
             "type": "library",
             "autoload": {
@@ -957,9 +958,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-repeater/issues",
-                "source": "https://github.com/kirki-framework/control-repeater/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/control-repeater/tree/v1.0.2"
             },
-            "time": "2021-11-22T16:38:47+00:00"
+            "time": "2021-12-07T15:26:16+00:00"
         },
         {
             "name": "kirki-framework/control-select",
@@ -1107,16 +1108,16 @@
         },
         {
             "name": "kirki-framework/control-upload",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-upload.git",
-                "reference": "5b8f9017122f38c35aa5909875dccf5b00e70893"
+                "reference": "17592f5f6025f4c635ab0b0501e89f81b9cd85ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/5b8f9017122f38c35aa5909875dccf5b00e70893",
-                "reference": "5b8f9017122f38c35aa5909875dccf5b00e70893",
+                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/17592f5f6025f4c635ab0b0501e89f81b9cd85ea",
+                "reference": "17592f5f6025f4c635ab0b0501e89f81b9cd85ea",
                 "shasum": ""
             },
             "require": {
@@ -1152,9 +1153,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-upload/issues",
-                "source": "https://github.com/kirki-framework/control-upload/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/control-upload/tree/v1.0.2"
             },
-            "time": "2021-12-07T12:23:24+00:00"
+            "time": "2021-12-07T15:24:17+00:00"
         },
         {
             "name": "kirki-framework/data-option",
