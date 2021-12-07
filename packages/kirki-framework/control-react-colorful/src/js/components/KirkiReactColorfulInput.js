@@ -19,6 +19,8 @@ const KirkiReactColorfulInput = (props) => {
         }
       }
 
+      val = val.toLowerCase();
+
       // Thank you: https://regexr.com/39cgj
       const pattern = new RegExp(
         /(?:#|0x)(?:[a-f0-9]{3}|[a-f0-9]{6}|[a-f0-9]{8})\b|(?:rgb|hsl)a?\([^\)]*\)/
