@@ -20,7 +20,8 @@
     },
     "autoload": {
 		"psr-4": {
-            "Kirki\\Field\\": "src/Field"
+            "Kirki\\Field\\": "src/Field",
+            "Kirki\\Control\\": "src/Control"
         }
     }
 }

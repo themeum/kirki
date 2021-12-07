@@ -130,7 +130,7 @@ class Aliases {
 			[ 'Kirki\Control\Select', 'Kirki_Control_Select' ],
 			[ 'Kirki\Control\Slider', 'Kirki_Control_Slider' ],
 			[ 'Kirki\Control\Sortable', 'Kirki_Control_Sortable' ],
-			[ 'WP_Customize_Upload_Control', 'Kirki_Control_Upload' ],
+			[ 'Kirki\Control\Upload', 'Kirki_Control_Upload' ],
 			[ 'Kirki\Settings\Repeater', 'Kirki\Settings\Repeater_Setting' ],
 			[ 'Kirki\Settings\Repeater', 'Kirki_Settings_Repeater_Setting' ],
 			[ 'WP_Customize_Section', 'Kirki_Sections_Default_Section' ],

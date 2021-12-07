@@ -35,7 +35,7 @@ class Upload extends Field {
 	 * @since 0.1
 	 * @var string
 	 */
-	protected $control_class = '\WP_Customize_Upload_Control';
+	protected $control_class = '\Kirki\Control\Upload';
 
 	/**
 	 * Filter arguments before creating the setting.
@@ -52,9 +52,65 @@ class Upload extends Field {
 
 			// Set the sanitize-callback if none is defined.
 			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-				$args['sanitize_callback'] = 'esc_url_raw';
+
+				$args['sanitize_callback'] = function( $value ) {
+					if ( isset( $this->args['choices']['save_as'] ) ) {
+
+						if ( 'array' === $this->args['choices']['save_as'] ) {
+							if ( is_array( $value ) ) {
+								return [
+									'id'       => ( isset( $value['id'] ) && '' !== $value['id'] ) ? (int) $value['id'] : '',
+									'url'      => ( isset( $value['url'] ) && '' !== $value['url'] ) ? esc_url_raw( $value['url'] ) : '',
+									'filename' => ( isset( $value['filename'] ) && '' !== $value['filename'] ) ? sanitize_text_field( $value['filename'] ) : '',
+								];
+							} elseif ( is_string( $value ) && ! is_numeric( $value ) ) {
+								// Here, we assume that the value is the URL.
+								$attachment_id = attachment_url_to_postid( $value );
+
+								return [
+									'id'       => $attachment_id,
+									'url'      => $value,
+									'filename' => basename( get_attached_file( $attachment_id ) ),
+								];
+							} else {
+								// Here, we assume that the value is int or numeric (the attachment ID).
+								$value = absint( $value );
+
+								return [
+									'id'       => $value,
+									'url'      => wp_get_attachment_url( $value ),
+									'filename' => basename( get_attached_file( $value ) ),
+								];
+							}
+						} elseif ( 'id' === $this->args['choices']['save_as'] ) {
+							if ( is_string( $value ) && ! is_numeric( $value ) ) {
+								// Here, we assume that the value is the URL.
+								return attachment_url_to_postid( $value );
+							} elseif ( is_array( $value ) && isset( $value['id'] ) ) {
+								return absint( $value['id'] );
+							}
+
+							// Here, we assume that the value is int or numeric (the attachment ID).
+							return absint( $value );
+						}
+					}
+
+					// If we're reaching this point, then we're saving the URL.
+					if ( is_array( $value ) && isset( $value['url'] ) ) {
+						$value = $value['url'];
+					} elseif ( is_numeric( $value ) ) {
+						$value = absint( $value );
+						$value = wp_get_attachment_url( $value );
+					} else {
+						$value = esc_url_raw( $value );
+					}
+
+					return $value;
+				};
+
 			}
 		}
+
 		return $args;
 	}
 

@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "kirki-framework/compatibility",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "c1dfc2577bff91dc98ad4d359345936b3f2a044b"
+                "reference": "af735b6ffd791bd122023a45ced8ac3ae7b8d731"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/c1dfc2577bff91dc98ad4d359345936b3f2a044b",
-                "reference": "c1dfc2577bff91dc98ad4d359345936b3f2a044b",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/af735b6ffd791bd122023a45ced8ac3ae7b8d731",
+                "reference": "af735b6ffd791bd122023a45ced8ac3ae7b8d731",
                 "shasum": ""
             },
             "require": {
@@ -50,9 +50,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
-                "source": "https://github.com/kirki-framework/compatibility/tree/v1.0.0"
+                "source": "https://github.com/kirki-framework/compatibility/tree/v1.0.1"
             },
-            "time": "2021-10-12T15:48:23+00:00"
+            "time": "2021-12-07T12:24:48+00:00"
         },
         {
             "name": "kirki-framework/control-base",
@@ -1107,16 +1107,16 @@
         },
         {
             "name": "kirki-framework/control-upload",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-upload.git",
-                "reference": "93eb0ab618025e3c6649cad4ced86d976d05c35a"
+                "reference": "5b8f9017122f38c35aa5909875dccf5b00e70893"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/93eb0ab618025e3c6649cad4ced86d976d05c35a",
-                "reference": "93eb0ab618025e3c6649cad4ced86d976d05c35a",
+                "url": "https://api.github.com/repos/kirki-framework/control-upload/zipball/5b8f9017122f38c35aa5909875dccf5b00e70893",
+                "reference": "5b8f9017122f38c35aa5909875dccf5b00e70893",
                 "shasum": ""
             },
             "require": {
@@ -1127,7 +1127,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1151,9 +1152,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-upload/issues",
-                "source": "https://github.com/kirki-framework/control-upload/tree/v1.0.0"
+                "source": "https://github.com/kirki-framework/control-upload/tree/v1.0.1"
             },
-            "time": "2021-10-14T14:58:39+00:00"
+            "time": "2021-12-07T12:23:24+00:00"
         },
         {
             "name": "kirki-framework/data-option",
