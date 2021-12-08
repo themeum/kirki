@@ -432,19 +432,6 @@ class Typography extends Field {
 			$this->generate_controls_group( $group, $args );
 		}
 
-		new \Kirki\Field\Custom(
-			[
-				'settings'        => 'kirki_group_end_' . $args['settings'],
-				'label'           => '',
-				'description'     => '',
-				'default'         => '<div class="kirki-typography-end"><hr></div>',
-				'section'         => $args['section'],
-				'active_callback' => isset( $args['active_callback'] ) ? $args['active_callback'] : '',
-				'css_vars'        => [],
-				'output'          => [],
-			]
-		);
-
 	}
 
 	/**
