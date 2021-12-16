@@ -2236,24 +2236,24 @@
         },
         {
             "name": "kirki-framework/module-sections",
-            "version": "v1.0.1",
-            "version_normalized": "1.0.1.0",
+            "version": "v1.0.2",
+            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-sections.git",
-                "reference": "7c042cae27476d539b33c8ce55f7469d3668a6bd"
+                "reference": "6374038054212709cf47a9e4f5f358f5e1913b1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-sections/zipball/7c042cae27476d539b33c8ce55f7469d3668a6bd",
-                "reference": "7c042cae27476d539b33c8ce55f7469d3668a6bd",
+                "url": "https://api.github.com/repos/kirki-framework/module-sections/zipball/6374038054212709cf47a9e4f5f358f5e1913b1d",
+                "reference": "6374038054212709cf47a9e4f5f358f5e1913b1d",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/url-getter": "*",
                 "php": ">=5.6"
             },
-            "time": "2021-08-24T13:58:02+00:00",
+            "time": "2021-12-16T08:29:09+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2282,7 +2282,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-sections/issues",
-                "source": "https://github.com/kirki-framework/module-sections/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/module-sections/tree/v1.0.2"
             },
             "install-path": "../kirki-framework/module-sections"
         },
@@ -2724,17 +2724,17 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.6.1",
-            "version_normalized": "3.6.1.0",
+            "version": "3.6.2",
+            "version_normalized": "3.6.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "f268ca40d54617c6e06757f83f699775c9b3ff2e"
+                "reference": "5e4e71592f69da17871dba6e80dd51bce74a351a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/f268ca40d54617c6e06757f83f699775c9b3ff2e",
-                "reference": "f268ca40d54617c6e06757f83f699775c9b3ff2e",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5e4e71592f69da17871dba6e80dd51bce74a351a",
+                "reference": "5e4e71592f69da17871dba6e80dd51bce74a351a",
                 "shasum": ""
             },
             "require": {
@@ -2746,7 +2746,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
-            "time": "2021-10-11T04:00:11+00:00",
+            "time": "2021-12-12T21:44:58+00:00",
             "bin": [
                 "bin/phpcs",
                 "bin/phpcbf"

@@ -60,6 +60,8 @@ class Section {
 
 		$this->section_types = apply_filters( 'kirki_section_types', $this->section_types );
 
+		do_action( 'kirki_section_init', $this, $args );
+
 		add_action( 'customize_register', [ $this, 'register_section_types' ] );
 
 		if ( $this->args ) {
