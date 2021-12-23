@@ -202,14 +202,17 @@ abstract class Field {
 			'sanitize_js_callback' => isset( $args['sanitize_js_callback'] ) ? $args['sanitize_js_callback'] : '',
 		];
 
-		if ( $this->settings_class ) {
-			$classname = $this->settings_class;
+		$settings_class = $this->settings_class ? $this->settings_class : null;
 
-			$customizer->add_setting( new $classname( $customizer, $setting_id, $args ) );
-			return;
+		if ( ! apply_filters( 'kirki_field_exclude_setting', false, $this->args, $args ) ) {
+			if ( $settings_class ) {
+				$customizer->add_setting( new $settings_class( $customizer, $setting_id, $args ) );
+			} else {
+				$customizer->add_setting( $setting_id, $args );
+			}
 		}
 
-		$customizer->add_setting( $setting_id, $args );
+		do_action( 'kirki_field_add_setting', $customizer, $settings_class, $this->args, $args );
 
 	}
 
@@ -239,7 +242,12 @@ abstract class Field {
 		 * @return array                             Return the arguments.
 		 */
 		$args = apply_filters( 'kirki_field_add_control_args', $this->args, $wp_customize );
-		$wp_customize->add_control( new $control_class( $wp_customize, $this->args['settings'], $args ) );
+
+		if ( ! apply_filters( 'kirki_field_exclude_control', false, $this->args, $args ) ) {
+			$wp_customize->add_control( new $control_class( $wp_customize, $this->args['settings'], $args ) );
+		}
+
+		do_action( 'kirki_field_add_control', $wp_customize, $control_class, $this->args, $args );
 
 	}
 
