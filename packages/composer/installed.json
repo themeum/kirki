@@ -221,23 +221,23 @@
         },
         {
             "name": "kirki-framework/compatibility",
-            "version": "v1.0.1",
-            "version_normalized": "1.0.1.0",
+            "version": "v1.0.2",
+            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "af735b6ffd791bd122023a45ced8ac3ae7b8d731"
+                "reference": "e3c8acaec0a4f7df3f2163bad7b353fe8bf410c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/af735b6ffd791bd122023a45ced8ac3ae7b8d731",
-                "reference": "af735b6ffd791bd122023a45ced8ac3ae7b8d731",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/e3c8acaec0a4f7df3f2163bad7b353fe8bf410c0",
+                "reference": "e3c8acaec0a4f7df3f2163bad7b353fe8bf410c0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6"
             },
-            "time": "2021-12-07T12:24:48+00:00",
+            "time": "2021-12-23T14:23:26+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -266,7 +266,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
-                "source": "https://github.com/kirki-framework/compatibility/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/compatibility/tree/v1.0.2"
             },
             "install-path": "../kirki-framework/compatibility"
         },

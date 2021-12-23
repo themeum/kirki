@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '1653108f632f0f1e2489fb593338b5cdebfb6ccd',
+        'reference' => 'a517674b8e861bd5257e62e12e3495d686faf1b7',
         'name' => 'aristath/kirki',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '1653108f632f0f1e2489fb593338b5cdebfb6ccd',
+            'reference' => 'a517674b8e861bd5257e62e12e3495d686faf1b7',
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
@@ -38,12 +38,12 @@
             'dev_requirement' => true,
         ),
         'kirki-framework/compatibility' => array(
-            'pretty_version' => 'v1.0.1',
-            'version' => '1.0.1.0',
+            'pretty_version' => 'v1.0.2',
+            'version' => '1.0.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/compatibility',
             'aliases' => array(),
-            'reference' => 'af735b6ffd791bd122023a45ced8ac3ae7b8d731',
+            'reference' => 'e3c8acaec0a4f7df3f2163bad7b353fe8bf410c0',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-base' => array(
