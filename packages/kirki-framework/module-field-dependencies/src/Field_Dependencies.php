@@ -34,8 +34,10 @@ class Field_Dependencies {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
+
 		add_action( 'customize_controls_enqueue_scripts', [ $this, 'field_dependencies' ] );
 		add_filter( 'kirki_field_add_control_args', [ $this, 'field_add_control_args' ] );
+
 	}
 
 	/**
@@ -47,6 +49,7 @@ class Field_Dependencies {
 	 * @return array
 	 */
 	public function field_add_control_args( $args ) {
+
 		if ( isset( $args['active_callback'] ) ) {
 			if ( is_array( $args['active_callback'] ) ) {
 				if ( ! is_callable( $args['active_callback'] ) ) {
@@ -86,6 +89,7 @@ class Field_Dependencies {
 		}
 
 		return $args;
+
 	}
 
 	/**
@@ -97,7 +101,9 @@ class Field_Dependencies {
 	 * @return void
 	 */
 	public function field_dependencies() {
+
 		wp_enqueue_script( 'kirki_field_dependencies', URL::get_from_path( __DIR__ . '/script.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], '4.0', true );
 		wp_localize_script( 'kirki_field_dependencies', 'kirkiControlDependencies', $this->dependencies );
+
 	}
 }
