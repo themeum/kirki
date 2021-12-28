@@ -19,10 +19,11 @@
 	wp.customize.kirkiDynamicControl = wp.customize.Control.extend({
 
 		initialize: function (id, options) {
-			var control = this,
-				args = options || {};
+			let control = this;
+			let args = options || {};
 
 			args.params = args.params || {};
+
 			if (!args.params.type) {
 				args.params.type = 'kirki-generic';
 			}

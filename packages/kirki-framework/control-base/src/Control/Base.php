@@ -115,16 +115,19 @@ class Base extends \WP_Customize_Control {
 	public $wrapper_attrs = [];
 
 	/**
-	 * The backward compatibility for `$wrapper_attrs`.
+	 * Backwards compatibility support for `$wrapper_attrs`.
 	 *
-	 * The v3 already has this $wrapper_atts property.
-	 * This property is not published in the doc, and seems more for internal use.
+	 * Kirki v3 already has this `$wrapper_atts` property.
+	 * It was not published in the documentation, and more for internal use.
 	 *
-	 * WP_Customize_Control has `input_attrs` not `input_atts` (attrs vs atts).
-	 * So let's use `$wrapper_attrs` for consistency and keep this `$wrapper_atts` for a safer backward compatibility.
+	 * The `WP_Customize_Control` is using `input_attrs` not `input_atts` (see, attrs vs atts).
+	 * So Kirki uses `$wrapper_attrs` for consistency and keep the old `$wrapper_atts` backwards compatibility.
 	 *
-	 * @access public
+	 * This property could be removed in the future.
+	 * Please use `$wrapper_attrs` instead.
+	 *
 	 * @since 1.1
+	 * @deprecated 1.0.1 This variable could be removed in the future. Please use `$wrapper_attrs` instead.
 	 * @var array
 	 */
 	public $wrapper_atts = [];
@@ -202,6 +205,16 @@ class Base extends \WP_Customize_Control {
 			$id = $this->wrapper_attrs['id'];
 		}
 
+		if ( ! isset( $this->wrapper_attrs['data-kirki-setting'] ) ) {
+			$this->wrapper_attrs['data-kirki-setting'] = $this->id;
+		}
+
+		if ( ! isset( $this->wrapper_attrs['data-kirki-setting-link'] ) ) {
+			if ( isset( $this->settings['default'] ) ) {
+				$this->wrapper_attrs['data-kirki-setting-link'] = $this->settings['default']->id;
+			}
+		}
+
 		$data_attrs = '';
 
 		foreach ( $this->wrapper_attrs as $attr_key => $attr_value ) {
@@ -237,6 +250,7 @@ class Base extends \WP_Customize_Control {
 
 		// Default value.
 		$this->json['default'] = $this->setting->default;
+
 		if ( isset( $this->default ) ) {
 			$this->json['default'] = $this->default;
 		}
@@ -291,7 +305,7 @@ class Base extends \WP_Customize_Control {
 
 		// Wrapper Attributes.
 		$this->json['wrapper_attrs'] = $this->wrapper_attrs;
-		$this->json['wrapper_atts']  = $this->wrapper_attrs; // For backward compatibility.
+		$this->json['wrapper_atts']  = $this->wrapper_attrs; // For backward compatibility - Could be removed in the future.
 
 	}
 
