@@ -26,9 +26,9 @@ fi
 
 mkdir kirki
 
-mv kirki-repo/kirki/* kirki/
+mv kirki-git/kirki/* kirki/
 
-rm -rf kirki-repo/kirki/
+rm -rf kirki-git/kirki/
 
 cd kirki
 
@@ -56,7 +56,7 @@ rm -rf packages/kirki-framework/**/package.json
 rm -rf packages/kirki-framework/**/Gruntfile.js
 rm -rf packages/kirki-framework/**/README.md
 
-cd ../kirki-repo
+cd ../kirki-git
 
 shopt -u extglob
 shopt -u dotglob
