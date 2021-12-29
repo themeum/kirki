@@ -15,7 +15,7 @@ indent_style = tab
 
 [*.json]
 indent_style = space
-indent_size = 2
+indent_size = 4
 
 [*.css]
 indent_style = space
