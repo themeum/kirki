@@ -1813,23 +1813,23 @@
         },
         {
             "name": "kirki-framework/l10n",
-            "version": "v1.0.1",
-            "version_normalized": "1.0.1.0",
+            "version": "v1.0.2",
+            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/l10n.git",
-                "reference": "8e0aca5baab63f9897f1b78e55805588e9685457"
+                "reference": "5a40875434ca075a09c81952547e3ccc7eeef704"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/l10n/zipball/8e0aca5baab63f9897f1b78e55805588e9685457",
-                "reference": "8e0aca5baab63f9897f1b78e55805588e9685457",
+                "url": "https://api.github.com/repos/kirki-framework/l10n/zipball/5a40875434ca075a09c81952547e3ccc7eeef704",
+                "reference": "5a40875434ca075a09c81952547e3ccc7eeef704",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": ">=7.0"
             },
-            "time": "2021-12-29T15:49:04+00:00",
+            "time": "2021-12-29T18:35:09+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1856,7 +1856,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/l10n/issues",
-                "source": "https://github.com/kirki-framework/l10n/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/l10n/tree/v1.0.2"
             },
             "install-path": "../kirki-framework/l10n"
         },
@@ -2014,24 +2014,24 @@
         },
         {
             "name": "kirki-framework/module-panels",
-            "version": "v1.0.0",
-            "version_normalized": "1.0.0.0",
+            "version": "v1.0.1",
+            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-panels.git",
-                "reference": "3e754b04b09ddb38c9e72d7d1d536372152eb0f5"
+                "reference": "1599dd344c15c49a837b5fdbddb1e37544bef979"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-panels/zipball/3e754b04b09ddb38c9e72d7d1d536372152eb0f5",
-                "reference": "3e754b04b09ddb38c9e72d7d1d536372152eb0f5",
+                "url": "https://api.github.com/repos/kirki-framework/module-panels/zipball/1599dd344c15c49a837b5fdbddb1e37544bef979",
+                "reference": "1599dd344c15c49a837b5fdbddb1e37544bef979",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/url-getter": "*",
-                "php": ">=5.6"
+                "php": ">=7.0"
             },
-            "time": "2019-07-14T09:28:59+00:00",
+            "time": "2021-12-29T16:04:04+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2045,14 +2045,12 @@
             ],
             "authors": [
                 {
-                    "name": "Ari Stathopoulos",
-                    "email": "aristath@gmail.com",
-                    "homepage": "http://aristath.github.io",
-                    "role": "Developer"
+                    "name": "Kirki Framework",
+                    "email": "connect@mapsteps.com"
                 }
             ],
             "description": "Panels API & Custom Panel Types for the Kirki WordPress Plugin.",
-            "homepage": "https://aristath.github.io/kirki",
+            "homepage": "https://kirki.org/",
             "keywords": [
                 "customizer",
                 "framework",
@@ -2060,7 +2058,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-panels/issues",
-                "source": "https://github.com/kirki-framework/module-panels/tree/master"
+                "source": "https://github.com/kirki-framework/module-panels/tree/v1.0.1"
             },
             "install-path": "../kirki-framework/module-panels"
         },
