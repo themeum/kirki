@@ -7,7 +7,7 @@
  * Author URI:    https://wp-pagebuilderframework.com/
  * Version:       4.0
  * Text Domain:   kirki
- * Requires WP:   4.9
+ * Requires WP:   5.2
  * Requires PHP:  7.0
  * GitHub Plugin URI: kirki-framework/kirki
  * GitHub Plugin URI: https://github.com/kirki-framework/kirki
