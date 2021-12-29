@@ -1,43 +1,78 @@
-### 4.0 - November 24, 2021 ###
-* Turn dimension fields on field-typography to look similar with other controls
-* Fix color picker on repeater control
+### 4.0 - Dezember 29, 2021 ###
+* Kirki 4.0 Release
 
-### 4.0-beta.3 - November 18, 2021 ###
-Small bugfixes/changes:
-* Update `googlefonts` package
-* Update `control-react-colorful` package
-* Fix notices & warnings in `module-webfonts` package when `get_font_choices` method is called.
+## 3.1.9 - July 19, 2021
 
-### 4.0-beta.2 - November 04, 2021 ###
-Bugfixes:
-* The CSS output of `control-react-colorful` was empty when the value is a string
-* On `control-radio`, the control id wasn't outputted causing broken behavior
-* The sanitize callback of field-dimensions wasn't implemented
-* Output on Gutenberg editing screen was affecting the whole page instead of only the editing content
-* The margin-top & margin-bottom of `field-typography` wasn't rendered in frontend styles
-* The `kirki/fonts/standard_fonts` wasn't implemented when it's hooked AFTER adding the fields (in user's usage)
-* The default browser font-family (from v3) was missing
-* The custom font families grouping was missing
-* Custom variants set on standard fonts wasn't implemented
+* Fixed: Fixed: Styling issue in Switch control.
 
-Improvement:
-* The `control-react-select` choices now accept an array of objects (used by a variant in field-typography)
+## 3.1.8 - July 1, 2021
 
-Refactor:
-* Bring back the v3 style/model of font's variant in `field-typography`
+* Updated Google-Fonts lists.
+* Tested up to WordPress 5.8 RC 1.
+* Fixed: Deprecated warning when editing post/page.
+* Fixed: Styling issue in Radio Buttonset control.
 
-### 4.0-beta.1 - 2021-10-15 ###
-* Now controls are developed (and available) as composer packages
-* Some controls are using React for their JS part
-* Much improvement over color control (using `react-colorful`) also includes new features
-* Improved typography field
-* Improved color palette control
-* Improved multicolor field
-* Improved dimensions field
-* Improved select controls (including dropdown pages control)
-* Some other improvements
-* Bugfixes!
-* Use Parcel as the build tool (it's nice!)
+## 3.1.7 - June 21, 2021
+
+* Updated Google-Fonts lists.
+* Tested up to WordPress 5.8 Beta 1.
+* Fixed: PHP 8 warnings.
+* Fixed: Missing Kirki styles in WordPress 5.8.
+* Fixed: https://wordpress.org/support/topic/plugin-title-conflict/ in https://github.com/kirki-framework/kirki/commit/0fb25dca4d1c4460ec45dc194d5210f854b1b737
+
+## 3.1.6 - December 07, 2020
+
+* Tested up to WordPress 5.6.
+* Tweak: Updated Google fonts.
+* Fixed: Color picker styling issue in Chrome.
+
+## 3.1.5 - August 10, 2020
+
+* Tested up to WordPress 5.5.
+* Tweak: Updated Google fonts.
+* Fixed: Added wp-i18n dependency to alpha color picker script.
+* Fixed: Color picker styles.
+* Fixed: Color picker styles in background control.
+* Fixed: Color picker styles in multicolor control.
+
+## 3.1.4 - July 11, 2020
+
+* Tweak: Updated Google-Fonts lists.
+* Tweak: Tooltip styling.
+* Fixed: Error in the WordPress customizer with WordPress 5.5.
+
+## 3.1.3 - May 19, 2020
+
+* Tweak: Updated Google-Fonts lists.
+* Tweak: Slightly tweaked some of the default control styles.
+
+## 3.1.2 - 2020-04-20
+
+### Fixed
+* Added back `font-display:swap` to Google Fonts.
+
+### Changed
+* Updated Google-Fonts lists.
+
+## 3.1.1 - 2020-04-05
+
+### Changed
+* Updated Google-Fonts lists.
+
+### Fixed
+* False-positive error in Envato theme-check.
+
+## 3.1.0 - 2020-03-01
+
+### Changed
+* Completely refactored the google-fonts downloader. Fonts now get stored in `wp-content/fonts/{font-family}/{file}`.
+* Updated Google-Fonts lists.
+
+### Removed
+* Removed the `branding` module.
+* Removed the `styling` module.
+* Removed the `telemetry` module.
+* Removed the `Kirki_Fonts_Helper` class.
 
 ## 3.0.45 - 2019-09-01
 
