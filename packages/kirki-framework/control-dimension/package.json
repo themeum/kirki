@@ -1,31 +1,26 @@
 {
-  "name": "kirki-control-date",
-  "author": "Ari Stathopoulos (@aristath)",
-  "homepage": "https://kirki.org",
-  "license": "MIT",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
-    }
-  ],
-  "dependencies": {},
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0",
-    "parcel": "^2.0.0-rc.0"
-  },
-  "alias": {
-    "jquery": {
-      "global": "jQuery"
+    "name": "kirki-control-dimension",
+    "version": "1.0.2",
+    "author": "Kirki Framework",
+    "homepage": "https://github.com/kirki-framework/control-dimension#readme",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "@parcel/transformer-sass": "^2.0.0-rc.0",
+        "parcel": "^2.0.0-rc.0"
     },
-    "wp": {
-      "global": "wp"
+    "alias": {
+        "jquery": {
+            "global": "jQuery"
+        },
+        "wp": {
+            "global": "wp"
+        }
+    },
+    "browserslist": "> 0.5%, last 2 versions, not dead",
+    "scripts": {
+        "build": "parcel build  src/control.js --dist-dir dist",
+        "dev": "parcel build  src/control.js --no-optimize --dist-dir dist",
+        "watch": "parcel watch src/control.js --dist-dir dist"
     }
-  },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
-  "scripts": {
-    "build": "parcel build  src/control.js --dist-dir dist",
-    "dev": "parcel build  src/control.js --no-optimize --dist-dir dist",
-    "watch": "parcel watch src/control.js --dist-dir dist"
-  }
 }

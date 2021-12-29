@@ -1,22 +1,16 @@
 {
   "name": "kirki-framework-compatibility",
-  "version": "3.0.42",
-  "author": "Ari Stathopoulos (@aristath)",
+  "version": "1.0.3",
+  "author": "Kirki",
   "homepage": "https://kirki.org",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aristath/kirki"
+    "url": "https://github.com/kirki-framework/kirki"
   },
   "bugs": {
-    "url": "https://github.com/aristath/kirki/issues"
+    "url": "https://github.com/kirki-framework/kirki/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
-    }
-  ],
   "dependencies": {
     "@wordpress/hooks": "^2.4.0"
   }

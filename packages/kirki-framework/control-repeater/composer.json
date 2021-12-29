@@ -2,15 +2,17 @@
     "name": "kirki-framework/control-repeater",
     "type": "library",
     "description": "Repeater control for the Kirki Customizer framework.",
-    "keywords": ["wordpress","customizer","framework"],
-    "homepage": "https://aristath.github.io/kirki",
+    "keywords": [
+        "wordpress",
+        "customizer",
+        "framework"
+    ],
+    "homepage": "https://kirki.org/",
     "license": "MIT",
     "authors": [
         {
-            "name": "Ari Stathopoulos",
-            "email": "aristath@gmail.com",
-            "homepage": "http://aristath.github.io",
-            "role": "Developer"
+            "name": "Kirki Framework",
+            "email": "connect@mapsteps.com"
         }
     ],
     "require": {
@@ -25,10 +27,10 @@
         "kirki-framework/control-upload": "*"
     },
     "autoload": {
-		"psr-4": {
+        "psr-4": {
             "Kirki\\Control\\": "src/Control",
             "Kirki\\Field\\": "src/Field",
-			"Kirki\\Settings\\": "src/Settings"
+            "Kirki\\Settings\\": "src/Settings"
         }
     }
 }

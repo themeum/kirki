@@ -2,22 +2,24 @@
     "name": "kirki-framework/l10n",
     "type": "library",
     "description": "Allows loading a 2nd textdomain inside a theme.",
-    "keywords": ["wordpress","customizer","framework"],
-    "homepage": "https://aristath.github.io/kirki",
+    "keywords": [
+        "wordpress",
+        "customizer",
+        "framework"
+    ],
+    "homepage": "https://kirki.org/",
     "license": "MIT",
     "authors": [
         {
-            "name": "Ari Stathopoulos",
-            "email": "aristath@gmail.com",
-            "homepage": "http://aristath.github.io",
-            "role": "Developer"
+            "name": "Kirki Framework",
+            "email": "connect@mapsteps.com"
         }
     ],
     "require": {
         "php": ">=5.6"
     },
     "autoload": {
-		"psr-4": {
+        "psr-4": {
             "Kirki\\": "src"
         }
     }

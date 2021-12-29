@@ -1,17 +1,12 @@
 {
-  "name": "kirki-control-background",
-  "author": "Ari Stathopoulos (@aristath)",
-  "homepage": "https://kirki.org",
-  "license": "MIT",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
+    "name": "kirki-control-background",
+    "version": "1.0.1",
+    "author": "Kirki Framework",
+    "homepage": "https://kirki.org",
+    "license": "MIT",
+    "devDependencies": {
+        "grunt": "*",
+        "grunt-contrib-sass": "*",
+        "grunt-contrib-watch": "*"
     }
-  ],
-  "devDependencies": {
-    "grunt": "*",
-    "grunt-contrib-sass": "*",
-    "grunt-contrib-watch": "*"
-  }
 }

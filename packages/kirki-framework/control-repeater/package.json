@@ -1,37 +1,37 @@
 {
-  "name": "control-repeater",
-  "version": "1.0.0",
-  "description": "Development toolkit for Kirki's control-repeater",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kirki-framework/control-repeater.git"
-  },
-  "keywords": [
-    "kirki-control-repeater"
-  ],
-  "author": "Kirki Framework",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kirki-framework/control-repeater/issues"
-  },
-  "homepage": "https://github.com/kirki-framework/control-repeater#readme",
-  "dependencies": {},
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0",
-    "parcel": "^2.0.0-rc.0"
-  },
-  "alias": {
-    "jquery": {
-      "global": "jQuery"
+    "name": "control-repeater",
+    "version": "1.0.3",
+    "description": "Development toolkit for Kirki's control-repeater",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kirki-framework/control-repeater.git"
     },
-    "wp": {
-      "global": "wp"
+    "keywords": [
+        "kirki-control-repeater"
+    ],
+    "author": "Kirki Framework",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/kirki-framework/control-repeater/issues"
+    },
+    "homepage": "https://github.com/kirki-framework/control-repeater#readme",
+    "dependencies": {},
+    "devDependencies": {
+        "@parcel/transformer-sass": "^2.0.0-rc.0",
+        "parcel": "^2.0.0-rc.0"
+    },
+    "alias": {
+        "jquery": {
+            "global": "jQuery"
+        },
+        "wp": {
+            "global": "wp"
+        }
+    },
+    "browserslist": "> 0.5%, last 2 versions, not dead",
+    "scripts": {
+        "build": "parcel build  src/control.js --dist-dir dist",
+        "dev": "parcel build  src/control.js --no-optimize --dist-dir dist",
+        "watch": "parcel watch src/control.js --dist-dir dist"
     }
-  },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
-  "scripts": {
-    "build": "parcel build  src/control.js --dist-dir dist",
-    "dev": "parcel build  src/control.js --no-optimize --dist-dir dist",
-    "watch": "parcel watch src/control.js --dist-dir dist"
-  }
 }
