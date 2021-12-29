@@ -1,23 +1,21 @@
 <?php
 /**
- * Plugin Name:   Kirki Customizer Framework
- * Plugin URI:    https://kirki.org
- * Description:   The Ultimate WordPress Customizer Framework
- * Author:        David Vongries
- * Author URI:    https://wp-pagebuilderframework.com/
- * Version:       4.0
- * Text Domain:   kirki
- * Requires WP:   5.2
- * Requires PHP:  7.0
- * GitHub Plugin URI: kirki-framework/kirki
- * GitHub Plugin URI: https://github.com/kirki-framework/kirki
+ * Plugin Name: Kirki Customizer Framework
+ * Plugin URI: https://kirki.org
+ * Description: The Ultimate WordPress Customizer Framework
+ * Author: David Vongries
+ * Author URI: https://davidvongries.com/
+ * Version: 4.0
+ * Text Domain: kirki
+ * Requires at least: 5.2
+ * Requires PHP: 7.0
  *
- * @package   Kirki
- * @category  Core
- * @author    Ari Stathopoulos (@aristath)
+ * @package Kirki
+ * @category Core
+ * @author Ari Stathopoulos (@aristath)
  * @copyright Copyright (c) 2021, David Vongries
- * @license   https://opensource.org/licenses/MIT
- * @since     1.0
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0
  */
 
 use Kirki\L10n;
