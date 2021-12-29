@@ -1,5 +1,5 @@
 {
-  "name": "aristath/kirki",
+  "name": "kirki-framework/kirki",
   "type": "library",
   "keywords": ["WordPress", "Customizer"],
   "description": "Extending the WordPress customizer",
@@ -7,10 +7,8 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "aristath",
-      "email": "aristath@gmail.com",
-      "homepage": "https://aristath.github.io",
-      "role":"Developer"
+      "name": "Kirki Framework",
+      "email": "connect@mapsteps.com"
     }
   ],
   "config": {
