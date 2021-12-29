@@ -2,12 +2,12 @@
 /**
  * Adds upgrade notifications.
  *
- * @package     Kirki
- * @category    Core
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license     https://opensource.org/licenses/MIT
- * @since       3.0.0
+ * @package Kirki
+ * @category Core
+ * @author Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 3.0.0
  */
 
 if ( ! function_exists( 'kirki_show_upgrade_notification' ) ) :

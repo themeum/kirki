@@ -3,12 +3,12 @@
  * Color Calculations class for Kirki
  * Initially built for the Shoestrap-3 theme and then tweaked for Kirki.
  *
- * @package     Kirki
- * @category    Core
- * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
- * @license     https://opensource.org/licenses/MIT
- * @since       1.0
+ * @package Kirki
+ * @category Core
+ * @author Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @license https://opensource.org/licenses/MIT
+ * @since 1.0
  */
 
 // phpcs:ignoreFile
