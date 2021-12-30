@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0
  */
-class MultiCheck extends Base {
+class Multicheck extends Base {
 
 	/**
 	 * The control type.

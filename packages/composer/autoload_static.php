@@ -62,8 +62,8 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             8 => __DIR__ . '/..' . '/kirki-framework/control-editor/src/Field',
             9 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Field',
             10 => __DIR__ . '/..' . '/kirki-framework/control-image/src/Field',
-            11 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Field',
-            12 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field',
+            11 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field',
+            12 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Field',
             13 => __DIR__ . '/..' . '/kirki-framework/control-react-select/src/Field',
             14 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Field',
             15 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Field',
@@ -75,7 +75,7 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             21 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
             22 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
             23 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
-            24 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Field',
+            24 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Field',
         ),
         'Kirki\\Data\\' => 
         array (
@@ -96,8 +96,8 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             10 => __DIR__ . '/..' . '/kirki-framework/control-editor/src/Control',
             11 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Control',
             12 => __DIR__ . '/..' . '/kirki-framework/control-image/src/Control',
-            13 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Control',
-            14 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control',
+            13 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control',
+            14 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Control',
             15 => __DIR__ . '/..' . '/kirki-framework/control-react-select/src/Control',
             16 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Control',
             17 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Control',
@@ -106,7 +106,7 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             20 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
             21 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
             22 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
-            23 => __DIR__ . '/..' . '/kirki-framework/control-react-colorful/src/Control',
+            23 => __DIR__ . '/..' . '/kirki-framework/control-multicheck/src/Control',
         ),
         'Kirki\\Compatibility\\' => 
         array (

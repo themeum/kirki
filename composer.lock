@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "kirki-framework/compatibility",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "73a6bbcf970aaadbb3552424dd2e9dc050d36a4b"
+                "reference": "0667568fa64097e9b82ac87964b91ebbb10fd305"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/73a6bbcf970aaadbb3552424dd2e9dc050d36a4b",
-                "reference": "73a6bbcf970aaadbb3552424dd2e9dc050d36a4b",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/0667568fa64097e9b82ac87964b91ebbb10fd305",
+                "reference": "0667568fa64097e9b82ac87964b91ebbb10fd305",
                 "shasum": ""
             },
             "require": {
@@ -48,9 +48,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
-                "source": "https://github.com/kirki-framework/compatibility/tree/v1.0.3"
+                "source": "https://github.com/kirki-framework/compatibility/tree/v1.0.4"
             },
-            "time": "2021-12-29T12:34:55+00:00"
+            "time": "2021-12-30T15:30:56+00:00"
         },
         {
             "name": "kirki-framework/control-base",
@@ -677,16 +677,16 @@
         },
         {
             "name": "kirki-framework/control-multicheck",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-multicheck.git",
-                "reference": "c9fcd878c6a68dfa4ce45455f01acdd55e42d691"
+                "reference": "90098008c1988e7cd2b84c75ece68bbcd3bbeb70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-multicheck/zipball/c9fcd878c6a68dfa4ce45455f01acdd55e42d691",
-                "reference": "c9fcd878c6a68dfa4ce45455f01acdd55e42d691",
+                "url": "https://api.github.com/repos/kirki-framework/control-multicheck/zipball/90098008c1988e7cd2b84c75ece68bbcd3bbeb70",
+                "reference": "90098008c1988e7cd2b84c75ece68bbcd3bbeb70",
                 "shasum": ""
             },
             "require": {
@@ -720,9 +720,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-multicheck/issues",
-                "source": "https://github.com/kirki-framework/control-multicheck/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/control-multicheck/tree/v1.0.2"
             },
-            "time": "2021-12-29T14:38:59+00:00"
+            "time": "2021-12-30T15:32:42+00:00"
         },
         {
             "name": "kirki-framework/control-radio",
