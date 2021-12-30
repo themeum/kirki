@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'c945f26eb04cdaaa030c447e006d425625382563',
+        'reference' => 'b1f7ed2f138bd3661329605a9b4b1fc4cc11a842',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -313,7 +313,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'c945f26eb04cdaaa030c447e006d425625382563',
+            'reference' => 'b1f7ed2f138bd3661329605a9b4b1fc4cc11a842',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(
