@@ -1,6 +1,7 @@
 ### 4.0.3 - Dezember 30, 2021 ###
 
-* Fixed: Fatal error caused by wrong folder's letter case
+* Fixed: Fatal error caused by wrong folder name
+
 ### 4.0 - Dezember 29, 2021 ###
 
 * Kirki 4.0 Release
