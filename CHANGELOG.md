@@ -1,10 +1,13 @@
+### 4.0.3 - Dezember 30, 2021 ###
+
+* Fixed: Fatal error caused by wrong folder's letter case
 ### 4.0 - Dezember 29, 2021 ###
 
 * Kirki 4.0 Release
 
 ## 3.1.9 - July 19, 2021
 
-* Fixed: Fixed: Styling issue in Switch control.
+* Fixed: Styling issue in Switch control.
 
 ## 3.1.8 - July 1, 2021
 

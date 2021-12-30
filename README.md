@@ -3,7 +3,7 @@
 **Tags:** customizer, options framework, theme, mods, toolkit, gutenberg
 **Requires at least:** 5.2
 **Tested up to:** 5.8
-**Stable tag:** 4.0
+**Stable tag:** 4.0.3
 **License:** MIT
 **License URI:** https://opensource.org/licenses/MIT
 

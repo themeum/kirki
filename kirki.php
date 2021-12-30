@@ -5,7 +5,7 @@
  * Description: The Ultimate WordPress Customizer Framework
  * Author: David Vongries
  * Author URI: https://davidvongries.com/
- * Version: 4.0
+ * Version: 4.0.3
  * Text Domain: kirki
  * Requires at least: 5.2
  * Requires PHP: 7.0
