@@ -51,7 +51,7 @@ class Kirki extends Init {
 	public static $config = [];
 
 	/**
-	 * An array containing all fields which are still using `Kirki::add_field` API.
+	 * An array containing all fields for compatibility purpose.
 	 *
 	 * @static
 	 * @access public
@@ -60,13 +60,13 @@ class Kirki extends Init {
 	public static $fields = [];
 
 	/**
-	 * An array containing all fields which are already using the new API introduced in v4.
+	 * An array containing all fields.
 	 *
 	 * @static
 	 * @access public
 	 * @var array
 	 */
-	public static $modern_fields = [];
+	public static $all_fields = [];
 
 	/**
 	 * An array containing all controls to be removed.
