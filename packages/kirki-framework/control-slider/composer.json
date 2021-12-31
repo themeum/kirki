@@ -1,22 +1,23 @@
 {
-  "name": "kirki-framework/control-range-slider",
-  "description": "Range slider control for the Kirki Customizer Framework",
-  "type": "library",
-  "license": "MIT",
-  "autoload": {
-    "psr-4": {
-      "Kirki\\Control\\": "src/Control",
-      "Kirki\\Field\\": "src/Field"
+    "name": "kirki-framework/control-range-slider",
+    "description": "Range slider control for the Kirki Customizer Framework",
+    "type": "library",
+    "homepage": "https://kirki.org/",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kirki\\Control\\": "src/Control",
+            "Kirki\\Field\\": "src/Field"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kirki Framework",
+            "email": "connect@mapsteps.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "kirki-framework/control-base": "*"
     }
-  },
-  "authors": [
-    {
-      "name": "Kirki Framework",
-      "email": "connect@mapsteps.com"
-    }
-  ],
-  "require": {
-    "php": ">=7",
-    "kirki-framework/control-base": "*"
-  }
 }

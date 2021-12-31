@@ -78,8 +78,13 @@ class Slider extends Base {
 			]
 		);
 
+		$this->json['choices']['min']  = (float) $this->json['choices']['min'];
+		$this->json['choices']['max']  = (float) $this->json['choices']['max'];
+		$this->json['choices']['step'] = (float) $this->json['choices']['step'];
+
 		$this->json['value'] = $this->json['value'] < $this->json['choices']['min'] ? $this->json['choices']['min'] : $this->json['value'];
 		$this->json['value'] = $this->json['value'] > $this->json['choices']['max'] ? $this->json['choices']['max'] : $this->json['value'];
+		$this->json['value'] = (float) $this->json['value'];
 
 	}
 

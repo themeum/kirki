@@ -68,14 +68,14 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             14 => __DIR__ . '/..' . '/kirki-framework/control-react-select/src/Field',
             15 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Field',
             16 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Field',
-            17 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
-            18 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
-            19 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
-            20 => __DIR__ . '/..' . '/kirki-framework/field-background/src',
-            21 => __DIR__ . '/..' . '/kirki-framework/field-dimensions/src',
-            22 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
-            23 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
-            24 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
+            17 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
+            18 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
+            19 => __DIR__ . '/..' . '/kirki-framework/field-background/src',
+            20 => __DIR__ . '/..' . '/kirki-framework/field-dimensions/src',
+            21 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
+            22 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
+            23 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
+            24 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
         ),
         'Kirki\\Data\\' => 
         array (
@@ -102,11 +102,11 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             16 => __DIR__ . '/..' . '/kirki-framework/control-react-select/src/Control',
             17 => __DIR__ . '/..' . '/kirki-framework/control-repeater/src/Control',
             18 => __DIR__ . '/..' . '/kirki-framework/control-select/src/Control',
-            19 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
-            20 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
-            21 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
-            22 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
-            23 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
+            19 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
+            20 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Control',
+            21 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Control',
+            22 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Control',
+            23 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
         ),
         'Kirki\\Compatibility\\' => 
         array (
@@ -115,11 +115,11 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
         'Kirki\\' => 
         array (
             0 => __DIR__ . '/..' . '/kirki-framework/field/src',
-            1 => __DIR__ . '/..' . '/kirki-framework/l10n/src',
-            2 => __DIR__ . '/..' . '/kirki-framework/module-panels/src',
-            3 => __DIR__ . '/..' . '/kirki-framework/module-sections/src',
-            4 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
-            5 => __DIR__ . '/..' . '/kirki-framework/googlefonts/src',
+            1 => __DIR__ . '/..' . '/kirki-framework/googlefonts/src',
+            2 => __DIR__ . '/..' . '/kirki-framework/l10n/src',
+            3 => __DIR__ . '/..' . '/kirki-framework/module-panels/src',
+            4 => __DIR__ . '/..' . '/kirki-framework/module-sections/src',
+            5 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
         ),
         'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
         array (
