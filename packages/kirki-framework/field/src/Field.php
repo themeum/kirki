@@ -105,11 +105,11 @@ abstract class Field {
 		add_filter( 'kirki_field_add_setting_args', [ $this, 'filter_setting_args' ], 10, 2 );
 		add_filter( 'kirki_field_add_control_args', [ $this, 'filter_control_args' ], 10, 2 );
 
-		// Copy $this->args to a variable to be added to Kirki::$modern_fields global.
+		// Copy $this->args to a variable to be added to Kirki::$all_fields global.
 		$field_args = $this->args;
 
 		// Add the field to the static $fields variable properly indexed.
-		\Kirki::$modern_fields[ $field_args['settings'] ] = $field_args;
+		\Kirki::$all_fields[ $field_args['settings'] ] = $field_args;
 
 	}
 
