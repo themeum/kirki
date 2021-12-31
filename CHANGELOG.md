@@ -1,3 +1,7 @@
+### 4.0.4 - Dezember 31, 2021 ###
+* Allow string (numeric) as the choices value in slider control
+* Fix the compatibility issue when using Kirki::get_option to get the value of fields registered using new API.
+
 ### 4.0.3 - Dezember 30, 2021 ###
 
 * Fixed: Fatal error caused by wrong folder name
