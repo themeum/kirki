@@ -1,3 +1,6 @@
+### 4.0.7 - January 04, 2022 ###
+* Fix issue when using `option_type` as `option` without specifying the `option_name`
+
 ### 4.0.6 - January 03, 2022 ###
 * Fix `active_callback` issue when using nested condition
 
