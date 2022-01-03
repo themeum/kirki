@@ -1,3 +1,6 @@
+### 4.0.5 - Dezember 31, 2021 ###
+* Fix `toggleClass` usage when using `js_vars`
+
 ### 4.0.4 - Dezember 31, 2021 ###
 * Allow string (numeric) as the choices value in slider control
 * Fix the compatibility issue when using Kirki::get_option to get the value of fields registered using new API.
