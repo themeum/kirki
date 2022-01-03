@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a6d1c3b1ed42b32e811d144862c044a3cc6bfbe1',
+        'reference' => 'b7d76e4c233ae6e31646b6334aa015a113bba58b',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -313,7 +313,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a6d1c3b1ed42b32e811d144862c044a3cc6bfbe1',
+            'reference' => 'b7d76e4c233ae6e31646b6334aa015a113bba58b',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(
@@ -344,12 +344,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-field-dependencies' => array(
-            'pretty_version' => 'v1.0.5',
-            'version' => '1.0.5.0',
+            'pretty_version' => 'v1.0.6',
+            'version' => '1.0.6.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-field-dependencies',
             'aliases' => array(),
-            'reference' => '7dcf81ec88a175573ebcff6b8792b4a79c93321b',
+            'reference' => '5bf94bdce480d8405136cd5f0013ef42a775f167',
             'dev_requirement' => false,
         ),
         'kirki-framework/module-panels' => array(

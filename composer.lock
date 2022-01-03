@@ -1650,16 +1650,16 @@
         },
         {
             "name": "kirki-framework/module-field-dependencies",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-field-dependencies.git",
-                "reference": "7dcf81ec88a175573ebcff6b8792b4a79c93321b"
+                "reference": "5bf94bdce480d8405136cd5f0013ef42a775f167"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/7dcf81ec88a175573ebcff6b8792b4a79c93321b",
-                "reference": "7dcf81ec88a175573ebcff6b8792b4a79c93321b",
+                "url": "https://api.github.com/repos/kirki-framework/module-field-dependencies/zipball/5bf94bdce480d8405136cd5f0013ef42a775f167",
+                "reference": "5bf94bdce480d8405136cd5f0013ef42a775f167",
                 "shasum": ""
             },
             "require": {
@@ -1691,9 +1691,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-field-dependencies/issues",
-                "source": "https://github.com/kirki-framework/module-field-dependencies/tree/v1.0.5"
+                "source": "https://github.com/kirki-framework/module-field-dependencies/tree/v1.0.6"
             },
-            "time": "2021-12-29T16:02:16+00:00"
+            "time": "2022-01-03T16:41:08+00:00"
         },
         {
             "name": "kirki-framework/module-panels",
