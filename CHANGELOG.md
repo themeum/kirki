@@ -1,3 +1,6 @@
+### 4.0.6 - January 03, 2022 ###
+* Fix `active_callback` issue when using nested condition
+
 ### 4.0.5 - Dezember 31, 2021 ###
 * Fix `toggleClass` usage when using `js_vars`
 
