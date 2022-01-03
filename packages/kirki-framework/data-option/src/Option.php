@@ -41,6 +41,7 @@ class Option {
 	 * @return mixed          Returns the field value.
 	 */
 	public function kirki_get_value( $value = '', $option = '', $default = '', $type = 'theme_mod' ) {
+
 		if ( 'option' === $type ) {
 
 			/**
@@ -57,6 +58,7 @@ class Option {
 			 */
 			$parts = \explode( '[', $option );
 			$value = get_option( $parts[0], [] );
+
 			foreach ( $parts as $key => $part ) {
 				/**
 				 * Skip the 1st item, it's already been dealt with
@@ -65,7 +67,9 @@ class Option {
 				if ( 0 === $key ) {
 					continue;
 				}
+
 				$part = str_replace( ']', '', $part );
+
 				/**
 				 * If the item exists in the value, then change $value to the item.
 				 * This runs recursively for all parts until we get to the end.
@@ -74,6 +78,7 @@ class Option {
 					$value = $value[ $part ];
 					continue;
 				}
+
 				/**
 				 * If we got here, the item was not found in the value.
 				 * We need to change the value accordingly depending on whether
@@ -82,7 +87,9 @@ class Option {
 				$value = ( isset( $parts[ $key + 1 ] ) ) ? [] : '';
 			}
 		}
+
 		return $value;
+
 	}
 
 	/**
@@ -94,6 +101,7 @@ class Option {
 	 * @return array                           Return the arguments.
 	 */
 	public function add_setting_args( $args, $customizer ) {
+
 		// If this is not an option, early exit.
 		if ( ! isset( $args['option_type'] ) || 'option' !== $args['option_type'] ) {
 			return $args;
@@ -102,6 +110,7 @@ class Option {
 		// Set "type" argument to option.
 		$args['type'] = 'option';
 		return $this->maybe_change_settings( $args );
+
 	}
 
 	/**
@@ -113,11 +122,14 @@ class Option {
 	 * @return array                           Return the arguments.
 	 */
 	public function add_control_args( $args, $customizer ) {
+
 		// If this is not an option, early exit.
 		if ( ! isset( $args['option_type'] ) || 'option' !== $args['option_type'] ) {
 			return $args;
 		}
+
 		return $this->maybe_change_settings( $args );
+
 	}
 
 	/**
@@ -129,17 +141,26 @@ class Option {
 	 * @return array      Returns modified array with tweaks to the [settings] argument if needed.
 	 */
 	private function maybe_change_settings( $args ) {
+
 		// Check if we have an option-name defined.
 		if ( isset( $args['option_name'] ) ) {
+			if ( empty( $args['option_name'] ) ) {
+				return $args;
+			}
+
 			if ( isset( $args['settings'] ) && $args['settings'] && false !== strpos( $args['settings'], $args['option_name'] . '[' ) ) {
 				return $args;
 			}
+
 			if ( false === strpos( $args['settings'], '[' ) ) {
-				$parts       = explode( '[', $args['settings'] ); // ? Bagus: in line above, it's obvious that '[' is not found in $args['settings']. But why do we explode it using '[' here?
+				// ? Bagus: in line above, it's obvious that '[' is not found in $args['settings']. But why do we explode it using '[' here?
+				$parts       = explode( '[', $args['settings'] );
 				$final_parts = [ $args['option_name'] ];
+
 				foreach ( $parts as $part ) {
 					$final_parts[] = $part;
 				}
+
 				$args['settings'] = \implode( '][', $final_parts ) . ']';
 				$args['settings'] = str_replace(
 					$args['option_name'] . '][',
@@ -148,6 +169,8 @@ class Option {
 				);
 			}
 		}
+
 		return $args;
+
 	}
 }

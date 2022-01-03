@@ -1119,16 +1119,16 @@
         },
         {
             "name": "kirki-framework/data-option",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/data-option.git",
-                "reference": "f1cabc98a4956f5694211dd19ea5d0bc4ab4f3f3"
+                "reference": "af1ce8f0b890ae005566fcb4d7f44bebb2c17b0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/data-option/zipball/f1cabc98a4956f5694211dd19ea5d0bc4ab4f3f3",
-                "reference": "f1cabc98a4956f5694211dd19ea5d0bc4ab4f3f3",
+                "url": "https://api.github.com/repos/kirki-framework/data-option/zipball/af1ce8f0b890ae005566fcb4d7f44bebb2c17b0c",
+                "reference": "af1ce8f0b890ae005566fcb4d7f44bebb2c17b0c",
                 "shasum": ""
             },
             "require": {
@@ -1158,9 +1158,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/data-option/issues",
-                "source": "https://github.com/kirki-framework/data-option/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/data-option/tree/v1.0.2"
             },
-            "time": "2021-12-29T15:21:11+00:00"
+            "time": "2022-01-03T18:05:56+00:00"
         },
         {
             "name": "kirki-framework/field",
