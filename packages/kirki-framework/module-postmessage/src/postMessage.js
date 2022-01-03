@@ -310,6 +310,7 @@ var kirkiPostMessage = {
 			if ( 'undefined' === typeof output.class || 'undefined' === typeof output.value ) {
 				return;
 			}
+
 			if ( value === output.value && ! jQuery( output.element ).hasClass( output.class ) ) {
 				jQuery( output.element ).addClass( output.class );
 			} else {
@@ -325,7 +326,8 @@ jQuery( document ).ready( function() {
 	_.each( kirkiPostMessageFields, function( field ) {
 
 		// Take care of styles on initial load and page-refreshes.
-		styles = '';
+		// ! Commented codes below were causing bug when using toggleClass method when using js_vars.
+		/*styles = '';
 		_.each( field.js_vars, function( output ) {
 			output.function = ( ! output.function || 'undefined' === typeof kirkiPostMessage[ output.function ] ) ? 'css' : output.function;
 			field.type = ( field.choices && field.choices.parent_type ) ? field.choices.parent_type : field.type;
@@ -336,7 +338,7 @@ jQuery( document ).ready( function() {
 				kirkiPostMessage[ output.function ].fromOutput( output, wp.customize( field.settings ).get(), field.type );
 			}
 		} );
-		kirkiPostMessage.styleTag.addData( field.settings, styles );
+		kirkiPostMessage.styleTag.addData( field.settings, styles );*/
 
 		wp.customize( field.settings, function( value ) {
 			value.bind( function( newVal ) {

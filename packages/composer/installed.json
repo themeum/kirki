@@ -2065,17 +2065,17 @@
         },
         {
             "name": "kirki-framework/module-postmessage",
-            "version": "v1.0.3",
-            "version_normalized": "1.0.3.0",
+            "version": "v1.0.4",
+            "version_normalized": "1.0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-postMessage.git",
-                "reference": "da499f4c38125f8456995801f19ea1dcbebb17b8"
+                "reference": "21dc54238435137181a43fccf248f4d2bc655a13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/da499f4c38125f8456995801f19ea1dcbebb17b8",
-                "reference": "da499f4c38125f8456995801f19ea1dcbebb17b8",
+                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/21dc54238435137181a43fccf248f4d2bc655a13",
+                "reference": "21dc54238435137181a43fccf248f4d2bc655a13",
                 "shasum": ""
             },
             "require": {
@@ -2083,7 +2083,7 @@
                 "kirki-framework/util": "*",
                 "php": ">=7.0"
             },
-            "time": "2021-12-29T16:06:10+00:00",
+            "time": "2022-01-03T09:09:28+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2110,7 +2110,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-postMessage/issues",
-                "source": "https://github.com/kirki-framework/module-postMessage/tree/v1.0.3"
+                "source": "https://github.com/kirki-framework/module-postMessage/tree/v1.0.4"
             },
             "install-path": "../kirki-framework/module-postmessage"
         },
