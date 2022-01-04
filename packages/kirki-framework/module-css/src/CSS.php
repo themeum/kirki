@@ -326,8 +326,15 @@ class CSS {
 			if ( true === apply_filters( "kirki_{$config_id}_css_skip_hidden", true ) ) {
 
 				// Only continue if field dependencies are met.
-				if ( ! empty( $field['required'] ) ) {
+				if ( ( isset( $field['required'] ) && ! empty( $field['required'] ) ) || ( isset( $field['active_callback'] ) && ! empty( $field['active_callback'] ) ) ) {
 					$valid = true;
+
+					// If $field is using active_callback instead of required.
+					if ( ! isset( $field['required'] ) || empty( $field['required'] ) ) {
+						if ( isset( $field['active_callback'] ) && ! empty( $field['active_callback'] ) && is_array( $field['active_callback'] ) ) {
+							$field['required'] = $field['active_callback'];
+						}
+					}
 
 					foreach ( $field['required'] as $requirement ) {
 						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) && isset( self::$field_option_types[ $requirement['setting'] ] ) ) {

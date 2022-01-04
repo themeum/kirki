@@ -247,8 +247,10 @@ class Field {
 	 */
 	public function __construct( $config_id = 'global', $args = [] ) {
 
-		// In case the user only provides 1 argument,
-		// assume that the provided argument is $args and set $config_id = 'global'.
+		/**
+		 * In case the user only provides 1 argument,
+		 * assume that the provided argument is $args and set $config_id = 'global'.
+		 */
 		if ( is_array( $config_id ) && empty( $args ) ) {
 			$args      = $config_id;
 			$config_id = isset( $args['kirki_config'] ) ? $args['kirki_config'] : 'global';
@@ -433,7 +435,9 @@ class Field {
 	 * @access protected
 	 */
 	protected function set_active_callback() {
+
 		if ( is_array( $this->active_callback ) ) {
+
 			if ( ! is_callable( $this->active_callback ) ) {
 
 				// Bugfix for https://github.com/aristath/kirki/issues/1961.
@@ -461,6 +465,7 @@ class Field {
 		if ( ! is_callable( $this->active_callback ) ) {
 			$this->active_callback = '__return_true';
 		}
+
 	}
 
 	/**

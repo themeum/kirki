@@ -108,8 +108,14 @@ abstract class Field {
 		// Copy $this->args to a variable to be added to Kirki::$all_fields global.
 		$field_args = $this->args;
 
-		// Add the field to the static $fields variable properly indexed.
-		\Kirki::$all_fields[ $field_args['settings'] ] = $field_args;
+		/**
+		 * Kirki::$fields contains only fields which are not extending the new base Field.
+		 * So we collect all fields and add them to Kirki::$all_fields.
+		 *
+		 * ! This patch is used by Kirki::get_option which calls Values::get_value method.
+		 * Even though this is a patch, this is fine and still a good solution.
+		 */
+		\Kirki\Compatibility\Kirki::$all_fields[ $field_args['settings'] ] = $field_args;
 
 	}
 
