@@ -1164,16 +1164,16 @@
         },
         {
             "name": "kirki-framework/field",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field.git",
-                "reference": "b24089ba8726ea65c380ea799d993054d267a118"
+                "reference": "1ce92e6cd5845468094fea84733f2dc8994a26e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field/zipball/b24089ba8726ea65c380ea799d993054d267a118",
-                "reference": "b24089ba8726ea65c380ea799d993054d267a118",
+                "url": "https://api.github.com/repos/kirki-framework/field/zipball/1ce92e6cd5845468094fea84733f2dc8994a26e5",
+                "reference": "1ce92e6cd5845468094fea84733f2dc8994a26e5",
                 "shasum": ""
             },
             "require": {
@@ -1203,9 +1203,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/field/issues",
-                "source": "https://github.com/kirki-framework/field/tree/v1.0.5"
+                "source": "https://github.com/kirki-framework/field/tree/v1.0.6"
             },
-            "time": "2022-01-04T19:21:27+00:00"
+            "time": "2022-01-06T15:57:04+00:00"
         },
         {
             "name": "kirki-framework/field-background",
