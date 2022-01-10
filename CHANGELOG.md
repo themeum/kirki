@@ -1,3 +1,6 @@
+### 4.0.10 - January 05, 2022 ###
+* Fix issue where CSS output didn't respect active_callback's default value.
+
 ### 4.0.9 - January 05, 2022 ###
 * Fix CSS output issue when a theme register their Kirki controls inside `init` hook.
 
