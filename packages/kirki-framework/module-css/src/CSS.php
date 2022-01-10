@@ -67,8 +67,10 @@ class CSS {
 	 * @access public
 	 */
 	public function __construct() {
+
 		add_action( 'kirki_field_init', array( $this, 'field_init' ), 10, 2 );
 		add_action( 'init', array( $this, 'init' ) );
+
 	}
 
 	/**
@@ -94,6 +96,7 @@ class CSS {
 		} else {
 			add_action( 'wp_head', array( $this, 'print_styles_inline' ), 999 );
 		}
+
 	}
 
 	/**
@@ -107,6 +110,7 @@ class CSS {
 	 * @return void
 	 */
 	public function field_init( $args, $object ) {
+
 		if ( ! isset( $args['output'] ) ) {
 			$args['output'] = array();
 		}
@@ -165,6 +169,7 @@ class CSS {
 		}
 
 		self::$fields[] = $args;
+
 	}
 
 	/**
@@ -175,9 +180,11 @@ class CSS {
 	 * @return void
 	 */
 	public function print_styles_inline() {
+
 		echo '<style id="kirki-inline-styles">';
 		$this->print_styles();
 		echo '</style>';
+
 	}
 
 	/**
@@ -223,6 +230,7 @@ class CSS {
 			array(),
 			'4.0'
 		);
+
 	}
 
 	/**
@@ -248,6 +256,7 @@ class CSS {
 		header( 'Content-type: text/css' );
 		$this->print_styles();
 		exit;
+
 	}
 
 	/**
@@ -287,6 +296,7 @@ class CSS {
 		}
 
 		do_action( 'kirki_dynamic_css' );
+
 	}
 
 	/**
@@ -338,8 +348,7 @@ class CSS {
 
 					foreach ( $field['required'] as $requirement ) {
 						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) && isset( self::$field_option_types[ $requirement['setting'] ] ) ) {
-							$value_method     = 'get_' . self::$field_option_types[ $requirement['setting'] ];
-							$controller_value = $value_method( $requirement['setting'] );
+							$controller_value = Values::get_value( $config_id, $requirement['setting'] );
 
 							if ( ! Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
 								$valid = false;
@@ -369,6 +378,7 @@ class CSS {
 		if ( is_array( $css ) ) {
 			return Generator::styles_parse( Generator::add_prefixes( $css ) );
 		}
+
 	}
 
 	/**
@@ -381,7 +391,9 @@ class CSS {
 	 * @return array
 	 */
 	private static function get_fields_by_config( $config_id ) {
+
 		$fields = array();
+
 		foreach ( self::$fields as $field ) {
 			if (
 				( isset( $field['kirki_config'] ) && $config_id === $field['kirki_config'] ) ||
@@ -393,6 +405,9 @@ class CSS {
 				$fields[] = $field;
 			}
 		}
+
 		return $fields;
+
 	}
+
 }

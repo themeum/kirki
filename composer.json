@@ -12,7 +12,11 @@
     }
   ],
   "config": {
-    "vendor-dir": "packages"
+    "vendor-dir": "packages",
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "composer/installers": true
+    }
   },
   "include-path": [".", "core"],
   "require": {
