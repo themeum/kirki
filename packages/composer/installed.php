@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '09c48e2e663b0a8de5b54fd5cc80e6fd2e02a95f',
+        'reference' => 'eb65ec02f3b37bec2d24b01d935c5b991943555e',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -313,7 +313,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '09c48e2e663b0a8de5b54fd5cc80e6fd2e02a95f',
+            'reference' => 'eb65ec02f3b37bec2d24b01d935c5b991943555e',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(
@@ -377,6 +377,15 @@
             'install_path' => __DIR__ . '/../kirki-framework/module-preset',
             'aliases' => array(),
             'reference' => 'b4862fbeb9e441ed4ccd15f29a1d17d6f300f6a9',
+            'dev_requirement' => false,
+        ),
+        'kirki-framework/module-section-icons' => array(
+            'pretty_version' => 'v0.1.0',
+            'version' => '0.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kirki-framework/module-section-icons',
+            'aliases' => array(),
+            'reference' => '0e77b904692772974e5e291143f45056a5ab3665',
             'dev_requirement' => false,
         ),
         'kirki-framework/module-sections' => array(

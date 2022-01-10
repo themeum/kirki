@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c29fd54a35bc898d949e7811181b021f",
+    "content-hash": "1e4f76db3f23b41459a8a2c397549503",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -1836,6 +1836,54 @@
                 "source": "https://github.com/kirki-framework/module-preset/tree/v1.0.3"
             },
             "time": "2021-12-29T16:13:19+00:00"
+        },
+        {
+            "name": "kirki-framework/module-section-icons",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/module-section-icons.git",
+                "reference": "0e77b904692772974e5e291143f45056a5ab3665"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/module-section-icons/zipball/0e77b904692772974e5e291143f45056a5ab3665",
+                "reference": "0e77b904692772974e5e291143f45056a5ab3665",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/url-getter": "*",
+                "kirki-framework/util": "*",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Module\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kirki Framework",
+                    "email": "connect@mapsteps.com"
+                }
+            ],
+            "description": "Section-Icons Module for the Kirki WordPress plugin.",
+            "homepage": "https://kirki.org/",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/kirki-framework/module-section-icons/issues",
+                "source": "https://github.com/kirki-framework/module-section-icons/tree/v0.1.0"
+            },
+            "time": "2022-01-10T15:25:39+00:00"
         },
         {
             "name": "kirki-framework/module-sections",

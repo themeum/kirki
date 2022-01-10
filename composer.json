@@ -59,6 +59,7 @@
     "kirki-framework/data-option": "*",
     "kirki-framework/module-panels": "*",
     "kirki-framework/module-sections": "*",
+    "kirki-framework/module-section-icons": "*",
     "kirki-framework/control-react-colorful": "*",
     "kirki-framework/control-color": "*",
     "kirki-framework/control-color-palette": "*",

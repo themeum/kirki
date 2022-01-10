@@ -2165,6 +2165,57 @@
             "install-path": "../kirki-framework/module-preset"
         },
         {
+            "name": "kirki-framework/module-section-icons",
+            "version": "v0.1.0",
+            "version_normalized": "0.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/module-section-icons.git",
+                "reference": "0e77b904692772974e5e291143f45056a5ab3665"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/module-section-icons/zipball/0e77b904692772974e5e291143f45056a5ab3665",
+                "reference": "0e77b904692772974e5e291143f45056a5ab3665",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/url-getter": "*",
+                "kirki-framework/util": "*",
+                "php": ">=7.0"
+            },
+            "time": "2022-01-10T15:25:39+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Module\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kirki Framework",
+                    "email": "connect@mapsteps.com"
+                }
+            ],
+            "description": "Section-Icons Module for the Kirki WordPress plugin.",
+            "homepage": "https://kirki.org/",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/kirki-framework/module-section-icons/issues",
+                "source": "https://github.com/kirki-framework/module-section-icons/tree/v0.1.0"
+            },
+            "install-path": "../kirki-framework/module-section-icons"
+        },
+        {
             "name": "kirki-framework/module-sections",
             "version": "v1.0.4",
             "version_normalized": "1.0.4.0",
