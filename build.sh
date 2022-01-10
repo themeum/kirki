@@ -14,7 +14,7 @@ fi
 
 mkdir kirki
 
-echo "Copying files ...";
+echo "Copying files (be patient :) ...";
 
 cp -r !(.|..|.git|.github|kirki|node_modules|.editorconfig|.gitignore|.gitattributes|.phpcs.xml.dist|build.sh|CHANGELOG.md|CODE_OF_CONDUCT.md|example.php|package.json|package-lock.json|README.md) kirki/
 
@@ -32,7 +32,7 @@ rm -rf kirki-git/kirki/
 
 cd kirki
 
-echo "Updating composer to remove dev dependencies (be patient :) ...";
+echo "Updating composer to remove dev dependencies ...";
 
 sed -i '/composer\/installers/d' composer.json
 sed -i '/dealerdirect\/phpcodesniffer-composer-installer/d' composer.json

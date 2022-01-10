@@ -1,3 +1,6 @@
+### 4.0.11 - January 05, 2022 ###
+* Include section icons module (was miissing)
+
 ### 4.0.10 - January 05, 2022 ###
 * Fix issue where CSS output didn't respect active_callback's default value.
 
