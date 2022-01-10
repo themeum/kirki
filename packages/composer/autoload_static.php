@@ -45,10 +45,10 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             2 => __DIR__ . '/..' . '/kirki-framework/module-field-dependencies/src',
             3 => __DIR__ . '/..' . '/kirki-framework/module-postmessage/src',
             4 => __DIR__ . '/..' . '/kirki-framework/module-preset/src',
-            5 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
-            6 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
-            7 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
-            8 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
+            5 => __DIR__ . '/..' . '/kirki-framework/module-section-icons/src',
+            6 => __DIR__ . '/..' . '/kirki-framework/module-selective-refresh/src',
+            7 => __DIR__ . '/..' . '/kirki-framework/module-tooltips/src',
+            8 => __DIR__ . '/..' . '/kirki-framework/module-webfonts/src',
         ),
         'Kirki\\Field\\' => 
         array (

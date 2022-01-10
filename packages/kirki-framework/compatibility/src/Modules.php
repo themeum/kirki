@@ -44,8 +44,10 @@ class Modules {
 	 * @since 3.0.0
 	 */
 	public function __construct() {
+
 		add_action( 'after_setup_theme', [ $this, 'setup_default_modules' ], 10 );
 		add_action( 'after_setup_theme', [ $this, 'init' ], 11 );
+
 	}
 
 	/**
@@ -57,6 +59,7 @@ class Modules {
 	 * @since 3.0.0
 	 */
 	public function setup_default_modules() {
+
 		self::$modules = apply_filters(
 			'kirki_modules',
 			[
@@ -68,8 +71,10 @@ class Modules {
 				'webfonts'           => '\Kirki\Module\Webfonts',
 				'preset'             => '\Kirki\Module\Preset',
 				'gutenberg'          => '\Kirki\Module\Editor_Styles',
+				'section-icons'      => '\Kirki\Module\Section_Icons',
 			]
 		);
+
 	}
 
 	/**
@@ -81,11 +86,13 @@ class Modules {
 	 * @since 3.0.0
 	 */
 	public function init() {
+
 		foreach ( self::$modules as $module_class ) {
 			if ( class_exists( $module_class ) ) {
 				new $module_class();
 			}
 		}
+
 	}
 
 	/**
@@ -97,9 +104,11 @@ class Modules {
 	 * @since 3.0.0
 	 */
 	public static function add_module( $module ) {
+
 		if ( ! in_array( $module, self::$modules, true ) ) {
 			self::$modules[] = $module;
 		}
+
 	}
 
 	/**
@@ -111,10 +120,13 @@ class Modules {
 	 * @since 3.0.0
 	 */
 	public static function remove_module( $module ) {
+
 		$key = array_search( $module, self::$modules, true );
+
 		if ( false !== $key ) {
 			unset( self::$modules[ $key ] );
 		}
+
 	}
 
 	/**
@@ -126,7 +138,9 @@ class Modules {
 	 * @return array
 	 */
 	public static function get_modules() {
+
 		return self::$modules;
+
 	}
 
 	/**
@@ -138,6 +152,9 @@ class Modules {
 	 * @return array
 	 */
 	public static function get_active_modules() {
+
 		return self::$active_modules;
+
 	}
+
 }
