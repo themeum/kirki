@@ -1,3 +1,6 @@
+### 4.0.13 - January 12, 2022 ###
+* Fix CSS output bug when Kirki fields are registered through `kirki_fields` (or `kirki/fields`) filter hook.
+
 ### 4.0.12 - January 11, 2022 ###
 * Fix SVG upload on image control.
 
