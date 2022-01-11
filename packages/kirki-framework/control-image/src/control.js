@@ -63,9 +63,11 @@ wp.customize.controlConstructor['kirki-image'] = wp.customize.kirkiDynamicContro
 				if ( 'array' === saveAs ) {
 					control.setting.set( {
 						id: jsonImg.id,
-						url: jsonImg.sizes.full.url,
+						url: !_.isUndefined(jsonImg.sizes)
+							? jsonImg.sizes.full.url
+							: jsonImg.url,
 						width: jsonImg.width,
-						height: jsonImg.height
+						height: jsonImg.height,
 					} );
 				} else if ( 'id' === saveAs ) {
 					control.setting.set( jsonImg.id );

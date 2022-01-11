@@ -628,16 +628,16 @@
         },
         {
             "name": "kirki-framework/control-image",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-image.git",
-                "reference": "d9adfbede5a2349d3aa7eb1c885c581681b4e450"
+                "reference": "32e2a2aff8a7e5d6ff9dfe530563a4381dc82e61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/d9adfbede5a2349d3aa7eb1c885c581681b4e450",
-                "reference": "d9adfbede5a2349d3aa7eb1c885c581681b4e450",
+                "url": "https://api.github.com/repos/kirki-framework/control-image/zipball/32e2a2aff8a7e5d6ff9dfe530563a4381dc82e61",
+                "reference": "32e2a2aff8a7e5d6ff9dfe530563a4381dc82e61",
                 "shasum": ""
             },
             "require": {
@@ -671,9 +671,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-image/issues",
-                "source": "https://github.com/kirki-framework/control-image/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/control-image/tree/v1.0.2"
             },
-            "time": "2021-12-29T14:36:31+00:00"
+            "time": "2022-01-11T15:22:22+00:00"
         },
         {
             "name": "kirki-framework/control-multicheck",
