@@ -1,7 +1,10 @@
-### 4.0.11 - January 05, 2022 ###
-* Include section icons module (was miissing)
+### 4.0.12 - January 11, 2022 ###
+* Fix SVG upload on image control.
 
-### 4.0.10 - January 05, 2022 ###
+### 4.0.11 - January 10, 2022 ###
+* Include section icons module (was missing)
+
+### 4.0.10 - January 10, 2022 ###
 * Fix issue where CSS output didn't respect active_callback's default value.
 
 ### 4.0.9 - January 05, 2022 ###
