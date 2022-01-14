@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'fdf1c9084c84881eeb8805c2da0b96e919df8f14',
+        'reference' => 'c70f1bc0c677e8e963d271d8bb18c7d1c6e5d07b',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -182,12 +182,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
-            'pretty_version' => 'v1.1.2',
-            'version' => '1.1.2.0',
+            'pretty_version' => 'v1.1.3',
+            'version' => '1.1.3.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-select',
             'aliases' => array(),
-            'reference' => '0601c2a25ff91d8ee509ba746885b72298abdf09',
+            'reference' => '3356ac71b977bbf2cf1063d2f7825d7a7b6fd5b3',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-repeater' => array(
@@ -313,7 +313,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'fdf1c9084c84881eeb8805c2da0b96e919df8f14',
+            'reference' => 'c70f1bc0c677e8e963d271d8bb18c7d1c6e5d07b',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(
