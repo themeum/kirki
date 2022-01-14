@@ -1,3 +1,6 @@
+### 4.0.14 - January 14, 2022 ###
+* Fix issue where the description in some controls can't contain HTML.
+
 ### 4.0.13 - January 12, 2022 ###
 * Fix CSS output bug when Kirki fields are registered through `kirki_fields` (or `kirki/fields`) filter hook.
 
