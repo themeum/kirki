@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'c70f1bc0c677e8e963d271d8bb18c7d1c6e5d07b',
+        'reference' => 'adf61185a742d1ead1a1326814556dbb420fb5b0',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -74,12 +74,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-color-palette' => array(
-            'pretty_version' => 'v1.0.0',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'v1.0.2',
+            'version' => '1.0.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-color-palette',
             'aliases' => array(),
-            'reference' => 'b3373ce7a97c4d4d516daea3c2443ec587a25330',
+            'reference' => 'a5d214f05793dde79982f9d89ce47cb5c64d794d',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-cropped-image' => array(
@@ -313,7 +313,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'c70f1bc0c677e8e963d271d8bb18c7d1c6e5d07b',
+            'reference' => 'adf61185a742d1ead1a1326814556dbb420fb5b0',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(
