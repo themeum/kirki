@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'adf61185a742d1ead1a1326814556dbb420fb5b0',
+        'reference' => 'ec005172579773a059aaa027efccc68876dbcd21',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -209,12 +209,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-slider' => array(
-            'pretty_version' => 'v1.0.3',
-            'version' => '1.0.3.0',
+            'pretty_version' => 'v1.0.4',
+            'version' => '1.0.4.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-slider',
             'aliases' => array(),
-            'reference' => '4d0e4c7292431040beaaff03c524a033f7ae42c7',
+            'reference' => '8075a809fd2ac0054712f7f7a7e08ed84b2f3fad',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-sortable' => array(
@@ -313,7 +313,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'adf61185a742d1ead1a1326814556dbb420fb5b0',
+            'reference' => 'ec005172579773a059aaa027efccc68876dbcd21',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(

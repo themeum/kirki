@@ -1,6 +1,6 @@
 {
     "name": "control-range-slider",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Development toolkit for Kirki's control-range-slider",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",

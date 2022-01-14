@@ -43,8 +43,8 @@ const KirkiSliderForm = (props) => {
       }
     }
 
-		trigger = "reset";
-		customizerSetting.set(sliderRef.current.value);
+    trigger = "reset";
+    customizerSetting.set(sliderRef.current.value);
   };
 
   // Preparing for the template.
@@ -58,9 +58,10 @@ const KirkiSliderForm = (props) => {
     <div className="kirki-control-form" tabIndex="1">
       <label className="kirki-control-label" htmlFor={fieldId}>
         <span className="customize-control-title">{props.label}</span>
-        <span className="customize-control-description description">
-          {props.description}
-        </span>
+        <span
+          className="customize-control-description description"
+          dangerouslySetInnerHTML={{ __html: props.description }}
+        />
       </label>
 
       <div
