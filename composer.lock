@@ -246,16 +246,16 @@
         },
         {
             "name": "kirki-framework/control-color-palette",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-color-palette.git",
-                "reference": "a5d214f05793dde79982f9d89ce47cb5c64d794d"
+                "reference": "32715837449e9a6666253b28b538bd69d6718c67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/a5d214f05793dde79982f9d89ce47cb5c64d794d",
-                "reference": "a5d214f05793dde79982f9d89ce47cb5c64d794d",
+                "url": "https://api.github.com/repos/kirki-framework/control-color-palette/zipball/32715837449e9a6666253b28b538bd69d6718c67",
+                "reference": "32715837449e9a6666253b28b538bd69d6718c67",
                 "shasum": ""
             },
             "require": {
@@ -282,9 +282,9 @@
             "description": "Color palette control for the Kirki Customizer Framework",
             "support": {
                 "issues": "https://github.com/kirki-framework/control-color-palette/issues",
-                "source": "https://github.com/kirki-framework/control-color-palette/tree/v1.0.2"
+                "source": "https://github.com/kirki-framework/control-color-palette/tree/v1.0.3"
             },
-            "time": "2022-01-14T16:10:28+00:00"
+            "time": "2022-01-18T07:50:14+00:00"
         },
         {
             "name": "kirki-framework/control-cropped-image",

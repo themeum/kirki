@@ -69,6 +69,14 @@ class Color_Palette extends Base {
 
 		parent::to_json();
 
+		if ( isset( $this->json['label'] ) ) {
+			$this->json['label'] = html_entity_decode( $this->json['label'] );
+		}
+
+		if ( isset( $this->json['description'] ) ) {
+			$this->json['description'] = html_entity_decode( $this->json['description'] );
+		}
+
 		$this->json['value'] = strtolower( $this->json['value'] );
 
 		$choices = $this->json['choices'];
