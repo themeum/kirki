@@ -78,6 +78,14 @@ class Slider extends Base {
 			]
 		);
 
+		if ( isset( $this->json['label'] ) ) {
+			$this->json['label'] = html_entity_decode( $this->json['label'] );
+		}
+
+		if ( isset( $this->json['description'] ) ) {
+			$this->json['description'] = html_entity_decode( $this->json['description'] );
+		}
+
 		$this->json['choices']['min']  = (float) $this->json['choices']['min'];
 		$this->json['choices']['max']  = (float) $this->json['choices']['max'];
 		$this->json['choices']['step'] = (float) $this->json['choices']['step'];

@@ -978,16 +978,16 @@
         },
         {
             "name": "kirki-framework/control-slider",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-slider.git",
-                "reference": "8075a809fd2ac0054712f7f7a7e08ed84b2f3fad"
+                "reference": "40ce473123f0cb12da745467d69210cff3ffecf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/8075a809fd2ac0054712f7f7a7e08ed84b2f3fad",
-                "reference": "8075a809fd2ac0054712f7f7a7e08ed84b2f3fad",
+                "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/40ce473123f0cb12da745467d69210cff3ffecf5",
+                "reference": "40ce473123f0cb12da745467d69210cff3ffecf5",
                 "shasum": ""
             },
             "require": {
@@ -1015,9 +1015,9 @@
             "homepage": "https://kirki.org/",
             "support": {
                 "issues": "https://github.com/kirki-framework/control-slider/issues",
-                "source": "https://github.com/kirki-framework/control-slider/tree/v1.0.4"
+                "source": "https://github.com/kirki-framework/control-slider/tree/v1.0.5"
             },
-            "time": "2022-01-14T16:18:54+00:00"
+            "time": "2022-01-18T06:31:29+00:00"
         },
         {
             "name": "kirki-framework/control-sortable",
