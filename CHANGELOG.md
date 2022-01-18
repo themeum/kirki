@@ -1,3 +1,6 @@
+### 4.0.15 - January 18, 2022 ###
+* Fix issue where _html entities_ are not rendered in some control's label and description.
+
 ### 4.0.14 - January 14, 2022 ###
 * Fix issue where the description in some controls can't contain HTML.
 
