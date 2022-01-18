@@ -136,6 +136,15 @@ class ReactSelect extends Base {
 	 */
 	public function to_json() {
 		parent::to_json();
+
+		if ( isset( $this->json['label'] ) ) {
+			$this->json['label'] = html_entity_decode( $this->json['label'] );
+		}
+
+		if ( isset( $this->json['description'] ) ) {
+			$this->json['description'] = html_entity_decode( $this->json['description'] );
+		}
+
 		$this->json['isClearable'] = $this->isClearable;
 
 		// Backwards-compatibility: The "multiple" argument used to be a number of maximum options users can select.
