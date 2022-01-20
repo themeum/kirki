@@ -1,6 +1,6 @@
 {
     "name": "kirki-control-base",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Dev toolkit for Kirki's control-base",
     "repository": {
         "type": "git",
