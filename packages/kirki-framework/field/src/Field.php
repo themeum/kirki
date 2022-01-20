@@ -70,6 +70,13 @@ abstract class Field {
 	 */
 	public function __construct( $args ) {
 
+		$control_class = property_exists( $this, 'control_class' ) && ! empty( $this->control_class ) ? $this->control_class : '';
+
+		if ( apply_filters( 'kirki_field_exclude_init', false, $args, $this, $control_class ) ) {
+			do_action( 'kirki_field_custom_init', $args, $this, $control_class );
+			return;
+		}
+
 		// Set the arguments in this object.
 		$this->args = $args;
 
@@ -83,6 +90,7 @@ abstract class Field {
 				do_action( 'kirki_field_init', $this->args, $this );
 			}
 		);
+
 		add_action(
 			'wp',
 			function() {
@@ -113,7 +121,7 @@ abstract class Field {
 		 * So we collect all fields and add them to Kirki::$all_fields.
 		 *
 		 * ! This patch is used by Kirki::get_option which calls Values::get_value method.
-		 * Even though this is a patch, this is fine and still a good solution.
+		 * Even though this is a patch, this is fine and still a good solution to handle backwards compatibility.
 		 */
 		\Kirki\Compatibility\Kirki::$all_fields[ $field_args['settings'] ] = $field_args;
 
@@ -138,9 +146,11 @@ abstract class Field {
 	 * @return void
 	 */
 	public function register_control_type( $wp_customize ) {
+
 		if ( $this->control_class ) {
 			$wp_customize->register_control_type( $this->control_class );
 		}
+
 	}
 
 	/**

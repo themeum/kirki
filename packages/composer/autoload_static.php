@@ -73,10 +73,10 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
             18 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
             19 => __DIR__ . '/..' . '/kirki-framework/control-upload/src/Field',
             20 => __DIR__ . '/..' . '/kirki-framework/field-background/src',
-            21 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
-            22 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
-            23 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
-            24 => __DIR__ . '/..' . '/kirki-framework/field-dimensions/src',
+            21 => __DIR__ . '/..' . '/kirki-framework/field-dimensions/src',
+            22 => __DIR__ . '/..' . '/kirki-framework/field-fontawesome/src/Field',
+            23 => __DIR__ . '/..' . '/kirki-framework/field-multicolor/src/Field',
+            24 => __DIR__ . '/..' . '/kirki-framework/field-typography/src/Field',
         ),
         'Kirki\\Data\\' => 
         array (
@@ -115,12 +115,12 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
         ),
         'Kirki\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kirki-framework/field/src',
-            1 => __DIR__ . '/..' . '/kirki-framework/googlefonts/src',
-            2 => __DIR__ . '/..' . '/kirki-framework/l10n/src',
-            3 => __DIR__ . '/..' . '/kirki-framework/module-panels/src',
-            4 => __DIR__ . '/..' . '/kirki-framework/module-sections/src',
-            5 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
+            0 => __DIR__ . '/..' . '/kirki-framework/googlefonts/src',
+            1 => __DIR__ . '/..' . '/kirki-framework/l10n/src',
+            2 => __DIR__ . '/..' . '/kirki-framework/module-panels/src',
+            3 => __DIR__ . '/..' . '/kirki-framework/module-sections/src',
+            4 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
+            5 => __DIR__ . '/..' . '/kirki-framework/field/src',
         ),
         'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
         array (

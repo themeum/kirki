@@ -1449,23 +1449,23 @@
         },
         {
             "name": "kirki-framework/field",
-            "version": "v1.0.7",
-            "version_normalized": "1.0.7.0",
+            "version": "v1.0.8",
+            "version_normalized": "1.0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field.git",
-                "reference": "6ffe23727a33246eb7ffc2c636b6b5af1d6ea53f"
+                "reference": "a89ba143ef7dc57afee80cfe8d63efa472f80ad3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field/zipball/6ffe23727a33246eb7ffc2c636b6b5af1d6ea53f",
-                "reference": "6ffe23727a33246eb7ffc2c636b6b5af1d6ea53f",
+                "url": "https://api.github.com/repos/kirki-framework/field/zipball/a89ba143ef7dc57afee80cfe8d63efa472f80ad3",
+                "reference": "a89ba143ef7dc57afee80cfe8d63efa472f80ad3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0"
             },
-            "time": "2022-01-11T17:04:56+00:00",
+            "time": "2022-01-20T00:26:09+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1491,7 +1491,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/field/issues",
-                "source": "https://github.com/kirki-framework/field/tree/v1.0.7"
+                "source": "https://github.com/kirki-framework/field/tree/v1.0.8"
             },
             "install-path": "../kirki-framework/field"
         },
