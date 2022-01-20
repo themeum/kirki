@@ -40,7 +40,7 @@ class Checkbox extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.0';
+	public static $control_ver = '1.0.3';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -77,7 +77,7 @@ class Checkbox extends Base {
 			id="_customize-input-{{ data.id }}"
 			type="checkbox"
 			value="{{ data.value }}"
-			{{ data.link }}
+			{{{ data.link }}}
 			<# if ( data.description ) { #>aria-describedby="_customize-description-{{ data.id }}"<# } #>
 			<# if ( data.value ) { #>checked="checked"<# } #>
 		/>

@@ -58,7 +58,7 @@ class Checkbox_Switch extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.0';
+	public static $control_ver = '1.0.3';
 
 	/**
 	 * Enqueue control related scripts/styles.

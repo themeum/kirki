@@ -320,17 +320,17 @@
         },
         {
             "name": "kirki-framework/control-checkbox",
-            "version": "v1.0.2",
-            "version_normalized": "1.0.2.0",
+            "version": "v1.0.3",
+            "version_normalized": "1.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-checkbox.git",
-                "reference": "ea0e0b724634df9ecce4c6536b4de2135d15620d"
+                "reference": "f0b5223b66e1b798d3451c810201d35f8e5e2049"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/ea0e0b724634df9ecce4c6536b4de2135d15620d",
-                "reference": "ea0e0b724634df9ecce4c6536b4de2135d15620d",
+                "url": "https://api.github.com/repos/kirki-framework/control-checkbox/zipball/f0b5223b66e1b798d3451c810201d35f8e5e2049",
+                "reference": "f0b5223b66e1b798d3451c810201d35f8e5e2049",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=7.0"
             },
-            "time": "2021-12-29T13:19:58+00:00",
+            "time": "2022-01-20T01:40:52+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -366,7 +366,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-checkbox/issues",
-                "source": "https://github.com/kirki-framework/control-checkbox/tree/v1.0.2"
+                "source": "https://github.com/kirki-framework/control-checkbox/tree/v1.0.3"
             },
             "install-path": "../kirki-framework/control-checkbox"
         },
