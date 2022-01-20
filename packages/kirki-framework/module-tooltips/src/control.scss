@@ -1,26 +1,56 @@
 .kirki-tooltip-wrapper {
-	position: relative;
-	float: right;
-	// 2 is enought, but just to be safe.
-	z-index: 5;
+	z-index: 5; // 2 is enough, but.. just to be safe.
+
+	&:hover {
+		.tooltip-content {
+			top: -37px;
+			opacity: 1;
+			visibility: visible;
+			z-index: 99999;
+		}
+	}
 
 	.tooltip-trigger {
+		position: relative;
+		top: 0;
+		left: 3px;
 		text-decoration: none;
-		cursor: help;
+
+		.dashicons {
+			font-size: 16px;
+			width: 16px;
+			height: 16px;
+		}
 	}
 
 	.tooltip-content {
 		position: absolute;
-		width: 200px;
+		padding: 7px;
+		width: 100%;
 		height: auto;
-		top: -10px;
-		left: -225px;
-		background: #000;
+		top: -30px;
+		left: 0;
+		font-size: 13px;
 		color: #fff;
-		padding: 10px;
-		z-index: 99999;
-		border-radius: 3px;
 		line-height: 1.4em;
+		background: #000;
+		border-radius: 3px;
+		opacity: 0;
+		visibility: hidden;
+		z-index: -1;
+		transition: all 0.2s linear;
+
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: -6px;
+			display: block;
+			width: 0;
+			height: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-top: 10px solid #000;
+		}
 
 		a {
 			color: #00a0d2;
