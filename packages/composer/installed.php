@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '3309e7acbe3afcd8078a0b7399cc662aed14454e',
+        'reference' => '9c75bb9c5a6b0af20cf0f0709847fb6d578c5a31',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -263,12 +263,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/field-dimensions' => array(
-            'pretty_version' => 'v1.0.2',
-            'version' => '1.0.2.0',
+            'pretty_version' => 'v1.0.3',
+            'version' => '1.0.3.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-dimensions',
             'aliases' => array(),
-            'reference' => 'e59bfb68eb44ad09292eae0f9e99af39eb279d99',
+            'reference' => 'ac147cc95fb706664953471ef8f14cfb04f197fc',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-fontawesome' => array(
@@ -313,7 +313,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '3309e7acbe3afcd8078a0b7399cc662aed14454e',
+            'reference' => '9c75bb9c5a6b0af20cf0f0709847fb6d578c5a31',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(

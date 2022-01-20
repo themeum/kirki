@@ -141,8 +141,9 @@ class Dimensions extends Field {
 			$label = isset( $args['choices']['labels'][ $choice ] ) ? $args['choices']['labels'][ $choice ] : $label;
 
 			$wrapper_attrs = array(
-				'data-kirki-parent-control-type' => 'kirki-dimensions',
-				'class'                          => '{default_class} kirki-group-item kirki-w' . $width,
+				'data-kirki-parent-control-type'    => 'kirki-dimensions',
+				'data-kirki-parent-control-setting' => $args['settings'],
+				'class'                             => '{default_class} kirki-group-item kirki-w' . $width,
 			);
 
 			if ( $item_count === 1 ) {
@@ -190,13 +191,17 @@ class Dimensions extends Field {
 	 * @return array
 	 */
 	public static function sanitize( $value ) {
+
 		if ( ! is_array( $value ) ) {
 			return array();
 		}
+
 		foreach ( $value as $key => $val ) {
 			$value[ $key ] = sanitize_text_field( $val );
 		}
+
 		return $value;
+
 	}
 
 	/**
@@ -227,7 +232,9 @@ class Dimensions extends Field {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
+
 		wp_enqueue_style( 'kirki-field-dimensions', URL::get_from_path( dirname( __DIR__ ) . '/dist/control.css' ), array(), '1.0' );
+
 	}
 
 	/**
@@ -238,7 +245,9 @@ class Dimensions extends Field {
 	 * @return void
 	 */
 	public function enqueue_customize_preview_scripts() {
+
 		wp_enqueue_script( 'kirki-field-dimensions', URL::get_from_path( dirname( __DIR__ ) ) . '/dist/preview.js', array( 'wp-hooks' ), '1.0', true );
+
 	}
 
 	/**
@@ -250,7 +259,9 @@ class Dimensions extends Field {
 	 * @return array
 	 */
 	public function output_control_classnames( $classnames ) {
+
 		$classnames['kirki-dimensions'] = '\Kirki\Field\CSS\Dimensions';
 		return $classnames;
+
 	}
 }
