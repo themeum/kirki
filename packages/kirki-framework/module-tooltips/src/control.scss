@@ -17,9 +17,9 @@
 		text-decoration: none;
 
 		.dashicons {
-			font-size: 16px;
-			width: 16px;
-			height: 16px;
+			font-size: 18px;
+			width: 18px;
+			height: 18px;
 		}
 	}
 
@@ -28,7 +28,7 @@
 		padding: 7px;
 		width: 100%;
 		height: auto;
-		top: -30px;
+		top: -34px;
 		left: 0;
 		font-size: 13px;
 		color: #fff;
@@ -40,17 +40,18 @@
 		z-index: -1;
 		transition: all 0.2s linear;
 
-		&::before {
-			content: '';
-			position: absolute;
-			bottom: -6px;
-			display: block;
-			width: 0;
-			height: 0;
-			border-left: 10px solid transparent;
-			border-right: 10px solid transparent;
-			border-top: 10px solid #000;
-		}
+    /// We might want to bring it back in the future.
+		// &::before {
+		// 	content: '';
+		// 	position: absolute;
+		// 	bottom: -6px;
+		// 	display: block;
+		// 	width: 0;
+		// 	height: 0;
+		// 	border-left: 10px solid transparent;
+		// 	border-right: 10px solid transparent;
+		// 	border-top: 10px solid #000;
+		// }
 
 		a {
 			color: #00a0d2;

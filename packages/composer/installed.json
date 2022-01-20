@@ -2316,24 +2316,24 @@
         },
         {
             "name": "kirki-framework/module-tooltips",
-            "version": "v1.0.5",
-            "version_normalized": "1.0.5.0",
+            "version": "v1.0.6",
+            "version_normalized": "1.0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-tooltips.git",
-                "reference": "8f0ff40b3775b28e3b090b8c113a7367108dc440"
+                "reference": "5f971719df0b0eb57ae402639e2c1f28dadd0c2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-tooltips/zipball/8f0ff40b3775b28e3b090b8c113a7367108dc440",
-                "reference": "8f0ff40b3775b28e3b090b8c113a7367108dc440",
+                "url": "https://api.github.com/repos/kirki-framework/module-tooltips/zipball/5f971719df0b0eb57ae402639e2c1f28dadd0c2c",
+                "reference": "5f971719df0b0eb57ae402639e2c1f28dadd0c2c",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/url-getter": "*",
                 "php": ">=7.0"
             },
-            "time": "2022-01-20T15:49:25+00:00",
+            "time": "2022-01-20T15:59:14+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2360,7 +2360,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-tooltips/issues",
-                "source": "https://github.com/kirki-framework/module-tooltips/tree/v1.0.5"
+                "source": "https://github.com/kirki-framework/module-tooltips/tree/v1.0.6"
             },
             "install-path": "../kirki-framework/module-tooltips"
         },
