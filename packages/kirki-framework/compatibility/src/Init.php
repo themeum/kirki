@@ -86,7 +86,7 @@ class Init {
 			'kirki-spacing'         => '\Kirki\Control\Dimensions',
 			'kirki-switch'          => '\Kirki\Control\Checkbox_Switch',
 			'kirki-generic'         => '\Kirki\Control\Generic',
-			'kirki-toggle'          => '\Kirki\Control\Checkbox_Toggle', // ! Toggle control class doesn't exist.
+			'kirki-toggle'          => '\Kirki\Control\Checkbox_Toggle',
 			'image'                 => '\Kirki\Control\Image',
 			'cropped_image'         => '\Kirki\Control\Cropped_Image',
 			'upload'                => '\Kirki\Control\Upload',
