@@ -45,10 +45,13 @@ class Checkbox_Switch extends Checkbox {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
+
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args         = parent::filter_control_args( $args, $wp_customize );
 			$args['type'] = 'kirki-switch';
 		}
+
 		return $args;
+
 	}
 }
