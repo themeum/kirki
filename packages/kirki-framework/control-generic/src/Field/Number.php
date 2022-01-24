@@ -37,16 +37,33 @@ class Number extends Generic {
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
 
-		if ( $args['settings'] === $this->args['settings'] ) {
-			$args = parent::filter_setting_args( $args, $wp_customize );
-
-			// Set the sanitize-callback if none is defined.
-			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
-				$args['sanitize_callback'] = function( $value ) {
-					return filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-				};
-			}
+		if ( $args['settings'] !== $this->args['settings'] ) {
+			return $args;
 		}
+
+		// Set the sanitize-callback if none is defined.
+		if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+
+			$args['sanitize_callback'] = function( $value ) use ( $args ) {
+				$value = filter_var( $value, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+
+				if ( isset( $args['choices'] ) && isset( $args['choices']['min'] ) && isset( $args['choices']['max'] ) ) {
+					// Make sure min & max are all numeric.
+					$min = filter_var( $args['choices']['min'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+					$max = filter_var( $args['choices']['max'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+
+					if ( $value < $min ) {
+						$value = $min;
+					} elseif ( $value > $max ) {
+						$value = $max;
+					}
+				}
+
+				return $value;
+			};
+
+		}
+
 		return $args;
 	}
 
@@ -60,6 +77,7 @@ class Number extends Generic {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
+
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args = parent::filter_control_args( $args, $wp_customize );
 
@@ -84,6 +102,9 @@ class Number extends Generic {
 			$args['choices']['max']  = filter_var( $args['choices']['max'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 			$args['choices']['step'] = filter_var( $args['choices']['step'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 		}
+
 		return $args;
+
 	}
+
 }

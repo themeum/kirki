@@ -56,6 +56,7 @@ class Generic extends Field {
 	 * @return array
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
+
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args = parent::filter_setting_args( $args, $wp_customize );
 
@@ -64,7 +65,9 @@ class Generic extends Field {
 				$args['sanitize_callback'] = 'wp_kses_post';
 			}
 		}
+
 		return $args;
+
 	}
 
 	/**
@@ -77,6 +80,7 @@ class Generic extends Field {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
+
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args = parent::filter_control_args( $args, $wp_customize );
 
@@ -87,6 +91,8 @@ class Generic extends Field {
 			$args['choices']            = isset( $args['choices'] ) ? $args['choices'] : [];
 			$args['choices']['element'] = isset( $args['choices']['element'] ) ? $args['choices']['element'] : 'input';
 		}
+
 		return $args;
+
 	}
 }

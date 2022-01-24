@@ -579,16 +579,16 @@
         },
         {
             "name": "kirki-framework/control-generic",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-generic.git",
-                "reference": "82643cbfc2cd48dc1d047ca7e32ca7ed98650611"
+                "reference": "5f87bb740ba92717b6b10b862e571919003906c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/82643cbfc2cd48dc1d047ca7e32ca7ed98650611",
-                "reference": "82643cbfc2cd48dc1d047ca7e32ca7ed98650611",
+                "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/5f87bb740ba92717b6b10b862e571919003906c4",
+                "reference": "5f87bb740ba92717b6b10b862e571919003906c4",
                 "shasum": ""
             },
             "require": {
@@ -622,9 +622,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-generic/issues",
-                "source": "https://github.com/kirki-framework/control-generic/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/control-generic/tree/v1.0.2"
             },
-            "time": "2021-12-29T14:33:52+00:00"
+            "time": "2022-01-24T19:36:51+00:00"
         },
         {
             "name": "kirki-framework/control-image",

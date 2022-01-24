@@ -37,7 +37,7 @@ class Generic extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.1';
+	public static $control_ver = '1.0.2';
 
 	/**
 	 * Enqueue control related scripts/styles.

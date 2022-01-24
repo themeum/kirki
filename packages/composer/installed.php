@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '8613c8094d6fb376df8e361b4a1ebc2eeba07d5d',
+        'reference' => '6af44da6ec9186240ca2ab58edec6a23575e5b44',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -137,12 +137,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-generic' => array(
-            'pretty_version' => 'v1.0.1',
-            'version' => '1.0.1.0',
+            'pretty_version' => 'v1.0.2',
+            'version' => '1.0.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-generic',
             'aliases' => array(),
-            'reference' => '82643cbfc2cd48dc1d047ca7e32ca7ed98650611',
+            'reference' => '5f87bb740ba92717b6b10b862e571919003906c4',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-image' => array(
@@ -313,7 +313,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '8613c8094d6fb376df8e361b4a1ebc2eeba07d5d',
+            'reference' => '6af44da6ec9186240ca2ab58edec6a23575e5b44',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(
