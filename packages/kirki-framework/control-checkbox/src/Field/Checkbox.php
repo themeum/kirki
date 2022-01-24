@@ -56,6 +56,7 @@ class Checkbox extends Field {
 	 * @return array
 	 */
 	public function filter_setting_args( $args, $wp_customize ) {
+
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args = parent::filter_setting_args( $args, $wp_customize );
 
@@ -65,8 +66,13 @@ class Checkbox extends Field {
 					return ( '0' === $value || 'false' === $value ) ? false : (bool) $value;
 				};
 			}
+
+			// Make sure the default is formatted as boolean.
+			$args['default'] = (bool) ( 1 === $args['default'] || '1' === $args['default'] || true === $args['default'] || 'true' === $args['default'] || 'on' === $args['default'] );
 		}
+
 		return $args;
+
 	}
 
 	/**
@@ -79,10 +85,13 @@ class Checkbox extends Field {
 	 * @return array
 	 */
 	public function filter_control_args( $args, $wp_customize ) {
+
 		if ( $args['settings'] === $this->args['settings'] ) {
 			$args         = parent::filter_control_args( $args, $wp_customize );
 			$args['type'] = 'kirki-checkbox';
 		}
+
 		return $args;
+
 	}
 }

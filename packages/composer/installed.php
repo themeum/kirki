@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'bcf5a570c727055075a040bebafca3f7587c789c',
+        'reference' => '6857a2db67b3838010dcc8b63933f551901db3f7',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -47,12 +47,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-checkbox' => array(
-            'pretty_version' => 'v1.0.4',
-            'version' => '1.0.4.0',
+            'pretty_version' => 'v1.0.5',
+            'version' => '1.0.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-checkbox',
             'aliases' => array(),
-            'reference' => '47d51244a6f2088ec5945a524433e93d3fbef96e',
+            'reference' => '3644c35369a9d6a23bc539522d2ace6e0740db57',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-code' => array(
@@ -313,7 +313,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'bcf5a570c727055075a040bebafca3f7587c789c',
+            'reference' => '6857a2db67b3838010dcc8b63933f551901db3f7',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(
