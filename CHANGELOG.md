@@ -1,3 +1,7 @@
+### 4.0.18 - January 25, 2022 ###
+Bugfix:
+- `module-tooltips`: Tooltip was displayed repeatedly inside repeater field
+
 ### 4.0.17 - January 25, 2022 ###
 Bugfixes:
 - `control-checkbox`: There was notice messages where `$args['default']` can be undefined
