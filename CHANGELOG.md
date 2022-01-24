@@ -1,3 +1,8 @@
+### 4.0.17 - January 25, 2022 ###
+Bugfixes:
+- `control-checkbox`: There was notice messages where `$args['default']` can be undefined
+- `control-generic`: On number control, it was possible break the min & max by manually inputting the number
+
 ### 4.0.16 - January 24, 2022 ###
 * Fix issue where switch control didn't handle the default value correctly.
 
