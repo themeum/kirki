@@ -9,9 +9,11 @@ function kirkiTooltipAdd( control ) {
 
 		if ( control.container.find( '.tooltip-content' ).length ) return;
 
-		const target = jQuery(
+		const target = document.querySelector(
 			'#customize-control-' + tooltip.id + ' .customize-control-title'
 		);
+
+		if ( ! target ) return;
 
 		// The trigger markup.
 		const trigger =
@@ -27,7 +29,7 @@ function kirkiTooltipAdd( control ) {
 				trigger +
 				content +
 				'</span>'
-		).appendTo( target );
+		).appendTo( jQuery( target ) );
 	} );
 }
 
