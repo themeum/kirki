@@ -67,6 +67,8 @@ class Checkbox extends Field {
 				};
 			}
 
+			$args['default'] = isset( $args['default'] ) ? $args['default'] : false;
+
 			// Make sure the default is formatted as boolean.
 			$args['default'] = (bool) ( 1 === $args['default'] || '1' === $args['default'] || true === $args['default'] || 'true' === $args['default'] || 'on' === $args['default'] );
 		}
