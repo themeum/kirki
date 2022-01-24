@@ -1,3 +1,6 @@
+### 4.0.16 - January 24, 2022 ###
+* Fix issue where switch control didn't handle the default value correctly.
+
 ### 4.0.15 - January 18, 2022 ###
 * Fix issue where _html entities_ are not rendered in some control's label and description.
 
