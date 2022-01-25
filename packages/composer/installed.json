@@ -1035,17 +1035,17 @@
         },
         {
             "name": "kirki-framework/control-react-colorful",
-            "version": "v1.0.7",
-            "version_normalized": "1.0.7.0",
+            "version": "v1.0.8",
+            "version_normalized": "1.0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-colorful.git",
-                "reference": "031b9e67e8ed6b6fa9d80b89a1e25eca90094f77"
+                "reference": "a45c7d1359210ff9f640f989c797ca0ad202e309"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/031b9e67e8ed6b6fa9d80b89a1e25eca90094f77",
-                "reference": "031b9e67e8ed6b6fa9d80b89a1e25eca90094f77",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-colorful/zipball/a45c7d1359210ff9f640f989c797ca0ad202e309",
+                "reference": "a45c7d1359210ff9f640f989c797ca0ad202e309",
                 "shasum": ""
             },
             "require": {
@@ -1054,7 +1054,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=7.0"
             },
-            "time": "2022-01-18T07:39:37+00:00",
+            "time": "2022-01-25T18:39:34+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1082,7 +1082,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-react-colorful/issues",
-                "source": "https://github.com/kirki-framework/control-react-colorful/tree/v1.0.7"
+                "source": "https://github.com/kirki-framework/control-react-colorful/tree/v1.0.8"
             },
             "install-path": "../kirki-framework/control-react-colorful"
         },
