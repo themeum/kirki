@@ -37,6 +37,7 @@
     "kirki-framework/control-generic": "*",
     "kirki-framework/control-image": "*",
     "kirki-framework/control-multicheck": "*",
+    "kirki-framework/control-palette": "*",
     "kirki-framework/control-radio": "*",
     "kirki-framework/control-repeater": "*",
     "kirki-framework/control-select": "*",

@@ -983,6 +983,60 @@
             "install-path": "../kirki-framework/control-multicheck"
         },
         {
+            "name": "kirki-framework/control-palette",
+            "version": "v0.1.0",
+            "version_normalized": "0.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/control-palette.git",
+                "reference": "178413d19ab8311312e64cb248c02043955cc783"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/control-palette/zipball/178413d19ab8311312e64cb248c02043955cc783",
+                "reference": "178413d19ab8311312e64cb248c02043955cc783",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/control-radio": "*",
+                "kirki-framework/url-getter": "*",
+                "php": ">=5.6"
+            },
+            "time": "2019-07-06T20:28:35+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Control\\": "src/Control",
+                    "Kirki\\Field\\": "src/Field"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Palette control for the Kirki Customizer framework.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/kirki-framework/control-palette/issues",
+                "source": "https://github.com/kirki-framework/control-palette/tree/v0.1.0"
+            },
+            "install-path": "../kirki-framework/control-palette"
+        },
+        {
             "name": "kirki-framework/control-radio",
             "version": "v1.0.2",
             "version_normalized": "1.0.2.0",

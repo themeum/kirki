@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b6c8a067285cb2ed548f283a3dfe6f6451a5e128',
+        'reference' => '414cedef458e33ca198ea064cfcb4a227a30e9d0',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -163,6 +163,15 @@
             'reference' => '90098008c1988e7cd2b84c75ece68bbcd3bbeb70',
             'dev_requirement' => false,
         ),
+        'kirki-framework/control-palette' => array(
+            'pretty_version' => 'v0.1.0',
+            'version' => '0.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kirki-framework/control-palette',
+            'aliases' => array(),
+            'reference' => '178413d19ab8311312e64cb248c02043955cc783',
+            'dev_requirement' => false,
+        ),
         'kirki-framework/control-radio' => array(
             'pretty_version' => 'v1.0.2',
             'version' => '1.0.2.0',
@@ -313,7 +322,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b6c8a067285cb2ed548f283a3dfe6f6451a5e128',
+            'reference' => '414cedef458e33ca198ea064cfcb4a227a30e9d0',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(

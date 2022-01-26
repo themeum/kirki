@@ -72,6 +72,7 @@ $sections = [
 	'multicheck'      => [ esc_html__( 'Multicheck', 'kirki' ), '' ],
 	'multicolor'      => [ esc_html__( 'Multicolor', 'kirki' ), '' ],
 	'number'          => [ esc_html__( 'Number', 'kirki' ), '' ],
+	'palette'         => [ esc_html__( 'Palette', 'kirki' ), '' ],
 	'preset'          => [ esc_html__( 'Preset', 'kirki' ), '' ],
 	'radio'           => [ esc_html__( 'Radio', 'kirki' ), esc_html__( 'A plain Radio control.', 'kirki' ) ],
 	'radio-buttonset' => [ esc_html__( 'Radio Buttonset', 'kirki' ), esc_html__( 'Radio-Buttonset controls are essentially radio controls with some fancy styling to make them look cooler.', 'kirki' ) ],
@@ -942,6 +943,24 @@ new \Kirki\Field\Number(
 			'step' => 1,
 		],
 	]
+);
+
+/**
+ * Palette Control.
+ */
+new \Kirki\Field\Palette(
+	array(
+		'settings' => 'kirki_demo_palette',
+		'label'    => esc_html__( 'Control Palette', 'kirki' ),
+		'section'  => 'palette_section',
+		'default'  => 'blue',
+		'choices'  => array(
+			'a200'  => Kirki_Helper::get_material_design_colors( 'A200' ),
+			'blue'  => Kirki_Helper::get_material_design_colors( 'blue' ),
+			'green' => array( '#E8F5E9', '#C8E6C9', '#A5D6A7', '#81C784', '#66BB6A', '#4CAF50', '#43A047', '#388E3C', '#2E7D32', '#1B5E20', '#B9F6CA', '#69F0AE', '#00E676', '#00C853' ),
+			'bnw'   => array( '#000000', '#ffffff' ),
+		),
+	)
 );
 
 /**
