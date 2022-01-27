@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '414cedef458e33ca198ea064cfcb4a227a30e9d0',
+        'reference' => '79596161af2f1502caeb36313697a6f62c6da993',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -322,7 +322,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '414cedef458e33ca198ea064cfcb4a227a30e9d0',
+            'reference' => '79596161af2f1502caeb36313697a6f62c6da993',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(
@@ -416,12 +416,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-tooltips' => array(
-            'pretty_version' => 'v1.0.8',
-            'version' => '1.0.8.0',
+            'pretty_version' => 'v1.0.9',
+            'version' => '1.0.9.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-tooltips',
             'aliases' => array(),
-            'reference' => 'a2321f98bfbde040df77c218679873b68cd13ca3',
+            'reference' => '740996cd933e0723b30182bd48f6436e28a51255',
             'dev_requirement' => false,
         ),
         'kirki-framework/module-webfonts' => array(

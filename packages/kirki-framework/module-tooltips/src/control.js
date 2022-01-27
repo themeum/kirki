@@ -14,8 +14,9 @@ function kirkiTooltipAdd( control ) {
 		);
 
 		if ( ! target ) return;
+		target.classList.add( 'kirki-tooltip-wrapper' );
 
-		// The trigger markup.
+		// Build the tooltip trigger.
 		const trigger =
 			'<span class="tooltip-trigger"><span class="dashicons dashicons-editor-help"></span></span>';
 
@@ -23,13 +24,11 @@ function kirkiTooltipAdd( control ) {
 		const content =
 			'<span class="tooltip-content">' + tooltip.content + '</span>';
 
-		// Add the trigger & content.
-		jQuery(
-			'<span class="kirki-tooltip-wrapper">' +
-				trigger +
-				content +
-				'</span>'
-		).appendTo( jQuery( target ) );
+		const $target = jQuery( target );
+
+		// Append the trigger & content next to the control's title.
+		jQuery( trigger ).appendTo( $target );
+		jQuery( content ).appendTo( $target );
 	} );
 }
 
