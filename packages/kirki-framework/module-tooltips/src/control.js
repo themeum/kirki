@@ -33,7 +33,13 @@ function kirkiTooltipAdd( control ) {
 }
 
 jQuery( document ).ready( function () {
+	let sectionNames = [];
+
 	wp.customize.control.each( function ( control ) {
+		if ( ! sectionNames.includes( control.section() ) ) {
+			sectionNames.push( control.section() );
+		}
+
 		wp.customize.section( control.section(), function ( section ) {
 			if (
 				section.expanded() ||
@@ -47,6 +53,32 @@ jQuery( document ).ready( function () {
 					}
 				} );
 			}
+		} );
+	} );
+
+	jQuery( 'head' ).append(
+		jQuery( '<style class="kirki-tooltip-inline-styles"></style>' )
+	);
+
+	const $tooltipStyleEl = jQuery( '.kirki-tooltip-inline-styles' );
+	const $sidebarOverlay = jQuery( '.wp-full-overlay-sidebar-content' );
+
+	sectionNames.forEach( function ( sectionName ) {
+		wp.customize.section( sectionName, function ( section ) {
+			section.expanded.bind( function ( expanded ) {
+				if ( expanded ) {
+					if (
+						section.contentContainer[0].scrollHeight >
+						$sidebarOverlay.height()
+					) {
+						$tooltipStyleEl.html(
+							'.kirki-tooltip-wrapper span.tooltip-content {min-width: 258px;}'
+						);
+					} else {
+						$tooltipStyleEl.empty();
+					}
+				}
+			} );
 		} );
 	} );
 } );

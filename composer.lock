@@ -2031,16 +2031,16 @@
         },
         {
             "name": "kirki-framework/module-tooltips",
-            "version": "v1.0.9",
+            "version": "v1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-tooltips.git",
-                "reference": "740996cd933e0723b30182bd48f6436e28a51255"
+                "reference": "5b4715bd236a4239356e408068bffc2f300f3cdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-tooltips/zipball/740996cd933e0723b30182bd48f6436e28a51255",
-                "reference": "740996cd933e0723b30182bd48f6436e28a51255",
+                "url": "https://api.github.com/repos/kirki-framework/module-tooltips/zipball/5b4715bd236a4239356e408068bffc2f300f3cdf",
+                "reference": "5b4715bd236a4239356e408068bffc2f300f3cdf",
                 "shasum": ""
             },
             "require": {
@@ -2072,9 +2072,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-tooltips/issues",
-                "source": "https://github.com/kirki-framework/module-tooltips/tree/v1.0.9"
+                "source": "https://github.com/kirki-framework/module-tooltips/tree/v1.0.10"
             },
-            "time": "2022-01-27T01:35:35+00:00"
+            "time": "2022-01-27T03:35:52+00:00"
         },
         {
             "name": "kirki-framework/module-webfonts",
