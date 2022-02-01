@@ -42,7 +42,7 @@ class Palette extends Radio {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.0';
+	public static $control_ver = '0.1.1';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -52,13 +52,15 @@ class Palette extends Radio {
 	 * @return void
 	 */
 	public function enqueue() {
+
 		parent::enqueue();
 
-		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-palette', URL::get_from_path( dirname( __DIR__ ) . '/assets/scripts/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
-
 		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-palette-style', URL::get_from_path( dirname( __DIR__ ) . '/assets/styles/style.css' ), [], self::$control_ver );
+		wp_enqueue_style( 'kirki-control-palette', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
+
+		// Enqueue the script.
+		wp_enqueue_script( 'kirki-control-palette', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
+
 	}
 
 	/**
