@@ -72,9 +72,11 @@ abstract class Field {
 
 		$control_class = property_exists( $this, 'control_class' ) && ! empty( $this->control_class ) ? $this->control_class : '';
 
-		// Allow 3rd parties to early stop the field from being registered and allow them to do their custom work.
-		if ( apply_filters( 'kirki_field_exclude_init', false, $args, $this, $control_class ) ) {
-			do_action( 'kirki_field_custom_init', $args, $this, $control_class );
+		// Allow 3rd parties to do their custom "init" work.
+		do_action( 'kirki_field_custom_init', $this, $args, $control_class );
+
+		// Allow 3rd parties to early stop the field from being registered.
+		if ( apply_filters( 'kirki_field_exclude_init', false, $this, $args ) ) {
 			return;
 		}
 
@@ -228,17 +230,11 @@ abstract class Field {
 
 		$settings_class = $this->settings_class ? $this->settings_class : null;
 
-		// Allow 3rd parties to stop the field from adding "setting" to the customizer.
-		if ( ! apply_filters( 'kirki_field_exclude_setting', false, $this->args, $args ) ) {
-			if ( $settings_class ) {
-				$customizer->add_setting( new $settings_class( $customizer, $setting_id, $args ) );
-			} else {
-				$customizer->add_setting( $setting_id, $args );
-			}
+		if ( $settings_class ) {
+			$customizer->add_setting( new $settings_class( $customizer, $setting_id, $args ) );
+		} else {
+			$customizer->add_setting( $setting_id, $args );
 		}
-
-		// Allow 3rd parties to do their custom "setting" works.
-		do_action( 'kirki_field_add_setting', $customizer, $settings_class, $this->args, $args );
 
 	}
 
@@ -269,13 +265,7 @@ abstract class Field {
 		 */
 		$args = apply_filters( 'kirki_field_add_control_args', $this->args, $wp_customize );
 
-		// Allow 3rd parties to stop the field from adding "control" to the customizer.
-		if ( ! apply_filters( 'kirki_field_exclude_control', false, $this->args, $args ) ) {
-			$wp_customize->add_control( new $control_class( $wp_customize, $this->args['settings'], $args ) );
-		}
-
-		// Allow 3rd parties to do their custom "control" works.
-		do_action( 'kirki_field_add_control', $wp_customize, $control_class, $this->args, $args );
+		$wp_customize->add_control( new $control_class( $wp_customize, $this->args['settings'], $args ) );
 
 	}
 
