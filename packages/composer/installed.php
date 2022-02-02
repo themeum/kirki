@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a438773920500525c588837215f6ed2f11b00403',
+        'reference' => '08f94a77fe4487af38d39c74930809473cf03140',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -182,12 +182,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-colorful' => array(
-            'pretty_version' => 'v1.0.8',
-            'version' => '1.0.8.0',
+            'pretty_version' => 'v1.0.9',
+            'version' => '1.0.9.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-react-colorful',
             'aliases' => array(),
-            'reference' => 'a45c7d1359210ff9f640f989c797ca0ad202e309',
+            'reference' => '0597ae052958249aeb8e151f564d4e54defb80f4',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-react-select' => array(
@@ -322,7 +322,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a438773920500525c588837215f6ed2f11b00403',
+            'reference' => '08f94a77fe4487af38d39c74930809473cf03140',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(
