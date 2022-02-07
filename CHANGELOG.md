@@ -1,3 +1,7 @@
+### 4.0.20 - February 8, 2022 ###
+Bugfix:
+- Patch for warning reported in [WordPress support](https://wordpress.org/support/topic/newest-version-upgrade-4-0-19-cause-a-lot-of-troubles/)
+
 ### 4.0.19 - February 7, 2022 ###
 Improvement:
 - `module-tooltips`: Adjust tooltip positioning to handle the dynamic content height and to respect the control's section height.
