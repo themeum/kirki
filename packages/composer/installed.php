@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '4efcfab034c96142d93d6223019069eb42a48227',
+        'reference' => 'cdcd3cd0400a98ae3d8c362190533abf6b9ffe25',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -20,12 +20,12 @@
             'dev_requirement' => true,
         ),
         'dealerdirect/phpcodesniffer-composer-installer' => array(
-            'pretty_version' => 'v0.7.1',
-            'version' => '0.7.1.0',
+            'pretty_version' => 'v0.7.2',
+            'version' => '0.7.2.0',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../dealerdirect/phpcodesniffer-composer-installer',
             'aliases' => array(),
-            'reference' => 'fe390591e0241955f22eb9ba327d137e501c771c',
+            'reference' => '1c968e542d8843d7cd71de3c5c9c3ff3ad71a1db',
             'dev_requirement' => true,
         ),
         'kirki-framework/compatibility' => array(
@@ -322,7 +322,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '4efcfab034c96142d93d6223019069eb42a48227',
+            'reference' => 'cdcd3cd0400a98ae3d8c362190533abf6b9ffe25',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(
