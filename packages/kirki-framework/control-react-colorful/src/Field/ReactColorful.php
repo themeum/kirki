@@ -87,13 +87,16 @@ class ReactColorful extends Field {
 			}
 
 			// For postMessage/preview purpose, if property is not set, then set it to 'color'.
-			if ( isset( $args['output'] ) && ! empty( $args['output'] ) ) {
+			/**
+			 * Disabling this as this was causing issue when releasing v4.0.19
+			if ( isset( $args['output'] ) && ! empty( $args['output'] ) && is_array( $args['output'] ) ) {
 				foreach ( $args['output'] as $index => $output ) {
 					if ( ! isset( $output['property'] ) ) {
 						$args['output'][ $index ]['property'] = 'color';
 					}
 				}
 			}
+			*/
 		}
 
 		return $args;
