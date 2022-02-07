@@ -5,7 +5,6 @@ Improvement:
 Bugfix:
 - `control-palette` (not `control-color-palette`): it was missing
 - `control-react-colorful`: CSS output on instant preview (postMessage) didn't work when `property` is not set in the `output` argument's item.
-- `module-tooltips`: Tooltip was displayed repeatedly inside repeater field
 
 ### 4.0.18 - January 25, 2022 ###
 Bugfix:
