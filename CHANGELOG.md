@@ -1,3 +1,12 @@
+### 4.0.19 - February 7, 2022 ###
+Improvement:
+- `module-tooltips`: Adjust tooltip positioning to handle the dynamic content height and to respect the control's section height.
+
+Bugfix:
+- `control-palette` (not `control-color-palette`): it was missing
+- `control-react-colorful`: CSS output on instant preview (postMessage) didn't work when `property` is not set in the `output` argument's item.
+- `module-tooltips`: Tooltip was displayed repeatedly inside repeater field
+
 ### 4.0.18 - January 25, 2022 ###
 Bugfix:
 - `module-tooltips`: Tooltip was displayed repeatedly inside repeater field
