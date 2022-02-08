@@ -89,7 +89,7 @@ class Base extends \WP_Customize_Control {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.0.3';
+	public static $control_ver = '1.0.4';
 
 	/**
 	 * Parent setting.

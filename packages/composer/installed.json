@@ -275,24 +275,24 @@
         },
         {
             "name": "kirki-framework/control-base",
-            "version": "v1.0.3",
-            "version_normalized": "1.0.3.0",
+            "version": "v1.0.4",
+            "version_normalized": "1.0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-base.git",
-                "reference": "040c4372afec0c275dce21db6a7256baf2dca3d9"
+                "reference": "0abf9e81f21e5256be879240cca98778e99851eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/040c4372afec0c275dce21db6a7256baf2dca3d9",
-                "reference": "040c4372afec0c275dce21db6a7256baf2dca3d9",
+                "url": "https://api.github.com/repos/kirki-framework/control-base/zipball/0abf9e81f21e5256be879240cca98778e99851eb",
+                "reference": "0abf9e81f21e5256be879240cca98778e99851eb",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/url-getter": "*",
                 "php": ">=7.0"
             },
-            "time": "2022-01-20T00:09:55+00:00",
+            "time": "2022-02-08T13:25:23+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -319,7 +319,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-base/issues",
-                "source": "https://github.com/kirki-framework/control-base/tree/v1.0.3"
+                "source": "https://github.com/kirki-framework/control-base/tree/v1.0.4"
             },
             "install-path": "../kirki-framework/control-base"
         },
