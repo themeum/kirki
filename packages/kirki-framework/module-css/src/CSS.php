@@ -119,7 +119,7 @@ class CSS {
 
 		if ( ! is_array( $args['output'] ) ) {
 			/* translators: The field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $args['settings'] ) ), '3.0.10' );
 			$args['output'] = array(
 				array(
 					'element' => $args['output'],
@@ -130,7 +130,7 @@ class CSS {
 		// Convert to array of arrays if needed.
 		if ( isset( $args['output']['element'] ) ) {
 			/* translators: The field ID where the error occurs. */
-			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $this->settings ) ), '3.0.10' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( '"output" invalid format in field %s. The "output" argument should be defined as an array of arrays.', 'kirki' ), esc_html( $args['settings'] ) ), '3.0.10' );
 			$args['output'] = array( $args['output'] );
 		}
 

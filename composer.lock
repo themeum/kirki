@@ -1603,16 +1603,16 @@
         },
         {
             "name": "kirki-framework/module-css",
-            "version": "v1.0.6",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-css.git",
-                "reference": "31c3afd58fc8edf992cee477dfdee1e9bd8c7713"
+                "reference": "764ae3c2d0d5a69a5da7ea15fa8d23690b0accbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/31c3afd58fc8edf992cee477dfdee1e9bd8c7713",
-                "reference": "31c3afd58fc8edf992cee477dfdee1e9bd8c7713",
+                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/764ae3c2d0d5a69a5da7ea15fa8d23690b0accbd",
+                "reference": "764ae3c2d0d5a69a5da7ea15fa8d23690b0accbd",
                 "shasum": ""
             },
             "require": {
@@ -1644,9 +1644,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-css/issues",
-                "source": "https://github.com/kirki-framework/module-css/tree/v1.0.6"
+                "source": "https://github.com/kirki-framework/module-css/tree/v1.0.7"
             },
-            "time": "2022-02-08T13:52:00+00:00"
+            "time": "2022-02-08T14:35:44+00:00"
         },
         {
             "name": "kirki-framework/module-editor-styles",
