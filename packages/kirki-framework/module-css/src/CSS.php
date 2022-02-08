@@ -341,11 +341,15 @@ class CSS {
 
 					// If $field is using active_callback instead of required.
 					if ( ! isset( $field['required'] ) || empty( $field['required'] ) ) {
-						if ( isset( $field['active_callback'] ) && ! empty( $field['active_callback'] ) && is_array( $field['active_callback'] ) ) {
-							$field['required'] = $field['active_callback'];
+						if ( isset( $field['active_callback'] ) && ! empty( $field['active_callback'] ) ) {
+							// The "active_callback" or "required" accepts array or callable as the value.
+							if ( is_array( $field['active_callback'] ) || is_callable( $field['active_callback'] ) ) {
+								$field['required'] = $field['active_callback'];
+							}
 						}
 					}
 
+					// At this point, we know that the "required" is set and is not empty.
 					foreach ( $field['required'] as $requirement ) {
 						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) && isset( self::$field_option_types[ $requirement['setting'] ] ) ) {
 							$controller_value = Values::get_value( $config_id, $requirement['setting'] );
