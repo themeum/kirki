@@ -350,14 +350,20 @@ class CSS {
 					}
 
 					// At this point, we know that the "required" is set and is not empty.
-					foreach ( $field['required'] as $requirement ) {
-						if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) && isset( self::$field_option_types[ $requirement['setting'] ] ) ) {
-							$controller_value = Values::get_value( $config_id, $requirement['setting'] );
+					if ( is_array( $field['required'] ) ) {
+						foreach ( $field['required'] as $requirement ) {
+							if ( isset( $requirement['setting'] ) && isset( $requirement['value'] ) && isset( $requirement['operator'] ) && isset( self::$field_option_types[ $requirement['setting'] ] ) ) {
+								$controller_value = Values::get_value( $config_id, $requirement['setting'] );
 
-							if ( ! Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
-								$valid = false;
+								if ( ! Helper::compare_values( $controller_value, $requirement['value'], $requirement['operator'] ) ) {
+									$valid = false;
+								}
 							}
 						}
+					} elseif ( is_string( $field['required'] ) ) {
+						$valid = '__return_true' === $field['required'] ? true : false;
+					} elseif ( is_callable( $field['required'] ) ) {
+						$valid = call_user_func( $field['required'] );
 					}
 
 					if ( ! $valid ) {
