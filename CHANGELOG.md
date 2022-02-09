@@ -1,3 +1,10 @@
+### 4.0.21 - February 9, 2022 ###
+Bugfixes:
+- **control-react-colorful**: Fix warning as reported in [WordPress support forum](https://wordpress.org/support/topic/newest-version-upgrade-4-0-19-cause-a-lot-of-troubles/)
+- **control-base**: Fix the RTL issue as reported in [WordPress support forum](https://wordpress.org/support/topic/version-4-update-broke-rtl-view/)
+- **module-css**: Fix issue #2448 where it didn't check for callable as the value type of `active_callback` and missing validation for callable & string. This might also fix some css output issue.
+- **module-css**: Fix issue #2449 where there was notice caused by accessing non-existing property
+
 ### 4.0.20 - February 8, 2022 ###
 Bugfix:
 - Patch for warning reported in [WordPress support](https://wordpress.org/support/topic/newest-version-upgrade-4-0-19-cause-a-lot-of-troubles/)
