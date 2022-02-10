@@ -41,20 +41,38 @@ class ReactSelect extends Base {
 	/**
 	 * Whether the select should be clearable or not.
 	 *
-	 * @link https://react-select.com/props#select-props
-	 * @since 0.3.0
+	 * @since 1.0
 	 * @var bool
 	 */
-	public $isClearable = false;
+	public $clearable = false;
 
 	/**
-	 * whether this is a multi-select or not.
+	 * Whether this is a multi-select or not.
+	 *
+	 * *Backwards compatibility note:
+	 *
+	 * Previously (when Kirki used Select2), $multiple is used to:
+	 * - Determine whether the select is multiple or not.
+	 * - Determine the maximum number of selection.
+	 *
+	 * Start from Kirki 4 (when Kirki uses react-select),
+	 * $multiple is used to determine whether the select is multiple or not.
+	 * The maximum selection number is now set in $max_selection.
 	 *
 	 * @access public
 	 * @since 1.0
 	 * @var bool
 	 */
 	public $multiple = false;
+
+	/**
+	 * The maximum selection length for multiple selection.
+	 *
+	 * @access public
+	 * @since 1.1
+	 * @var bool
+	 */
+	public $max_selection_number = 999;
 
 	/**
 	 * The version. Used in scripts & styles for cache-busting.
@@ -64,19 +82,7 @@ class ReactSelect extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.1';
-
-	/**
-	 * Whitelist the "select_args" argument.
-	 *
-	 * The arguments here will be passed-on to select2.
-	 *
-	 * @see https://select2.org/
-	 * @access protected
-	 * @since 1.1
-	 * @var string|array
-	 */
-	protected $select_args;
+	public static $control_ver = '1.1.5';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -86,6 +92,7 @@ class ReactSelect extends Base {
 	 * @return void
 	 */
 	public function enqueue() {
+
 		parent::enqueue();
 
 		// Enqueue the script.
@@ -108,6 +115,7 @@ class ReactSelect extends Base {
 
 		// Enqueue the style.
 		wp_enqueue_style( 'kirki-control-select-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
+
 	}
 
 	/**
@@ -122,7 +130,9 @@ class ReactSelect extends Base {
 	 * @return string
 	 */
 	public static function get_control_path_url() {
+
 		return URL::get_from_path( dirname( __DIR__ ) );
+
 	}
 
 	/**
@@ -135,6 +145,7 @@ class ReactSelect extends Base {
 	 * @return void
 	 */
 	public function to_json() {
+
 		parent::to_json();
 
 		if ( isset( $this->json['label'] ) ) {
@@ -145,31 +156,19 @@ class ReactSelect extends Base {
 			$this->json['description'] = html_entity_decode( $this->json['description'] );
 		}
 
-		$this->json['isClearable'] = $this->isClearable;
-
-		// Backwards-compatibility: The "multiple" argument used to be a number of maximum options users can select.
-		// That was based on select2. Since we switched to react-select this option is a boolean so we need to convert it.
-		switch ( $this->multiple ) {
-			case true:
-			case false:
-				$this->json['multiple'] = $this->multiple; // Already a bool.
-				break;
-			case 0:
-			case '0':
-				$this->json['multiple'] = true; // 0 used to be infinite.
-				break;
-			case 1:
-			case '1':
-				$this->json['multiple'] = false; // Single option.
-				break;
-			case ( is_numeric( $this->multiple ) && 1 < $this->multiple ):
-				$this->json['multiple'] = true; // More than 1 options.
-				break;
-			default:
-				$this->multiple = false;
-		}
-
+		// @link https://react-select.com/props
+		$this->json['isClearable'] = $this->clearable;
+		$this->json['isMulti']     = $this->multiple;
 		$this->json['placeholder'] = ( $this->placeholder ) ? $this->placeholder : esc_html__( 'Select...', 'kirki' );
-		$this->json['select_args'] = $this->select_args;
+
+		// Will be a custom implementation, couldn't find an official prop to set this in react-select.
+		$this->json['maxSelectionNumber'] = $this->max_selection_number;
+
+		$this->json['messages'] = [
+			// translators: %s is the limit of selection number.
+			'maxLimitReached' => sprintf( esc_html__( 'You can only select %s items', 'kirki' ), $this->max_selection_number ),
+		];
+
 	}
+
 }

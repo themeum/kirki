@@ -1145,17 +1145,17 @@
         },
         {
             "name": "kirki-framework/control-react-select",
-            "version": "v1.1.4",
-            "version_normalized": "1.1.4.0",
+            "version": "v1.1.5",
+            "version_normalized": "1.1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-react-select.git",
-                "reference": "5208475f2b8cccdbed64764164bb4f34c62af570"
+                "reference": "4c156e42a36f74ff5b9b1e2797b1742845de9e47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/5208475f2b8cccdbed64764164bb4f34c62af570",
-                "reference": "5208475f2b8cccdbed64764164bb4f34c62af570",
+                "url": "https://api.github.com/repos/kirki-framework/control-react-select/zipball/4c156e42a36f74ff5b9b1e2797b1742845de9e47",
+                "reference": "4c156e42a36f74ff5b9b1e2797b1742845de9e47",
                 "shasum": ""
             },
             "require": {
@@ -1163,13 +1163,13 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=7.0"
             },
-            "time": "2022-01-18T07:33:01+00:00",
+            "time": "2022-02-10T20:16:05+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1191,7 +1191,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-react-select/issues",
-                "source": "https://github.com/kirki-framework/control-react-select/tree/v1.1.4"
+                "source": "https://github.com/kirki-framework/control-react-select/tree/v1.1.5"
             },
             "install-path": "../kirki-framework/control-react-select"
         },
