@@ -64,7 +64,14 @@ class Multicolor extends Field {
 		$total_colors = count( $args['choices'] );
 		$loop_index   = 0;
 
-		$use_alpha = isset( $args['alpha'] ) && $args['alpha'];
+		$use_alpha = $this->filter_preferred_choice_setting( 'alpha', null, $args ) ? true : false;
+		$swatches  = $this->filter_preferred_choice_setting( 'swatches', null, $args );
+		$swatches  = empty( $swatches ) ? $this->filter_preferred_choice_setting( 'palettes', null, $args ) : $swatches;
+		$swatches  = empty( $swatches ) ? [] : $swatches;
+
+		if ( empty( $swatches ) ) {
+			$swatches = isset( $args['palettes'] ) && ! empty( $args['palettes'] ) ? $args['palettes'] : [];
+		}
 
 		foreach ( $args['choices'] as $choice => $choice_label ) {
 			$loop_index++;
@@ -72,31 +79,51 @@ class Multicolor extends Field {
 			$classnames  = '{default_class} kirki-group-item';
 			$classnames .= 1 === $loop_index ? ' kirki-group-start' : ( $loop_index === $total_colors ? ' kirki-group-end' : $classnames );
 
-			$use_alpha = $this->filter_preferred_choice_setting( 'alpha', $choice, $args ) ? true : $use_alpha;
+			$use_alpha_per_choice = $this->filter_preferred_choice_setting( 'alpha', $choice, $args ) ? true : $use_alpha;
+			$swatches_per_choice  = $this->filter_preferred_choice_setting( 'swatches', $choice, $args );
+			$swatches_per_choice  = empty( $swatches_per_choice ) ? $this->filter_preferred_choice_setting( 'palettes', $choice, $args ) : $swatches_per_choice;
+			$swatches_per_choice  = empty( $swatches_per_choice ) ? $swatches : $swatches_per_choice;
 
-			new \Kirki\Field\ReactColorful(
-				wp_parse_args(
-					[
-						'settings'       => $args['settings'] . '[' . $choice . ']',
-						'parent_setting' => $args['settings'],
-						'label'          => $choice_label,
-						'description'    => '',
-						'default'        => $this->filter_preferred_choice_setting( 'default', $choice, $args ),
-						'wrapper_attrs'  => [
-							'data-kirki-parent-control-type' => 'kirki-multicolor',
-							'class' => $classnames,
-						],
-						'input_attrs'    => $this->filter_preferred_choice_setting( 'input_attrs', $choice, $args ),
-						'choices'        => [
-							'alpha'       => $use_alpha,
-							'label_style' => 'tooltip',
-						],
-						'css_vars'       => [],
-						'output'         => [],
+			$control_args = wp_parse_args(
+				[
+					'settings'       => $args['settings'] . '[' . $choice . ']',
+					'parent_setting' => $args['settings'],
+					'label'          => $choice_label,
+					'description'    => '',
+					'default'        => $this->filter_preferred_choice_setting( 'default', $choice, $args ),
+					'wrapper_attrs'  => [
+						'data-kirki-parent-control-type' => 'kirki-multicolor',
+						'class'                          => $classnames,
 					],
-					$args
-				)
+					'input_attrs'    => $this->filter_preferred_choice_setting( 'input_attrs', $choice, $args ),
+					'choices'        => [
+						'alpha'       => $use_alpha_per_choice,
+						'label_style' => 'tooltip',
+						'swatches'    => $swatches_per_choice,
+					],
+					'css_vars'       => [],
+					'output'         => [],
+				],
+				$args
 			);
+
+			foreach ( $control_args['choices'] as $control_choice_id => $control_choice_value ) {
+				if ( isset( $control_args[ $control_choice_id ] ) ) {
+					unset( $control_args[ $control_choice_id ] );
+				} else {
+					if ( 'swatches' === $control_choice_id || 'palettes' === $control_choice_id ) {
+						if ( isset( $control_args['palettes'] ) ) {
+							unset( $control_args['palettes'] );
+						}
+
+						if ( isset( $control_args['swatches'] ) ) {
+							unset( $control_args['swatches'] );
+						}
+					}
+				}
+			}
+
+			new \Kirki\Field\ReactColorful( $control_args );
 		}
 	}
 
@@ -113,9 +140,25 @@ class Multicolor extends Field {
 	 * @return string
 	 */
 	public function filter_preferred_choice_setting( $setting, $choice, $args ) {
+
 		// Fail early.
 		if ( ! isset( $args[ $setting ] ) ) {
 			return '';
+		}
+
+		if ( null === $choice ) {
+			$per_choice_found = false;
+
+			foreach ( $args['choices'] as $choice_id => $choice_label ) {
+				if ( isset( $args[ $setting ][ $choice_id ] ) ) {
+					$per_choice_found = true;
+					break;
+				}
+			}
+
+			if ( ! $per_choice_found ) {
+				return $args[ $setting ];
+			}
 		}
 
 		// If a specific field for the choice is set.
@@ -123,7 +166,7 @@ class Multicolor extends Field {
 			return $args[ $setting ][ $choice ];
 		}
 
-		// Unset input_attrs of all other choices.
+		// Unset all other choices.
 		foreach ( $args['choices'] as $id => $set ) {
 			if ( $id !== $choice && isset( $args[ $setting ][ $id ] ) ) {
 				unset( $args[ $setting ][ $id ] );
@@ -133,6 +176,7 @@ class Multicolor extends Field {
 		}
 
 		return $args[ $setting ];
+
 	}
 
 	/**
