@@ -1709,17 +1709,17 @@
         },
         {
             "name": "kirki-framework/field-multicolor",
-            "version": "v1.0.2",
-            "version_normalized": "1.0.2.0",
+            "version": "v1.0.3",
+            "version_normalized": "1.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-multicolor.git",
-                "reference": "894349d82db3fb8eb668b388549b3bc5ee31a936"
+                "reference": "3e0df3f5548fb89b38cb144bc87992936ed7b536"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/894349d82db3fb8eb668b388549b3bc5ee31a936",
-                "reference": "894349d82db3fb8eb668b388549b3bc5ee31a936",
+                "url": "https://api.github.com/repos/kirki-framework/field-multicolor/zipball/3e0df3f5548fb89b38cb144bc87992936ed7b536",
+                "reference": "3e0df3f5548fb89b38cb144bc87992936ed7b536",
                 "shasum": ""
             },
             "require": {
@@ -1728,7 +1728,7 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=7.0"
             },
-            "time": "2022-02-11T11:10:01+00:00",
+            "time": "2022-02-11T12:41:56+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1756,7 +1756,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/field-multicolor/issues",
-                "source": "https://github.com/kirki-framework/field-multicolor/tree/v1.0.2"
+                "source": "https://github.com/kirki-framework/field-multicolor/tree/v1.0.3"
             },
             "install-path": "../kirki-framework/field-multicolor"
         },

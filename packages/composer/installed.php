@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '159244374d76f1812f4896ea8e78debacfd0c970',
+        'reference' => '43e62ec0371c7adfcc3aa29767983144bd8f4479',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -290,12 +290,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/field-multicolor' => array(
-            'pretty_version' => 'v1.0.2',
-            'version' => '1.0.2.0',
+            'pretty_version' => 'v1.0.3',
+            'version' => '1.0.3.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-multicolor',
             'aliases' => array(),
-            'reference' => '894349d82db3fb8eb668b388549b3bc5ee31a936',
+            'reference' => '3e0df3f5548fb89b38cb144bc87992936ed7b536',
             'dev_requirement' => false,
         ),
         'kirki-framework/field-typography' => array(
@@ -322,7 +322,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '159244374d76f1812f4896ea8e78debacfd0c970',
+            'reference' => '43e62ec0371c7adfcc3aa29767983144bd8f4479',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(

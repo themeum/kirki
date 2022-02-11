@@ -40,26 +40,27 @@ class Multicolor extends Field {
 
 		add_filter( 'kirki_output_control_classnames', [ $this, 'output_control_classnames' ] );
 
+		$parent_control_args = wp_parse_args(
+			[
+				'type'              => 'kirki-generic',
+				'default'           => '',
+				'wrapper_opts'      => [
+					'gap' => 'small',
+				],
+				'input_attrs'       => '',
+				'choices'           => [
+					'type'        => 'hidden',
+					'parent_type' => 'kirki-multicolor',
+				],
+				'sanitize_callback' => [ __CLASS__, 'sanitize' ],
+			],
+			$args
+		);
+
 		/**
 		 * Add a hidden field, the label & description.
 		 */
-		new \Kirki\Field\Generic(
-			wp_parse_args(
-				[
-					'type'              => 'kirki-generic',
-					'default'           => '',
-					'wrapper_opts'      => [
-						'gap' => 'small',
-					],
-					'input_attrs'       => '',
-					'choices'           => [
-						'type' => 'hidden',
-					],
-					'sanitize_callback' => [ __CLASS__, 'sanitize' ],
-				],
-				$args
-			)
-		);
+		new \Kirki\Field\Generic( $parent_control_args );
 
 		$total_colors = count( $args['choices'] );
 		$loop_index   = 0;
@@ -159,6 +160,8 @@ class Multicolor extends Field {
 			if ( ! $per_choice_found ) {
 				return $args[ $setting ];
 			}
+
+			return '';
 		}
 
 		// If a specific field for the choice is set.
