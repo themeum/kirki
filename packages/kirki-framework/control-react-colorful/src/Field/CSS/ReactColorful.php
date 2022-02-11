@@ -34,12 +34,14 @@ class ReactColorful extends Output {
 				'media_query' => 'global',
 				'element'     => '',
 				'property'    => 'color',
+				'prefix'      => '',
+				'suffix'      => '',
 			)
 		);
 
 		// Only need to process further if the $value format is array.
 		if ( ! is_array( $value ) ) {
-			$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $value;
+			$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $value . $output['suffix'];
 			return;
 		}
 
@@ -76,7 +78,7 @@ class ReactColorful extends Output {
 			$formatted_value = $color_mode . '(' . $pos_1 . ', ' . $pos_2 . ', ' . $pos_3 . ')';
 		}
 
-		$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $formatted_value;
+		$this->styles[ $output['media_query'] ][ $output['element'] ][ $output['property'] ] = $output['prefix'] . $formatted_value . $output['suffix'];
 
 	}
 
