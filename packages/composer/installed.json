@@ -1920,24 +1920,24 @@
         },
         {
             "name": "kirki-framework/module-css",
-            "version": "v1.0.8",
-            "version_normalized": "1.0.8.0",
+            "version": "v1.0.9",
+            "version_normalized": "1.0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-css.git",
-                "reference": "8684b335be44382c52a61e7eda3bf0cfdfabbc2f"
+                "reference": "96645a327b1a60e1d29fd0193e85f1346b9b268f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/8684b335be44382c52a61e7eda3bf0cfdfabbc2f",
-                "reference": "8684b335be44382c52a61e7eda3bf0cfdfabbc2f",
+                "url": "https://api.github.com/repos/kirki-framework/module-css/zipball/96645a327b1a60e1d29fd0193e85f1346b9b268f",
+                "reference": "96645a327b1a60e1d29fd0193e85f1346b9b268f",
                 "shasum": ""
             },
             "require": {
                 "kirki-framework/util": "*",
                 "php": ">=7.0"
             },
-            "time": "2022-02-09T12:32:40+00:00",
+            "time": "2022-02-11T16:17:00+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1964,7 +1964,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-css/issues",
-                "source": "https://github.com/kirki-framework/module-css/tree/v1.0.8"
+                "source": "https://github.com/kirki-framework/module-css/tree/v1.0.9"
             },
             "install-path": "../kirki-framework/module-css"
         },

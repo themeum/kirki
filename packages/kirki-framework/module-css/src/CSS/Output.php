@@ -264,12 +264,14 @@ class Output {
 						foreach ( $elms as $index => $elm ) {
 							if ( ! empty( $elm ) ) {
 								$elms[ $index ] = '.editor-styles-wrapper ' . $elm;
+								$elms[ $index ] = str_ireplace( '.editor-styles-wrapper :root', '.editor-styles-wrapper', $elms[ $index ] );
 							}
 						}
 
 						$output['element'] = implode( ',', $elms );
 					} else {
 						$output['element'] = '.editor-styles-wrapper ' . $output['element'];
+						$output['element'] = str_ireplace( '.editor-styles-wrapper :root', '.editor-styles-wrapper', $output['element'] );
 					}
 				}
 			}
