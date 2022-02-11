@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '2b700b0c72a12931d6c25c89e7a8a5116e0220ab',
+        'reference' => '29c068f623be7472286f956aab899587acdff159',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -299,12 +299,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/field-typography' => array(
-            'pretty_version' => 'v1.0.5',
-            'version' => '1.0.5.0',
+            'pretty_version' => 'v1.0.6',
+            'version' => '1.0.6.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/field-typography',
             'aliases' => array(),
-            'reference' => 'df2c8a9d3db8a3407a3835453de3c85641198c10',
+            'reference' => '2d96fc2d65325ce8474d55e083db742cf437c0dd',
             'dev_requirement' => false,
         ),
         'kirki-framework/googlefonts' => array(
@@ -322,7 +322,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '2b700b0c72a12931d6c25c89e7a8a5116e0220ab',
+            'reference' => '29c068f623be7472286f956aab899587acdff159',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(

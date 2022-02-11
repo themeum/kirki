@@ -801,23 +801,33 @@ class Typography extends Field {
 		// Figure out how to sort the fonts.
 		$sorting   = 'alpha';
 		$max_fonts = 9999;
+		$google    = new GoogleFonts();
 
-		if ( isset( $args['choices'] ) && isset( $args['choices']['fonts'] ) && isset( $args['choices']['fonts']['google'] ) ) {
-			if ( isset( $args['choices']['fonts']['google'][0] ) && in_array( $args['choices']['fonts']['google'][0], [ 'alpha', 'popularity', 'trending' ], true ) ) {
+		if ( isset( $args['choices'] ) && isset( $args['choices']['fonts'] ) && isset( $args['choices']['fonts']['google'] ) && ! empty( $args['choices']['fonts']['google'] ) ) {
+			if ( in_array( $args['choices']['fonts']['google'][0], [ 'alpha', 'popularity', 'trending' ], true ) ) {
 				$sorting = $args['choices']['fonts']['google'][0];
-			}
-			if ( isset( $args['choices']['fonts']['google'][1] ) && is_int( $args['choices']['fonts']['google'][1] ) ) {
-				$max_fonts = (int) $args['choices']['fonts']['google'][1];
-			}
-		}
 
-		$google  = new GoogleFonts();
-		$g_fonts = $google->get_google_fonts_by_args(
-			[
-				'sort'  => $sorting,
-				'count' => $max_fonts,
-			]
-		);
+				if ( isset( $args['choices']['fonts']['google'][1] ) && is_int( $args['choices']['fonts']['google'][1] ) ) {
+					$max_fonts = (int) $args['choices']['fonts']['google'][1];
+				}
+
+				$g_fonts = $google->get_google_fonts_by_args(
+					[
+						'sort'  => $sorting,
+						'count' => $max_fonts,
+					]
+				);
+			} else {
+				$g_fonts = $args['choices']['fonts']['google'];
+			}
+		} else {
+			$g_fonts = $google->get_google_fonts_by_args(
+				[
+					'sort'  => $sorting,
+					'count' => $max_fonts,
+				]
+			);
+		}
 
 		$std_fonts = [];
 

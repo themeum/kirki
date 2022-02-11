@@ -648,8 +648,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1454,16 +1454,16 @@
         },
         {
             "name": "kirki-framework/field-typography",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/field-typography.git",
-                "reference": "df2c8a9d3db8a3407a3835453de3c85641198c10"
+                "reference": "2d96fc2d65325ce8474d55e083db742cf437c0dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/df2c8a9d3db8a3407a3835453de3c85641198c10",
-                "reference": "df2c8a9d3db8a3407a3835453de3c85641198c10",
+                "url": "https://api.github.com/repos/kirki-framework/field-typography/zipball/2d96fc2d65325ce8474d55e083db742cf437c0dd",
+                "reference": "2d96fc2d65325ce8474d55e083db742cf437c0dd",
                 "shasum": ""
             },
             "require": {
@@ -1480,8 +1480,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1503,9 +1503,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/field-typography/issues",
-                "source": "https://github.com/kirki-framework/field-typography/tree/v1.0.5"
+                "source": "https://github.com/kirki-framework/field-typography/tree/v1.0.6"
             },
-            "time": "2021-12-29T15:41:59+00:00"
+            "time": "2022-02-11T15:40:07+00:00"
         },
         {
             "name": "kirki-framework/googlefonts",
