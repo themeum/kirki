@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7ae106fdc231ca01a302d0dfd39baf61c3356aec',
+        'reference' => '93ec41440e75d4a4d27898b85ebafe4a4c5253f1',
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -322,7 +322,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7ae106fdc231ca01a302d0dfd39baf61c3356aec',
+            'reference' => '93ec41440e75d4a4d27898b85ebafe4a4c5253f1',
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(
@@ -371,12 +371,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-postmessage' => array(
-            'pretty_version' => 'v1.0.4',
-            'version' => '1.0.4.0',
+            'pretty_version' => 'v1.0.5',
+            'version' => '1.0.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-postmessage',
             'aliases' => array(),
-            'reference' => '21dc54238435137181a43fccf248f4d2bc655a13',
+            'reference' => 'e53eb3361bae51b6453e67f3f8690c61b1254707',
             'dev_requirement' => false,
         ),
         'kirki-framework/module-preset' => array(
