@@ -42,7 +42,7 @@ class ReactColorful extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.0.8';
+	public static $control_ver = '1.0.12';
 
 	/**
 	 * The color mode.
@@ -164,9 +164,14 @@ class ReactColorful extends Base {
 
 		$default_swatches = apply_filters( 'kirki_default_color_swatches', $default_swatches );
 
-		if ( isset( $this->choices['swatches'] ) && ! empty( $this->choices['swatches'] ) ) {
-			$swatches = $this->choices['swatches'];
+		$defined_swatches = isset( $this->choices['swatches'] ) && ! empty( $this->choices['swatches'] ) ? $this->choices['swatches'] : [];
 
+		if ( empty( $defined_swatches ) ) {
+			$defined_swatches = isset( $this->choices['palettes'] ) && ! empty( $this->choices['palettes'] ) ? $this->choices['palettes'] : [];
+		}
+
+		if ( ! empty( $defined_swatches ) ) {
+			$swatches       = $defined_swatches;
 			$total_swatches = count( $swatches );
 
 			if ( $total_swatches < 8 ) {
