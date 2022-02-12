@@ -2,9 +2,22 @@
 
 
 ### Version used:
-(Did you try using the develop branch from GitHub? There's a chance your issue has already been addressed there)
+4.0.21
 
-### Using theme_mods or options?
+### Using `theme_mods` or `options`?
+`theme_mods`
 
+### PHP error messages that might be related
+```bash
+
+```
+
+### JS error messages that might be related
+```bash
+
+```
 
 ### Code to reproduce the issue (config + field(s))
+```php
+
+```
