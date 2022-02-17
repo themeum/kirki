@@ -4,6 +4,14 @@ Bugfixes:
 - **control-base**: Fix the RTL issue as reported in [WordPress support forum](https://wordpress.org/support/topic/version-4-update-broke-rtl-view/)
 - **module-css**: Fix issue #2448 where it didn't check for callable as the value type of `active_callback` and missing validation for callable & string. This might also fix some css output issue.
 - **module-css**: Fix issue #2449 where there was notice caused by accessing non-existing property
+- **module-css**: Remove `:root` selector when inside gutenberg post editing. This fixes issue #2461
+- **module-postmessage**: Handle the wrong formatted "output" argument. Suggested in issue #2462
+- **control-react-select**: Fix issue where `'multiple' => false` didn't work (as reported in #2458) and selection limit didn't work
+- **control-react-colorful**: Fix issue where `palettes` choice didn't work as mentioned in issue #2455
+- **control-react-colorful**: Fix issue where suffix wasn't implemented as reported in [WordPress support forum](https://wordpress.org/support/topic/the-suffix-argument-doesnt-work-in-color-field-outputs/)
+- **field-multicolor**: Fix issue where `palettes` didn't work in multicolor as mentioned in issue #2455
+- **field-multicolor**: Fix issue where the CSS output class wasn't executed due to the missing of `parent_type` choice in the Generic field. This fixes issue #2460
+- **field-typography**: Fix bug where defining an array of google font names inside google's choice didn't work as reported in issue #2459
 
 ### 4.0.20 - February 8, 2022 ###
 Bugfix:
