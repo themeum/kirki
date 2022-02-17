@@ -156,9 +156,17 @@ final class Generator {
 		}
 
 		// Get the value of this field.
-		$option_type = ( isset( $field['option_type'] ) ) ? $field['option_type'] : 'theme_mod';
-		$default     = ( isset( $field['default'] ) ) ? $field['default'] : '';
-		self::$value = apply_filters( 'kirki_get_value', get_theme_mod( $field['settings'], $default ), $field['settings'], $default, $option_type );
+		$option_type  = ( isset( $field['option_type'] ) ) ? $field['option_type'] : 'theme_mod';
+		$default      = ( isset( $field['default'] ) ) ? $field['default'] : '';
+		$setting_name = $field['settings'];
+
+		if ( 'option' === $option_type ) {
+			if ( ! empty( $field['option_name'] ) && 0 !== stripos( $setting_name, $field['option_name'] . '[' ) ) {
+				$setting_name = $field['option_name'] . '[' . $field['settings'] . ']';
+			}
+		}
+
+		self::$value = apply_filters( 'kirki_get_value', get_theme_mod( $field['settings'], $default ), $setting_name, $default, $option_type );
 
 		// Find the class that will handle the outpout for this field.
 		$classname            = '\Kirki\Module\CSS\Output';
