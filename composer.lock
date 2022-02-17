@@ -1793,16 +1793,16 @@
         },
         {
             "name": "kirki-framework/module-postmessage",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-postMessage.git",
-                "reference": "e53eb3361bae51b6453e67f3f8690c61b1254707"
+                "reference": "d543c8d34e7d6fc8c2ce4805d8fc940070a54691"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/e53eb3361bae51b6453e67f3f8690c61b1254707",
-                "reference": "e53eb3361bae51b6453e67f3f8690c61b1254707",
+                "url": "https://api.github.com/repos/kirki-framework/module-postMessage/zipball/d543c8d34e7d6fc8c2ce4805d8fc940070a54691",
+                "reference": "d543c8d34e7d6fc8c2ce4805d8fc940070a54691",
                 "shasum": ""
             },
             "require": {
@@ -1835,9 +1835,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-postMessage/issues",
-                "source": "https://github.com/kirki-framework/module-postMessage/tree/v1.0.5"
+                "source": "https://github.com/kirki-framework/module-postMessage/tree/v1.0.6"
             },
-            "time": "2022-02-11T16:40:54+00:00"
+            "time": "2022-02-17T12:30:43+00:00"
         },
         {
             "name": "kirki-framework/module-preset",

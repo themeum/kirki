@@ -340,7 +340,13 @@ jQuery( document ).ready( function() {
 		} );
 		kirkiPostMessage.styleTag.addData( field.settings, styles );*/
 
-		wp.customize( field.settings, function( value ) {
+		var fieldSetting = field.settings;
+
+    if ("option" === field.option_type && field.option_name && 0 !== fieldSetting.indexOf(field.option_name + '[')) {
+      fieldSetting = field.option_name + "[" + fieldSetting + "]";
+    }
+
+		wp.customize( fieldSetting, function( value ) {
 			value.bind( function( newVal ) {
 				styles = '';
 				_.each( field.js_vars, function( output ) {
@@ -353,7 +359,8 @@ jQuery( document ).ready( function() {
 						kirkiPostMessage[ output.function ].fromOutput( output, newVal, field.type );
 					}
 				} );
-				kirkiPostMessage.styleTag.addData( field.settings, styles );
+
+				kirkiPostMessage.styleTag.addData(fieldSetting, styles);
 			} );
 		} );
 	} );

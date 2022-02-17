@@ -95,7 +95,7 @@ class Postmessage {
 	 */
 	public function postmessage() {
 
-		wp_enqueue_script( 'kirki_auto_postmessage', URL::get_from_path( __DIR__ . '/postMessage.js' ), [ 'jquery', 'customize-preview', 'wp-hooks' ], '4.0', true );
+		wp_enqueue_script( 'kirki_auto_postmessage', URL::get_from_path( __DIR__ . '/postMessage.js' ), [ 'jquery', 'customize-preview', 'wp-hooks' ], '1.0.6', true );
 
 		$fields = $this->fields;
 
