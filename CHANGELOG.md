@@ -1,3 +1,7 @@
+### 4.0.22 - February 17, 2022 ###
+Bugfix:
+- **module-css** & **module-postmessage**: Fix bug where CSS output didn't work when `'option_type' => 'option'` and `'option_name'` is provided. This fixed issue #2466 and issue #2465
+
 ### 4.0.21 - February 9, 2022 ###
 Bugfixes:
 - **control-react-colorful**: Fix warning as reported in [WordPress support forum](https://wordpress.org/support/topic/newest-version-upgrade-4-0-19-cause-a-lot-of-troubles/)
