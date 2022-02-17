@@ -1458,23 +1458,23 @@
         },
         {
             "name": "kirki-framework/data-option",
-            "version": "v1.0.2",
-            "version_normalized": "1.0.2.0",
+            "version": "v1.0.3",
+            "version_normalized": "1.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/data-option.git",
-                "reference": "af1ce8f0b890ae005566fcb4d7f44bebb2c17b0c"
+                "reference": "9a54f5c553e2f1e84f4ff620e271bfc16ee49ced"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/data-option/zipball/af1ce8f0b890ae005566fcb4d7f44bebb2c17b0c",
-                "reference": "af1ce8f0b890ae005566fcb4d7f44bebb2c17b0c",
+                "url": "https://api.github.com/repos/kirki-framework/data-option/zipball/9a54f5c553e2f1e84f4ff620e271bfc16ee49ced",
+                "reference": "9a54f5c553e2f1e84f4ff620e271bfc16ee49ced",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0"
             },
-            "time": "2022-01-03T18:05:56+00:00",
+            "time": "2022-02-17T14:41:24+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1500,7 +1500,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/data-option/issues",
-                "source": "https://github.com/kirki-framework/data-option/tree/v1.0.2"
+                "source": "https://github.com/kirki-framework/data-option/tree/v1.0.3"
             },
             "install-path": "../kirki-framework/data-option"
         },

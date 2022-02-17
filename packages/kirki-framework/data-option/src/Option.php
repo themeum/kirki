@@ -59,6 +59,11 @@ class Option {
 			$parts = \explode( '[', $option );
 			$value = get_option( $parts[0], [] );
 
+			// If there's no value, return the default.
+			if ( empty( $value ) ) {
+				return $default;
+			}
+
 			foreach ( $parts as $key => $part ) {
 				/**
 				 * Skip the 1st item, it's already been dealt with
