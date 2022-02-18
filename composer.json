@@ -1,6 +1,7 @@
 {
   "name": "kirki-framework/kirki",
   "type": "library",
+  "version": "4.0.22",
   "keywords": ["WordPress", "Customizer"],
   "description": "Extending the WordPress customizer",
   "homepage": "https://kirki.org",
