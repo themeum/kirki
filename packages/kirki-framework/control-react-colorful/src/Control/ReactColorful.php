@@ -42,7 +42,7 @@ class ReactColorful extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.0.14';
+	public static $control_ver = '1.0.15';
 
 	/**
 	 * The color mode.
