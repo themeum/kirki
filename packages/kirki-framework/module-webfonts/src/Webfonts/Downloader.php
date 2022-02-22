@@ -68,15 +68,21 @@ class Downloader {
 		$stored     = get_option( 'kirki_downloaded_font_files', array() );
 		$change     = false; // If in the end this is true, we need to update the cache option.
 
+		$fonts_dir = WP_CONTENT_DIR . '/fonts';
+
+		if ( defined( 'KIRKI_FONTS_DIR' ) && ! empty( KIRKI_FONTS_DIR ) ) {
+			$fonts_dir = KIRKI_FONTS_DIR;
+		}
+
 		// If the fonts folder don't exist, create it.
-		if ( ! file_exists( WP_CONTENT_DIR . '/fonts' ) ) {
-			$this->get_filesystem()->mkdir( WP_CONTENT_DIR . '/fonts', FS_CHMOD_DIR );
+		if ( ! file_exists( $fonts_dir ) ) {
+			$this->get_filesystem()->mkdir( $fonts_dir, FS_CHMOD_DIR );
 		}
 
 		foreach ( $font_files as $font_family => $files ) {
 
 			// The folder path for this font-family.
-			$folder_path = WP_CONTENT_DIR . '/fonts/' . $font_family;
+			$folder_path = $fonts_dir . '/' . $font_family;
 
 			// If the folder doesn't exist, create it.
 			if ( ! file_exists( $folder_path ) ) {
