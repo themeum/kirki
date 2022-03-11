@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => '4.0.22',
+        'version' => '4.0.22.0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'bbe992b293019a708d58f99b487c23afcdb3c0e6',
+        'reference' => NULL,
         'name' => 'kirki-framework/kirki',
         'dev' => true,
     ),
@@ -56,12 +56,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-code' => array(
-            'pretty_version' => 'v1.0.1',
-            'version' => '1.0.1.0',
+            'pretty_version' => 'v1.0.2',
+            'version' => '1.0.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-code',
             'aliases' => array(),
-            'reference' => '29909ae3f62210b9b5937c798086ce8495e77d72',
+            'reference' => '88e7b01127fc7039e2c1fc6761184b0332f9a0c3',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-color' => array(
@@ -317,12 +317,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/kirki' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => '4.0.22',
+            'version' => '4.0.22.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'bbe992b293019a708d58f99b487c23afcdb3c0e6',
+            'reference' => NULL,
             'dev_requirement' => false,
         ),
         'kirki-framework/l10n' => array(

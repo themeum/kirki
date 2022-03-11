@@ -33,7 +33,7 @@ class Code extends Field {
 	 * @since 0.1
 	 * @var string
 	 */
-	protected $control_class = '\WP_Customize_Code_Editor_Control';
+	protected $control_class = '\Kirki\Control\Code';
 
 	/**
 	 * Filter arguments before creating the setting.
@@ -123,7 +123,7 @@ class Code extends Field {
 			if ( ! isset( $args['editor_settings']['codemirror']['mode'] ) ) {
 				$args['editor_settings']['codemirror']['mode'] = $language;
 			}
-	
+
 			if ( 'text/x-scss' === $args['editor_settings']['codemirror']['mode'] ) {
 				$args['editor_settings']['codemirror'] = array_merge(
 					$args['editor_settings']['codemirror'],

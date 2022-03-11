@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c28abb96b02e66695e8407e08a510ff2",
+    "content-hash": "9e488b73342bf98282096a30d3d92b88",
     "packages": [
         {
             "name": "kirki-framework/compatibility",
@@ -121,8 +121,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -150,16 +150,16 @@
         },
         {
             "name": "kirki-framework/control-code",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-code.git",
-                "reference": "29909ae3f62210b9b5937c798086ce8495e77d72"
+                "reference": "88e7b01127fc7039e2c1fc6761184b0332f9a0c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-code/zipball/29909ae3f62210b9b5937c798086ce8495e77d72",
-                "reference": "29909ae3f62210b9b5937c798086ce8495e77d72",
+                "url": "https://api.github.com/repos/kirki-framework/control-code/zipball/88e7b01127fc7039e2c1fc6761184b0332f9a0c3",
+                "reference": "88e7b01127fc7039e2c1fc6761184b0332f9a0c3",
                 "shasum": ""
             },
             "require": {
@@ -169,8 +169,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -192,9 +192,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-code/issues",
-                "source": "https://github.com/kirki-framework/control-code/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/control-code/tree/v1.0.2"
             },
-            "time": "2021-12-29T12:56:00+00:00"
+            "time": "2022-03-11T18:37:13+00:00"
         },
         {
             "name": "kirki-framework/control-color",
@@ -217,8 +217,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -353,8 +353,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -402,9 +402,9 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
+                    "Kirki\\Util\\": "src/Util",
                     "Kirki\\Field\\": "src/Field",
-                    "Kirki\\Util\\": "src/Util"
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -452,8 +452,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -501,8 +501,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -550,8 +550,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -599,8 +599,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -697,8 +697,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -746,8 +746,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -794,8 +794,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -948,8 +948,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
                     "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control",
                     "Kirki\\Settings\\": "src/Settings"
                 }
             },
@@ -998,8 +998,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1090,8 +1090,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
-                    "Kirki\\Field\\": "src/Field"
+                    "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
