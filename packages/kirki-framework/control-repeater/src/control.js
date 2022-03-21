@@ -884,8 +884,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 			setTimeout(function() {
 				event.target.value = value;
 			}, 50);
-
-			console.log(event.target.value);
     };
 
     // Init the color picker
