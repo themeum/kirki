@@ -1971,17 +1971,17 @@
         },
         {
             "name": "kirki-framework/module-editor-styles",
-            "version": "v1.0.1",
-            "version_normalized": "1.0.1.0",
+            "version": "v1.0.2",
+            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/module-editor-styles.git",
-                "reference": "d30622f500cfcc4e0145790d4aeca541d6c73319"
+                "reference": "a86f8b66fa0a442ce092c122b997c8d5f8d20951"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/module-editor-styles/zipball/d30622f500cfcc4e0145790d4aeca541d6c73319",
-                "reference": "d30622f500cfcc4e0145790d4aeca541d6c73319",
+                "url": "https://api.github.com/repos/kirki-framework/module-editor-styles/zipball/a86f8b66fa0a442ce092c122b997c8d5f8d20951",
+                "reference": "a86f8b66fa0a442ce092c122b997c8d5f8d20951",
                 "shasum": ""
             },
             "require": {
@@ -1990,7 +1990,7 @@
                 "kirki-framework/util": "*",
                 "php": ">=7.0"
             },
-            "time": "2021-12-29T15:59:48+00:00",
+            "time": "2022-03-21T14:52:51+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2017,7 +2017,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/module-editor-styles/issues",
-                "source": "https://github.com/kirki-framework/module-editor-styles/tree/v1.0.1"
+                "source": "https://github.com/kirki-framework/module-editor-styles/tree/v1.0.2"
             },
             "install-path": "../kirki-framework/module-editor-styles"
         },

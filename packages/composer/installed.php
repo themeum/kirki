@@ -344,12 +344,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-editor-styles' => array(
-            'pretty_version' => 'v1.0.1',
-            'version' => '1.0.1.0',
+            'pretty_version' => 'v1.0.2',
+            'version' => '1.0.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-editor-styles',
             'aliases' => array(),
-            'reference' => 'd30622f500cfcc4e0145790d4aeca541d6c73319',
+            'reference' => 'a86f8b66fa0a442ce092c122b997c8d5f8d20951',
             'dev_requirement' => false,
         ),
         'kirki-framework/module-field-dependencies' => array(

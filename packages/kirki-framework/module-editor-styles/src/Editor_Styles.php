@@ -141,14 +141,12 @@ class Editor_Styles {
 			return true;
 		}
 
-		if ( ! empty( $args ) ) {
-			if ( isset( $args['disable_output'] ) && true === $args['disable_output'] ) {
-				return true;
-			}
-
-			if ( ! isset( $args['gutenberg_support'] ) || true !== $args['gutenberg_support'] ) {
-				return true;
-			}
+		/**
+		 * We would prefer to use "KIRKI_GUTENBERG_OUTPUT" instead.
+		 * For consistency however, we will use "KIRKI_NO_GUTENBERG_OUTPUT".
+		 */
+		if ( defined( 'KIRKI_NO_GUTENBERG_OUTPUT' ) && true === KIRKI_NO_GUTENBERG_OUTPUT ) {
+			return true;
 		}
 
 		return false;
