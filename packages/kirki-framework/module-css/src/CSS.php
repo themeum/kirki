@@ -62,6 +62,17 @@ class CSS {
 	private static $css_handle = 'kirki-styles';
 
 	/**
+	 * The default id for kirki's inline style tag.
+	 *
+	 * @since 4.0.23
+	 * @access private
+	 * @static
+	 *
+	 * @var string
+	 */
+	private static $inline_styles_id = 'kirki-inline-styles';
+
+	/**
 	 * Constructor
 	 *
 	 * @access public
@@ -181,8 +192,32 @@ class CSS {
 	 */
 	public function print_styles_inline() {
 
-		echo '<style id="kirki-inline-styles">';
+		$should_print = true;
+
+		if ( defined( 'KIRKI_NO_OUTPUT' ) && true === KIRKI_NO_OUTPUT ) {
+			$should_print = false;
+		}
+
+		ob_start();
 		$this->print_styles();
+		$inline_styles = ob_get_clean();
+
+		/**
+		 * If KIRKI_NO_OUTPUT constant is defined (and is true), but typography field is defined, then print it.
+		 * Otherwise, the typography field might be broken (missing font-family) if the font-face is not outputted.
+		 */
+		if ( ! $should_print && false !== stripos($inline_styles, '@font-face') ) {
+			$should_print = true;
+		}
+
+		if ( ! $should_print ) {
+			return;
+		}
+
+		$inline_styles_id = apply_filters( 'kirki_inline_styles_id', self::$inline_styles_id );
+
+		echo '<style id="' . esc_attr( $inline_styles_id ) . '">';
+		echo $inline_styles;
 		echo '</style>';
 
 	}
@@ -270,6 +305,10 @@ class CSS {
 		$configs = Kirki::$config;
 
 		foreach ( $configs as $config_id => $args ) {
+			if ( defined( 'KIRKI_NO_OUTPUT' ) && true === KIRKI_NO_OUTPUT ) {
+				continue;
+			}
+
 			if ( isset( $args['disable_output'] ) && true === $args['disable_output'] ) {
 				continue;
 			}

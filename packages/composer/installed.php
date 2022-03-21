@@ -335,12 +335,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-css' => array(
-            'pretty_version' => 'v1.0.10',
-            'version' => '1.0.10.0',
+            'pretty_version' => 'v1.0.11',
+            'version' => '1.0.11.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-css',
             'aliases' => array(),
-            'reference' => '93b97d0e6b09fe4953c69a8ba9bc06884af91b27',
+            'reference' => 'b53cff693b489cc7e4991ef725a66ddafa8aa84b',
             'dev_requirement' => false,
         ),
         'kirki-framework/module-editor-styles' => array(
