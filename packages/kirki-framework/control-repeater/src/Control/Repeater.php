@@ -72,7 +72,7 @@ class Repeater extends Base {
 	 * @since 1.0
 	 * @var string
 	 */
-	public static $control_ver = '1.0';
+	public static $control_ver = '1.0.4';
 
 	/**
 	 * Constructor.
@@ -212,12 +212,13 @@ class Repeater extends Base {
 
 		parent::enqueue();
 
-		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-repeater', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'wp-color-picker' ], self::$control_ver, false );
-
 		// Enqueue the style.
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_style( 'kirki-control-repeater-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
+
+		// Enqueue the script.
+		wp_enqueue_script( 'wp-color-picker-alpha', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/wp-color-picker-alpha.min.js' ), array( 'jquery', 'customize-base', 'wp-color-picker' ), self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-repeater', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'wp-color-picker-alpha' ], self::$control_ver, false );
 
 	}
 
@@ -398,16 +399,33 @@ class Repeater extends Base {
 									<# if ( field.label ) { #><span class="customize-control-title">{{{ field.label }}}</span><# } #>
 									<# if ( field.description ) { #><span class="description customize-control-description">{{{ field.description }}}</span><# } #>
 								</label>
-								<# var defaultValue = '';
+
+								<#
+								var defaultValue = '';
 								if ( field.default ) {
-									if ( -1 === field.default.indexOf( 'rgba' ) ) {
-										defaultValue = ( '#' !== field.default.substring( 0, 1 ) ) ? '#' + field.default : field.default;
-										defaultValue = ' data-default-color=' + defaultValue; // Quotes added automatically.
+									if ( -1 !== field.default.indexOf( 'rgb' ) || -1 !== field.default.indexOf( '#' ) ) {
+										defaultValue = field.default;
+
+										if (-1 !== field.default.indexOf('rgba')) {
+											if (!field.choices) field.choices = {};
+											field.choices.alpha = true;
+										}
 									} else {
-										defaultValue = ' data-default-color="' + defaultValue + '" data-alpha="true"';
+										if (field.default.length >= 3) {
+											defaultValue = '#' + field.default;
+										}
 									}
-								} #>
-								<input class="color-picker-hex" type="text" maxlength="7" value="{{{ field.default }}}" data-field="{{{ field.id }}}" {{ defaultValue }} />
+								}
+								#>
+
+								<#
+								var alphaEnabledAttr = '';
+								if ( field.choices && field.choices.alpha ) {
+									alphaEnabledAttr = ' data-alpha-enabled=true';
+								}
+								#>
+
+								<input class="kirki-classic-color-picker" type="text" maxlength="7" value="{{{ field.default }}}" data-field="{{{ field.id }}}" data-default-color="{{{ defaultValue }}}" {{alphaEnabledAttr}} />
 
 							<# } else if ( 'textarea' === field.type ) { #>
 

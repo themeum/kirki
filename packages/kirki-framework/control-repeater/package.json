@@ -1,6 +1,6 @@
 {
     "name": "control-repeater",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Development toolkit for Kirki's control-repeater",
     "repository": {
         "type": "git",
@@ -15,10 +15,9 @@
         "url": "https://github.com/kirki-framework/control-repeater/issues"
     },
     "homepage": "https://github.com/kirki-framework/control-repeater#readme",
-    "dependencies": {},
     "devDependencies": {
-        "@parcel/transformer-sass": "^2.0.0-rc.0",
-        "parcel": "^2.0.0-rc.0"
+        "@parcel/transformer-sass": "^2.3.2",
+        "parcel": "^2.3.2"
     },
     "alias": {
         "jquery": {
@@ -29,9 +28,10 @@
         }
     },
     "browserslist": "> 0.5%, last 2 versions, not dead",
+    "source": "./src/control.js",
     "scripts": {
-        "build": "parcel build  src/control.js --dist-dir dist",
-        "dev": "parcel build  src/control.js --no-optimize --dist-dir dist",
-        "watch": "parcel watch src/control.js --dist-dir dist"
+        "build": "parcel build",
+        "dev": "parcel build --no-optimize",
+        "watch": "parcel watch"
     }
 }

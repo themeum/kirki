@@ -1,6 +1,7 @@
 {
     "name": "kirki-framework/control-repeater",
     "type": "library",
+    "version": "1.0.4",
     "description": "Repeater control for the Kirki Customizer framework.",
     "keywords": [
         "wordpress",

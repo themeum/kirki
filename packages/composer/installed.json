@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v2.0.1",
-            "version_normalized": "2.0.1.0",
+            "version": "v2.1.0",
+            "version_normalized": "2.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "a241e78aaeb09781f5f5b92ac01ffd13ab43e5e8"
+                "reference": "75e5ef05436c90ac565a48176cc7465991908352"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/a241e78aaeb09781f5f5b92ac01ffd13ab43e5e8",
-                "reference": "a241e78aaeb09781f5f5b92ac01ffd13ab43e5e8",
+                "url": "https://api.github.com/repos/composer/installers/zipball/75e5ef05436c90ac565a48176cc7465991908352",
+                "reference": "75e5ef05436c90ac565a48176cc7465991908352",
                 "shasum": ""
             },
             "require": {
@@ -27,13 +27,14 @@
                 "symfony/phpunit-bridge": "^5.3",
                 "symfony/process": "^5"
             },
-            "time": "2021-09-13T08:21:20+00:00",
+            "time": "2022-03-18T12:27:54+00:00",
             "type": "composer-plugin",
             "extra": {
                 "class": "Composer\\Installers\\Plugin",
                 "branch-alias": {
                     "dev-main": "2.x-dev"
-                }
+                },
+                "plugin-modifies-install-path": true
             },
             "installation-source": "dist",
             "autoload": {
@@ -128,7 +129,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/v2.0.1"
+                "source": "https://github.com/composer/installers/tree/v2.1.0"
             },
             "funding": [
                 {
@@ -1197,17 +1198,17 @@
         },
         {
             "name": "kirki-framework/control-repeater",
-            "version": "v1.0.3",
-            "version_normalized": "1.0.3.0",
+            "version": "1.0.4",
+            "version_normalized": "1.0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/control-repeater.git",
-                "reference": "b24e7ae8641867616cc12038eda0a6e990399bbd"
+                "reference": "7a432fcc2116900f89d14614726edf89193dde38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/b24e7ae8641867616cc12038eda0a6e990399bbd",
-                "reference": "b24e7ae8641867616cc12038eda0a6e990399bbd",
+                "url": "https://api.github.com/repos/kirki-framework/control-repeater/zipball/7a432fcc2116900f89d14614726edf89193dde38",
+                "reference": "7a432fcc2116900f89d14614726edf89193dde38",
                 "shasum": ""
             },
             "require": {
@@ -1221,13 +1222,13 @@
                 "kirki-framework/url-getter": "*",
                 "php": ">=7.0"
             },
-            "time": "2021-12-29T14:55:08+00:00",
+            "time": "2022-03-21T12:34:42+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "Kirki\\Control\\": "src/Control",
                     "Kirki\\Field\\": "src/Field",
+                    "Kirki\\Control\\": "src/Control",
                     "Kirki\\Settings\\": "src/Settings"
                 }
             },
@@ -1250,7 +1251,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/control-repeater/issues",
-                "source": "https://github.com/kirki-framework/control-repeater/tree/v1.0.3"
+                "source": "https://github.com/kirki-framework/control-repeater/tree/v1.0.4"
             },
             "install-path": "../kirki-framework/control-repeater"
         },

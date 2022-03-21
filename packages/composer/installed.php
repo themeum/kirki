@@ -11,12 +11,12 @@
     ),
     'versions' => array(
         'composer/installers' => array(
-            'pretty_version' => 'v2.0.1',
-            'version' => '2.0.1.0',
+            'pretty_version' => 'v2.1.0',
+            'version' => '2.1.0.0',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/./installers',
             'aliases' => array(),
-            'reference' => 'a241e78aaeb09781f5f5b92ac01ffd13ab43e5e8',
+            'reference' => '75e5ef05436c90ac565a48176cc7465991908352',
             'dev_requirement' => true,
         ),
         'dealerdirect/phpcodesniffer-composer-installer' => array(
@@ -200,12 +200,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/control-repeater' => array(
-            'pretty_version' => 'v1.0.3',
-            'version' => '1.0.3.0',
+            'pretty_version' => '1.0.4',
+            'version' => '1.0.4.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/control-repeater',
             'aliases' => array(),
-            'reference' => 'b24e7ae8641867616cc12038eda0a6e990399bbd',
+            'reference' => '7a432fcc2116900f89d14614726edf89193dde38',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-select' => array(
