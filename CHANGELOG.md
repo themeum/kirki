@@ -1,3 +1,14 @@
+### 4.0.23 - March 22, 2022 ###
+Bugfixes:
+- **control-repeater**: `"alpha" => true` choice didn't work as reported in issue #2469
+- **module-css**: `KIRKI_NO_OUTPUT` didn't work in the front area
+
+New Filter:
+- New `kirki_inline_styles_id` filter to filter the ID of the inline style tag. The default id is `kirki-inline-styles` (**module-css**)
+
+New Constant:
+- New `KIRKI_NO_GUTENBERG_OUTPUT` constant. Since we get rid of Kirki config usage in Kirki 4, then new constant is necessary. Define `KIRKI_NO_GUTENBERG_OUTPUT` constant to `true` to disable Gutenberg support (**module-editor-styles**).
+
 ### 4.0.22 - February 17, 2022 ###
 Bugfix:
 - **module-css** & **module-postmessage**: Fix bug where CSS output didn't work when `'option_type' => 'option'` and `'option_name'` is provided. This fixed issue #2466 and issue #2465
