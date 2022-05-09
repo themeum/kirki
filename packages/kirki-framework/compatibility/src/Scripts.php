@@ -12,6 +12,8 @@
 
 namespace Kirki\Compatibility;
 
+use Kirki\URL;
+
 /**
  * Adds scripts for backwards-compatibility
  *

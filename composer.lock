@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "kirki-framework/compatibility",
-            "version": "v1.0.9",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kirki-framework/compatibility.git",
-                "reference": "1169e68f1232dfc7d659c981d440d81e8253a810"
+                "reference": "63f75ddbce70918fa2383ee678eb40767820c1a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/1169e68f1232dfc7d659c981d440d81e8253a810",
-                "reference": "1169e68f1232dfc7d659c981d440d81e8253a810",
+                "url": "https://api.github.com/repos/kirki-framework/compatibility/zipball/63f75ddbce70918fa2383ee678eb40767820c1a4",
+                "reference": "63f75ddbce70918fa2383ee678eb40767820c1a4",
                 "shasum": ""
             },
             "require": {
@@ -48,9 +48,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kirki-framework/compatibility/issues",
-                "source": "https://github.com/kirki-framework/compatibility/tree/v1.0.9"
+                "source": "https://github.com/kirki-framework/compatibility/tree/v1.0.10"
             },
-            "time": "2022-01-21T14:32:03+00:00"
+            "time": "2022-05-09T09:42:53+00:00"
         },
         {
             "name": "kirki-framework/control-base",
@@ -2215,16 +2215,16 @@
     "packages-dev": [
         {
             "name": "composer/installers",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "75e5ef05436c90ac565a48176cc7465991908352"
+                "reference": "af93ba6e52236418f07a278033eba6959ee5b983"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/75e5ef05436c90ac565a48176cc7465991908352",
-                "reference": "75e5ef05436c90ac565a48176cc7465991908352",
+                "url": "https://api.github.com/repos/composer/installers/zipball/af93ba6e52236418f07a278033eba6959ee5b983",
+                "reference": "af93ba6e52236418f07a278033eba6959ee5b983",
                 "shasum": ""
             },
             "require": {
@@ -2339,7 +2339,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/installers/issues",
-                "source": "https://github.com/composer/installers/tree/v2.1.0"
+                "source": "https://github.com/composer/installers/tree/v2.1.1"
             },
             "funding": [
                 {
@@ -2355,7 +2355,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-18T12:27:54+00:00"
+            "time": "2022-04-13T09:13:00+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",

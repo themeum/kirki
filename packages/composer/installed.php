@@ -11,12 +11,12 @@
     ),
     'versions' => array(
         'composer/installers' => array(
-            'pretty_version' => 'v2.1.0',
-            'version' => '2.1.0.0',
+            'pretty_version' => 'v2.1.1',
+            'version' => '2.1.1.0',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/./installers',
             'aliases' => array(),
-            'reference' => '75e5ef05436c90ac565a48176cc7465991908352',
+            'reference' => 'af93ba6e52236418f07a278033eba6959ee5b983',
             'dev_requirement' => true,
         ),
         'dealerdirect/phpcodesniffer-composer-installer' => array(
@@ -29,12 +29,12 @@
             'dev_requirement' => true,
         ),
         'kirki-framework/compatibility' => array(
-            'pretty_version' => 'v1.0.9',
-            'version' => '1.0.9.0',
+            'pretty_version' => '1.0.10',
+            'version' => '1.0.10.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/compatibility',
             'aliases' => array(),
-            'reference' => '1169e68f1232dfc7d659c981d440d81e8253a810',
+            'reference' => '63f75ddbce70918fa2383ee678eb40767820c1a4',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-base' => array(

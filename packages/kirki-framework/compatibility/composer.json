@@ -1,5 +1,6 @@
 {
     "name": "kirki-framework/compatibility",
+    "version": "1.0.10",
     "type": "library",
     "description": "Compatibility package for themes using the Kirki v3.x API.",
     "keywords": ["wordpress","customizer","framework"],
