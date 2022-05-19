@@ -70,7 +70,7 @@ final class Embed {
 		$this->googlefonts = $googlefonts;
 
 		add_action( 'wp', [ $this, 'init' ], 9 );
-		add_filter( 'wp_resource_hints', [ $this, 'resource_hints' ], 10, 2 );
+		// add_filter( 'wp_resource_hints', [ $this, 'resource_hints' ], 10, 2 );
 	}
 
 	/**
@@ -102,6 +102,7 @@ final class Embed {
 				'crossorigin',
 			];
 		}
+
 		return $urls;
 	}
 

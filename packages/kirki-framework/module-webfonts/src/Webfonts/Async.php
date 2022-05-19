@@ -86,7 +86,7 @@ final class Async {
 		add_action( 'admin_enqueue_scripts', [ $this, 'webfont_loader' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'webfont_loader_script' ], 30 );
 
-		add_filter( 'wp_resource_hints', [ $this, 'resource_hints' ], 10, 2 );
+		// add_filter( 'wp_resource_hints', [ $this, 'resource_hints' ], 10, 2 );
 	}
 
 	/**

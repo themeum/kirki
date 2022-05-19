@@ -425,12 +425,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-webfonts' => array(
-            'pretty_version' => 'v1.0.4',
-            'version' => '1.0.4.0',
+            'pretty_version' => 'v1.0.5',
+            'version' => '1.0.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-webfonts',
             'aliases' => array(),
-            'reference' => 'ec12372bb67230ab5558a6b3d8b7f98300d2e2a6',
+            'reference' => '6be8c298abc29bccc227e1b1dbcb029e6a072659',
             'dev_requirement' => false,
         ),
         'kirki-framework/url-getter' => array(
