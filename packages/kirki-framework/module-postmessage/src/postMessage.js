@@ -166,6 +166,7 @@ var kirkiPostMessage = {
 							if ( output.choice && key !== output.choice ) {
 								return;
 							}
+
 							processedValue = kirkiPostMessage.util.processValue( output, val );
 
 							if ( '' === processedValue ) {
@@ -176,8 +177,10 @@ var kirkiPostMessage = {
 								}
 							}
 
+							var customProperty = controlType === 'kirki-sortable' ? output.property + '-' + key : output.property;
+
 							if ( false !== processedValue ) {
-								styles += output.property ? output.property + '-' + key + ':' + processedValue + ';' : key + ':' + processedValue + ';';
+								styles += output.property ? customProperty + ":" + processedValue + ";" : key + ":" + processedValue + ";";
 							}
 						} );
 						styles += '}';

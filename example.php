@@ -899,9 +899,9 @@ new \Kirki\Field\Multicolor(
 		'priority'  => 10,
 		'transport' => 'postMessage',
 		'choices'   => [
-			'link'      => esc_html__( 'Color', 'kirki' ),
-			'hover'     => esc_html__( 'And this hover color has long label so you know how it looks like.', 'kirki' ),
-			'active'    => esc_html__( 'Active', 'kirki' ),
+			'link'      => esc_html__( 'Link Color', 'kirki' ),
+			'hover'     => esc_html__( 'And this is hover color with long label so you know how it is displayed.', 'kirki' ),
+			'active'    => esc_html__( 'Active Color', 'kirki' ),
 			'another1'  => esc_html__( 'Another color 1', 'kirki' ),
 			'another2'  => esc_html__( 'Another color 2', 'kirki' ),
 			'another3'  => esc_html__( 'Another color 3', 'kirki' ),

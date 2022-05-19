@@ -371,12 +371,12 @@
             'dev_requirement' => false,
         ),
         'kirki-framework/module-postmessage' => array(
-            'pretty_version' => 'v1.0.6',
-            'version' => '1.0.6.0',
+            'pretty_version' => '1.0.7',
+            'version' => '1.0.7.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/module-postmessage',
             'aliases' => array(),
-            'reference' => 'd543c8d34e7d6fc8c2ce4805d8fc940070a54691',
+            'reference' => '9b2b419027f3b95a2546041a83fc5607492f35a5',
             'dev_requirement' => false,
         ),
         'kirki-framework/module-preset' => array(
