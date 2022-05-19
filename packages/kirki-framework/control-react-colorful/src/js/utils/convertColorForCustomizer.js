@@ -20,23 +20,26 @@ const convertColorForCustomizer = (value, pickerComponent, formComponent) => {
 		 * 1. When formComponent is defined with HexColorPicker as the value.
 		 * 2. When formComponent is not defined but the "alpha" choice is not set or set to false (the old way).
 		 */
-		case 'HexColorPicker':
-			convertedValue = 'string' === typeof value && value.includes('#') ? value : colord(value).toHex();
+		case "HexColorPicker":
+			convertedValue =
+				"string" === typeof value && value.includes("#")
+					? value
+					: colord(value).toHex();
 			break;
 
-		case 'RgbColorPicker':
+		case "RgbColorPicker":
 			convertedValue = colord(value).toRgb();
 			delete convertedValue.a;
 			break;
 
-		case 'RgbStringColorPicker':
+		case "RgbStringColorPicker":
 			convertedValue =
-        "string" === typeof value && value.includes("rgb(")
-          ? value
-          : colord(value).toRgbString();
+				"string" === typeof value && value.includes("rgb(")
+					? value
+					: colord(value).toRgbString();
 			break;
 
-		case 'RgbaColorPicker':
+		case "RgbaColorPicker":
 			rgba = colord(value).toRgb();
 			convertedValue = rgba;
 			break;
@@ -46,62 +49,65 @@ const convertColorForCustomizer = (value, pickerComponent, formComponent) => {
 		 * 1. When formComponent is defined with RgbaColorPicker as the value.
 		 * 2. When formComponent is not defined but the "alpha" choice is set to true.
 		 */
-		case 'RgbaStringColorPicker':
+		case "RgbaStringColorPicker":
 			rgba = colord(value).toRgb();
 
 			if (rgba.a < 1) {
 				convertedValue =
-          "string" === typeof value && value.includes("rgba")
-            ? value
-            : colord(value).toRgbString();
+					"string" === typeof value && value.includes("rgba")
+						? value
+						: colord(value).toRgbString();
 			} else {
 				// When it uses the 2nd condition above, then the expected value is "hex".
 				if (!formComponent) {
 					convertedValue =
-            "string" === typeof value && value.includes("#")
-              ? value
-              : colord(value).toHex();
+						"string" === typeof value && value.includes("#")
+							? value
+							: colord(value).toHex();
 				} else {
 					convertedValue = colord(value).toRgbString();
 
 					// Force to set the alpha channel value.
-					if (convertedValue.includes('rgb') && !convertedValue.includes('rgba')) {
-						convertedValue = convertedValue.replace('rgb', 'rgba');
-						convertedValue = convertedValue.replace(')', ', 1)');
+					if (
+						convertedValue.includes("rgb") &&
+						!convertedValue.includes("rgba")
+					) {
+						convertedValue = convertedValue.replace("rgb", "rgba");
+						convertedValue = convertedValue.replace(")", ", 1)");
 					}
 				}
 			}
 
 			break;
 
-		case 'HslColorPicker':
+		case "HslColorPicker":
 			convertedValue = colord(value).toHsl();
 			delete convertedValue.a;
 			break;
 
-		case 'HslStringColorPicker':
+		case "HslStringColorPicker":
 			convertedValue =
-        "string" === typeof value && value.includes("hsl(")
-          ? value
-          : colord(value).toHslString();
+				"string" === typeof value && value.includes("hsl(")
+					? value
+					: colord(value).toHslString();
 			break;
 
-		case 'HslaColorPicker':
+		case "HslaColorPicker":
 			convertedValue = colord(value).toHsl();
 			break;
 
-		case 'HslaStringColorPicker':
+		case "HslaStringColorPicker":
 			convertedValue = colord(value).toHslString();
 
 			// Force to set the alpha channel value.
-			if (convertedValue.includes('hsl') && !convertedValue.includes('hsla')) {
-				convertedValue = convertedValue.replace('hsl', 'hsla');
-				convertedValue = convertedValue.replace(')', ', 1)');
+			if (convertedValue.includes("hsl") && !convertedValue.includes("hsla")) {
+				convertedValue = convertedValue.replace("hsl", "hsla");
+				convertedValue = convertedValue.replace(")", ", 1)");
 			}
 
 			break;
 
-		case 'HsvColorPicker':
+		case "HsvColorPicker":
 			convertedValue = colord(value).toHsv();
 			delete convertedValue.a;
 			break;
@@ -110,25 +116,34 @@ const convertColorForCustomizer = (value, pickerComponent, formComponent) => {
 		 * The colord library doesn't provide .toHsvString() method yet.
 		 * This manual value-building will apply to "HsvStringColorPicker" and "HsvaStringColorPicker" stuff below.
 		 */
-		case 'HsvStringColorPicker':
+		case "HsvStringColorPicker":
 			hsv = colord(value).toHsv();
-			convertedValue = 'hsv(' + hsv.h + ', ' + hsv.s + '%, ' + hsv.v + '%)';
+			convertedValue = "hsv(" + hsv.h + ", " + hsv.s + "%, " + hsv.v + "%)";
 			break;
 
-		case 'HsvaColorPicker':
+		case "HsvaColorPicker":
 			convertedValue = colord(value).toHsv();
 			break;
 
-		case 'HsvaStringColorPicker':
+		case "HsvaStringColorPicker":
 			hsva = colord(value).toHsv();
-			convertedValue = 'hsva(' + hsva.h + ', ' + hsva.s + '%, ' + hsva.v + '%, ' + hsva.a + ')';
+			convertedValue =
+				"hsva(" +
+				hsva.h +
+				", " +
+				hsva.s +
+				"%, " +
+				hsva.v +
+				"%, " +
+				hsva.a +
+				")";
 			break;
 
 		default:
 			convertedValue =
-        "string" === typeof value && value.includes("#")
-          ? value
-          : colord(value).toHex();
+				"string" === typeof value && value.includes("#")
+					? value
+					: colord(value).toHex();
 			break;
 	}
 

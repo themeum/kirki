@@ -12,77 +12,86 @@ const convertColorForPicker = (value, pickerComponent) => {
 	let convertedValue;
 
 	switch (pickerComponent) {
-		case 'HexColorPicker':
+		case "HexColorPicker":
 			convertedValue = colord(value).toHex();
 			break;
 
-		case 'RgbColorPicker':
+		case "RgbColorPicker":
 			convertedValue = colord(value).toRgb();
 			delete convertedValue.a;
 			break;
 
-		case 'RgbStringColorPicker':
+		case "RgbStringColorPicker":
 			convertedValue = colord(value).toRgbString();
 			break;
 
-		case 'RgbaColorPicker':
+		case "RgbaColorPicker":
 			convertedValue = colord(value).toRgb();
 			break;
 
-		case 'RgbaStringColorPicker':
+		case "RgbaStringColorPicker":
 			convertedValue = colord(value).toRgbString();
 
 			// Force to set the alpha channel value.
-			if (convertedValue.includes('rgb') && !convertedValue.includes('rgba')) {
-				convertedValue = convertedValue.replace('rgb', 'rgba');
-				convertedValue = convertedValue.replace(')', ', 1)');
+			if (convertedValue.includes("rgb") && !convertedValue.includes("rgba")) {
+				convertedValue = convertedValue.replace("rgb", "rgba");
+				convertedValue = convertedValue.replace(")", ", 1)");
 			}
 
 			break;
 
-		case 'HslColorPicker':
+		case "HslColorPicker":
 			convertedValue = colord(value).toHsl();
 			delete convertedValue.a;
 			break;
 
-		case 'HslStringColorPicker':
+		case "HslStringColorPicker":
 			convertedValue = colord(value).toHslString();
 			break;
 
-		case 'HslaColorPicker':
+		case "HslaColorPicker":
 			convertedValue = colord(value).toHsl();
 			break;
 
-		case 'HslaStringColorPicker':
+		case "HslaStringColorPicker":
 			convertedValue = colord(value).toHslString();
 
 			// Force to set the alpha channel value.
-			if (convertedValue.includes('hsl') && !convertedValue.includes('hsla')) {
-				convertedValue = convertedValue.replace('hsl', 'hsla');
-				convertedValue = convertedValue.replace(')', ', 1)');
+			if (convertedValue.includes("hsl") && !convertedValue.includes("hsla")) {
+				convertedValue = convertedValue.replace("hsl", "hsla");
+				convertedValue = convertedValue.replace(")", ", 1)");
 			}
 
 			break;
 
-		case 'HsvColorPicker':
+		case "HsvColorPicker":
 			convertedValue = colord(value).toHsv();
 			delete convertedValue.a;
 			break;
 
-		case 'HsvStringColorPicker':
+		case "HsvStringColorPicker":
 			const hsv = colord(value).toHsv();
-			convertedValue = 'hsv(' + hsv.h + ', ' + hsv.s + '%, ' + hsv.v + '%)';
+			convertedValue = "hsv(" + hsv.h + ", " + hsv.s + "%, " + hsv.v + "%)";
 
 			break;
 
-		case 'HsvaColorPicker':
+		case "HsvaColorPicker":
 			convertedValue = colord(value).toHsv();
 			break;
 
-		case 'HsvaStringColorPicker':
+		case "HsvaStringColorPicker":
 			// colord library doesn't provide .toHsvString() method yet.
 			const hsva = colord(value).toHsv();
-			convertedValue = 'hsva(' + hsva.h + ', ' + hsva.s + '%, ' + hsva.v + '%, ' + hsva.a + ')';
+			convertedValue =
+				"hsva(" +
+				hsva.h +
+				", " +
+				hsva.s +
+				"%, " +
+				hsva.v +
+				"%, " +
+				hsva.a +
+				")";
 
 			break;
 
