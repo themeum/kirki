@@ -97,6 +97,10 @@ class ReactColorful extends Base {
 		// Value.
 		$this->json['value'] = empty( $this->value() ) ? '' : ( 'hue' === $this->mode ? absint( $this->value() ) : $this->value() );
 
+		if ( is_string( $this->json['value'] ) ) {
+			$this->json['value'] = strtolower( $this->json['value'] );
+		}
+
 		// Mode.
 		$this->json['mode'] = $this->mode;
 

@@ -217,6 +217,8 @@ class ReactColorful extends Field {
 	 */
 	public static function sanitize_color_string( $value ) {
 
+		$value = strtolower( $value );
+
 		/**
 		 * This pattern will check and match 3/6/8-character hex, rgb, rgba, hsl, hsla, hsv, and hsva colors.
 		 *
