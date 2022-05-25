@@ -1,3 +1,26 @@
+### 4.0.24 - March 22, 2022 ###
+#### control-react-colorful package
+Bugfixes:
+- Fix issue where uppercase color was failed to be saved
+- Fix the layout issue of the swatches (removing `justify-content: space-between;`)
+- Fix the swatches layout issue when it contains a lot of colors.
+- Allow clearing picker's color by clearing the input field value.
+
+#### compatibility package
+Bugfixes:
+- Fix notice error: Undefined index of 'transport' as reported in #2476
+- Fix code that called URL class without it's namespace
+- **control-repeater**: `"alpha" => true` choice didn't work as reported in issue #2469
+- **module-css**: `KIRKI_NO_OUTPUT` didn't work in the front area
+
+#### module-webfonts package
+Finetuning:
+- Stop preconnecting to https://fonts.gstatic.com/ . It was related to issue #2478.
+
+#### module-postMessage package
+Bugfix:
+- Fix multicolor output issue on customizer preview where the CSS property was appended with its assigned choice.
+
 ### 4.0.23 - March 22, 2022 ###
 Bugfixes:
 - **control-repeater**: `"alpha" => true` choice didn't work as reported in issue #2469

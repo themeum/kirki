@@ -2,8 +2,8 @@
 **Contributors:** [davidvongries](https://profiles.wordpress.org/davidvongries), [aristath](https://profiles.wordpress.org/aristath), [dannycooper](https://profiles.wordpress.org/dannycooper), [wplemon](https://profiles.wordpress.org/wplemon), [igmoweb](https://profiles.wordpress.org/igmoweb)
 **Tags:** customizer, options framework, theme, mods, toolkit, gutenberg
 **Requires at least:** 5.2
-**Tested up to:** 5.9
-**Stable tag:** 4.0.23
+**Tested up to:** 6
+**Stable tag:** 4.0.24
 **License:** MIT
 **License URI:** https://opensource.org/licenses/MIT
 

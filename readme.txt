@@ -2,8 +2,8 @@
 Contributors: davidvongries, aristath, dannycooper, wplemon, igmoweb
 Tags: customizer, options framework, theme, mods, toolkit, gutenberg
 Requires at least: 5.2
-Tested up to: 5.9
-Stable tag: 4.0.23
+Tested up to: 6
+Stable tag: 4.0.24
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
