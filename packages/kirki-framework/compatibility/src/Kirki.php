@@ -172,7 +172,7 @@ class Kirki extends Init {
 	 */
 	public static function remove_section( $id = '' ) {
 
-		$section = new \Kirki\Section( $id, $args );
+		$section = new \Kirki\Section( $id );
 		$section->remove();
 
 	}

@@ -29,12 +29,12 @@
             'dev_requirement' => true,
         ),
         'kirki-framework/compatibility' => array(
-            'pretty_version' => 'v1.0.11',
-            'version' => '1.0.11.0',
+            'pretty_version' => 'v1.0.12',
+            'version' => '1.0.12.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../kirki-framework/compatibility',
             'aliases' => array(),
-            'reference' => '551fdc67b39e7345fc49a785b2cdd0c2a9f0bc3e',
+            'reference' => '9229a0bfff5740be5a1f437d69add1794e5fbd81',
             'dev_requirement' => false,
         ),
         'kirki-framework/control-base' => array(
