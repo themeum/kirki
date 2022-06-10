@@ -89,7 +89,7 @@ class Option {
 				 * We need to change the value accordingly depending on whether
 				 * this is the last item in the loop or not.
 				 */
-				$value = ( isset( $parts[ $key + 1 ] ) ) ? [] : '';
+				$value = ( isset( $parts[ $key + 1 ] ) ) ? [] : $default;
 			}
 		}
 
