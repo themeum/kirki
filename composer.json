@@ -1,78 +1,104 @@
 {
-  "name": "kirki-framework/kirki",
-  "type": "library",
-  "version": "4.0.24",
-  "keywords": ["WordPress", "Customizer"],
-  "description": "Extending the WordPress customizer",
-  "homepage": "https://kirki.org",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Kirki Framework",
-      "email": "connect@mapsteps.com"
+    "name": "kirki-framework/kirki",
+    "type": "library",
+    "version": "4.0.24",
+    "keywords": [
+        "WordPress",
+        "Customizer"
+    ],
+    "description": "Extending the WordPress customizer",
+    "homepage": "https://kirki.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kirki Framework",
+            "email": "connect@mapsteps.com"
+        }
+    ],
+    "config": {
+        "vendor-dir": "vendor",
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/installers": true
+        }
+    },
+    "include-path": [
+        ".",
+        "core"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Kirki\\Compatibility\\": [
+                "packages/compatibility/src"
+            ],
+            "Kirki\\Data\\": [
+                "packages/data-option/src"
+            ],
+            "Kirki\\Field\\": [
+                "packages/field/src/Field",
+                "packages/field-background/src",
+                "packages/field-dimensions/src",
+                "packages/field-fontawesome/src",
+                "packages/field-multicolor/src/Field",
+                "packages/field-multicolor/src",
+                "packages/field-typography/src/Field",
+                "packages/field-typography/src"
+            ],
+            "Kirki\\Module\\": [
+                "packages/module-css/src",
+                "packages/module-editor-styles/src",
+                "packages/module-field-dependencies/src",
+                "packages/module-postmessage/src",
+                "packages/module-preset/src",
+                "packages/module-section-icons/src",
+                "packages/module-selective-refresh/src",
+                "packages/module-tooltips/src",
+                "packages/module-webfonts/src"
+            ],
+            "Kirki\\Util\\": [
+                "packages/util/src"
+            ],
+            "Kirki\\": [
+                "packages/control-base/src",
+                "packages/control-checkbox/src",
+                "packages/control-code/src",
+                "packages/control-color/src",
+                "packages/control-color-palette/src",
+                "packages/control-cropped-image/src",
+                "packages/control-custom/src",
+                "packages/control-dashicons/src",
+                "packages/control-date/src",
+                "packages/control-dimension/src",
+                "packages/control-editor/src",
+                "packages/control-generic/src",
+                "packages/control-image/src",
+                "packages/control-multicheck/src",
+                "packages/control-palette/src",
+                "packages/control-radio/src",
+                "packages/control-react-colorful/src",
+                "packages/control-react-select/src",
+                "packages/control-repeater/src",
+                "packages/control-select/src",
+                "packages/control-slider/src",
+                "packages/control-sortable/src",
+                "packages/control-upload/src",
+                "packages/field/src",
+                "packages/googlefonts/src",
+                "packages/l10n/src",
+                "packages/module-panels/src",
+                "packages/module-sections/src",
+                "packages/url-getter/src"
+            ]
+        }
+    },
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "composer/installers": "*",
+        "dealerdirect/phpcodesniffer-composer-installer": "*",
+        "wp-coding-standards/wpcs": "*",
+        "phpcompatibility/phpcompatibility-wp": "*",
+        "wptrt/wpthemereview": "dev-develop"
     }
-  ],
-  "config": {
-    "vendor-dir": "packages",
-    "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true,
-      "composer/installers": true
-    }
-  },
-  "include-path": [".", "core"],
-  "require": {
-    "php": ">=7.0",
-    "kirki-framework/util": "*",
-    "kirki-framework/l10n": "*",
-    "kirki-framework/field": "*",
-    "kirki-framework/url-getter": "*",
-    "kirki-framework/control-base": "*",
-    "kirki-framework/control-checkbox": "*",
-    "kirki-framework/control-code": "*",
-    "kirki-framework/control-cropped-image": "*",
-    "kirki-framework/control-custom": "*",
-    "kirki-framework/control-dashicons": "*",
-    "kirki-framework/control-date": "*",
-    "kirki-framework/control-dimension": "*",
-    "kirki-framework/control-editor": "*",
-    "kirki-framework/control-generic": "*",
-    "kirki-framework/control-image": "*",
-    "kirki-framework/control-multicheck": "*",
-    "kirki-framework/control-palette": "*",
-    "kirki-framework/control-radio": "*",
-    "kirki-framework/control-repeater": "*",
-    "kirki-framework/control-select": "*",
-    "kirki-framework/control-react-select": "*",
-    "kirki-framework/control-slider": "*",
-    "kirki-framework/control-sortable": "*",
-    "kirki-framework/control-upload": "*",
-    "kirki-framework/field-dimensions": "*",
-    "kirki-framework/field-fontawesome": "*",
-    "kirki-framework/field-typography": "*",
-    "kirki-framework/module-css": "*",
-    "kirki-framework/module-editor-styles": "*",
-    "kirki-framework/module-field-dependencies": "*",
-    "kirki-framework/module-postmessage": "*",
-    "kirki-framework/module-preset": "*",
-    "kirki-framework/module-selective-refresh": "*",
-    "kirki-framework/module-tooltips": "*",
-    "kirki-framework/module-webfonts": "*",
-    "kirki-framework/compatibility": "*",
-    "kirki-framework/data-option": "*",
-    "kirki-framework/module-panels": "*",
-    "kirki-framework/module-sections": "*",
-    "kirki-framework/module-section-icons": "*",
-    "kirki-framework/control-react-colorful": "*",
-    "kirki-framework/control-color": "*",
-    "kirki-framework/control-color-palette": "*",
-    "kirki-framework/field-background": "*",
-    "kirki-framework/field-multicolor": "*"
-  },
-  "require-dev": {
-    "composer/installers": "*",
-    "dealerdirect/phpcodesniffer-composer-installer": "*",
-    "wp-coding-standards/wpcs": "*",
-    "phpcompatibility/phpcompatibility-wp": "*",
-    "wptrt/wpthemereview": "dev-develop"
-  }
 }

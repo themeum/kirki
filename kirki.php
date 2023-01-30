@@ -39,7 +39,7 @@ if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 
 require_once __DIR__ . '/lib/class-aricolor.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 require_once __DIR__ . '/lib/class-kirki-color.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
-require_once __DIR__ . '/packages/autoload.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+require_once __DIR__ . '/vendor/autoload.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 require_once __DIR__ . '/inc/bootstrap.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 // Define the KIRKI_VERSION constant.

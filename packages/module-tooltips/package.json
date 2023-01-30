@@ -1,0 +1,39 @@
+{
+    "name": "module-tooltips",
+    "version": "1.0.10",
+    "description": "Development toolkit for Kirki's module-tooltips",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kirki-framework/module-tooltips.git"
+    },
+    "keywords": [
+        "kirki-module-toltips"
+    ],
+    "author": "Kirki Framework",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/kirki-framework/module-tooltips/issues"
+    },
+    "homepage": "https://github.com/kirki-framework/module-tooltips#readme",
+    "devDependencies": {
+        "@types/prettier": "^2.4.3",
+        "@wordpress/prettier-config": "^1.1.1",
+        "parcel": "^2.2.1",
+        "prettier": "npm:wp-prettier@^2.2.1-beta-1"
+    },
+    "alias": {
+        "jquery": {
+            "global": "jQuery"
+        },
+        "wp": {
+            "global": "wp"
+        }
+    },
+    "browserslist": "> 0.5%, last 2 versions, not dead",
+    "source": "src/control.js",
+    "scripts": {
+        "build": "parcel build",
+        "dev": "parcel build --no-optimize",
+        "watch": "parcel watch src/control.jst"
+    }
+}

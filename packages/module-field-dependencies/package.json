@@ -1,0 +1,37 @@
+{
+    "name": "kirki-module-field-dependencies",
+    "version": "1.0.4",
+    "description": "Dev toolkit for Kirki's module-field-dependencies",
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/mapsteps/kirki-pro/"
+    },
+    "keywords": [
+        "kirki-module-field-dependencies"
+    ],
+    "author": "Kirki Framework",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://kirki.org/"
+    },
+    "homepage": "https://kirki.org/",
+    "devDependencies": {
+        "parcel": "2.*"
+    },
+    "scripts": {
+        "build": "parcel build src/control.js --dist-dir dist",
+        "dev": "parcel build src/control.js --no-optimize --dist-dir dist"
+    },
+    "alias": {
+        "jquery": {
+            "global": "jQuery"
+        },
+        "react": {
+            "global": "React"
+        },
+        "react-dom": {
+            "global": "ReactDOM"
+        }
+    },
+    "browserslist": "> 0.5%, last 2 versions, not dead"
+}

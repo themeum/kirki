@@ -1,0 +1,126 @@
+@import "scss/vars";
+
+.customize-control-kirki-toggle {
+  .kirki-toggle {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .kirki-control-label {
+      width: 80%;
+    }
+
+    .kirki-control-form {
+      text-align: right;
+      width: 20%;
+    }
+
+    .kirki-toggle-switch-label {
+      width: 100%;
+
+      &::before {
+        right: 0;
+      }
+
+      &::after {
+        right: 18px;
+      }
+    }
+  }
+}
+
+.customize-control-kirki-switch {
+  .kirki-switch {
+    .kirki-toggle-switch-label {
+      padding: 10px 0 12px 44px;
+      text-align: left;
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        left: 0;
+      }
+    }
+
+    .toggle-on,
+    .toggle-off {
+      position: relative;
+      bottom: -2px;
+      padding-left: 5px;
+    }
+
+    .toggle-on {
+      display: none;
+      color: $color-wp-blue;
+    }
+
+    .toggle-off {
+      display: inline-block;
+      color: $color-dark-silver-gray;
+    }
+  }
+}
+
+.kirki-toggle-switch-label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    margin: 0;
+    outline: 0;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    transition: all 350ms cubic-bezier(0, 0.95, 0.38, 0.98),
+      background-color 150ms ease;
+  }
+
+  &::before {
+    width: 37px;
+    height: 14px;
+    // background-color: $color-silver-gray;
+    background-color: $color-light-silver-gray;
+    border: 1px solid $color-light-silver-gray;
+    border-radius: 8px;
+  }
+
+  &::after {
+    width: 22px;
+    height: 22px;
+    background-color: $color-medium-gray;
+    border-radius: 50%;
+    // box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.kirki-toggle-switch-input {
+  opacity: 0;
+
+  &:checked {
+    + .kirki-toggle-switch-label {
+      &::before {
+        // background-color: desaturate(lighten($color-wp-blue, 40%), 40%);
+      }
+
+      &::after {
+        background-color: $color-wp-blue;
+        transform: translate3d(100%, -50%, 0);
+      }
+
+      .toggle-on {
+        display: inline-block;
+      }
+
+      .toggle-off {
+        display: none;
+      }
+    }
+  }
+}

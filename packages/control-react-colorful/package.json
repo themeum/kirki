@@ -1,0 +1,51 @@
+{
+    "name": "control-react-colorful",
+    "version": "1.0.16",
+    "description": "Development toolkit for Kirki's control-react-colorful",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kirki-framework/control-react-colorful.git"
+    },
+    "keywords": [
+        "kirki-react-colorful"
+    ],
+    "author": "Kirki Framework",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/kirki-framework/control-react-colorful/issues"
+    },
+    "homepage": "https://github.com/kirki-framework/control-react-colorful#readme",
+    "dependencies": {
+        "colord": "^2.9.2",
+        "react": "^17.0.2",
+        "react-colorful": "^5.5.1",
+        "react-dom": "^17.0.2",
+        "reactcss": "^1.2.3"
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.17.12",
+        "@parcel/transformer-sass": "^2.5.0",
+        "parcel": "^2.5.0",
+        "prettier": "npm:wp-prettier@^2.6.2-beta-1"
+    },
+    "browserslist": "> 0.5%, last 2 versions, not dead",
+    "alias": {
+        "jquery": {
+            "global": "jQuery"
+        },
+        "wp": {
+            "global": "wp"
+        },
+        "react": {
+            "global": "React"
+        },
+        "react-dom": {
+            "global": "ReactDOM"
+        }
+    },
+    "scripts": {
+        "build": "parcel build src/control.js src/preview.js --dist-dir dist",
+        "dev": "parcel build src/control.js src/preview.js --no-optimize --dist-dir dist",
+        "watch": "parcel watch src/control.js src/preview.js --dist-dir dist"
+    }
+}
