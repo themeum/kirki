@@ -4,38 +4,23 @@ node_modules
 npm-debug.log
 package-lock.json
 
-# grunt-contrib-sass #
+# assets build tool caches #
 ######################
 .sass-cache
 .parcel-cache
 
 # composer #
 ############
-packages/bin
-packages/codacy
-packages/composer/installers
-packages/composer/autoload_files.php
-packages/nikic/php-parser
-packages/dealerdirect
-packages/doctrine
-packages/gitonomy
-packages/guzzlehttp
-packages/myclabs
-packages/phar-io
-packages/phpcompatibility
-packages/php-coveralls
-packages/phpdocumentor
-packages/phpspec
-packages/phpunit
-packages/psr
-packages/ralouphie
-packages/sebastian
-packages/squizlabs
-packages/symfony
-packages/theseer
-packages/webmozart
-packages/wp-coding-standards
-packages/wptrt/wpthemereview
+vendor/bin
+vendor/codacy
+vendor/composer/installers
+vendor/composer/autoload_files.php
+vendor/dealerdirect
+vendor/phpcompatibility
+vendor/squizlabs
+vendor/webmozart
+vendor/wp-coding-standards
+vendor/wptrt/wpthemereview
 
 # OS generated files #
 ######################
@@ -46,10 +31,6 @@ packages/wptrt/wpthemereview
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Jekyll #
-##########
-_site
 
 # SVN #
 #######
@@ -64,4 +45,3 @@ build/logs
 ###################
 .phpcs.xml
 phpcs.xml
-.css.map
