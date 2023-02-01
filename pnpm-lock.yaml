@@ -10,7 +10,7 @@ specifiers:
   parcel: ^2.8.3
   prettier: npm:wp-prettier@^2.6.2
   react: ^17.0.2
-  react-colorful: ^5.5.1
+  react-colorful: ^5.6.1
   react-dom: ^17.0.2
   reactcss: ^1.2.3
   sade: ^1.8.1
