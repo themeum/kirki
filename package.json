@@ -19,16 +19,15 @@
         "react-colorful": "^5.6.1",
         "react-dom": "^17.0.2",
         "reactcss": "^1.2.3",
-        "sade": "^1.8.1"
+        "sade": "^1.8.1",
+        "shelljs": "^0.8.5"
     },
     "devDependencies": {
         "@babel/core": "^7.20.12",
         "@babel/preset-react": "^7.18.6",
-        "@parcel/core": "^2.8.3",
         "@parcel/transformer-sass": "^2.8.3",
         "parcel": "^2.8.3",
-        "prettier": "npm:wp-prettier@^2.6.2",
-        "zx": "^7.1.1"
+        "prettier": "npm:wp-prettier@^2.6.2"
     },
     "browserslist": "> 0.5%, last 2 versions, not dead",
     "alias": {
@@ -45,10 +44,8 @@
             "global": "ReactDOM"
         }
     },
-    "bin": {
-        "kirki": "./kirki.mjs"
-    },
     "scripts": {
-        "kirki": "node ./kirki.mjs"
+        "kirki": "node ./kirki.mjs",
+        "build": "node ./kirki.mjs build"
     }
 }
