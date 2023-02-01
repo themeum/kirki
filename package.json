@@ -1,23 +1,54 @@
 {
-  "name": "kirki-toolkit",
-  "version": "4.0.24",
-  "description": "Dev toolkit for Kirki Customizer Framework",
-  "author": "Kirki Framework",
-  "homepage": "https://kirki.org",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kirki-framework/kirki"
-  },
-  "bugs": {
-    "url": "https://github.com/kirki-framework/kirki/issues"
-  },
-  "devDependencies": {
-    "grunt": "1.*",
-    "grunt-contrib-watch": "1.*",
-    "grunt-jscs": "3.*",
-    "grunt-sass": "3.*",
-    "grunt-wp-readme-to-markdown": "*",
-    "sass": "1.*"
-  }
+    "name": "kirki-toolkit",
+    "version": "4.0.24",
+    "description": "Dev toolkit for Kirki Customizer Framework",
+    "author": "Kirki Framework",
+    "homepage": "https://kirki.org",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kirki-framework/kirki"
+    },
+    "bugs": {
+        "url": "https://github.com/kirki-framework/kirki/issues"
+    },
+    "dependencies": {
+        "colord": "^2.9.3",
+        "jquery": "^3.6.3",
+        "react": "^17.0.2",
+        "react-colorful": "^5.5.1",
+        "react-dom": "^17.0.2",
+        "reactcss": "^1.2.3",
+        "sade": "^1.8.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.20.12",
+        "@babel/preset-react": "^7.18.6",
+        "@parcel/core": "^2.8.3",
+        "@parcel/transformer-sass": "^2.8.3",
+        "parcel": "^2.8.3",
+        "prettier": "npm:wp-prettier@^2.6.2",
+        "zx": "^7.1.1"
+    },
+    "browserslist": "> 0.5%, last 2 versions, not dead",
+    "alias": {
+        "jquery": {
+            "global": "jQuery"
+        },
+        "wp": {
+            "global": "wp"
+        },
+        "react": {
+            "global": "React"
+        },
+        "react-dom": {
+            "global": "ReactDOM"
+        }
+    },
+    "bin": {
+        "kirki": "./kirki.mjs"
+    },
+    "scripts": {
+        "kirki": "node ./kirki.mjs"
+    }
 }
