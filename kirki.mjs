@@ -166,4 +166,15 @@ program
 		runParcel("watch", packageName, opts);
 	});
 
+program
+	.command("make wp")
+	.describe(
+		"Build Kirki as a WordPress plugin that's ready to push to WordPress.org. It will put the result into `builds` folder."
+	)
+	.example("make wp")
+	.action((opts) => {
+		// Execute build.sh
+		shell.exec("bash build.sh");
+	});
+
 program.parse(process.argv);

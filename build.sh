@@ -1,70 +1,63 @@
 #!/usr/bin/env bash
 
 echo ""
-echo "******************************************"
-echo "** Building the WP plugin version...    **"
+echo "*******************************************"
+echo "**   Building the WP plugin version...   **"
 echo ""
 
 shopt -s extglob
 shopt -s dotglob
 
-if [ -d "kirki" ]; then
-	rm -rf kirki
+if [ ! -d "builds" ]; then
+	mkdir builds
 fi
 
-mkdir kirki
-
-echo "Copying files (be patient :) ...";
-
-cp -r !(.|..|.git|.github|kirki|node_modules|.editorconfig|.gitignore|.gitattributes|.phpcs.xml.dist|build.sh|CHANGELOG.md|CODE_OF_CONDUCT.md|example.php|package.json|package-lock.json|README.md) kirki/
-
-cd ..
-
-if [ -d "kirki" ]; then
-	rm -rf kirki
+if [ -d "builds/kirki" ]; then
+	rm -rf builds/kirki
 fi
 
-mkdir kirki
+if [ -d "builds/kirki.zip" ]; then
+	rm -rf builds/kirki.zip
+fi
 
-mv kirki-git/kirki/* kirki/
+mkdir builds/kirki
 
-rm -rf kirki-git/kirki/
+echo "Copying files (please be patient :) ...";
 
-cd kirki
+cp -r !(.|..|.git|.gitignore|.gitattributes|.github|builds|node_modules|.parcel-cache|.editorconfig|.phpcs.xml.dist|phpcs.xml.dist|phpcs.xml|kirki.mjs|kirki.bat|build.sh|CHANGELOG.md|CODE_OF_CONDUCT.md|example.php|package.json|package-lock.json|README.md|Gruntfile.js|webpack.config.js|.babelrc|.prettierrc.js|.prettierignore) builds/kirki
 
-echo "Updating composer to remove dev dependencies ...";
+cd builds/kirki
 
-sed -i '/composer\/installers/d' composer.json
-sed -i '/dealerdirect\/phpcodesniffer-composer-installer/d' composer.json
+echo "Removing dev dependencies content from composer.json ...";
+
+# sed -i '/composer\/installers/d' composer.json
+sed -i '/composer\/installers": "*"/d' composer.json
+# sed -i '/dealerdirect\/phpcodesniffer-composer-installer/d' composer.json
+sed -i '/dealerdirect\/phpcodesniffer-composer-installer": "*"/d' composer.json
 sed -i '/wp-coding-standards\/wpcs/d' composer.json
 sed -i '/phpcompatibility\/phpcompatibility-wp/d' composer.json
 sed -i '/wptrt\/wpthemereview/d' composer.json
 
-composer update
+echo "Now updating composer after the dev dependencies removal ...";
+
+composer update -n
 
 echo "Removing un-necessary files inside individual packages ..."
 
-rm -rf packages/kirki-framework/**/.github
-rm -rf packages/kirki-framework/**/.gitignore
-rm -rf packages/kirki-framework/**/src/*.scss
-rm -rf packages/kirki-framework/**/src/scss/*.scss
-rm -rf packages/kirki-framework/**/.prettierrc.js
-rm -rf packages/kirki-framework/**/.prettierignore
-rm -rf packages/kirki-framework/**/.babelrc
-rm -rf packages/kirki-framework/**/webpack.config.js
-rm -rf packages/kirki-framework/**/package.json
-rm -rf packages/kirki-framework/**/Gruntfile.js
-rm -rf packages/kirki-framework/**/README.md
+# Would you like to remove the CSS source files?
+# If so, un-comment the following lines.
+# rm -rf packages/**/src/*.scss
+# rm -rf packages/**/src/scss/*.scss
 
-cd ../kirki-git
+cd ../../
 
 shopt -u extglob
 shopt -u dotglob
 
 echo ""
-echo "** All done.                            **"
-echo "** WP plugin version is ready           **"
-echo "** You can check the result in ../kirki **"
-echo "**                                      **"
-echo "****************** DONE ******************"
+echo "** All done.                                  **"
+echo "** WP plugin version is ready                 **"
+echo '** You can check the result in "builds/kirki" **'
+echo "**                                            **"
+echo "******************** DONE **********************"
 echo ""
