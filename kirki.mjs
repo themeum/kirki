@@ -95,13 +95,14 @@ const packagePaths = {
 };
 
 const program = sade("kirki");
+const parcelBinPath = "node_modules/.bin/parcel";
 
-program.version("1.0.0");
+program.version("4.0.24");
 
 program
 	.command("build <packageName>")
 	.describe("Build a package by package name")
-	.option("-d, --debug", "Output as unminified code for debugging purposes")
+	.option("-d, --debug", "Build as unminified code for debugging purpose")
 	.example("build control-base")
 	.example("build control-base --debug")
 	.action(async (packageName, opts) => {
@@ -123,7 +124,7 @@ program
 		sourcePaths = sourcePaths.trim();
 
 		// Build the command along with the opts.
-		command += `parcel build ${sourcePaths} ${
+		command += `"${parcelBinPath}" build ${sourcePaths} ${
 			opts.d ? "--no-optimize" : ""
 		} --dist-dir ${packagePaths[packageName].path}/dist`;
 

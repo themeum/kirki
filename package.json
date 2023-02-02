@@ -44,6 +44,9 @@
             "global": "ReactDOM"
         }
     },
+    "bin": {
+        "kirki": "./kirki.mjs"
+    },
     "scripts": {
         "kirki": "node ./kirki.mjs",
         "build": "node ./kirki.mjs build"
