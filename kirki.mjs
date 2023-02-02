@@ -78,6 +78,7 @@ const packagePaths = {
 	},
 	"field-dimensions": {
 		path: "packages/field-dimensions",
+		// Yes, the files are control.scss & preview.js :)
 		sources: ["src/control.scss", "src/preview.js"],
 	},
 	"field-typography": {
@@ -94,9 +95,26 @@ const packagePaths = {
 	},
 };
 
-const program = sade("kirki");
 const parcelBinPath = "node_modules/.bin/parcel";
 
+function getPackageData(packageName) {
+	return packagePaths[packageName] ? packagePaths[packageName] : null;
+}
+
+function getSourcesPath(packageData) {
+	let sourcesPath = "";
+
+	// Build the source command from the packagePaths.
+	packageData.sources.forEach((source) => {
+		sourcesPath += `${packageData.path}/${source} `;
+	});
+
+	return sourcesPath.trim();
+}
+
+// Create the program.
+
+const program = sade("kirki");
 program.version("4.0.24");
 
 program
@@ -105,28 +123,28 @@ program
 	.option("-d, --debug", "Build as unminified code for debugging purpose")
 	.example("build control-base")
 	.example("build control-base --debug")
-	.action(async (packageName, opts) => {
-		let command = "";
+	.action((packageName, opts) => {
+		const packageData = getPackageData(packageName);
 
-		// Check if packageName exists in the packagePaths.
-		if (!packagePaths[packageName]) {
-			console.log(`Package ${packageName} does not exist.`);
+		if (!packageData) {
+			console.warn(`Package "${packageName}" is not defined.`);
 			return;
 		}
 
-		let sourcePaths = "";
+		if (!packageData.sources.length) {
+			console.warn(
+				`Package "${packageName}" does not have any sources to compile.`
+			);
+			return;
+		}
 
-		// Build the source command from the packagePaths.
-		packagePaths[packageName].sources.forEach((source) => {
-			sourcePaths += `${packagePaths[packageName].path}/${source} `;
-		});
+		const sourcesPath = getSourcesPath(packageData);
+		let command = "";
 
-		sourcePaths = sourcePaths.trim();
-
-		// Build the command along with the opts.
-		command += `"${parcelBinPath}" build ${sourcePaths} ${
+		// Build the CLI command along with the opts.
+		command += `"${parcelBinPath}" build ${sourcesPath} ${
 			opts.d ? "--no-optimize" : ""
-		} --dist-dir ${packagePaths[packageName].path}/dist`;
+		} --dist-dir ${packageData.path}/dist`;
 
 		shell.exec(`${command}`);
 	});
