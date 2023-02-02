@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 	<h2>
 		<?php _e( 'PRO Extensions', 'kirki' ); ?>
-		<a href="https://wp-pagebuilderframework.com/premium/?utm_source=repository&utm_medium=theme_settings&utm_campaign=wpbf" target="_blank" style="float: right;"><?php _e( 'Upgrade Now', 'kirki' ); ?></a>
+		<a href="https://kirki.org/extensions/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" style="float: right;"><?php _e( 'Upgrade Now', 'kirki' ); ?></a>
 	</h2>
 
 	<ul class="pro-extensions-list">
@@ -21,44 +21,29 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 			$premium_features = array(
 				array(
-					'title'       => __( 'Transparent Header', 'kirki' ),
-					'description' => __( 'Create a customizable Transparent Header with just a few clicks.', 'kirki' ),
-					'link'        => 'https://wp-pagebuilderframework.com/premium/?utm_source=repository&utm_medium=theme_settings&utm_campaign=wpbf',
+					'title'       => __( 'Kirki Tabs', 'kirki' ),
+					'description' => __( 'Tabs are the easiest way to better organize your WordPress Customizer controls.', 'kirki' ),
+					'link'        => 'https://kirki.org/downloads/tabs?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki',
 				),
 				array(
-					'title'       => __( 'Sticky Navigation', 'kirki' ),
-					'description' => __( 'Create a beautiful & fully customizable Sticky Navigation in seconds.', 'kirki' ),
-					'link'        => 'https://wp-pagebuilderframework.com/premium/?video=stickynav&utm_source=repository&utm_medium=theme_settings&utm_campaign=wpbf#premium',
+					'title'       => __( 'Kirki Input Slider', 'kirki' ),
+					'description' => __( 'The Input Slider is a hybrid field, combining a slider & input field into one universal control.', 'kirki' ),
+					'link'        => 'https://kirki.org/downloads/input-slider?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki',
 				),
 				array(
-					'title'       => __( 'White Label Settings', 'kirki' ),
-					'description' => __( 'Your theme, your branding. Fully white label Page Builder Framework & the Premium Add-On.', 'kirki' ),
-					'link'        => 'https://wp-pagebuilderframework.com/docs/white-label/?utm_source=repository&utm_medium=theme_settings&utm_campaign=wpbf',
+					'title'       => __( 'Kirki Responsive Control', 'kirki' ),
+					'description' => __( 'The Responsive Controls extension allows you to turn controls into responsive controls.', 'kirki' ),
+					'link'        => 'https://kirki.org/downloads/responsive-controls?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki',
 				),
 				array(
-					'title'       => __( 'Advanced Typography', 'kirki' ),
-					'description' => __( 'Customize fonts and add Typekit- & Custom Fonts to your website.', 'kirki' ),
-					'link'        => 'https://wp-pagebuilderframework.com/docs/advanced-typography/?utm_source=repository&utm_medium=theme_settings&utm_campaign=wpbf',
+					'title'       => __( 'Kirki Headline & Dividers', 'kirki' ),
+					'description' => __( 'The Headlines & Dividers extension is a powerful tool to better structure your customizer controls.', 'kirki' ),
+					'link'        => 'https://kirki.org/downloads/headlines-dividers?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki',
 				),
 				array(
-					'title'       => __( 'Adjustable Breakpoints', 'kirki' ),
-					'description' => __( 'Set custom responsive breakpoints for tablets, desktops & mobiles for a pixel perfect design.', 'kirki' ),
-					'link'        => 'https://wp-pagebuilderframework.com/docs/custom-responsive-breakpoints/?utm_source=repository&utm_medium=theme_settings&utm_campaign=wpbf',
-				),
-				array(
-					'title'       => __( 'Advanced WooCommerce Features', 'kirki' ),
-					'description' => __( 'Take full control over the design of your online store with more advanced WooCommerce features.', 'kirki' ),
-					'link'        => 'https://wp-pagebuilderframework.com/free-woocommerce-theme/?utm_source=repository&utm_medium=theme_settings&utm_campaign=wpbf#premium',
-				),
-				array(
-					'title'       => __( 'Mega Menu', 'kirki' ),
-					'description' => __( 'Easily create an advanced mega menu with up to 4 rows.', 'kirki' ),
-					'link'        => 'https://wp-pagebuilderframework.com/docs/mega-menu/?utm_source=repository&utm_medium=theme_settings&utm_campaign=wpbf',
-				),
-				array(
-					'title'       => __( 'Call to Action Button', 'kirki' ),
-					'description' => __( 'Add a customizable Call to Action Button to your navigation with just a few clicks.', 'kirki' ),
-					'link'        => 'https://wp-pagebuilderframework.com/docs/call-to-action-button/?utm_source=repository&utm_medium=theme_settings&utm_campaign=wpbf',
+					'title'       => __( 'Kirki Margin & Padding', 'kirki' ),
+					'description' => __( 'Unlike the Dimensions control, the Padding & Margin control consists of 4 numeric input fields which share the same unit (px, %, em, etc.) across the board.', 'kirki' ),
+					'link'        => 'https://kirki.org/downloads/margin-padding?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki',
 				),
 			);
 
@@ -97,7 +82,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 				</p>
 			</div>
 			<div class="pro-extensions-list-icon">
-				<a href="https://wp-pagebuilderframework.com/premium/?utm_source=repository&utm_medium=theme_settings&utm_campaign=wpbf" target="_blank" class="button button-larger button-primary"><?php _e( 'Learn More', 'kirki' ); ?></a>
+				<a href="https://wp-pagebuilderframework.com/premium/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" class="button button-larger button-primary"><?php _e( 'Learn More', 'kirki' ); ?></a>
 			</div>
 		</li>
 

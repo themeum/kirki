@@ -65,8 +65,6 @@ return function () {
 						</a>
 					</div>
 
-					<div class="heatbox-divider"></div>
-
 					<?php require __DIR__ . '/metaboxes/pro-extensions.php'; ?>
 				</div>
 
