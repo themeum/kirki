@@ -123,65 +123,160 @@
 }
 
 // Kirki PRO
-.kirki-pro-metabox {
-	span.badge {
-		font-size: 50%;
-		padding: 4px 10px;
-		border-radius: 50px;
-		background: #6dbb7a;
-		color: #fff;
-	}
-
-	.intro {
-		padding: 20px;
-		background: #f1f1f1;
-		margin-bottom: 0;
-	}
-
-	ul {
-		li {
-			display: flex;
-			border-bottom: 1px solid #eee;
-			margin-bottom: 20px;
-
-			&:last-child {
-				border-bottom: none;
-				margin-bottom: 0;
-			}
-		}
-	}
-
-	h3 {
-		a {
-			color: #1d2327;
-			text-decoration: none;
-
-			&:hover {
-				color: #2051c4;
-				text-decoration: underline;
-			}
-		}
-
-		font-size: 18px;
-		margin-bottom: 8px;
-	}
-
-	.dashicons-yes {
-		margin-right: 12px;
-		color: #6dbb7a;
-		font-size: 28px;
-		margin-top: -3px;
-	}
+.pro-extensions-banner-link {
+	display: block;
+	margin-bottom: 20px;
+	box-shadow: none !important;
 }
 
-.kirki-pro-benefits {
-	margin-bottom: 0;
+.pro-extensions-banner {
+	max-width: 100%;
+	border: 1px solid #ddd;
+}
+
+.pro-extensions-list {
+	margin: 0;
 
 	li {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		margin: 0;
+		padding: 25px 20px;
+		border-bottom: 1px solid #ddd;
+
 		&:last-child {
+			border: none;
+			background: #f9f9f9;
+
+			h3 {
+				margin-bottom: 10px;
+			}
+
 			p {
 				margin-bottom: 0;
 			}
 		}
+
+		div {
+			flex: 0 50%;
+		}
+
+		h3 {
+			display: inline-block;
+			margin-bottom: 0;
+			font-weight: 400;
+		}
+
+		p {
+			font-size: 16px;
+		}
+	}
+
+	.tooltip {
+		position: relative;
+		display: inline-block;
+		cursor: pointer;
+		color: #ccc;
+		margin-left: 8px;
+
+		&:hover {
+			color: #0073aa;
+
+			p {
+				opacity: 1;
+				z-index: 1;
+			}
+		}
+
+		p {
+			z-index: -1;
+			opacity: 0;
+			position: absolute;
+			bottom: 15px;
+			left: -40px;
+			width: 250px;
+			background: #fff;
+			padding: 15px;
+			border: 1px solid #ddd;
+			color: initial;
+			-webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+			-moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+			box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+			border-radius: 4px;
+		}
+	}
+}
+
+.pro-extensions-list-icon {
+	text-align: right;
+	color: #47d87c;
+	left: 0;
+	bottom: 0;
+
+	i {
+		margin-right: 20px;
+		position: relative;
+	}
+}
+
+// Recommended plugins
+.kirki-recommended-list {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+
+	li {
+		display: flex;
+		flex-direction: column;
+		flex: 0 49%;
+		margin-right: 2%;
+
+		&:nth-child(even) {
+			margin-right: 0;
+		}
+
+		& > a {
+			box-shadow: none;
+		}
+	}
+
+	img {
+		max-width: 100%;
+	}
+}
+
+.kirki-recommended-content {
+	padding: 20px;
+	flex: 1 0 auto;
+	min-height: 150px;
+
+	p {
+		font-size: 16px;
+	}
+}
+
+.kirki-recommended-status {
+	display: flex;
+	align-items: center;
+	padding: 20px;
+	background: #f9f9f9;
+	border-top: 1px solid #ddd;
+
+	div {
+		flex: 0 50%;
+	}
+}
+
+.kirki-recommended-status-icon {
+	text-align: right;
+	color: #aaa;
+
+	&.green {
+		color: #47d87c;
+	}
+
+	i {
+		font-size: 22px !important;
 	}
 }

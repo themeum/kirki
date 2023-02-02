@@ -37,8 +37,8 @@ return function () {
 						<li class="heatbox-tab-nav-item kirki-settings-panel active">
 							<a href="#settings"><?php _e( 'Settings', 'kirki' ); ?></a>
 						</li>
-						<li class="heatbox-tab-nav-item kirki-extensions-panel">
-							<a href="#extensions"><?php _e( 'Extensions', 'kirki' ); ?></a>
+						<li class="heatbox-tab-nav-item kirki-recommended-plugins-panel">
+							<a href="#recommended-plugins"><?php _e( 'Recommended Plugins', 'kirki' ); ?></a>
 						</li>
 					</ul>
 				</nav>
@@ -55,18 +55,24 @@ return function () {
 				<h1 style="display: none;"></h1>
 
 				<div class="heatbox-admin-panel kirki-settings-panel">
-					<?php
-					require __DIR__ . '/metaboxes/clear-font-cache.php';
-					?>
+					<?php require __DIR__ . '/metaboxes/clear-font-cache.php'; ?>
+
+					<div class="heatbox-divider"></div>
 
 					<div class="featured-products-banner">
-						<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/featured-plugin-banner.jpg" alt="Featured products">
+						<a href="https://kirki.org/extensions/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" class="pro-extensions-banner-link">
+							<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/featured-plugin-banner.jpg" alt="Featured products">
+						</a>
 					</div>
+
+					<div class="heatbox-divider"></div>
+
+					<?php require __DIR__ . '/metaboxes/pro-extensions.php'; ?>
 				</div>
 
-				<div class="heatbox-admin-panel kirki-extensions-panel">
+				<div class="heatbox-admin-panel kirki-recommended-plugins-panel">
 					<?php
-					require __DIR__ . '/metaboxes/kirki-pro.php';
+					require __DIR__ . '/metaboxes/recommended-plugins.php';
 					?>
 				</div>
 
