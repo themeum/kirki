@@ -58,6 +58,10 @@ return function () {
 					<?php
 					require __DIR__ . '/metaboxes/clear-font-cache.php';
 					?>
+
+					<div class="featured-products-banner">
+						<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/featured-plugin-banner.jpg" alt="Featured products">
+					</div>
 				</div>
 
 				<div class="heatbox-admin-panel kirki-extensions-panel">

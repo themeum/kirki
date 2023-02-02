@@ -59,6 +59,12 @@
 }
 
 // Featured products
+.featured-products-banner {
+	img {
+		max-width: 100%;
+	}
+}
+
 .kirki-featured-products {
 	> h2 {
 		text-align: center;
