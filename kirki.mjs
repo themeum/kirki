@@ -3,7 +3,7 @@
 import shell from "shelljs";
 import sade from "sade";
 
-const packagePaths = {
+const definedPackages = {
 	"control-base": {
 		path: "packages/control-base",
 		sources: ["src/control.js"],
@@ -98,18 +98,47 @@ const packagePaths = {
 const parcelBinPath = "node_modules/.bin/parcel";
 
 function getPackageData(packageName) {
-	return packagePaths[packageName] ? packagePaths[packageName] : null;
+	return definedPackages[packageName] ? definedPackages[packageName] : null;
 }
 
 function getSourcesPath(packageData) {
 	let sourcesPath = "";
 
-	// Build the source command from the packagePaths.
+	// Build the source command from the definedPackages.
 	packageData.sources.forEach((source) => {
 		sourcesPath += `${packageData.path}/${source} `;
 	});
 
 	return sourcesPath.trim();
+}
+
+function runParcel(commandType, packageName, opts) {
+	const packageData = getPackageData(packageName);
+
+	if (!packageData) {
+		console.warn(`Package "${packageName}" is not defined.`);
+		return;
+	}
+
+	if (!packageData.sources.length) {
+		console.warn(
+			`Package "${packageName}" does not have any sources to compile.`
+		);
+		return;
+	}
+
+	const sourcesPath = getSourcesPath(packageData);
+	let command = "";
+
+	// Build the CLI command along with the opts.
+	command += `"${parcelBinPath}" ${commandType} ${sourcesPath} ${
+		opts.d && commandType == "build" ? "--no-optimize" : ""
+	} --dist-dir ${packageData.path}/dist`;
+
+	command = command.replace(/  +/g, " ");
+	command = command.trim();
+
+	shell.exec(`${command}`);
 }
 
 // Create the program.
@@ -124,29 +153,17 @@ program
 	.example("build control-base")
 	.example("build control-base --debug")
 	.action((packageName, opts) => {
-		const packageData = getPackageData(packageName);
+		runParcel("build", packageName, opts);
+	});
 
-		if (!packageData) {
-			console.warn(`Package "${packageName}" is not defined.`);
-			return;
-		}
-
-		if (!packageData.sources.length) {
-			console.warn(
-				`Package "${packageName}" does not have any sources to compile.`
-			);
-			return;
-		}
-
-		const sourcesPath = getSourcesPath(packageData);
-		let command = "";
-
-		// Build the CLI command along with the opts.
-		command += `"${parcelBinPath}" build ${sourcesPath} ${
-			opts.d ? "--no-optimize" : ""
-		} --dist-dir ${packageData.path}/dist`;
-
-		shell.exec(`${command}`);
+program
+	.command("watch <packageName>")
+	.describe(
+		"Build in debug mode by package name and watch for changes. Visit your local site using normal URL. It will reload the browser automatically if there's JS change. And will implement CSS instantly when there's CSS change. Use CTRL+C to stop watching."
+	)
+	.example("watch control-base")
+	.action((packageName, opts) => {
+		runParcel("watch", packageName, opts);
 	});
 
 program.parse(process.argv);
