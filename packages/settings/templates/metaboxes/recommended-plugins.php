@@ -16,12 +16,20 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 			$recommended_plugins = array(
 				array(
-					'title'       => __( 'Premium Add-On', 'kirki' ),
-					'description' => __( 'Take your website to the next level with the Premium Add-On for Page Builder Framework.', 'kirki' ),
-					'banner'      => KIRKI_PLUGIN_URL . '/assets/images/premium-add-on-banner-2.jpg',
-					'link'        => 'https://wp-pagebuilderframework.com/premium/?utm_source=repository&utm_medium=theme_settings&utm_campaign=wpbf',
-					'repo'        => false,
-					'constant'    => 'WPBF_PREMIUM_VERSION',
+					'title'       => __( 'Customizer Reset - Export & Import', 'kirki' ),
+					'description' => __( 'Reset, Export & Import your WordPress customizer settings with a simple click of a button.', 'kirki' ),
+					'banner'      => 'https://ps.w.org/customizer-reset/assets/banner-772x250.jpg',
+					'link'        => admin_url( 'plugin-install.php?s=customizer+reset+export+import&tab=search&type=term' ),
+					'repo'        => true,
+					'constant'    => 'CUSTOMIZER_RESET_PLUGIN_VERSION',
+				),
+				array(
+					'title'       => __( 'Ultimate Dashboard', 'kirki' ),
+					'description' => __( 'Ultimate Dashboard is the #1 plugin to customize your WordPress Dashboard.', 'kirki' ),
+					'banner'      => 'https://ps.w.org/ultimate-dashboard/assets/banner-772x250.jpg',
+					'link'        => admin_url( 'plugin-install.php?s=ultimate+dashboard&tab=search&type=term' ),
+					'repo'        => true,
+					'constant'    => 'ULTIMATE_DASHBOARD_PLUGIN_URL',
 				),
 				array(
 					'title'       => __( 'Better Admin Bar', 'kirki' ),
@@ -38,46 +46,6 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 					'link'        => admin_url( 'plugin-install.php?s=wp+video+popup&tab=search&type=term' ),
 					'repo'        => true,
 					'constant'    => 'WP_VIDEO_POPUP_PLUGIN_VERSION',
-				),
-				array(
-					'title'       => __( 'Ultimate Dashboard', 'kirki' ),
-					'description' => __( 'Ultimate Dashboard is the #1 plugin to customize your WordPress Dashboard.', 'kirki' ),
-					'banner'      => 'https://ps.w.org/ultimate-dashboard/assets/banner-772x250.jpg',
-					'link'        => admin_url( 'plugin-install.php?s=ultimate+dashboard&tab=search&type=term' ),
-					'repo'        => true,
-					'constant'    => 'ULTIMATE_DASHBOARD_PLUGIN_URL',
-				),
-				array(
-					'title'       => __( 'Customizer Reset - Export & Import', 'kirki' ),
-					'description' => __( 'Reset, Export & Import your WordPress customizer settings with a simple click of a button.', 'kirki' ),
-					'banner'      => 'https://ps.w.org/customizer-reset/assets/banner-772x250.jpg',
-					'link'        => admin_url( 'plugin-install.php?s=customizer+reset+export+import&tab=search&type=term' ),
-					'repo'        => true,
-					'constant'    => 'CUSTOMIZER_RESET_PLUGIN_VERSION',
-				),
-				array(
-					'title'       => __( 'Toolset', 'kirki' ),
-					'description' => __( 'A set of plugins to help you build dynamic, advanced websites without programming.', 'kirki' ),
-					'banner'      => KIRKI_PLUGIN_URL . '/assets/images/toolset-banner.png',
-					'link'        => 'https://toolset.com/',
-					'repo'        => false,
-					'constant'    => 'WPV_VERSION',
-				),
-				array(
-					'title'       => 'Weglot',
-					'description' => __( 'The Weglot translation plugin gives you a reliable and easy way to take your WordPress website from local to global in minutes. No coding required and no developer time needed.', 'kirki' ),
-					'banner'      => 'https://ps.w.org/weglot/assets/banner-772x250.png',
-					'link'        => admin_url( 'plugin-install.php?s=weglot&tab=search&type=term' ),
-					'repo'        => true,
-					'constant'    => 'WEGLOT_VERSION',
-				),
-				array(
-					'title'       => __( 'WPML', 'kirki' ),
-					'description' => __( 'WPML is a popular translation plugin that helps you create a multilingual website for your business or blog.', 'kirki' ),
-					'banner'      => KIRKI_PLUGIN_URL . '/assets/images/banner-wpml.png',
-					'link'        => 'https://wpml.org/',
-					'repo'        => false,
-					'constant'    => 'WPML_PLUGIN_BASENAME',
 				),
 			);
 
