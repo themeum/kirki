@@ -12,7 +12,7 @@ return function () {
 
 	<div class="wrap heatbox-wrap kirki-settings-page">
 
-		<div class="heatbox-header heatbox-margin-bottom">
+		<div class="heatbox-header heatbox-has-tab-nav heatbox-margin-bottom">
 
 			<div class="heatbox-container heatbox-container-center">
 
@@ -32,20 +32,40 @@ return function () {
 
 				</div>
 
+				<nav>
+					<ul class="heatbox-tab-nav">
+						<li class="heatbox-tab-nav-item kirki-settings-panel active">
+							<a href="#settings"><?php _e( 'Settings', 'kirki' ); ?></a>
+						</li>
+						<li class="heatbox-tab-nav-item kirki-extensions-panel">
+							<a href="#extensions"><?php _e( 'Extensions', 'kirki' ); ?></a>
+						</li>
+					</ul>
+				</nav>
+
 			</div>
 
 		</div>
 
 		<div class="heatbox-container heatbox-container-center heatbox-column-container">
 
-			<div class="heatbox-main">
+			<div class="heatbox-main heatbox-panel-wrapper">
+
 				<!-- Faking H1 tag to place admin notices -->
 				<h1 style="display: none;"></h1>
 
-				<?php
-				require __DIR__ . '/metaboxes/clear-font-cache.php';
-				require __DIR__ . '/metaboxes/kirki-pro.php';
-				?>
+				<div class="heatbox-admin-panel kirki-settings-panel">
+					<?php
+					require __DIR__ . '/metaboxes/clear-font-cache.php';
+					?>
+				</div>
+
+				<div class="heatbox-admin-panel kirki-extensions-panel">
+					<?php
+					require __DIR__ . '/metaboxes/kirki-pro.php';
+					?>
+				</div>
+
 			</div>
 
 			<div class="heatbox-sidebar">
@@ -86,14 +106,14 @@ return function () {
 					</div>
 				</li>
 				<li class="heatbox">
-					<a href="https://wordpress.org/themes/page-builder-framework/" target="_blank">
-						<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/page-builder-framework.jpg">
+					<a href="https://wordpress.org/themes/kirki/" target="_blank">
+						<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/kirki.jpg">
 					</a>
 					<div class="heatbox-content">
 						<h3><?php _e( 'Page Builder Framework', 'kirki' ); ?></h3>
 						<p class="subheadline"><?php _e( 'A modern, fast & minimalistic theme designed for the new WordPress Era.', 'kirki' ); ?></p>
 						<p><?php _e( 'The theme was designed specifically to work with WordPress page builders, like Elementor, Beaver Builder & Brizy.', 'kirki' ); ?></p>
-						<a href="https://wordpress.org/themes/page-builder-framework/" target="_blank" class="button"><?php _e( 'View Features', 'kirki' ); ?></a>
+						<a href="https://wordpress.org/themes/kirki/" target="_blank" class="button"><?php _e( 'View Features', 'kirki' ); ?></a>
 					</div>
 				</li>
 			</ul>
