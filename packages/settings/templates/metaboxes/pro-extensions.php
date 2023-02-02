@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 	<h2>
 		<?php _e( 'Ultimate Dashboard - Features', 'kirki' ); ?>
-		<a href="https://kirki.org/extensions/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" style="float: right;"><?php _e( 'Try Ultimate Dashboard', 'kirki' ); ?></a>
+		<strong style="float: right;"><?php _e( 'It\'s 100% Free. Now and Frever', 'kirki' ); ?></strong>
 	</h2>
 
 	<ul class="pro-extensions-list">
@@ -93,7 +93,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 				</p>
 			</div>
 			<div class="pro-extensions-list-icon">
-				<a href="https://wp-pagebuilderframework.com/premium/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" class="button button-larger button-primary"><?php _e( 'Get Ultimate Dashboard (it\'s FREE!)', 'kirki' ); ?></a>
+				<a href="https://wp-pagebuilderframework.com/premium/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" class="button button-larger button-primary kirki-install-udb"><?php _e( 'Install Ultimate Dashboard', 'kirki' ); ?></a>
 			</div>
 		</li>
 
