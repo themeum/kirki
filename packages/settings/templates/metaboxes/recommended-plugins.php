@@ -66,29 +66,35 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 						</p>
 					</div>
 					<div class="kirki-recommended-status">
-						<?php if ( defined( $recommended_plugin['constant'] ) ) { ?>
-						<div class="kirki-recommended-status-action">
-							<a href="<?php echo admin_url( 'plugins.php' ); ?>" class="button button-larger disabled"><?php _e( 'Installed', 'kirki' ); ?></i></a>
-						</div>
-						<div class="kirki-recommended-status-icon green">
-							<strong><?php _e( 'Installed', 'kirki' ); ?></strong> <i class="dashicons dashicons-yes-alt"></i>
-						</div>
-						<?php } else { ?>
-						<div class="kirki-recommended-status-action">
-							<a href="<?php echo esc_url( $recommended_plugin['link'] ); ?>" target="_blank" class="button button-primary button-larger">
-								<?php
-								if ( $recommended_plugin['repo'] ) {
-									_e( 'Install', 'kirki' );
-								} else {
-									_e( 'Learn More', 'kirki' );
-								}
-								?>
-							</a>
-						</div>
-						<div class="kirki-recommended-status-icon">
-							<strong><?php _e( 'Not Installed', 'kirki' ); ?></strong> <i class="dashicons dashicons-dismiss"></i>
-						</div>
-						<?php } ?>
+						<?php if ( defined( $recommended_plugin['constant'] ) ) : ?>
+							<div class="kirki-recommended-status-action">
+								<a href="<?php echo admin_url( 'plugins.php' ); ?>" class="button button-larger disabled"><?php _e( 'Installed', 'kirki' ); ?></i></a>
+							</div>
+							<div class="kirki-recommended-status-icon green">
+								<strong><?php _e( 'Installed', 'kirki' ); ?></strong> <i class="dashicons dashicons-yes-alt"></i>
+							</div>
+						<?php else : ?>
+							<div class="kirki-recommended-status-action">
+								<?php if ( 'ULTIMATE_DASHBOARD_PLUGIN_URL' === $recommended_plugin['constant'] ) : ?>
+									<button type="button" class="button button-primary button-larger kirki-install-udb">
+										<?php _e( 'Install', 'kirki' ); ?>
+									</button>
+								<?php else : ?>
+									<a href="<?php echo esc_url( $recommended_plugin['link'] ); ?>" target="_blank" class="button button-primary button-larger">
+										<?php
+										if ( $recommended_plugin['repo'] ) {
+											_e( 'Install', 'kirki' );
+										} else {
+											_e( 'Learn More', 'kirki' );
+										}
+										?>
+									</a>
+								<?php endif; ?>
+							</div>
+							<div class="kirki-recommended-status-icon">
+								<strong><?php _e( 'Not Installed', 'kirki' ); ?></strong> <i class="dashicons dashicons-dismiss"></i>
+							</div>
+						<?php endif; ?>
 					</div>
 				</li>
 

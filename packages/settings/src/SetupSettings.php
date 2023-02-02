@@ -25,6 +25,7 @@ class SetupSettings {
 		add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
 
 		add_action( 'wp_ajax_kirki_clear_font_cache', array( $this, 'clear_font_cache' ) );
+		add_action( 'wp_ajax_kirki_prepare_install_udb', array( $this, 'prepare_install_udb' ) );
 
 		new Notice();
 
@@ -90,12 +91,42 @@ class SetupSettings {
 			return;
 		}
 
+		wp_enqueue_script( 'updates' );
+
 		wp_enqueue_script( 'kirki-settings', KIRKI_PLUGIN_URL . '/packages/settings/dist/settings.js', array( 'jquery', 'wp-polyfill' ), KIRKI_VERSION, true );
+
+		$udb_name     = 'Ultimate Dashboard';
+		$udb_slug     = 'ultimate-dashboard';
+		$udb_file     = 'ultimate-dashboard.php';
+		$udb_basename = $udb_slug . '/' . $udb_file;
+
+		$udb_activation_url = add_query_arg(
+			array(
+				'action'        => 'activate',
+				'plugin'        => rawurlencode( $udb_basename ),
+				'plugin_status' => 'all',
+				'paged'         => '1',
+				'_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $udb_basename ),
+			),
+			network_admin_url( 'plugins.php' )
+		);
+
+		$js_objects = array(
+			'recommendedPlugins' => [
+				'udb' => [
+					'name'          => $udb_name,
+					'slug'          => $udb_slug,
+					'basename'      => $udb_basename,
+					'activationUrl' => $udb_activation_url,
+					'redirectUrl'   => admin_url( 'edit.php?post_type=udb_widgets&page=udb_plugin_onboarding' ),
+				],
+			],
+		);
 
 		wp_localize_script(
 			'kirki-settings',
 			'kirkiSettings',
-			array()
+			$js_objects
 		);
 
 	}
@@ -119,7 +150,7 @@ class SetupSettings {
 	}
 
 	/**
-	 * Clear font cache directory.
+	 * Ajax handler to clear font cache directory.
 	 */
 	public function clear_font_cache() {
 
@@ -149,6 +180,50 @@ class SetupSettings {
 		}
 
 		wp_send_json_success( 'Font cache cleared.', 'kirki' );
+
+	}
+
+	/**
+	 * Ajax handler to prepare Ultimate Dashboard installation.
+	 */
+	public function prepare_install_udb() {
+
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( $_POST['nonce'] ) : '';
+
+		if ( ! wp_verify_nonce( $nonce, 'Kirki_Prepare_Install_Udb' ) ) {
+			wp_send_json_error( 'Invalid nonce', 401 );
+		}
+
+		if ( ! current_user_can( 'install_plugins' ) ) {
+			wp_send_json_error( "You don't have capability to run this action", 403 );
+		}
+
+		if ( defined( 'ULTIMATE_DASHBOARD_PLUGIN_URL' ) ) {
+			wp_send_json_error( __( 'Ultimate Dashboard has already been active.', 'kirki' ), 403 );
+		}
+
+		// This doesn't seem nice.
+		update_option( 'udb_migration_from_erident', 1 );
+
+		// Ideally, it should be this (but needs change from UDB side):
+		// update_option( 'udb_onboarding', 1 );
+
+		if ( file_exists( WP_PLUGIN_DIR . '/ultimate-dashboard/ultimate-dashboard.php' ) ) {
+			activate_plugin( 'ultimate-dashboard/ultimate-dashboard.php' );
+			wp_send_json_success(
+				[
+					'finished' => true,
+					'message'  => __( 'Ultimate Dashboard has been activated successfully.', 'kirki' ),
+				]
+			);
+		}
+
+		wp_send_json_success(
+			[
+				'finished' => false,
+				'message'  => __( 'Ultimate Dashboard has been prepared successfully.', 'kirki' ),
+			]
+		);
 
 	}
 

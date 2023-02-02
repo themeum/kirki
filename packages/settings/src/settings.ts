@@ -1,10 +1,12 @@
 import "./settings.scss";
+import setupUdb from "./setup-udb";
 import setupTabsNavigation from "./tabs";
 
 declare var ajaxurl: string;
 
 (function () {
 	setupTabsNavigation();
+	setupUdb();
 
 	const metabox = document.querySelector(".kirki-clear-font-cache-metabox");
 	if (!metabox) return;

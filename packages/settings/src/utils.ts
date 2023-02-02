@@ -34,3 +34,11 @@ export const getClosest = (
 
 	return closest;
 };
+
+export const startLoading = (button: HTMLButtonElement | HTMLElement) => {
+	button.classList.add("is-loading");
+};
+
+export const stopLoading = (button: HTMLButtonElement | HTMLElement) => {
+	button.classList.remove("is-loading");
+};

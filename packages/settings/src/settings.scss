@@ -40,6 +40,53 @@
 		}
 	}
 
+	.button-link {
+		border-width: 0;
+		background-color: transparent;
+		font-size: 17px;
+		text-decoration: underline;
+
+		&:focus,
+		&:active {
+			outline: none;
+			box-shadow: none;
+			border-width: 0;
+		}
+
+		&.is-disabled {
+			color: #ddd;
+		}
+
+		&.is-right-side {
+			float: right;
+
+			&.is-loading {
+				justify-content: flex-end;
+			}
+		}
+
+		&.is-loading {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			color: transparent !important;
+			pointer-events: none;
+
+			&::after {
+				content: "";
+				position: absolute;
+				width: 1em;
+				display: block;
+				height: 1em;
+				border: 2px solid #7ab4e3;
+				border-color: transparent transparent #2271b1 #2271b1 !important;
+				border-radius: 290486px;
+				-webkit-animation: loadingSpinAround 0.5s infinite linear;
+				animation: loadingSpinAround 0.5s infinite linear;
+			}
+		}
+	}
+
 	.submission-status {
 		margin-left: 15px;
 		line-height: 39px;

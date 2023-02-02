@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 return function () {
 	?>
 
-	<div class="wrap heatbox-wrap kirki-settings-page">
+	<div class="wrap heatbox-wrap kirki-settings-page" data-setup-udb-nonce="<?php echo esc_attr( wp_create_nonce( 'Kirki_Prepare_Install_Udb' ) ); ?>">
 
 		<div class="heatbox-header heatbox-has-tab-nav heatbox-margin-bottom">
 
@@ -34,7 +34,7 @@ return function () {
 
 				<nav>
 					<ul class="heatbox-tab-nav">
-						<li class="heatbox-tab-nav-item kirki-settings-panel active">
+						<li class="heatbox-tab-nav-item kirki-settings-panel">
 							<a href="#settings"><?php _e( 'Settings', 'kirki' ); ?></a>
 						</li>
 						<li class="heatbox-tab-nav-item kirki-recommended-plugins-panel">
@@ -55,17 +55,25 @@ return function () {
 				<h1 style="display: none;"></h1>
 
 				<div class="heatbox-admin-panel kirki-settings-panel">
-					<?php require __DIR__ . '/metaboxes/clear-font-cache.php'; ?>
+					<?php
+					require __DIR__ . '/metaboxes/clear-font-cache.php';
+					$show_udb_ads = ! defined( 'ULTIMATE_DASHBOARD_PLUGIN_URL' );
+					$show_udb_ads = true;
+					?>
 
-					<div class="heatbox-divider"></div>
+					<?php if ( $show_udb_ads ) : ?>
 
-					<div class="featured-products-banner">
-						<a href="https://kirki.org/extensions/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" class="pro-extensions-banner-link">
-							<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/featured-plugin-banner.jpg" alt="Featured products">
-						</a>
-					</div>
+						<div class="heatbox-divider"></div>
 
-					<?php require __DIR__ . '/metaboxes/pro-extensions.php'; ?>
+						<div class="featured-products-banner">
+							<a href="https://kirki.org/extensions/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" class="pro-extensions-banner-link">
+								<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/featured-plugin-banner.jpg" alt="Featured products">
+							</a>
+						</div>
+
+						<?php require __DIR__ . '/metaboxes/ultimate-dashboard.php'; ?>
+
+					<?php endif; ?>
 				</div>
 
 				<div class="heatbox-admin-panel kirki-recommended-plugins-panel">
