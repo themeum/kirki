@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => array($vendorDir . '/dealerdirect/phpcodesniffer-composer-installer/src'),
     'Kirki\\Util\\' => array($baseDir . '/packages/util/src'),
+    'Kirki\\Settings\\' => array($baseDir . '/packages/settings/src'),
     'Kirki\\Module\\' => array($baseDir . '/packages/module-css/src', $baseDir . '/packages/module-editor-styles/src', $baseDir . '/packages/module-field-dependencies/src', $baseDir . '/packages/module-postmessage/src', $baseDir . '/packages/module-preset/src', $baseDir . '/packages/module-section-icons/src', $baseDir . '/packages/module-selective-refresh/src', $baseDir . '/packages/module-tooltips/src', $baseDir . '/packages/module-webfonts/src'),
     'Kirki\\Field\\' => array($baseDir . '/packages/field/src/Field', $baseDir . '/packages/field-background/src', $baseDir . '/packages/field-dimensions/src', $baseDir . '/packages/field-fontawesome/src', $baseDir . '/packages/field-multicolor/src/Field', $baseDir . '/packages/field-multicolor/src', $baseDir . '/packages/field-typography/src/Field', $baseDir . '/packages/field-typography/src'),
     'Kirki\\Data\\' => array($baseDir . '/packages/data-option/src'),

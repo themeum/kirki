@@ -4,6 +4,14 @@ import shell from "shelljs";
 import sade from "sade";
 
 const definedPackages = {
+	settings: {
+		path: "packages/settings",
+		sources: [
+			"src/admin-notice.scss",
+			"src/settings.ts",
+			"src/discount-notice.ts",
+		],
+	},
 	"control-base": {
 		path: "packages/control-base",
 		sources: ["src/control.js"],

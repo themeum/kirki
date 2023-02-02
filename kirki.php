@@ -22,6 +22,7 @@ use Kirki\L10n;
 use Kirki\Compatibility\Modules;
 use Kirki\Compatibility\Framework;
 use Kirki\Compatibility\Kirki;
+use Kirki\URL;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -42,9 +43,16 @@ require_once __DIR__ . '/lib/class-kirki-color.php'; // phpcs:ignore WPThemeRevi
 require_once __DIR__ . '/vendor/autoload.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 require_once __DIR__ . '/inc/bootstrap.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
-// Define the KIRKI_VERSION constant.
 if ( ! defined( 'KIRKI_VERSION' ) ) {
 	define( 'KIRKI_VERSION', '4.0.24' );
+}
+
+if ( ! defined( 'KIRKI_PLUGIN_DIR' ) ) {
+	define( 'KIRKI_PLUGIN_DIR', __DIR__ );
+}
+
+if ( ! defined( 'KIRKI_PLUGIN_URL' ) ) {
+	define( 'KIRKI_PLUGIN_URL', URL::get_from_path( __DIR__ ) );
 }
 
 if ( ! function_exists( 'Kirki' ) ) {
@@ -67,6 +75,7 @@ $kirki->modules = new Modules();
 // Instantiate classes.
 new Kirki();
 new L10n( 'kirki', __DIR__ . '/languages' );
+new \Kirki\Settings\SetupSettings();
 
 // ? Bagus: Do we really need to-reinclude this file? It was included above.
 // Include the ariColor library.

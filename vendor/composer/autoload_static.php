@@ -14,6 +14,7 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
         'K' => 
         array (
             'Kirki\\Util\\' => 11,
+            'Kirki\\Settings\\' => 15,
             'Kirki\\Module\\' => 13,
             'Kirki\\Field\\' => 12,
             'Kirki\\Data\\' => 11,
@@ -34,6 +35,10 @@ class ComposerStaticInitc56aa391ac498061f8d648878e0e6144
         'Kirki\\Util\\' => 
         array (
             0 => __DIR__ . '/../..' . '/packages/util/src',
+        ),
+        'Kirki\\Settings\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/packages/settings/src',
         ),
         'Kirki\\Module\\' => 
         array (

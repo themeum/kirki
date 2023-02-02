@@ -1,0 +1,181 @@
+/* Loading Button */
+@-webkit-keyframes loadingSpinAround {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+@keyframes loadingSpinAround {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+.kirki-settings-page {
+	// Button
+	.button.is-loading {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: transparent !important;
+		pointer-events: none;
+
+		&::after {
+			content: "";
+			position: absolute;
+			width: 1em;
+			display: block;
+			height: 1em;
+			border: 2px solid #dbdbdb;
+			border-color: transparent transparent #fff #fff !important;
+			border-radius: 290486px;
+			-webkit-animation: loadingSpinAround 0.5s infinite linear;
+			animation: loadingSpinAround 0.5s infinite linear;
+		}
+	}
+
+	.submission-status {
+		margin-left: 15px;
+		line-height: 39px;
+	}
+
+	.submission-status.is-hidden {
+		display: none;
+	}
+
+	.submission-status.is-success {
+		color: #0fa953;
+	}
+
+	.submission-status.is-error {
+		color: tomato;
+	}
+}
+
+// Featured products
+.kirki-featured-products {
+	> h2 {
+		text-align: center;
+		margin-bottom: 50px;
+		font-size: 24px;
+	}
+
+	.products {
+		display: flex;
+		justify-content: space-between;
+
+		li {
+			width: 32%;
+		}
+
+		.subheadline {
+			font-weight: 600;
+			margin-top: -6px;
+		}
+
+		img {
+			max-width: 100%;
+		}
+	}
+
+	.credit {
+		margin-top: 20px;
+		text-align: center;
+		opacity: 0.5;
+	}
+}
+
+// Heatbox adjustment
+.heatbox {
+	position: relative;
+
+	.checkbox-label {
+		.is-disabled {
+			opacity: 0.6;
+		}
+	}
+
+	.heatbox-overlay.is-hidden {
+		display: none;
+	}
+
+	.heatbox-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, 0.1);
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+	}
+}
+
+// Kirki PRO
+.kirki-pro-metabox {
+	span.badge {
+		font-size: 50%;
+		padding: 4px 10px;
+		border-radius: 50px;
+		background: #6dbb7a;
+		color: #fff;
+	}
+
+	.intro {
+		padding: 20px;
+		background: #f1f1f1;
+		margin-bottom: 0;
+	}
+
+	ul {
+		li {
+			display: flex;
+			border-bottom: 1px solid #eee;
+			margin-bottom: 20px;
+
+			&:last-child {
+				border-bottom: none;
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	h3 {
+		a {
+			color: #1d2327;
+			text-decoration: none;
+
+			&:hover {
+				color: #2051c4;
+				text-decoration: underline;
+			}
+		}
+
+		font-size: 18px;
+		margin-bottom: 8px;
+	}
+
+	.dashicons-yes {
+		margin-right: 12px;
+		color: #6dbb7a;
+		font-size: 28px;
+		margin-top: -3px;
+	}
+}
+
+.kirki-pro-benefits {
+	margin-bottom: 0;
+
+	li {
+		&:last-child {
+			p {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

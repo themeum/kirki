@@ -58,6 +58,9 @@
             "Kirki\\Util\\": [
                 "packages/util/src"
             ],
+            "Kirki\\Settings\\": [
+                "packages/settings/src"
+            ],
             "Kirki\\": [
                 "packages/control-base/src",
                 "packages/control-checkbox/src",
