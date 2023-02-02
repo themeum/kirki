@@ -11,8 +11,8 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 <div class="heatbox pro-extensions-metabox">
 
 	<h2>
-		<?php _e( 'PRO Extensions', 'kirki' ); ?>
-		<a href="https://kirki.org/extensions/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" style="float: right;"><?php _e( 'Upgrade Now', 'kirki' ); ?></a>
+		<?php _e( 'Ultimate Dashboard - Features', 'kirki' ); ?>
+		<a href="https://kirki.org/extensions/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" style="float: right;"><?php _e( 'Try Ultimate Dashboard', 'kirki' ); ?></a>
 	</h2>
 
 	<ul class="pro-extensions-list">
@@ -21,29 +21,39 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 			$premium_features = array(
 				array(
-					'title'       => __( 'Kirki Tabs', 'kirki' ),
-					'description' => __( 'Tabs are the easiest way to better organize your WordPress Customizer controls.', 'kirki' ),
-					'link'        => 'https://kirki.org/downloads/tabs?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki',
+					'title'       => __( 'Custom Dashboard Widgets', 'kirki' ),
+					'description' => __( 'Replace the default WordPress widgets with your own to give the WordPress dashboard a more meaningful use.', 'kirki' ),
+					'pro'         => false,
 				),
 				array(
-					'title'       => __( 'Kirki Input Slider', 'kirki' ),
-					'description' => __( 'The Input Slider is a hybrid field, combining a slider & input field into one universal control.', 'kirki' ),
-					'link'        => 'https://kirki.org/downloads/input-slider?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki',
+					'title'       => __( 'Customize the WordPress Login', 'kirki' ),
+					'description' => __( 'Customize & rebrand the WordPress login screen with full control directly within the WordPress customizer.', 'kirki' ),
+					'pro'         => false,
 				),
 				array(
-					'title'       => __( 'Kirki Responsive Control', 'kirki' ),
-					'description' => __( 'The Responsive Controls extension allows you to turn controls into responsive controls.', 'kirki' ),
-					'link'        => 'https://kirki.org/downloads/responsive-controls?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki',
+					'title'       => __( 'Login Redirects', 'kirki' ),
+					'description' => __( 'Change the WordPress login URL, redirect non-logged in users trying to access the wp-admin URL & set up redirects after login for all user roles.', 'kirki' ),
+					'pro'         => false,
 				),
 				array(
-					'title'       => __( 'Kirki Headline & Dividers', 'kirki' ),
-					'description' => __( 'The Headlines & Dividers extension is a powerful tool to better structure your customizer controls.', 'kirki' ),
-					'link'        => 'https://kirki.org/downloads/headlines-dividers?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki',
+					'title'       => __( 'Custom Admin Pages', 'kirki' ),
+					'description' => __( 'Create Custom Admin Pages (Top-Level & Sub-Menu) with HTML & CSS.', 'kirki' ),
+					'pro'         => false,
 				),
 				array(
-					'title'       => __( 'Kirki Margin & Padding', 'kirki' ),
-					'description' => __( 'Unlike the Dimensions control, the Padding & Margin control consists of 4 numeric input fields which share the same unit (px, %, em, etc.) across the board.', 'kirki' ),
-					'link'        => 'https://kirki.org/downloads/margin-padding?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki',
+					'title'       => __( 'Admin Menu & Admin Bar Editor', 'kirki' ),
+					'description' => __( 'Rearrange & hide menu & sub menu items from the WordPress admin area & admin bar.', 'kirki' ),
+					'pro'         => true,
+				),
+				array(
+					'title'       => __( 'White Label WordPress', 'kirki' ),
+					'description' => __( 'Fully white label the WordPress admin area and apply your own branding.', 'kirki' ),
+					'pro'         => true,
+				),
+				array(
+					'title'       => __( 'Page Builder Support', 'kirki' ),
+					'description' => __( 'Replace the entire WordPress dashboard with your saved Elementor, Beaver Builder or Brizy Layout or use it along with our Ultimate Dashboard widgets.', 'kirki' ),
+					'pro'         => true,
 				),
 			);
 
@@ -62,6 +72,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 						</div>
 					</div>
 					<div class="pro-extensions-list-icon">
+						<?php echo $premium_feature['pro'] ? '<strong>PRO</strong>' : ''; ?>
 						<i class="dashicons dashicons-yes-alt"></i>
 					</div>
 				</li>
@@ -75,14 +86,14 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 		<li>
 			<div class="pro-extensions-list-content">
 				<h3>
-					<strong><?php _e( 'And much more!', 'kirki' ); ?></strong>
+					<strong><?php _e( 'And so much more!', 'kirki' ); ?></strong>
 				</h3>
 				<p>
-					<?php _e( 'Check out all the Premium Add-On features.', 'kirki' ); ?>
+					<?php _e( 'Install Ultimate Dashboard or <a href="https://ultimatedashboard.io/">learn more</a>.', 'kirki' ); ?>
 				</p>
 			</div>
 			<div class="pro-extensions-list-icon">
-				<a href="https://wp-pagebuilderframework.com/premium/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" class="button button-larger button-primary"><?php _e( 'Learn More', 'kirki' ); ?></a>
+				<a href="https://wp-pagebuilderframework.com/premium/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" class="button button-larger button-primary"><?php _e( 'Get Ultimate Dashboard (it\'s FREE!)', 'kirki' ); ?></a>
 			</div>
 		</li>
 

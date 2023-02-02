@@ -61,6 +61,7 @@
 // Featured products
 .featured-products-banner {
 	img {
+		border: 1px solid #ddd;
 		max-width: 100%;
 	}
 }
@@ -125,7 +126,7 @@
 // Kirki PRO
 .pro-extensions-banner-link {
 	display: block;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	box-shadow: none !important;
 }
 
@@ -217,6 +218,16 @@
 	i {
 		margin-right: 20px;
 		position: relative;
+	}
+
+	strong {
+		padding: 2px 4px;
+		border-radius: 4px;
+		background: #ccc;
+		color: #fff;
+		line-height: 1;
+		margin: 0 10px;
+		font-size: 12px;
 	}
 }
 
