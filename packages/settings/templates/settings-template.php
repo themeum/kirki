@@ -63,8 +63,6 @@ return function () {
 
 					<?php if ( $show_udb_ads ) : ?>
 
-						<div class="heatbox-divider"></div>
-
 						<div class="featured-products-banner">
 							<a href="#" target="_blank" class="pro-extensions-banner-link kirki-install-udb">
 								<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/featured-plugin-banner.jpg" alt="Ultimate Dashboard">

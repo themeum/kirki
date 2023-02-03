@@ -90,12 +90,14 @@ class Notice {
 				</div>
 				<div class="notice-content">
 					<h2>
-						17% Off Kirki PRO Extension Bundle 🥳
+						Font Display Issues? Clear the Font Cache in Kirki
 					</h2>
 					<p>
-						<strong>Kirki PRO</strong> is now available!<br> As a valued user of our plugin we would like to offer you a <strong style="color: #d63638;">17% discount</strong> on <strong>Extension Bundle</strong>.
+						<strong>New!</strong> Easily resolve font display issues by clearing the <strong>Font Cache</strong> in Kirki. This one-click solution fixes problems caused by domain name changes or site migrations.
 					</p>
-					<p><a target="_blank" href="https://kirki.org/extensions/?utm_source=repository&utm_medium=notice_bar&utm_campaign=kirki" style="font-weight: 700;" class="button button-primary">Grab the deal</a> <strong>Coupon limited to 50 users!</strong></p>
+					<p>
+						<a href="<?php echo admin_url( '/options-general.php?page=kirki_settings' ); ?>" style="font-weight: 700;" class="button button-primary">Learn more</a>
+					</p>
 				</div>
 			</div>
 
