@@ -221,7 +221,7 @@ class SetupSettings {
 		wp_send_json_success(
 			[
 				'finished' => false,
-				'message'  => __( 'Ultimate Dashboard has been prepared successfully.', 'kirki' ),
+				'message'  => __( 'Installation has been prepared successfully.', 'kirki' ),
 			]
 		);
 

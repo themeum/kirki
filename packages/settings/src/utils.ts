@@ -1,3 +1,9 @@
+export const emptyElement = (el: HTMLElement) => {
+	while (el.firstChild) {
+		el.removeChild(el.firstChild);
+	}
+};
+
 export const getClosest = (
 	el: HTMLElement,
 	selector: string,

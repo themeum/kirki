@@ -1,4 +1,4 @@
-import { getClosest, startLoading, stopLoading } from "./utils";
+import { emptyElement, getClosest, startLoading, stopLoading } from "./utils";
 import jQuery from "jquery";
 
 declare var wp: any;
@@ -11,6 +11,16 @@ export default function setupUdb() {
 	);
 	if (!adminPage) return;
 
+	const progressBox: HTMLElement | null = adminPage.querySelector(
+		".installation-progress-metabox"
+	);
+	if (!progressBox) return;
+
+	const progressList: HTMLElement | null = progressBox.querySelector(
+		".installation-progress-list"
+	);
+	if (!progressList) return;
+
 	let doingAjax = false;
 	const udbData = kirkiSettings.recommendedPlugins.udb;
 
@@ -21,16 +31,194 @@ export default function setupUdb() {
 		if (!button) return;
 
 		e.preventDefault();
+		prepareUdb(button);
+	}
 
-		if (
-			!confirm(
-				"This will install and activate the Ultimate Dashboard plugin. Please don't leave this page until the installation is complete. Install now?"
-			)
-		) {
-			return;
+	function prepareUdb(button: HTMLElement) {
+		if (!adminPage) return;
+		if (doingAjax) return;
+		startProcessing(button);
+		addProgress("Preparing Ultimate Dashboard", "loading");
+
+		const nonce = adminPage.dataset.setupUdbNonce
+			? adminPage.dataset.setupUdbNonce
+			: "";
+
+		jQuery
+			.ajax({
+				url: ajaxurl,
+				method: "POST",
+				data: {
+					action: "kirki_prepare_install_udb",
+					nonce: nonce,
+				},
+			})
+			.done(function (response) {
+				if (!response.success) {
+					modifyPreviousProgress(response.data, "failed");
+					stopProcessing(button, "");
+					return;
+				}
+
+				if (response.data.finished) {
+					modifyPreviousProgress(
+						"Ultimate Dashboard has already been installed.",
+						"done"
+					);
+					addProgress(response.data.message, "done");
+					stopProcessing(button, udbData.redirectUrl);
+					return;
+				}
+
+				modifyPreviousProgress(response.data.message, "done");
+				doingAjax = false;
+				installUdb(button);
+			})
+			.fail(function (jqXHR) {
+				let errorMessage: string =
+					"Something went wrong. Please try again later.";
+
+				if (jqXHR.responseJSON && jqXHR.responseJSON.data) {
+					errorMessage = jqXHR.responseJSON.data;
+				}
+
+				modifyPreviousProgress(errorMessage, "failed");
+				stopProcessing(button, "");
+			});
+	}
+
+	function installUdb(button: HTMLElement) {
+		if (doingAjax) return;
+		doingAjax = true;
+		addProgress("Installing Ultimate Dashboard", "loading");
+
+		wp.updates.installPlugin({
+			slug: udbData.slug,
+			success: function () {
+				modifyPreviousProgress(
+					"Ultimate Dashboard has been installed successfully",
+					"done"
+				);
+				doingAjax = false;
+				activateUdb(button);
+			},
+			error: function (jqXHR: any) {
+				let abort = true;
+
+				if (jqXHR.errorCode && jqXHR.errorMessage) {
+					if (jqXHR.errorCode === "folder_exists") {
+						modifyPreviousProgress(
+							"Ultimate Dashboard has already been installed.",
+							"done"
+						);
+
+						doingAjax = false;
+						abort = false;
+
+						// Since the plugin has already installed since before, let's activate it.
+						activateUdb(button);
+					} else {
+						modifyPreviousProgress(jqXHR.errorMessage, "failed");
+					}
+				} else {
+					if (jqXHR.responseJSON && jqXHR.responseJSON.data) {
+						modifyPreviousProgress(jqXHR.responseJSON.data, "failed");
+					} else {
+						modifyPreviousProgress(
+							"Something went wrong. Please try again later.",
+							"failed"
+						);
+					}
+				}
+
+				if (abort) stopProcessing(button, "");
+			},
+		});
+	}
+
+	function activateUdb(button: HTMLElement) {
+		if (doingAjax) return;
+		doingAjax = true;
+		addProgress("Activating Ultimate Dashboard", "loading");
+
+		jQuery.ajax({
+			async: true,
+			type: "GET",
+			url: udbData.activationUrl,
+			success: function () {
+				modifyPreviousProgress(
+					"Ultimate Dashboard has been activated successfully.",
+					"done"
+				);
+
+				stopProcessing(button, udbData.redirectUrl);
+			},
+			error: function (jqXHR: any) {
+				if (jqXHR.errorCode && jqXHR.errorMessage) {
+					modifyPreviousProgress(jqXHR.errorMessage, "failed");
+				} else {
+					if (jqXHR.responseJSON && jqXHR.responseJSON.data) {
+						modifyPreviousProgress(jqXHR.responseJSON.data, "failed");
+					} else {
+						modifyPreviousProgress(
+							"Something went wrong. Please try again later.",
+							"failed"
+						);
+					}
+				}
+
+				stopProcessing(button, "");
+			},
+		});
+	}
+
+	function addProgress(text: string, status: string) {
+		if (!progressList) return;
+		const li = document.createElement("li");
+		li.className = "installation-progress";
+
+		if (status === "done") {
+			li.classList.add("is-done");
+		} else if (status === "failed") {
+			li.classList.add("is-failed");
+		} else {
+			li.classList.add("is-loading");
 		}
 
-		prepareUdb(button);
+		const iconDiv = document.createElement("div");
+		iconDiv.className = "progress-icon";
+		li.appendChild(iconDiv);
+
+		const textDiv = document.createElement("div");
+		textDiv.className = "progress-text";
+		textDiv.innerHTML = text;
+		li.appendChild(textDiv);
+
+		progressList.appendChild(li);
+	}
+
+	function modifyPreviousProgress(text: string, status: string) {
+		if (!progressList) return;
+		const li = progressList.querySelector(".installation-progress:last-child");
+		if (!li) return;
+
+		if (status === "done") {
+			li.classList.remove("is-loading");
+			li.classList.add("is-done");
+		} else if (status === "failed") {
+			li.classList.remove("is-loading");
+			li.classList.add("is-failed");
+		} else {
+			li.classList.remove("is-done");
+			li.classList.remove("is-failed");
+			li.classList.add("is-loading");
+		}
+
+		if (text) {
+			const textDiv = li.querySelector(".progress-text");
+			if (!textDiv) return;
+			textDiv.innerHTML = text;
+		}
 	}
 
 	function disableOrEnableOtherButtons(
@@ -61,112 +249,12 @@ export default function setupUdb() {
 		});
 	}
 
-	function prepareUdb(button: HTMLElement) {
-		if (!adminPage) return;
-		if (doingAjax) return;
-		startProcessing(button);
-
-		const nonce = adminPage.dataset.setupUdbNonce
-			? adminPage.dataset.setupUdbNonce
-			: "";
-
-		jQuery
-			.ajax({
-				url: ajaxurl,
-				method: "POST",
-				data: {
-					action: "kirki_prepare_install_udb",
-					nonce: nonce,
-				},
-			})
-			.done(function (response) {
-				if (!response.success) {
-					alert(response.data);
-					stopProcessing(button, "");
-				}
-
-				if (response.data.finished) {
-					stopProcessing(button, udbData.redirectUrl);
-					return;
-				}
-
-				doingAjax = false;
-				installUdb(button);
-				return;
-			})
-			.fail(function (jqXHR) {
-				if (jqXHR.responseJSON && jqXHR.responseJSON.data) {
-					alert(jqXHR.responseJSON.data);
-				}
-
-				stopProcessing(button, "");
-			});
-	}
-
-	function installUdb(button: HTMLElement) {
-		if (doingAjax) return;
-		doingAjax = true;
-
-		wp.updates.installPlugin({
-			slug: udbData.slug,
-			success: function () {
-				doingAjax = false;
-				activateUdb(button);
-			},
-			error: function (jqXHR: any) {
-				// console.log(jqXHR);
-
-				let abort = true;
-
-				if (jqXHR.errorCode && jqXHR.errorMessage) {
-					if (jqXHR.errorCode === "folder_exists") {
-						console.log(
-							"Plugin is already installed before, let's continue activating it."
-						);
-
-						doingAjax = false;
-						abort = false;
-
-						// If the plugin is already installed, just activate it.
-						activateUdb(button);
-					} else {
-						alert(jqXHR.errorMessage);
-					}
-				} else {
-					if (jqXHR.responseJSON && jqXHR.responseJSON.data) {
-						alert(jqXHR.responseJSON.data);
-					}
-				}
-
-				if (abort) {
-					stopProcessing(button, "");
-				}
-			},
-		});
-	}
-
-	function activateUdb(button: HTMLElement) {
-		if (doingAjax) return;
-		doingAjax = true;
-
-		jQuery.ajax({
-			async: true,
-			type: "GET",
-			url: udbData.activationUrl,
-			success: function () {
-				stopProcessing(button, udbData.redirectUrl);
-			},
-			error: function (jqXHR) {
-				if (jqXHR.responseJSON && jqXHR.responseJSON.data) {
-					alert(jqXHR.responseJSON.data);
-				}
-
-				stopProcessing(button, "");
-			},
-		});
-	}
-
 	function startProcessing(button: HTMLElement) {
+		if (progressBox && progressList) {
+			emptyElement(progressList);
+			progressBox.classList.remove("is-hidden");
+		}
+
 		doingAjax = true;
 		disableOrEnableOtherButtons("disable", button);
 		startLoading(button);

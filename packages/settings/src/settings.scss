@@ -1,4 +1,10 @@
-/* Loading Button */
+// Vars
+.kirki-settings-page {
+	--kirki-brand-color: #2764F1;
+	--kirki-danger-color: #47D87C;
+}
+
+// Loading animation
 @-webkit-keyframes loadingSpinAround {
 	from {
 		transform: rotate(0);
@@ -339,5 +345,74 @@
 
 	i {
 		font-size: 22px !important;
+	}
+}
+
+// Instant installation progress
+.installation-progress-metabox {
+	&.is-hidden {
+		display: none;
+	}
+}
+
+.installation-info {
+	font-size: 14px;
+}
+
+.installation-progress {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+
+	.progress-icon {
+		position: relative;
+		margin-right: 4px;
+		width: 20px;
+		height: 20px;
+	}
+
+	&.is-loading {
+		.progress-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			color: transparent !important;
+			pointer-events: none;
+
+			&::after {
+				content: "";
+				position: absolute;
+				width: 1em;
+				display: block;
+				height: 1em;
+				border: 2px solid #7ab4e3;
+				border-color: transparent transparent #2271b1 #2271b1 !important;
+				border-radius: 290486px;
+				-webkit-animation: loadingSpinAround 0.5s infinite linear;
+				animation: loadingSpinAround 0.5s infinite linear;
+			}
+		}
+	}
+
+	&.is-done {
+		.progress-icon::before {
+			content: "\f147";
+			font-family: dashicons;
+			color: #47d87c;
+			font-size: 20px;
+		}
+	}
+
+	&.is-failed {
+		.progress-icon::before {
+			content: "\f158";
+			font-family: dashicons;
+			color: tomato;
+			font-size: 20px;
+		}
+	}
+
+	.progress-text {
+		flex: 1 1 auto;
 	}
 }

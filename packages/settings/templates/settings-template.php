@@ -69,23 +69,22 @@ return function () {
 							</a>
 						</div>
 
-						<?php require __DIR__ . '/metaboxes/ultimate-dashboard.php'; ?>
+						<?php
+						require __DIR__ . '/metaboxes/installation-progress.php';
+						require __DIR__ . '/metaboxes/ultimate-dashboard.php';
+						?>
 
 					<?php endif; ?>
 				</div>
 
 				<div class="heatbox-admin-panel kirki-recommended-plugins-panel">
-					<?php
-					require __DIR__ . '/metaboxes/recommended-plugins.php';
-					?>
+					<?php require __DIR__ . '/metaboxes/recommended-plugins.php'; ?>
 				</div>
 
 			</div>
 
 			<div class="heatbox-sidebar">
-				<?php
-				require __DIR__ . '/metaboxes/documentation.php';
-				?>
+				<?php require __DIR__ . '/metaboxes/documentation.php'; ?>
 			</div>
 
 		</div>
