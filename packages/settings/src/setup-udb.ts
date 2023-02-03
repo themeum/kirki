@@ -66,6 +66,7 @@ export default function setupUdb() {
 						"done"
 					);
 					addProgress(response.data.message, "done");
+					addProgress("All done! Redirecting...", "loading");
 					stopProcessing(button, udbData.redirectUrl);
 					return;
 				}
@@ -151,6 +152,7 @@ export default function setupUdb() {
 					"done"
 				);
 
+				addProgress("All done! Redirecting...", "loading");
 				stopProcessing(button, udbData.redirectUrl);
 			},
 			error: function (jqXHR: any) {
@@ -235,15 +237,19 @@ export default function setupUdb() {
 
 			if (button.tagName.toLowerCase() === "button") {
 				if (actionType === "disable") {
-					button.setAttribute("disabled", "disabled");
+					// button.setAttribute("disabled", "disabled");
+					button.classList.add("is-loading");
 				} else {
-					button.removeAttribute("disabled");
+					// button.removeAttribute("disabled");
+					button.classList.remove("is-loading");
 				}
 			} else {
 				if (actionType === "disable") {
-					button.classList.add("is-disabled");
+					// button.classList.add("is-disabled");
+					button.classList.add("is-loading");
 				} else {
-					button.classList.remove("is-disabled");
+					// button.classList.remove("is-disabled");
+					button.classList.remove("is-loading");
 				}
 			}
 		});
@@ -262,7 +268,9 @@ export default function setupUdb() {
 
 	function stopProcessing(button: HTMLElement, redirectUrl: string) {
 		if (redirectUrl) {
-			window.location.replace(redirectUrl);
+			window.setTimeout(() => {
+				window.location.replace(redirectUrl);
+			}, 5000);
 		}
 
 		stopLoading(button);
