@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 	<h2><?php _e( 'Clear Font Cache', 'kirki' ); ?></h2>
 	<div class="heatbox-content">
 		<p>
-			<?php _e( 'In order to achieve GDPR-compliance, we store Google Fonts locally on your server.', 'kirki' ); ?><br>
+			<?php _e( 'In order to achieve GDPR-compliance, Kirki stores Google Fonts locally on your server.', 'kirki' ); ?><br>
 			<?php _e( 'If Google Fonts selected in the Customizer are not displayed correctly, please try clearing the font cache.', 'kirki' ); ?>
 		</p>
 		<p>

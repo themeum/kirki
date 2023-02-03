@@ -66,8 +66,8 @@ return function () {
 						<div class="heatbox-divider"></div>
 
 						<div class="featured-products-banner">
-							<a href="https://kirki.org/extensions/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" class="pro-extensions-banner-link">
-								<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/featured-plugin-banner.jpg" alt="Featured products">
+							<a href="#" target="_blank" class="pro-extensions-banner-link kirki-install-udb">
+								<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/featured-plugin-banner.jpg" alt="Ultimate Dashboard">
 							</a>
 						</div>
 
