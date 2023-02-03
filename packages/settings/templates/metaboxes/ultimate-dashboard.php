@@ -12,8 +12,8 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 	<h2>
 		<?php _e( 'Ultimate Dashboard - Features', 'kirki' ); ?>
-		<a href="" class="button-link kirki-install-udb is-right-side">
-			<?php _e( "It's 100% Free. Now and Frever", 'kirki' ); ?>
+		<a href="https://ultimatedashboard.io/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank" class="button-link is-right-side">
+			<?php _e( "Learn more", 'kirki' ); ?>
 		</a>
 	</h2>
 
@@ -88,15 +88,15 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 		<li>
 			<div class="pro-extensions-list-content">
 				<h3>
-					<strong><?php _e( 'And so much more!', 'kirki' ); ?></strong>
+					<strong><?php _e( 'And much more!', 'kirki' ); ?></strong>
 				</h3>
 				<p>
-					<?php _e( 'Install Ultimate Dashboard or <a href="https://ultimatedashboard.io/">learn more</a>.', 'kirki' ); ?>
+					<?php _e( 'Install Ultimate Dashboard or <a href="https://ultimatedashboard.io/?utm_source=repository&utm_medium=settings_page&utm_campaign=kirki" target="_blank">learn more</a>.', 'kirki' ); ?>
 				</p>
 			</div>
 			<div class="pro-extensions-list-icon">
 				<button type="button" class="button button-larger button-primary kirki-install-udb">
-					<?php _e( 'Install Ultimate Dashboard', 'kirki' ); ?>
+					<?php _e( 'Install Ultimate Dashboard (FREE)', 'kirki' ); ?>
 				</button>
 			</div>
 		</li>
