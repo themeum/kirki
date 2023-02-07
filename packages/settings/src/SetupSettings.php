@@ -215,11 +215,7 @@ class SetupSettings {
 			wp_send_json_error( __( 'Ultimate Dashboard has already been active.', 'kirki' ), 403 );
 		}
 
-		// This doesn't seem nice.
-		update_option( 'udb_migration_from_erident', 1 );
-
-		// Ideally, it should be this (but needs change from UDB side):
-		// update_option( 'udb_onboarding', 1 );
+		update_option( 'udb_referred_by_kirki', 1 );
 
 		if ( file_exists( WP_PLUGIN_DIR . '/ultimate-dashboard/ultimate-dashboard.php' ) ) {
 			activate_plugin( 'ultimate-dashboard/ultimate-dashboard.php' );
