@@ -270,7 +270,7 @@ export default function setupUdb() {
 		if (redirectUrl) {
 			window.setTimeout(() => {
 				window.location.replace(redirectUrl);
-			}, 5000);
+			}, 1000);
 		}
 
 		stopLoading(button);

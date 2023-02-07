@@ -19,6 +19,10 @@ class SetupSettings {
 	 */
 	public function __construct() {
 
+		if ( ! apply_filters( 'kirki_settings_page', true ) ) {
+			return;
+		}
+
 		add_action( 'admin_menu', array( $this, 'submenu_page' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
