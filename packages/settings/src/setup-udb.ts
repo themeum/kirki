@@ -38,7 +38,7 @@ export default function setupUdb() {
 		if (!adminPage) return;
 		if (doingAjax) return;
 		startProcessing(button);
-		addProgress("Preparing Ultimate Dashboard", "loading");
+		addProgress("Preparing...", "loading");
 
 		const nonce = adminPage.dataset.setupUdbNonce
 			? adminPage.dataset.setupUdbNonce
