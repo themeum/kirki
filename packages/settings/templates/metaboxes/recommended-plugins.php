@@ -75,21 +75,15 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 							</div>
 						<?php else : ?>
 							<div class="kirki-recommended-status-action">
-								<?php if ( 'ULTIMATE_DASHBOARD_PLUGIN_URL' === $recommended_plugin['constant'] ) : ?>
-									<button type="button" class="button button-primary button-larger kirki-install-udb">
-										<?php _e( 'Install', 'kirki' ); ?>
-									</button>
-								<?php else : ?>
-									<a href="<?php echo esc_url( $recommended_plugin['link'] ); ?>" target="_blank" class="button button-primary button-larger">
-										<?php
-										if ( $recommended_plugin['repo'] ) {
-											_e( 'Install', 'kirki' );
-										} else {
-											_e( 'Learn More', 'kirki' );
-										}
-										?>
-									</a>
-								<?php endif; ?>
+								<a href="<?php echo esc_url( $recommended_plugin['link'] ); ?>" target="_blank" class="button button-primary button-larger">
+									<?php
+									if ( $recommended_plugin['repo'] ) {
+										_e( 'Install', 'kirki' );
+									} else {
+										_e( 'Learn More', 'kirki' );
+									}
+									?>
+								</a>
 							</div>
 							<div class="kirki-recommended-status-icon">
 								<strong><?php _e( 'Not Installed', 'kirki' ); ?></strong> <i class="dashicons dashicons-dismiss"></i>
