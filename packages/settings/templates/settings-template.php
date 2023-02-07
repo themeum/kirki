@@ -58,7 +58,6 @@ return function () {
 					<?php
 					require __DIR__ . '/metaboxes/clear-font-cache.php';
 					$show_udb_ads = ! defined( 'ULTIMATE_DASHBOARD_PLUGIN_URL' );
-					$show_udb_ads = true;
 					?>
 
 					<?php if ( $show_udb_ads ) : ?>
