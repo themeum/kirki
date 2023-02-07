@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 				array(
 					'title'       => __( 'Ultimate Dashboard', 'kirki' ),
 					'description' => __( 'Ultimate Dashboard is the #1 plugin to customize your WordPress Dashboard.', 'kirki' ),
-					'banner'      => 'https://ps.w.org/ultimate-dashboard/assets/banner-772x250.jpg',
+					'banner'      => 'https://ps.w.org/ultimate-dashboard/assets/banner-1544x500.jpg',
 					'link'        => admin_url( 'plugin-install.php?s=ultimate+dashboard&tab=search&type=term' ),
 					'repo'        => true,
 					'constant'    => 'ULTIMATE_DASHBOARD_PLUGIN_URL',
