@@ -19,6 +19,15 @@ class SetupSettings {
 	 */
 	public function __construct() {
 
+		add_action( 'init', array( $this, 'setup' ), 99999 );
+
+	}
+
+	/**
+	 * Setup the settings page.
+	 */
+	public function setup() {
+
 		if ( ! apply_filters( 'kirki_settings_page', true ) ) {
 			return;
 		}
