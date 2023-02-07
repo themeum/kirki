@@ -152,7 +152,7 @@ function runParcel(commandType, packageName, opts) {
 // Create the program.
 
 const program = sade("kirki");
-program.version("4.0.24");
+program.version("4.1.0");
 
 program
 	.command("build <packageName>")
