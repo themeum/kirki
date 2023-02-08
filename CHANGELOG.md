@@ -1,3 +1,6 @@
+### 4.1.1 - February 08, 2023 ###
+- Rename kirki packages dir & composer vendor-dir
+
 ### 4.1.0 - February 07, 2023 ###
 - New: Settings page to allow users to clear the Kirki font cache.
 - Tweak: Bundled all individual packages into the main repository, reducing the number of repositories used in development. This simplifies development by eliminating the need to work on multiple repositories.
