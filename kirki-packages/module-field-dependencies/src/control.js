@@ -337,9 +337,9 @@ var KirkiRepeaterDependencies = {
 			var self = this;
 
 			/* 1. Collect All Repeaters */
-	_.each( window.kirkiControlDependencies, function (requirements, dependantID) {
+	_.each( window.kirkiRepeaterControlsAvailable, function (repDetails, repeaterID) {
 
-		var control = wp.customize.control(dependantID);
+			var control = wp.customize.control(repeaterID);
 
 					if( control && control.params && control.params.type && control.params.type === 'repeater' ) {
 
