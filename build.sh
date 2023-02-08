@@ -46,8 +46,8 @@ echo "Removing un-necessary files inside individual packages ..."
 
 # Would you like to remove the CSS source files?
 # If so, un-comment the following lines.
-# rm -rf packages/**/src/*.scss
-# rm -rf packages/**/src/scss/*.scss
+# rm -rf kirki-packages/**/src/*.scss
+# rm -rf kirki-packages/**/src/scss/*.scss
 
 cd ../../
 

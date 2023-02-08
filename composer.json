@@ -16,7 +16,7 @@
         }
     ],
     "config": {
-        "vendor-dir": "vendor",
+        "vendor-dir": "kirki-composer",
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "composer/installers": true
@@ -29,68 +29,68 @@
     "autoload": {
         "psr-4": {
             "Kirki\\Compatibility\\": [
-                "packages/compatibility/src"
+                "kirki-packages/compatibility/src"
             ],
             "Kirki\\Data\\": [
-                "packages/data-option/src"
+                "kirki-packages/data-option/src"
             ],
             "Kirki\\Field\\": [
-                "packages/field/src/Field",
-                "packages/field-background/src",
-                "packages/field-dimensions/src",
-                "packages/field-fontawesome/src",
-                "packages/field-multicolor/src/Field",
-                "packages/field-multicolor/src",
-                "packages/field-typography/src/Field",
-                "packages/field-typography/src"
+                "kirki-packages/field/src/Field",
+                "kirki-packages/field-background/src",
+                "kirki-packages/field-dimensions/src",
+                "kirki-packages/field-fontawesome/src",
+                "kirki-packages/field-multicolor/src/Field",
+                "kirki-packages/field-multicolor/src",
+                "kirki-packages/field-typography/src/Field",
+                "kirki-packages/field-typography/src"
             ],
             "Kirki\\Module\\": [
-                "packages/module-css/src",
-                "packages/module-editor-styles/src",
-                "packages/module-field-dependencies/src",
-                "packages/module-postmessage/src",
-                "packages/module-preset/src",
-                "packages/module-section-icons/src",
-                "packages/module-selective-refresh/src",
-                "packages/module-tooltips/src",
-                "packages/module-webfonts/src"
+                "kirki-packages/module-css/src",
+                "kirki-packages/module-editor-styles/src",
+                "kirki-packages/module-field-dependencies/src",
+                "kirki-packages/module-postmessage/src",
+                "kirki-packages/module-preset/src",
+                "kirki-packages/module-section-icons/src",
+                "kirki-packages/module-selective-refresh/src",
+                "kirki-packages/module-tooltips/src",
+                "kirki-packages/module-webfonts/src"
             ],
             "Kirki\\Util\\": [
-                "packages/util/src"
+                "kirki-packages/util/src"
             ],
             "Kirki\\Settings\\": [
-                "packages/settings/src"
+                "kirki-packages/settings/src"
             ],
             "Kirki\\": [
-                "packages/control-base/src",
-                "packages/control-checkbox/src",
-                "packages/control-code/src",
-                "packages/control-color/src",
-                "packages/control-color-palette/src",
-                "packages/control-cropped-image/src",
-                "packages/control-custom/src",
-                "packages/control-dashicons/src",
-                "packages/control-date/src",
-                "packages/control-dimension/src",
-                "packages/control-editor/src",
-                "packages/control-generic/src",
-                "packages/control-image/src",
-                "packages/control-multicheck/src",
-                "packages/control-palette/src",
-                "packages/control-radio/src",
-                "packages/control-react-colorful/src",
-                "packages/control-react-select/src",
-                "packages/control-repeater/src",
-                "packages/control-select/src",
-                "packages/control-slider/src",
-                "packages/control-sortable/src",
-                "packages/control-upload/src",
-                "packages/field/src",
-                "packages/googlefonts/src",
-                "packages/l10n/src",
-                "packages/module-panels/src",
-                "packages/module-sections/src",
-                "packages/url-getter/src"
+                "kirki-packages/control-base/src",
+                "kirki-packages/control-checkbox/src",
+                "kirki-packages/control-code/src",
+                "kirki-packages/control-color/src",
+                "kirki-packages/control-color-palette/src",
+                "kirki-packages/control-cropped-image/src",
+                "kirki-packages/control-custom/src",
+                "kirki-packages/control-dashicons/src",
+                "kirki-packages/control-date/src",
+                "kirki-packages/control-dimension/src",
+                "kirki-packages/control-editor/src",
+                "kirki-packages/control-generic/src",
+                "kirki-packages/control-image/src",
+                "kirki-packages/control-multicheck/src",
+                "kirki-packages/control-palette/src",
+                "kirki-packages/control-radio/src",
+                "kirki-packages/control-react-colorful/src",
+                "kirki-packages/control-react-select/src",
+                "kirki-packages/control-repeater/src",
+                "kirki-packages/control-select/src",
+                "kirki-packages/control-slider/src",
+                "kirki-packages/control-sortable/src",
+                "kirki-packages/control-upload/src",
+                "kirki-packages/field/src",
+                "kirki-packages/googlefonts/src",
+                "kirki-packages/l10n/src",
+                "kirki-packages/module-panels/src",
+                "kirki-packages/module-sections/src",
+                "kirki-packages/url-getter/src"
             ]
         }
     },
