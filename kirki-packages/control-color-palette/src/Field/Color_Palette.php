@@ -59,7 +59,7 @@ class Color_Palette extends Field {
 			$args = parent::filter_setting_args( $args, $wp_customize );
 
 			// Set the sanitize_callback if none is defined.
-			if ( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) {
+			if (( ! isset( $args['sanitize_callback'] ) || ! $args['sanitize_callback'] ) && ($args['sanitize_callback'] !== false)) { //Allow sanitize_callback to be disabled
 				$args['sanitize_callback'] = [ __CLASS__, 'sanitize' ];
 			}
 		}
