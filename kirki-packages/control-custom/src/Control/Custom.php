@@ -6,7 +6,7 @@
  * Custom controls accept raw HTML/JS.
  *
  * @package   kirki-framework/control-custom
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Themeum (@themeum)
  * @license   https://opensource.org/licenses/MIT
  * @since     1.0
  */

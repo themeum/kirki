@@ -3,7 +3,7 @@
  * Option tweaks.
  *
  * @package   kirki-framework/data-option
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2019, Themeum (@themeum)
  * @license   https://opensource.org/licenses/MIT
  * @since     1.0
  */

@@ -4,8 +4,8 @@
  *
  * @package   Kirki
  * @category  Compatibility
- * @author    Ari Stathopoulos (@aristath)
- * @copyright Copyright (c) 2020, David Vongries
+ * @author    Themeum (@themeum)
+ * @copyright Copyright (c) 2020, Themeum
  * @license   https://opensource.org/licenses/MIT
  */
 

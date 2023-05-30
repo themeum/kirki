@@ -3,8 +3,8 @@
  * Adds the Webfont Loader to load fonts asyncronously.
  *
  * @package kirki-framework/module-webfonts
- * @author Ari Stathopoulos (@aristath)
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @author Themeum (@themeum)
+ * @copyright Copyright (c) 2019, Themeum (@themeum)
  * @license https://opensource.org/licenses/MIT
  * @since 1.0.0
  */
