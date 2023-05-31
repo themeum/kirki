@@ -5,7 +5,7 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Themeum (@themeum)
+ * @copyright   Copyright (c) 2023, Themeum
  * @license    https://opensource.org/licenses/MIT
  * @since       2.2.0
  */

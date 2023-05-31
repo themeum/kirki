@@ -5,8 +5,8 @@
  *
  * @package     Kirki
  * @category    Core
- * @author      Themeum (@themeum)
- * @copyright   Copyright (c) 2019, Themeum (@themeum)
+ * @author      Themeum
+ * @copyright   Copyright (c) 2023, Themeum
  * @license    https://opensource.org/licenses/MIT
  * @since       1.0
  */

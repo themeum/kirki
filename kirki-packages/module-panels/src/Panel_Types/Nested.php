@@ -4,7 +4,7 @@
  *
  * @package     Kirki
  * @subpackage  Custom Sections Module
- * @copyright   Copyright (c) 2019, Themeum (@themeum)
+ * @copyright   Copyright (c) 2023, Themeum
  * @license    https://opensource.org/licenses/MIT
  * @since       3.0.0
  */

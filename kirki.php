@@ -12,8 +12,8 @@
  *
  * @package Kirki
  * @category Core
- * @author Themeum (@themeum)
- * @copyright Copyright (c) 2021, Themeum
+ * @author Themeum
+ * @copyright Copyright (c) 2023, Themeum
  * @license https://opensource.org/licenses/MIT
  * @since 1.0
  */

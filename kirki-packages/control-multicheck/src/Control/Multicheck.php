@@ -6,7 +6,7 @@
  * Props @ Justin Tadlock: http://justintadlock.com/archives/2015/05/26/multiple-checkbox-customizer-control
  *
  * @package   kirki-framework/control-multicheck
- * @copyright Copyright (c) 2019, Themeum (@themeum)
+ * @copyright Copyright (c) 2023, Themeum
  * @license   https://opensource.org/licenses/MIT
  * @since     1.0
  */

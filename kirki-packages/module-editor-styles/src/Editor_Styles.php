@@ -9,7 +9,7 @@
  * @package     Kirki
  * @category    Core
  * @author      Tim Elsass
- * @copyright   Copyright (c) 2019, Themeum (@themeum)
+ * @copyright   Copyright (c) 2023, Themeum
  * @license     https://opensource.org/licenses/MIT
  * @since       3.0.35
  */
