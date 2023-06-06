@@ -3,7 +3,7 @@
  * Override field methods when used with the Kirki API.
  *
  * @package   kirki-framework/control-custom
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2023, Themeum
  * @license   https://opensource.org/licenses/MIT
  * @since     1.0
  */

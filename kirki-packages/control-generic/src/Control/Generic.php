@@ -3,7 +3,7 @@
  * Customizer Control: kirki-generic.
  *
  * @package   kirki-framework/control-generic
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright Copyright (c) 2023, Themeum
  * @license   https://opensource.org/licenses/MIT
  * @since     1.0
  */

@@ -4,8 +4,8 @@
  *
  * @package    Kirki
  * @category   Modules
- * @author     Ari Stathopoulos (@aristath)
- * @copyright  Copyright (c) 2020, David Vongries
+ * @author     Themeum
+ * @copyright  Copyright (c) 2023, Themeum
  * @license    https://opensource.org/licenses/MIT
  * @since      3.0.0
  */
@@ -17,6 +17,7 @@ namespace Kirki\Compatibility;
  */
 class Modules {
 
+	
 	/**
 	 * An array of available modules.
 	 *
