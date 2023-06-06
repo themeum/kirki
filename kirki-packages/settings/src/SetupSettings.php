@@ -108,9 +108,9 @@ class SetupSettings {
 
 		wp_enqueue_script( 'kirki-settings', KIRKI_PLUGIN_URL . '/kirki-packages/settings/dist/settings.js', array( 'jquery', 'wp-polyfill' ), KIRKI_VERSION, true );
 
-		$udb_name     = 'Ultimate Dashboard';
-		$udb_slug     = 'ultimate-dashboard';
-		$udb_file     = 'ultimate-dashboard.php';
+		$udb_name     = '';
+		$udb_slug     = '';
+		$udb_file     = '';
 		$udb_basename = $udb_slug . '/' . $udb_file;
 
 		$udb_activation_url = add_query_arg(

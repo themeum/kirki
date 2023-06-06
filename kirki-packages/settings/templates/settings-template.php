@@ -59,9 +59,6 @@ return function () {
 
 				</div>
 
-				<div class="heatbox-admin-panel kirki-recommended-plugins-panel">
-					<?php require __DIR__ . '/metaboxes/recommended-plugins.php'; ?>
-				</div>
 
 			</div>
 
