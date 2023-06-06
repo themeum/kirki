@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Singleton class
  */
 final class Framework {
-
+	public $modules;
 	/**
 	 * Holds the one, true instance of this object.
 	 *

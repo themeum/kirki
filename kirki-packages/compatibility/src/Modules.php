@@ -17,6 +17,7 @@ namespace Kirki\Compatibility;
  */
 class Modules {
 
+	
 	/**
 	 * An array of available modules.
 	 *
