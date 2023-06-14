@@ -1,6 +1,11 @@
+### 4.2.0 - June 13, 2023 ###
+- Fix: Deprecated PHP issue
+- Update: PHP 8.1 and 8.2 compatibility
+- Update: WordPress latest (v6.2.2) compatibility
+
 ### 4.1.1 - February 08, 2023 ###
 - Rename kirki packages dir & composer vendor-dir
-
+- 
 ### 4.1.0 - February 07, 2023 ###
 - New: Settings page to allow users to clear the Kirki font cache.
 - Tweak: Bundled all individual packages into the main repository, reducing the number of repositories used in development. This simplifies development by eliminating the need to work on multiple repositories.
