@@ -104,3 +104,5 @@ require_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.ph
 if ( defined( 'KIRKI_TEST' ) && true === KIRKI_TEST && file_exists( dirname( __FILE__ ) . '/example.php' ) ) {
 	include_once dirname( __FILE__ ) . '/example.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 }
+
+require_once __DIR__ . '/pro-src/pro-index.php';

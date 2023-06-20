@@ -11,6 +11,7 @@
  *
  * @since 4.0
  */
+
 new \Kirki\Compatibility\Aliases();
 new \Kirki\Compatibility\Scripts();
 new \Kirki\Compatibility\Deprecated();

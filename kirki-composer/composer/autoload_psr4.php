@@ -9,6 +9,7 @@ return array(
     'PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => array($vendorDir . '/dealerdirect/phpcodesniffer-composer-installer/src'),
     'Kirki\\Util\\' => array($baseDir . '/kirki-packages/util/src'),
     'Kirki\\Settings\\' => array($baseDir . '/kirki-packages/settings/src'),
+    'Kirki\\Pro\\' => array($baseDir . '/pro-src'),
     'Kirki\\Module\\' => array($baseDir . '/kirki-packages/module-css/src', $baseDir . '/kirki-packages/module-editor-styles/src', $baseDir . '/kirki-packages/module-field-dependencies/src', $baseDir . '/kirki-packages/module-postmessage/src', $baseDir . '/kirki-packages/module-preset/src', $baseDir . '/kirki-packages/module-section-icons/src', $baseDir . '/kirki-packages/module-selective-refresh/src', $baseDir . '/kirki-packages/module-tooltips/src', $baseDir . '/kirki-packages/module-webfonts/src'),
     'Kirki\\Field\\' => array($baseDir . '/kirki-packages/field/src/Field', $baseDir . '/kirki-packages/field-background/src', $baseDir . '/kirki-packages/field-dimensions/src', $baseDir . '/kirki-packages/field-fontawesome/src', $baseDir . '/kirki-packages/field-multicolor/src/Field', $baseDir . '/kirki-packages/field-multicolor/src', $baseDir . '/kirki-packages/field-typography/src/Field', $baseDir . '/kirki-packages/field-typography/src'),
     'Kirki\\Data\\' => array($baseDir . '/kirki-packages/data-option/src'),

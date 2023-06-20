@@ -1,0 +1,30 @@
+{
+    "name": "mapsteps/kirki-pro-input-slider",
+    "description": "Packages management for kirki-pro-input-slider",
+    "minimum-stability": "dev",
+    "type": "library",
+    "homepage": "https://kirki.org/docs/pro/input-slider/",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Kirki Framework",
+            "email": "connect@mapsteps.com",
+            "homepage": "https://kirki.org",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "connect@mapsteps.com",
+        "docs": "https://kirki.org/docs/pro/input-slider/"
+    },
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kirki\\Pro\\Control\\": "src/Control",
+            "Kirki\\Pro\\Field\\": "src/Field",
+            "Kirki\\Pro\\InputSlider\\": "src"
+        }
+    }
+}
