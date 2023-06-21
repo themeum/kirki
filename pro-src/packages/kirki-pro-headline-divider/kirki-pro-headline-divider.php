@@ -4,8 +4,8 @@
  * Plugin URI:  https://kirki.org
  * Description: Headlines & divider control for Kirki Customizer Framework.
  * Version:     1.1
- * Author:      David Vongries
- * Author URI:  https://davidvongries.com/
+ * Author:      Themeum
+ * Author URI:  https://themeum.com/
  * License:     GPL-3.0
  * License URI: https://oss.ninja/gpl-3.0?organization=Kirki%20Framework&project=control%20headline%20divider
  * Text Domain: kirki-pro-headline-divider
