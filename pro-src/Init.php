@@ -38,16 +38,15 @@ class Init {
 		require_once __DIR__ . '/../vendor/autoload.php';
 
 		$packages = [
-			
-			'mapsteps/kirki-pro-headline-divider',
-			'mapsteps/kirki-pro-input-slider',
-			'mapsteps/kirki-pro-margin-padding',
-			'mapsteps/kirki-pro-responsive',
-			'mapsteps/kirki-pro-tabs',
+			'packages/kirki-pro-headline-divider',
+			'packages/kirki-pro-input-slider',
+			'packages/kirki-pro-margin-padding',
+			'packages/kirki-pro-responsive',
+			'packages/kirki-pro-tabs',
 		];
 
 		foreach ( $packages as $package ) {
-			$init_class_name = str_ireplace( 'mapsteps/kirki-pro-', '', $package );
+			$init_class_name = str_ireplace( 'packages/kirki-pro-', '', $package );
 			$init_class_name = str_ireplace( '-', ' ', $init_class_name );
 			$init_class_name = ucwords( $init_class_name );
 			$init_class_name = str_ireplace( ' ', '', $init_class_name );

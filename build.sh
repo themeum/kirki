@@ -40,7 +40,7 @@ sed -i '/wptrt\/wpthemereview/d' composer.json
 
 echo "Now updating composer after the dev dependencies removal ...";
 
-composer update -n
+composer install --no-dev -n
 
 echo "Removing un-necessary files inside individual packages ..."
 

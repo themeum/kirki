@@ -9,15 +9,15 @@ if ( ! function_exists( 'kirki_pro_init_controls' ) ) {
 	function kirki_pro_init_controls() {
 
 		$packages = array(
-			__DIR__ . '/mapsteps/kirki-pro-headline-divider',
-			__DIR__ . '/mapsteps/kirki-pro-input-slider',
-			__DIR__ . '/mapsteps/kirki-pro-margin-padding',
-			__DIR__ . '/mapsteps/kirki-pro-responsive',
-			__DIR__ . '/mapsteps/kirki-pro-tabs',
+			__DIR__ . '/packages/kirki-pro-headline-divider',
+			__DIR__ . '/packages/kirki-pro-input-slider',
+			__DIR__ . '/packages/kirki-pro-margin-padding',
+			__DIR__ . '/packages/kirki-pro-responsive',
+			__DIR__ . '/packages/kirki-pro-tabs',
 		);
 
 		foreach ( $packages as $package ) {
-			$init_class_name = str_ireplace( __DIR__ . '/mapsteps/kirki-pro-', '', $package );
+			$init_class_name = str_ireplace( __DIR__ . '/packages/kirki-pro-', '', $package );
 			$init_class_name = str_ireplace( '-', ' ', $init_class_name );
 			$init_class_name = ucwords( $init_class_name );
 			$init_class_name = str_ireplace( ' ', '', $init_class_name );
