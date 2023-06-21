@@ -2,10 +2,6 @@
 	"name": "kirki-pro-tabs",
 	"version": "1.1",
 	"description": "Dev toolkit for kirki-pro-tabs",
-	"repository": {
-		"type": "git",
-		"url": "https://bitbucket.org/mapsteps/kirki-pro-tabs/"
-	},
 	"keywords": [
 		"kirki-pro-tabs"
 	],

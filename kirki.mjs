@@ -101,10 +101,6 @@ const definedPackages = {
 		path: "kirki-packages/module-tooltips",
 		sources: ["src/control.js"],
 	},
-	"kirki-pro-responsive": {
-		path: "src/mapsteps/kirki-pro-responsive",
-		sources: ["src/control.js"],
-	},
 
 };
 
