@@ -1,3 +1,11 @@
+### 4.3.0 - June 21, 2023 ###
+- Update: Free and Pro merged  
+
+### 4.2.0 - June 13, 2023 ###
+- Fix:: Deprecated PHP issue
+- Update: PHP 8.1 and 8.2 compatibility
+- Update: WordPress latest (v6.2.2) compatibility
+
 ### 4.1.1 - February 08, 2023 ###
 - Rename kirki packages dir & composer vendor-dir
 
