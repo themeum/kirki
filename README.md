@@ -1,5 +1,5 @@
 # Kirki Customizer Framework #
-**Contributors:** [davidvongries](https://profiles.wordpress.org/davidvongries), [aristath](https://profiles.wordpress.org/aristath), [dannycooper](https://profiles.wordpress.org/dannycooper), [wplemon](https://profiles.wordpress.org/wplemon), [igmoweb](https://profiles.wordpress.org/igmoweb)
+**Contributors:** [themeum]
 **Tags:** customizer, options framework, theme, mods, toolkit, gutenberg
 **Requires at least:** 5.2
 **Tested up to:** 6.2.2
