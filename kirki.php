@@ -105,4 +105,4 @@ if ( defined( 'KIRKI_TEST' ) && true === KIRKI_TEST && file_exists( dirname( __F
 	include_once dirname( __FILE__ ) . '/example.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 }
 
-require_once __DIR__ . '/pro-src/index.php';
+require_once __DIR__ . '/pro-src/pro-index.php';

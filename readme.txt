@@ -1,5 +1,5 @@
 === Kirki Customizer Framework ===
-Contributors: davidvongries, aristath, dannycooper, wplemon, igmoweb
+Contributors: themeum
 Tags: customizer, options framework, theme, mods, toolkit, gutenberg
 Requires at least: 5.2
 Tested up to: 6.2.2
