@@ -8,7 +8,7 @@
  * Version: 4.3.0
  * Text Domain: kirki
  * Requires at least: 5.2
- * Requires PHP: 7.4
+ * Requires PHP: 7.1
  *
  * @package Kirki
  * @category Core
