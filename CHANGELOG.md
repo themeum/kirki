@@ -1,4 +1,4 @@
-### 4.3.0 - June 21, 2023 ###
+### 5.0.0 - June 21, 2023 ###
 - Update: Free and Pro merged  
 
 ### 4.2.0 - June 13, 2023 ###
