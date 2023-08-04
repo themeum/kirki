@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Kirki PRO Input Slider
- * Plugin URI:  https://kirki.org
+ * Plugin URI:  https://www.themeum.com/
  * Description: Input slider control for Kirki Customizer Framework.
  * Version:     1.1
  * Author:      Themeum

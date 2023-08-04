@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Kirki Customizer Framework
- * Plugin URI: https://kirki.org
+ * Plugin URI: https://themeum.com
  * Description: The Ultimate WordPress Customizer Framework
  * Author: Themeum
  * Author URI: https://themeum.com

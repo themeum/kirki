@@ -33,7 +33,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 		<p>
 			<?php _e( 'The following article provides a detailed explanation of the Clear Font Cache option in Kirki.', 'kirki' ); ?>
 		</p>
-		<a href="https://kirki.org/docs/modules/settings-page/" target="_blank" class="button">
+		<a href="https://docs.themeum.com/kirki/modules/settings-page/" target="_blank" class="button">
 			<?php _e( 'Documentation', 'kirki' ); ?>
 		</a>
 	</div>

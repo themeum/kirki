@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Kirki PRO Responsive
- * Plugin URI:  https://kirki.org
+ * Plugin URI:  https://www.themeum.com/
  * Description: Responsive control for Kirki Customizer Framework.
  * Version:     1.1
  * Author:      Themeum

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Kirki PRO - Headlines & Divider Control
- * Plugin URI:  https://kirki.org
+ * Plugin URI:  https://themeum.com
  * Description: Headlines & divider control for Kirki Customizer Framework.
  * Version:     1.1
  * Author:      Themeum

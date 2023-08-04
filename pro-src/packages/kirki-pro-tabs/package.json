@@ -8,9 +8,9 @@
 	"author": "Kirki",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://kirki.org/"
+		"url": "https://www.themeum.com/"
 	},
-	"homepage": "https://kirki.org/",
+	"homepage": "https://www.themeum.com/",
 	"devDependencies": {
 		"@parcel/transformer-sass": "^2.2.1",
 		"parcel": "^2.2.1"

@@ -8,9 +8,9 @@
   "author": "Kirki",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://kirki.org/"
+    "url": "https://www.themeum.com/"
   },
-  "homepage": "https://kirki.org/",
+  "homepage": "https://www.themeum.com/",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
