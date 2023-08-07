@@ -27,7 +27,7 @@ return function () {
 					</div>
 
 					<div>
-						<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/kirki-logo-rounded.png">
+						<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/kirki-logo.jpg">
 					</div>
 
 				</div>

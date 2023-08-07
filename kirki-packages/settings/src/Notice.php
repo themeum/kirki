@@ -86,7 +86,7 @@ class Notice {
 
 			<div class="notice-body">
 				<div class="notice-icon">
-					<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/kirki-logo-rounded.png">
+					<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/kirki-logo.jpg">
 				</div>
 				<div class="notice-content">
 					<h2>
