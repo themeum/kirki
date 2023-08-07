@@ -1,3 +1,11 @@
+### 5.0.0 - June 21, 2023 ###
+- Update: Free and Pro merged  
+
+### 4.2.0 - June 13, 2023 ###
+- Fix:: Deprecated PHP issue
+- Update: PHP 8.1 and 8.2 compatibility
+- Update: WordPress latest (v6.2.2) compatibility
+
 ### 4.1.1 - February 08, 2023 ###
 - Rename kirki packages dir & composer vendor-dir
 
@@ -296,7 +304,6 @@ In the customizer the `postMessage` module was completely rewritten.
 * New: Added `kirki_googlefonts_font_display` filter.
 * New: Added a new `link` section-type.
 * New: Completely refactored the `postMessage` module. The new implementation is JS-based instead of PHP and is a lot more performant.
-* New: Added telemetry module. See [kirki.org/docs/modules/telemetry](https://kirki.org/docs/modules/telemetry.html) for details.
 * New: Improved CSS loading method. Styles are now added inline.
 * New: Introduced a `kirki_output_inline_styles` filter - can be used by themes that want to enqueue a dynamic stylesheet with a URL `example.com/?action=kirki-styles` instead of the inline method.
 * Deprecated: Removed the "host locally" option from typography controls. This is now the default behaviour and significantly improves performance. Option is no longer necessary.

@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'kirki-framework/kirki',
-        'pretty_version' => '4.2.0',
-        'version' => '4.2.0.0',
+        'pretty_version' => '5.0.0',
+        'version' => '5.0.0.0',
         'reference' => NULL,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -29,8 +29,8 @@
             'dev_requirement' => true,
         ),
         'kirki-framework/kirki' => array(
-            'pretty_version' => '4.2.0',
-            'version' => '4.2.0.0',
+            'pretty_version' => '5.0.0',
+            'version' => '5.0.0.0',
             'reference' => NULL,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
@@ -65,9 +65,9 @@
             'dev_requirement' => true,
         ),
         'squizlabs/php_codesniffer' => array(
-            'pretty_version' => '3.7.1',
-            'version' => '3.7.1.0',
-            'reference' => '1359e176e9307e906dc3d890bcc9603ff6d90619',
+            'pretty_version' => '3.7.2',
+            'version' => '3.7.2.0',
+            'reference' => 'ed8e00df0a83aa96acf703f8c2979ff33341f879',
             'type' => 'library',
             'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
             'aliases' => array(),
