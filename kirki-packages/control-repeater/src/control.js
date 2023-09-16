@@ -670,6 +670,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
     this.setting.set(encodeURI(JSON.stringify(filteredValue)));
 
     if (refresh) {
+			// Check acive_callback in every change
+			KirkiRepeaterDependencies.init();
       // Trigger the change event on the hidden field so
       // previewer refresh the website on Customizer
       this.settingField.trigger("change");
