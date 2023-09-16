@@ -4,8 +4,8 @@
  *
  * @package Kirki
  * @category Core
- * @author Ari Stathopoulos (@aristath)
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @author Themeum
+ * @copyright Copyright (c) 2023, Themeum
  * @license https://opensource.org/licenses/MIT
  * @since 3.0.12
  */
@@ -33,7 +33,7 @@ Kirki::add_config(
 /**
  * Add a panel.
  *
- * @link https://kirki.org/docs/getting-started/panels.html
+ * @link https://docs.themeum.com/kirki/getting-started/panels-sections/
  */
 new \Kirki\Panel(
 	'kirki_demo_panel',
@@ -50,7 +50,7 @@ new \Kirki\Panel(
  * We'll be doing things a bit differently here, just to demonstrate an example.
  * We're going to define 1 section per control-type just to keep things clean and separate.
  *
- * @link https://kirki.org/docs/getting-started/sections.html
+ * @link https://docs.themeum.com/kirki/getting-started/panels-sections/
  */
 $sections = [
 	'background'      => [ esc_html__( 'Background', 'kirki' ), '' ],
@@ -105,7 +105,7 @@ new \Kirki\Section(
 		'title'       => esc_html__( 'Test Link Section', 'kirki' ),
 		'type'        => 'link',
 		'button_text' => esc_html__( 'Pro', 'kirki' ),
-		'button_url'  => 'https://kirki.org',
+		'button_url'  => 'https://themeum.com',
 	]
 );
 
@@ -134,7 +134,7 @@ new \Kirki\Field\Background(
 /**
  * Code control.
  *
- * @link https://kirki.org/docs/controls/code.html
+ * @link https://docs.themeum.com/kirki/controls/code/
  */
 new \Kirki\Field\Code(
 	[
@@ -152,7 +152,7 @@ new \Kirki\Field\Code(
 /**
  * Checkbox control.
  *
- * @link https://kirki.org/docs/controls/checkbox.html
+ * @link https://docs.themeum.com/kirki/controls/checkbox/
  */
 new \Kirki\Field\Checkbox(
 	[
@@ -167,7 +167,7 @@ new \Kirki\Field\Checkbox(
 /**
  * Color Controls.
  *
- * @link https://kirki.org/docs/controls/color.html
+ * @link https://docs.themeum.com/kirki/controls/color/
  */
 Kirki::add_field(
 	'kirki_demo_config',
@@ -481,7 +481,7 @@ new \Kirki\Field\Editor(
 /**
  * Color-Palette Controls.
  *
- * @link https://kirki.org/docs/controls/color-palette.html
+ * @link https://docs.themeum.com/kirki/controls/color-palette/
  */
 new \Kirki\Field\Color_Palette(
 	[
@@ -624,7 +624,7 @@ Kirki::add_field(
 /**
  * Dashicons control.
  *
- * @link https://kirki.org/docs/controls/dashicons.html
+ * @link https://docs.themeum.com/kirki/controls/dashicons/
  */
 new \Kirki\Field\Dashicons(
 	[
@@ -1030,13 +1030,13 @@ new \Kirki\Field\Repeater(
 		'default'     => [
 			[
 				'link_text'   => esc_html__( 'Kirki Site', 'kirki' ),
-				'link_url'    => 'https://kirki.org/',
+				'link_url'    => 'https://themeum.com/',
 				'link_target' => '_self',
 				'checkbox'    => false,
 			],
 			[
 				'link_text'   => esc_html__( 'Kirki Repository', 'kirki' ),
-				'link_url'    => 'https://github.com/aristath/kirki',
+				'link_url'    => 'https://github.com/themeum/kirki',
 				'link_target' => '_self',
 				'checkbox'    => false,
 			],

@@ -1,19 +1,19 @@
 <?php
 /**
  * Plugin Name: Kirki Customizer Framework
- * Plugin URI: https://kirki.org
+ * Plugin URI: https://themeum.com
  * Description: The Ultimate WordPress Customizer Framework
- * Author: David Vongries
- * Author URI: https://davidvongries.com/
- * Version: 4.1.1
+ * Author: Themeum
+ * Author URI: https://themeum.com
+ * Version: 5.0.0
  * Text Domain: kirki
  * Requires at least: 5.2
- * Requires PHP: 7.0
+ * Requires PHP: 7.1
  *
  * @package Kirki
  * @category Core
- * @author Ari Stathopoulos (@aristath)
- * @copyright Copyright (c) 2021, David Vongries
+ * @author Themeum
+ * @copyright Copyright (c) 2023, Themeum
  * @license https://opensource.org/licenses/MIT
  * @since 1.0
  */
@@ -44,7 +44,7 @@ require_once __DIR__ . '/kirki-composer/autoload.php'; // phpcs:ignore WPThemeRe
 require_once __DIR__ . '/inc/bootstrap.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 if ( ! defined( 'KIRKI_VERSION' ) ) {
-	define( 'KIRKI_VERSION', '4.1.1' );
+	define( 'KIRKI_VERSION', '5.0.0' );
 }
 
 if ( ! defined( 'KIRKI_PLUGIN_DIR' ) ) {
@@ -104,3 +104,5 @@ require_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.ph
 if ( defined( 'KIRKI_TEST' ) && true === KIRKI_TEST && file_exists( dirname( __FILE__ ) . '/example.php' ) ) {
 	include_once dirname( __FILE__ ) . '/example.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 }
+
+require_once __DIR__ . '/pro-src/pro-index.php';

@@ -3,8 +3,8 @@
  * Get the URL of any file in WordPress.
  *
  * @package   kirki-framework/url-getter
- * @author    Ari Stathopoulos (@aristath)
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @author    Themeum
+ * @copyright Copyright (c) 2023, Themeum
  * @license   https://opensource.org/licenses/MIT
  * @since     1.0
  */

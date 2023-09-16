@@ -101,6 +101,7 @@ const definedPackages = {
 		path: "kirki-packages/module-tooltips",
 		sources: ["src/control.js"],
 	},
+
 };
 
 const parcelBinPath = "node_modules/.bin/parcel";
@@ -152,7 +153,7 @@ function runParcel(commandType, packageName, opts) {
 // Create the program.
 
 const program = sade("kirki");
-program.version("4.1.1");
+program.version("5.0.0");
 
 program
 	.command("build <packageName>")

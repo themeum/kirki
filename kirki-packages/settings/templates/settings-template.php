@@ -27,7 +27,7 @@ return function () {
 					</div>
 
 					<div>
-						<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/kirki-logo-rounded.png">
+						<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/kirki-logo.jpg">
 					</div>
 
 				</div>
@@ -36,9 +36,6 @@ return function () {
 					<ul class="heatbox-tab-nav">
 						<li class="heatbox-tab-nav-item kirki-settings-panel">
 							<a href="#settings"><?php _e( 'Settings', 'kirki' ); ?></a>
-						</li>
-						<li class="heatbox-tab-nav-item kirki-recommended-plugins-panel">
-							<a href="#recommended-plugins"><?php _e( 'Recommended Plugins', 'kirki' ); ?></a>
 						</li>
 					</ul>
 				</nav>
@@ -57,28 +54,11 @@ return function () {
 				<div class="heatbox-admin-panel kirki-settings-panel">
 					<?php
 					require __DIR__ . '/metaboxes/clear-font-cache.php';
-					$show_udb_ads = ! defined( 'ULTIMATE_DASHBOARD_PLUGIN_URL' );
+					
 					?>
 
-					<?php if ( $show_udb_ads ) : ?>
-
-						<div class="featured-products-banner">
-							<a href="#" target="_blank" class="pro-extensions-banner-link kirki-install-udb">
-								<img src="<?php echo esc_url( KIRKI_PLUGIN_URL ); ?>/assets/images/featured-plugin-banner.jpg" alt="Ultimate Dashboard">
-							</a>
-						</div>
-
-						<?php
-						require __DIR__ . '/metaboxes/installation-progress.php';
-						require __DIR__ . '/metaboxes/ultimate-dashboard.php';
-						?>
-
-					<?php endif; ?>
 				</div>
 
-				<div class="heatbox-admin-panel kirki-recommended-plugins-panel">
-					<?php require __DIR__ . '/metaboxes/recommended-plugins.php'; ?>
-				</div>
 
 			</div>
 

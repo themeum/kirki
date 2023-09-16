@@ -5,8 +5,8 @@
  * Inspired by Justin Tadlock and the work he did with hybrid-core.
  *
  * @package   kirki-framework/l10n
- * @author    Ari Stathopoulos (@aristath)
- * @copyright Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @author    Themeum
+ * @copyright Copyright (c) 2023, Themeum
  * @license   https://opensource.org/licenses/MIT
  * @since     1.0
  */

@@ -1,18 +1,18 @@
 {
     "name": "kirki-framework/kirki",
     "type": "library",
-    "version": "4.1.1",
+    "version": "5.0.0",
     "keywords": [
         "WordPress",
         "Customizer"
     ],
     "description": "Extending the WordPress customizer",
-    "homepage": "https://kirki.org",
+    "homepage": "https://www.themeum.com",
     "license": "MIT",
     "authors": [
         {
             "name": "Kirki Framework",
-            "email": "connect@mapsteps.com"
+            "email": "support@themeum.com"
         }
     ],
     "config": {
@@ -53,7 +53,7 @@
                 "kirki-packages/module-section-icons/src",
                 "kirki-packages/module-selective-refresh/src",
                 "kirki-packages/module-tooltips/src",
-                "kirki-packages/module-webfonts/src"
+                "kirki-packages/module-webfonts/src" 
             ],
             "Kirki\\Util\\": [
                 "kirki-packages/util/src"
@@ -91,7 +91,9 @@
                 "kirki-packages/module-panels/src",
                 "kirki-packages/module-sections/src",
                 "kirki-packages/url-getter/src"
-            ]
+            ],
+
+            "Kirki\\Pro\\": "pro-src/"
         }
     },
     "require": {
