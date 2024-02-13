@@ -215,6 +215,7 @@ class CSS {
 		}
 
 		$inline_styles_id = apply_filters( 'kirki_inline_styles_id', self::$inline_styles_id );
+		$inline_styles = apply_filters( 'kirki_inline_styles', $inline_styles );
 
 		echo '<style id="' . esc_attr( $inline_styles_id ) . '">';
 		echo $inline_styles;
