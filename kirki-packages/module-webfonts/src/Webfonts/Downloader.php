@@ -66,6 +66,15 @@ class Downloader {
 	protected function get_local_files_from_css( $css ) {
 		$font_files = $this->get_files_from_css( $css );
 		$stored     = get_option( 'kirki_downloaded_font_files', array() );
+
+		// Note: This is a fix, to enshure that previously
+		// badly stored values are deleted.
+		// May be safly removed in the future.
+		if( !is_array($stored) ) {
+			delete_option( 'kirki_downloaded_font_files' ); 
+			$stored = array();
+		}
+
 		$change     = false; // If in the end this is true, we need to update the cache option.
 
 		// If the fonts folder don't exist, create it.
@@ -121,7 +130,7 @@ class Downloader {
 			}
 		}
 
-		if ( $change ) {
+		if ( $change && is_array( $stored ) && !empty( $stored ) ) {
 			update_option( 'kirki_downloaded_font_files', $stored );
 		}
 
