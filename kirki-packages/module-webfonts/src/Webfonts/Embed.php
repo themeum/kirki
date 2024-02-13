@@ -151,7 +151,7 @@ final class Embed {
 			$url     = "https://fonts.googleapis.com/css?family={$family}:{$weights}&subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai&display=swap";
 
 			$downloader = new Downloader();
-			$contents   = $downloader->get_styles( $url );
+			$contents 	= apply_filters('kirki_inline_fonts', $downloader->get_styles( $url ));
 
 			if ( $contents ) {
 				/**
