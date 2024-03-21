@@ -31,6 +31,7 @@ class Field {
 	public $button_label;
 	public $description;
 	public $help;
+	public $compiler;
 
 	protected $args = array();
 
