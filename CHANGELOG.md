@@ -1,4 +1,4 @@
-### 5.1.0 - March 22, 2023 ###
+### 5.1.0 - March 22, 2024 ###
 - Fix: We've resolved the issue with fonts not loading properly, ensuring your designs look sleek and professional.
 - Fix: Addressed deprecated errors to boost compatibility and keep your site running smoothly.
 - Update: We've ensured compatibility with the latest WordPress 6.4 and PHP 8.2, so you can stay up-to-date with the latest technologies. 
