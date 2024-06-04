@@ -72,10 +72,10 @@ const definedPackages = {
         path: "kirki-packages/control-repeater",
         sources: ["src/control.js"],
     },
-    "control-select": {
-        path: "kirki-packages/control-select",
-        sources: ["src/control.js"],
-    },
+    // "control-select": {
+    //     path: "kirki-packages/control-select",
+    //     sources: ["src/control.js"],
+    // },
     "control-slider": {
         path: "kirki-packages/control-slider",
         sources: ["src/control.js"],
