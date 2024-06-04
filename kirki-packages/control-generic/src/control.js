@@ -1,7 +1,7 @@
 wp.customize.controlConstructor["kirki-generic"] =
   wp.customize.kirkiDynamicControl.extend({
-    initKirkiControl: function (control) {
-      control = control || this;
+    initKirkiControl: function (_control) {
+      const control = _control || this;
       const params = control.params;
 
       control.container.find("input, textarea").on("change input", function () {
