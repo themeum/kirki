@@ -156,13 +156,21 @@ const program = sade("kirki");
 program.version("5.1.0");
 
 program
-    .command("build <packageName>")
+    .command("build [packageName]")
     .describe("Build a package by package name")
     .option("-d, --debug", "Build as unminified code for debugging purpose")
+		.option("--a, --all", "Build all packages, overriding the name supplied")
     .example("build control-base")
     .example("build control-base --debug")
     .action((packageName, opts) => {
-        runParcel("build", packageName, opts);
+			if (opts.a) {
+				Object.keys(definedPackages).forEach(name => {
+					console.log(name);
+					runParcel("build", name, opts)
+				});
+			} else {
+				runParcel("build", packageName, opts);
+			}
     });
 
 program
