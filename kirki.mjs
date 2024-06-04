@@ -169,7 +169,9 @@ program
 					runParcel("build", name, opts)
 				});
 			} else {
-				runParcel("build", packageName, opts);
+				if (packageName) {
+					runParcel("build", packageName, opts);
+				}
 			}
     });
 
