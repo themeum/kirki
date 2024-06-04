@@ -159,7 +159,7 @@ program
     .command("build [packageName]")
     .describe("Build a package by package name")
     .option("-d, --debug", "Build as unminified code for debugging purpose")
-		.option("--a, --all", "Build all packages, overriding the name supplied")
+		.option("-a, --all", "Build all packages, overriding the name supplied")
     .example("build control-base")
     .example("build control-base --debug")
     .action((packageName, opts) => {
