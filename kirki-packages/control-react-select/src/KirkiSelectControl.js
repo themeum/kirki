@@ -1,13 +1,13 @@
 /* global wp, jQuery, React, ReactDOM, _ */
 import KirkiSelectForm from "./KirkiSelectForm";
 
-const wpReactRender = (target, ) => {
+const wpReactRender = ( target, reactNode ) => {
 	if ( target ) {
 
     if ( wp.element.createRoot ) {
-        wp.element.createRoot( target ).render( wp.element.reactNode );
+			wp.element.createRoot( target ).render( wp.element.reactNode );
     } else {
-			wp.element.render( wp.element.reactNode, target );
+			wp.element.render( reactNode, target );
     }
 	}
 };

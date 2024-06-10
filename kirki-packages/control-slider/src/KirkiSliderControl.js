@@ -1,12 +1,12 @@
 import KirkiSliderForm from './KirkiSliderForm';
 
-const wpReactRender = (target, ) => {
+const wpReactRender = ( target, reactNode ) => {
 	if ( target ) {
 
     if ( wp.element.createRoot ) {
-        wp.element.createRoot( target ).render( wp.element.reactNode );
+			wp.element.createRoot( target ).render( wp.element.reactNode );
     } else {
-        render( wp.element.reactNode, target );
+			wp.element.render( reactNode, target );
     }
 	}
 };
