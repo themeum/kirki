@@ -1,4 +1,16 @@
 import KirkiMarginPaddingForm from "./KirkiMarginPaddingForm";
+import { createRoot, render } from '@wordpress/element';
+
+const wpReactRender = (target, ) => {
+	if ( target ) {
+
+    if ( createRoot ) {
+        createRoot( target ).render( reactNode );
+    } else {
+        render( reactNode, target );
+    }
+	}
+};
 
 /**
  * KirkiMarginPaddingControl.
@@ -66,16 +78,17 @@ const KirkiMarginPaddingControl = wp.customize.Control.extend({
   renderContent: function renderContent() {
     const control = this;
 
-    ReactDOM.render(
+    const reactElement = (
       <KirkiMarginPaddingForm
         {...control.params}
         control={control}
         customizerSetting={control.setting}
         setNotificationContainer={control.setNotificationCotainer}
         value={control.params.value}
-      />,
-      control.container[0]
-    );
+      />
+		);
+
+		wpReactRender(control.container[0], reactElement);
 
     if (false !== control.params.choices.allowCollapse) {
       control.container.addClass("allowCollapse");
