@@ -3,10 +3,10 @@ import KirkiSliderForm from './KirkiSliderForm';
 const wpReactRender = (target, ) => {
 	if ( target ) {
 
-    if ( createRoot ) {
-        createRoot( target ).render( reactNode );
+    if ( wp.element.createRoot ) {
+        wp.element.createRoot( target ).render( wp.element.reactNode );
     } else {
-        render( reactNode, target );
+        render( wp.element.reactNode, target );
     }
 	}
 };
