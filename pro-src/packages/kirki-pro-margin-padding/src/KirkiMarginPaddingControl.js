@@ -1,5 +1,4 @@
 import KirkiMarginPaddingForm from "./KirkiMarginPaddingForm";
-import { createRoot, render } from '@wordpress/element';
 
 const wpReactRender = (target, ) => {
 	if ( target ) {

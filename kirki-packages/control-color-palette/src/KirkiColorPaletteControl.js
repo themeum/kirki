@@ -1,5 +1,4 @@
 import KirkiColorPaletteForm from './KirkiColorPaletteForm';
-import { createRoot, render } from '@wordpress/element';
 
 const wpReactRender = (target, ) => {
 	if ( target ) {

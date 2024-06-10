@@ -1,5 +1,4 @@
 import KirkiSliderForm from './KirkiSliderForm';
-import { createRoot, render } from '@wordpress/element';
 
 const wpReactRender = (target, ) => {
 	if ( target ) {
