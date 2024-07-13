@@ -16,7 +16,7 @@ wp.customize.controlConstructor[ 'kirki-editor' ] = wp.customize.kirkiDynamicCon
 			mediaButtons: true
 		};
 
-		// Overwrite the default paramaters if choices is defined.
+		// Overwrite the default parameters if choices is defined.
 		if ( wp.editor && wp.editor.initialize ) {
 			wp.editor.initialize( id, jQuery.extend( {}, defaultParams, control.params.choices ) );
 		}
