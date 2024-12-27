@@ -125,6 +125,8 @@ final class Async {
 		// Goes through $this->fonts and adds or removes things as needed.
 		$this->googlefonts->process_fonts();
 
+		$subset = apply_filters( 'kirki_googlefonts_subset', 'cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai' );
+
 		foreach ( $this->googlefonts->fonts as $font => $weights ) {
 			foreach ( $weights as $key => $value ) {
 				if ( 'italic' === $value ) {
@@ -133,7 +135,7 @@ final class Async {
 					$weights[ $key ] = str_replace( [ 'regular', 'bold', 'italic' ], [ '400', '', 'i' ], $value );
 				}
 			}
-			$this->fonts_to_load[] = $font . ':' . join( ',', $weights ) . ':cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai';
+			$this->fonts_to_load[] = $font . ':' . join( ',', $weights ) . ':' . $subset;
 		}
 		if ( ! empty( $this->fonts_to_load ) ) {
 			self::$load = true;
