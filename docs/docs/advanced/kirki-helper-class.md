@@ -58,7 +58,7 @@ Kirki::add_field( 'my_config', array(
 		array(
 			'posts_per_page' => 10,
 			'post_type'      => 'page'
-		) ,
+		)
 	),
 ) );
 ```
