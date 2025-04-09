@@ -1,11 +1,11 @@
 wp.customize.controlConstructor["kirki-generic"] =
   wp.customize.kirkiDynamicControl.extend({
-    initKirkiControl: function (control) {
-      control = control || this;
+    initKirkiControl: function (_control) {
+      const control = _control ?? this;
       const params = control.params;
 
       control.container.find("input, textarea").on("change input", function () {
-        const value = jQuery(this).val();
+        let value = jQuery(this).val();
 
         if (
           "kirki-generic" === params.type &&

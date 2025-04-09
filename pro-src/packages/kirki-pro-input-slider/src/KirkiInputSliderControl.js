@@ -1,5 +1,16 @@
 import KirkiInputSliderForm from "./KirkiInputSliderForm";
 
+const wpReactRender = ( target, reactNode ) => {
+	if ( target ) {
+
+    if ( wp.element.createRoot ) {
+			wp.element.createRoot( target ).render( wp.element.reactNode );
+    } else {
+			wp.element.render( reactNode, target );
+    }
+	}
+};
+
 /**
  * KirkiInputSliderControl.
  *
@@ -66,16 +77,17 @@ const KirkiInputSliderControl = wp.customize.Control.extend({
   renderContent: function renderContent() {
     const control = this;
 
-    ReactDOM.render(
+    const reactElement = (
       <KirkiInputSliderForm
         {...control.params}
         control={control}
         customizerSetting={control.setting}
         setNotificationContainer={control.setNotificationContainer}
         value={control.params.value}
-      />,
-      control.container[0]
-    );
+      />
+		);
+
+		wpReactRender(control.container[0], reactElement)
 
     if (false !== control.params.choices.allowCollapse) {
       control.container.addClass("allowCollapse");

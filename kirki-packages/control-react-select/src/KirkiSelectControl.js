@@ -1,6 +1,17 @@
 /* global wp, jQuery, React, ReactDOM, _ */
 import KirkiSelectForm from "./KirkiSelectForm";
 
+const wpReactRender = ( target, reactNode ) => {
+	if ( target ) {
+
+    if ( wp.element.createRoot ) {
+			wp.element.createRoot( target ).render( wp.element.reactNode );
+    } else {
+			wp.element.render( reactNode, target );
+    }
+	}
+};
+
 /**
  * KirkiSelectControl.
  *
@@ -87,7 +98,7 @@ const KirkiSelectControl = wp.customize.Control.extend({
         maxSelectionNumber={control.params.maxSelectionNumber}
       />
     );
-    ReactDOM.render(form, control.container[0]);
+    wpReactRender(control.container[0], form);
   },
 
   /**
