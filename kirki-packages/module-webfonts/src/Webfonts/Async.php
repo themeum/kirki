@@ -1,6 +1,6 @@
 <?php
 /**
- * Adds the Webfont Loader to load fonts asyncronously.
+ * Adds the Webfont Loader to load fonts asynchronously.
  *
  * @package kirki-framework/module-webfonts
  * @author Themeum

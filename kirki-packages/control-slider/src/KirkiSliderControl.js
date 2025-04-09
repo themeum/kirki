@@ -70,7 +70,7 @@ const KirkiSliderControl = wp.customize.Control.extend({
 				{...control.params}
 				control={control}
 				customizerSetting={control.setting}
-				setNotificationContainer={control.setNotificationCotainer}
+				setNotificationContainer={control.setNotificationContainer}
 				value={control.params.value}
 			/>,
 			control.container[0]
@@ -100,7 +100,7 @@ const KirkiSliderControl = wp.customize.Control.extend({
 	},
 
 	/**
-	 * This method will be overriden by the rendered component.
+	 * This method will be overridden by the rendered component.
 	 */
 	updateComponentState: (val) => { },
 

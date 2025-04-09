@@ -125,18 +125,18 @@ Bugfixes:
 ### 4.0.6 - January 03, 2022 ###
 * Fix `active_callback` issue when using nested condition
 
-### 4.0.5 - Dezember 31, 2021 ###
+### 4.0.5 - December 31, 2021 ###
 * Fix `toggleClass` usage when using `js_vars`
 
-### 4.0.4 - Dezember 31, 2021 ###
+### 4.0.4 - December 31, 2021 ###
 * Allow string (numeric) as the choices value in slider control
 * Fix the compatibility issue when using Kirki::get_option to get the value of fields registered using new API.
 
-### 4.0.3 - Dezember 30, 2021 ###
+### 4.0.3 - December 30, 2021 ###
 
 * Fixed: Fatal error caused by wrong folder name
 
-### 4.0 - Dezember 29, 2021 ###
+### 4.0 - December 29, 2021 ###
 
 * Kirki 4.0 Release
 
@@ -451,7 +451,7 @@ January 23 2018, dev time: 1 hour.
 
 Please note that the typography controls since v3.0.23 no longer require subsets. This is not a bug or omission, subsets are simply no longer necessary because there's an implementation now that loads them properly without requiring the user to define it.
 
-* Fix: partial reversion of webfontloader improvements in order to resolve an issue with incorect font-weights loading.
+* Fix: partial reversion of webfontloader improvements in order to resolve an issue with incorrect font-weights loading.
 
 ## 3.0.24
 
@@ -508,7 +508,7 @@ December 18 2017, dev time: 3 hours
 December 13 2017, dev time: 1.5 hours
 
 * Fix: Use `repeat` instead of `repeat-all` in background controls [#1701](https://github.com/aristath/kirki/issues/1701)
-* Fix: Use `set_url_scheme()` when outputing images [#1697](https://github.com/aristath/kirki/issues/1697)
+* Fix: Use `set_url_scheme()` when outputting images [#1697](https://github.com/aristath/kirki/issues/1697)
 * Fix: `textarea` control is broken with HTML content [#1694](https://github.com/aristath/kirki/issues/1694) props @tutv95
 * Fix: Typo in `radio` controls [#1699](https://github.com/aristath/kirki/issues/1699)
 * Fix: variants selection for standard font-families.
@@ -560,7 +560,7 @@ November 19 2017, dev time: 8 hours
 * Fix: `slider` controls were not updating the numeric value visually in their textfield when the control was not using `postMessage` [#1633](https://github.com/aristath/kirki/issues/1627)
 * Fix: Deprecated call to non-existing `Kirki_Styles_Frontend`, props @FrankM1 [#1644](https://github.com/aristath/kirki/issues/1644)
 * Fix: Updated the customizer-styling module for compatibility with WP 4.9 [#1639](https://github.com/aristath/kirki/issues/1639)
-* Fix: `code` controls were not using the corect `priority` [#1622](https://github.com/aristath/kirki/issues/1622)
+* Fix: `code` controls were not using the correct `priority` [#1622](https://github.com/aristath/kirki/issues/1622)
 * Fix: Multiple reports of errors in the console.
 * New: Refactored the `number` controls [#1631](https://github.com/aristath/kirki/issues/1627)
 * New: Refactored the `color` controls. [#1646](https://github.com/aristath/kirki/issues/1646)
@@ -599,8 +599,8 @@ It also changes the file structure and paves the way for a 3.1 rewrite which wil
 
 * Fix: WordPress 4.9 compatibility for colorpickers.
 * Fix: WordPress 4.9 compatibility for typography controls.
-* Fix: WordPress 4.9 compatibility for multicolor contols.
-* Fix: WordPress 4.9 compatibility for background contols.
+* Fix: WordPress 4.9 compatibility for multicolor controls.
+* Fix: WordPress 4.9 compatibility for background controls.
 * Fix: Refactored `editor` controls to make them compatible with WP 4.9
 * Fix: Remove CodeMirror and use the code control from WordPress Core. Code controls will be displayed as textareas in WP older than 4.9.
 * Fix: Use new `DateTimeControl` if in WP 4.9+ for date control.
@@ -919,7 +919,7 @@ May 2, 2016, dev time: 52 hours.
 * FIX: Name attribute in repeaters (props @guillaumemolter).
 * FIX: Missing label for checkbox controls inside repeaters (props @guillaumemolter).
 * FIX: Placing 2 editor controls in the customizer leads to odd behaviour ([#140](https://github.com/aristath/kirki/issues/140)).
-* FIX: `active_callback` conbined with the old `required` argument. ([#906](https://github.com/aristath/kirki/issues/906)).
+* FIX: `active_callback` combined with the old `required` argument. ([#906](https://github.com/aristath/kirki/issues/906)).
 * FIX: Double prefix and suffix in `js_vars` ([#943](https://github.com/aristath/kirki/issues/943)).
 * FIX: Typography control returns both 'subset' and 'subsets' indexes with the same value ([#948](https://github.com/aristath/kirki/issues/948)).
 * FIX: Use `strict` JS mode in all controls.
@@ -933,7 +933,7 @@ April 19, 2016, dev time: 30 hours.
 * FIX: Image sub-controls in repeaters were causing a JS error.
 * FIX: Text Domain Compliance with Themecheck.
 * FIX: PostMessage scripts when using more than 1 elements for the output.
-* FIX: Default values for swithes, toggles & checkboxes.
+* FIX: Default values for switches, toggles & checkboxes.
 * FIX: Conflict with WP Core's `dropdown-pages` control.
 * FIX: Auto-transport not working when using serialized options instead of theme_mods.
 * FIX: `value_pattern` was not working properly when used in `js_vars`.
@@ -975,7 +975,7 @@ Kirki is now 100% WordPress Coding Standards compliant.
 
 April 6, 2016, dev time: 5 hours.
 
-* FIX: Enqueued assets missing when useg WP_DEBUG & WP_DEBUG_SCRIPT
+* FIX: Enqueued assets missing when used WP_DEBUG & WP_DEBUG_SCRIPT
 * FIX: Checkboxes were not properly displaying their values
 * FIX: Javascript errors when `number` controls were used without `min`, `max` or `step`.
 * FIX: Multiselect controls issue with the `sanitize_callback` used.
@@ -986,13 +986,13 @@ April 6, 2016, dev time: 5 hours.
 April 5, 2016, dev time: 23 hours.
 
 * FIX: Properly parsing `postMessage` scripts when `transport` is set to `auto`.
-* FIX: Background image was outputing CSS even if it was empty.
+* FIX: Background image was outputting CSS even if it was empty.
 * FIX: Default value for checkboxes.
 * FIX: Issue with plugin URLs in the customizer, when the plugin was embedded in a theme.
 * FIX: Descriptions were now shown in `sortable` fields.
 * FIX: Reset not working for textarea fields.
 * FIX: In some cases only the first element in `output` arguments was being processed.
-* FIX: edge-case bugfix for select controls when data saved if the db was somehow mis-formatted.
+* FIX: edge-case bugfix for select controls when data saved if the db was somehow misformatted.
 * FIX: Repeater controls now use image IDs instead of image URLs. Props @guillaumemolter
 * NEW: Added `text-align` ability in `typography` fields.
 * NEW: Added `text-transform` ability in `typography` fields.
@@ -1136,7 +1136,7 @@ February 13, 2016, dev time: 1 hour.
 
 * FIX: Google fonts bug (use double quotes when font name contains a space character)
 * FIX: Checkbox control bug (checkboxes were always displayed as checked, regardless of their actual value)
-* NEW: Intruducing KIRKI_NO_OUTPUT constant that disables CSS output completely when set to true.
+* NEW: Introducing KIRKI_NO_OUTPUT constant that disables CSS output completely when set to true.
 
 ## 2.0.8
 
@@ -1162,7 +1162,7 @@ January 18, 2016, dev time: 7 hours
 * FIX: Fix active callback for multidimensional arrays. (props @andrezrv)
 * FIX: Correctly check current value of checkbox control. (props @andrezrv)
 * FIX: Bug in the sortable field (props @daviedR)
-* FIX: Fixed some bugs that occured when using serialized options instead of theme_mods
+* FIX: Fixed some bugs that occurred when using serialized options instead of theme_mods
 * NEW: Added an image sub-field to repeater fields (props @sayedwp)
 * NEW: Added a JS callback to js_vars (props @pingram3541)
 * TWEAK: Settings sanitization
@@ -1486,7 +1486,7 @@ October 25, 2014
 
 * FIX: bugfix for selector
 * NEW: Change the Kirki theme based on which admin theme is selected.
-* FIX: Tranlsation domain issue
+* FIX: Translation domain issue
 * NEW: Added a \"group_title\" control
 * FIX: Updated the required script
 * FIX: Updating CSS

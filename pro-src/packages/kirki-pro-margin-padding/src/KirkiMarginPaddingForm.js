@@ -91,7 +91,7 @@ const KirkiMarginPaddingForm = (props) => {
   const fieldId = `kirki-control-input-${props.type}-top`;
   const unitRef = useRef(null);
 
-  const makeMapable = () => {
+  const makeMappable = () => {
     const items = [];
 
     for (const position in inputValues) {
@@ -138,7 +138,7 @@ const KirkiMarginPaddingForm = (props) => {
       <div className="kirki-control-cols">
         <div className="kirki-control-left-col">
           <div class="kirki-control-fields">
-            {makeMapable(inputValues).map((item) => {
+            {makeMappable(inputValues).map((item) => {
               const className = `kirki-control-input kirki-control-input-${item.position}`;
               const id = `kirki-control-input-${props.type}-${item.position}`;
 

@@ -95,7 +95,7 @@ if ( file_exists( $custom_config_path ) ) {
 require_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 /**
- * To enable tests, add this line to your wp-config.php file (or anywhere alse):
+ * To enable tests, add this line to your wp-config.php file (or anywhere else):
  * define( 'KIRKI_TEST', true );
  *
  * Please note that the example.php file is not included in the wordpress.org distribution
