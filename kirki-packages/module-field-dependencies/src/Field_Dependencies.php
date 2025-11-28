@@ -66,8 +66,8 @@ class Field_Dependencies {
 	 */
 	private function field_add_repeater_controls( $args ) {
 
-		if ('repeater' === $args['type'] || 'kirki-repeater' === $args['type']  ) {
-			$this->repeater_controls[ $args['settings'] ] = '__return_true';
+		if (isset($args['type']) && ('repeater' === $args['type'] || 'kirki-repeater' === $args['type'])) {
+    		$this->repeater_controls[$args['settings']] = '__return_true';
 		}
 
 	}
