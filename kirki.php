@@ -44,7 +44,7 @@ require_once __DIR__ . '/kirki-composer/autoload.php'; // phpcs:ignore WPThemeRe
 require_once __DIR__ . '/inc/bootstrap.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 if ( ! defined( 'KIRKI_VERSION' ) ) {
-	define( 'KIRKI_VERSION', '5.0.0' );
+	define( 'KIRKI_VERSION', '5.1.1' );
 }
 
 if ( ! defined( 'KIRKI_PLUGIN_DIR' ) ) {
