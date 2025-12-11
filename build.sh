@@ -40,7 +40,7 @@ sed -i '/wptrt\/wpthemereview/d' composer.json
 
 echo "Now updating composer after the dev dependencies removal ...";
 
-composer install --no-dev -n
+composer install --no-dev --optimize-autoloader --classmap-authoritative -n
 
 echo "Removing un-necessary files inside individual packages ..."
 
@@ -53,6 +53,7 @@ find pro-src -type f -name "*.map" -delete 2>/dev/null || true
 echo "Removing development files (LICENSE, package.json, .gitignore, Gruntfile.js) ..."
 find kirki-packages -type f \( -name "LICENSE" -o -name "package.json" -o -name ".gitignore" -o -name "Gruntfile.js" \) -delete
 find pro-src -type f \( -name "package.json" -o -name "composer.json" -o -name ".gitignore" \) -delete 2>/dev/null || true
+find . -type f -name "LICENSE" -delete 2>/dev/null || true
 
 # Remove composer installed.json files (not needed for autoloading)
 echo "Removing composer installed.json files ..."

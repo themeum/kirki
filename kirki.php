@@ -77,10 +77,6 @@ new Kirki();
 new L10n( 'kirki', __DIR__ . '/languages' );
 new \Kirki\Settings\SetupSettings();
 
-// ? Bagus: Do we really need to-reinclude this file? It was included above.
-// Include the ariColor library.
-require_once wp_normalize_path( dirname( __FILE__ ) . '/lib/class-aricolor.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
-
 // Add an empty config for global fields.
 Kirki::add_config( '' ); // ? Bagus: what is this for? Adding empty config.
 
@@ -101,7 +97,7 @@ require_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.ph
  * Please note that the example.php file is not included in the wordpress.org distribution
  * and will only be included in dev versions of the plugin in the github repository.
  */
-if ( defined( 'KIRKI_TEST' ) && true === KIRKI_TEST && file_exists( dirname( __FILE__ ) . '/example.php' ) ) {
+if ( defined( 'KIRKI_TEST' ) && true === constant( 'KIRKI_TEST' ) && file_exists( dirname( __FILE__ ) . '/example.php' ) ) {
 	include_once dirname( __FILE__ ) . '/example.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 }
 
