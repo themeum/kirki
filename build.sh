@@ -44,6 +44,8 @@ composer install --no-dev -n
 
 echo "Removing un-necessary files inside individual packages ..."
 
+wp dist-archive . ../../
+
 # Would you like to remove the CSS source files?
 # If so, un-comment the following lines.
 # rm -rf kirki-packages/**/src/*.scss
