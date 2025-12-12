@@ -142,7 +142,7 @@ function runParcel(commandType, packageName, opts) {
     // Build the CLI command along with the opts.
     command += `"${parcelBinPath}" ${commandType} ${sourcesPath} ${
 		opts.d && commandType == "build" ? "--no-optimize" : ""
-	} --dist-dir ${packageData.path}/dist`;
+	} ${commandType == "build" && !opts.d ? "--no-source-maps" : ""} --dist-dir ${packageData.path}/dist`;
 
     command = command.replace(/  +/g, " ");
     command = command.trim();
