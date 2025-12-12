@@ -82,6 +82,19 @@ find kirki-packages/module-webfonts/src/assets/scripts/vendor-typekit/src -type 
 find kirki-packages/module-webfonts/src/assets/scripts/vendor-typekit -type d -name "src" -exec rm -rf {} + 2>/dev/null || true
 find kirki-packages/module-webfonts/src/assets/scripts/vendor-typekit -type f -name "*.yml" -delete 2>/dev/null || true
 
+find . -name "composer.json" -type f -delete
+find . -name "composer.lock" -type f -delete
+
+echo "Delete zip files"
+
+find . -type f -name "*.zip" -delete
+
+find . -type f -name "*.babelrc" -delete
+
+echo "Delete readme.txt file from pro-src"
+
+find pro-src -type f -name "readme.txt" -delete
+
 wp dist-archive . ../../
 
 cd ../../
