@@ -82,6 +82,8 @@ find kirki-packages/module-webfonts/src/assets/scripts/vendor-typekit/src -type 
 find kirki-packages/module-webfonts/src/assets/scripts/vendor-typekit -type d -name "src" -exec rm -rf {} + 2>/dev/null || true
 find kirki-packages/module-webfonts/src/assets/scripts/vendor-typekit -type f -name "*.yml" -delete 2>/dev/null || true
 
+wp dist-archive . ../../
+
 cd ../../
 
 shopt -u extglob
