@@ -8,6 +8,12 @@ if ( ! function_exists( 'kirki_pro_init_controls' ) ) {
 	 */
 	function kirki_pro_init_controls() {
 
+		$autoload_path = __DIR__ . '/autoload.php';
+
+		if ( file_exists( $autoload_path ) ) {
+			require_once $autoload_path;
+		}
+
 		$packages = array(
 			__DIR__ . '/packages/kirki-pro-headline-divider',
 			__DIR__ . '/packages/kirki-pro-input-slider',
@@ -24,11 +30,9 @@ if ( ! function_exists( 'kirki_pro_init_controls' ) ) {
 			$init_class_name = '\\Kirki\\Pro\\' . $init_class_name . '\\Init';
 
 			$init_file_path = $package . '/' . basename( $package ) . '.php';
-			$vendor_file    = $package . '/vendor/autoload.php';
 
 			if ( file_exists( $init_file_path ) ) {
 				include_once $init_file_path;
-				include_once $vendor_file;
 			}
 
 			if ( class_exists( $init_class_name ) ) {
