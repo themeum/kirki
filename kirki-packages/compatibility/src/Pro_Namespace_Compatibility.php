@@ -47,12 +47,12 @@ spl_autoload_register(
 		$relative_path  = str_replace( '\\', '/', $relative_class ) . '.php';
 
 		// Check in Field and Control directories.
-		$base_dir = __DIR__ . '/';
+		$base_dir = dirname( __DIR__ ) . '/';
 		$packages = array( 'margin-padding', 'headline-divider', 'input-slider', 'responsive', 'tabs' );
 
 		foreach ( $packages as $package ) {
 			$file_name = basename( $relative_path );
-			
+
 			// Check Field directory.
 			$field_file = $base_dir . $package . '/src/Field/' . $file_name;
 			if ( file_exists( $field_file ) ) {
@@ -77,4 +77,5 @@ spl_autoload_register(
 	true, // Throw exception if class not found.
 	true  // Prepend to autoload stack (high priority).
 );
+
 

@@ -47,8 +47,6 @@ if ( ! function_exists( 'kirki_load_headline_divider_control' ) ) {
 		define( 'KIRKI_HEADLINE_DIVIDER_VERSION', $plugin_data['Version'] );
 		define( 'KIRKI_HEADLINE_DIVIDER_PLUGIN_FILE', __FILE__ );
 
-		require_once __DIR__ . '/vendor/autoload.php';
-
 		new \Kirki\HeadlineDivider\Init();
 
 	}

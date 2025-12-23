@@ -47,8 +47,6 @@ if ( ! function_exists( 'kirki_load_responsive_control' ) ) {
 		define( 'KIRKI_RESPONSIVE_VERSION', $plugin_data['Version'] );
 		define( 'KIRKI_RESPONSIVE_PLUGIN_FILE', __FILE__ );
 
-		require_once __DIR__ . '/vendor/autoload.php';
-
 		new \Kirki\Responsive\Init();
 
 	}

@@ -15,7 +15,7 @@ if ( ! function_exists( 'kirki_init_controls' ) ) {
 		}
 
 		// Load Pro namespace compatibility for backward compatibility.
-		$compatibility_path = __DIR__ . '/pro-namespace-compatibility.php';
+		$compatibility_path = __DIR__ . '/compatibility/src/Pro_Namespace_Compatibility.php';
 		if ( file_exists( $compatibility_path ) ) {
 			require_once $compatibility_path;
 		}

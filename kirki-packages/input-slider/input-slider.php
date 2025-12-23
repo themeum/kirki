@@ -47,8 +47,6 @@ if ( ! function_exists( 'kirki_load_input_slider_control' ) ) {
 		define( 'KIRKI_INPUT_SLIDER_VERSION', $plugin_data['Version'] );
 		define( 'KIRKI_INPUT_SLIDER_PLUGIN_FILE', __FILE__ );
 
-		require_once __DIR__ . '/vendor/autoload.php';
-
 		new \Kirki\InputSlider\Init();
 
 	}
