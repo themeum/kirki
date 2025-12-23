@@ -16,7 +16,6 @@
         }
     ],
     "config": {
-        "vendor-dir": "kirki-composer",
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "composer/installers": true
