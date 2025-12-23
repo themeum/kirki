@@ -42,7 +42,12 @@
                 "kirki-packages/field-multicolor/src/Field",
                 "kirki-packages/field-multicolor/src",
                 "kirki-packages/field-typography/src/Field",
-                "kirki-packages/field-typography/src"
+                "kirki-packages/field-typography/src",
+                "kirki-packages/headline-divider/src/Field",
+                "kirki-packages/input-slider/src/Field",
+                "kirki-packages/margin-padding/src/Field",
+                "kirki-packages/responsive/src/Field",
+                "kirki-packages/tabs/src/Field"
             ],
             "Kirki\\Module\\": [
                 "kirki-packages/module-css/src",
@@ -93,7 +98,18 @@
                 "kirki-packages/url-getter/src"
             ],
 
-            "Kirki\\Pro\\": "pro-src/"
+            "Kirki\\Control\\": [
+                "kirki-packages/headline-divider/src/Control",
+                "kirki-packages/input-slider/src/Control",
+                "kirki-packages/margin-padding/src/Control",
+                "kirki-packages/responsive/src/Control",
+                "kirki-packages/tabs/src/Control"
+            ],
+            "Kirki\\HeadlineDivider\\": "kirki-packages/headline-divider/src",
+            "Kirki\\InputSlider\\": "kirki-packages/input-slider/src",
+            "Kirki\\MarginPadding\\": "kirki-packages/margin-padding/src",
+            "Kirki\\Responsive\\": "kirki-packages/responsive/src",
+            "Kirki\\Tabs\\": "kirki-packages/tabs/src"
         }
     },
     "require": {
