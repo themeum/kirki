@@ -5,7 +5,7 @@ import sade from "sade";
 
 const definedPackages = {
     settings: {
-        path: "kirki-packages/settings",
+        path: "inc/packages/settings",
         sources: [
             "src/admin-notice.scss",
             "src/settings.ts",
@@ -13,92 +13,92 @@ const definedPackages = {
         ],
     },
     "control-base": {
-        path: "kirki-packages/control-base",
+        path: "inc/packages/control-base",
         sources: ["src/control.js"],
     },
     "control-checkbox": {
-        path: "kirki-packages/control-checkbox",
+        path: "inc/packages/control-checkbox",
         sources: ["src/control.js"],
     },
     "control-color-palette": {
-        path: "kirki-packages/control-color-palette",
+        path: "inc/packages/control-color-palette",
         sources: ["src/control.js"],
     },
     "control-dashicons": {
-        path: "kirki-packages/control-dashicons",
+        path: "inc/packages/control-dashicons",
         sources: ["src/control.js"],
     },
     "control-date": {
-        path: "kirki-packages/control-date",
+        path: "inc/packages/control-date",
         sources: ["src/control.js"],
     },
     "control-dimension": {
-        path: "kirki-packages/control-dimension",
+        path: "inc/packages/control-dimension",
         sources: ["src/control.js"],
     },
     "control-editor": {
-        path: "kirki-packages/control-editor",
+        path: "inc/packages/control-editor",
         sources: ["src/control.js"],
     },
     "control-generic": {
-        path: "kirki-packages/control-generic",
+        path: "inc/packages/control-generic",
         sources: ["src/control.js"],
     },
     "control-image": {
-        path: "kirki-packages/control-image",
+        path: "inc/packages/control-image",
         sources: ["src/control.js"],
     },
     "control-multicheck": {
-        path: "kirki-packages/control-multicheck",
+        path: "inc/packages/control-multicheck",
         sources: ["src/control.js"],
     },
     "control-palette": {
-        path: "kirki-packages/control-palette",
+        path: "inc/packages/control-palette",
         sources: ["src/control.js"],
     },
     "control-radio": {
-        path: "kirki-packages/control-radio",
+        path: "inc/packages/control-radio",
         sources: ["src/control.js"],
     },
     "control-react-colorful": {
-        path: "kirki-packages/control-react-colorful",
+        path: "inc/packages/control-react-colorful",
         sources: ["src/control.js", "src/preview.js"],
     },
     "control-react-select": {
-        path: "kirki-packages/control-react-select",
+        path: "inc/packages/control-react-select",
         sources: ["src/control.js"],
     },
     "control-repeater": {
-        path: "kirki-packages/control-repeater",
+        path: "inc/packages/control-repeater",
         sources: ["src/control.js"],
     },
     // "control-select": {
-    //     path: "kirki-packages/control-select",
+    //     path: "inc/packages/control-select",
     //     sources: ["src/control.js"],
     // },
     "control-slider": {
-        path: "kirki-packages/control-slider",
+        path: "inc/packages/control-slider",
         sources: ["src/control.js"],
     },
     "control-sortable": {
-        path: "kirki-packages/control-sortable",
+        path: "inc/packages/control-sortable",
         sources: ["src/control.js"],
     },
     "field-dimensions": {
-        path: "kirki-packages/field-dimensions",
+        path: "inc/packages/field-dimensions",
         // Yes, the files are control.scss & preview.js :)
         sources: ["src/control.scss", "src/preview.js"],
     },
     "field-typography": {
-        path: "kirki-packages/field-typography",
+        path: "inc/packages/field-typography",
         sources: ["src/control.js", "src/preview.js"],
     },
     "module-field-dependencies": {
-        path: "kirki-packages/module-field-dependencies",
+        path: "inc/packages/module-field-dependencies",
         sources: ["src/control.js"],
     },
     "module-tooltips": {
-        path: "kirki-packages/module-tooltips",
+        path: "inc/packages/module-tooltips",
         sources: ["src/control.js"],
     },
 

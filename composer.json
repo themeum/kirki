@@ -28,87 +28,87 @@
     "autoload": {
         "psr-4": {
             "Kirki\\Compatibility\\": [
-                "inc/kirki-packages/compatibility/src"
+                "inc/packages/compatibility/src"
             ],
             "Kirki\\Data\\": [
-                "inc/kirki-packages/data-option/src"
+                "inc/packages/data-option/src"
             ],
             "Kirki\\Field\\": [
-                "inc/kirki-packages/field/src/Field",
-                "inc/kirki-packages/field-background/src",
-                "inc/kirki-packages/field-dimensions/src",
-                "inc/kirki-packages/field-fontawesome/src",
-                "inc/kirki-packages/field-multicolor/src/Field",
-                "inc/kirki-packages/field-multicolor/src",
-                "inc/kirki-packages/field-typography/src/Field",
-                "inc/kirki-packages/field-typography/src",
-                "inc/kirki-packages/headline-divider/src/Field",
-                "inc/kirki-packages/input-slider/src/Field",
-                "inc/kirki-packages/margin-padding/src/Field",
-                "inc/kirki-packages/responsive/src/Field",
-                "inc/kirki-packages/tabs/src/Field"
+                "inc/packages/field/src/Field",
+                "inc/packages/field-background/src",
+                "inc/packages/field-dimensions/src",
+                "inc/packages/field-fontawesome/src",
+                "inc/packages/field-multicolor/src/Field",
+                "inc/packages/field-multicolor/src",
+                "inc/packages/field-typography/src/Field",
+                "inc/packages/field-typography/src",
+                "inc/packages/headline-divider/src/Field",
+                "inc/packages/input-slider/src/Field",
+                "inc/packages/margin-padding/src/Field",
+                "inc/packages/responsive/src/Field",
+                "inc/packages/tabs/src/Field"
             ],
             "Kirki\\Module\\": [
-                "inc/kirki-packages/module-css/src",
-                "inc/kirki-packages/module-editor-styles/src",
-                "inc/kirki-packages/module-field-dependencies/src",
-                "inc/kirki-packages/module-postmessage/src",
-                "inc/kirki-packages/module-preset/src",
-                "inc/kirki-packages/module-section-icons/src",
-                "inc/kirki-packages/module-selective-refresh/src",
-                "inc/kirki-packages/module-tooltips/src",
-                "inc/kirki-packages/module-webfonts/src" 
+                "inc/packages/module-css/src",
+                "inc/packages/module-editor-styles/src",
+                "inc/packages/module-field-dependencies/src",
+                "inc/packages/module-postmessage/src",
+                "inc/packages/module-preset/src",
+                "inc/packages/module-section-icons/src",
+                "inc/packages/module-selective-refresh/src",
+                "inc/packages/module-tooltips/src",
+                "inc/packages/module-webfonts/src" 
             ],
             "Kirki\\Util\\": [
-                "inc/kirki-packages/util/src"
+                "inc/packages/util/src"
             ],
             "Kirki\\Settings\\": [
-                "inc/kirki-packages/settings/src"
+                "inc/packages/settings/src"
             ],
             "Kirki\\": [
-                "inc/kirki-packages/control-base/src",
-                "inc/kirki-packages/control-checkbox/src",
-                "inc/kirki-packages/control-code/src",
-                "inc/kirki-packages/control-color/src",
-                "inc/kirki-packages/control-color-palette/src",
-                "inc/kirki-packages/control-cropped-image/src",
-                "inc/kirki-packages/control-custom/src",
-                "inc/kirki-packages/control-dashicons/src",
-                "inc/kirki-packages/control-date/src",
-                "inc/kirki-packages/control-dimension/src",
-                "inc/kirki-packages/control-editor/src",
-                "inc/kirki-packages/control-generic/src",
-                "inc/kirki-packages/control-image/src",
-                "inc/kirki-packages/control-multicheck/src",
-                "inc/kirki-packages/control-palette/src",
-                "inc/kirki-packages/control-radio/src",
-                "inc/kirki-packages/control-react-colorful/src",
-                "inc/kirki-packages/control-react-select/src",
-                "inc/kirki-packages/control-repeater/src",
-                "inc/kirki-packages/control-select/src",
-                "inc/kirki-packages/control-slider/src",
-                "inc/kirki-packages/control-sortable/src",
-                "inc/kirki-packages/control-upload/src",
-                "inc/kirki-packages/field/src",
-                "inc/kirki-packages/googlefonts/src",
-                "inc/kirki-packages/l10n/src",
-                "inc/kirki-packages/module-panels/src",
-                "inc/kirki-packages/module-sections/src",
-                "inc/kirki-packages/url-getter/src"
+                "inc/packages/control-base/src",
+                "inc/packages/control-checkbox/src",
+                "inc/packages/control-code/src",
+                "inc/packages/control-color/src",
+                "inc/packages/control-color-palette/src",
+                "inc/packages/control-cropped-image/src",
+                "inc/packages/control-custom/src",
+                "inc/packages/control-dashicons/src",
+                "inc/packages/control-date/src",
+                "inc/packages/control-dimension/src",
+                "inc/packages/control-editor/src",
+                "inc/packages/control-generic/src",
+                "inc/packages/control-image/src",
+                "inc/packages/control-multicheck/src",
+                "inc/packages/control-palette/src",
+                "inc/packages/control-radio/src",
+                "inc/packages/control-react-colorful/src",
+                "inc/packages/control-react-select/src",
+                "inc/packages/control-repeater/src",
+                "inc/packages/control-select/src",
+                "inc/packages/control-slider/src",
+                "inc/packages/control-sortable/src",
+                "inc/packages/control-upload/src",
+                "inc/packages/field/src",
+                "inc/packages/googlefonts/src",
+                "inc/packages/l10n/src",
+                "inc/packages/module-panels/src",
+                "inc/packages/module-sections/src",
+                "inc/packages/url-getter/src"
             ],
 
             "Kirki\\Control\\": [
-                "inc/kirki-packages/headline-divider/src/Control",
-                "inc/kirki-packages/input-slider/src/Control",
-                "inc/kirki-packages/margin-padding/src/Control",
-                "inc/kirki-packages/responsive/src/Control",
-                "inc/kirki-packages/tabs/src/Control"
+                "inc/packages/headline-divider/src/Control",
+                "inc/packages/input-slider/src/Control",
+                "inc/packages/margin-padding/src/Control",
+                "inc/packages/responsive/src/Control",
+                "inc/packages/tabs/src/Control"
             ],
-            "Kirki\\HeadlineDivider\\": "inc/kirki-packages/headline-divider/src",
-            "Kirki\\InputSlider\\": "inc/kirki-packages/input-slider/src",
-            "Kirki\\MarginPadding\\": "inc/kirki-packages/margin-padding/src",
-            "Kirki\\Responsive\\": "inc/kirki-packages/responsive/src",
-            "Kirki\\Tabs\\": "inc/kirki-packages/tabs/src"
+            "Kirki\\HeadlineDivider\\": "inc/packages/headline-divider/src",
+            "Kirki\\InputSlider\\": "inc/packages/input-slider/src",
+            "Kirki\\MarginPadding\\": "inc/packages/margin-padding/src",
+            "Kirki\\Responsive\\": "inc/packages/responsive/src",
+            "Kirki\\Tabs\\": "inc/packages/tabs/src"
         }
     },
     "require": {

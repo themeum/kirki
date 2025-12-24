@@ -65,7 +65,7 @@ class SetupSettings {
 	 */
 	public function submenu_page_content() {
 
-		$template = require KIRKI_PLUGIN_DIR . '/kirki-packages/settings/templates/settings-template.php';
+		$template = require KIRKI_PLUGIN_DIR . '/packages/settings/templates/settings-template.php';
 		$template();
 
 	}
@@ -90,8 +90,8 @@ class SetupSettings {
 			return;
 		}
 
-		wp_enqueue_style( 'heatbox', KIRKI_PLUGIN_URL . '/kirki-packages/settings/dist/heatbox.css', array(), KIRKI_VERSION );
-		wp_enqueue_style( 'kirki-settings', KIRKI_PLUGIN_URL . '/kirki-packages/settings/dist/settings.css', array(), KIRKI_VERSION );
+		wp_enqueue_style( 'heatbox', KIRKI_PLUGIN_URL . '/packages/settings/dist/heatbox.css', array(), KIRKI_VERSION );
+		wp_enqueue_style( 'kirki-settings', KIRKI_PLUGIN_URL . '/packages/settings/dist/settings.css', array(), KIRKI_VERSION );
 
 	}
 
@@ -106,7 +106,7 @@ class SetupSettings {
 
 		wp_enqueue_script( 'updates' );
 
-		wp_enqueue_script( 'kirki-settings', KIRKI_PLUGIN_URL . '/kirki-packages/settings/dist/settings.js', array( 'jquery', 'wp-polyfill' ), KIRKI_VERSION, true );
+		wp_enqueue_script( 'kirki-settings', KIRKI_PLUGIN_URL . '/packages/settings/dist/settings.js', array( 'jquery', 'wp-polyfill' ), KIRKI_VERSION, true );
 
 		$udb_name     = '';
 		$udb_slug     = '';
