@@ -41,13 +41,20 @@ spl_autoload_register(
 			return;
 		}
 
-		// Try to load the new class file.
+		// Try to trigger the main autoloader first (without false parameter).
+		// This will allow other autoloaders to handle the class loading.
+		if ( class_exists( $new_class ) ) {
+			class_alias( $new_class, $class );
+			return;
+		}
+
+		// Try to load the new class file manually if autoloader didn't find it.
 		// Convert namespace to file path.
 		$relative_class = str_replace( 'Kirki\\', '', $new_class );
 		$relative_path  = str_replace( '\\', '/', $relative_class ) . '.php';
 
 		// Check in Field and Control directories.
-		$base_dir = dirname( __DIR__ ) . '/';
+		$base_dir = dirname( dirname( __DIR__ ) ) . '/';
 		$packages = array( 'margin-padding', 'headline-divider', 'input-slider', 'responsive', 'tabs' );
 
 		foreach ( $packages as $package ) {
