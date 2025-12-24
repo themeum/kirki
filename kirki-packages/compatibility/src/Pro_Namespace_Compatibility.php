@@ -32,24 +32,20 @@ spl_autoload_register(
 			return;
 		}
 
-		// Map old Pro namespace to new namespace.
 		$new_class = str_replace( 'Kirki\\Pro\\', 'Kirki\\', $class );
 
-		// If the new class already exists, create an alias and return.
 		if ( class_exists( $new_class, false ) ) {
 			class_alias( $new_class, $class );
 			return;
 		}
 
-		// Try to trigger the main autoloader first (without false parameter).
-		// This will allow other autoloaders to handle the class loading.
+		// Try to trigger the main autoloader first.
 		if ( class_exists( $new_class ) ) {
 			class_alias( $new_class, $class );
 			return;
 		}
 
 		// Try to load the new class file manually if autoloader didn't find it.
-		// Convert namespace to file path.
 		$relative_class = str_replace( 'Kirki\\', '', $new_class );
 		$relative_path  = str_replace( '\\', '/', $relative_class ) . '.php';
 
@@ -60,7 +56,6 @@ spl_autoload_register(
 		foreach ( $packages as $package ) {
 			$file_name = basename( $relative_path );
 
-			// Check Field directory.
 			$field_file = $base_dir . $package . '/src/Field/' . $file_name;
 			if ( file_exists( $field_file ) ) {
 				require_once $field_file;
