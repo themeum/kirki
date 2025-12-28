@@ -1074,6 +1074,234 @@ new \Kirki\Field\Repeater(
 );
 
 /**
+ * Repeater Control with Active Callback (Conditional Fields).
+ *
+ * This example demonstrates how to use active_callback within repeater fields
+ * to show/hide fields based on other field values within the same repeater row.
+ *
+ * @since 5.1.1 Active callback support was added for repeater fields.
+ */
+new \Kirki\Field\Repeater(
+	[
+		'settings'    => 'kirki_demo_repeater_with_active_callback',
+		'label'       => esc_html__( 'Repeater Control — With Active Callback', 'kirki' ),
+		'description' => esc_html__( 'This repeater demonstrates conditional fields using active_callback. Try changing the "Link Type" to see how fields show/hide dynamically.', 'kirki' ),
+		'section'     => 'repeater_section',
+		'button_label' => esc_html__( 'Add Block', 'adams' ),
+		'help'        => esc_html__( 'Use the "Link Type" dropdown to select the type of link. Depending on your choice, different fields will appear for you to fill out.', 'kirki' ),
+		'default'     => [
+			[
+				'link_type'    => 'internal',
+				'link_text'    => esc_html__( 'Internal Link Example', 'kirki' ),
+				'internal_url' => 'https://example.com/page',
+				'external_url' => '',
+				'open_modal'   => false,
+				'modal_title'  => '',
+				'modal_content' => '',
+			],
+		],
+		'fields'      => [
+			'link_type'      => [
+				'type'        => 'select',
+				'label'       => esc_html__( 'Link Type', 'kirki' ),
+				'description' => esc_html__( 'Choose the type of link. Watch how fields below change!', 'kirki' ),
+				'default'     => 'internal',
+				'choices'     => [
+					'internal' => esc_html__( 'Internal Link', 'kirki' ),
+					'external' => esc_html__( 'External Link', 'kirki' ),
+					'modal'    => esc_html__( 'Open Modal', 'kirki' ),
+				],
+			],
+			'link_text'      => [
+				'type'        => 'text',
+				'label'       => esc_html__( 'Link Text', 'kirki' ),
+				'description' => esc_html__( 'This field is always visible', 'kirki' ),
+				'default'     => '',
+			],
+			'internal_url'   => [
+				'type'            => 'text',
+				'label'           => esc_html__( 'Internal URL', 'kirki' ),
+				'description'     => esc_html__( 'This field is only visible when "Link Type" is "Internal Link"', 'kirki' ),
+				'default'         => '',
+				// Active callback: show only when link_type equals 'internal'
+				'active_callback' => [
+					[
+						'setting'  => 'link_type',
+						'operator' => '==',
+						'value'    => 'internal',
+					],
+				],
+			],
+			'external_url'   => [
+				'type'            => 'text',
+				'label'           => esc_html__( 'External URL', 'kirki' ),
+				'description'     => esc_html__( 'This field is only visible when "Link Type" is "External Link"', 'kirki' ),
+				'default'         => '',
+				// Active callback: show only when link_type equals 'external'
+				'active_callback' => [
+					[
+						'setting'  => 'link_type',
+						'operator' => '==',
+						'value'    => 'external',
+					],
+				],
+			],
+			'open_modal'     => [
+				'type'            => 'checkbox',
+				'label'           => esc_html__( 'Enable Auto-open', 'kirki' ),
+				'description'     => esc_html__( 'This checkbox is only visible when "Link Type" is "Open Modal"', 'kirki' ),
+				'default'         => false,
+				// Active callback: show only when link_type equals 'modal'
+				'active_callback' => [
+					[
+						'setting'  => 'link_type',
+						'operator' => '==',
+						'value'    => 'modal',
+					],
+				],
+			],
+			'modal_title'    => [
+				'type'            => 'text',
+				'label'           => esc_html__( 'Modal Title', 'kirki' ),
+				'description'     => esc_html__( 'Visible when "Link Type" is "Open Modal"', 'kirki' ),
+				'default'         => '',
+				// Active callback: show only when link_type equals 'modal'
+				'active_callback' => [
+					[
+						'setting'  => 'link_type',
+						'operator' => '==',
+						'value'    => 'modal',
+					],
+				],
+			],
+			'modal_content'  => [
+				'type'            => 'textarea',
+				'label'           => esc_html__( 'Modal Content', 'kirki' ),
+				'description'     => esc_html__( 'Visible when "Link Type" is "Open Modal"', 'kirki' ),
+				'default'         => '',
+				// Active callback with multiple conditions (AND logic)
+				'active_callback' => [
+					[
+						'setting'  => 'link_type',
+						'operator' => '==',
+						'value'    => 'modal',
+					],
+				],
+			],
+		],
+	]
+);
+
+/**
+ * Repeater Control with Complex Active Callback.
+ *
+ * This example demonstrates advanced conditional logic with multiple conditions
+ * and different operators.
+ */
+new \Kirki\Field\Repeater(
+	[
+		'settings'    => 'kirki_demo_repeater_advanced_conditions',
+		'label'       => esc_html__( 'Repeater Control — Advanced Conditions', 'kirki' ),
+		'description' => esc_html__( 'This demonstrates complex conditional logic with multiple conditions and operators.', 'kirki' ),
+		'section'     => 'repeater_section',
+		'default'     => [],
+		'fields'      => [
+			'content_type'   => [
+				'type'    => 'select',
+				'label'   => esc_html__( 'Content Type', 'kirki' ),
+				'default' => 'text',
+				'choices' => [
+					'text'  => esc_html__( 'Text', 'kirki' ),
+					'image' => esc_html__( 'Image', 'kirki' ),
+					'video' => esc_html__( 'Video', 'kirki' ),
+				],
+			],
+			'text_content'   => [
+				'type'            => 'textarea',
+				'label'           => esc_html__( 'Text Content', 'kirki' ),
+				'default'         => '',
+				'active_callback' => [
+					[
+						'setting'  => 'content_type',
+						'operator' => '==',
+						'value'    => 'text',
+					],
+				],
+			],
+			'image_url'      => [
+				'type'            => 'text',
+				'label'           => esc_html__( 'Image URL', 'kirki' ),
+				'default'         => '',
+				'active_callback' => [
+					[
+						'setting'  => 'content_type',
+						'operator' => '==',
+						'value'    => 'image',
+					],
+				],
+			],
+			'video_url'      => [
+				'type'            => 'text',
+				'label'           => esc_html__( 'Video URL', 'kirki' ),
+				'default'         => '',
+				'active_callback' => [
+					[
+						'setting'  => 'content_type',
+						'operator' => '==',
+						'value'    => 'video',
+					],
+				],
+			],
+			'enable_caption' => [
+				'type'    => 'checkbox',
+				'label'   => esc_html__( 'Enable Caption', 'kirki' ),
+				'default' => false,
+				// Show for image OR video (OR logic by nesting arrays)
+				'active_callback' => [
+					[
+						[
+							'setting'  => 'content_type',
+							'operator' => '==',
+							'value'    => 'image',
+						],
+						[
+							'setting'  => 'content_type',
+							'operator' => '==',
+							'value'    => 'video',
+						],
+					],
+				],
+			],
+			'caption_text'   => [
+				'type'            => 'text',
+				'label'           => esc_html__( 'Caption Text', 'kirki' ),
+				'default'         => '',
+				// Multiple conditions: content_type is image OR video, AND enable_caption is checked
+				'active_callback' => [
+					[
+						[
+							'setting'  => 'content_type',
+							'operator' => '==',
+							'value'    => 'image',
+						],
+						[
+							'setting'  => 'content_type',
+							'operator' => '==',
+							'value'    => 'video',
+						],
+					],
+					[
+						'setting'  => 'enable_caption',
+						'operator' => '==',
+						'value'    => true,
+					],
+				],
+			],
+		],
+	]
+);
+
+/**
  * Select Control.
  */
 new \Kirki\Field\Select(

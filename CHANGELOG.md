@@ -1,3 +1,17 @@
+### 5.1.1 - December 28, 2025 ###
+- New: Added `active_callback` support for Repeater control fields - Enable conditional field visibility within repeater rows based on other field values
+- New: Dynamic show/hide functionality for repeater fields - Fields automatically appear or disappear when conditions are met
+- New: Support for complex conditional logic - Use AND/OR operators and multiple conditions for advanced field dependencies
+- Enhancement: Added comprehensive examples demonstrating repeater conditional fields in [example.php](example.php)
+- Fix: Removed invalid SCSS import from control-repeater source file that was preventing builds
+- Update: Improved build workflow documentation for package compilation
+
+**Repeater Active Callback Examples:**
+- See the new repeater examples in [example.php](example.php#L1077-L1300) demonstrating:
+  - Basic conditional fields (show/hide based on dropdown selection)
+  - Complex multi-condition logic (AND/OR operators)
+  - Real-world use cases (internal/external links, modal content, media types)
+  
 ### 5.1.0 - March 22, 2024 ###
 - Fix: We've resolved the issue with fonts not loading properly, ensuring your designs look sleek and professional.
 - Fix: Addressed deprecated errors to boost compatibility and keep your site running smoothly.

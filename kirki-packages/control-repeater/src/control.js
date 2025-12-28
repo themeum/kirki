@@ -1,5 +1,3 @@
-import "./control.scss";
-
 /* global kirkiControlLoader */
 /* eslint max-depth: 0 */
 /* eslint no-useless-escape: 0 */
