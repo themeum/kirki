@@ -65,9 +65,8 @@ class SetupSettings {
 	 */
 	public function submenu_page_content() {
 
-		$template = require KIRKI_PLUGIN_DIR . '/packages/settings/templates/settings-template.php';
+		$template = require KIRKI_PLUGIN_DIR . '/customizer/packages/settings/templates/settings-template.php';
 		$template();
-
 	}
 
 	/**

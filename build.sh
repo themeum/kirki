@@ -97,6 +97,7 @@ find . -type f -name "*.babelrc" -delete
 
 echo "Delete readme.txt file from packages"
 find customizer/packages -type f -name "readme.txt" -delete
+
 wp dist-archive . ../../
 
 cd ../../
