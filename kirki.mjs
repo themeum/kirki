@@ -85,12 +85,12 @@ const definedPackages = {
         sources: ["src/control.js"],
     },
     "field-dimensions": {
-        path: "customizer/packages/field-dimensions",
+        path: "customizer/packages/field/dimensions",
         // Yes, the files are control.scss & preview.js :)
         sources: ["src/control.scss", "src/preview.js"],
     },
     "field-typography": {
-        path: "customizer/packages/field-typography",
+        path: "customizer/packages/field/typography",
         sources: ["src/control.js", "src/preview.js"],
     },
     "module-field-dependencies": {

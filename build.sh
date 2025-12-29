@@ -68,7 +68,7 @@ find customizer/packages -type f -path "*/src/*" \( -name "*.scss" -o -name "*.s
 # Remove JS source files that are compiled to dist/ (webfontloader kept below)
 # These are source files that get compiled - only dist/ files are needed
 find customizer/packages/control -type f -path "*/src/*.js" ! -path "*/compatibility/*" -delete 2>/dev/null || true
-find customizer/packages/field-* -type f -path "*/src/*.js" -delete 2>/dev/null || true
+find customizer/packages/field -type f -path "*/src/*.js" -delete 2>/dev/null || true
 find customizer/packages/module -type f -path "*/src/*.js" ! -path "*/module/webfonts/src/assets/scripts/vendor-typekit/webfontloader.js" -delete 2>/dev/null || true
 find customizer/packages/settings -type f -path "*/src/*.js" -delete 2>/dev/null || true
 
