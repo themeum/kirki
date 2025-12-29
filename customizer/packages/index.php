@@ -21,16 +21,16 @@ if ( ! function_exists( 'kirki_init_controls' ) ) {
 		}
 
 		$packages = array(
-			__DIR__ . '/headline-divider',
-			__DIR__ . '/input-slider',
-			__DIR__ . '/margin-padding',
-			__DIR__ . '/responsive',
-			__DIR__ . '/tabs',
+			__DIR__ . '/control/headline-divider',
+			__DIR__ . '/control/input-slider',
+			__DIR__ . '/control/margin-padding',
+			__DIR__ . '/control/responsive',
+			__DIR__ . '/control/tabs',
 		);
 
 		foreach ( $packages as $package ) {
-			$init_class_name = str_ireplace( __DIR__ . '/', '', $package );
-			$init_class_name = str_ireplace( '-', ' ', $init_class_name );
+			$package_name = basename( $package );
+			$init_class_name = str_ireplace( '-', ' ', $package_name );
 			$init_class_name = ucwords( $init_class_name );
 			$init_class_name = str_ireplace( ' ', '', $init_class_name );
 			$init_class_name = '\\Kirki\\' . $init_class_name . '\\Init';

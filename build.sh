@@ -79,7 +79,7 @@ rm -f customizer/packages/compatibility/src/Scripts.php 2>/dev/null || true
 
 # Remove webfont source metadata not required in production builds
 echo "Removing Google Fonts source metadata (webfont-files.json) ..."
-rm -f customizer/packages/googlefonts/src/webfont-files.json 2>/dev/null || true
+rm -f customizer/packages/util/googlefonts/src/webfont-files.json 2>/dev/null || true
 
 # Remove webfonts vendor source files (webfontloader.js is the compiled version, source files not needed)
 find customizer/packages/module/webfonts/src/assets/scripts/vendor-typekit/src -type f -delete 2>/dev/null || true

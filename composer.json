@@ -31,7 +31,7 @@
                 "customizer/packages/compatibility/src"
             ],
             "Kirki\\Data\\": [
-                "customizer/packages/data-option/src"
+                "customizer/packages/util/data-option/src"
             ],
             "Kirki\\Field\\": [
                 "customizer/packages/field/base/src/Field",
@@ -63,11 +63,11 @@
                 "customizer/packages/control/slider/src/Field",
                 "customizer/packages/control/sortable/src/Field",
                 "customizer/packages/control/upload/src/Field",
-                "customizer/packages/headline-divider/src/Field",
-                "customizer/packages/input-slider/src/Field",
-                "customizer/packages/margin-padding/src/Field",
-                "customizer/packages/responsive/src/Field",
-                "customizer/packages/tabs/src/Field"
+                "customizer/packages/control/headline-divider/src/Field",
+                "customizer/packages/control/input-slider/src/Field",
+                "customizer/packages/control/margin-padding/src/Field",
+                "customizer/packages/control/responsive/src/Field",
+                "customizer/packages/control/tabs/src/Field"
             ],
             "Kirki\\Module\\": [
                 "customizer/packages/module/css/src",
@@ -81,7 +81,10 @@
                 "customizer/packages/module/webfonts/src" 
             ],
             "Kirki\\Util\\": [
-                "customizer/packages/util/src"
+                "customizer/packages/util/src",
+                "customizer/packages/util/googlefonts/src",
+                "customizer/packages/util/l10n/src",
+                "customizer/packages/util/url-getter/src"
             ],
             "Kirki\\Settings\\": [
                 "customizer/packages/settings/src"
@@ -110,12 +113,17 @@
                 "customizer/packages/control/slider/src",
                 "customizer/packages/control/sortable/src",
                 "customizer/packages/control/upload/src",
+                "customizer/packages/control/headline-divider/src",
+                "customizer/packages/control/input-slider/src",
+                "customizer/packages/control/margin-padding/src",
+                "customizer/packages/control/responsive/src",
+                "customizer/packages/control/tabs/src",
                 "customizer/packages/field/base/src",
-                "customizer/packages/googlefonts/src",
-                "customizer/packages/l10n/src",
+                "customizer/packages/util/googlefonts/src",
+                "customizer/packages/util/l10n/src",
                 "customizer/packages/module/panels/src",
                 "customizer/packages/module/sections/src",
-                "customizer/packages/url-getter/src"
+                "customizer/packages/util/url-getter/src"
             ],
 
             "Kirki\\Control\\": [
@@ -140,17 +148,17 @@
                 "customizer/packages/control/slider/src/Control",
                 "customizer/packages/control/sortable/src/Control",
                 "customizer/packages/control/upload/src/Control",
-                "customizer/packages/headline-divider/src/Control",
-                "customizer/packages/input-slider/src/Control",
-                "customizer/packages/margin-padding/src/Control",
-                "customizer/packages/responsive/src/Control",
-                "customizer/packages/tabs/src/Control"
+                "customizer/packages/control/headline-divider/src/Control",
+                "customizer/packages/control/input-slider/src/Control",
+                "customizer/packages/control/margin-padding/src/Control",
+                "customizer/packages/control/responsive/src/Control",
+                "customizer/packages/control/tabs/src/Control"
             ],
-            "Kirki\\HeadlineDivider\\": "customizer/packages/headline-divider/src",
-            "Kirki\\InputSlider\\": "customizer/packages/input-slider/src",
-            "Kirki\\MarginPadding\\": "customizer/packages/margin-padding/src",
-            "Kirki\\Responsive\\": "customizer/packages/responsive/src",
-            "Kirki\\Tabs\\": "customizer/packages/tabs/src"
+            "Kirki\\HeadlineDivider\\": "customizer/packages/control/headline-divider/src",
+            "Kirki\\InputSlider\\": "customizer/packages/control/input-slider/src",
+            "Kirki\\MarginPadding\\": "customizer/packages/control/margin-padding/src",
+            "Kirki\\Responsive\\": "customizer/packages/control/responsive/src",
+            "Kirki\\Tabs\\": "customizer/packages/control/tabs/src"
         }
     },
     "require": {
