@@ -18,8 +18,8 @@ if ( ! function_exists( 'kirki_show_upgrade_notification' ) ) :
 	 * Notices should be added using "== Upgrade Notice ==" in readme.txt.
 	 *
 	 * @since 2.3.8
-	 * @param array $plugin_data An array of plugin metadata.
-	 * @param array $response    An array of metadata about the available plugin update.
+	 * @param array  $plugin_data An array of plugin metadata.
+	 * @param object $response    An object of metadata about the available plugin update.
 	 */
 	function kirki_show_upgrade_notification( $plugin_data, $response ) {
 
