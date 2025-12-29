@@ -5,7 +5,7 @@ import sade from "sade";
 
 const definedPackages = {
     settings: {
-        path: "inc/packages/settings",
+        path: "customizer/packages/settings",
         sources: [
             "src/admin-notice.scss",
             "src/settings.ts",
@@ -13,92 +13,92 @@ const definedPackages = {
         ],
     },
     "control-base": {
-        path: "inc/packages/control-base",
+        path: "customizer/packages/control-base",
         sources: ["src/control.js"],
     },
     "control-checkbox": {
-        path: "inc/packages/control-checkbox",
+        path: "customizer/packages/control-checkbox",
         sources: ["src/control.js"],
     },
     "control-color-palette": {
-        path: "inc/packages/control-color-palette",
+        path: "customizer/packages/control-color-palette",
         sources: ["src/control.js"],
     },
     "control-dashicons": {
-        path: "inc/packages/control-dashicons",
+        path: "customizer/packages/control-dashicons",
         sources: ["src/control.js"],
     },
     "control-date": {
-        path: "inc/packages/control-date",
+        path: "customizer/packages/control-date",
         sources: ["src/control.js"],
     },
     "control-dimension": {
-        path: "inc/packages/control-dimension",
+        path: "customizer/packages/control-dimension",
         sources: ["src/control.js"],
     },
     "control-editor": {
-        path: "inc/packages/control-editor",
+        path: "customizer/packages/control-editor",
         sources: ["src/control.js"],
     },
     "control-generic": {
-        path: "inc/packages/control-generic",
+        path: "customizer/packages/control-generic",
         sources: ["src/control.js"],
     },
     "control-image": {
-        path: "inc/packages/control-image",
+        path: "customizer/packages/control-image",
         sources: ["src/control.js"],
     },
     "control-multicheck": {
-        path: "inc/packages/control-multicheck",
+        path: "customizer/packages/control-multicheck",
         sources: ["src/control.js"],
     },
     "control-palette": {
-        path: "inc/packages/control-palette",
+        path: "customizer/packages/control-palette",
         sources: ["src/control.js"],
     },
     "control-radio": {
-        path: "inc/packages/control-radio",
+        path: "customizer/packages/control-radio",
         sources: ["src/control.js"],
     },
     "control-react-colorful": {
-        path: "inc/packages/control-react-colorful",
+        path: "customizer/packages/control-react-colorful",
         sources: ["src/control.js", "src/preview.js"],
     },
     "control-react-select": {
-        path: "inc/packages/control-react-select",
+        path: "customizer/packages/control-react-select",
         sources: ["src/control.js"],
     },
     "control-repeater": {
-        path: "inc/packages/control-repeater",
+        path: "customizer/packages/control-repeater",
         sources: ["src/control.js"],
     },
     // "control-select": {
-    //     path: "inc/packages/control-select",
+    //     path: "customizer/packages/control-select",
     //     sources: ["src/control.js"],
     // },
     "control-slider": {
-        path: "inc/packages/control-slider",
+        path: "customizer/packages/control-slider",
         sources: ["src/control.js"],
     },
     "control-sortable": {
-        path: "inc/packages/control-sortable",
+        path: "customizer/packages/control-sortable",
         sources: ["src/control.js"],
     },
     "field-dimensions": {
-        path: "inc/packages/field-dimensions",
+        path: "customizer/packages/field-dimensions",
         // Yes, the files are control.scss & preview.js :)
         sources: ["src/control.scss", "src/preview.js"],
     },
     "field-typography": {
-        path: "inc/packages/field-typography",
+        path: "customizer/packages/field-typography",
         sources: ["src/control.js", "src/preview.js"],
     },
     "module-field-dependencies": {
-        path: "inc/packages/module-field-dependencies",
+        path: "customizer/packages/module-field-dependencies",
         sources: ["src/control.js"],
     },
     "module-tooltips": {
-        path: "inc/packages/module-tooltips",
+        path: "customizer/packages/module-tooltips",
         sources: ["src/control.js"],
     },
 

@@ -38,10 +38,10 @@ if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
 }
 
-require_once __DIR__ . '/inc/lib/class-aricolor.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
-require_once __DIR__ . '/inc/lib/class-kirki-color.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+require_once __DIR__ . '/customizer/lib/class-aricolor.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+require_once __DIR__ . '/customizer/lib/class-kirki-color.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 require_once __DIR__ . '/vendor/autoload.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
-require_once __DIR__ . '/inc/bootstrap.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+require_once __DIR__ . '/customizer/bootstrap.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 if ( ! defined( 'KIRKI_VERSION' ) ) {
 	define( 'KIRKI_VERSION', '5.1.1' );
@@ -74,7 +74,7 @@ $kirki->modules = new Modules();
 
 // Instantiate classes.
 new Kirki();
-new L10n( 'kirki', __DIR__ . '/inc/languages' );
+new L10n( 'kirki', __DIR__ . '/customizer/languages' );
 new \Kirki\Settings\SetupSettings();
 
 // Add an empty config for global fields.
@@ -101,4 +101,4 @@ if ( defined( 'KIRKI_TEST' ) && true === constant( 'KIRKI_TEST' ) && file_exists
 	include_once dirname( __FILE__ ) . '/example.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 }
 
-require_once __DIR__ . '/inc/packages/index.php';
+require_once __DIR__ . '/customizer/packages/index.php';
