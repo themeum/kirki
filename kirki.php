@@ -88,7 +88,7 @@ if ( file_exists( $custom_config_path ) ) {
 }
 
 // Add upgrade notifications.
-require_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+require_once wp_normalize_path( dirname( __FILE__ ) . '/customizer/lib/upgrade-notifications.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 /**
  * To enable tests, add this line to your wp-config.php file (or anywhere else):
