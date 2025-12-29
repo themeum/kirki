@@ -39,6 +39,15 @@ spl_autoload_register(
 			return;
 		}
 
+		// Control classes extend WP_Customize_Control, so WordPress Customizer must be loaded first.
+		$is_control_class = ( 0 === strpos( $new_class, 'Kirki\\Control\\' ) );
+		
+		// For Control classes, WP_Customize_Control must be available.
+		if ( $is_control_class && ! class_exists( 'WP_Customize_Control', false ) ) {
+			// Defer loading until WordPress Customizer is ready.
+			return;
+		}
+		
 		// Try to trigger the main autoloader first.
 		if ( class_exists( $new_class ) ) {
 			class_alias( $new_class, $class );

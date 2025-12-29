@@ -13,75 +13,75 @@ const definedPackages = {
         ],
     },
     "control-base": {
-        path: "customizer/packages/control-base",
+        path: "customizer/packages/control/base",
         sources: ["src/control.js"],
     },
     "control-checkbox": {
-        path: "customizer/packages/control-checkbox",
+        path: "customizer/packages/control/checkbox",
         sources: ["src/control.js"],
     },
     "control-color-palette": {
-        path: "customizer/packages/control-color-palette",
+        path: "customizer/packages/control/color-palette",
         sources: ["src/control.js"],
     },
     "control-dashicons": {
-        path: "customizer/packages/control-dashicons",
+        path: "customizer/packages/control/dashicons",
         sources: ["src/control.js"],
     },
     "control-date": {
-        path: "customizer/packages/control-date",
+        path: "customizer/packages/control/date",
         sources: ["src/control.js"],
     },
     "control-dimension": {
-        path: "customizer/packages/control-dimension",
+        path: "customizer/packages/control/dimension",
         sources: ["src/control.js"],
     },
     "control-editor": {
-        path: "customizer/packages/control-editor",
+        path: "customizer/packages/control/editor",
         sources: ["src/control.js"],
     },
     "control-generic": {
-        path: "customizer/packages/control-generic",
+        path: "customizer/packages/control/generic",
         sources: ["src/control.js"],
     },
     "control-image": {
-        path: "customizer/packages/control-image",
+        path: "customizer/packages/control/image",
         sources: ["src/control.js"],
     },
     "control-multicheck": {
-        path: "customizer/packages/control-multicheck",
+        path: "customizer/packages/control/multicheck",
         sources: ["src/control.js"],
     },
     "control-palette": {
-        path: "customizer/packages/control-palette",
+        path: "customizer/packages/control/palette",
         sources: ["src/control.js"],
     },
     "control-radio": {
-        path: "customizer/packages/control-radio",
+        path: "customizer/packages/control/radio",
         sources: ["src/control.js"],
     },
     "control-react-colorful": {
-        path: "customizer/packages/control-react-colorful",
+        path: "customizer/packages/control/react-colorful",
         sources: ["src/control.js", "src/preview.js"],
     },
     "control-react-select": {
-        path: "customizer/packages/control-react-select",
+        path: "customizer/packages/control/react-select",
         sources: ["src/control.js"],
     },
     "control-repeater": {
-        path: "customizer/packages/control-repeater",
+        path: "customizer/packages/control/repeater",
         sources: ["src/control.js"],
     },
     // "control-select": {
-    //     path: "customizer/packages/control-select",
+    //     path: "customizer/packages/control/select",
     //     sources: ["src/control.js"],
     // },
     "control-slider": {
-        path: "customizer/packages/control-slider",
+        path: "customizer/packages/control/slider",
         sources: ["src/control.js"],
     },
     "control-sortable": {
-        path: "customizer/packages/control-sortable",
+        path: "customizer/packages/control/sortable",
         sources: ["src/control.js"],
     },
     "field-dimensions": {
@@ -94,11 +94,11 @@ const definedPackages = {
         sources: ["src/control.js", "src/preview.js"],
     },
     "module-field-dependencies": {
-        path: "customizer/packages/module-field-dependencies",
+        path: "customizer/packages/module/field-dependencies",
         sources: ["src/control.js"],
     },
     "module-tooltips": {
-        path: "customizer/packages/module-tooltips",
+        path: "customizer/packages/module/tooltips",
         sources: ["src/control.js"],
     },
 
