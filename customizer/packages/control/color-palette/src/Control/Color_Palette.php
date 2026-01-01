@@ -1,10 +1,10 @@
 <?php
 /**
- * The slider control.
+ * The color palette control.
  *
- * Creates a slider control.
+ * Creates a color palette control.
  *
- * @package kirki-framework/control-slider
+ * @package kirki-framework/control-color-palette
  * @license MIT (https://oss.ninja/mit?organization=Kirki%20Framework)
  * @since   1.0
  */
@@ -53,7 +53,7 @@ class Color_Palette extends Base {
 		wp_enqueue_style( 'kirki-color-palette-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-color-palette-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-controls', 'customize-base', 'react-dom' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-color-palette-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), ['customize-controls', 'customize-base', 'react-dom' ], self::$control_ver, false );
 
 	}
 
