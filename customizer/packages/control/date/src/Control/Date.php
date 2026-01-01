@@ -14,7 +14,7 @@ use Kirki\URL;
 use Kirki\Control\Base;
 
 /**
- * A simple date control, using jQuery UI.
+ * A simple date control, using vanilla JavaScript.
  *
  * @since 1.0
  */
@@ -50,7 +50,7 @@ class Date extends Base {
 		parent::enqueue();
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-date', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'kirki-control-base', 'jquery-ui-datepicker' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-date', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), ['customize-base', 'kirki-control-base'], self::$control_ver, false );
 
 		// Enqueue the style.
 		wp_enqueue_style( 'kirki-control-date-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
