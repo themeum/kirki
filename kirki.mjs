@@ -48,6 +48,10 @@ const definedPackages = {
         path: "customizer/packages/controls/image",
         sources: ["src/control.js"],
     },
+    "control-input-slider": {
+        path: "customizer/packages/controls/input-slider",
+        sources: ["src/control.js"],
+    },
     "control-multicheck": {
         path: "customizer/packages/controls/multicheck",
         sources: ["src/control.js"],
