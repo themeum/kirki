@@ -67,9 +67,9 @@ find customizer/packages -type f -path "*/src/*" \( -name "*.scss" -o -name "*.s
 
 # Remove JS source files that are compiled to dist/ (webfontloader kept below)
 # These are source files that get compiled - only dist/ files are needed
-find customizer/packages/control -type f -path "*/src/*.js" ! -path "*/compatibility/*" -delete 2>/dev/null || true
-find customizer/packages/field -type f -path "*/src/*.js" -delete 2>/dev/null || true
-find customizer/packages/module -type f -path "*/src/*.js" ! -path "*/module/webfonts/src/assets/scripts/vendor-typekit/webfontloader.js" -delete 2>/dev/null || true
+find customizer/packages/controls -type f -path "*/src/*.js" ! -path "*/compatibility/*" -delete 2>/dev/null || true
+find customizer/packages/fields -type f -path "*/src/*.js" -delete 2>/dev/null || true
+find customizer/packages/modules -type f -path "*/src/*.js" ! -path "*/modules/webfonts/src/assets/scripts/vendor-typekit/webfontloader.js" -delete 2>/dev/null || true
 find customizer/packages/settings -type f -path "*/src/*.js" -delete 2>/dev/null || true
 
 # Remove compatibility package assets not needed in production builds
@@ -79,12 +79,12 @@ rm -f customizer/packages/compatibility/src/Scripts.php 2>/dev/null || true
 
 # Remove webfont source metadata not required in production builds
 echo "Removing Google Fonts source metadata (webfont-files.json) ..."
-rm -f customizer/packages/util/googlefonts/src/webfont-files.json 2>/dev/null || true
+rm -f customizer/packages/utils/googlefonts/src/webfont-files.json 2>/dev/null || true
 
 # Remove webfonts vendor source files (webfontloader.js is the compiled version, source files not needed)
-find customizer/packages/module/webfonts/src/assets/scripts/vendor-typekit/src -type f -delete 2>/dev/null || true
-find customizer/packages/module/webfonts/src/assets/scripts/vendor-typekit -type d -name "src" -exec rm -rf {} + 2>/dev/null || true
-find customizer/packages/module/webfonts/src/assets/scripts/vendor-typekit -type f -name "*.yml" -delete 2>/dev/null || true
+find customizer/packages/modules/webfonts/src/assets/scripts/vendor-typekit/src -type f -delete 2>/dev/null || true
+find customizer/packages/modules/webfonts/src/assets/scripts/vendor-typekit -type d -name "src" -exec rm -rf {} + 2>/dev/null || true
+find customizer/packages/modules/webfonts/src/assets/scripts/vendor-typekit -type f -name "*.yml" -delete 2>/dev/null || true
 
 find . -name "composer.json" -type f -delete
 find . -name "composer.lock" -type f -delete
