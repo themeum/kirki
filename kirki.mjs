@@ -52,6 +52,10 @@ const definedPackages = {
         path: "customizer/packages/controls/input-slider",
         sources: ["src/control.js"],
     },
+    "control-margin-padding": {
+        path: "customizer/packages/controls/margin-padding",
+        sources: ["src/control.js", "src/preview.js"],
+    },
     "control-multicheck": {
         path: "customizer/packages/controls/multicheck",
         sources: ["src/control.js"],
