@@ -43,17 +43,26 @@
 			}
 
 			// Hijack the container to add wrapper_attrs.
-      args.params.content = jQuery("<li></li>");
-			args.params.content.attr('id', 'customize-control-' + id.replace(/]/g, '').replace(/\[/g, '-'));
-			args.params.content.attr('class', className);
+			// Create DOM element using vanilla JS, then wrap in jQuery for WordPress API compatibility
+			const liElement = document.createElement('li');
+			liElement.id = 'customize-control-' + id.replace(/]/g, '').replace(/\[/g, '-');
+			liElement.className = className;
 
-			_.each(args.params.wrapper_attrs, function (val, key) {
-				if ('class' === key) {
-					val = val.replace('{default_class}', className);
-				}
+			// Set wrapper attributes
+			if (args.params.wrapper_attrs) {
+				Object.keys(args.params.wrapper_attrs).forEach(function (key) {
+					let val = args.params.wrapper_attrs[key];
+					if ('class' === key) {
+						val = val.replace('{default_class}', className);
+						liElement.className = val;
+					} else {
+						liElement.setAttribute(key, val);
+					}
+				});
+			}
 
-				args.params.content.attr(key, val);
-			});
+			// Wrap in jQuery for WordPress API compatibility
+			args.params.content = jQuery(liElement);
 
 			control.propertyElements = [];
 			wp.customize.Control.prototype.initialize.call(control, id, args);
@@ -70,18 +79,24 @@
 		 * @returns {void}
 		 */
 		_setUpSettingRootLinks: function () {
-			var control = this,
-				nodes = control.container.find('[data-customize-setting-link]');
+			var control = this;
+			// Get DOM element from jQuery container
+			var containerElement = control.container[0] || control.container;
+			var nodes = containerElement.querySelectorAll('[data-customize-setting-link]');
 
-			nodes.each(function () {
-				var node = jQuery(this);
+			Array.prototype.forEach.call(nodes, function (node) {
+				// Get the setting link from data attribute
+				var settingLink = node.getAttribute('data-customize-setting-link');
 
-				wp.customize(node.data('customizeSettingLink'), function (setting) {
-					var element = new wp.customize.Element(node);
-					control.elements.push(element);
-					element.sync(setting);
-					element.set(setting());
-				});
+				if (settingLink) {
+					wp.customize(settingLink, function (setting) {
+						// Wrap in jQuery for WordPress API compatibility (wp.customize.Element expects jQuery)
+						var element = new wp.customize.Element(jQuery(node));
+						control.elements.push(element);
+						element.sync(setting);
+						element.set(setting());
+					});
+				}
 			});
 		},
 
@@ -99,14 +114,16 @@
 				return;
 			}
 
-			nodes = control.container.find('[data-customize-setting-property-link]');
+			// Get DOM element from jQuery container
+			var containerElement = control.container[0] || control.container;
+			nodes = containerElement.querySelectorAll('[data-customize-setting-property-link]');
 
-			nodes.each(function () {
-				var node = jQuery(this),
-					element,
-					propertyName = node.data('customizeSettingPropertyLink');
+			Array.prototype.forEach.call(nodes, function (node) {
+				var element,
+					propertyName = node.getAttribute('data-customize-setting-property-link');
 
-				element = new wp.customize.Element(node);
+				// Wrap in jQuery for WordPress API compatibility (wp.customize.Element expects jQuery)
+				element = new wp.customize.Element(jQuery(node));
 				control.propertyElements.push(element);
 				element.set(control.setting()[propertyName]);
 
@@ -217,9 +234,35 @@
 			control = control || this;
 			wp.hooks.doAction('kirki.dynamicControl.initKirkiControl', this);
 
-			// Save the value
-			control.container.on('change keyup paste click', 'input', function () {
-				control.setting.set(jQuery(this).val());
+			// Get DOM element from jQuery container
+			var containerElement = control.container[0] || control.container;
+
+			// Save the value using vanilla JS event delegation
+			containerElement.addEventListener('change', function (event) {
+				if (event.target && event.target.tagName === 'INPUT') {
+					control.setting.set(event.target.value);
+				}
+			});
+
+			containerElement.addEventListener('keyup', function (event) {
+				if (event.target && event.target.tagName === 'INPUT') {
+					control.setting.set(event.target.value);
+				}
+			});
+
+			containerElement.addEventListener('paste', function (event) {
+				if (event.target && event.target.tagName === 'INPUT') {
+					// Use setTimeout to get the value after paste
+					setTimeout(function () {
+						control.setting.set(event.target.value);
+					}, 0);
+				}
+			});
+
+			containerElement.addEventListener('click', function (event) {
+				if (event.target && event.target.tagName === 'INPUT') {
+					control.setting.set(event.target.value);
+				}
 			});
 		}
 	});
@@ -254,7 +297,8 @@
 			parentSetting = api.control(this.id).params.parent_setting;
 			newVal = {};
 			newVal[this.id.replace(parentSetting + '[', '').replace(']', '')] = to;
-			api.control(parentSetting).setting.set(jQuery.extend({}, api.control(parentSetting).setting._value, newVal));
+			// Use Object.assign instead of jQuery.extend
+			api.control(parentSetting).setting.set(Object.assign({}, api.control(parentSetting).setting._value, newVal));
 		}
 
 		/**
