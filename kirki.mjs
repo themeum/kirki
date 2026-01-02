@@ -13,92 +13,92 @@ const definedPackages = {
         ],
     },
     "control-base": {
-        path: "customizer/packages/control/base",
+        path: "customizer/packages/controls/base",
         sources: ["src/control.js"],
     },
     "control-checkbox": {
-        path: "customizer/packages/control/checkbox",
+        path: "customizer/packages/controls/checkbox",
         sources: ["src/control.js"],
     },
     "control-color-palette": {
-        path: "customizer/packages/control/color-palette",
+        path: "customizer/packages/controls/color-palette",
         sources: ["src/control.js"],
     },
     "control-dashicons": {
-        path: "customizer/packages/control/dashicons",
+        path: "customizer/packages/controls/dashicons",
         sources: ["src/control.js"],
     },
     "control-date": {
-        path: "customizer/packages/control/date",
+        path: "customizer/packages/controls/date",
         sources: ["src/control.js"],
     },
     "control-dimension": {
-        path: "customizer/packages/control/dimension",
+        path: "customizer/packages/controls/dimension",
         sources: ["src/control.js"],
     },
     "control-editor": {
-        path: "customizer/packages/control/editor",
+        path: "customizer/packages/controls/editor",
         sources: ["src/control.js"],
     },
     "control-generic": {
-        path: "customizer/packages/control/generic",
+        path: "customizer/packages/controls/generic",
         sources: ["src/control.js"],
     },
     "control-image": {
-        path: "customizer/packages/control/image",
+        path: "customizer/packages/controls/image",
         sources: ["src/control.js"],
     },
     "control-multicheck": {
-        path: "customizer/packages/control/multicheck",
+        path: "customizer/packages/controls/multicheck",
         sources: ["src/control.js"],
     },
     "control-palette": {
-        path: "customizer/packages/control/palette",
+        path: "customizer/packages/controls/palette",
         sources: ["src/control.js"],
     },
     "control-radio": {
-        path: "customizer/packages/control/radio",
+        path: "customizer/packages/controls/radio",
         sources: ["src/control.js"],
     },
     "control-react-colorful": {
-        path: "customizer/packages/control/react-colorful",
+        path: "customizer/packages/controls/react-colorful",
         sources: ["src/control.js", "src/preview.js"],
     },
     "control-react-select": {
-        path: "customizer/packages/control/react-select",
+        path: "customizer/packages/controls/react-select",
         sources: ["src/control.js"],
     },
     "control-repeater": {
-        path: "customizer/packages/control/repeater",
+        path: "customizer/packages/controls/repeater",
         sources: ["src/control.js"],
     },
     // "control-select": {
-    //     path: "customizer/packages/control/select",
+    //     path: "customizer/packages/controls/select",
     //     sources: ["src/control.js"],
     // },
     "control-slider": {
-        path: "customizer/packages/control/slider",
+        path: "customizer/packages/controls/slider",
         sources: ["src/control.js"],
     },
     "control-sortable": {
-        path: "customizer/packages/control/sortable",
+        path: "customizer/packages/controls/sortable",
         sources: ["src/control.js"],
     },
     "field-dimensions": {
-        path: "customizer/packages/field/dimensions",
+        path: "customizer/packages/fields/dimensions",
         // Yes, the files are control.scss & preview.js :)
         sources: ["src/control.scss", "src/preview.js"],
     },
     "field-typography": {
-        path: "customizer/packages/field/typography",
+        path: "customizer/packages/fields/typography",
         sources: ["src/control.js", "src/preview.js"],
     },
     "module-field-dependencies": {
-        path: "customizer/packages/module/field-dependencies",
+        path: "customizer/packages/modules/field-dependencies",
         sources: ["src/control.js"],
     },
     "module-tooltips": {
-        path: "customizer/packages/module/tooltips",
+        path: "customizer/packages/modules/tooltips",
         sources: ["src/control.js"],
     },
 

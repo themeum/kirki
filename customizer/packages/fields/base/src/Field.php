@@ -199,7 +199,7 @@ abstract class Field {
 		$args = $this->args;
 
 		// This is for postMessage purpose.
-		// @see wp-content/plugins/kirki/customizer/packages/module/postmessage/src/Postmessage.php inside 'field_add_setting_args' method.
+		// @see wp-content/plugins/kirki/customizer/packages/modules/postmessage/src/Postmessage.php inside 'field_add_setting_args' method.
 		$args['type'] = isset( $this->type ) ? $this->type : '';
 
 		/**

@@ -74,7 +74,7 @@ $kirki->modules = new Modules();
 
 // Instantiate classes.
 new Kirki();
-new L10n( 'kirki', __DIR__ . '/customizer/languages' );
+new L10n( 'kirki', __DIR__ . '/languages' );
 new \Kirki\Settings\SetupSettings();
 
 // Add an empty config for global fields.
