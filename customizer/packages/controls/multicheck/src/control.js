@@ -4,25 +4,36 @@ wp.customize.controlConstructor['kirki-multicheck'] = wp.customize.kirkiDynamicC
 
 	initKirkiControl: function( control ) {
 		control = control || this;
+		const container = control.container[0] || control.container;
 
 		// Save the value
-		control.container.on( 'change', 'input', function() {
-			var value = [],
-				i = 0;
+		container.addEventListener( 'change', function( event ) {
+			// Only handle input checkbox changes
+			if ( event.target && event.target.tagName === 'INPUT' && event.target.type === 'checkbox' ) {
+				var value = [],
+					i = 0;
 
-			// Build the value as an object using the sub-values from individual checkboxes.
-			jQuery.each( control.params.choices, function( key ) {
-				if ( control.container.find( 'input[value="' + key + '"]' ).is( ':checked' ) ) {
-					control.container.find( 'input[value="' + key + '"]' ).parent().addClass( 'checked' );
-					value[ i ] = key;
-					i++;
-				} else {
-					control.container.find( 'input[value="' + key + '"]' ).parent().removeClass( 'checked' );
-				}
-			} );
+				// Build the value as an object using the sub-values from individual checkboxes.
+				Object.keys( control.params.choices ).forEach( function( key ) {
+					const input = container.querySelector( 'input[value="' + key + '"]' );
+					if ( input && input.checked ) {
+						const parent = input.parentElement;
+						if ( parent ) {
+							parent.classList.add( 'checked' );
+						}
+						value[ i ] = key;
+						i++;
+					} else if ( input ) {
+						const parent = input.parentElement;
+						if ( parent ) {
+							parent.classList.remove( 'checked' );
+						}
+					}
+				} );
 
-			// Update the value in the customizer.
-			control.setting.set( value );
+				// Update the value in the customizer.
+				control.setting.set( value );
+			}
 		} );
 	}
 } );
