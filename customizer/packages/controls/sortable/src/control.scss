@@ -4,6 +4,10 @@
       padding: 5px 10px;
       border: 1px solid #333;
       background: #fff;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
 
       .dashicons {
         &.dashicons-menu {
@@ -12,6 +16,7 @@
 
         &.visibility {
           margin-right: 10px;
+          cursor: pointer;
         }
       }
 
@@ -22,6 +27,23 @@
         .dashicons.visibility {
           color: #aaa;
         }
+      }
+
+      &.dragging {
+        opacity: 0.5;
+      }
+
+      &.drag-over {
+        border-top: 2px solid #0073aa;
+      }
+
+      &.sortable-placeholder {
+        padding: 0;
+        margin: 0;
+        border: 2px dashed #ccc;
+        background: #f0f0f0;
+        height: auto;
+        min-height: 40px;
       }
     }
   }
