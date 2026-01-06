@@ -208,3 +208,17 @@
   background: #d32f2f;
   color: #fff;
 }
+
+// Sortable placeholder
+.repeater-row-placeholder {
+  background: #f0f0f0;
+  border: 2px dashed #ccc;
+  margin: 0.5rem 0;
+  height: 50px;
+}
+
+// Smooth transitions for slide animations
+.kirki-image-attachment,
+.kirki-file-attachment {
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
