@@ -96,6 +96,10 @@ const definedPackages = {
         path: "customizer/packages/controls/sortable",
         sources: ["src/control.js"],
     },
+    "control-tabs": {
+        path: "customizer/packages/controls/tabs",
+        sources: ["src/control.js"],
+    },
     "field-dimensions": {
         path: "customizer/packages/fields/dimensions",
         // Yes, the files are control.scss & preview.js :)

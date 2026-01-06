@@ -51,7 +51,7 @@ class Tabs extends Base {
 		wp_enqueue_style( 'kirki-control-tabs', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-tabs', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], self::$control_ver, true );
+		wp_enqueue_script( 'kirki-control-tabs', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-base', 'customize-controls' ], self::$control_ver, true );
 
 	}
 
