@@ -80,6 +80,10 @@ const definedPackages = {
         path: "customizer/packages/controls/repeater",
         sources: ["src/control.js"],
     },
+    "control-responsive": {
+        path: "customizer/packages/controls/responsive",
+        sources: ["src/control.js"],
+    },
     // "control-select": {
     //     path: "customizer/packages/controls/select",
     //     sources: ["src/control.js"],
