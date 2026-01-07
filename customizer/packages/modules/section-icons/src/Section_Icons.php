@@ -123,7 +123,7 @@ class Section_Icons {
 			$this->add_icon( $section['id'], $section['icon'], 'section' );
 		}
 
-		wp_enqueue_script( 'kirki_panel_and_section_icons', URL::get_from_path( __DIR__ . '/icons.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], '1.0', true );
+		wp_enqueue_script( 'kirki_panel_and_section_icons', URL::get_from_path( dirname( __DIR__ ) . '/dist/icons.js' ), [ 'jquery', 'customize-base', 'customize-controls' ], '1.0', true );
 		wp_localize_script( 'kirki_panel_and_section_icons', 'kirkiIcons', self::$icons );
 
 	}

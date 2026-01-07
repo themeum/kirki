@@ -445,7 +445,7 @@ class Background extends Field {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( 'kirki-typography', URL::get_from_path( __DIR__ ) . '/script.js', [ 'wp-hooks' ], '1.0', true );
+		wp_enqueue_script( 'kirki-typography', URL::get_from_path( dirname( __DIR__ ) . '/dist/script.js' ), [ 'wp-hooks' ], '1.0', true );
 
 	}
 

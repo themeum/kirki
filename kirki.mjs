@@ -121,6 +121,26 @@ const definedPackages = {
         path: "customizer/packages/modules/panels",
         sources: ["src/script.js"],
     },
+    "module-sections": {
+        path: "customizer/packages/modules/sections",
+        sources: ["src/script.js"],
+    },
+    "module-preset": {
+        path: "customizer/packages/modules/preset",
+        sources: ["src/script.js"],
+    },
+    "module-postmessage": {
+        path: "customizer/packages/modules/postmessage",
+        sources: ["src/postMessage.js"],
+    },
+    "module-section-icons": {
+        path: "customizer/packages/modules/section-icons",
+        sources: ["src/icons.js"],
+    },
+    "field-background": {
+        path: "customizer/packages/fields/background",
+        sources: ["src/script.js"],
+    },
 
 };
 
