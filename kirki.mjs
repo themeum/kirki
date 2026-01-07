@@ -117,6 +117,10 @@ const definedPackages = {
         path: "customizer/packages/modules/tooltips",
         sources: ["src/control.js"],
     },
+    "module-panels": {
+        path: "customizer/packages/modules/panels",
+        sources: ["src/script.js"],
+    },
 
 };
 
