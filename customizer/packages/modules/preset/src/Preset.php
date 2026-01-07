@@ -61,7 +61,7 @@ class Preset {
 	 * @since 1.0.0
 	 */
 	public function customize_controls_print_footer_scripts() {
-		wp_enqueue_script( 'kirki-preset', URL::get_from_path( dirname( __DIR__ ) . '/dist/script.js' ), [ 'jquery' ], '1.0.0', false );
+		wp_enqueue_script( 'kirki-preset', URL::get_from_path( dirname( __DIR__ ) . '/dist/script.js' ), [], '1.0.0', false );
 		wp_localize_script( 'kirki-preset', 'kirkiPresetControls', self::$preset_controls );
 	}
 }

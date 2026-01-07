@@ -1,1 +1,1 @@
-jQuery(document).ready(function(){_.each(kirkiPresetControls,function(n,t){wp.customize(t,function(t){t.bind(function(t){_.each(n,function(n,c){c===t&&_.each(n.settings,function(n,t){wp.customize(t).set(n)})})})})})});
+!function(){function n(){_.each(kirkiPresetControls,function(n,t){wp.customize(t,function(t){t.bind(function(t){_.each(n,function(n,e){e===t&&_.each(n.settings,function(n,t){wp.customize(t).set(n)})})})})})}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",n):n()}();
