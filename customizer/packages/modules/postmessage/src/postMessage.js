@@ -28,7 +28,9 @@ var kirkiPostMessage = {
 		add: function( id ) {
 			id = id.replace( /[^\w\s]/gi, '-' );
 			if ( null === document.getElementById( 'kirki-postmessage-' + id ) || 'undefined' === typeof document.getElementById( 'kirki-postmessage-' + id ) ) {
-				jQuery( 'head' ).append( '<style id="kirki-postmessage-' + id + '"></style>' );
+				var styleTag = document.createElement( 'style' );
+				styleTag.id = 'kirki-postmessage-' + id;
+				document.head.appendChild( styleTag );
 			}
 		},
 
@@ -46,7 +48,10 @@ var kirkiPostMessage = {
 		addData: function( id, styles ) {
 			id = id.replace( '[', '-' ).replace( ']', '' );
 			kirkiPostMessage.styleTag.add( id );
-			jQuery( '#kirki-postmessage-' + id ).text( styles );
+			var styleElement = document.getElementById( 'kirki-postmessage-' + id );
+			if ( styleElement ) {
+				styleElement.textContent = styles;
+			}
 		}
 	},
 
@@ -284,10 +289,13 @@ var kirkiPostMessage = {
 			}
 			value = kirkiPostMessage.util.processValue( output, value );
 
-			if ( output.attr ) {
-				jQuery( output.element ).attr( output.attr, value );
-			} else {
-				jQuery( output.element ).html( value );
+			var element = document.querySelector( output.element );
+			if ( element ) {
+				if ( output.attr ) {
+					element.setAttribute( output.attr, value );
+				} else {
+					element.innerHTML = value;
+				}
 			}
 		}
 	},
@@ -314,16 +322,21 @@ var kirkiPostMessage = {
 				return;
 			}
 
-			if ( value === output.value && ! jQuery( output.element ).hasClass( output.class ) ) {
-				jQuery( output.element ).addClass( output.class );
+			var element = document.querySelector( output.element );
+			if ( ! element ) {
+				return;
+			}
+
+			if ( value === output.value && ! element.classList.contains( output.class ) ) {
+				element.classList.add( output.class );
 			} else {
-				jQuery( output.element ).removeClass( output.class );
+				element.classList.remove( output.class );
 			}
 		}
 	}
 };
 
-jQuery( document ).ready( function() {
+document.addEventListener( 'DOMContentLoaded', function() {
 	var styles;
 
 	_.each( kirkiPostMessageFields, function( field ) {
