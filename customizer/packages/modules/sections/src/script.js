@@ -1,21 +1,41 @@
-jQuery( document ).ready( function() {
+( function() {
+	function initExpandedSections() {
+		wp.customize.section.each( function( section ) {
 
-	wp.customize.section.each( function( section ) {
+			// Get the pane element.
+			var pane      = document.querySelector( '#sub-accordion-section-' + section.id ),
+				sectionLi = document.querySelector( '#accordion-section-' + section.id );
 
-		// Get the pane element.
-		var pane      = jQuery( '#sub-accordion-section-' + section.id ),
-			sectionLi = jQuery( '#accordion-section-' + section.id );
+			// Check if elements exist and if the section is expanded.
+			if ( pane && sectionLi && sectionLi.classList.contains( 'control-section-kirki-expanded' ) ) {
 
-		// Check if the section is expanded.
-		if ( sectionLi.hasClass( 'control-section-kirki-expanded' ) ) {
+				// Only move if the pane is not already a child of sectionLi.
+				// This prevents duplication when sections are reflowed.
+				if ( pane.parentNode !== sectionLi ) {
+					sectionLi.appendChild( pane );
+				}
 
-			// Move element.
-			pane.appendTo( sectionLi );
+			}
 
-		}
+		} );
+	}
 
-	} );
-} );
+	// Run when DOM is ready and also on pane reflow.
+	// This ensures expanded sections are positioned correctly after any DOM reflow.
+	function handleExpandedSections() {
+		// Use a small timeout to ensure DOM has settled after reflow.
+		setTimeout( initExpandedSections, 0 );
+	}
+
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', handleExpandedSections );
+	} else {
+		handleExpandedSections();
+	}
+
+	// Also handle expanded sections when pane contents are reflowed.
+	wp.customize.bind( 'pane-contents-reflowed', handleExpandedSections );
+}() );
 
 /**
  * See https://github.com/justintadlock/trt-customizer-pro
@@ -53,10 +73,19 @@ jQuery( document ).ready( function() {
 
 		sections.sort( wp.customize.utils.prioritySort ).reverse();
 
-		jQuery.each( sections, function( i, section ) {
-			var parentContainer = jQuery( '#sub-accordion-section-' + section.params.section );
+		sections.forEach( function( section ) {
+			var parentContainer = document.querySelector( '#sub-accordion-section-' + section.params.section ),
+				sectionMeta,
+				headContainer;
 
-			parentContainer.children( '.section-meta' ).after( section.headContainer );
+			if ( parentContainer && section.headContainer ) {
+				sectionMeta = parentContainer.querySelector( '.section-meta' );
+				// Handle both jQuery objects and DOM elements.
+				headContainer = section.headContainer.jquery ? section.headContainer[0] : section.headContainer;
+				if ( sectionMeta && headContainer ) {
+					sectionMeta.insertAdjacentElement( 'afterend', headContainer );
+				}
+			}
 		} );
 	} );
 
@@ -78,24 +107,48 @@ jQuery( document ).ready( function() {
 			_sectionAttachEvents.call( section );
 
 			section.expanded.bind( function( expanded ) {
-				var parent = wp.customize.section( section.params.section );
+				var parent = wp.customize.section( section.params.section ),
+					contentContainer;
 
-				if ( expanded ) {
-					parent.contentContainer.addClass( 'current-section-parent' );
-				} else {
-					parent.contentContainer.removeClass( 'current-section-parent' );
+				if ( parent && parent.contentContainer ) {
+					// Handle both jQuery objects and DOM elements.
+					contentContainer = parent.contentContainer.jquery ? parent.contentContainer[0] : parent.contentContainer;
+					if ( contentContainer ) {
+						if ( expanded ) {
+							contentContainer.classList.add( 'current-section-parent' );
+						} else {
+							contentContainer.classList.remove( 'current-section-parent' );
+						}
+					}
 				}
 			} );
 
-			section.container.find( '.customize-section-back' ).off( 'click keydown' ).on( 'click keydown', function( event ) {
-				if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
-					return;
+			// Handle event listeners for the back button.
+			var container = section.container,
+				containerEl = container && container.jquery ? container[0] : container,
+				backButton = containerEl ? containerEl.querySelector( '.customize-section-back' ) : null,
+				backButtonHandler = function( event ) {
+					if ( wp.customize.utils.isKeydownButNotEnterEvent( event ) ) {
+						return;
+					}
+					event.preventDefault(); // Keep this AFTER the key filter above
+					if ( section.expanded() ) {
+						wp.customize.section( section.params.section ).expand();
+					}
+				};
+
+			if ( backButton ) {
+				// Remove existing listeners by cloning the element.
+				var newBackButton = backButton.cloneNode( true );
+				if ( backButton.parentNode ) {
+					backButton.parentNode.replaceChild( newBackButton, backButton );
+					backButton = newBackButton;
 				}
-				event.preventDefault(); // Keep this AFTER the key filter above
-				if ( section.expanded() ) {
-					wp.customize.section( section.params.section ).expand();
-				}
-			} );
+
+				// Add new event listeners.
+				backButton.addEventListener( 'click', backButtonHandler );
+				backButton.addEventListener( 'keydown', backButtonHandler );
+			}
 		},
 
 		embed: function() {
@@ -110,9 +163,15 @@ jQuery( document ).ready( function() {
 
 			_sectionEmbed.call( section );
 
-			parentContainer = jQuery( '#sub-accordion-section-' + this.params.section );
+			parentContainer = document.querySelector( '#sub-accordion-section-' + this.params.section );
 
-			parentContainer.append( section.headContainer );
+			if ( parentContainer && section.headContainer ) {
+				// Handle both jQuery objects and DOM elements.
+				var headContainer = section.headContainer.jquery ? section.headContainer[0] : section.headContainer;
+				if ( headContainer ) {
+					parentContainer.appendChild( headContainer );
+				}
+			}
 		},
 
 		isContextuallyActive: function() {
@@ -153,4 +212,4 @@ jQuery( document ).ready( function() {
 			return ( 0 !== activeCount );
 		}
 	} );
-}( jQuery ) );
+}() );
