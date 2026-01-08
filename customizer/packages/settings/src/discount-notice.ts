@@ -1,35 +1,53 @@
 import { getClosest } from "./utils";
-import jQuery from "jquery";
 
 declare var ajaxurl: string;
 
 (function () {
 	function init() {
-		jQuery(document).on(
-			"click",
-			".kirki-discount-notice.is-dismissible .notice-dismiss",
-			dismiss
-		);
+		document.addEventListener("click", handleDismissClick);
 	}
 
-	function dismiss(e: JQuery.ClickEvent) {
-		const notice = getClosest(this, ".kirki-discount-notice");
+	function handleDismissClick(e: Event) {
+		const target = e.target as HTMLElement;
+		const dismissButton = getClosest(
+			target,
+			".kirki-discount-notice.is-dismissible .notice-dismiss"
+		);
+
+		if (!dismissButton) return;
+		dismiss(e);
+	}
+
+	function dismiss(e: Event) {
+		const notice = getClosest(
+			e.target as HTMLElement,
+			".kirki-discount-notice"
+		);
 		if (!notice) return;
 		let nonce = notice.dataset.dismissNonce;
 		nonce = nonce ? nonce : "";
 
-		jQuery
-			.ajax({
-				url: ajaxurl,
-				type: "post",
-				data: {
-					action: "kirki_dismiss_discount_notice",
-					nonce: nonce,
-					dismiss: 1,
-				},
+		const formData = new URLSearchParams();
+		formData.append("action", "kirki_dismiss_discount_notice");
+		formData.append("nonce", nonce);
+		formData.append("dismiss", "1");
+
+		fetch(ajaxurl, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+			},
+			body: formData.toString(),
+			credentials: "same-origin",
+		})
+			.then((r) => r.json())
+			.then((response) => {
+				if (response && response.success) {
+					console.log(response.data);
+				}
 			})
-			.always(function (r) {
-				if (r.success) console.log(r.data);
+			.catch(() => {
+				// Swallow errors to match previous silent failure behavior.
 			});
 	}
 

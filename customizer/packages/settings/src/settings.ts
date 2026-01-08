@@ -22,7 +22,7 @@ declare var ajaxurl: string;
 	let doingAjax = false;
 	let timeoutId: number = 0;
 
-	function clearFontCache(e: Event) {
+	async function clearFontCache(e: Event) {
 		if (doingAjax) return;
 		doingAjax = true;
 
@@ -35,31 +35,32 @@ declare var ajaxurl: string;
 
 		timeoutId = 0;
 
-		var data = {
-			action: "kirki_clear_font_cache",
-			nonce: button.dataset.nonce,
-		};
+		const formData = new URLSearchParams();
+		formData.append("action", "kirki_clear_font_cache");
+		formData.append("nonce", button.dataset.nonce || "");
 
-		jQuery
-			.ajax({
-				url: ajaxurl,
-				type: "POST",
-				data: data,
-			})
-			.done(function (r) {
-				showNotice(r.success ? "success" : "error", r.data);
-			})
-			.fail(function (r) {
-				showNotice("error", "Something went wrong.");
-			})
-			.always(function (r) {
-				doingAjax = false;
-				button.classList.remove("is-loading");
-
-				timeoutId = window.setTimeout(function () {
-					hideNotice();
-				}, 4000);
+		try {
+			const response = await fetch(ajaxurl, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+				},
+				body: formData.toString(),
+				credentials: "same-origin",
 			});
+
+			const result = await response.json();
+			showNotice(result.success ? "success" : "error", result.data);
+		} catch (error) {
+			showNotice("error", "Something went wrong.");
+		} finally {
+			doingAjax = false;
+			button.classList.remove("is-loading");
+
+			timeoutId = window.setTimeout(function () {
+				hideNotice();
+			}, 4000);
+		}
 	}
 
 	function showNotice(status: string, textContent: string) {

@@ -1,5 +1,4 @@
 import { emptyElement, getClosest, startLoading, stopLoading } from "./utils";
-import jQuery from "jquery";
 
 declare var wp: any;
 declare var kirkiSettings: any;
@@ -44,16 +43,20 @@ export default function setupUdb() {
 			? adminPage.dataset.setupUdbNonce
 			: "";
 
-		jQuery
-			.ajax({
-				url: ajaxurl,
-				method: "POST",
-				data: {
-					action: "kirki_prepare_install_udb",
-					nonce: nonce,
-				},
-			})
-			.done(function (response) {
+		const formData = new URLSearchParams();
+		formData.append("action", "kirki_prepare_install_udb");
+		formData.append("nonce", nonce);
+
+		fetch(ajaxurl, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+			},
+			body: formData.toString(),
+			credentials: "same-origin",
+		})
+			.then((res) => res.json())
+			.then((response) => {
 				if (!response.success) {
 					modifyPreviousProgress(response.data, "failed");
 					stopProcessing(button, "");
@@ -75,12 +78,11 @@ export default function setupUdb() {
 				doingAjax = false;
 				installUdb(button);
 			})
-			.fail(function (jqXHR) {
-				let errorMessage: string =
-					"Something went wrong. Please try again later.";
+			.catch((error) => {
+				let errorMessage = "Something went wrong. Please try again later.";
 
-				if (jqXHR.responseJSON && jqXHR.responseJSON.data) {
-					errorMessage = jqXHR.responseJSON.data;
+				if (error && error.message) {
+					errorMessage = error.message;
 				}
 
 				modifyPreviousProgress(errorMessage, "failed");
@@ -142,11 +144,18 @@ export default function setupUdb() {
 		doingAjax = true;
 		addProgress("Activating Ultimate Dashboard", "loading");
 
-		jQuery.ajax({
-			async: true,
-			type: "GET",
-			url: udbData.activationUrl,
-			success: function () {
+		fetch(udbData.activationUrl, {
+			method: "GET",
+			credentials: "same-origin",
+		})
+			.then((res) => {
+				if (!res.ok) {
+					const error = new Error(res.statusText);
+					throw error;
+				}
+				return res;
+			})
+			.then(() => {
 				modifyPreviousProgress(
 					"Ultimate Dashboard has been activated successfully.",
 					"done"
@@ -154,12 +163,12 @@ export default function setupUdb() {
 
 				addProgress("All done! Redirecting...", "loading");
 				stopProcessing(button, udbData.redirectUrl);
-			},
-			error: function (jqXHR: any) {
-				if (jqXHR.errorCode && jqXHR.errorMessage) {
+			})
+			.catch((jqXHR: any) => {
+				if (jqXHR && jqXHR.errorCode && jqXHR.errorMessage) {
 					modifyPreviousProgress(jqXHR.errorMessage, "failed");
 				} else {
-					if (jqXHR.responseJSON && jqXHR.responseJSON.data) {
+					if (jqXHR && jqXHR.responseJSON && jqXHR.responseJSON.data) {
 						modifyPreviousProgress(jqXHR.responseJSON.data, "failed");
 					} else {
 						modifyPreviousProgress(
@@ -170,8 +179,7 @@ export default function setupUdb() {
 				}
 
 				stopProcessing(button, "");
-			},
-		});
+			});
 	}
 
 	function addProgress(text: string, status: string) {
