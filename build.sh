@@ -8,6 +8,9 @@ echo ""
 shopt -s extglob
 shopt -s dotglob
 
+echo "Building all JS and CSS packages..."
+node kirki.mjs build --all
+
 if [ ! -d "builds" ]; then
 	mkdir builds
 fi
