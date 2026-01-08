@@ -45,7 +45,7 @@ const KirkiReactColorfulControl = wp.customize.Control.extend({
 	 */
 	setNotificationContainer: function setNotificationContainer(element) {
 		const control = this;
-		control.notifications.container = jQuery(element);
+		control.notifications.container = element;
 		control.notifications.render();
 	},
 
