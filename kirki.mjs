@@ -48,6 +48,14 @@ const definedPackages = {
         path: "customizer/packages/controls/image",
         sources: ["src/control.js"],
     },
+    "control-input-slider": {
+        path: "customizer/packages/controls/input-slider",
+        sources: ["src/control.js"],
+    },
+    "control-margin-padding": {
+        path: "customizer/packages/controls/margin-padding",
+        sources: ["src/control.js", "src/preview.js"],
+    },
     "control-multicheck": {
         path: "customizer/packages/controls/multicheck",
         sources: ["src/control.js"],
@@ -72,6 +80,10 @@ const definedPackages = {
         path: "customizer/packages/controls/repeater",
         sources: ["src/control.js"],
     },
+    "control-responsive": {
+        path: "customizer/packages/controls/responsive",
+        sources: ["src/control.js"],
+    },
     // "control-select": {
     //     path: "customizer/packages/controls/select",
     //     sources: ["src/control.js"],
@@ -82,6 +94,10 @@ const definedPackages = {
     },
     "control-sortable": {
         path: "customizer/packages/controls/sortable",
+        sources: ["src/control.js"],
+    },
+    "control-tabs": {
+        path: "customizer/packages/controls/tabs",
         sources: ["src/control.js"],
     },
     "field-dimensions": {
@@ -100,6 +116,30 @@ const definedPackages = {
     "module-tooltips": {
         path: "customizer/packages/modules/tooltips",
         sources: ["src/control.js"],
+    },
+    "module-panels": {
+        path: "customizer/packages/modules/panels",
+        sources: ["src/script.js"],
+    },
+    "module-sections": {
+        path: "customizer/packages/modules/sections",
+        sources: ["src/script.js"],
+    },
+    "module-preset": {
+        path: "customizer/packages/modules/preset",
+        sources: ["src/script.js"],
+    },
+    "module-postmessage": {
+        path: "customizer/packages/modules/postmessage",
+        sources: ["src/postMessage.js"],
+    },
+    "module-section-icons": {
+        path: "customizer/packages/modules/section-icons",
+        sources: ["src/icons.js"],
+    },
+    "field-background": {
+        path: "customizer/packages/fields/background",
+        sources: ["src/script.js"],
     },
 
 };

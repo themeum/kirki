@@ -105,7 +105,7 @@ class SetupSettings {
 
 		wp_enqueue_script( 'updates' );
 
-		wp_enqueue_script( 'kirki-settings', KIRKI_PLUGIN_URL . '/customizer/packages/settings/dist/settings.js', array( 'jquery', 'wp-polyfill' ), KIRKI_VERSION, true );
+		wp_enqueue_script( 'kirki-settings', KIRKI_PLUGIN_URL . '/customizer/packages/settings/dist/settings.js', array( 'wp-polyfill' ), KIRKI_VERSION, true );
 
 		$udb_name     = '';
 		$udb_slug     = '';

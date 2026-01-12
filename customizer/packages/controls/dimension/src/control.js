@@ -4,17 +4,22 @@ import "./control.scss";
 wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function( control ) {
-		var value;
 		control = control || this;
+		var container = control.container[0] || control.container;
 
 		// Notifications.
 		control.kirkiNotifications();
 
-		// Save the value
-		control.container.on( 'change keyup paste', 'input', function() {
-			value = jQuery( this ).val();
-			control.setting.set( value );
-		} );
+		// Save the value using vanilla JS event delegation
+		var handleInputChange = function( event ) {
+			if ( event.target && event.target.tagName === 'INPUT' ) {
+				control.setting.set( event.target.value );
+			}
+		};
+
+		container.addEventListener( 'change', handleInputChange );
+		container.addEventListener( 'keyup', handleInputChange );
+		container.addEventListener( 'paste', handleInputChange );
 	},
 
 	/**

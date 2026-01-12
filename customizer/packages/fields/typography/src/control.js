@@ -92,14 +92,22 @@ function kirkiTypographyCompositeControlFontProperties(id, value) {
   );
 }
 
-jQuery(document).ready(function () {
-  _.each(kirkiTypographyControls, function (id) {
-    kirkiTypographyCompositeControlFontProperties(id);
+(function () {
+  function initTypographyControls() {
+    _.each(kirkiTypographyControls, function (id) {
+      kirkiTypographyCompositeControlFontProperties(id);
 
-    wp.customize(id, function (value) {
-      value.bind(function (newval) {
-        kirkiTypographyCompositeControlFontProperties(id, newval);
+      wp.customize(id, function (value) {
+        value.bind(function (newval) {
+          kirkiTypographyCompositeControlFontProperties(id, newval);
+        });
       });
     });
-  });
-});
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initTypographyControls);
+  } else {
+    initTypographyControls();
+  }
+})();

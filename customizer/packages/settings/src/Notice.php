@@ -118,7 +118,7 @@ class Notice {
 		}
 
 		wp_enqueue_style( 'kirki-admin-notice', KIRKI_PLUGIN_URL . '/customizer/packages/settings/dist/admin-notice.css', array(), KIRKI_VERSION );
-		wp_enqueue_script( 'kirki-discount-notice', KIRKI_PLUGIN_URL . '/customizer/packages/settings/dist/discount-notice.js', array( 'jquery' ), KIRKI_VERSION, true );
+		wp_enqueue_script( 'kirki-discount-notice', KIRKI_PLUGIN_URL . '/customizer/packages/settings/dist/discount-notice.js', array(), KIRKI_VERSION, true );
 
 	}
 

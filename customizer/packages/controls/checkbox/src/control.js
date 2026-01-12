@@ -4,8 +4,13 @@ var kirkiCheckboxScript = {
 
 	initKirkiControl: function( control ) {
 		control = control || this;
-		control.container.on( 'change', 'input', function() {
-			control.setting.set( jQuery( this ).is( ':checked' ) );
+		var container = control.container[0] || control.container;
+		
+		// Use event delegation for dynamically added inputs
+		container.addEventListener( 'change', function( event ) {
+			if ( event.target && event.target.tagName === 'INPUT' ) {
+				control.setting.set( event.target.checked );
+			}
 		} );
 	}
 };

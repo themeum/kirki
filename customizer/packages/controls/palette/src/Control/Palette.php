@@ -59,7 +59,7 @@ class Palette extends Radio {
 		wp_enqueue_style( 'kirki-control-palette', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-palette', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'jquery', 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-palette', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-base', 'kirki-dynamic-control' ], self::$control_ver, false );
 
 	}
 

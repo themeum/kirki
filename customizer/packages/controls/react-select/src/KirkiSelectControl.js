@@ -1,14 +1,15 @@
-/* global wp, jQuery, React, ReactDOM, _ */
+/* global wp, React, ReactDOM, _ */
 import KirkiSelectForm from "./KirkiSelectForm";
 
 const wpReactRender = ( target, reactNode ) => {
 	if ( target ) {
 
-    if ( wp.element.createRoot ) {
-			wp.element.createRoot( target ).render( wp.element.reactNode );
-    } else {
+		// Use React 18 root API when available, otherwise fall back to legacy render.
+		if ( wp.element && typeof wp.element.createRoot === "function" ) {
+			wp.element.createRoot( target ).render( reactNode );
+		} else {
 			wp.element.render( reactNode, target );
-    }
+		}
 	}
 };
 
@@ -56,7 +57,7 @@ const KirkiSelectControl = wp.customize.Control.extend({
    */
   setNotificationContainer: function setNotificationContainer(element) {
     const control = this;
-    control.notifications.container = jQuery(element);
+    control.notifications.container = element;
     control.notifications.render();
   },
 

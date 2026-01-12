@@ -16,7 +16,6 @@ const wpReactRender = ( target, reactNode ) => {
  *
  * Global objects brought:
  * - wp
- * - jQuery
  * - React
  * - ReactDOM
  *
@@ -44,7 +43,11 @@ const KirkiColorPaletteControl = wp.customize.Control.extend({
 		function onRemoved(removedControl) {
 			if (control === removedControl) {
 				control.destroy();
-				control.container.remove();
+				if (control.container[0] && control.container[0].remove) {
+					control.container[0].remove();
+				} else if (control.container[0] && control.container[0].parentNode) {
+					control.container[0].parentNode.removeChild(control.container[0]);
+				}
 				wp.customize.control.unbind('removed', onRemoved);
 			}
 		}
@@ -62,7 +65,7 @@ const KirkiColorPaletteControl = wp.customize.Control.extend({
 	setNotificationContainer: function setNotificationContainer(element) {
 		const control = this;
 
-		control.notifications.container = jQuery(element);
+		control.notifications.container = element;
 		control.notifications.render();
 	},
 
@@ -89,7 +92,7 @@ const KirkiColorPaletteControl = wp.customize.Control.extend({
 		wpReactRender(control.container[0], reactElement)
 
 		if (false !== control.params.choices.allowCollapse) {
-			control.container.addClass('allowCollapse');
+			control.container[0].classList.add('allowCollapse');
 		}
 	},
 

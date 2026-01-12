@@ -412,11 +412,20 @@ var KirkiRepeaterDependencies = {
 															};
 
 															setActiveState = function() {
-																	if( isDisplayed() ) {
-																			jQuery(objRepeaterControl.selector).find( '[data-row="' + rowIndex + '"] .repeater-field-' + slave ).removeClass('inactive').addClass('active').slideDown('fast');
-																	}
-																	else {
-																			jQuery(objRepeaterControl.selector).find( '[data-row="' + rowIndex + '"] .repeater-field-' + slave ).removeClass('active').addClass('inactive').slideUp('fast');
+																	var container = document.querySelector(objRepeaterControl.selector);
+																	var fieldElement = container ? container.querySelector('[data-row="' + rowIndex + '"] .repeater-field-' + slave) : null;
+																	
+																	if( fieldElement ) {
+																			if( isDisplayed() ) {
+																					fieldElement.classList.remove('inactive');
+																					fieldElement.classList.add('active');
+																					slideDown(fieldElement);
+																			}
+																			else {
+																					fieldElement.classList.remove('active');
+																					fieldElement.classList.add('inactive');
+																					slideUp(fieldElement);
+																			}
 																	}
 															};
 
@@ -626,7 +635,69 @@ var KirkiRepeaterDependencies = {
 
 };
 
-jQuery(document).ready(function () {
-  kirkiDependencies.init();
-  KirkiRepeaterDependencies.init();
-});
+/**
+ * Slide down animation helper function.
+ *
+ * @param {HTMLElement} element - The element to slide down.
+ */
+function slideDown(element) {
+	if (!element) {
+		return;
+	}
+
+	element.style.display = '';
+	var height = element.scrollHeight;
+	element.style.height = '0px';
+	element.style.overflow = 'hidden';
+	element.style.transition = 'height 200ms ease-in-out';
+
+	// Force reflow
+	element.offsetHeight;
+
+	element.style.height = height + 'px';
+
+	setTimeout(function() {
+		element.style.height = '';
+		element.style.overflow = '';
+		element.style.transition = '';
+	}, 200);
+}
+
+/**
+ * Slide up animation helper function.
+ *
+ * @param {HTMLElement} element - The element to slide up.
+ */
+function slideUp(element) {
+	if (!element) {
+		return;
+	}
+
+	var height = element.scrollHeight;
+	element.style.height = height + 'px';
+	element.style.overflow = 'hidden';
+	element.style.transition = 'height 200ms ease-in-out';
+
+	// Force reflow
+	element.offsetHeight;
+
+	element.style.height = '0px';
+
+	setTimeout(function() {
+		element.style.display = 'none';
+		element.style.height = '';
+		element.style.overflow = '';
+		element.style.transition = '';
+	}, 200);
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+	document.addEventListener('DOMContentLoaded', function() {
+		kirkiDependencies.init();
+		KirkiRepeaterDependencies.init();
+	});
+} else {
+	kirkiDependencies.init();
+	KirkiRepeaterDependencies.init();
+}

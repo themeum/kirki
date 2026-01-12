@@ -21,9 +21,23 @@
 
 		panels.sort( wp.customize.utils.prioritySort ).reverse();
 
-		jQuery.each( panels, function( i, panel ) {
-			var parentContainer = jQuery( '#sub-accordion-panel-' + panel.params.panel );
-			parentContainer.children( '.panel-meta' ).after( panel.headContainer );
+		panels.forEach( function( panel ) {
+			var parentContainer = document.getElementById( 'sub-accordion-panel-' + panel.params.panel );
+			if ( parentContainer ) {
+				var panelMeta = parentContainer.querySelector( '.panel-meta' );
+				if ( panelMeta && panel.headContainer ) {
+					// panel.headContainer is a jQuery object, get the DOM element
+					var headElement = panel.headContainer[0] || panel.headContainer;
+					if ( headElement ) {
+						// Insert after panelMeta (jQuery's .after() behavior)
+						if ( panelMeta.nextSibling ) {
+							parentContainer.insertBefore( headElement, panelMeta.nextSibling );
+						} else {
+							parentContainer.appendChild( headElement );
+						}
+					}
+				}
+			}
 		} );
 	} );
 
@@ -73,8 +87,14 @@
 			}
 
 			_panelEmbed.call( this );
-			parentContainer = jQuery( '#sub-accordion-panel-' + this.params.panel );
-			parentContainer.append( panel.headContainer );
+			parentContainer = document.getElementById( 'sub-accordion-panel-' + this.params.panel );
+			if ( parentContainer && panel.headContainer ) {
+				// panel.headContainer might be a jQuery object, get the DOM element
+				var headElement = panel.headContainer[0] || panel.headContainer;
+				if ( headElement ) {
+					parentContainer.appendChild( headElement );
+				}
+			}
 		},
 
 		isContextuallyActive: function() {
@@ -106,4 +126,4 @@
 			return ( 0 !== activeCount );
 		}
 	} );
-}( jQuery ) );
+}() );

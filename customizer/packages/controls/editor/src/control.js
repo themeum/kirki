@@ -3,9 +3,10 @@ import "./control.scss";
 /* global tinyMCE */
 wp.customize.controlConstructor[ 'kirki-editor' ] = wp.customize.kirkiDynamicControl.extend( {
 	initKirkiControl: function( control ) {
-		var element, editor, id, defaultParams;
+		var element, editor, id, defaultParams, container;
 		control = control || this;
-		element = control.container.find( 'textarea' );
+		container = control.container[0] || control.container;
+		element = container.querySelector( 'textarea' );
 		id      = 'kirki-editor-' + control.id.replace( '[', '' ).replace( ']', '' );
 
 		defaultParams = {
@@ -18,18 +19,19 @@ wp.customize.controlConstructor[ 'kirki-editor' ] = wp.customize.kirkiDynamicCon
 
 		// Overwrite the default parameters if choices is defined.
 		if ( wp.editor && wp.editor.initialize ) {
-			wp.editor.initialize( id, jQuery.extend( {}, defaultParams, control.params.choices ) );
+			wp.editor.initialize( id, Object.assign( {}, defaultParams, control.params.choices ) );
 		}
 
 		editor = tinyMCE.get( id );
 
-		if ( editor ) {
+		if ( editor && element ) {
 			editor.onChange.add( function( ed ) {
 				var content;
 
 				ed.save();
 				content = editor.getContent();
-				element.val( content ).trigger( 'change' );
+				element.value = content;
+				element.dispatchEvent( new Event( 'change', { bubbles: true } ) );
 				wp.customize.instance( control.id ).set( content );
 			} );
 		}
