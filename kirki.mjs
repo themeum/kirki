@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-import shell from "shelljs";
-import sade from "sade";
+import { execSync } from "child_process";
 
 const definedPackages = {
     settings: {
@@ -187,53 +186,62 @@ function runParcel(commandType, packageName, opts) {
     command = command.replace(/  +/g, " ");
     command = command.trim();
 
-    shell.exec(`${command}`);
+    execSync(command, { stdio: "inherit" });
 }
 
-// Create the program.
+// Parse command line arguments
+const args = process.argv.slice(2);
+const command = args[0];
+const packageName = args[1];
 
-const program = sade("kirki");
-program.version("5.1.0");
+// Parse options
+const opts = {
+    d: args.includes("--debug") || args.includes("-d"),
+    a: args.includes("--all") || args.includes("-a"),
+};
 
-program
-    .command("build [packageName]")
-    .describe("Build a package by package name")
-    .option("-d, --debug", "Build as unminified code for debugging purpose")
-		.option("-a, --all", "Build all packages, overriding the name supplied")
-    .example("build control-base")
-    .example("build control-base --debug")
-    .action((packageName, opts) => {
-			if (opts.a) {
-				Object.keys(definedPackages).forEach(name => {
-					console.log(name);
-					runParcel("build", name, opts)
-				});
-			} else {
-				if (packageName) {
-					runParcel("build", packageName, opts);
-				}
-			}
-    });
-
-program
-    .command("watch <packageName>")
-    .describe(
-        "Build in debug mode by package name and watch for changes. Visit your local site using normal URL. It will reload the browser automatically if there's JS change. And will implement CSS instantly when there's CSS change. Use CTRL+C to stop watching."
-    )
-    .example("watch control-base")
-    .action((packageName, opts) => {
+// Handle commands
+if (command === "build") {
+    if (opts.a) {
+        Object.keys(definedPackages).forEach((name) => {
+            console.log(name);
+            runParcel("build", name, opts);
+        });
+    } else if (packageName) {
+        runParcel("build", packageName, opts);
+    } else {
+        console.error("Error: Package name is required for build command (or use --all)");
+        console.log("Usage: kirki build <packageName>");
+        console.log("       kirki build --all");
+        console.log("Example: kirki build control-base");
+        process.exit(1);
+    }
+} else if (command === "watch") {
+    if (packageName) {
         runParcel("watch", packageName, opts);
-    });
-
-program
-    .command("make wp")
-    .describe(
-        "Build Kirki as a WordPress plugin that's ready to push to WordPress.org. It will put the result into `builds` folder."
-    )
-    .example("make wp")
-    .action((opts) => {
-        // Execute build.sh
-        shell.exec("bash build.sh");
-    });
-
-program.parse(process.argv);
+    } else {
+        console.error("Error: Package name is required for watch command");
+        console.log("Usage: kirki watch <packageName>");
+        console.log("Example: kirki watch control-base");
+        process.exit(1);
+    }
+} else if (command === "make" && args[1] === "wp") {
+    // Execute build.sh
+    execSync("bash build.sh", { stdio: "inherit" });
+} else {
+    console.log("Kirki Build Tool v5.1.0");
+    console.log("");
+    console.log("Usage:");
+    console.log("  kirki build [packageName]     Build a package by package name");
+    console.log("  kirki build [packageName] --debug  Build as unminified code for debugging");
+    console.log("  kirki build --all             Build all packages");
+    console.log("  kirki watch <packageName>     Build in debug mode and watch for changes");
+    console.log("  kirki make wp                 Build Kirki as a WordPress plugin");
+    console.log("");
+    console.log("Examples:");
+    console.log("  kirki build control-base");
+    console.log("  kirki build control-base --debug");
+    console.log("  kirki watch control-base");
+    console.log("  kirki make wp");
+    process.exit(1);
+}

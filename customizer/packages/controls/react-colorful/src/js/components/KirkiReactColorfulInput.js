@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-import reactCSS from "reactcss";
 
 const KirkiReactColorfulInput = (props) => {
 	const { onChange, color = "" } = props;
@@ -50,18 +49,16 @@ const KirkiReactColorfulInput = (props) => {
 		"HsvaStringColorPicker",
 	];
 
-	const styles = reactCSS({
-		default: {
-			colorPreviewWrapper: {
-				backgroundImage: pickersWithAlpha.includes(props.pickerComponent)
-					? 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAAHnlligAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHJJREFUeNpi+P///4EDBxiAGMgCCCAGFB5AADGCRBgYDh48CCRZIJS9vT2QBAggFBkmBiSAogxFBiCAoHogAKIKAlBUYTELAiAmEtABEECk20G6BOmuIl0CIMBQ/IEMkO0myiSSraaaBhZcbkUOs0HuBwDplz5uFJ3Z4gAAAABJRU5ErkJggg==")'
-					: "none",
-			},
-			colorPreview: {
-				backgroundColor: value,
-			},
+	const styles = {
+		colorPreviewWrapper: {
+			backgroundImage: pickersWithAlpha.includes(props.pickerComponent)
+				? 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAAHnlligAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHJJREFUeNpi+P///4EDBxiAGMgCCCAGFB5AADGCRBgYDh48CCRZIJS9vT2QBAggFBkmBiSAogxFBiCAoHogAKIKAlBUYTELAiAmEtABEECk20G6BOmuIl0CIMBQ/IEMkO0myiSSraaaBhZcbkUOs0HuBwDplz5uFJ3Z4gAAAABJRU5ErkJggg==")'
+				: "none",
 		},
-	});
+		colorPreview: {
+			backgroundColor: value,
+		},
+	};
 
 	return (
 		<div className="kirki-color-input-wrapper">
