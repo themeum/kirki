@@ -1,0 +1,169 @@
+$date-hover-color: #eee;
+$date-active-color: #2271b1;
+
+.kirki-datepicker-popup {
+  padding-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: rgba(0, 0, 0, 0.09) 0 12px 15px 0;
+  border-radius: 6px;
+  z-index: 500001 !important;
+  overflow: hidden;
+  max-width: 275px;
+
+  &.kirki-datepicker-below {
+    margin-top: 0;
+  }
+
+  &.kirki-datepicker-above {
+    margin-bottom: 0;
+  }
+
+  .kirki-datepicker-header {
+    padding: 10px;
+    background-color: $date-hover-color;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .kirki-datepicker-next,
+    .kirki-datepicker-prev {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all .2s;
+      border: none;
+      background: transparent;
+      padding: 0;
+
+      &:hover, &:active, &:focus {
+        color: #fff;
+        background-color: $date-active-color;
+      }
+
+      &:before,
+      &:after {
+        font-family: dashicons;
+        font-size: 20px;
+        line-height: 1;
+      }
+    }
+
+    .kirki-datepicker-prev {
+      left: 10px;
+
+      &:before {
+        content: "\f341";
+        font-family: dashicons;
+      }
+    }
+
+    .kirki-datepicker-next {
+      right: 10px;
+
+      &:after {
+        content: "\f345";
+        font-family: dashicons;
+      }
+    }
+
+    .kirki-datepicker-title {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+
+  .kirki-datepicker-calendar {
+    border-collapse: collapse;
+    padding-bottom: 20px;
+    width: 100%;
+
+    thead {
+      background-color: #ddd;
+      padding-left: 5px;
+      padding-right: 5px;
+
+      th {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 13px;
+      }
+    }
+
+    tbody {
+      padding: 5px;
+
+      td {
+        padding: 2px;
+        text-align: center;
+      }
+
+      a {
+        text-decoration: none;
+        color: #333;
+      }
+
+      .kirki-datepicker-today {
+        .kirki-datepicker-day {
+          background-color: $date-hover-color;
+        }
+
+        .kirki-datepicker-selected {
+          background-color: $date-active-color;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-color: $date-active-color;
+          }
+        }
+      }
+
+      .kirki-datepicker-day {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        text-decoration: none;
+        color: #333;
+
+        &:hover,
+        &:active {
+          background-color: $date-hover-color;
+        }
+
+        &:focus {
+          color: #fff;
+          background-color: $date-active-color;
+        }
+      }
+
+      .kirki-datepicker-selected {
+        background-color: $date-active-color;
+        color: #fff;
+
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: $date-active-color;
+        }
+      }
+    }
+  }
+}

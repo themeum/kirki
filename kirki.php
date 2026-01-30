@@ -5,9 +5,9 @@
  * Description: The Ultimate WordPress Customizer Framework
  * Author: Themeum
  * Author URI: https://themeum.com
- * Version: 5.1.1
+ * Version: 5.2.0
  * Text Domain: kirki
- * Requires at least: 5.2
+ * Requires at least: 5.3
  * Requires PHP: 7.4
  *
  * @package Kirki
@@ -38,13 +38,13 @@ if ( ! defined( 'KIRKI_PLUGIN_FILE' ) ) {
 	define( 'KIRKI_PLUGIN_FILE', __FILE__ );
 }
 
-require_once __DIR__ . '/lib/class-aricolor.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
-require_once __DIR__ . '/lib/class-kirki-color.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+require_once __DIR__ . '/customizer/lib/class-aricolor.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+require_once __DIR__ . '/customizer/lib/class-kirki-color.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 require_once __DIR__ . '/vendor/autoload.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
-require_once __DIR__ . '/inc/bootstrap.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+require_once __DIR__ . '/customizer/bootstrap.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 if ( ! defined( 'KIRKI_VERSION' ) ) {
-	define( 'KIRKI_VERSION', '5.1.1' );
+	define( 'KIRKI_VERSION', '5.2.0' );
 }
 
 if ( ! defined( 'KIRKI_PLUGIN_DIR' ) ) {
@@ -88,7 +88,7 @@ if ( file_exists( $custom_config_path ) ) {
 }
 
 // Add upgrade notifications.
-require_once wp_normalize_path( dirname( __FILE__ ) . '/upgrade-notifications.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+require_once wp_normalize_path( dirname( __FILE__ ) . '/customizer/lib/upgrade-notifications.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 /**
  * To enable tests, add this line to your wp-config.php file (or anywhere else):
@@ -101,4 +101,4 @@ if ( defined( 'KIRKI_TEST' ) && true === constant( 'KIRKI_TEST' ) && file_exists
 	include_once dirname( __FILE__ ) . '/example.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 }
 
-require_once __DIR__ . '/pro-src/pro-index.php';
+require_once __DIR__ . '/customizer/packages/index.php';
