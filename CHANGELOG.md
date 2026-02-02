@@ -1,4 +1,4 @@
-### 5.2.0 - February 02, 2026 ###
+### 5.2.0-beta.1 - February 02, 2026 ###
 
 Update: Performance improved
 Update: WordPress 6.9 compatibility updated
