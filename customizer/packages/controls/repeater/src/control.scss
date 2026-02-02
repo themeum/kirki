@@ -7,6 +7,15 @@
   margin-top: 0.5rem;
   background: #eee;
   position: relative;
+  transition: opacity 0.2s ease, border-color 0.2s ease, border-width 0.2s ease;
+
+  &.dragging {
+    opacity: 0.5;
+  }
+
+  &.drag-over {
+    border-top: 2px solid #0073aa;
+  }
 }
 
 .customize-control-repeater .repeater-fields .repeater-row.minimized {
@@ -209,12 +218,17 @@
   color: #fff;
 }
 
-// Sortable placeholder
-.repeater-row-placeholder {
-  background: #f0f0f0;
+// Sortable placeholder - same as sortable package (.sortable-placeholder)
+.customize-control-repeater .repeater-fields .repeater-row-placeholder {
+  padding: 0;
+  margin: 0;
   border: 2px dashed #ccc;
-  margin: 0.5rem 0;
-  height: 50px;
+  background: #f0f0f0;
+  height: auto;
+  min-height: 40px;
+  list-style: none;
+  box-sizing: border-box;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 // Smooth transitions for slide animations

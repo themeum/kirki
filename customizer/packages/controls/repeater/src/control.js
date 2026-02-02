@@ -534,7 +534,8 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
   },
 
   /**
-   * Initialize vanilla JS sortable (drag and drop)
+   * Initialize vanilla JS sortable (drag and drop) - same pattern as sortable package:
+   * HTML5 Drag and Drop API with .dragging / .drag-over classes and placeholder.
    *
    * @returns {void}
    */
@@ -543,163 +544,142 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
     var container = this.repeaterFieldsContainer;
     if (!container) return;
 
-    // Remove existing sortable handlers if any
     if (control._sortableInitialized) {
-      return; // Already initialized
+      return;
     }
     control._sortableInitialized = true;
 
     var draggedElement = null;
     var placeholder = null;
-    var startY = 0;
-    var startOffset = 0;
-    var isDragging = false;
-    var handleMouseMove, handleMouseUp;
+
+    function clearDragOver() {
+      var rows = container.querySelectorAll(".repeater-row");
+      rows.forEach(function (el) {
+        el.classList.remove("drag-over");
+      });
+    }
 
     function setupRow(row) {
       var header = querySelector(row, ".repeater-row-header");
       if (!header) return;
 
+      row.draggable = true;
       header.style.cursor = "move";
 
-      header.addEventListener("mousedown", function (e) {
-        // Don't start drag on click (let click handler work for minimize)
-        // Only start drag if mouse moves a bit
-        if (e.button !== 0) return; // Only left mouse button
-        
-        startY = e.clientY;
-        startOffset = row.offsetTop;
-        isDragging = false;
+      row.addEventListener("dragstart", function (e) {
         draggedElement = row;
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/html", row.innerHTML);
+        row.classList.add("dragging");
+      });
 
-        handleMouseMove = function (e) {
-          if (!draggedElement) return;
-          
-          var deltaY = Math.abs(e.clientY - startY);
-          
-          // Only start dragging if mouse moved more than 5px
-          if (!isDragging && deltaY > 5) {
-            isDragging = true;
-            
-            // Prevent click event on header
-            header.style.pointerEvents = "none";
-            
-            // Create placeholder
-            placeholder = document.createElement("div");
-            placeholder.className = "repeater-row-placeholder";
-            placeholder.style.height = row.offsetHeight + "px";
-            placeholder.style.border = "2px dashed #ccc";
-            placeholder.style.margin = "0.5rem 0";
-            placeholder.style.background = "#f0f0f0";
-            placeholder.style.minHeight = row.offsetHeight + "px";
-            
-            // Insert placeholder where row is
-            row.parentNode.insertBefore(placeholder, row);
-            
-            // Style the dragged element
-            row.style.opacity = "0.5";
-            row.style.cursor = "grabbing";
-            row.style.position = "fixed";
-            row.style.zIndex = "10000";
-            row.style.width = row.offsetWidth + "px";
-            row.style.pointerEvents = "none";
-            
-            // Remove from normal flow
-            row.parentNode.removeChild(row);
-            document.body.appendChild(row);
-          }
-          
-          if (isDragging && placeholder) {
-            // Get original position
-            var containerRect = container.getBoundingClientRect();
-            var originalLeft = containerRect.left;
-            
-            // Update dragged element position to follow mouse
-            row.style.top = (e.clientY - 10) + "px";
-            row.style.left = originalLeft + "px";
-            
-            // Find where to place the placeholder
-            var rows = Array.from(container.querySelectorAll(".repeater-row"));
-            var placeholderIndex = -1;
-            
-            // Remove placeholder temporarily to get accurate positions
-            var placeholderParent = placeholder.parentNode;
-            placeholderParent.removeChild(placeholder);
-            
-            for (var i = 0; i < rows.length; i++) {
-              var box = rows[i].getBoundingClientRect();
-              var mouseY = e.clientY;
-              
-              if (mouseY < box.top + box.height / 2) {
-                placeholderIndex = i;
-                break;
-              }
-            }
-            
-            // Re-insert placeholder at the correct position
-            if (placeholderIndex >= 0 && placeholderIndex < rows.length) {
-              container.insertBefore(placeholder, rows[placeholderIndex]);
-            } else if (rows.length > 0) {
-              // Append to end
-              container.appendChild(placeholder);
-            } else {
-              // No rows, just append
-              container.appendChild(placeholder);
-            }
-          }
-        };
-
-        handleMouseUp = function (e) {
-          if (!draggedElement) {
-            document.removeEventListener("mousemove", handleMouseMove);
-            document.removeEventListener("mouseup", handleMouseUp);
-            return;
-          }
-          
-          if (isDragging && placeholder && placeholder.parentNode) {
-            // Insert dragged element where placeholder is
-            placeholder.parentNode.insertBefore(draggedElement, placeholder);
-            placeholder.parentNode.removeChild(placeholder);
-          } else if (!isDragging) {
-            // If we didn't drag, just clean up
-            draggedElement = null;
-            document.removeEventListener("mousemove", handleMouseMove);
-            document.removeEventListener("mouseup", handleMouseUp);
-            return;
-          }
-
-          // Reset styles
-          draggedElement.style.opacity = "";
-          draggedElement.style.cursor = "";
-          draggedElement.style.position = "";
-          draggedElement.style.zIndex = "";
-          draggedElement.style.width = "";
-          draggedElement.style.top = "";
-          draggedElement.style.left = "";
-          draggedElement.style.pointerEvents = "";
-          header.style.pointerEvents = "";
-          
-          draggedElement = null;
-          placeholder = null;
-          isDragging = false;
-
-          // Update order
+      row.addEventListener("dragend", function () {
+        row.classList.remove("dragging");
+        if (placeholder && placeholder.parentNode) {
+          placeholder.parentNode.removeChild(placeholder);
+        }
+        clearDragOver();
+        if (draggedElement) {
           control.sort();
+        }
+        draggedElement = null;
+        placeholder = null;
+      });
 
-          document.removeEventListener("mousemove", handleMouseMove);
-          document.removeEventListener("mouseup", handleMouseUp);
-        };
+      row.addEventListener("dragover", function (e) {
+        if (e.preventDefault) {
+          e.preventDefault();
+        }
+        e.dataTransfer.dropEffect = "move";
 
-        document.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseup", handleMouseUp);
+        if (draggedElement && draggedElement !== row) {
+          clearDragOver();
+          row.classList.add("drag-over");
+
+          var rect = row.getBoundingClientRect();
+          var midpoint = rect.top + rect.height / 2;
+
+          if (placeholder && placeholder.parentNode) {
+            placeholder.parentNode.removeChild(placeholder);
+          }
+
+          placeholder = document.createElement("li");
+          placeholder.className = "repeater-row-placeholder";
+          placeholder.setAttribute("aria-hidden", "true");
+          placeholder.style.height = draggedElement.offsetHeight + "px";
+          placeholder.style.border = "2px dashed #ccc";
+          placeholder.style.background = "#f0f0f0";
+          placeholder.style.margin = "0";
+          placeholder.style.padding = "0";
+          placeholder.style.listStyle = "none";
+
+          if (e.clientY < midpoint) {
+            container.insertBefore(placeholder, row);
+          } else {
+            if (row.nextSibling) {
+              container.insertBefore(placeholder, row.nextSibling);
+            } else {
+              container.appendChild(placeholder);
+            }
+          }
+        }
+        return false;
+      });
+
+      row.addEventListener("dragenter", function (e) {
+        if (draggedElement && draggedElement !== row) {
+          row.classList.add("drag-over");
+        }
+      });
+
+      row.addEventListener("dragleave", function (e) {
+        if (!row.contains(e.relatedTarget)) {
+          row.classList.remove("drag-over");
+        }
+      });
+
+      row.addEventListener("drop", function (e) {
+        if (e.stopPropagation) {
+          e.stopPropagation();
+        }
+        if (draggedElement && draggedElement !== row && placeholder && placeholder.parentNode) {
+          if (draggedElement.parentNode === container) {
+            container.removeChild(draggedElement);
+          }
+          placeholder.parentNode.insertBefore(draggedElement, placeholder);
+          placeholder.parentNode.removeChild(placeholder);
+        }
+        row.classList.remove("drag-over");
+        return false;
       });
     }
 
-    // Setup existing rows
+    container.addEventListener("dragover", function (e) {
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+      e.dataTransfer.dropEffect = "move";
+      return false;
+    });
+
+    container.addEventListener("drop", function (e) {
+      if (e.stopPropagation) {
+        e.stopPropagation();
+      }
+      if (draggedElement && placeholder && placeholder.parentNode) {
+        if (draggedElement.parentNode === container) {
+          container.removeChild(draggedElement);
+        }
+        placeholder.parentNode.insertBefore(draggedElement, placeholder);
+        placeholder.parentNode.removeChild(placeholder);
+        control.sort();
+      }
+      return false;
+    });
+
     var rows = querySelectorAll(container, ".repeater-row");
     rows.forEach(setupRow);
 
-    // Watch for new rows being added
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
         mutation.addedNodes.forEach(function (node) {
@@ -709,7 +689,6 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
         });
       });
     });
-
     observer.observe(container, { childList: true });
     control._sortableObserver = observer;
   },
@@ -1361,38 +1340,59 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
   sort: function () {
     var control = this;
-    var rows = querySelectorAll(this.repeaterFieldsContainer, ".repeater-row");
-    var newOrder = [];
+    var container = this.repeaterFieldsContainer;
+    if (!container) return;
+
+    var rows = querySelectorAll(container, ".repeater-row");
     var settings = control.getValue();
+    var newOrder = [];
     var newRows = [];
     var newSettings = [];
 
+    // Build newOrder from DOM order - one entry per DOM row, never drop a row.
+    // Map each DOM element to its old index by matching control.rows[i].containerEl
+    // so we never lose a row when data-row is missing or invalid.
     rows.forEach(function (element) {
+      var oldPosition = -1;
       var rowIndex = getData(element, "row");
-      if (rowIndex !== null && !isNaN(rowIndex)) {
-        newOrder.push(parseInt(rowIndex, 10));
+      if (rowIndex !== null && rowIndex !== undefined && rowIndex !== "") {
+        var parsed = parseInt(rowIndex, 10);
+        if (!isNaN(parsed) && control.rows[parsed] && control.rows[parsed].containerEl === element) {
+          oldPosition = parsed;
+        }
+      }
+      if (oldPosition === -1) {
+        for (var i = 0; i < control.rows.length; i++) {
+          if (control.rows[i] && control.rows[i].containerEl === element) {
+            oldPosition = i;
+            break;
+          }
+        }
+      }
+      if (oldPosition >= 0) {
+        newOrder.push(oldPosition);
       }
     });
+
+    // If DOM row count doesn't match (shouldn't happen), avoid corrupting data
+    if (newOrder.length !== rows.length) {
+      return;
+    }
 
     newOrder.forEach(function (oldPosition, newPosition) {
       newRows[newPosition] = control.rows[oldPosition];
       if (newRows[newPosition]) {
         newRows[newPosition].setRowIndex(newPosition);
-        // Also update DOM attribute
         if (newRows[newPosition].containerEl) {
           setData(newRows[newPosition].containerEl, "row", newPosition);
         }
-        // Update label immediately
         newRows[newPosition].updateLabel();
       }
-
-      newSettings[newPosition] = settings[oldPosition];
+      newSettings[newPosition] = settings[oldPosition] !== undefined ? settings[oldPosition] : {};
     });
 
     control.rows = newRows;
     control.setValue(newSettings, true);
-    
-    // Update currentIndex to match the new array length
     control.currentIndex = newSettings.length;
   },
 

@@ -336,6 +336,8 @@ var kirkiPostMessage = {
 	}
 };
 
+window.kirkiPostMessage = kirkiPostMessage;
+
 document.addEventListener( 'DOMContentLoaded', function() {
 	var styles;
 
