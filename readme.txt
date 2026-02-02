@@ -3,7 +3,7 @@ Contributors: themeum
 Tags: customizer, options framework, theme, mods, toolkit, gutenberg
 Requires at least: 5.3
 Tested up to: 6.9
-Stable tag: 5.2.0
+Stable tag: 5.1.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
