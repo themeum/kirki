@@ -148,7 +148,7 @@ class Margin extends Base {
 		wp_enqueue_style( 'kirki-control-margin-padding', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
 
 		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-margin-padding', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-controls', 'customize-base', 'react-dom' ], self::$control_ver, false );
+		wp_enqueue_script( 'kirki-control-margin-padding', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-controls', 'customize-base', 'wp-element', 'react-dom' ], self::$control_ver, false );
 
 	}
 
