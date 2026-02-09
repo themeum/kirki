@@ -1,9 +1,10 @@
 === Kirki Customizer Framework ===
 Contributors: themeum
-Tags: customizer, options framework, theme, mods, toolkit, gutenberg
+Tags: customizer, options framework, theme, toolkit
 Requires at least: 5.3
 Tested up to: 6.9
-Stable tag: 5.1.0
+Stable tag: 5.2.0
+Requires PHP: 7.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -74,4 +75,33 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://docs.themeum.com/kirki/getting-started/integration/).
 
 == Changelog ==
-[See the changelogs here](https://github.com/kirki-framework/kirki/blob/master/CHANGELOG.md).
+
+= 5.2.0 - February 09, 2026
+
+Update: Performance improvement
+Update: WordPress 6.9 compatibility
+
+= 5.1.0 - March 22, 2024
+
+Fix: We've resolved the issue with fonts not loading properly, ensuring your designs look sleek and professional.
+Fix: Addressed deprecated errors to boost compatibility and keep your site running smoothly.
+Update: We've ensured compatibility with the latest WordPress 6.4 and PHP 8.2, so you can stay up-to-date with the latest technologies. 
+ 
+= 5.0.0 - June 21, 2023
+
+Update: Free and Pro merged  
+
+= 4.2.0 - June 13, 2023
+
+Fix:: Deprecated PHP issue
+Update: PHP 8.1 and 8.2 compatibility
+Update: WordPress latest (v6.2.2) compatibility
+
+= 4.1.1 - February 08, 2023
+
+Update: Rename kirki packages dir & composer vendor-dir
+
+= 4.1.0 - February 07, 2023
+
+New: Settings page to allow users to clear the Kirki font cache.
+Tweak: Bundled all individual packages into the main repository, reducing the number of repositories used in development. This simplifies development by eliminating the need to work on multiple repositories.
