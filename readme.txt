@@ -78,8 +78,8 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 5.2.0 - February 09, 2026
 
-Update: Performance improvement
-Update: WordPress 6.9 compatibility
+Update: Performance optimizations across the platform.
+Update: Added compatibility with WordPress 6.9.
 
 = 5.1.0 - March 22, 2024
 
