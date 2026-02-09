@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: Kirki Customizer Framework
- * Plugin URI: https://themeum.com
+ * Plugin URI: https://www.themeum.com
  * Description: The Ultimate WordPress Customizer Framework
  * Author: Themeum
- * Author URI: https://themeum.com
+ * Author URI: https://www.themeum.com
  * Version: 5.2.0
  * Text Domain: kirki
  * Requires at least: 5.3

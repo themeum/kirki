@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Kirki Tabs
- * Plugin URI:  https://www.themeum.com/
+ * Plugin URI:  https://www.themeum.com
  * Description: Tab control for Kirki Customizer Framework.
  * Version:     1.1
  * Author:      Themeum
- * Author URI:  https://themeum.com/
+ * Author URI:  https://www.themeum.com
  * License:     GPL-3.0
  * License URI: https://oss.ninja/gpl-3.0?organization=Kirki%20Framework&project=control%20tab
  * Text Domain: kirki-tabs

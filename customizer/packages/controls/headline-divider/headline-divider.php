@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Kirki - Headlines & Divider Control
- * Plugin URI:  https://themeum.com
+ * Plugin URI:  https://www.themeum.com
  * Description: Headlines & divider control for Kirki Customizer Framework.
  * Version:     1.1
  * Author:      Themeum
- * Author URI:  https://themeum.com/
+ * Author URI:  https://www.themeum.com
  * License:     GPL-3.0
  * License URI: https://oss.ninja/gpl-3.0?organization=Kirki%20Framework&project=control%20headline%20divider
  * Text Domain: kirki-headline-divider

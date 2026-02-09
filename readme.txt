@@ -12,10 +12,9 @@ The Ultimate Customizer Framework for WordPress Theme Developers
 
 == Description ==
 
-[Kirki](https://www.themeum.com/kirki/) is a customizer toolkit for WordPress. An open-source initiative by [Themeum](https://www.themeum.com/) for WordPress theme developers. 
+[Kirki](https://github.com/themeum/kirki) is a Customizer toolkit for WordPress. An open-source initiative by [Themeum](https://github.com/themeum) for WordPress theme developers.
 
-Kirki allows you to build themes quicker & more easily. With over 30 custom controls ranging from simple sliders to complex typography controls with Google Fonts integration and features like automatic CSS & postMessage script generation, Kirki makes theme development a breeze.
-
+Kirki allows you to build themes faster and more easily. With over 30 custom controls—ranging from simple sliders to advanced typography controls with Google Fonts integration—and features like automatic CSS generation and `postMessage` support, Kirki makes theme development a breeze.
 
 
 ### Features ✅ ###

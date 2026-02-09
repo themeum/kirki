@@ -105,7 +105,7 @@ new \Kirki\Section(
 		'title'       => esc_html__( 'Test Link Section', 'kirki' ),
 		'type'        => 'link',
 		'button_text' => esc_html__( 'Pro', 'kirki' ),
-		'button_url'  => 'https://themeum.com',
+		'button_url'  => 'https://www.themeum.com',
 	]
 );
 
@@ -1030,7 +1030,7 @@ new \Kirki\Field\Repeater(
 		'default'     => [
 			[
 				'link_text'   => esc_html__( 'Kirki Site', 'kirki' ),
-				'link_url'    => 'https://themeum.com/',
+				'link_url'    => 'https://www.themeum.com',
 				'link_target' => '_self',
 				'checkbox'    => false,
 			],
