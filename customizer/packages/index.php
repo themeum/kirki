@@ -66,14 +66,8 @@ if ( ! function_exists( 'kirki_load_controls' ) ) {
 			return;
 		}
 
-		if ( ! function_exists( 'get_plugin_data' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-
 		$plugin_file = defined( 'KIRKI_PLUGIN_FILE' ) ? KIRKI_PLUGIN_FILE : __FILE__;
-		$plugin_data = get_plugin_data( $plugin_file, false );
-
-		define( 'KIRKI_CONTROLS_VERSION', ! empty( $plugin_data['Version'] ) ? $plugin_data['Version'] : ( defined( 'KIRKI_VERSION' ) ? KIRKI_VERSION : '0' ) );
+		define( 'KIRKI_CONTROLS_VERSION', defined( 'KIRKI_VERSION' ) ? KIRKI_VERSION : '0' );
 		define( 'KIRKI_CONTROLS_PLUGIN_FILE', $plugin_file );
 
 		kirki_init_controls();
