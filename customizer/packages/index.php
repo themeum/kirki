@@ -67,7 +67,7 @@ if ( ! function_exists( 'kirki_load_controls' ) ) {
 		}
 
 		$plugin_file = defined( 'KIRKI_PLUGIN_FILE' ) ? KIRKI_PLUGIN_FILE : __FILE__;
-		define( 'KIRKI_CONTROLS_VERSION', defined( 'KIRKI_VERSION' ) ? KIRKI_VERSION : '0' );
+		define( 'KIRKI_CONTROLS_VERSION', KIRKI_VERSION );
 		define( 'KIRKI_CONTROLS_PLUGIN_FILE', $plugin_file );
 
 		kirki_init_controls();
