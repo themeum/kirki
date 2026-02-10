@@ -5,7 +5,7 @@
  * Description: The Ultimate WordPress Customizer Framework
  * Author: Themeum
  * Author URI: https://www.themeum.com
- * Version: 5.2.0
+ * Version: 5.2.1
  * Text Domain: kirki
  * Requires at least: 5.3
  * Requires PHP: 7.4
@@ -44,7 +44,7 @@ require_once __DIR__ . '/vendor/autoload.php'; // phpcs:ignore WPThemeReview.Cor
 require_once __DIR__ . '/customizer/bootstrap.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 
 if ( ! defined( 'KIRKI_VERSION' ) ) {
-	define( 'KIRKI_VERSION', '5.2.0' );
+	define( 'KIRKI_VERSION', '5.2.1' );
 }
 
 if ( ! defined( 'KIRKI_PLUGIN_DIR' ) ) {
