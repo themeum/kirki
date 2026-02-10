@@ -23,7 +23,7 @@ $packages = array(
 	'tabs'             => 'Tabs',
 );
 
-$base_dir = __DIR__ . '/';
+$base_dir = __DIR__ . '/controls/';
 
 $psr4_map = array(
 	'Kirki\\Control\\' => array(),

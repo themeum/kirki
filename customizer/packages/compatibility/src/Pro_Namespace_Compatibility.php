@@ -60,7 +60,7 @@ spl_autoload_register(
 
 		// Check in Field and Control directories.
 		$base_dir = dirname( dirname( __DIR__ ) ) . '/';
-		$packages = array( 'control/margin-padding', 'control/headline-divider', 'control/input-slider', 'control/responsive', 'control/tabs' );
+		$packages = array( 'controls/margin-padding', 'controls/headline-divider', 'controls/input-slider', 'controls/responsive', 'controls/tabs' );
 
 		foreach ( $packages as $package ) {
 			$file_name = basename( $relative_path );
