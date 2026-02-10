@@ -21,11 +21,11 @@ if ( ! function_exists( 'kirki_init_controls' ) ) {
 		}
 
 		$packages = array(
-			__DIR__ . '/control/headline-divider',
-			__DIR__ . '/control/input-slider',
-			__DIR__ . '/control/margin-padding',
-			__DIR__ . '/control/responsive',
-			__DIR__ . '/control/tabs',
+			__DIR__ . '/controls/headline-divider',
+			__DIR__ . '/controls/input-slider',
+			__DIR__ . '/controls/margin-padding',
+			__DIR__ . '/controls/responsive',
+			__DIR__ . '/controls/tabs',
 		);
 
 		foreach ( $packages as $package ) {
@@ -66,14 +66,9 @@ if ( ! function_exists( 'kirki_load_controls' ) ) {
 			return;
 		}
 
-		if ( ! function_exists( 'get_plugin_data' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-
-		$plugin_data = get_plugin_data( __FILE__ );
-
-		define( 'KIRKI_CONTROLS_VERSION', $plugin_data['Version'] );
-		define( 'KIRKI_CONTROLS_PLUGIN_FILE', __FILE__ );
+		$plugin_file = defined( 'KIRKI_PLUGIN_FILE' ) ? KIRKI_PLUGIN_FILE : __FILE__;
+		define( 'KIRKI_CONTROLS_VERSION', KIRKI_VERSION );
+		define( 'KIRKI_CONTROLS_PLUGIN_FILE', $plugin_file );
 
 		kirki_init_controls();
 
