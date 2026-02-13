@@ -4,7 +4,7 @@ const wpReactRender = ( target, reactNode ) => {
 	if ( target ) {
 
     if ( wp.element.createRoot ) {
-			wp.element.createRoot( target ).render( wp.element.reactNode );
+			wp.element.createRoot( target ).render( reactNode );
     } else {
 			wp.element.render( reactNode, target );
     }
