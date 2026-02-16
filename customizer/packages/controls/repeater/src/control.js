@@ -40,7 +40,7 @@ function getData(el, name) {
   var camelCase = name.replace(/-([a-z])/g, function (g) {
     return g[1].toUpperCase();
   });
-  if (domEl.dataset && domEl.dataset[camelCase] !== undefined) {
+  if (domEl.dataset && domEl.dataset[camelCase] !== undefined && domEl.dataset[camelCase] !== "") {
     return domEl.dataset[camelCase];
   }
   // Fallback to getAttribute
@@ -169,21 +169,33 @@ var RepeaterRow = function (rowIndex, container, label, control) {
     // Event delegation for input changes
     this.containerEl.addEventListener("keyup", function (e) {
       if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "SELECT" || e.target.tagName === "TEXTAREA")) {
-        triggerEvent(self.containerEl, "row:update", [
-          self.rowIndex,
-          getData(e.target, "field"),
-          e.target,
-        ]);
+        var fieldName = getData(e.target, "field");
+        // Only trigger if we have a valid field name
+        if (fieldName) {
+          triggerEvent(self.containerEl, "row:update", [
+            self.rowIndex,
+            fieldName,
+            e.target,
+          ]);
+        }
       }
     });
 
     this.containerEl.addEventListener("change", function (e) {
       if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "SELECT" || e.target.tagName === "TEXTAREA")) {
-        triggerEvent(self.containerEl, "row:update", [
-          self.rowIndex,
-          getData(e.target, "field"),
-          e.target,
-        ]);
+        var fieldName = getData(e.target, "field");
+        // Fallback to getAttribute if getData returns null
+        if (!fieldName) {
+          fieldName = e.target.getAttribute("data-field");
+        }
+        // Only trigger if we have a valid field name
+        if (fieldName) {
+          triggerEvent(self.containerEl, "row:update", [
+            self.rowIndex,
+            fieldName,
+            e.target,
+          ]);
+        }
       }
     });
   }
@@ -534,8 +546,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
   },
 
   /**
-   * Initialize vanilla JS sortable (drag and drop) - same pattern as sortable package:
-   * HTML5 Drag and Drop API with .dragging / .drag-over classes and placeholder.
+   * Initialize vanilla JS sortable (drag and drop)
    *
    * @returns {void}
    */
@@ -544,142 +555,223 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
     var container = this.repeaterFieldsContainer;
     if (!container) return;
 
+    // Remove existing sortable handlers if any
     if (control._sortableInitialized) {
-      return;
+      return; // Already initialized
     }
     control._sortableInitialized = true;
 
     var draggedElement = null;
     var placeholder = null;
-
-    function clearDragOver() {
-      var rows = container.querySelectorAll(".repeater-row");
-      rows.forEach(function (el) {
-        el.classList.remove("drag-over");
-      });
-    }
+    var startY = 0;
+    var startOffset = 0;
+    var isDragging = false;
+    var handleMouseMove, handleMouseUp;
 
     function setupRow(row) {
       var header = querySelector(row, ".repeater-row-header");
       if (!header) return;
 
-      row.draggable = true;
       header.style.cursor = "move";
 
-      row.addEventListener("dragstart", function (e) {
+      header.addEventListener("mousedown", function (e) {
+        // Don't start drag on click (let click handler work for minimize)
+        // Only start drag if mouse moves a bit
+        if (e.button !== 0) return; // Only left mouse button
+        
+        startY = e.clientY;
+        startOffset = row.offsetTop;
+        isDragging = false;
         draggedElement = row;
-        e.dataTransfer.effectAllowed = "move";
-        e.dataTransfer.setData("text/html", row.innerHTML);
-        row.classList.add("dragging");
-      });
 
-      row.addEventListener("dragend", function () {
-        row.classList.remove("dragging");
-        if (placeholder && placeholder.parentNode) {
-          placeholder.parentNode.removeChild(placeholder);
-        }
-        clearDragOver();
-        if (draggedElement) {
-          control.sort();
-        }
-        draggedElement = null;
-        placeholder = null;
-      });
-
-      row.addEventListener("dragover", function (e) {
-        if (e.preventDefault) {
-          e.preventDefault();
-        }
-        e.dataTransfer.dropEffect = "move";
-
-        if (draggedElement && draggedElement !== row) {
-          clearDragOver();
-          row.classList.add("drag-over");
-
-          var rect = row.getBoundingClientRect();
-          var midpoint = rect.top + rect.height / 2;
-
-          if (placeholder && placeholder.parentNode) {
-            placeholder.parentNode.removeChild(placeholder);
+        handleMouseMove = function (e) {
+          if (!draggedElement) return;
+          
+          var deltaY = Math.abs(e.clientY - startY);
+          
+          // Only start dragging if mouse moved more than 5px
+          if (!isDragging && deltaY > 5) {
+            isDragging = true;
+            
+            // Prevent click event on header
+            header.style.pointerEvents = "none";
+            
+            // Create placeholder
+            placeholder = document.createElement("div");
+            placeholder.className = "repeater-row-placeholder";
+            placeholder.style.height = row.offsetHeight + "px";
+            placeholder.style.border = "2px dashed #ccc";
+            placeholder.style.margin = "0.5rem 0";
+            placeholder.style.background = "#f0f0f0";
+            placeholder.style.minHeight = row.offsetHeight + "px";
+            
+            // Insert placeholder where row is
+            row.parentNode.insertBefore(placeholder, row);
+            
+            // Style the dragged element
+            row.style.opacity = "0.5";
+            row.style.cursor = "grabbing";
+            row.style.position = "fixed";
+            row.style.zIndex = "10000";
+            row.style.width = row.offsetWidth + "px";
+            row.style.pointerEvents = "none";
+            
+            // Remove from normal flow and append to body
+            // Store the original parent for safety
+            var currentParent = draggedElement.parentNode;
+            draggedElement._originalParent = currentParent;
+            draggedElement._originalNextSibling = draggedElement.nextSibling;
+            
+            // Use draggedElement instead of row to ensure we're working with current element
+            if (currentParent && currentParent !== document.body) {
+              currentParent.removeChild(draggedElement);
+              document.body.appendChild(draggedElement);
+            }
           }
-
-          placeholder = document.createElement("li");
-          placeholder.className = "repeater-row-placeholder";
-          placeholder.setAttribute("aria-hidden", "true");
-          placeholder.style.height = draggedElement.offsetHeight + "px";
-          placeholder.style.border = "2px dashed #ccc";
-          placeholder.style.background = "#f0f0f0";
-          placeholder.style.margin = "0";
-          placeholder.style.padding = "0";
-          placeholder.style.listStyle = "none";
-
-          if (e.clientY < midpoint) {
-            container.insertBefore(placeholder, row);
-          } else {
-            if (row.nextSibling) {
-              container.insertBefore(placeholder, row.nextSibling);
+          
+          if (isDragging && placeholder) {
+            // Get original position
+            var containerRect = container.getBoundingClientRect();
+            var originalLeft = containerRect.left;
+            
+            // Update dragged element position to follow mouse
+            row.style.top = (e.clientY - 10) + "px";
+            row.style.left = originalLeft + "px";
+            
+            // Find where to place the placeholder
+            var rows = Array.from(container.querySelectorAll(".repeater-row"));
+            var placeholderIndex = -1;
+            
+            // Remove placeholder temporarily to get accurate positions
+            var placeholderParent = placeholder.parentNode;
+            placeholderParent.removeChild(placeholder);
+            
+            for (var i = 0; i < rows.length; i++) {
+              var box = rows[i].getBoundingClientRect();
+              var mouseY = e.clientY;
+              
+              if (mouseY < box.top + box.height / 2) {
+                placeholderIndex = i;
+                break;
+              }
+            }
+            
+            // Re-insert placeholder at the correct position
+            if (placeholderIndex >= 0 && placeholderIndex < rows.length) {
+              container.insertBefore(placeholder, rows[placeholderIndex]);
+            } else if (rows.length > 0) {
+              // Append to end
+              container.appendChild(placeholder);
             } else {
+              // No rows, just append
               container.appendChild(placeholder);
             }
           }
-        }
-        return false;
-      });
+        };
 
-      row.addEventListener("dragenter", function (e) {
-        if (draggedElement && draggedElement !== row) {
-          row.classList.add("drag-over");
-        }
-      });
-
-      row.addEventListener("dragleave", function (e) {
-        if (!row.contains(e.relatedTarget)) {
-          row.classList.remove("drag-over");
-        }
-      });
-
-      row.addEventListener("drop", function (e) {
-        if (e.stopPropagation) {
-          e.stopPropagation();
-        }
-        if (draggedElement && draggedElement !== row && placeholder && placeholder.parentNode) {
-          if (draggedElement.parentNode === container) {
-            container.removeChild(draggedElement);
+        handleMouseUp = function (e) {
+          if (!draggedElement) {
+            document.removeEventListener("mousemove", handleMouseMove);
+            document.removeEventListener("mouseup", handleMouseUp);
+            return;
           }
-          placeholder.parentNode.insertBefore(draggedElement, placeholder);
-          placeholder.parentNode.removeChild(placeholder);
-        }
-        row.classList.remove("drag-over");
-        return false;
+          
+          // Always reset styles first
+          draggedElement.style.opacity = "";
+          draggedElement.style.cursor = "";
+          draggedElement.style.position = "";
+          draggedElement.style.zIndex = "";
+          draggedElement.style.width = "";
+          draggedElement.style.top = "";
+          draggedElement.style.left = "";
+          draggedElement.style.pointerEvents = "";
+          header.style.pointerEvents = "";
+          
+          if (isDragging) {
+            // Insert dragged element back into container
+            try {
+              if (placeholder && placeholder.parentNode) {
+                // Normal case: insert where placeholder is
+                placeholder.parentNode.insertBefore(draggedElement, placeholder);
+                placeholder.parentNode.removeChild(placeholder);
+              } else {
+                // Fallback: placeholder is gone, restore to original position or append
+                if (draggedElement._originalParent) {
+                  if (draggedElement._originalNextSibling && draggedElement._originalNextSibling.parentNode) {
+                    draggedElement._originalParent.insertBefore(draggedElement, draggedElement._originalNextSibling);
+                  } else {
+                    draggedElement._originalParent.appendChild(draggedElement);
+                  }
+                } else {
+                  container.appendChild(draggedElement);
+                }
+              }
+              
+              // Clean up stored references
+              delete draggedElement._originalParent;
+              delete draggedElement._originalNextSibling;
+              
+              // Wait a tick to ensure DOM is fully updated before sorting
+              setTimeout(function() {
+                control.sort();
+              }, 0);
+            } catch (error) {
+              // Last resort: make sure element is somewhere in the container
+              if (draggedElement.parentNode === document.body || !draggedElement.parentNode) {
+                container.appendChild(draggedElement);
+              }
+              
+              // Remove placeholder if it exists
+              if (placeholder && placeholder.parentNode) {
+                try {
+                  placeholder.parentNode.removeChild(placeholder);
+                } catch (e) {
+                  // Silently handle error
+                }
+              }
+              
+              // Clean up stored references
+              delete draggedElement._originalParent;
+              delete draggedElement._originalNextSibling;
+            }
+          } else if (!isDragging) {
+            // If we didn't drag, make sure element is back in container
+            if (draggedElement.parentNode === document.body) {
+              // Try to restore to original position
+              if (draggedElement._originalParent && draggedElement._originalNextSibling) {
+                try {
+                  draggedElement._originalParent.insertBefore(draggedElement, draggedElement._originalNextSibling);
+                } catch (e) {
+                  container.appendChild(draggedElement);
+                }
+              } else {
+                container.appendChild(draggedElement);
+              }
+            }
+            
+            // Clean up stored references
+            delete draggedElement._originalParent;
+            delete draggedElement._originalNextSibling;
+          }
+          
+          draggedElement = null;
+          placeholder = null;
+          isDragging = false;
+
+          document.removeEventListener("mousemove", handleMouseMove);
+          document.removeEventListener("mouseup", handleMouseUp);
+        };
+
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseup", handleMouseUp);
       });
     }
 
-    container.addEventListener("dragover", function (e) {
-      if (e.preventDefault) {
-        e.preventDefault();
-      }
-      e.dataTransfer.dropEffect = "move";
-      return false;
-    });
-
-    container.addEventListener("drop", function (e) {
-      if (e.stopPropagation) {
-        e.stopPropagation();
-      }
-      if (draggedElement && placeholder && placeholder.parentNode) {
-        if (draggedElement.parentNode === container) {
-          container.removeChild(draggedElement);
-        }
-        placeholder.parentNode.insertBefore(draggedElement, placeholder);
-        placeholder.parentNode.removeChild(placeholder);
-        control.sort();
-      }
-      return false;
-    });
-
+    // Setup existing rows
     var rows = querySelectorAll(container, ".repeater-row");
     rows.forEach(setupRow);
 
+    // Watch for new rows being added
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
         mutation.addedNodes.forEach(function (node) {
@@ -689,6 +781,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
         });
       });
     });
+
     observer.observe(container, { childList: true });
     control._sortableObserver = observer;
   },
@@ -1340,59 +1433,62 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
   sort: function () {
     var control = this;
-    var container = this.repeaterFieldsContainer;
-    if (!container) return;
-
-    var rows = querySelectorAll(container, ".repeater-row");
-    var settings = control.getValue();
+    var rows = querySelectorAll(this.repeaterFieldsContainer, ".repeater-row");
     var newOrder = [];
+    var settings = control.getValue();
     var newRows = [];
     var newSettings = [];
 
-    // Build newOrder from DOM order - one entry per DOM row, never drop a row.
-    // Map each DOM element to its old index by matching control.rows[i].containerEl
-    // so we never lose a row when data-row is missing or invalid.
-    rows.forEach(function (element) {
-      var oldPosition = -1;
+    // CRITICAL: If DOM rows don't match our data, don't sort - something went wrong
+    if (rows.length !== control.rows.length || rows.length !== settings.length) {
+      // Don't modify anything if row counts don't match
+      return;
+    }
+
+    // Build the new order based on current DOM order
+    rows.forEach(function (element, index) {
       var rowIndex = getData(element, "row");
+      // Fallback to getAttribute if getData returns null
+      if (!rowIndex && rowIndex !== 0) {
+        rowIndex = element.getAttribute("data-row");
+      }
+      
+      // Convert to integer
       if (rowIndex !== null && rowIndex !== undefined && rowIndex !== "") {
-        var parsed = parseInt(rowIndex, 10);
-        if (!isNaN(parsed) && control.rows[parsed] && control.rows[parsed].containerEl === element) {
-          oldPosition = parsed;
+        rowIndex = parseInt(rowIndex, 10);
+        if (!isNaN(rowIndex)) {
+          newOrder.push(rowIndex);
         }
-      }
-      if (oldPosition === -1) {
-        for (var i = 0; i < control.rows.length; i++) {
-          if (control.rows[i] && control.rows[i].containerEl === element) {
-            oldPosition = i;
-            break;
-          }
-        }
-      }
-      if (oldPosition >= 0) {
-        newOrder.push(oldPosition);
       }
     });
 
-    // If DOM row count doesn't match (shouldn't happen), avoid corrupting data
+    // Only proceed if we have the same number of rows
     if (newOrder.length !== rows.length) {
       return;
     }
 
+    // Reorder rows and settings based on new order
     newOrder.forEach(function (oldPosition, newPosition) {
-      newRows[newPosition] = control.rows[oldPosition];
-      if (newRows[newPosition]) {
+      if (control.rows[oldPosition]) {
+        newRows[newPosition] = control.rows[oldPosition];
         newRows[newPosition].setRowIndex(newPosition);
+        // Also update DOM attribute
         if (newRows[newPosition].containerEl) {
           setData(newRows[newPosition].containerEl, "row", newPosition);
         }
+        // Update label immediately
         newRows[newPosition].updateLabel();
       }
-      newSettings[newPosition] = settings[oldPosition] !== undefined ? settings[oldPosition] : {};
+
+      if (settings[oldPosition]) {
+        newSettings[newPosition] = settings[oldPosition];
+      }
     });
 
     control.rows = newRows;
     control.setValue(newSettings, true);
+    
+    // Update currentIndex to match the new array length
     control.currentIndex = newSettings.length;
   },
 
@@ -1497,19 +1593,16 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
 
     // Validate rowIndex
     if (rowIndex === null || rowIndex === undefined || isNaN(rowIndex)) {
-      console.warn('updateField: Invalid rowIndex', rowIndex);
       return;
     }
 
     rowIndex = parseInt(rowIndex, 10);
 
     if (!this.rows[rowIndex]) {
-      console.warn('updateField: Row not found at index', rowIndex);
       return;
     }
 
     if (!this.params.fields[fieldId]) {
-      console.warn('updateField: Field not found', fieldId);
       return;
     }
 
@@ -1543,6 +1636,7 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
       // Update the settings - use rowIndex parameter
       currentSettings[rowIndex][fieldId] = elementEl.value;
     }
+    
     this.setValue(currentSettings, true);
   },
 
@@ -1615,32 +1709,52 @@ wp.customize.controlConstructor.repeater = wp.customize.Control.extend({
    */
   initSelect: function (theNewRow, data) {
     var control = this;
-    var dropdown = querySelector(theNewRow.container, ".repeater-field select");
-    var dataField;
-
-    if (!dropdown) {
+    // Use containerEl to ensure we have the DOM element
+    var rowContainer = theNewRow.containerEl || theNewRow.container;
+    // Find ALL select elements, not just the first one
+    var dropdowns = querySelectorAll(rowContainer, ".repeater-field select");
+    
+    if (!dropdowns || dropdowns.length === 0) {
       return;
     }
 
-    dataField = getData(dropdown, "field");
-    var multiple = getData(dropdown, "multiple");
-
     data = data || {};
-    data[dataField] = data[dataField] || "";
 
-    dropdown.value = data[dataField] || dropdown.value;
+    // Process each select element
+    dropdowns.forEach(function(dropdown) {
+      // Try getData first, then fallback to getAttribute
+      var dataField = getData(dropdown, "field");
+      if (!dataField) {
+        dataField = dropdown.getAttribute("data-field");
+      }
+      
+      var multiple = getData(dropdown, "multiple");
 
-    // Add event listener directly to this dropdown
-    dropdown.addEventListener("change", function (event) {
-      var currentDropdown = event.target;
-      var row = currentDropdown.closest(".repeater-row");
-      var rowIndex = row ? parseInt(getData(row, "row"), 10) : null;
-      var currentSettings = control.getValue();
-
-      if (rowIndex !== null && !_.isUndefined(currentSettings[rowIndex])) {
-        var fieldName = getData(currentDropdown, "field");
-        currentSettings[rowIndex][fieldName] = currentDropdown.value;
-        control.setValue(currentSettings);
+      // Set the value if it exists in data, otherwise keep the default from template
+      if (dataField && data[dataField] !== undefined && data[dataField] !== null && data[dataField] !== '') {
+        dropdown.value = data[dataField];
+      }
+      
+      // Add a direct change event listener to each select
+      // This ensures select changes are captured and saved correctly
+      if (dataField) {
+        dropdown.addEventListener('change', function(e) {
+          // Stop the event from bubbling to prevent double-handling
+          e.stopPropagation();
+          
+          var currentSettings = control.getValue();
+          var rowIndex = theNewRow.rowIndex;
+          
+          if (currentSettings[rowIndex]) {
+            currentSettings[rowIndex][dataField] = e.target.value;
+            control.setValue(currentSettings, true);
+            
+            // Update the row label if needed
+            if (theNewRow.updateLabel) {
+              theNewRow.updateLabel();
+            }
+          }
+        });
       }
     });
   },
