@@ -3,7 +3,7 @@ Contributors: themeum
 Tags: customizer, options framework, theme, toolkit
 Requires at least: 5.3
 Tested up to: 6.9
-Stable tag: 5.2.1
+Stable tag: 5.2.2
 Requires PHP: 7.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -74,6 +74,11 @@ Simply install as a normal WordPress plugin and activate.
 If you want to integrate Kirki in your theme or plugin, please read the instructions on [our documentation site](https://docs.themeum.com/kirki/getting-started/integration/).
 
 == Changelog ==
+
+= 5.2.2 - February 17, 2026
+
+Fix: Color palette not displaying in the Customizer in certain cases.
+Fix: Select field inside Repeater control not retaining the selected value.
 
 = 5.2.1 - February 10, 2026
 
