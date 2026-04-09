@@ -35,7 +35,6 @@ class Scripts {
 		 * If lower then we need to enqueue the backported scripts.
 		 */
 		if ( version_compare( $GLOBALS['wp_version'], '5.0', '<' ) ) {
-			add_action( 'wp_enqueue_scripts', [ $this, 'register_scripts' ] );
 			add_action( 'admin_register_scripts', [ $this, 'register_scripts' ] );
 			add_action( 'customize_controls_enqueue_scripts', [ $this, 'register_scripts' ] );
 		}

@@ -43,14 +43,7 @@ class Headline extends Base {
 	 * @since 1.0
 	 * @access public
 	 */
-	public function enqueue() {
-
-		parent::enqueue();
-
-		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-headline', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
-
-	}
+	
 
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).

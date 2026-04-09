@@ -137,9 +137,8 @@ class Field_Dependencies {
 	 */
 	public function field_dependencies() {
 
-		wp_enqueue_script( 'kirki_field_dependencies', URL::get_from_path( dirname( __DIR__ ) . '/dist/control.js' ), [ 'customize-base', 'customize-controls' ], '4.0', true );
-		wp_localize_script( 'kirki_field_dependencies', 'kirkiControlDependencies', $this->dependencies );
-		wp_localize_script( 'kirki_field_dependencies', 'kirkiRepeaterControlsAvailable', $this->repeater_controls );
+		wp_localize_script( 'kirki-customizer', 'kirkiControlDependencies', $this->dependencies );
+		wp_localize_script( 'kirki-customizer', 'kirkiRepeaterControlsAvailable', $this->repeater_controls );
 
 	}
 }

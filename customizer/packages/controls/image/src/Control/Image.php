@@ -44,13 +44,7 @@ class Image extends Base {
 	 *
 	 * @access public
 	 */
-	public function enqueue() {
-		parent::enqueue();
-
-		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-image', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-base', 'kirki-control-base', 'wp-mediaelement', 'media-upload', 'wp-i18n' ], self::$control_ver, false );
-		wp_set_script_translations( 'kirki-control-image', 'kirki' );
-	}
+	
 
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).

@@ -25,12 +25,12 @@ var kirkiPostMessage = {
 		 *
 		 * @returns {void}
 		 */
-		add: function( id ) {
-			id = id.replace( /[^\w\s]/gi, '-' );
-			if ( null === document.getElementById( 'kirki-postmessage-' + id ) || 'undefined' === typeof document.getElementById( 'kirki-postmessage-' + id ) ) {
-				var styleTag = document.createElement( 'style' );
+		add: function (id) {
+			id = id.replace(/[^\w\s]/gi, '-');
+			if (null === document.getElementById('kirki-postmessage-' + id) || 'undefined' === typeof document.getElementById('kirki-postmessage-' + id)) {
+				var styleTag = document.createElement('style');
 				styleTag.id = 'kirki-postmessage-' + id;
-				document.head.appendChild( styleTag );
+				document.head.appendChild(styleTag);
 			}
 		},
 
@@ -45,11 +45,11 @@ var kirkiPostMessage = {
 		 *
 		 * @returns {void}
 		 */
-		addData: function( id, styles ) {
-			id = id.replace( '[', '-' ).replace( ']', '' );
-			kirkiPostMessage.styleTag.add( id );
-			var styleElement = document.getElementById( 'kirki-postmessage-' + id );
-			if ( styleElement ) {
+		addData: function (id, styles) {
+			id = id.replace('[', '-').replace(']', '');
+			kirkiPostMessage.styleTag.add(id);
+			var styleElement = document.getElementById('kirki-postmessage-' + id);
+			if (styleElement) {
 				styleElement.textContent = styles;
 			}
 		}
@@ -73,44 +73,44 @@ var kirkiPostMessage = {
 		 *
 		 * @returns {string|false} - Returns false if value is excluded, otherwise a string.
 		 */
-		processValue: function( output, value ) {
-			var self     = this,
+		processValue: function (output, value) {
+			var self = this,
 				settings = window.parent.wp.customize.get(),
 				excluded = false;
 
-			if ( 'object' === typeof value ) {
-				_.each( value, function( subValue, key ) {
-					value[ key ] = self.processValue( output, subValue );
-				} );
+			if ('object' === typeof value) {
+				_.each(value, function (subValue, key) {
+					value[key] = self.processValue(output, subValue);
+				});
 				return value;
 			}
-			output = _.defaults( output, {
+			output = _.defaults(output, {
 				prefix: '',
 				units: '',
 				suffix: '',
 				value_pattern: '$',
 				pattern_replace: {},
 				exclude: []
-			} );
+			});
 
-			if ( 1 <= output.exclude.length ) {
-				_.each( output.exclude, function( exclusion ) {
-					if ( value == exclusion ) {
+			if (1 <= output.exclude.length) {
+				_.each(output.exclude, function (exclusion) {
+					if (value == exclusion) {
 						excluded = true;
 					}
-				} );
+				});
 			}
 
-			if ( excluded ) {
+			if (excluded) {
 				return false;
 			}
 
-			value = output.value_pattern.replace( new RegExp( '\\$', 'g' ), value );
-			_.each( output.pattern_replace, function( id, placeholder ) {
-				if ( ! _.isUndefined( settings[ id ] ) ) {
-					value = value.replace( placeholder, settings[ id ] );
+			value = output.value_pattern.replace(new RegExp('\\$', 'g'), value);
+			_.each(output.pattern_replace, function (id, placeholder) {
+				if (!_.isUndefined(settings[id])) {
+					value = value.replace(placeholder, settings[id]);
 				}
-			} );
+			});
 			return output.prefix + value + output.units + output.suffix;
 		},
 
@@ -123,8 +123,8 @@ var kirkiPostMessage = {
 		 *
 		 * @returns {string} - Returns the URL.
 		 */
-		backgroundImageValue: function( url ) {
-			return ( -1 === url.indexOf( 'url(' ) ) ? 'url(' + url + ')' : url;
+		backgroundImageValue: function (url) {
+			return (-1 === url.indexOf('url(')) ? 'url(' + url + ')' : url;
 		}
 	},
 
@@ -146,88 +146,88 @@ var kirkiPostMessage = {
 		 *
 		 * @returns {string} - Returns CSS as a string.
 		 */
-		fromOutput: function( output, value, controlType ) {
-			var styles      = '',
-				mediaQuery  = false,
+		fromOutput: function (output, value, controlType) {
+			var styles = '',
+				mediaQuery = false,
 				processedValue;
 
 			try {
-				value = JSON.parse( value );
-			} catch ( e ) {} // eslint-disable-line no-empty
+				value = JSON.parse(value);
+			} catch (e) { } // eslint-disable-line no-empty
 
-			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
-				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );
+			if (output.js_callback && 'function' === typeof window[output.js_callback]) {
+				value = window[output.js_callback[0]](value, output.js_callback[1]);
 			}
 
 			// Apply the kirkiPostMessageStylesOutput filter.
-			styles = wp.hooks.applyFilters( 'kirkiPostMessageStylesOutput', styles, value, output, controlType );
+			styles = wp.hooks.applyFilters('kirkiPostMessageStylesOutput', styles, value, output, controlType);
 
-			if ( '' === styles ) {
-				switch ( controlType ) {
+			if ('' === styles) {
+				switch (controlType) {
 					case 'kirki-multicolor':
 					case 'kirki-sortable':
 						styles += output.element + '{';
-						_.each( value, function( val, key ) {
-							if ( output.choice && key !== output.choice ) {
+						_.each(value, function (val, key) {
+							if (output.choice && key !== output.choice) {
 								return;
 							}
 
-							processedValue = kirkiPostMessage.util.processValue( output, val );
+							processedValue = kirkiPostMessage.util.processValue(output, val);
 
-							if ( '' === processedValue ) {
-								if ( 'background-color' === output.property ) {
+							if ('' === processedValue) {
+								if ('background-color' === output.property) {
 									processedValue = 'unset';
-								} else if ( 'background-image' === output.property ) {
+								} else if ('background-image' === output.property) {
 									processedValue = 'none';
 								}
 							}
 
 							var customProperty = controlType === 'kirki-sortable' ? output.property + '-' + key : output.property;
 
-							if ( false !== processedValue ) {
+							if (false !== processedValue) {
 								styles += output.property ? customProperty + ":" + processedValue + ";" : key + ":" + processedValue + ";";
 							}
-						} );
+						});
 						styles += '}';
 						break;
 					default:
-						if ( 'kirki-image' === controlType ) {
-							value = ( ! _.isUndefined( value.url ) ) ? kirkiPostMessage.util.backgroundImageValue( value.url ) : kirkiPostMessage.util.backgroundImageValue( value );
+						if ('kirki-image' === controlType) {
+							value = (!_.isUndefined(value.url)) ? kirkiPostMessage.util.backgroundImageValue(value.url) : kirkiPostMessage.util.backgroundImageValue(value);
 						}
-						if ( _.isObject( value ) ) {
+						if (_.isObject(value)) {
 							styles += output.element + '{';
-							_.each( value, function( val, key ) {
+							_.each(value, function (val, key) {
 								var property;
-								if ( output.choice && key !== output.choice ) {
+								if (output.choice && key !== output.choice) {
 									return;
 								}
-								processedValue = kirkiPostMessage.util.processValue( output, val );
-								property       = output.property ? output.property : key;
+								processedValue = kirkiPostMessage.util.processValue(output, val);
+								property = output.property ? output.property : key;
 
-								if ( '' === processedValue ) {
-									if ( 'background-color' === property ) {
+								if ('' === processedValue) {
+									if ('background-color' === property) {
 										processedValue = 'unset';
-									} else if ( 'background-image' === property ) {
+									} else if ('background-image' === property) {
 										processedValue = 'none';
 									}
 								}
 
-								if ( false !== processedValue ) {
+								if (false !== processedValue) {
 									styles += property + ':' + processedValue + ';';
 								}
-							} );
+							});
 							styles += '}';
 						} else {
-							processedValue = kirkiPostMessage.util.processValue( output, value );
-							if ( '' === processedValue ) {
-								if ( 'background-color' === output.property ) {
+							processedValue = kirkiPostMessage.util.processValue(output, value);
+							if ('' === processedValue) {
+								if ('background-color' === output.property) {
 									processedValue = 'unset';
-								} else if ( 'background-image' === output.property ) {
+								} else if ('background-image' === output.property) {
 									processedValue = 'none';
 								}
 							}
 
-							if ( false !== processedValue ) {
+							if (false !== processedValue) {
 								styles += output.element + '{' + output.property + ':' + processedValue + ';}';
 							}
 						}
@@ -236,15 +236,15 @@ var kirkiPostMessage = {
 			}
 
 			// Get the media-query.
-			if ( output.media_query && 'string' === typeof output.media_query && ! _.isEmpty( output.media_query ) ) {
+			if (output.media_query && 'string' === typeof output.media_query && !_.isEmpty(output.media_query)) {
 				mediaQuery = output.media_query;
-				if ( -1 === mediaQuery.indexOf( '@media' ) ) {
+				if (-1 === mediaQuery.indexOf('@media')) {
 					mediaQuery = '@media ' + mediaQuery;
 				}
 			}
 
 			// If we have a media-query, add it and return.
-			if ( mediaQuery ) {
+			if (mediaQuery) {
 				return mediaQuery + '{' + styles + '}';
 			}
 
@@ -270,29 +270,29 @@ var kirkiPostMessage = {
 		 *
 		 * @returns {void}
 		 */
-		fromOutput: function( output, value ) {
+		fromOutput: function (output, value) {
 
-			if ( output.js_callback && 'function' === typeof window[ output.js_callback ] ) {
-				value = window[ output.js_callback[0] ]( value, output.js_callback[1] );
+			if (output.js_callback && 'function' === typeof window[output.js_callback]) {
+				value = window[output.js_callback[0]](value, output.js_callback[1]);
 			}
 
-			if ( _.isObject( value ) || _.isArray( value ) ) {
-				if ( ! output.choice ) {
+			if (_.isObject(value) || _.isArray(value)) {
+				if (!output.choice) {
 					return;
 				}
-				_.each( value, function( val, key ) {
-					if ( output.choice && key !== output.choice ) {
+				_.each(value, function (val, key) {
+					if (output.choice && key !== output.choice) {
 						return;
 					}
 					value = val;
-				} );
+				});
 			}
-			value = kirkiPostMessage.util.processValue( output, value );
+			value = kirkiPostMessage.util.processValue(output, value);
 
-			var element = document.querySelector( output.element );
-			if ( element ) {
-				if ( output.attr ) {
-					element.setAttribute( output.attr, value );
+			var element = document.querySelector(output.element);
+			if (element) {
+				if (output.attr) {
+					element.setAttribute(output.attr, value);
 				} else {
 					element.innerHTML = value;
 				}
@@ -317,20 +317,20 @@ var kirkiPostMessage = {
 		 *
 		 * @returns {void}
 		 */
-		fromOutput: function( output, value ) {
-			if ( 'undefined' === typeof output.class || 'undefined' === typeof output.value ) {
+		fromOutput: function (output, value) {
+			if ('undefined' === typeof output.class || 'undefined' === typeof output.value) {
 				return;
 			}
 
-			var element = document.querySelector( output.element );
-			if ( ! element ) {
+			var element = document.querySelector(output.element);
+			if (!element) {
 				return;
 			}
 
-			if ( value === output.value && ! element.classList.contains( output.class ) ) {
-				element.classList.add( output.class );
+			if (value === output.value && !element.classList.contains(output.class)) {
+				element.classList.add(output.class);
 			} else {
-				element.classList.remove( output.class );
+				element.classList.remove(output.class);
 			}
 		}
 	}
@@ -338,48 +338,37 @@ var kirkiPostMessage = {
 
 window.kirkiPostMessage = kirkiPostMessage;
 
-document.addEventListener( 'DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	var styles;
 
-	_.each( kirkiPostMessageFields, function( field ) {
+	if ('undefined' === typeof kirkiPostMessageFields) {
+		return;
+	}
 
-		// Take care of styles on initial load and page-refreshes.
-		// ! Commented codes below were causing bug when using toggleClass method when using js_vars.
-		/*styles = '';
-		_.each( field.js_vars, function( output ) {
-			output.function = ( ! output.function || 'undefined' === typeof kirkiPostMessage[ output.function ] ) ? 'css' : output.function;
-			field.type = ( field.choices && field.choices.parent_type ) ? field.choices.parent_type : field.type;
-
-			if ( 'css' === output.function ) {
-				styles += kirkiPostMessage.css.fromOutput( output, wp.customize( field.settings ).get(), field.type );
-			} else {
-				kirkiPostMessage[ output.function ].fromOutput( output, wp.customize( field.settings ).get(), field.type );
-			}
-		} );
-		kirkiPostMessage.styleTag.addData( field.settings, styles );*/
+	_.each(kirkiPostMessageFields, function (field) {
 
 		var fieldSetting = field.settings;
 
-    if ("option" === field.option_type && field.option_name && 0 !== fieldSetting.indexOf(field.option_name + '[')) {
-      fieldSetting = field.option_name + "[" + fieldSetting + "]";
-    }
+		if ("option" === field.option_type && field.option_name && 0 !== fieldSetting.indexOf(field.option_name + '[')) {
+			fieldSetting = field.option_name + "[" + fieldSetting + "]";
+		}
 
-		wp.customize( fieldSetting, function( value ) {
-			value.bind( function( newVal ) {
+		wp.customize(fieldSetting, function (value) {
+			value.bind(function (newVal) {
 				styles = '';
-				_.each( field.js_vars, function( output ) {
-					output.function = ( ! output.function || 'undefined' === typeof kirkiPostMessage[ output.function ] ) ? 'css' : output.function;
-					field.type = ( field.choices && field.choices.parent_type ) ? field.choices.parent_type : field.type;
+				_.each(field.js_vars, function (output) {
+					output.function = (!output.function || 'undefined' === typeof kirkiPostMessage[output.function]) ? 'css' : output.function;
+					field.type = (field.choices && field.choices.parent_type) ? field.choices.parent_type : field.type;
 
-					if ( 'css' === output.function ) {
-						styles += kirkiPostMessage.css.fromOutput( output, newVal, field.type );
+					if ('css' === output.function) {
+						styles += kirkiPostMessage.css.fromOutput(output, newVal, field.type);
 					} else {
-						kirkiPostMessage[ output.function ].fromOutput( output, newVal, field.type );
+						kirkiPostMessage[output.function].fromOutput(output, newVal, field.type);
 					}
-				} );
+				});
 
 				kirkiPostMessage.styleTag.addData(fieldSetting, styles);
-			} );
-		} );
-	} );
-} );
+			});
+		});
+	});
+});

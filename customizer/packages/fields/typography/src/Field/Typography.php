@@ -576,11 +576,9 @@ class Typography extends Field {
 	 */
 	public function enqueue_control_scripts() {
 
-		wp_enqueue_style( 'kirki-control-typography', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], '1.0' );
 
-		wp_enqueue_script( 'kirki-control-typography', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [], '1.0', true );
 
-		wp_localize_script( 'kirki-control-typography', 'kirkiTypographyControls', self::$typography_controls );
+		wp_localize_script( 'kirki-customizer', 'kirkiTypographyControls', self::$typography_controls );
 
 		$args = $this->args;
 
@@ -689,8 +687,7 @@ class Typography extends Field {
 
 		// Scripts inside this block will only be executed once.
 		if ( ! self::$fonts_var_added ) {
-			wp_localize_script(
-				'kirki-control-typography',
+			wp_localize_script( 'kirki-customizer',
 				'kirkiFontVariants',
 				[
 					'standard' => self::$std_variants,
@@ -700,8 +697,8 @@ class Typography extends Field {
 
 			$google = new GoogleFonts();
 
-			wp_localize_script( 'kirki-control-typography', 'kirkiGoogleFonts', $google->get_array() );
-			wp_add_inline_script( 'kirki-control-typography', 'var kirkiCustomVariants = {};', 'before' );
+			wp_localize_script( 'kirki-customizer', 'kirkiGoogleFonts', $google->get_array() );
+			wp_add_inline_script( 'kirki-customizer', 'var kirkiCustomVariants = {};', 'before' );
 
 			self::$fonts_var_added = true;
 		}
@@ -711,8 +708,7 @@ class Typography extends Field {
 		$custom_variant_key   = str_ireplace( '[', '_', $custom_variant_key );
 		$custom_variant_value = wp_json_encode( Helper::prepare_php_array_for_js( $variants ) );
 
-		wp_add_inline_script(
-			'kirki-control-typography',
+		wp_add_inline_script( 'kirki-customizer',
 			'kirkiCustomVariants["' . $custom_variant_key . '"] = ' . $custom_variant_value . ';',
 			$variants
 		);
@@ -728,13 +724,11 @@ class Typography extends Field {
 	 */
 	public function enqueue_preview_scripts() {
 
-		wp_enqueue_script( 'kirki-preview-typography', \Kirki\URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/preview.js' ), [ 'wp-hooks' ], '1.0', true );
 
 		if ( ! self::$preview_var_added ) {
 			$google = new GoogleFonts();
 
-			wp_localize_script(
-				'kirki-preview-typography',
+			wp_localize_script( 'kirki-customizer',
 				'kirkiGoogleFontNames',
 				$google->get_google_font_names()
 			);

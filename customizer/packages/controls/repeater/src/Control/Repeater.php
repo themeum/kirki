@@ -208,19 +208,7 @@ class Repeater extends Base {
 	 * @since 1.0
 	 * @return void
 	 */
-	public function enqueue() {
-
-		parent::enqueue();
-
-		// Enqueue the style.
-		wp_enqueue_style( 'wp-color-picker' );
-		wp_enqueue_style( 'kirki-control-repeater-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
-
-		// Enqueue the script.
-		wp_enqueue_script( 'wp-color-picker-alpha', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/wp-color-picker-alpha.min.js' ), array( 'jquery', 'customize-base', 'wp-color-picker' ), self::$control_ver, false );
-		wp_enqueue_script( 'kirki-control-repeater', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'wp-color-picker-alpha' ], self::$control_ver, false );
-
-	}
+	
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.

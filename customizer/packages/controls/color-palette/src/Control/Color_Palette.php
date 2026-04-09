@@ -45,17 +45,7 @@ class Color_Palette extends Base {
 	 * @since 1.0
 	 * @access public
 	 */
-	public function enqueue() {
-
-		parent::enqueue();
-
-		// Enqueue the style.
-		wp_enqueue_style( 'kirki-color-palette-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
-
-		// Enqueue the script.
-		wp_enqueue_script( 'kirki-color-palette-control', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-controls', 'customize-base', 'wp-element', 'react-dom' ], self::$control_ver, false );
-
-	}
+	
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.

@@ -9,6 +9,10 @@
 (function () {
 	'use strict';
 
+	if (typeof wp === 'undefined' || !wp.customize || !wp.customize.Control) {
+		return;
+	}
+
 	/**
 	 * A dynamic color-alpha control.
 	 *

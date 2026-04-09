@@ -49,15 +49,7 @@ class Checkbox extends Base {
 	 * @since 1.0
 	 * @return void
 	 */
-	public function enqueue() {
-		parent::enqueue();
-
-		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-checkbox', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-base', 'kirki-control-base' ], self::$control_ver, false );
-
-		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-checkbox-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
-	}
+	
 
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).

@@ -43,17 +43,7 @@ class Responsive extends Base {
 	 * @since 1.0
 	 * @access public
 	 */
-	public function enqueue() {
-
-		parent::enqueue();
-
-		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-responsive', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
-
-		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-responsive', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-base', 'customize-controls' ], self::$control_ver, true );
-
-	}
+	
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.

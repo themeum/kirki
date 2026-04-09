@@ -130,6 +130,5 @@ class Panel {
 	 * @since 1.0
 	 */
 	public function enqueue_scrips() {
-		wp_enqueue_script( 'kirki-panels', URL::get_from_path( dirname( __DIR__ ) . '/dist/script.js' ), [ 'customize-base', 'customize-controls' ], '1.0', false );
 	}
 }

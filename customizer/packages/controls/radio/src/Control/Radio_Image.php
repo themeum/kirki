@@ -36,15 +36,7 @@ class Radio_Image extends Base {
 	 *
 	 * @access public
 	 */
-	public function enqueue() {
-		parent::enqueue();
-
-		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-radio', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-base', 'kirki-control-base' ], Radio::$control_ver, false );
-
-		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-radio-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], Radio::$control_ver );
-	}
+	
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.

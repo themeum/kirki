@@ -51,3 +51,5 @@ build/logs
 phpcs.xml
 *.zip
 vendor
+
+assets/customizer/*

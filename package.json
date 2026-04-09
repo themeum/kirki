@@ -39,11 +39,9 @@
             "global": "ReactDOM"
         }
     },
-    "bin": {
-        "kirki": "./kirki.mjs"
-    },
     "scripts": {
-        "kirki": "node ./kirki.mjs",
-        "build": "node ./kirki.mjs build"
+        "build": "parcel build customizer/controls.js customizer/preview.js --dist-dir tmp-build --no-source-maps && mkdir -p assets/customizer && mv tmp-build/controls.js assets/customizer/controls.min.js && mv tmp-build/controls.css assets/customizer/controls.min.css && mv tmp-build/preview.js assets/customizer/preview.min.js && mv tmp-build/preview.css assets/customizer/preview.min.css && rm -rf tmp-build",
+        "customizer:watch": "mkdir -p assets/customizer && ln -sf controls.js assets/customizer/controls.min.js && ln -sf controls.css assets/customizer/controls.min.css && ln -sf preview.js assets/customizer/preview.min.js && ln -sf preview.css assets/customizer/preview.min.css && parcel watch customizer/controls.js customizer/preview.js --dist-dir assets/customizer",
+        "customizer:build": "node dev/build-zip.mjs"
     }
 }

@@ -160,8 +160,6 @@ class Section {
 	 * @since 1.0.0
 	 */
 	public function enqueue_scrips() {
-		wp_enqueue_style( 'kirki-sections', URL::get_from_path( __DIR__ . '/styles.css' ), [], '1.0' );
-		wp_enqueue_script( 'kirki-sections', URL::get_from_path( dirname( __DIR__ ) . '/dist/script.js' ), [ 'customize-base', 'customize-controls' ], '1.0', false );
 	}
 
 	/**

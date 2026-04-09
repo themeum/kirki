@@ -91,31 +91,7 @@ class ReactSelect extends Base {
 	 * @since 1.0
 	 * @return void
 	 */
-	public function enqueue() {
-
-		parent::enqueue();
-
-		// Enqueue the script.
-		wp_enqueue_script(
-			'kirki-control-select',
-			URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ),
-			[
-				'customize-controls',
-				'customize-base',
-				'wp-element',
-				'wp-compose',
-				'wp-components',
-				'wp-i18n',
-				'kirki-control-base',
-			],
-			time(),
-			false
-		);
-
-		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-select-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
-
-	}
+	
 
 	/**
 	 * Get the URL for the control folder.

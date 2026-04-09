@@ -274,7 +274,6 @@ class ReactColorful extends Field {
 	 */
 	public function enqueue_customize_preview_scripts() {
 
-		wp_enqueue_script( 'kirki-react-colorful', URL::get_from_path( dirname( dirname( __DIR__ ) ) ) . '/dist/preview.js', [ 'wp-hooks', 'customize-preview' ], $this->control_class::$control_ver, true );
 
 	}
 

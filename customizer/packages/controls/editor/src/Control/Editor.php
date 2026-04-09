@@ -57,15 +57,7 @@ class Editor extends Base {
 	 * @since 1.0
 	 * @return void
 	 */
-	public function enqueue() {
-		parent::enqueue();
-
-		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-editor', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-base', 'kirki-control-base' ], self::$control_ver, false );
-
-		// Enqueue the style.
-		wp_enqueue_style( 'kirki-control-editor-style', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.css' ), [], self::$control_ver );
-	}
+	
 
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.

@@ -46,14 +46,7 @@ class Generic extends Base {
 	 * @since 1.0
 	 * @return void
 	 */
-	public function enqueue() {
-
-		parent::enqueue();
-
-		// Enqueue the script.
-		wp_enqueue_script( 'kirki-control-generic', URL::get_from_path( dirname( dirname( __DIR__ ) ) . '/dist/control.js' ), [ 'customize-base', 'kirki-control-base' ], self::$control_ver, false );
-
-	}
+	
 
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
