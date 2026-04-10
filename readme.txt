@@ -77,7 +77,7 @@ If you want to integrate Kirki in your theme or plugin, please read the instruct
 
 = 5.2.3 - April 10, 2026
 
-Update: Performance optimizations and random fixing
+Update: Performance optimizations and random fixes.
 
 = 5.2.2 - February 17, 2026
 
