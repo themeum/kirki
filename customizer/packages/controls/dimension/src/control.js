@@ -1,6 +1,33 @@
 import "./control.scss";
 
 /* global dimensionkirkiL10n */
+
+const getInvalidValueMessage = (() => {
+  let cached;
+
+  return () => {
+    if (cached) {
+      return cached;
+    }
+
+    if (
+      "undefined" !== typeof dimensionkirkiL10n &&
+      dimensionkirkiL10n["invalid-value"]
+    ) {
+      cached = dimensionkirkiL10n["invalid-value"];
+    } else if (
+      "undefined" !== typeof wp &&
+      wp.i18n &&
+      typeof wp.i18n.__ === "function"
+    ) {
+      cached = wp.i18n__("Invalid Value", "kirki");
+    } else {
+      cached = "Invalid Value";
+    }
+
+    return cached;
+  };
+})();
 wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicControl.extend( {
 
 	initKirkiControl: function( control ) {
@@ -39,7 +66,7 @@ wp.customize.controlConstructor['kirki-dimension'] = wp.customize.kirkiDynamicCo
 				if ( false === control.validateCssValue( value ) && ( ! acceptUnitless || isNaN( value ) ) ) {
 					setting.notifications.add( code, new wp.customize.Notification( code, {
 						type: 'warning',
-						message: dimensionkirkiL10n['invalid-value']
+						message: getInvalidValueMessage()
 					} ) );
 				} else {
 					setting.notifications.remove( code );

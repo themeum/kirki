@@ -5,7 +5,7 @@
  * Description: The Ultimate WordPress Customizer Framework
  * Author: Themeum
  * Author URI: https://www.themeum.com
- * Version: 5.2.2
+ * Version: 5.2.3
  * Text Domain: kirki
  * Requires at least: 5.3
  * Requires PHP: 7.4

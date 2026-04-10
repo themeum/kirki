@@ -58,10 +58,15 @@
           styles += "}";
 
           // Check if this is a googlefont so that we may load it.
+          const hasGoogleFontList =
+            "undefined" !== typeof window.kirkiGoogleFontNames &&
+            Array.isArray(window.kirkiGoogleFontNames);
+
           if (
             !_.isUndefined(window.WebFont) &&
+            hasGoogleFontList &&
             value["font-family"] &&
-            kirkiGoogleFontNames.includes(value["font-family"])
+            window.kirkiGoogleFontNames.includes(value["font-family"])
           ) {
             // Calculate the googlefont params.
             googleFont = value["font-family"].replace(/\"/g, "&quot;"); // eslint-disable-line no-useless-escape

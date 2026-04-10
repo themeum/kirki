@@ -1,6 +1,10 @@
 /* global kirkiPresetControls */
 ( function() {
 	function initPreset() {
+		if ( 'undefined' === typeof kirkiPresetControls || _.isEmpty( kirkiPresetControls ) ) {
+			return;
+		}
+
 		_.each( kirkiPresetControls, function( children, parentControl ) {
 			wp.customize( parentControl, function( value ) {
 				value.bind( function( to ) {
