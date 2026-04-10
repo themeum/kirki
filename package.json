@@ -3,7 +3,7 @@
     "version": "5.0.0",
     "description": "Dev toolkit for Kirki Customizer Framework",
     "author": "Kirki Framework",
-    "homepage": "https://themeum.com",
+    "homepage": "https://www.themeum.com",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -14,14 +14,10 @@
     },
     "dependencies": {
         "colord": "^2.9.3",
-        "jquery": "^3.6.3",
         "react": "^18.3.1",
         "react-colorful": "^5.6.1",
         "react-dom": "^18.3.1",
-        "react-select": "^5.8.0",
-        "reactcss": "^1.2.3",
-        "sade": "^1.8.1",
-        "shelljs": "^0.8.5"
+        "react-select": "^5.8.0"
     },
     "devDependencies": {
         "@babel/core": "^7.20.12",
@@ -33,9 +29,6 @@
     },
     "browserslist": "> 0.5%, last 2 versions, not dead",
     "alias": {
-        "jquery": {
-            "global": "jQuery"
-        },
         "wp": {
             "global": "wp"
         },
@@ -46,11 +39,9 @@
             "global": "ReactDOM"
         }
     },
-    "bin": {
-        "kirki": "./kirki.mjs"
-    },
     "scripts": {
-        "kirki": "node ./kirki.mjs",
-        "build": "node ./kirki.mjs build"
+        "build": "parcel build customizer/controls.js customizer/preview.js --dist-dir tmp-build --no-source-maps && mkdir -p assets/customizer && mv tmp-build/controls.js assets/customizer/controls.min.js && mv tmp-build/controls.css assets/customizer/controls.min.css && mv tmp-build/preview.js assets/customizer/preview.min.js && mv tmp-build/preview.css assets/customizer/preview.min.css && rm -rf tmp-build",
+        "customizer:watch": "mkdir -p assets/customizer && ln -sf controls.js assets/customizer/controls.min.js && ln -sf controls.css assets/customizer/controls.min.css && ln -sf preview.js assets/customizer/preview.min.js && ln -sf preview.css assets/customizer/preview.min.css && parcel watch customizer/controls.js customizer/preview.js --dist-dir assets/customizer",
+        "customizer:build": "node dev/build-zip.mjs"
     }
 }

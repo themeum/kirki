@@ -1,3 +1,8 @@
+### 5.2.0-beta.1 - February 02, 2026 ###
+
+Update: Performance improvement
+Update: WordPress 6.9 compatibility
+
 ### 5.1.0 - March 22, 2024 ###
 - Fix: We've resolved the issue with fonts not loading properly, ensuring your designs look sleek and professional.
 - Fix: Addressed deprecated errors to boost compatibility and keep your site running smoothly.

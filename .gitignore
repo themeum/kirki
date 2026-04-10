@@ -49,3 +49,7 @@ build/logs
 ###################
 .phpcs.xml
 phpcs.xml
+*.zip
+vendor
+
+assets/customizer/*
